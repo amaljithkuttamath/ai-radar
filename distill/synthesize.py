@@ -10,7 +10,7 @@ Backend-agnostic. Set RADAR_MODEL_BACKEND:
 Run: python -m distill.synthesize
 """
 from __future__ import annotations
-import os, sys, json, urllib.request
+import os, sys, json, urllib.request, urllib.error
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -80,7 +80,7 @@ def load_enriched() -> dict[str, dict]:
     return out
 
 
-def build_prompt(items: list[dict]) -> tuple[str, str]:
+def build_prompt(items: list[dict], _strip_briefs: bool = False) -> tuple[str, str]:
     enriched = load_enriched()
     keep = [i for i in items if (i.get("score") or 0) >= max(2, THRESHOLD - 1)]
 
@@ -111,11 +111,11 @@ def build_prompt(items: list[dict]) -> tuple[str, str]:
             "gh_stars": sig.get("gh_stars") or 0,
             "hn_points": sig.get("hn_points") or 0,
         }
-        e = enriched.get(i["id"])
-        if e and e.get("brief"):
-            # A brief already reasons over fetched evidence (GitHub/HN); prefer it over the
-            # raw abstract so the digest model synthesizes across dense briefs, not raw text.
-            row["brief"] = e["brief"]
+        if not _strip_briefs:
+            e = enriched.get(i["id"])
+            if e and e.get("brief"):
+                del row["summary"]
+                row["brief"] = e["brief"][:SUMMARY_CHARS]
         compact.append(row)
     system = SPEC
     today = f"{datetime.now(timezone.utc):%Y-%m-%d}"
@@ -188,7 +188,17 @@ def main() -> None:
     if BACKEND == "anthropic":
         report = call_anthropic(system, user)
     elif BACKEND == "github":
-        report = call_github(system, user)
+        try:
+            report = call_github(system, user)
+        except urllib.error.HTTPError as ex:
+            if ex.code == 413:
+                # Briefs made the payload too large; rebuild without them and retry once.
+                print("[distill] 413 on synthesis; retrying without enriched briefs",
+                      file=sys.stderr)
+                system, user = build_prompt(items, _strip_briefs=True)
+                report = call_github(system, user)
+            else:
+                raise
     elif BACKEND == "ollama":
         report = call_ollama(system, user)
     else:
