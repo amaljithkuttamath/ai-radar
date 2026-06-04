@@ -167,6 +167,7 @@ def main() -> None:
                   "Set RADAR_MODEL_BACKEND=github (free), anthropic, or ollama to generate the digest.\n\n"
                   "## SYSTEM\n" + system + "\n\n## USER\n" + user)
     out = ROOT / "reports" / f"{datetime.now(timezone.utc):%Y-%m-%d}-digest.md"
+    out.parent.mkdir(parents=True, exist_ok=True)   # reports/ is gitignored -> absent on fresh CI
     out.write_text(report)
     print(f"[distill] wrote {out}  (backend={BACKEND}, {len(items)} scored items)")
 
