@@ -1,0 +1,59 @@
+name: radar
+
+# Autonomous daily run: collect -> score -> distill -> commit the digest.
+# Collection is cheap, deterministic, and idempotent (seen.json dedups), so a daily
+# cron is safe. The committed digest lands in reports/ and seen.json is persisted
+# back so the next run dedups against it.
+
+on:
+  schedule:
+    - cron: "0 13 * * *"   # 13:00 UTC daily (~6am PT / 9am ET). Adjust to taste.
+  workflow_dispatch:        # lets you trigger a run by hand from the Actions tab
+    inputs:
+      window:
+        description: "Lookback window (e.g. 24h, 48h, 7d)"
+        default: "7d"
+      backend:
+        description: "Model backend: github (free) | dryrun | anthropic"
+        default: "github"
+      radar_agent:
+        description: "Enrichment pass (per-item briefs over GitHub/HN signals): on | off"
+        default: "off"
+
+permissions:
+  contents: write           # needed to commit the digest + seen.json back to the repo
+  models: read              # lets GITHUB_TOKEN call GitHub Models (free inference)
+
+concurrency:
+  group: radar              # never let two scheduled runs overlap
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      WINDOW: ${{ github.event.inputs.window || '7d' }}
+      RADAR_MODEL_BACKEND: ${{ github.event.inputs.backend || 'github' }}
+      RADAR_AGENT: ${{ github.event.inputs.radar_agent || 'off' }}   # enrichment off by default
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # built-in, free; no key to set up
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Run the radar cycle
+        run: uv run bash scripts/run.sh
+
+      - name: Commit digest + dedup state
+        run: |
+          git config user.name  "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          # Only the digest and the dedup ledger are tracked; the raw corpus stays ignored.
+          git add -f reports/*.md data/seen.json
+          if git diff --cached --quiet; then
+            echo "No new digest to commit."
+          else
+            git commit -m "radar: digest for $(date -u +%Y-%m-%d) (window=$WINDOW)"
+            git push
+          fi

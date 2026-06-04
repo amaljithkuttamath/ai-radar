@@ -1,0 +1,14 @@
+[project]
+name = "ai-radar"
+version = "0.1.0"
+description = "Collect, score, and distill a daily AI research/hardware/releases digest."
+requires-python = ">=3.10"
+# Core collection + scoring is stdlib-only. These cover RSS + config + the API synthesis path.
+dependencies = [
+    "pyyaml>=6.0",
+    "feedparser>=6.0",
+]
+
+[tool.uv]
+# Run collectors/distill with: uv run python -m collectors.arxiv  (etc.)
+# or the whole cycle: uv run bash scripts/run.sh

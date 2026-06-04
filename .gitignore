@@ -1,0 +1,18 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+# Corpus is regenerable; keep folders, not contents.
+data/raw/*
+data/scored/*
+data/enriched/*
+!**/.gitkeep
+
+# The CI job commits the digest and the dedup ledger so runs build on each other.
+# Track those two; ignore everything else under data/ and reports/.
+reports/*
+!reports/*.md
+!data/seen.json
+
+# local harness artifact
+.claude/scheduled_tasks.lock

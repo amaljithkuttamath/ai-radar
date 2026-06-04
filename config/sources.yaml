@@ -1,0 +1,28 @@
+# Source registry. Category -> list of sources. This is the dial you turn most often.
+# Each collector reads the categories/sources it knows how to fetch.
+
+research:
+  arxiv_categories: [cs.LG, cs.CL, cs.AI]   # add cs.CV / cs.NE per focus
+  hf_daily_papers: true                     # huggingface.co/papers — primary traction feed
+  # NOTE: papers_with_code removed — in practice it duplicated the HF Daily Papers feed.
+
+hardware:
+  # vendor newsroom / blog feeds (RSS or Atom). All URLs below verified via feedparser.
+  rss:
+    - { name: "NVIDIA Blog",        url: "https://blogs.nvidia.com/feed/" }
+    - { name: "AMD Investor News",  url: "https://ir.amd.com/rss/news-releases.xml" }   # product ramps, ecosystem
+    - { name: "Google Research",    url: "https://research.google/blog/rss/" }          # incl. TPU / infra posts
+  # Google Cloud's /blog/products/.../rss endpoints return JS-rendered HTML, not a feed — omitted.
+  # Analysts (e.g. SemiAnalysis) and supply chain (TSMC, HBM makers) are consulted by hand
+  # during the market-exposure step — they are not collected, so they are not config here.
+
+releases:
+  # lab blogs that ship models/methods/APIs. All URLs below verified via feedparser.
+  rss:
+    - { name: "OpenAI Blog",         url: "https://openai.com/blog/rss.xml" }
+    - { name: "Google DeepMind",     url: "https://deepmind.google/blog/rss.xml" }
+  # No official RSS as of 2026-06: Anthropic (anthropic.com/news), Meta AI (ai.meta.com/blog),
+  # Mistral (mistral.ai/news). Checked by hand or via a third-party generator until they ship one.
+
+# Tier-2 signals consulted during distillation to RANK traction (not collected):
+# HF upvotes, GitHub star velocity, Hacker News front page. Concrete + checkable only.
