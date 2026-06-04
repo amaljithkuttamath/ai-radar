@@ -16,6 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from collectors.common import ROOT, parse_window  # noqa: E402
+from distill.rank import rank_key  # noqa: E402
 
 WINDOW = os.environ.get("WINDOW", "48h")
 MAX_ITEMS = int(os.environ.get("MAX_ITEMS", "8"))
@@ -35,6 +36,11 @@ _SUMMARY_DEFAULT = {"github": 360}.get(BACKEND, 600)
 MAX_CANDIDATES = int(os.environ.get("MAX_CANDIDATES", _CAND_DEFAULT))
 SUMMARY_CHARS = int(os.environ.get("SUMMARY_CHARS", _SUMMARY_DEFAULT))
 
+# Reserve main-list slots for non-research so hardware/releases (which score lower than
+# research papers structurally) aren't crowded out. 0/0 reverts to research-only behavior.
+HARDWARE_SLOTS = int(os.environ.get("HARDWARE_SLOTS", "2"))
+RELEASE_SLOTS = int(os.environ.get("RELEASE_SLOTS", "1"))
+
 
 def load_scored() -> list[dict]:
     # Enforce the window on read too: synthesize can be run independently of score.py, so
@@ -53,9 +59,9 @@ def load_scored() -> list[dict]:
                 continue
             if fetched >= cutoff:
                 items.append(it)
-    items.sort(key=lambda x: (x.get("score") or 0,
-                              1 if x.get("focus_match") else 0,
-                              x.get("signals", {}).get("hf_upvotes") or 0), reverse=True)
+    # rank_key (score + signal magnitude) is primary; focus_match only breaks exact ties,
+    # staying a re-rank boost rather than overriding traction.
+    items.sort(key=lambda x: (rank_key(x), 1 if x.get("focus_match") else 0), reverse=True)
     return items
 
 
@@ -77,15 +83,33 @@ def load_enriched() -> dict[str, dict]:
 def build_prompt(items: list[dict]) -> tuple[str, str]:
     enriched = load_enriched()
     keep = [i for i in items if (i.get("score") or 0) >= max(2, THRESHOLD - 1)]
+
+    # Category quotas: guarantee non-research a few slots (they score lower than research
+    # papers structurally, e.g. a vendor blog has no HF/GitHub trending). Lower floor (>=1)
+    # lets them in; the model still sees their real score and routes them correctly.
+    research = [i for i in keep if i["category"] == "research"]
+    hardware = [i for i in items if i["category"] == "hardware" and (i.get("score") or 0) >= 1]
+    releases = [i for i in items if i["category"] == "releases" and (i.get("score") or 0) >= 1]
+    research_slots = max(0, MAX_CANDIDATES - HARDWARE_SLOTS - RELEASE_SLOTS)
+    chosen = (research[:research_slots]
+              + hardware[:HARDWARE_SLOTS]
+              + releases[:RELEASE_SLOTS])
+    chosen.sort(key=rank_key, reverse=True)   # model sees a single ranked list
+
     compact = []
-    for i in keep[:MAX_CANDIDATES]:
+    for i in chosen:
+        sig = i.get("signals") or {}
         row = {
             "title": i["title"], "url": i["url"], "source": i["source"],
             "category": i["category"], "score": i["score"],
             "reasons": i.get("score_reasons", []),
             "focus_match": i.get("focus_match", False),
             "summary": (i.get("raw_summary") or "")[:SUMMARY_CHARS],
-            "signals": i.get("signals", {}),
+            # Promote traction to explicit named fields so the spec can REQUIRE citing them
+            # (buried inside `signals` the model flattens them into "growing interest").
+            "hf_upvotes": sig.get("hf_upvotes") or 0,
+            "gh_stars": sig.get("gh_stars") or 0,
+            "hn_points": sig.get("hn_points") or 0,
         }
         e = enriched.get(i["id"])
         if e and e.get("brief"):
@@ -94,9 +118,12 @@ def build_prompt(items: list[dict]) -> tuple[str, str]:
             row["brief"] = e["brief"]
         compact.append(row)
     system = SPEC
+    today = f"{datetime.now(timezone.utc):%Y-%m-%d}"
     user = (
-        f"WINDOW={WINDOW}  MAX_ITEMS={MAX_ITEMS}  MARKET={'on' if MARKET else 'off'}  "
-        f"INCLUDE_THRESHOLD={THRESHOLD}\n\n"
+        f"TODAY={today}  WINDOW={WINDOW}  MAX_ITEMS={MAX_ITEMS}  "
+        f"MARKET={'on' if MARKET else 'off'}  INCLUDE_THRESHOLD={THRESHOLD}\n\n"
+        f"Date the report {today}. Use ONLY that date in any header; do not infer a date from "
+        "your training data or the items.\n\n"
         "Here are the scored candidate items (JSON). Produce the digest per the spec. "
         "The heuristic traction score is 0–4 from observable signals; add up to +1 yourself "
         "for genuine novelty / challenging a common assumption (max 5), and explain it. "
@@ -123,11 +150,13 @@ def call_anthropic(system: str, user: str) -> str:
     return "".join(b.get("text", "") for b in data.get("content", []))
 
 
-def call_github(system: str, user: str) -> str:
+def call_github(system: str, user: str, model: str | None = None) -> str:
     """GitHub Models — OpenAI-compatible, free, auth via GITHUB_TOKEN (models:read scope).
-    Default backend in CI: no paid key, no card. https://models.github.ai/inference"""
+    Default backend in CI: no paid key, no card. https://models.github.ai/inference
+    `model` lets callers pick a tier (synthesis uses the strong gpt-4.1; briefs use the
+    cheaper-quota gpt-4.1-mini so 8 brief calls don't exhaust the High-tier daily budget)."""
     body = json.dumps({
-        "model": os.environ.get("RADAR_GITHUB_MODEL", "openai/gpt-4o-mini"),
+        "model": model or os.environ.get("RADAR_GITHUB_MODEL", "openai/gpt-4.1"),
         "messages": [{"role": "system", "content": system},
                      {"role": "user", "content": user}],
     }).encode()

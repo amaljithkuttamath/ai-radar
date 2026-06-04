@@ -23,14 +23,18 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from collectors.common import ROOT, parse_window, _merge_signals  # noqa: E402
 from distill import tools  # noqa: E402
+from distill.rank import rank_key  # noqa: E402
 from distill.synthesize import call_github, call_anthropic, call_ollama  # noqa: E402
 
 WINDOW = os.environ.get("WINDOW", "48h")
 BACKEND = os.environ.get("RADAR_MODEL_BACKEND", "dryrun").lower()
-TOP_N = int(os.environ.get("RADAR_AGENT_TOP_N", "5"))
-BUDGET = int(os.environ.get("RADAR_AGENT_BUDGET", "8"))      # hard ceiling on model calls
+TOP_N = int(os.environ.get("RADAR_AGENT_TOP_N", "8"))        # match MAX_ITEMS so shown==enriched
+BUDGET = int(os.environ.get("RADAR_AGENT_BUDGET", "10"))     # 8 briefs + margin
 SLEEP = float(os.environ.get("RADAR_AGENT_SLEEP", "5"))       # spacing between model calls
 GH_TOKEN = os.environ.get("GITHUB_TOKEN")
+# Briefs use a cheaper-quota model (Low tier, 150/day) so 8 brief calls don't burn the
+# High-tier budget the synthesis call (gpt-4.1, 50/day) needs.
+BRIEF_MODEL = os.environ.get("BRIEF_GITHUB_MODEL", "openai/gpt-4.1-mini")
 
 SCORED = ROOT / "data" / "scored"
 ENRICHED = ROOT / "data" / "enriched"
@@ -57,8 +61,7 @@ def load_top_n() -> list[dict]:
             if fetched >= cutoff:
                 it["_scored_path"] = str(p)
                 items.append(it)
-    items.sort(key=lambda x: (x.get("score") or 0,
-                              x.get("signals", {}).get("hf_upvotes") or 0), reverse=True)
+    items.sort(key=rank_key, reverse=True)   # same key as synthesize -> shown == enriched
     return items[:TOP_N]
 
 
@@ -84,6 +87,8 @@ def _model_brief(item: dict, evidence: dict) -> str:
         f"URL: {item.get('url','')}\nSCORE: {item.get('score')}\n\n"
         f"EVIDENCE (fetched, real):\n{json.dumps(evidence, indent=2)}"
     )
+    if BACKEND == "github":                # briefs use the cheaper-quota model
+        return caller(BRIEF_SPEC, user, BRIEF_MODEL)
     return caller(BRIEF_SPEC, user)
 
 

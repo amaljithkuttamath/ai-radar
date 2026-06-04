@@ -37,10 +37,10 @@ jobs:
       RADAR_AGENT: ${{ github.event.inputs.radar_agent || 'off' }}   # enrichment off by default
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # built-in, free; no key to set up
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v8
 
       - name: Run the radar cycle
         run: uv run bash scripts/run.sh

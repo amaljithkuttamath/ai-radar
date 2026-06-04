@@ -16,7 +16,11 @@ to check before trusting it.
 
 ## Rules
 - Use ONLY the provided evidence and abstract. Never fabricate a number, repo, or link.
+- The Evidence line MUST print the actual figures: star count, HN points, and any benchmark
+  number from the abstract. Write "8,911 stars," not "strong GitHub traction." A brief that
+  cites no concrete number from the evidence has failed its purpose.
 - "Released" ≠ "announced." Say which the evidence supports.
 - If the evidence is thin (no repo, no HN, weak abstract), say so plainly and keep it short —
   a shorter honest brief beats padding.
-- Plain technical prose. No marketing voice, no em dashes.
+- Plain technical prose. No marketing voice, no em dashes. Banned: "growing interest,"
+  "confidence is moderate," "this work" as a subject.

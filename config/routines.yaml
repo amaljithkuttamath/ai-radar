@@ -14,6 +14,8 @@ distill:
 
 agent:               # optional enrichment pass (RADAR_AGENT=on). Deterministic fetches +
   enabled: false     #   one model call per item. off => pipeline runs exactly as before.
-  top_n: 5           # enrich the top-N scored items
-  budget: 8          # hard ceiling on model calls per run (free-tier safety)
+  top_n: 8           # enrich the top-N scored items (match distill.max_items: shown == enriched)
+  budget: 10         # hard ceiling on model calls per run (8 briefs + margin)
   sleep_between: 5   # seconds between model calls (rate-limit breathing room)
+  # Models (GitHub Models, free): synthesis uses RADAR_GITHUB_MODEL (default gpt-4.1, strong);
+  # briefs use BRIEF_GITHUB_MODEL (default gpt-4.1-mini, cheaper daily quota).

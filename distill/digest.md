@@ -33,17 +33,37 @@ Routing: **score ≥3 → main list · 2 → watch-list · ≤1 → drop.**
 
 ## Output format
 
+**Header** — start with `# AI Radar — {TODAY}` using the TODAY date from the user message.
+Never infer the date from the items or your training data.
+
 **Top-line** (2–3 sentences) — the single most important development + the window's theme.
 If quiet, say so plainly (and note that you widened the window).
 
 **Main list** (ranked, ≤MAX_ITEMS). Per item:
 - **Title** — [model | method | paper | release | infra/hardware] · score X/5
 - Source — org/authors + venue · [link to PRIMARY artifact]
-- New — one sentence
-- Matters — one sentence
-- Signal — authority + traction evidence + **confidence** ("single source, unverified" if so).
-  Keep traction and confidence separate: a high score with low confidence is normal and useful.
+- New — state the ACTUAL contribution: the specific technique, model size, dataset, or
+  performance number. Never restate the title. For a release: what shipped + the capability
+  delta. For hardware: the claimed perf-per-watt / bandwidth / ship-date figure.
+- Matters — who is affected and the concrete mechanism. "Practitioners doing X can now do Y"
+  is good. "A significant advance" is not.
+- Signal — PRINT the traction figures from the item's structured fields, do not prose them:
+  `N HF upvotes · N GitHub stars · N HN points` (omit any that are 0; if all 0, write
+  "no tracked traction signal"). Then confidence: "single source" if one signal and no
+  independent corroboration, else "corroborated by N signals". Traction and confidence are
+  separate: a high score with low confidence is normal and useful.
 - Market exposure — *only if MARKET=on and score ≥4* (see below)
+
+The candidate set may include hardware and releases items that score below research papers;
+include them at their actual score (watch-list is fine for a bare vendor announcement). Do
+not drop them just for scoring lower than research.
+
+## Banned phrases — never write these
+- "growing interest" / "increasing interest" / "notable interest"
+- "confidence is moderate" (use "single source" or "corroborated by N signals")
+- "this work" / "this paper" as a subject — name the system or method
+- "in the field of" / "in the realm of"
+- restating the title as the New line
 
 **Watch-list** (1 line each) — promising but unverified / not-yet-trending. Park here anything
 whose recency you can't confirm, rather than risk surfacing stale items as new.
