@@ -26,6 +26,15 @@ SCORED = ROOT / "data" / "scored"
 ENRICHED = ROOT / "data" / "enriched"
 SPEC = (ROOT / "distill" / "digest.md").read_text()
 
+# Payload caps. GitHub Models' free tier has a ~16k-token INPUT limit, so the candidate
+# set must stay small there (a busy 7d window scores 500+ items). The digest only emits
+# MAX_ITEMS anyway, so a tight candidate list is plenty. Other backends can take more.
+# Overridable via env for tuning.
+_CAND_DEFAULT = {"github": 24}.get(BACKEND, 60)
+_SUMMARY_DEFAULT = {"github": 360}.get(BACKEND, 600)
+MAX_CANDIDATES = int(os.environ.get("MAX_CANDIDATES", _CAND_DEFAULT))
+SUMMARY_CHARS = int(os.environ.get("SUMMARY_CHARS", _SUMMARY_DEFAULT))
+
 
 def load_scored() -> list[dict]:
     # Enforce the window on read too: synthesize can be run independently of score.py, so
@@ -69,13 +78,13 @@ def build_prompt(items: list[dict]) -> tuple[str, str]:
     enriched = load_enriched()
     keep = [i for i in items if (i.get("score") or 0) >= max(2, THRESHOLD - 1)]
     compact = []
-    for i in keep[:60]:
+    for i in keep[:MAX_CANDIDATES]:
         row = {
             "title": i["title"], "url": i["url"], "source": i["source"],
             "category": i["category"], "score": i["score"],
             "reasons": i.get("score_reasons", []),
             "focus_match": i.get("focus_match", False),
-            "summary": (i.get("raw_summary") or "")[:600],
+            "summary": (i.get("raw_summary") or "")[:SUMMARY_CHARS],
             "signals": i.get("signals", {}),
         }
         e = enriched.get(i["id"])
