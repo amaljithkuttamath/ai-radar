@@ -1,5 +1,5 @@
 """RSS/Atom collector for lab & vendor newsrooms. Config-driven from config/sources.yaml
-(hardware.rss + releases.rss). Requires feedparser (see requirements.txt).
+(hardware.rss + releases.rss). Requires feedparser (declared in pyproject.toml).
 
 Run: python -m collectors.lab_blogs
 """
@@ -17,7 +17,7 @@ CONFIG = Path(__file__).resolve().parent.parent / "config" / "sources.yaml"
 
 def load_feeds() -> list[tuple[str, str, str]]:
     """Return (category, name, url). Requires pyyaml."""
-    import yaml  # in requirements.txt
+    import yaml  # declared in pyproject.toml
     cfg = yaml.safe_load(CONFIG.read_text())
     feeds = []
     for category in ("hardware", "releases"):
@@ -29,7 +29,7 @@ def load_feeds() -> list[tuple[str, str, str]]:
 def parse_feed(url: str):
     """Yield (id, title, link, summary, published_dt) using feedparser.
     Caller imports feedparser once up front so a missing dep fails loudly, not per-feed."""
-    import feedparser  # in requirements.txt
+    import feedparser  # declared in pyproject.toml
     d = feedparser.parse(url)
     for e in d.entries:
         pub = None
@@ -44,7 +44,7 @@ def main() -> None:
     try:
         import feedparser  # noqa: F401  fail loudly here, not silently per-feed below
     except ImportError:
-        print("[blogs] feedparser not installed; run `pip install -r requirements.txt`",
+        print("[blogs] feedparser not installed; run `uv sync` (or `pip install -e .`)",
               file=sys.stderr)
         return
     try:
