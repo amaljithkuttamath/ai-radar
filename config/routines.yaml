@@ -4,13 +4,21 @@ collectors:
   - arxiv
   - hf_papers
   - lab_blogs        # reads sources.yaml: hardware.rss + releases.rss
+  - github_trending  # reads sources.yaml: releases.github_topics (hot repos -> releases)
+  - hf_trending      # HF trending models + datasets (-> releases)
 
 distill:
   window: 48h        # 24h daily / 48h default / 7d weekly
   max_items: 8       # main list cap
-  focus: []          # re-rank boost, e.g. [interpretability, agents, evals]
+  # FOCUS re-rank boost. Leave empty to use config/profile.yaml (alias-aware, persistent);
+  # set here or via FOCUS env to override for a one-off lens, e.g. [interpretability, agents].
+  focus: []
   market: off        # on => append mechanism-mapping to score>=4 items (NOT advice)
   include_threshold: 3   # score >= this -> main list; ==2 -> watch-list; <=1 drop
+
+deliver:                 # optional email push of the digest (distill/deliver.py).
+  email: false           # true (or set RADAR_EMAIL_TO env) to send. Needs SMTP_* secrets.
+  # Env: RADAR_EMAIL_TO, RADAR_SMTP_HOST/USER/PASS (+ optional PORT/FROM). No-op if unset.
 
 agent:               # optional enrichment pass (RADAR_AGENT=on). Deterministic fetches +
   enabled: false     #   one model call per item. off => pipeline runs exactly as before.

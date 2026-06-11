@@ -21,6 +21,10 @@ releases:
   rss:
     - { name: "OpenAI Blog",         url: "https://openai.com/blog/rss.xml" }
     - { name: "Google DeepMind",     url: "https://deepmind.google/blog/rss.xml" }
+  # GitHub trending topics (collectors/github_trending.py): hot AI repos pushed in-window,
+  # ranked by stars. A leading indicator of releases that matter before they hit arXiv.
+  github_topics: [llm, large-language-models, agents, rag, diffusion-models, machine-learning]
+  # HF trending models/datasets are collected by collectors/hf_trending.py (no config needed).
   # No official RSS as of 2026-06: Anthropic (anthropic.com/news), Meta AI (ai.meta.com/blog),
   # Mistral (mistral.ai/news). Checked by hand or via a third-party generator until they ship one.
 

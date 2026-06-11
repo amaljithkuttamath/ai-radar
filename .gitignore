@@ -13,6 +13,7 @@ data/enriched/*
 reports/*
 !reports/*.md
 !data/seen.json
+!data/state.json
 
 # local harness artifact
 .claude/scheduled_tasks.lock

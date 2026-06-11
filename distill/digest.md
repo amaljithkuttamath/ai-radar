@@ -39,6 +39,15 @@ Never infer the date from the items or your training data.
 **Top-line** (2–3 sentences) — the single most important development + the window's theme.
 If quiet, say so plainly (and note that you widened the window).
 
+**What changed** (skip entirely if the MOVERS block has first_run=true) — a short "since last
+run" delta from the MOVERS block in the user message. Three one-line groups, omit any that are
+empty:
+- **New today** — items not present last run (the freshest signal).
+- **Climbing** — items whose traction rose; cite the direction, e.g. "up".
+- **Cooled** — items that lost traction or fell off.
+Keep it to the items that actually matter; do not list every mover. This section is what makes
+the report a radar rather than a standalone newsletter.
+
 **Main list** (ranked, ≤MAX_ITEMS). Per item:
 - **Title** — [model | method | paper | release | infra/hardware] · score X/5
 - Source — org/authors + venue · [link to PRIMARY artifact]

@@ -11,9 +11,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from collectors.common import iter_raw, ROOT  # noqa: E402
+from distill.focus import focus_match, active_terms  # noqa: E402
 
 WINDOW = os.environ.get("WINDOW", "48h")
-FOCUS = [t.strip().lower() for t in os.environ.get("FOCUS", "").split(",") if t.strip()]
 SCORED = ROOT / "data" / "scored"
 
 FRONTIER = ("anthropic", "openai", "deepmind", "google", "meta", "fair", "microsoft",
@@ -35,21 +35,19 @@ def heuristic_score(it: dict) -> tuple[int, list[str]]:
         s += 1; why.append("concrete result claimed")
     if any(h in blob for h in ARTIFACT_HINTS) or "github" in (it.get("url", "")):
         s += 1; why.append("usable artifact")
-    if (it.get("signals", {}).get("hf_upvotes", 0) or 0) >= 15 or \
-       (it.get("signals", {}).get("gh_stars", 0) or 0) >= 50:
+    sig = it.get("signals", {}) or {}
+    if ((sig.get("hf_upvotes", 0) or 0) >= 15
+            or (sig.get("hf_likes", 0) or 0) >= 50
+            or (sig.get("gh_stars", 0) or 0) >= 50
+            or (sig.get("hn_points", 0) or 0) >= 30):
         s += 1; why.append("trending (Tier-2 signal)")
     # 'novelty / challenges assumption' (+1) is left to the model pass — see synthesize.py.
     # Traction is 0–5: heuristic covers up to 4; the model can add the novelty point.
     return min(s, 5), why
 
 
-def focus_match(it: dict) -> bool:
-    """FOCUS is a re-rank boost, NOT a score component — kept separate on purpose."""
-    if not FOCUS:
-        return False
-    blob = " ".join([it.get("title", ""), it.get("raw_summary", ""),
-                     it.get("source", "")]).lower()
-    return any(t in blob for t in FOCUS)
+# focus_match now lives in distill/focus.py (profile-driven, alias-aware). FOCUS is still a
+# re-rank boost, NOT a score component — kept separate on purpose.
 
 
 def main() -> None:
@@ -68,7 +66,7 @@ def main() -> None:
         out = SCORED / f"{it['id'].replace(':', '_').replace('/', '_')}.json"
         out.write_text(json.dumps(it, indent=2))
         n += 1
-    print(f"[score] scored {n} items (window={WINDOW}, focus={FOCUS or 'none'})")
+    print(f"[score] scored {n} items (window={WINDOW}, focus={active_terms() or 'none'})")
 
 
 if __name__ == "__main__":

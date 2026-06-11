@@ -38,10 +38,15 @@ ai-radar/
 │   ├── common.py         # IO, dedup/seen-list, date windows, item schema  (stdlib only)
 │   ├── arxiv.py          # arXiv API collector (runnable)
 │   ├── hf_papers.py      # Hugging Face Daily Papers collector (runnable)
-│   └── lab_blogs.py      # RSS/Atom collector for lab & vendor newsrooms (config-driven)
+│   ├── lab_blogs.py      # RSS/Atom collector for lab & vendor newsrooms (config-driven)
+│   ├── github_trending.py# trending AI repos (GitHub Search proxy) → releases  (stdlib only)
+│   └── hf_trending.py     # trending HF models + datasets → releases             (stdlib only)
 ├── distill/
 │   ├── digest.md         # the distillation routine (the prompt that turns folders → report)
 │   ├── score.py          # heuristic 0–5 traction score (FOCUS kept separate)
+│   ├── focus.py          # FOCUS matcher: profile.yaml (alias-aware) or FOCUS env override
+│   ├── delta.py          # movers vs. previous run → "What changed" section (state.json)
+│   ├── deliver.py        # optional email push of the digest (stdlib SMTP, no-op if unset)
 │   └── synthesize.py     # loads scored items, calls a model, writes reports/<date>-digest.md
 ├── data/
 │   ├── raw/<category>/<date>/<id>.json   # append-only collected items
@@ -88,11 +93,38 @@ spec, and point a collector at it (most fit `lab_blogs.py`'s RSS pattern).
 window, feeds them to a model, and writes a report with:
 
 - **Top-line** — the one thing that matters + the window's theme
+- **What changed** — *New today / Climbing / Cooled* vs. the previous run (see Movers below)
 - **Main list** — scored, ranked, with primary links
 - **Watch-list** — promising but unverified
 - **Market exposure** — *optional, MARKET=on* — mechanism mapping, see note below
 - **Insights** — patterns across items
 - **Action items** — read / try / track, e.g. "pull this model to test locally," "watch this benchmark"
+
+### Movers (what makes it a *radar*)
+
+`distill/delta.py` diffs the current scored set against a tiny snapshot of the previous run
+(`data/state.json`, committed alongside `seen.json` so runs build on each other). It classifies
+each item **new / climbing / cooled** and feeds that to the digest's "What changed" section.
+Climbing/cooled react to **traction-magnitude growth** (HF upvotes/likes, GitHub stars, HN
+points) and score-tier changes — not to the saturated `rank_key` — so a repo doubling its stars
+actually registers. First run reports everything as new and skips the section.
+
+### Personalized FOCUS
+
+FOCUS is a re-rank *boost* ("is this relevant to me"), never part of the 0–5 score. Define a
+persistent interest profile in `config/profile.yaml` — topics with **aliases**, so
+`interpretability` also catches `mechanistic interp` / `SAE` without listing every variant.
+Matching is lexical and stdlib-only (`distill/focus.py`). The `FOCUS` env string still works and
+**overrides** the profile for one-off lenses. An optional semantic backend (`FOCUS_BACKEND=embed`)
+is stubbed for those who want embedding similarity; off by default to keep the install dep-free.
+
+### Email delivery
+
+`distill/deliver.py` renders the latest digest to HTML and emails it via SMTP (stdlib only —
+works with any provider). It's a clean **no-op unless configured**, so local runs never email.
+Set `RADAR_EMAIL_TO` + `RADAR_SMTP_HOST` / `RADAR_SMTP_USER` / `RADAR_SMTP_PASS` (optional
+`RADAR_SMTP_PORT`, `RADAR_EMAIL_FROM`). In CI, store these as repo secrets and trigger with
+`deliver_email=on`. Delivery failure never fails the pipeline (the digest is already committed).
 
 ## Running
 
@@ -103,6 +135,8 @@ pip install -r requirements.txt
 python -m collectors.arxiv
 python -m collectors.hf_papers
 python -m collectors.lab_blogs
+python -m collectors.github_trending   # trending AI repos
+python -m collectors.hf_trending       # trending HF models + datasets
 
 # 2. score + 3. distill (the judgment pass)
 WINDOW=48h FOCUS="interpretability,agents,evals" MARKET=on bash scripts/run.sh
@@ -128,7 +162,11 @@ model for cheap scoring/drafts. Deterministic fetching never calls a model.
 
 ## Roadmap
 
+- [x] Trending collectors: GitHub trending repos + HF trending models/datasets
+- [x] Movers / "What changed" delta view across runs
+- [x] Personalized, alias-aware FOCUS profile (`config/profile.yaml`)
+- [x] Email delivery of the digest
 - [ ] Verify the HF Daily Papers endpoint shape in `hf_papers.py` against live output
 - [ ] Fill `config/sources.yaml` lab/vendor RSS URLs (placeholders included)
-- [ ] GitHub Action to run collectors daily and open a PR with the digest
 - [ ] Optional: GitHub stars-velocity enricher for `signals.gh_stars`
+- [ ] Optional: wire the stubbed `FOCUS_BACKEND=embed` semantic matcher to a real embedder
