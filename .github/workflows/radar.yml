@@ -21,7 +21,7 @@ on:
         default: "off"
       deliver_email:
         description: "Email the digest after distill (needs SMTP secrets): on | off"
-        default: "off"
+        default: "on"
 
 permissions:
   contents: write           # needed to commit the digest + seen.json back to the repo
@@ -40,8 +40,9 @@ jobs:
       RADAR_AGENT: ${{ github.event.inputs.radar_agent || 'off' }}   # enrichment off by default
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # built-in, free; no key to set up
       # Email delivery (optional). Set these repo secrets to enable; deliver.py no-ops if unset.
-      # RADAR_EMAIL_TO is only populated when deliver_email=on (manual) or you wire it on schedule.
-      RADAR_EMAIL_TO: ${{ github.event.inputs.deliver_email == 'on' && secrets.RADAR_EMAIL_TO || '' }}
+      # Scheduled runs email automatically; a manual run emails unless you pass deliver_email=off.
+      # Either way it's a clean no-op until RADAR_EMAIL_TO + SMTP_* secrets exist.
+      RADAR_EMAIL_TO: ${{ (github.event_name == 'schedule' || github.event.inputs.deliver_email != 'off') && secrets.RADAR_EMAIL_TO || '' }}
       RADAR_EMAIL_FROM: ${{ secrets.RADAR_EMAIL_FROM }}
       RADAR_SMTP_HOST: ${{ secrets.RADAR_SMTP_HOST }}
       RADAR_SMTP_PORT: ${{ secrets.RADAR_SMTP_PORT }}
