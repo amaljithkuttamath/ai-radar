@@ -1,0 +1,27 @@
+# Your interest profile — drives the FOCUS re-rank boost (NOT the 0–5 traction score).
+# FOCUS answers "is this relevant to me", kept strictly separate from "is this big" (score).
+#
+# This is a richer, persistent replacement for the FOCUS env string. The FOCUS env var still
+# works and OVERRIDES this file when set, so CI / one-off lenses are unchanged.
+#
+# Matching (see distill/focus.py): each topic is a phrase; aliases expand it so e.g.
+# "interpretability" also matches "mechanistic interp" / "SAE". Matching is lexical and
+# stdlib-only (collectors/scoring never need a model). For true semantic matching, set
+# FOCUS_BACKEND=embed and provide an embedder — see distill/focus.py docstring; off by default.
+
+topics:
+  - name: interpretability
+    aliases: [mechanistic, interp, sae, sparse autoencoder, probing, circuits, feature steering]
+  - name: agents
+    aliases: [agentic, tool use, multi-agent, planning, react, autonomy]
+  - name: evals
+    aliases: [evaluation, benchmark, leaderboard, red-team, reliability]
+  - name: rag
+    aliases: [retrieval, retrieval-augmented, vector search, reranking, embeddings]
+  - name: efficient inference
+    aliases: [quantization, distillation, kv cache, speculative decoding, moe, mixture-of-experts, serving, throughput, cost]
+  - name: long context
+    aliases: [long-context, context window, attention, ssm, state space]
+
+# Optional: hard down-weight topics you never want boosted (still scored normally, just no boost).
+mute: []

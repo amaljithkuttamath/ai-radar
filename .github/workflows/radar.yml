@@ -19,6 +19,9 @@ on:
       radar_agent:
         description: "Enrichment pass (per-item briefs over GitHub/HN signals): on | off"
         default: "off"
+      deliver_email:
+        description: "Email the digest after distill (needs SMTP secrets): on | off"
+        default: "off"
 
 permissions:
   contents: write           # needed to commit the digest + seen.json back to the repo
@@ -36,6 +39,14 @@ jobs:
       RADAR_MODEL_BACKEND: ${{ github.event.inputs.backend || 'github' }}
       RADAR_AGENT: ${{ github.event.inputs.radar_agent || 'off' }}   # enrichment off by default
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # built-in, free; no key to set up
+      # Email delivery (optional). Set these repo secrets to enable; deliver.py no-ops if unset.
+      # RADAR_EMAIL_TO is only populated when deliver_email=on (manual) or you wire it on schedule.
+      RADAR_EMAIL_TO: ${{ github.event.inputs.deliver_email == 'on' && secrets.RADAR_EMAIL_TO || '' }}
+      RADAR_EMAIL_FROM: ${{ secrets.RADAR_EMAIL_FROM }}
+      RADAR_SMTP_HOST: ${{ secrets.RADAR_SMTP_HOST }}
+      RADAR_SMTP_PORT: ${{ secrets.RADAR_SMTP_PORT }}
+      RADAR_SMTP_USER: ${{ secrets.RADAR_SMTP_USER }}
+      RADAR_SMTP_PASS: ${{ secrets.RADAR_SMTP_PASS }}
     steps:
       - uses: actions/checkout@v6
 
@@ -50,7 +61,7 @@ jobs:
           git config user.name  "radar-bot"
           git config user.email "radar-bot@users.noreply.github.com"
           # Only the digest and the dedup ledger are tracked; the raw corpus stays ignored.
-          git add -f reports/*.md data/seen.json
+          git add -f reports/*.md data/seen.json data/state.json
           if git diff --cached --quiet; then
             echo "No new digest to commit."
           else

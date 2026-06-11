@@ -17,9 +17,13 @@ echo "== collect (window=$WINDOW) =="
 # Order matters: hf_papers must run BEFORE arxiv. Both mint version-less arxiv: ids for the
 # same paper, and write_items dedups by id (first writer wins). HF carries signals.hf_upvotes
 # that arxiv lacks, so HF has to write first or that trending signal is lost on overlap.
-$PY -m collectors.hf_papers  || echo "  hf_papers collector skipped"
-$PY -m collectors.arxiv      || echo "  arxiv collector skipped"
-$PY -m collectors.lab_blogs  || echo "  lab_blogs collector skipped"
+$PY -m collectors.hf_papers      || echo "  hf_papers collector skipped"
+$PY -m collectors.arxiv          || echo "  arxiv collector skipped"
+$PY -m collectors.lab_blogs      || echo "  lab_blogs collector skipped"
+# Trending collectors: leading indicators of releases that matter (hot tools/models before
+# they hit arXiv). Carry gh_stars / hf_likes so the trending heuristic fires without enrich.
+$PY -m collectors.github_trending || echo "  github_trending collector skipped"
+$PY -m collectors.hf_trending     || echo "  hf_trending collector skipped"
 
 echo "== score =="
 $PY -m distill.score
@@ -31,6 +35,12 @@ fi
 
 echo "== distill =="
 $PY -m distill.synthesize
+
+# Optional email delivery: no-op unless RADAR_EMAIL_TO + SMTP_* env are set (see distill/deliver.py).
+if [ -n "${RADAR_EMAIL_TO:-}" ]; then
+  echo "== deliver (email) =="
+  $PY -m distill.deliver || echo "  delivery failed (digest already written)"
+fi
 
 echo "Done. Latest report:"
 ls -t reports/*.md 2>/dev/null | head -1 || true

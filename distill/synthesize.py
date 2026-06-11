@@ -17,6 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from collectors.common import ROOT, parse_window  # noqa: E402
 from distill.rank import rank_key  # noqa: E402
+from distill.delta import compute_delta, save_state  # noqa: E402
 
 WINDOW = os.environ.get("WINDOW", "48h")
 MAX_ITEMS = int(os.environ.get("MAX_ITEMS", "8"))
@@ -119,12 +120,21 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False) -> tuple[str, s
         compact.append(row)
     system = SPEC
     today = f"{datetime.now(timezone.utc):%Y-%m-%d}"
+    # Movers vs. the previous run — turns a standalone digest into a radar. Computed over the
+    # full scored set (not just `chosen`) so a climbing item that fell out of the cut still
+    # registers. Empty/first-run delta degrades to no "What changed" section.
+    delta = compute_delta(items)
+    delta_note = (
+        "\n\nMOVERS since the previous run (use these to write the 'What changed' section; "
+        "if first_run is true, skip that section):\n" + json.dumps(delta, indent=2) + "\n"
+    )
     user = (
         f"TODAY={today}  WINDOW={WINDOW}  MAX_ITEMS={MAX_ITEMS}  "
         f"MARKET={'on' if MARKET else 'off'}  INCLUDE_THRESHOLD={THRESHOLD}\n\n"
         f"Date the report {today}. Use ONLY that date in any header; do not infer a date from "
         "your training data or the items.\n\n"
-        "Here are the scored candidate items (JSON). Produce the digest per the spec. "
+        + delta_note +
+        "\nHere are the scored candidate items (JSON). Produce the digest per the spec. "
         "The heuristic traction score is 0–4 from observable signals; add up to +1 yourself "
         "for genuine novelty / challenging a common assumption (max 5), and explain it. "
         "Items with focus_match=true are in a FOCUS area — use that ONLY as a re-rank boost "
@@ -208,6 +218,11 @@ def main() -> None:
     out = ROOT / "reports" / f"{datetime.now(timezone.utc):%Y-%m-%d}-digest.md"
     out.parent.mkdir(parents=True, exist_ok=True)   # reports/ is gitignored -> absent on fresh CI
     out.write_text(report)
+    # Snapshot this run's ranked set so the NEXT run can compute movers against it. Written
+    # only after a successful digest, and only for real backends (dryrun shouldn't advance
+    # state, or you'd lose the genuine "new today" diff on the next real run).
+    if BACKEND != "dryrun":
+        save_state(items)
     print(f"[distill] wrote {out}  (backend={BACKEND}, {len(items)} scored items)")
 
 

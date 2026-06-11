@@ -14,6 +14,7 @@ from math import log1p
 def rank_key(item: dict) -> float:
     sig = item.get("signals") or {}
     mag = (log1p(sig.get("hf_upvotes") or 0)
+           + 0.7 * log1p(sig.get("hf_likes") or 0)
            + 0.5 * log1p(sig.get("gh_stars") or 0)
            + 0.3 * log1p(sig.get("hn_points") or 0))
     tiebreak = mag / (mag + 10.0)          # [0, inf) -> [0, 1)
