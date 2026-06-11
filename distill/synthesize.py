@@ -42,6 +42,14 @@ SUMMARY_CHARS = int(os.environ.get("SUMMARY_CHARS", _SUMMARY_DEFAULT))
 HARDWARE_SLOTS = int(os.environ.get("HARDWARE_SLOTS", "2"))
 RELEASE_SLOTS = int(os.environ.get("RELEASE_SLOTS", "1"))
 
+# How many ranked movers to send per bucket. The model only writes a sentence or two for the
+# "What changed" section, so it needs counts + a ranked sample, not every mover serialized in
+# full. A busy 7d window can mark 300+ items "new"; dumping them all blew past GitHub Models'
+# ~16k-token input ceiling (HTTP 413). This caps the MOVERS block losslessly for the report's
+# purposes: exact counts and category breakdowns are preserved; only the long tail of
+# per-item detail (which never reaches the digest) is summarized away.
+MOVERS_TOP = int(os.environ.get("MOVERS_TOP", "30"))
+
 
 def load_scored() -> list[dict]:
     # Enforce the window on read too: synthesize can be run independently of score.py, so
@@ -126,7 +134,9 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False) -> tuple[str, s
     delta = compute_delta(items)
     delta_note = (
         "\n\nMOVERS since the previous run (use these to write the 'What changed' section; "
-        "if first_run is true, skip that section):\n" + json.dumps(delta, indent=2) + "\n"
+        "if first_run is true, skip that section). Counts are exact; `top` lists the highest-"
+        "ranked movers in each bucket (the long tail is summarized to counts):\n"
+        + json.dumps(_compact_delta(delta), indent=2) + "\n"
     )
     user = (
         f"TODAY={today}  WINDOW={WINDOW}  MAX_ITEMS={MAX_ITEMS}  "
@@ -143,6 +153,25 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False) -> tuple[str, s
         f"{json.dumps(compact, indent=2)}"
     )
     return system, user
+
+
+def _compact_delta(delta: dict, top: int = MOVERS_TOP) -> dict:
+    """Condense the movers delta for the prompt without losing reader-visible signal.
+    Keeps the exact per-bucket count plus the highest-scoring sample of each bucket as the
+    rows the delta actually stores (title/url/score, and score/mag deltas for climbing/
+    cooled). The digest's 'What changed' section is a sentence or two, so the full per-item
+    dump — which can be 300+ objects on a busy window and overflow the model's ~16k input
+    limit — is unnecessary. Counts stay exact; only the long tail of rows is dropped."""
+    out: dict = {"first_run": delta.get("first_run")}
+    for bucket in ("new", "climbing", "cooled"):
+        rows = [x for x in (delta.get(bucket) or []) if isinstance(x, dict)]
+        # Sort by the strongest signal each bucket carries: score-tier change for
+        # climbing/cooled, else raw score. (Delta rows don't carry traction signals, so
+        # rank_key can't be used here.)
+        rows = sorted(rows, key=lambda r: (r.get("score_delta", 0), r.get("score", 0)),
+                      reverse=True)
+        out[bucket] = {"count": len(rows), "top": rows[:top]}
+    return out
 
 
 def call_anthropic(system: str, user: str) -> str:
