@@ -114,6 +114,18 @@ def send(subject: str, md_body: str, recipients: list[str]) -> None:
             s.sendmail(sender, recipients, msg.as_string())
 
 
+def github_report_url(report: Path) -> str | None:
+    """Build a github.com blob URL for the report so the email can link to the rendered
+    version. Uses GITHUB_REPOSITORY (always set in Actions) + GITHUB_REF_NAME (branch, defaults
+    to main). Returns None off-CI / when the repo slug is unknown, so the link is simply
+    omitted rather than pointing somewhere wrong."""
+    repo = os.environ.get("GITHUB_REPOSITORY")  # e.g. "amaljithkuttamath/ai-radar"
+    if not repo:
+        return None
+    branch = os.environ.get("RADAR_REPORT_BRANCH") or os.environ.get("GITHUB_REF_NAME") or "main"
+    return f"https://github.com/{repo}/blob/{branch}/reports/{report.name}"
+
+
 def main() -> None:
     to = [r.strip() for r in os.environ.get("RADAR_EMAIL_TO", "").split(",") if r.strip()]
     needed = ("RADAR_SMTP_HOST", "RADAR_SMTP_USER", "RADAR_SMTP_PASS")
@@ -135,6 +147,10 @@ def main() -> None:
     # Subject = first H1 if present, else the filename stem.
     m = re.search(r"^#\s+(.*)$", md, re.MULTILINE)
     subject = m.group(1).strip() if m else report.stem
+    # Footer link to the rendered report on GitHub (omitted if the slug is unknown).
+    url = github_report_url(report)
+    if url:
+        md = md.rstrip() + f"\n\n---\n\n[View this report on GitHub]({url})\n"
     try:
         send(subject, md, to)
         print(f"[deliver] sent '{subject}' to {len(to)} recipient(s).")
