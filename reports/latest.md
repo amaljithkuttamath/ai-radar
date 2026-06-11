@@ -4,140 +4,115 @@
 
 # AI Radar — 2026-06-11
 
-## Top-line
-
-The week's real signal is in **tooling and infrastructure, not new frontier models** — the
-highest-traction items are mature open-source AI-engineering platforms (RAG templates, agent
-harnesses, eval/observability), while the research tier is a broad, low-traction spread of
-efficiency- and agent-flavored arXiv papers with no standout SOTA result. The single
-top-scored item is a benchmark dataset (`openai/gsm8k`) riding enormous download volume, which
-says more about what people are *evaluating against* than about a new capability. Read this
-window as consolidation: the agent/RAG/eval stack is hardening into production infrastructure.
-
-## Main list
-
-**openai/gsm8k** — [dataset] · score 4/5
-- Source — OpenAI · [Hugging Face Datasets](https://huggingface.co/datasets/openai/gsm8k)
-- New — The grade-school-math reasoning benchmark is the week's most-pulled artifact by a wide
-  margin; tagged as an official eval-yaml benchmark for text generation.
-- Matters — GSM8K remains the default arithmetic-reasoning yardstick. Sustained download volume
-  at this scale signals it's still the reflex benchmark practitioners reach for when validating
-  reasoning models — useful as a read on what the eval ecosystem is actually standardized on.
-- Signal — 1,379 HF likes · 930,629 HF downloads · HF trending #15. Corroborated by 2 signals
-  (likes + downloads). Note: a long-standing dataset, not a new release — surfaced on traction,
-  not novelty.
-
-**pathwaycom/llm-app** — [release] · score 3/5
-- Source — Pathway · [GitHub](https://github.com/pathwaycom/llm-app)
-- New — Ready-to-run cloud templates for RAG, AI pipelines, and enterprise search over live
-  data; Docker-friendly with connectors that stay in sync with SharePoint, Google Drive, S3,
-  Kafka, and PostgreSQL.
-- Matters — Teams standing up enterprise RAG can deploy a maintained template against live
-  sources instead of wiring connectors by hand — lowers the floor for production retrieval.
-- Signal — 59,365 GitHub stars · 1,419 forks. Single source (GitHub stars only).
-
-**ruvnet/ruflo** — [release] · score 3/5
-- Source — ruvnet · [GitHub](https://github.com/ruvnet/ruflo)
-- New — An agent meta-harness for Claude: deploys multi-agent swarms with adaptive memory,
-  self-learning swarm coordination, and native RAG integration.
-- Matters — Practitioners building multi-agent Claude workflows get a coordination layer
-  (memory + swarm orchestration) off the shelf rather than hand-rolling agent plumbing.
-- Signal — 58,878 GitHub stars · 6,766 forks. Single source (GitHub stars only).
-
-**langfuse/langfuse** — [release] · score 3/5
-- Source — Langfuse (YC W23) · [GitHub](https://github.com/langfuse/langfuse)
-- New — Open-source AI-engineering platform covering LLM evals, observability, metrics, prompt
-  management, datasets, and a playground; integrates OpenTelemetry, LangChain, the OpenAI SDK,
-  and LiteLLM.
-- Matters — Directly hits your evals + observability focus: gives teams a single OSS layer to
-  trace, score, and regression-test LLM apps instead of stitching together bespoke logging.
-- Signal — 28,873 GitHub stars · 2,990 forks. Single source (GitHub stars only).
-
-**ISE: An Execution-Grounded Recipe for Multi-Turn OS-Agent Trajectories** — [paper] · score 3/5
-- Source — arXiv cs.LG · [arXiv:2606.11520](http://arxiv.org/abs/2606.11520v1)
-- New — A data-generation recipe (Intent → Simulate → Execute) that produces multi-turn OS-agent
-  trajectories capturing structured user intent, task delegation, and grounded tool execution —
-  properties the authors argue are absent from existing agent datasets.
-- Matters — Anyone training OS / computer-use agents hits a data wall; an execution-grounded
-  synthesis pipeline addresses the exact gap (verifiable tool-use trajectories) that limits
-  current agent training sets.
-- Signal — no tracked traction signal. Single source.
-
-**FORT-Searcher: Synthesizing Shortcut-Resistant Search Tasks for Deep Search Agents** — [paper] · score 3/5
-- Source — arXiv cs.CL · [arXiv:2606.12087](http://arxiv.org/abs/2606.12087v1)
-- New — A task-synthesis method that builds verifiable search questions whose answers stay
-  hidden until enough evidence is gathered, explicitly resisting the shortcut-solving that
-  inflates apparent difficulty in prior synthesis methods.
-- Matters — Teams training retrieval/search agents can generate harder, shortcut-resistant
-  training and eval tasks — tightening the loop between RAG and agentic search.
-- Signal — no tracked traction signal. Single source.
-
-**Agent Skill Evaluation and Evolution: Frameworks and Benchmarks** — [paper] · score 3/5
-- Source — arXiv cs.CL · [arXiv:2606.11435](http://arxiv.org/abs/2606.11435v1)
-- New — A framework and benchmark suite for rigorously evaluating agent skill libraries as they
-  scale, targeting utility, quality, and safety of individual skills.
-- Matters — As "skills" become the unit agentic systems are built from, this gives a structured
-  way to measure and version-control skill quality rather than trusting it implicitly.
-- Signal — no tracked traction signal. Single source.
-
-**Fine-tuning Multi-modal LLMs with ART: Art-based Reinforcement Training** — [paper] · score 3/5
-- Source — arXiv cs.LG · [arXiv:2606.11854](http://arxiv.org/abs/2606.11854v1)
-- New — A parameter-efficient fine-tuning approach positioned against LoRA and soft prompting
-  for multimodal LLMs, using a reinforcement-training formulation.
-- Matters — Practitioners doing cost-constrained multimodal fine-tuning get another PEFT option
-  to evaluate against the LoRA/soft-prompt baselines — relevant to efficient-inference budgets.
-- Signal — no tracked traction signal. Single source.
-
-## Watch-list
-
-- **vllm-project/vllm** — high-throughput, memory-efficient inference & serving engine; 82,459
-  stars. Core efficient-inference infra, parked here as a mature project, not a new event.
-  [GitHub](https://github.com/vllm-project/vllm)
-- **infiniflow/ragflow** — open-source RAG engine; 82,413 stars. Squarely on the RAG focus.
-  [GitHub](https://github.com/infiniflow/ragflow)
-- **browser-use/browser-use** — library to make websites accessible to AI agents / automate web
-  tasks; 98,151 stars. Agent-tooling. [GitHub](https://github.com/browser-use/browser-use)
-- **langgenius/dify** — production agentic-workflow platform; 144,751 stars.
-  [GitHub](https://github.com/langgenius/dify)
-- **ollama/ollama** — local model runner now listing Kimi-K2.6, GLM-5.1, MiniMax, DeepSeek,
-  gpt-oss, Qwen, Gemma; 173,794 stars. Highest raw star count in the set but FOCUS-neutral.
-  [GitHub](https://github.com/ollama/ollama)
-- **Soft-Prompt Tuning for Fair and Efficient LLM Benchmark Evaluation** — argues benchmark
-  scores under-credit base models that don't follow formatting; an evals-methodology angle.
-  [arXiv:2606.12117](http://arxiv.org/abs/2606.12117v1)
-
-## Insights
-
-- **Infrastructure beats models this week.** Every high-traction release is an
-  engineering/ops layer — RAG templates (pathway), agent harnesses (ruflo), eval+observability
-  (langfuse), serving (vllm) — not a new model. The frontier-model news cycle is quiet; the
-  build-it-into-production cycle is loud.
-- **The research tier is wide and flat.** 32 papers scored 3/5 but effectively none carry a
-  Tier-2 traction signal (HF upvotes / stars / HN) — arXiv items lack those fields here, so they
-  score on substance and FOCUS, never corroboration. Treat every paper as "single source" until
-  an independent signal appears. This is the precision-over-recall bar working as intended.
-- **Agents + evals are converging.** Multiple independent papers (ISE, FORT-Searcher, Agent
-  Skill Eval) all attack the same bottleneck from different sides: *verifiable, shortcut-resistant
-  training/eval data for agentic systems*. The scarce resource right now is good agent data, not
-  agent architectures.
-- **GSM8K topping the list is a tell about eval inertia.** A years-old arithmetic benchmark is
-  still the most-pulled artifact — worth noting when deciding what to actually trust as a
-  reasoning signal versus what's just the default.
-
-## Action items
-
-- **Read** — ISE ([arXiv:2606.11520](http://arxiv.org/abs/2606.11520v1)) and FORT-Searcher
-  ([arXiv:2606.12087](http://arxiv.org/abs/2606.12087v1)) back-to-back; together they're the
-  clearest map of the agent/search-data bottleneck and directly serve your agents + RAG focus.
-- **Try** — Stand up **langfuse** locally against one existing LLM app to get evals +
-  tracing in place; it's the lowest-effort way to make your eval focus operational this week.
-- **Track** — Watch whether any of the 3/5 agent papers pick up a real traction signal (HF /
-  stars / HN) on the next run; the delta tracker is now seeded, so climbing/cooled will populate
-  from here forward.
+The past week’s signal centers on agent-based benchmarks and frameworks that concretely enable evaluation, orchestration, and skill development for autonomous systems tackling real-world coding and manipulation tasks. The notable theme: benchmarks and recipes for building, evaluating, and scaling agentic workflows have matured, including for coding, repository generation, and bimanual robotics—pointing to increased rigor, reproducibility, and practical access in both research and engineering.
 
 ---
 
-_Synthesis note: generated without a model backend (no API key reachable in this run). Written
-directly from the scored corpus per `distill/digest.md`. WINDOW=7d · 376 scored items · FOCUS
-profile applied as a re-rank boost. First run of the delta tracker, so the "What changed"
-section is omitted by design._
+## Main List
+
+### [model | benchmark] · score 4/5  
+Claw-SWE-Bench: A Benchmark for Evaluating OpenClaw-style Agent Harnesses on Coding Tasks  
+Source — HF Daily Papers · [arXiv link](https://arxiv.org/abs/2606.12344)  
+New — Introduces a rigorous, agent-centric SWE-bench variant for evaluating generic tool-using agents (like OpenClaw) on coding tasks under realistic workspace constraints, with concrete patch and prediction checks.  
+Matters — Anyone building or deploying autonomous coding agents can now measure progress and compare harnesses directly, enabling objective assessment and innovation in agent workflows.  
+Signal — 55 HF upvotes · no tracked traction signal on GitHub/HN · corroborated by 1 signal.
+
+---
+
+### [model | framework] · score 4/5  
+DeNovoSWE: Scaling Long-Horizon Environments for Generating Entire Repositories from Scratch  
+Source — HF Daily Papers · [arXiv link](https://arxiv.org/abs/2606.10728)  
+New — Provides environments and benchmarks for LLM-based code agents to generate entire repositories from high-level specifications, moving evaluation beyond bug fixing to full project creation.  
+Matters — LLM practitioners can measure agentic models’ ability to architect and implement full-scale software, reflecting new scope and complexity in autonomous coding workflows.  
+Signal — 27 HF upvotes · no tracked traction signal on GitHub/HN · corroborated by 1 signal.
+
+---
+
+### [tool | release] · score 3/5  
+ollama/ollama — Get up and running with Kimi-K2.6, GLM-5.1, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.  
+Source — GitHub Trending (Go) · [GitHub link](https://github.com/ollama/ollama)  
+New — Shipping frequent, portable model support and integrations for major open and closed LLMs, enabling practitioners to run, switch, and orchestrate multiple models with a unified interface.  
+Matters — Broadens practical access to LLMs; teams can rapidly trial and deploy diverse models locally or in production, simplifying model benchmarking and integration.  
+Signal — 173,874 GitHub stars · no tracked traction signal on HF/HN · single source.
+
+---
+
+### [method | research] · score 3/5  
+Reason, Then Re-reason: Cross-view Revisiting Improves Spatial Reasoning  
+Source — HF Daily Papers · [arXiv link](https://arxiv.org/abs/2606.11683)  
+New — Proposes iterative, cross-view inference for spatial reasoning tasks from egocentric video, mitigating geometric ambiguity beyond single-turn inference; demonstrates improved spatial accuracy.  
+Matters — Teams working on embodied AI or spatial cognition in robotics and AR/VR can adopt these strategies for more robust spatial understanding, potentially improving navigation and planning.  
+Signal — 26 HF upvotes · no tracked traction signal on GitHub/HN · corroborated by 1 signal.
+
+---
+
+### [method | research] · score 3/5  
+Fine-tuning Multi-modal LLMs with ART: Art-based Reinforcement Training  
+Source — HF Daily Papers · [arXiv link](https://arxiv.org/abs/2606.11854)  
+New — Introduces ART, an art-based reinforcement approach for parameter-efficient fine-tuning of multi-modal LLMs, targeting improvements in adaptability and efficiency versus LoRA/Soft Prompting.  
+Matters — Practitioners striving for efficient LLM fine-tuning with minimal resource overhead can apply ART, especially for multi-modal deployments.  
+Signal — 2 HF upvotes · no tracked traction signal on GitHub/HN · single source.
+
+---
+
+### [model | research] · score 3/5  
+i1: A Simple and Fully Open Recipe for Strong Text-to-Image Models  
+Source — HF Daily Papers · [arXiv link](https://arxiv.org/abs/2606.11289)  
+New — Offers transparent, fully open recipe plus ablations for next-generation text-to-image diffusion models, addressing attribution and reproducibility gaps seen in prior open-weight offerings.  
+Matters — Researchers and applied teams can now replicate, test, and build on text-to-image models with clear provenance and methodology, accelerating open innovation.  
+Signal — 2 HF upvotes · no tracked traction signal on GitHub/HN · single source.
+
+---
+
+### [framework | research] · score 3/5  
+Agent Skill Evaluation and Evolution: Frameworks and Benchmarks  
+Source — arXiv cs.CL · [arXiv link](http://arxiv.org/abs/2606.11435v1)  
+New — Presents scalable frameworks and benchmarks for evaluating and evolving agent skills, facilitating systematic measurement and iterative improvement of agentic capabilities.  
+Matters — Developers and evaluators of agent libraries can now quantify skill growth and compare systems, driving safer, higher-quality autonomous deployments.  
+Signal — no tracked traction signal · single source.
+
+---
+
+### [benchmark | research] · score 3/5  
+DuoBench: A Reproducible Benchmark for Bimanual Manipulation in Simulation and the Real World  
+Source — arXiv cs.AI · [arXiv link](http://arxiv.org/abs/2606.11901v1)  
+New — Delivers DuoBench, an extensible, reproducible setup for benchmarking two-arm robot manipulation in both simulation and real-world environments.  
+Matters — Robotics researchers gain a standard tool for evaluating and comparing bimanual manipulation approaches, enhancing reproducibility and real-world transfer.  
+Signal — no tracked traction signal · single source.
+
+---
+
+## Watch-List
+
+- TouchThinker: Scaling Tactile Commonsense Reasoning to the Open World with Large-scale Data and Action-aware Representation · arXiv cs.AI · [link](http://arxiv.org/abs/2606.11637v1)
+- Holding the FP8 Quality Ceiling at 8-Bit Weights and Activations: INT8 and GGUF Post-Training Quantization of Ideogram 4.0 for Consumer GPUs · arXiv cs.LG · [link](http://arxiv.org/abs/2606.12280v1)
+- ISE: An Execution-Grounded Recipe for Multi-Turn OS-Agent Trajectories · arXiv cs.CL · [link](http://arxiv.org/abs/2606.11520v1)
+- RCAP: Robust, Class-Aware, Probabilistic Dynamic Dataset Pruning · arXiv cs.LG · [link](http://arxiv.org/abs/2606.11761v1)
+- Soft-Prompt Tuning for Fair and Efficient LLM Benchmark Evaluation · arXiv cs.CL · [link](http://arxiv.org/abs/2606.12117v1)
+- Adv-TGD: Adversarial Text-Guided Diffusion for Face Recognition Impersonation Attacks · arXiv cs.LG · [link](http://arxiv.org/abs/2606.11615v1)
+- TimeRouter: Efficient and Adaptive Routing of Time-Series Foundation Models · arXiv cs.LG · [link](http://arxiv.org/abs/2606.11625v1)
+- A Lightweight Multi-Agent Framework for Automated Concrete Barrier Design · arXiv cs.AI · [link](http://arxiv.org/abs/2606.12040v1)
+
+---
+
+## Still Developing
+
+No carryovers—this is the first run.
+
+---
+
+## Insights
+
+- Evaluation rigor for agent-based systems is markedly advancing: multiple new benchmarks (for coding, repository creation, robotics) now anchor comparisons at both the task and workflow level.
+- Autonomous coding agents are moving from micro-level edits toward full systems-level design and implementation, reflected in new benchmarks and real-world scenarios.
+- Tools facilitating practical access to diverse LLMs are reaching widespread adoption, lowering barriers to experimentation and production deployment.
+- Multi-modal and parameter-efficient fine-tuning techniques continue to diversify, with reinforcement and creative methods augmenting standard approaches like LoRA and Soft Prompting.
+
+---
+
+## Action Items
+
+- **Read**: Claw-SWE-Bench and DeNovoSWE papers—benchmark specifics and methodology will be critical for those designing agent-based coding workflows.
+- **Try**: ollama/ollama—deploy multiple leading LLMs locally to test integration and performance claims.
+- **Track**: DuoBench and Agent Skill Evaluation frameworks—adopt in automation and robotics projects to benchmark manipulation and skill evolution.
+- **Review**: Fine-tuning approaches (ART, i1 recipe)—for teams optimizing multi-modal LLMs or requiring reproducible, open text-to-image models.
