@@ -89,7 +89,13 @@ def load_enriched() -> dict[str, dict]:
     return out
 
 
-def build_prompt(items: list[dict], _strip_briefs: bool = False) -> tuple[str, str]:
+def build_prompt(items: list[dict], _strip_briefs: bool = False,
+                 max_candidates: int | None = None,
+                 summary_chars: int | None = None) -> tuple[str, str]:
+    # max_candidates / summary_chars let the 413 fallback shrink the request below the
+    # backend's input ceiling. Default to the module caps when unset.
+    max_candidates = MAX_CANDIDATES if max_candidates is None else max_candidates
+    summary_chars = SUMMARY_CHARS if summary_chars is None else summary_chars
     enriched = load_enriched()
     keep = [i for i in items if (i.get("score") or 0) >= max(2, THRESHOLD - 1)]
 
@@ -99,7 +105,7 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False) -> tuple[str, s
     research = [i for i in keep if i["category"] == "research"]
     hardware = [i for i in items if i["category"] == "hardware" and (i.get("score") or 0) >= 1]
     releases = [i for i in items if i["category"] == "releases" and (i.get("score") or 0) >= 1]
-    research_slots = max(0, MAX_CANDIDATES - HARDWARE_SLOTS - RELEASE_SLOTS)
+    research_slots = max(0, max_candidates - HARDWARE_SLOTS - RELEASE_SLOTS)
     chosen = (research[:research_slots]
               + hardware[:HARDWARE_SLOTS]
               + releases[:RELEASE_SLOTS])
@@ -113,7 +119,7 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False) -> tuple[str, s
             "category": i["category"], "score": i["score"],
             "reasons": i.get("score_reasons", []),
             "focus_match": i.get("focus_match", False),
-            "summary": (i.get("raw_summary") or "")[:SUMMARY_CHARS],
+            "summary": (i.get("raw_summary") or "")[:summary_chars],
             # Promote traction to explicit named fields so the spec can REQUIRE citing them
             # (buried inside `signals` the model flattens them into "growing interest").
             "hf_upvotes": sig.get("hf_upvotes") or 0,
@@ -124,7 +130,7 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False) -> tuple[str, s
             e = enriched.get(i["id"])
             if e and e.get("brief"):
                 del row["summary"]
-                row["brief"] = e["brief"][:SUMMARY_CHARS]
+                row["brief"] = e["brief"][:summary_chars]
         compact.append(row)
     system = SPEC
     today = f"{datetime.now(timezone.utc):%Y-%m-%d}"
@@ -227,17 +233,39 @@ def main() -> None:
     if BACKEND == "anthropic":
         report = call_anthropic(system, user)
     elif BACKEND == "github":
-        try:
-            report = call_github(system, user)
-        except urllib.error.HTTPError as ex:
-            if ex.code == 413:
-                # Briefs made the payload too large; rebuild without them and retry once.
-                print("[distill] 413 on synthesis; retrying without enriched briefs",
-                      file=sys.stderr)
-                system, user = build_prompt(items, _strip_briefs=True)
+        # GitHub Models enforces an input-token ceiling and returns 413 when the prompt
+        # overflows. The corpus size varies run-to-run (a fresh CI collection can be far
+        # larger than a local one), so we can't pick one safe size up front. Shrink the
+        # request progressively and retry until it's accepted: drop enriched briefs, then
+        # step down candidate count and summary length together. Each stage is a strict
+        # subset of the last, so the published digest (still MAX_ITEMS) is unaffected while
+        # the model loses only lower-ranked context it wouldn't have emitted anyway.
+        attempts = [
+            dict(),
+            dict(_strip_briefs=True),
+            dict(_strip_briefs=True, max_candidates=18, summary_chars=240),
+            dict(_strip_briefs=True, max_candidates=12, summary_chars=180),
+            dict(_strip_briefs=True, max_candidates=max(MAX_ITEMS, 8), summary_chars=120),
+        ]
+        report = None
+        last_413: urllib.error.HTTPError | None = None
+        for n, kw in enumerate(attempts):
+            if n:
+                print(f"[distill] 413 on synthesis; shrinking payload "
+                      f"(attempt {n}/{len(attempts)-1}: {kw})", file=sys.stderr)
+                system, user = build_prompt(items, **kw)
+            try:
                 report = call_github(system, user)
-            else:
+                break
+            except urllib.error.HTTPError as ex:
+                if ex.code == 413:
+                    last_413 = ex
+                    continue
                 raise
+        if report is None:
+            print("[distill] still 413 after shrinking to the floor; giving up",
+                  file=sys.stderr)
+            raise last_413  # type: ignore[misc]
     elif BACKEND == "ollama":
         report = call_ollama(system, user)
     else:
