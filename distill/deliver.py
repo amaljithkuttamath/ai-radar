@@ -125,6 +125,13 @@ def main() -> None:
         print("[deliver] no report found to send; skipping.", file=sys.stderr)
         return
     md = report.read_text()
+    # Strip the reindex nav header (`<!-- radar:nav -->` block) so it doesn't show up as raw
+    # markdown at the top of the email. Reuse reindex's stripper to keep the markers in sync.
+    try:
+        from distill.reindex import _strip_nav
+        md = _strip_nav(md)
+    except Exception:
+        pass  # if reindex import ever changes, still send the (un-stripped) digest
     # Subject = first H1 if present, else the filename stem.
     m = re.search(r"^#\s+(.*)$", md, re.MULTILINE)
     subject = m.group(1).strip() if m else report.stem
