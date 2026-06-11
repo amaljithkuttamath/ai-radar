@@ -1,4 +1,4 @@
-"""Heuristic traction score (0–6) from observable signals. Stdlib only.
+"""Heuristic traction score (0–5) from observable signals. Stdlib only.
 This is the cheap, deterministic part of scoring. The model layer in synthesize.py refines
 the 'novelty / challenges-assumptions' criterion, which needs judgment.
 

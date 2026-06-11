@@ -36,11 +36,15 @@ fi
 echo "== distill =="
 $PY -m distill.synthesize
 
+echo "== reindex (reports/README.md + latest.md + per-digest nav) =="
+$PY -m distill.reindex || echo "  reindex skipped"
+
 # Optional email delivery: no-op unless RADAR_EMAIL_TO + SMTP_* env are set (see distill/deliver.py).
+# Runs after reindex so the emailed digest reflects the freshly-built nav/index.
 if [ -n "${RADAR_EMAIL_TO:-}" ]; then
   echo "== deliver (email) =="
   $PY -m distill.deliver || echo "  delivery failed (digest already written)"
 fi
 
 echo "Done. Latest report:"
-ls -t reports/*.md 2>/dev/null | head -1 || true
+ls -t reports/*-digest.md 2>/dev/null | head -1 || true

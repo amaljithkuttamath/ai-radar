@@ -52,9 +52,9 @@ ai-radar/
 │   ├── raw/<category>/<date>/<id>.json   # append-only collected items
 │   ├── scored/                            # items after the scoring pass
 │   └── seen.json                          # rolling seen-list for cross-run dedup
-├── reports/              # final dated digests
-├── scripts/run.sh        # orchestrate: collect → score → distill
-└── requirements.txt
+├── reports/              # final dated digests (+ auto README.md index & latest.md pointer)
+├── scripts/run.sh        # orchestrate: collect → score → distill → reindex
+└── pyproject.toml        # deps (pyyaml, feedparser) + uv config — single source of truth
 ```
 
 ## Data model
@@ -126,10 +126,27 @@ Set `RADAR_EMAIL_TO` + `RADAR_SMTP_HOST` / `RADAR_SMTP_USER` / `RADAR_SMTP_PASS`
 `RADAR_SMTP_PORT`, `RADAR_EMAIL_FROM`). In CI, store these as repo secrets and trigger with
 `deliver_email=on`. Delivery failure never fails the pipeline (the digest is already committed).
 
+## Reading the reports
+
+Digests are dated files: `reports/YYYY-MM-DD-digest.md`. After each run, `distill/reindex.py`
+generates three reading aids (deterministic, stdlib only, committed alongside the digest):
+
+- **`reports/README.md`** — a newest-first index (date + top-line teaser). GitHub renders it as
+  the folder landing page, so opening `reports/` is your reading list.
+- **`reports/latest.md`** — always a copy of the most recent digest. One fixed path to "read the
+  latest" without knowing the date.
+- **Per-digest nav** — an idempotent `← prev · index · next →` header at the top of every digest
+  (delimited by `<!-- radar:nav -->` markers and rewritten each run, so it never stacks), to walk
+  between days without leaving the file.
+
+Run it standalone any time with `python -m distill.reindex`.
+
 ## Running
 
 ```bash
-pip install -r requirements.txt
+# Deps live in pyproject.toml (pyyaml + feedparser; collection/scoring is otherwise stdlib).
+uv sync                       # preferred — resolves from pyproject.toml
+# or, without uv:  pip install -e .   (equivalently: pip install pyyaml feedparser)
 
 # 1. collect (cheap, idempotent — safe to run on a schedule)
 python -m collectors.arxiv
