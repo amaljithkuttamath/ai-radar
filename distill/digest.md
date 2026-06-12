@@ -77,6 +77,11 @@ not drop them just for scoring lower than research.
 - "in the field of" / "in the realm of"
 - restating the title as the New line
 
+**Story arcs** (optional subsection; skip entirely when the STORY ARCS block is absent or
+empty) — items whose traction has risen across ≥3 consecutive runs. One line each:
+"*Title* — seen {streak} runs, traction +{mag_pct_change}% since first seen on {first_seen}."
+Do not embellish; ground every claim in the provided arc fields.
+
 **Watch-list** (1 line each) — promising but unverified / not-yet-trending. Park here anything
 whose recency you can't confirm, rather than risk surfacing stale items as new.
 
