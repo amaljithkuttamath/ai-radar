@@ -19,6 +19,7 @@ from collectors.common import ROOT, parse_window  # noqa: E402
 from distill.rank import rank_key  # noqa: E402
 from distill.delta import compute_delta, save_state, story_arcs  # noqa: E402
 from distill.focus import active_terms as _focus_active_terms, _term_hit, _blob as _focus_blob  # noqa: E402
+from distill.cluster import cluster_items  # noqa: E402
 
 WINDOW = os.environ.get("WINDOW", "48h")
 MAX_ITEMS = int(os.environ.get("MAX_ITEMS", "8"))
@@ -193,12 +194,32 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
             "use these for the optional 'Story arcs' subsection in the digest):\n"
             + json.dumps(arcs, indent=2) + "\n"
         )
+    # Topic clusters: group candidates into emergent themes. Degrade to empty when
+    # clustering yields nothing useful, which keeps the main list flat.
+    clusters: list[dict] = []
+    try:
+        clusters = cluster_items(chosen)
+    except Exception:
+        clusters = []
+    clusters_note = ""
+    if clusters:
+        # Build a compact id->label map for items in a named cluster
+        id_to_label: dict[str, str] = {}
+        for c in clusters:
+            for iid in c.get("item_ids") or []:
+                id_to_label[iid] = c["label"]
+        clusters_note = (
+            "\n\nTOPIC CLUSTERS (emergent themes for the main list; group items under these "
+            "short headers in the output. Items not in a cluster go under their natural "
+            "position. Degrade to the flat list if clusters don't add clarity):\n"
+            + json.dumps(clusters, indent=2) + "\n"
+        )
     user = (
         f"TODAY={today}  WINDOW={WINDOW}  MAX_ITEMS={MAX_ITEMS}  "
         f"MARKET={'on' if MARKET else 'off'}  INCLUDE_THRESHOLD={THRESHOLD}\n\n"
         f"Date the report {today}. Use ONLY that date in any header; do not infer a date from "
         "your training data or the items.\n\n"
-        + delta_note + arcs_note +
+        + delta_note + arcs_note + clusters_note +
         "\nHere are the scored candidate items (JSON). Produce the digest per the spec. "
         "The heuristic traction score is 0–4 from observable signals; add up to +1 yourself "
         "for genuine novelty / challenging a common assumption (max 5), and explain it. "
