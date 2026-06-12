@@ -22,6 +22,9 @@ on:
       deliver_email:
         description: "Email the digest after distill (needs SMTP secrets): on | off"
         default: "on"
+      focus_backend:
+        description: "FOCUS matching backend: lexical (default) | embed (GitHub Models semantic)"
+        default: "lexical"
 
 permissions:
   contents: write           # needed to commit the digest + seen.json back to the repo
@@ -38,6 +41,9 @@ jobs:
       WINDOW: ${{ github.event.inputs.window || '7d' }}
       RADAR_MODEL_BACKEND: ${{ github.event.inputs.backend || 'github' }}
       RADAR_AGENT: ${{ github.event.inputs.radar_agent || 'off' }}   # enrichment off by default
+      # FOCUS_BACKEND=embed opts in to semantic FOCUS via GitHub Models embeddings.
+      # Default is unset (lexical) so scheduled runs stay dependency-free.
+      FOCUS_BACKEND: ${{ github.event.inputs.focus_backend == 'embed' && 'embed' || '' }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # built-in, free; no key to set up
       # Email delivery (optional). Set these repo secrets to enable; deliver.py no-ops if unset.
       # Scheduled runs email automatically; a manual run emails unless you pass deliver_email=off.
