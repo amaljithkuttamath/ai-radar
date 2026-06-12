@@ -10,15 +10,16 @@ committed alongside seen.json so runs build on each other) and classifies each c
 The result is fed into the digest prompt so synthesize can emit a "What changed" section,
 and the current snapshot is written back for the next run. Pure + stdlib only — no model.
 
-Snapshot is intentionally tiny (id -> {score, rank, title, url}) so committing it daily stays
-cheap. Designed to no-op cleanly on the first run (everything is "new") and degrade to silence
-if state is missing/corrupt.
+Snapshot is intentionally tiny (id -> {score, rank, title, url, streak, first_seen,
+mag_history}) so committing it daily stays cheap. Designed to no-op cleanly on the first
+run (everything is "new") and degrade to silence if state is missing/corrupt.
 
 Run as a library (synthesize imports compute_delta); also runnable for inspection:
   python -m distill.delta
 """
 from __future__ import annotations
 import os, sys, json
+from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -32,6 +33,9 @@ STATE_PATH = ROOT / "data" / "state.json"
 # (unsaturated) signal magnitude, where doubling traction is a clear, detectable move.
 # A score (integer tier) change is always a mover regardless of magnitude delta.
 MAG_MOVE_EPS = float(os.environ.get("DELTA_MAG_EPS", "0.5"))   # ~+65% traction to register
+_MAG_HISTORY_CAP = 7  # rolling mag history length per item
+_STORY_ARC_MIN_STREAK = 3  # minimum consecutive runs to qualify as a story arc
+_STORY_ARCS_CAP = 10  # max arcs emitted in the prompt
 
 
 def _load_state() -> dict[str, dict]:
@@ -53,14 +57,32 @@ def _magnitude(item: dict) -> float:
             + 0.3 * log1p(sig.get("hn_points") or 0))
 
 
-def _snapshot(items: list[dict]) -> dict[str, dict]:
+def _snapshot(items: list[dict], prev: dict[str, dict] | None = None) -> dict[str, dict]:
+    """Build a snapshot of the current run. Carries forward streak, first_seen, and
+    mag_history from prev (if available) so they accumulate across runs."""
+    today = datetime.now(timezone.utc).date().isoformat()
+    if prev is None:
+        prev = {}
     snap = {}
     for it in items:
-        snap[it["id"]] = {
+        iid = it["id"]
+        cur_mag = round(_magnitude(it), 4)
+        p = prev.get(iid, {})
+        # first_seen: earliest date we observed this item
+        first_seen = p.get("first_seen") or today
+        # streak: consecutive runs seen (increment only if was in prev, else reset to 1)
+        streak = int(p.get("streak") or 0) + 1 if iid in prev else 1
+        # mag_history: rolling window of last N magnitudes (oldest first)
+        old_history: list[float] = p.get("mag_history") or []
+        mag_history = (old_history + [cur_mag])[-_MAG_HISTORY_CAP:]
+        snap[iid] = {
             "score": it.get("score") or 0,
-            "mag": round(_magnitude(it), 4),
+            "mag": cur_mag,
             "title": it.get("title", ""),
             "url": it.get("url", ""),
+            "streak": streak,
+            "first_seen": first_seen,
+            "mag_history": mag_history,
         }
     return snap
 
@@ -104,9 +126,49 @@ def compute_delta(items: list[dict]) -> dict:
 
 
 def save_state(items: list[dict]) -> None:
-    """Persist this run's snapshot for the next run to diff against."""
+    """Persist this run's snapshot for the next run to diff against.
+    Passes the previous state through so streak / first_seen / mag_history accumulate."""
     STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    STATE_PATH.write_text(json.dumps(_snapshot(items), indent=0, sort_keys=True))
+    prev = _load_state()
+    STATE_PATH.write_text(json.dumps(_snapshot(items, prev), indent=0, sort_keys=True))
+
+
+def story_arcs(cap: int = _STORY_ARCS_CAP) -> list[dict]:
+    """Return up to `cap` story arcs from state.json: items seen for >= _STORY_ARC_MIN_STREAK
+    consecutive runs with a rising magnitude trend. Each arc is a compact summary dict:
+      {title, url, streak, first_seen, mag_pct_change}
+    Returns an empty list when state is absent, too small, or no arcs qualify.
+    Degrades cleanly on any error."""
+    try:
+        state = _load_state()
+        if not state:
+            return []
+        arcs: list[dict] = []
+        for iid, snap in state.items():
+            streak = int(snap.get("streak") or 0)
+            if streak < _STORY_ARC_MIN_STREAK:
+                continue
+            mag_history: list[float] = snap.get("mag_history") or []
+            if len(mag_history) < 2:
+                continue
+            # Rising: last mag > first mag in the rolling window
+            first_mag = mag_history[0]
+            last_mag = mag_history[-1]
+            if last_mag <= first_mag:
+                continue
+            pct = round((last_mag - first_mag) / max(first_mag, 0.01) * 100, 1)
+            arcs.append({
+                "title": snap.get("title", ""),
+                "url": snap.get("url", ""),
+                "streak": streak,
+                "first_seen": snap.get("first_seen", ""),
+                "mag_pct_change": pct,
+            })
+        # Sort by magnitude growth percentage descending, then streak length
+        arcs.sort(key=lambda a: (a["mag_pct_change"], a["streak"]), reverse=True)
+        return arcs[:cap]
+    except Exception:
+        return []
 
 
 def main() -> None:

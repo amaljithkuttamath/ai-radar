@@ -17,7 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from collectors.common import ROOT, parse_window  # noqa: E402
 from distill.rank import rank_key  # noqa: E402
-from distill.delta import compute_delta, save_state  # noqa: E402
+from distill.delta import compute_delta, save_state, story_arcs  # noqa: E402
 from distill.focus import active_terms as _focus_active_terms, _term_hit, _blob as _focus_blob  # noqa: E402
 
 WINDOW = os.environ.get("WINDOW", "48h")
@@ -184,12 +184,21 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
         "ranked movers in each bucket (the long tail is summarized to counts):\n"
         + json.dumps(_compact_delta(delta), indent=2) + "\n"
     )
+    # Story arcs: items with multi-run streak + rising traction. Cap at 10; skip when none.
+    arcs = story_arcs()
+    arcs_note = ""
+    if arcs:
+        arcs_note = (
+            "\n\nSTORY ARCS (items with rising traction across >= 3 consecutive runs; "
+            "use these for the optional 'Story arcs' subsection in the digest):\n"
+            + json.dumps(arcs, indent=2) + "\n"
+        )
     user = (
         f"TODAY={today}  WINDOW={WINDOW}  MAX_ITEMS={MAX_ITEMS}  "
         f"MARKET={'on' if MARKET else 'off'}  INCLUDE_THRESHOLD={THRESHOLD}\n\n"
         f"Date the report {today}. Use ONLY that date in any header; do not infer a date from "
         "your training data or the items.\n\n"
-        + delta_note +
+        + delta_note + arcs_note +
         "\nHere are the scored candidate items (JSON). Produce the digest per the spec. "
         "The heuristic traction score is 0–4 from observable signals; add up to +1 yourself "
         "for genuine novelty / challenging a common assumption (max 5), and explain it. "
