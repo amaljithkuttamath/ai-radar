@@ -92,12 +92,13 @@ def focus_match(item: dict) -> bool:
 
 
 def embed_match(item: dict, terms: tuple[str, ...]) -> bool:  # pragma: no cover - opt-in
-    """Optional semantic matcher. Not used unless FOCUS_BACKEND=embed. Implement against your
-    embedder of choice; left as a graceful no-op fallback (returns lexical result) by default so
-    enabling the flag without an embedder doesn't crash a run."""
+    """Semantic FOCUS matcher via GitHub Models embeddings (FOCUS_BACKEND=embed).
+    Uses distill.embed for cosine similarity between the item blob and mean topic-term
+    embeddings. Falls back to the existing lexical result on ANY error (no token, HTTP
+    error, import failure) so a misconfigured or offline backend never crashes a run."""
     try:
-        # e.g. from sentence_transformers import SentenceTransformer; cosine over `terms`.
-        raise ImportError("no embedder configured")
+        from distill.embed import embed_match as _semantic_match  # lazy import
+        return _semantic_match(item, terms)
     except Exception:
         blob = _blob(item)
         return any(_term_hit(t, blob) for t in terms)
