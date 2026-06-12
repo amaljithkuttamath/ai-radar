@@ -127,7 +127,7 @@ def load_enriched() -> dict[str, dict]:
 
 def build_prompt(items: list[dict], _strip_briefs: bool = False,
                  max_candidates: int | None = None,
-                 summary_chars: int | None = None) -> tuple[str, str]:
+                 summary_chars: int | None = None) -> tuple[str, str, int]:
     # max_candidates / summary_chars let the 413 fallback shrink the request below the
     # backend's input ceiling. Default to the module caps when unset.
     max_candidates = MAX_CANDIDATES if max_candidates is None else max_candidates
@@ -228,7 +228,7 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
         "than padding.\n\n"
         f"{json.dumps(compact, indent=2)}"
     )
-    return system, user
+    return system, user, len(compact)
 
 
 def _compact_delta(delta: dict, top: int = MOVERS_TOP) -> dict:
@@ -297,10 +297,21 @@ def call_ollama(system: str, user: str) -> str:
         return json.loads(r.read()).get("response", "")
 
 
+def _log_prompt_stats(system: str, user: str, n_items: int,
+                       candidates: int, shrink_level: int) -> None:
+    """Log approximate prompt token count and key sizing metrics to stderr.
+    Token estimate: len // 4 (industry-standard rough conversion). No deps.
+    Format: [distill] prompt ~NNNN tok | candidates=N | shrink_level=N | items=N"""
+    tok = (len(system) + len(user)) // 4
+    print(f"[distill] prompt ~{tok} tok | candidates={candidates} "
+          f"| shrink_level={shrink_level} | items={n_items}", file=sys.stderr)
+
+
 def main() -> None:
     items = load_scored()
-    system, user = build_prompt(items)
+    system, user, n_cand = build_prompt(items)
     if BACKEND == "anthropic":
+        _log_prompt_stats(system, user, len(items), n_cand, 0)
         report = call_anthropic(system, user)
     elif BACKEND == "github":
         # GitHub Models enforces an input-token ceiling and returns 413 when the prompt
@@ -323,7 +334,8 @@ def main() -> None:
             if n:
                 print(f"[distill] 413 on synthesis; shrinking payload "
                       f"(attempt {n}/{len(attempts)-1}: {kw})", file=sys.stderr)
-                system, user = build_prompt(items, **kw)
+                system, user, n_cand = build_prompt(items, **kw)
+            _log_prompt_stats(system, user, len(items), n_cand, n)
             try:
                 report = call_github(system, user)
                 break
@@ -337,8 +349,10 @@ def main() -> None:
                   file=sys.stderr)
             raise last_413  # type: ignore[misc]
     elif BACKEND == "ollama":
+        _log_prompt_stats(system, user, len(items), n_cand, 0)
         report = call_ollama(system, user)
     else:
+        _log_prompt_stats(system, user, len(items), n_cand, 0)
         report = ("# DRYRUN — assembled prompt (no model called)\n\n"
                   "Set RADAR_MODEL_BACKEND=github (free), anthropic, or ollama to generate the digest.\n\n"
                   "## SYSTEM\n" + system + "\n\n## USER\n" + user)
