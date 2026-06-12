@@ -18,6 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from collectors.common import ROOT, parse_window  # noqa: E402
 from distill.rank import rank_key  # noqa: E402
 from distill.delta import compute_delta, save_state  # noqa: E402
+from distill.focus import active_terms as _focus_active_terms, _term_hit, _blob as _focus_blob  # noqa: E402
 
 WINDOW = os.environ.get("WINDOW", "48h")
 MAX_ITEMS = int(os.environ.get("MAX_ITEMS", "8"))
@@ -49,6 +50,40 @@ RELEASE_SLOTS = int(os.environ.get("RELEASE_SLOTS", "1"))
 # purposes: exact counts and category breakdowns are preserved; only the long tail of
 # per-item detail (which never reaches the digest) is summarized away.
 MOVERS_TOP = int(os.environ.get("MOVERS_TOP", "30"))
+
+
+def _build_provenance(i: dict) -> str:
+    """Assemble a concise, deterministic provenance string from available item signals.
+    Omits any field that is missing or zero — never fabricates information."""
+    parts: list[str] = []
+    # Score reasons from heuristic (e.g. 'frontier/strong-group authorship')
+    for r in (i.get("score_reasons") or []):
+        if r:
+            parts.append(r)
+    # Traction figures — only emit non-zero values
+    sig = i.get("signals") or {}
+    gh = sig.get("gh_stars") or 0
+    hf_up = sig.get("hf_upvotes") or 0
+    hn = sig.get("hn_points") or 0
+    if gh:
+        parts.append(f"{gh} gh_stars")
+    if hf_up:
+        parts.append(f"{hf_up} hf_upvotes")
+    if hn:
+        parts.append(f"{hn} hn_points")
+    # FOCUS term hits — which specific term matched
+    if i.get("focus_match"):
+        try:
+            blob = _focus_blob(i)
+            terms = _focus_active_terms()
+            hit_terms = [t for t in terms if _term_hit(t, blob)]
+            if hit_terms:
+                parts.append("matches FOCUS:" + ",".join(hit_terms[:3]))
+            else:
+                parts.append("matches FOCUS")
+        except Exception:
+            parts.append("matches FOCUS")
+    return " · ".join(parts) if parts else ""
 
 
 def load_scored() -> list[dict]:
@@ -114,6 +149,7 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
     compact = []
     for i in chosen:
         sig = i.get("signals") or {}
+        prov = _build_provenance(i)
         row = {
             "title": i["title"], "url": i["url"], "source": i["source"],
             "category": i["category"], "score": i["score"],
@@ -125,7 +161,11 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
             "hf_upvotes": sig.get("hf_upvotes") or 0,
             "gh_stars": sig.get("gh_stars") or 0,
             "hn_points": sig.get("hn_points") or 0,
+            # Provenance: concise explanation of why this item was selected.
+            # Omitted when empty so the payload stays lean.
         }
+        if prov:
+            row["provenance"] = prov
         if not _strip_briefs:
             e = enriched.get(i["id"])
             if e and e.get("brief"):
