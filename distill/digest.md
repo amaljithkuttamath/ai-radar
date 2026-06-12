@@ -61,6 +61,9 @@ the report a radar rather than a standalone newsletter.
   "no tracked traction signal"). Then confidence: "single source" if one signal and no
   independent corroboration, else "corroborated by N signals". Traction and confidence are
   separate: a high score with low confidence is normal and useful.
+- Why surfaced — one short line grounded ONLY in the item's `provenance` field (e.g.
+  "frontier author · 412 gh_stars · matches FOCUS:agents · concrete result claimed").
+  If `provenance` is absent or empty, omit this line entirely. Never invent reasons.
 - Market exposure — *only if MARKET=on and score ≥4* (see below)
 
 The candidate set may include hardware and releases items that score below research papers;
