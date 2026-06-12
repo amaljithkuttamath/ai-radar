@@ -4,18 +4,38 @@
 
 # AI Radar — 2026-06-12
 
-No significant developments detected within the past 7 days. The window was widened to a full week (from the default) to ensure signal coverage, but the corpus remains quiet. No high-traction items surfaced, indicating a lull in frontier releases or concrete advances.
+Despite the extended 7-day window, significant developments are limited this week. The standout advancement is a new foundational result on stationary representations for compatibility across model updates—a crucial step for stable, long-lived systems. Otherwise, the landscape is quiet, with only a few minor releases outside the main threshold.
+
+## Main list
+
+### Compatible Representations
+*Learning Stationary Representations for Model Compatibility | research | score 3/5*  
+Source — HF Daily Papers · [arxiv.org/abs/2606.12488](https://arxiv.org/abs/2606.12488)  
+**New** — Demonstrates that stationary representations learned via d-Simplex fixed classifiers guarantee formal compatibility, streamlining interchangeability of feature representations across model updates.  
+**Matters** — Enables smoother transitions and stability for practitioners deploying evolving ML systems, reducing retraining costs and compatibility hazards.  
+**Signal** — no tracked traction signal; single source.  
+**Why surfaced** — frontier/strong-group author · concrete result claimed · usable artifact · matches FOCUS:retrieval.
+
+## Watch-list
+
+- JuliusBrussee/caveman — Claude Code skill that cuts 65% of tokens by talking like caveman | releases | score 2/5  
+Source — GitHub Trending (JavaScript) · [github.com/JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman)  
+Token reduction plugin for Claude; achieving dramatic cut in token count. 71,803 gh_stars; single trending signal.
+
+## Still developing
+
+(No major items carried over.)
 
 ## Insights
 
-- Frontier AI progress appears paused or keeping developments under wraps; possible anticipation of upcoming conferences or embargoes.
-- Practitioners may focus on consolidating recent gains rather than introducing new releases or benchmarks.
-- The lack of concrete traction signals (HF upvotes, GitHub stars, HN front pages) suggests that research and usable artifact publication are temporarily subdued.
+- Compatibility research is moving further from theory to concrete guidelines, supporting robust model deployment in production.
+- Token efficiency tools, though not yet at threshold, signal growing user-driven demand for cheaper inference and improved throughput.
 
 ## Action items
 
-- Track primary sources and repeat checks soon: signal could appear abruptly post-quiet periods.
-- Consider deepening exploration in priority areas via direct channels or private releases not yet surfaced publicly.
-- Review and consolidate learnings from recent cycles; use the lull to prepare for possible high-impact releases.
+- **Read**: Review the stationary representation result for potential integration into model retraining workflows if frequent updates are a challenge.
+- **Track**: Keep monitoring artifacts that significantly reduce token usage on code generation, as adoption could substantially lower cloud inference bills.
 
-_No main list, watch-list, or still developing items to report. The radar will resume surfacing actionable items as soon as signal returns._
+---
+
+Window: 7 days (widened for more signal). Market exposure block omitted (MARKET=off).
