@@ -48,7 +48,12 @@ empty:
 Keep it to the items that actually matter; do not list every mover. This section is what makes
 the report a radar rather than a standalone newsletter.
 
-**Main list** (ranked, ≤MAX_ITEMS). Per item:
+**Main list** (ranked, ≤MAX_ITEMS). When a TOPIC CLUSTERS block is provided, group items
+under short theme headers (e.g. "## Agent eval data") with a one-line theme summary before
+the items. Items not assigned to any cluster keep their natural position. Degrade to the
+current flat format when clusters are absent or don't add clarity.
+
+Per item:
 - **Title** — [model | method | paper | release | infra/hardware] · score X/5
 - Source — org/authors + venue · [link to PRIMARY artifact]
 - New — state the ACTUAL contribution: the specific technique, model size, dataset, or
