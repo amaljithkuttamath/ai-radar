@@ -1,68 +1,123 @@
 {
-"blog:https://blogs.nvidia.com/?p=94415": {
-"first_seen": "2026-06-13",
-"mag": 0.0,
+"arxiv:2606.13594": {
+"first_seen": "2026-06-14",
+"mag": 1.3863,
 "mag_history": [
-0.0
+1.3863
 ],
 "score": 2,
 "streak": 1,
-"title": "NVIDIA Blackwell Leads on First Agentic AI Infrastructure Benchmark",
-"url": "https://blogs.nvidia.com/blog/nvidia-blackwell-agentperf-artificial-analysis/"
+"title": "See What I See, Know What I Think: Dense Latent Communication Across Heterogeneous Agents",
+"url": "https://arxiv.org/abs/2606.13594"
 },
-"blog:https://openai.com/index/academy-courses-applying-ai-at-work": {
-"first_seen": "2026-06-13",
-"mag": 0.0,
+"ghrepo:OpenMOSS/MOVA": {
+"first_seen": "2026-06-14",
+"mag": 3.473,
 "mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "New OpenAI Academy courses for the next era of work",
-"url": "https://openai.com/index/academy-courses-applying-ai-at-work"
-},
-"blog:https://research.google/blog/a-low-carbon-computing-platform-from-your-retired-phones/": {
-"first_seen": "2026-06-13",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "A low-carbon computing platform from your retired phones",
-"url": "https://research.google/blog/a-low-carbon-computing-platform-from-your-retired-phones/"
-},
-"blog:https://research.google/blog/research-into-how-ai-can-help-users-understand-skin-conditions/": {
-"first_seen": "2026-06-13",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Research into how AI can help users understand skin conditions",
-"url": "https://research.google/blog/research-into-how-ai-can-help-users-understand-skin-conditions/"
-},
-"ghrepo:Shubhamsaboo/awesome-llm-apps": {
-"first_seen": "2026-06-13",
-"mag": 5.8238,
-"mag_history": [
-5.8238
+3.473
 ],
 "score": 2,
 "streak": 1,
-"title": "Shubhamsaboo/awesome-llm-apps \u2014 100+ AI Agent & RAG apps you can actually run \u2014 clone, customize, ship.",
-"url": "https://github.com/Shubhamsaboo/awesome-llm-apps"
+"title": "OpenMOSS/MOVA \u2014 MOVA: Towards Scalable and Synchronized Video\u2013Audio Generation",
+"url": "https://github.com/OpenMOSS/MOVA"
 },
-"ghrepo:haidog-yaqub/MeanFlow": {
-"first_seen": "2026-06-13",
-"mag": 3.5251,
+"ghrepo:TauricResearch/TradingAgents": {
+"first_seen": "2026-06-14",
+"mag": 5.6812,
 "mag_history": [
-3.5251
+5.6812
 ],
 "score": 2,
 "streak": 1,
-"title": "haidog-yaqub/MeanFlow \u2014 PyTorch implementation of MeanFlow & iMF (one-step generative modeling).",
-"url": "https://github.com/haidog-yaqub/MeanFlow"
+"title": "TauricResearch/TradingAgents \u2014 TradingAgents: Multi-Agents LLM Financial Trading Framework",
+"url": "https://github.com/TauricResearch/TradingAgents"
+},
+"ghrepo:neuml/txtai": {
+"first_seen": "2026-06-14",
+"mag": 4.7228,
+"mag_history": [
+4.7228
+],
+"score": 2,
+"streak": 1,
+"title": "neuml/txtai \u2014 \ud83d\udca1 All-in-one AI framework for semantic search, LLM orchestration and language model workflows",
+"url": "https://github.com/neuml/txtai"
+},
+"ghrepo:tesseract-ocr/tesseract": {
+"first_seen": "2026-06-14",
+"mag": 5.6105,
+"mag_history": [
+5.6105
+],
+"score": 2,
+"streak": 1,
+"title": "tesseract-ocr/tesseract \u2014 Tesseract Open Source OCR Engine (main repository)",
+"url": "https://github.com/tesseract-ocr/tesseract"
+},
+"hfdataset:Glint-Research/Fable-5-traces": {
+"first_seen": "2026-06-14",
+"mag": 3.4019,
+"mag_history": [
+3.4019
+],
+"score": 2,
+"streak": 1,
+"title": "Glint-Research/Fable-5-traces (HF Dataset)",
+"url": "https://huggingface.co/datasets/Glint-Research/Fable-5-traces"
+},
+"hfdataset:armand0e/claude-fable-5-claude-code": {
+"first_seen": "2026-06-14",
+"mag": 2.5995,
+"mag_history": [
+2.5995
+],
+"score": 1,
+"streak": 1,
+"title": "armand0e/claude-fable-5-claude-code (HF Dataset)",
+"url": "https://huggingface.co/datasets/armand0e/claude-fable-5-claude-code"
+},
+"hfdataset:lazarus19/Vibe-Coding-Claude-Fable-5": {
+"first_seen": "2026-06-14",
+"mag": 1.9832,
+"mag_history": [
+1.9832
+],
+"score": 1,
+"streak": 1,
+"title": "lazarus19/Vibe-Coding-Claude-Fable-5 (HF Dataset)",
+"url": "https://huggingface.co/datasets/lazarus19/Vibe-Coding-Claude-Fable-5"
+},
+"hfmodel:Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF": {
+"first_seen": "2026-06-14",
+"mag": 3.6073,
+"mag_history": [
+3.6073
+],
+"score": 1,
+"streak": 1,
+"title": "Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF (HF Model)",
+"url": "https://huggingface.co/Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF"
+},
+"hfmodel:MiniMaxAI/MiniMax-M3": {
+"first_seen": "2026-06-14",
+"mag": 4.2842,
+"mag_history": [
+4.2842
+],
+"score": 2,
+"streak": 1,
+"title": "MiniMaxAI/MiniMax-M3 (HF Model)",
+"url": "https://huggingface.co/MiniMaxAI/MiniMax-M3"
+},
+"hfmodel:prefeitura-rio/Rio-3.5-Open-397B": {
+"first_seen": "2026-06-14",
+"mag": 3.7396,
+"mag_history": [
+3.7396
+],
+"score": 2,
+"streak": 1,
+"title": "prefeitura-rio/Rio-3.5-Open-397B (HF Model)",
+"url": "https://huggingface.co/prefeitura-rio/Rio-3.5-Open-397B"
 }
 }
