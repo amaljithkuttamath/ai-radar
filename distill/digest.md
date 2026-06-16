@@ -11,7 +11,7 @@ Precision over recall — surface the few things that count; skip the rest, don'
 WINDOW · MAX_ITEMS · FOCUS (re-rank boost) · MARKET (off/on) · INCLUDE_THRESHOLD.
 
 ## Steps
-1. Load scored items in WINDOW. Drop score ≤1.
+1. Load scored items in WINDOW. Drop score ≤0.
 2. **If the window is quiet, widen it** (48h → 72h → 7d) until there's real signal, and say
    you did. A rigid window that returns nothing is the failure mode this avoids.
 3. Dedup against prior runs (seen-list). Items still trending → "Still developing", one line.
@@ -24,12 +24,13 @@ WINDOW · MAX_ITEMS · FOCUS (re-rank boost) · MARKET (off/on) · INCLUDE_THRES
   perf-per-watt delta (not a keynote claim) — not incremental
 - usable artifact available — research: weights/code/dataset/API; hardware: a real ship date
 - trending in ≥1 concrete Tier-2 signal (HF upvotes, GitHub star velocity, HN front page)
-- methodologically novel or challenges a common assumption (model-judged)
+- strong traction in Tier-2 signals (e.g. ≥150 HN points, ≥80 GitHub stars) OR
+  methodologically novel or challenges a common assumption (model-judged)
 
 FOCUS is a **re-rank boost applied after scoring**, never added to the number — keep "is this
 big" (score) separate from "is this relevant to me" (focus).
 
-Routing: **score ≥3 → main list · 2 → watch-list · ≤1 → drop.**
+Routing: **score ≥2 → main list · 1 → watch-list · ≤0 → drop.**
 
 ## Output format
 

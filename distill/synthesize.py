@@ -22,9 +22,9 @@ from distill.focus import active_terms as _focus_active_terms, _term_hit, _blob 
 from distill.cluster import cluster_items  # noqa: E402
 
 WINDOW = os.environ.get("WINDOW", "48h")
-MAX_ITEMS = int(os.environ.get("MAX_ITEMS", "8"))
+MAX_ITEMS = int(os.environ.get("MAX_ITEMS", "10"))
 MARKET = os.environ.get("MARKET", "off").lower() == "on"
-THRESHOLD = int(os.environ.get("INCLUDE_THRESHOLD", "3"))
+THRESHOLD = int(os.environ.get("INCLUDE_THRESHOLD", "2"))
 BACKEND = os.environ.get("RADAR_MODEL_BACKEND", "dryrun").lower()
 SCORED = ROOT / "data" / "scored"
 ENRICHED = ROOT / "data" / "enriched"
@@ -42,7 +42,7 @@ SUMMARY_CHARS = int(os.environ.get("SUMMARY_CHARS", _SUMMARY_DEFAULT))
 # Reserve main-list slots for non-research so hardware/releases (which score lower than
 # research papers structurally) aren't crowded out. 0/0 reverts to research-only behavior.
 HARDWARE_SLOTS = int(os.environ.get("HARDWARE_SLOTS", "2"))
-RELEASE_SLOTS = int(os.environ.get("RELEASE_SLOTS", "1"))
+RELEASE_SLOTS = int(os.environ.get("RELEASE_SLOTS", "5"))
 
 # How many ranked movers to send per bucket. The model only writes a sentence or two for the
 # "What changed" section, so it needs counts + a ranked sample, not every mover serialized in
@@ -162,8 +162,7 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
             "hf_upvotes": sig.get("hf_upvotes") or 0,
             "gh_stars": sig.get("gh_stars") or 0,
             "hn_points": sig.get("hn_points") or 0,
-            # Provenance: concise explanation of why this item was selected.
-            # Omitted when empty so the payload stays lean.
+            "reddit_score": sig.get("reddit_score") or 0,
         }
         if prov:
             row["provenance"] = prov
@@ -297,6 +296,82 @@ def call_ollama(system: str, user: str) -> str:
         return json.loads(r.read()).get("response", "")
 
 
+def call_template(system: str, user: str) -> str:
+    """No-model backend: generate a structured report from the top scored items directly.
+    Useful for testing the pipeline or running without API keys."""
+    import json, re
+    json_match = re.search(r'\[\s*\{.*\}\s*\]', user, re.DOTALL)
+    if not json_match:
+        return "# AI Radar — Template Error\n\nCould not extract items from prompt."
+    try:
+        items = json.loads(json_match.group(0))
+    except json.JSONDecodeError:
+        return "# AI Radar — Template Error\n\nCould not parse items JSON."
+
+    today = f"{datetime.now(timezone.utc):%Y-%m-%d}"
+    lines = [
+        f"# AI Radar — {today}",
+        "",
+        f"**Top-line** — {len(items)} candidate items scored in the last {WINDOW}. "
+        "Run with `RADAR_MODEL_BACKEND=github` or `anthropic` for model synthesis and insights.",
+        ""
+    ]
+
+    # Main list — respect THRESHOLD and MAX_ITEMS
+    main = [i for i in items if (i.get("score") or 0) >= THRESHOLD]
+    if main:
+        lines.append(f"**Main list** ({len(main)} scored ≥{THRESHOLD}, showing top {min(len(main), MAX_ITEMS)})")
+        for i in main[:MAX_ITEMS]:
+            sigs = []
+            if i.get("hf_upvotes"): sigs.append(f"{i['hf_upvotes']} HF upvotes")
+            if i.get("gh_stars"): sigs.append(f"{i['gh_stars']} GitHub stars")
+            if i.get("hn_points"): sigs.append(f"{i['hn_points']} HN points")
+            if i.get("reddit_score"): sigs.append(f"{i['reddit_score']} Reddit score")
+            signal_str = " · ".join(sigs) if sigs else "no tracked traction signal"
+            summary = (i.get("summary") or i.get("brief") or "")[:300]
+            lines.append(f"- **{i['title']}** [{i['category']}] · score {i['score']}/5")
+            lines.append(f"  Source: {i['source']} · [{i['url']}]({i['url']})")
+            lines.append(f"  Signal: {signal_str}")
+            if i.get("reasons"):
+                lines.append(f"  Reasons: {', '.join(i['reasons'])}")
+            if summary:
+                lines.append(f"  New: {summary}")
+            lines.append("")
+    else:
+        lines.append(f"**Main list**")
+        lines.append(f"_No items scored ≥{THRESHOLD} in this window._")
+        lines.append("")
+
+    # Watch list — items exactly one point below threshold
+    watch = [i for i in items if (i.get("score") or 0) == max(1, THRESHOLD - 1)]
+    if watch:
+        lines.append(f"**Watch-list** ({len(watch)} items)")
+        for i in watch[:8]:
+            sigs = []
+            if i.get("hf_upvotes"): sigs.append(f"{i['hf_upvotes']} HF upvotes")
+            if i.get("gh_stars"): sigs.append(f"{i['gh_stars']} GitHub stars")
+            if i.get("hn_points"): sigs.append(f"{i['hn_points']} HN points")
+            if i.get("reddit_score"): sigs.append(f"{i['reddit_score']} Reddit score")
+            signal_str = " · ".join(sigs) if sigs else "no tracked traction signal"
+            lines.append(f"- {i['title']} · {i['source']} · score {i['score']}/5 · {signal_str}")
+        lines.append("")
+
+    lines.append("**Insights**")
+    lines.append("- Template backend shows raw scored items without model judgment.")
+    lines.append(f"- Set a model backend for synthesis: `export RADAR_MODEL_BACKEND=github` + `export GITHUB_TOKEN=...`")
+    lines.append("")
+
+    lines.append("**Action items**")
+    lines.append("- Review main-list items for personal relevance.")
+    lines.append(f"- Re-run with `WINDOW=7d` if the {WINDOW} window is too quiet.")
+    lines.append("")
+
+    return "\n".join(lines)
+
+
+
+
+
 def _log_prompt_stats(system: str, user: str, n_items: int,
                        candidates: int, shrink_level: int) -> None:
     """Log approximate prompt token count and key sizing metrics to stderr.
@@ -314,13 +389,6 @@ def main() -> None:
         _log_prompt_stats(system, user, len(items), n_cand, 0)
         report = call_anthropic(system, user)
     elif BACKEND == "github":
-        # GitHub Models enforces an input-token ceiling and returns 413 when the prompt
-        # overflows. The corpus size varies run-to-run (a fresh CI collection can be far
-        # larger than a local one), so we can't pick one safe size up front. Shrink the
-        # request progressively and retry until it's accepted: drop enriched briefs, then
-        # step down candidate count and summary length together. Each stage is a strict
-        # subset of the last, so the published digest (still MAX_ITEMS) is unaffected while
-        # the model loses only lower-ranked context it wouldn't have emitted anyway.
         attempts = [
             dict(),
             dict(_strip_briefs=True),
@@ -351,18 +419,18 @@ def main() -> None:
     elif BACKEND == "ollama":
         _log_prompt_stats(system, user, len(items), n_cand, 0)
         report = call_ollama(system, user)
+    elif BACKEND == "template":
+        report = call_template(system, user)
     else:
         _log_prompt_stats(system, user, len(items), n_cand, 0)
         report = ("# DRYRUN — assembled prompt (no model called)\n\n"
-                  "Set RADAR_MODEL_BACKEND=github (free), anthropic, or ollama to generate the digest.\n\n"
+                  "Set RADAR_MODEL_BACKEND=github (free), anthropic, ollama, or template to generate the digest.\n\n"
                   "## SYSTEM\n" + system + "\n\n## USER\n" + user)
     out = ROOT / "reports" / f"{datetime.now(timezone.utc):%Y-%m-%d}-digest.md"
-    out.parent.mkdir(parents=True, exist_ok=True)   # reports/ is gitignored -> absent on fresh CI
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(report)
-    # Snapshot this run's ranked set so the NEXT run can compute movers against it. Written
-    # only after a successful digest, and only for real backends (dryrun shouldn't advance
-    # state, or you'd lose the genuine "new today" diff on the next real run).
-    if BACKEND != "dryrun":
+    # Snapshot state only for real backends (template and dryrun don't advance state).
+    if BACKEND not in ("dryrun", "template"):
         save_state(items)
     print(f"[distill] wrote {out}  (backend={BACKEND}, {len(items)} scored items)")
 

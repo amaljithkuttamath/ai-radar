@@ -9,12 +9,10 @@ collectors:
 
 distill:
   window: 48h        # 24h daily / 48h default / 7d weekly
-  max_items: 8       # main list cap
-  # FOCUS re-rank boost. Leave empty to use config/profile.yaml (alias-aware, persistent);
-  # set here or via FOCUS env to override for a one-off lens, e.g. [interpretability, agents].
+  max_items: 10       # main list cap
   focus: []
   market: off        # on => append mechanism-mapping to score>=4 items (NOT advice)
-  include_threshold: 3   # score >= this -> main list; ==2 -> watch-list; <=1 drop
+  include_threshold: 2   # score >= this -> main list; ==1 -> watch-list; <=0 drop
 
 deliver:                 # optional email push of the digest (distill/deliver.py).
   email: false           # true (or set RADAR_EMAIL_TO env) to send. Needs SMTP_* secrets.

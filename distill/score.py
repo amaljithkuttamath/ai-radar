@@ -41,9 +41,15 @@ def heuristic_score(it: dict) -> tuple[int, list[str]]:
             or (sig.get("gh_stars", 0) or 0) >= 50
             or (sig.get("hn_points", 0) or 0) >= 30):
         s += 1; why.append("trending (Tier-2 signal)")
+    # Strong traction tier: high-signal items shouldn't be buried by lower-signal ones
+    if ((sig.get("hf_upvotes", 0) or 0) >= 40
+            or (sig.get("hf_likes", 0) or 0) >= 120
+            or (sig.get("gh_stars", 0) or 0) >= 80
+            or (sig.get("hn_points", 0) or 0) >= 150):
+        s += 1; why.append("strong traction (Tier-2 signal)")
     # 'novelty / challenges assumption' (+1) is left to the model pass — see synthesize.py.
     # Traction is 0–5: heuristic covers up to 4; the model can add the novelty point.
-    return min(s, 5), why
+    return min(s, 4), why
 
 
 # focus_match now lives in distill/focus.py (profile-driven, alias-aware). FOCUS is still a
