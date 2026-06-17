@@ -183,7 +183,8 @@ model for cheap scoring/drafts. Deterministic fetching never calls a model.
 - [x] Movers / "What changed" delta view across runs
 - [x] Personalized, alias-aware FOCUS profile (`config/profile.yaml`)
 - [x] Email delivery of the digest
-- [ ] Verify the HF Daily Papers endpoint shape in `hf_papers.py` against live output
-- [ ] Fill `config/sources.yaml` lab/vendor RSS URLs (placeholders included)
-- [ ] Optional: GitHub stars-velocity enricher for `signals.gh_stars`
+- [x] Verified the HF Daily Papers endpoint shape against live output (parser confirmed correct)
+- [x] Filled `config/sources.yaml` lab/vendor RSS URLs (all 5 feeds verified live)
+- [x] Capture HF paper artifacts: `links.github` / `links.project` / `keywords` feed the artifact heuristic and the gh-stars enricher
+- [ ] Optional: GitHub stars-velocity enricher for `signals.gh_stars` (single-run stars land via `links.github`; velocity across runs is the next step)
 - [ ] Optional: wire the stubbed `FOCUS_BACKEND=embed` semantic matcher to a real embedder

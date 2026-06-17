@@ -33,8 +33,10 @@ def heuristic_score(it: dict) -> tuple[int, list[str]]:
         s += 1; why.append("frontier/strong-group authorship")
     if any(h in blob for h in SOTA_HINTS):
         s += 1; why.append("concrete result claimed")
-    if any(h in blob for h in ARTIFACT_HINTS) or "github" in (it.get("url", "")):
-        s += 1; why.append("usable artifact")
+    links = it.get("links", {}) or {}
+    has_repo = bool(links.get("github") or links.get("project"))
+    if has_repo or any(h in blob for h in ARTIFACT_HINTS) or "github" in (it.get("url", "")):
+        s += 1; why.append("usable artifact" + (" (repo linked)" if links.get("github") else ""))
     sig = it.get("signals", {}) or {}
     if ((sig.get("hf_upvotes", 0) or 0) >= 15
             or (sig.get("hf_likes", 0) or 0) >= 50

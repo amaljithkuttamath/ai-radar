@@ -89,10 +89,15 @@ def fetch_hn_signal(title: str) -> dict | None:
 
 
 def best_repo(item: dict, token: str | None = None) -> dict | None:
-    """Convenience: find the first resolvable GitHub repo referenced by an item
-    (in its url or raw_summary) and return its stats. None if no repo found/resolved."""
-    blob = " ".join([item.get("url", ""), item.get("raw_summary", "")])
-    for owner, repo in extract_github_repos(blob):
+    """Convenience: find the first resolvable GitHub repo referenced by an item and return
+    its stats. Checks the collector-captured links.github first (e.g. HF's githubRepo, which
+    is rarely in the abstract text), then falls back to scanning url + raw_summary."""
+    candidates = " ".join([
+        (item.get("links", {}) or {}).get("github", ""),
+        item.get("url", ""),
+        item.get("raw_summary", ""),
+    ])
+    for owner, repo in extract_github_repos(candidates):
         info = fetch_github_repo(owner, repo, token)
         if info:
             return info

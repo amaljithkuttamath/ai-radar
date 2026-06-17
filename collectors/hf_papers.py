@@ -24,11 +24,23 @@ def fetch_day(date_str: str) -> list[dict]:
         return json.loads(r.read())
 
 
+def _gh_url(repo) -> str:
+    """Normalize the HF githubRepo field (sometimes an 'owner/name' slug, sometimes a full URL)."""
+    if not repo:
+        return ""
+    repo = str(repo).strip()
+    if repo.startswith("http"):
+        return repo
+    return f"https://github.com/{repo.lstrip('/')}"
+
+
 def to_item(entry: dict) -> dict | None:
     paper = entry.get("paper", entry)
     arxiv_id = paper.get("id") or paper.get("arxivId")
     if not arxiv_id:
         return None
+    # numComments lives on the top-level daily entry; repo/project/keywords on the paper.
+    comments = entry.get("numComments", paper.get("numComments", 0)) or 0
     return make_item(
         id=f"arxiv:{arxiv_id}",
         category="research",
@@ -38,7 +50,14 @@ def to_item(entry: dict) -> dict | None:
         authors=[a.get("name") for a in paper.get("authors", []) if a.get("name")],
         published=paper.get("publishedAt"),
         raw_summary=paper.get("summary", ""),
-        signals={"hf_upvotes": paper.get("upvotes", entry.get("upvotes", 0))},
+        # Secondary artifacts the feed already hands us, captured so the artifact heuristic and
+        # the gh-stars enricher can fire without a second fetch.
+        links={"github": _gh_url(paper.get("githubRepo")),
+               "project": paper.get("projectPage") or ""},
+        keywords=paper.get("ai_keywords") or [],
+        # hf_comments rides in signals so it survives the HF->arxiv dedup merge (signals-only merge).
+        signals={"hf_upvotes": paper.get("upvotes", entry.get("upvotes", 0)) or 0,
+                 "hf_comments": comments},
     )
 
 

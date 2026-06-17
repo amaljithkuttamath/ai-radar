@@ -28,7 +28,8 @@ def parse_window(window: str) -> timedelta:
 
 
 def make_item(*, id: str, category: str, title: str, url: str, source: str,
-              authors=None, published=None, raw_summary="", signals=None) -> dict:
+              authors=None, published=None, raw_summary="", signals=None,
+              links=None, keywords=None) -> dict:
     return {
         "id": id,
         "category": category,
@@ -39,6 +40,12 @@ def make_item(*, id: str, category: str, title: str, url: str, source: str,
         "published": published,
         "fetched": now_iso(),
         "raw_summary": (raw_summary or "").strip(),
+        # Secondary artifact links (e.g. a paper's github repo / project page). `url` stays the
+        # primary artifact; `links` lets the distiller and the gh-stars enricher find a repo
+        # without re-fetching.
+        "links": {k: v for k, v in (links or {}).items() if v},
+        # Source-provided topic tags (e.g. HF ai_keywords). A cheap recall aid for clustering/FOCUS.
+        "keywords": [k for k in (keywords or []) if k],
         "signals": signals or {},
         "score": None,
     }
