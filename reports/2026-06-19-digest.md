@@ -4,14 +4,54 @@
 
 # AI Radar — 2026-06-19
 
-No significant developments tracked in the last 7 days. The radar window was widened to a full week, but no items met the inclusion threshold or traction criteria. This period is unusually quiet—no new releases, trending papers, or hardware signals surfaced.
+The past week’s standout is DragMesh-2—a new physically plausible system for dexterous hand-object interaction with articulated objects, offering concrete advances in robotic manipulation and real-world task performance. The broader theme is robust artifact availability and actionable benchmarks across trading, robotics, and generative modeling. Signals skew practical: usable codebases, large-scale datasets, and innovative benchmarks for both embodied agents and data-constrained scenarios. (Window widened to 7 days for real signal.)
 
-**Insights**
-- The silence highlights a pause in high-impact signals; watch for catch-up or cluster releases in upcoming cycles.
-- If you rely on this digest for actionable updates, now is a good time to revisit previously surfaced items or track latent developments.
+## Main List
 
-**Action items**
-- Track latent research: Revisit unresolved threads from earlier digests.
-- Set up alerts for major repositories or preprint servers to catch late-breaking releases.
+- [DragMesh-2: Physically Plausible Dexterous Hand-Object Interaction with Articulated Objects](https://arxiv.org/abs/2606.15133) · [code](https://github.com/AIGeeksGroup/DragMesh-2) · [project](https://aigeeksgroup.github.io/DragMesh-2)  
+  A robust approach to controlling multi-finger robotic hands for manipulating articulated objects—addressing the challenge of indirect actuation, where parts can’t be moved directly. Delivering a usable repository and strong traction (42 HF upvotes), it introduces physically plausible manipulation routines vital for real-world robotics, with potential impact on assistive and humanoid systems. · 4/5
 
-_No further developing items to report. If you need broader coverage, consider expanding the scope beyond current signal criteria._
+- [stefan-jansen/machine-learning-for-trading — Code for Machine Learning for Trading, 3rd edition](https://github.com/stefan-jansen/machine-learning-for-trading)  
+  Premier source for actionable machine learning in finance: nearly 19,200 stars, comprehensive from sourcing trading data to live execution. Widely used reference for quant developers and anyone modernizing trading systems with ML pipelines. · 3/5
+
+- [DF3DV-1K: A Large-Scale Dataset and Benchmark for Distractor-Free Novel View Synthesis](https://arxiv.org/abs/2604.13416) · [code](https://github.com/johnnylu305/DF3DV) · [project](https://johnnylu305.github.io/df3dv1k_web/)  
+  Fresh, expansive dataset for photorealistic novel view synthesis without distractors, enabling more reliable benchmarking across clean and cluttered scenes. Artifact is live and—importantly—fills a gap for evaluating methods beyond scene-specific reconstructions. Useful for anyone developing or evaluating generative vision models. · 3/5
+
+- [Playful Agentic Robot Learning](https://arxiv.org/abs/2606.19419) · [code](https://github.com/Playful-RATs/rats) · [project](https://playful-rats.github.io/)  
+  Introduces “playful” embodied agents: robots that acquire reusable skills through self-directed play, not just explicit instruction—an advance in agent autonomy and skill learning. The repo is up, traction is real (30 HF upvotes), and the paradigm shift is relevant for researchers working on continual robot learning and skill adaptation. · 2/5
+
+- [perplexity-ai/draco (HF Dataset)](https://huggingface.co/datasets/perplexity-ai/draco)  
+  Lightweight, MIT-licensed dataset up for direct use, trending on HF. While modest in scale, it’s a quick pickup for language modeling or evaluation tasks needing compact JSON text samples. · 2/5
+
+- [FlowBender: Feedback-Aware Training for Self-Correcting Conditional Flows](https://arxiv.org/abs/2606.20404) · [project](https://flow-bender.github.io/)  
+  Tackles the long-standing problem in conditional flow and diffusion models: satisfying input constraints. Introduces a feedback-aware training method enabling self-correction, with claimed concrete results and accessible artifact. Valuable for researchers seeking robust generative models that align with input data. · 2/5
+
+- [No Resource, No Benchmarks, No Problem? Evaluating and Improving LLMs for Code Generation in No-Resource Languages](https://arxiv.org/abs/2606.16827) · [code](https://github.com/Devy99/no-resource-pl-study)  
+  Directly addresses code generation for languages where training resources and benchmarks are scarce—an under-served problem. Presents evaluation and improvement methods, with usable repo. Worth attention for those deploying LLMs beyond the major language ecosystems. · 2/5
+
+## Watch-list
+
+- [Zyphra/ZONOS2 (HF Model)](https://huggingface.co/Zyphra/ZONOS2)  
+  Text-to-speech model trending on HF; signals are preliminary—track if working in speech synthesis.
+
+- [HumanScale: Egocentric Human Video Can Outperform Real-Robot Data for Embodied Pretraining](https://arxiv.org/abs/2606.20521)  
+  Evidence that large-scale egocentric video can outperform real-robot data for pretraining embodiment models; promising but not yet widely verified.
+
+## Insights
+
+- Usable, open artifacts are central: new benchmarks, datasets, and codebases outnumber mere papers.
+- Robotics and generative modeling see advances in both autonomy and physical plausibility, with pragmatic artifact-first releases.
+- Finance ML continues to attract broad developer attention, reflecting practical adoption.
+- “Low-resource” scenarios (code generation, compact datasets) are an active research niche, with new evaluation methods and community-usable tools.
+- Conditional generative models must tackle input alignment: feedback-aware approaches are gaining real traction.
+
+## Action Items
+
+- Read: DragMesh-2 and DF3DV-1K for anyone working in physical manipulation or novel view synthesis.
+- Try: the stefan-jansen ML for Trading repo, especially if automating trading strategies or building production pipelines.
+- Track: FlowBender and Playful Agentic Robot Learning—both offer concrete repos and potentially paradigm-shifting methods for generative models and robotic skill acquisition.
+- Evaluate: No-resource LLM methods in code generation projects covering less common languages.
+
+---
+
+(If you need real market mechanism mapping, rerun with MARKET=on.)
