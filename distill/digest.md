@@ -46,31 +46,51 @@ empty:
 - **New today** — items not present last run (the freshest signal).
 - **Climbing** — items whose traction rose; cite the direction, e.g. "up".
 - **Cooled** — items that lost traction or fell off.
+This is a CHANGE-LOG, not a preview of the main list. Each line is **title only** (optionally a
+3-5 word tag), never a full New/Matters write-up — the detail lives once, in the main list below.
+At most 4-5 items per group; if a "New today" item is also a top main-list item, it's fine to
+name it here in one line, but DO NOT repeat its description. Never duplicate prose across sections.
 Keep it to the items that actually matter; do not list every mover. This section is what makes
 the report a radar rather than a standalone newsletter.
 
-**Main list** (ranked, ≤MAX_ITEMS). When a TOPIC CLUSTERS block is provided, group items
-under short theme headers (e.g. "## Agent eval data") with a one-line theme summary before
-the items. Items not assigned to any cluster keep their natural position. Degrade to the
-current flat format when clusters are absent or don't add clarity.
+**Main list** (ranked, ≤MAX_ITEMS).
 
-Per item:
-- **Title** — [model | method | paper | release | infra/hardware] · score X/5
-- Source — org/authors + venue · [link to PRIMARY artifact]
-- New — state the ACTUAL contribution: the specific technique, model size, dataset, or
-  performance number. Never restate the title. For a release: what shipped + the capability
-  delta. For hardware: the claimed perf-per-watt / bandwidth / ship-date figure.
-- Matters — who is affected and the concrete mechanism. "Practitioners doing X can now do Y"
-  is good. "A significant advance" is not.
-- Signal — PRINT the traction figures from the item's structured fields, do not prose them:
+*Cluster headers.* When a TOPIC CLUSTERS block is provided, group items under it using a
+`###` theme header that is a SHORT, HUMAN-READABLE THEME PHRASE (2-4 words, Title Case), e.g.
+`### Video World Models`, `### Agent Evaluation`. NEVER emit a single bare word, a word with
+trailing punctuation (`Model)`), or a category name like `Model` / `Method` as a header —
+those are item *types*, not themes. If the provided cluster label looks like junk (one word,
+contains punctuation, or is a generic type), rewrite it into a clean theme phrase yourself
+from the items it groups. Put a one-line *italic* theme summary directly under each header.
+Items not assigned to any cluster keep their natural position. Degrade to a flat list (no
+headers) when clusters are absent or don't add clarity.
+
+*Per-item template — follow this EXACTLY, same fields, same order, same punctuation, every time:*
+
+```
+**{Title}** · `{type}` · **{score}/5**
+- **Source** — {org/authors}, {venue} · [{primary artifact}]({url})
+- **New** — {the actual contribution: technique / model size / dataset / number}
+- **Matters** — {who is affected + the concrete mechanism}
+- **Signal** — {traction figures} · {confidence}
+- **Why surfaced** — {grounded provenance line}    ← omit this whole line if provenance is empty
+```
+
+Field rules:
+- `{type}` is one of: model · method · paper · release · infra/hardware. Lowercase, in backticks.
+- Put one blank line between items so they render as separate blocks, never run together.
+- **New** — never restate the title. Release: what shipped + the capability delta. Hardware:
+  the claimed perf-per-watt / bandwidth / ship-date figure.
+- **Matters** — "Practitioners doing X can now do Y" is good. "A significant advance" is not.
+- **Signal** — PRINT the figures from the item's structured fields, do not prose them:
   `N HF upvotes · N GitHub stars · N HN points` (omit any that are 0; if all 0, write
   "no tracked traction signal"). Then confidence: "single source" if one signal and no
   independent corroboration, else "corroborated by N signals". Traction and confidence are
   separate: a high score with low confidence is normal and useful.
-- Why surfaced — one short line grounded ONLY in the item's `provenance` field (e.g.
-  "frontier author · 412 gh_stars · matches FOCUS:agents · concrete result claimed").
-  If `provenance` is absent or empty, omit this line entirely. Never invent reasons.
-- Market exposure — *only if MARKET=on and score ≥4* (see below)
+- **Why surfaced** — grounded ONLY in the item's `provenance` field (e.g.
+  "frontier author · 412 gh_stars · matches FOCUS:agents · concrete result claimed"). If
+  `provenance` is absent or empty, omit this line entirely. Never invent reasons.
+- **Market exposure** — append *only if MARKET=on and score ≥4* (see below).
 
 The candidate set may include hardware and releases items that score below research papers;
 include them at their actual score (watch-list is fine for a bare vendor announcement). Do

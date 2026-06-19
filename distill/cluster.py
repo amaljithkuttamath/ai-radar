@@ -194,12 +194,16 @@ def _cluster_label(cluster_items: list[dict]) -> str:
     except Exception:
         pass
 
-    # Fallback: longest common title word (heuristic)
+    # Fallback: most common meaningful title word (heuristic). Strip surrounding punctuation
+    # first so a title like "...World Model)" yields "world", not "model)".
+    import re
     stop = {"a", "an", "the", "of", "and", "for", "in", "on", "with", "to", "via",
-            "from", "is", "are", "by", "new", "large", "model", "language"}
+            "from", "is", "are", "by", "new", "large", "model", "models", "language",
+            "using", "based", "toward", "towards"}
     word_counts: dict[str, int] = {}
     for it in cluster_items:
-        for w in it.get("title", "").lower().split():
+        for raw in it.get("title", "").lower().split():
+            w = re.sub(r"[^a-z0-9-]", "", raw)  # drop punctuation, keep hyphens
             if len(w) > 4 and w not in stop:
                 word_counts[w] = word_counts.get(w, 0) + 1
     if word_counts:
