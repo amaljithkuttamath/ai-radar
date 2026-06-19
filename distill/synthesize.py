@@ -151,6 +151,9 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
     for i in chosen:
         sig = i.get("signals") or {}
         prov = _build_provenance(i)
+        # Secondary artifact links (github / project page) the collectors captured. The spec
+        # REQUIRES surfacing these as visible links, so they must reach the model.
+        links = {k: v for k, v in (i.get("links") or {}).items() if v}
         row = {
             "title": i["title"], "url": i["url"], "source": i["source"],
             "category": i["category"], "score": i["score"],
@@ -164,6 +167,8 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
             "hn_points": sig.get("hn_points") or 0,
             "reddit_score": sig.get("reddit_score") or 0,
         }
+        if links:
+            row["links"] = links
         if prov:
             row["provenance"] = prov
         if not _strip_briefs:

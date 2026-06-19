@@ -55,42 +55,36 @@ the report a radar rather than a standalone newsletter.
 
 **Main list** (ranked, ≤MAX_ITEMS).
 
-*Cluster headers.* When a TOPIC CLUSTERS block is provided, group items under it using a
-`###` theme header that is a SHORT, HUMAN-READABLE THEME PHRASE (2-4 words, Title Case), e.g.
-`### Video World Models`, `### Agent Evaluation`. NEVER emit a single bare word, a word with
-trailing punctuation (`Model)`), or a category name like `Model` / `Method` as a header —
-those are item *types*, not themes. If the provided cluster label looks like junk (one word,
-contains punctuation, or is a generic type), rewrite it into a clean theme phrase yourself
-from the items it groups. Put a one-line *italic* theme summary directly under each header.
-Items not assigned to any cluster keep their natural position. Degrade to a flat list (no
-headers) when clusters are absent or don't add clarity.
+Write this like a sharp human curator briefing a smart friend — a normal, readable summary,
+NOT a filled-in form. You decide the presentation: prose, a short paragraph per item, or a
+tight list, whatever reads best for the actual items in front of you. The goal is something a
+busy engineer can skim in under a minute and immediately know what to click. Vary your
+sentences. Do not stamp every item into the same rigid shape.
 
-*Per-item template — follow this EXACTLY, same fields, same order, same punctuation, every time:*
+Two hard rules (everything else is your call):
 
-```
-**{Title}** · `{type}` · **{score}/5**
-- **Source** — {org/authors}, {venue} · [{primary artifact}]({url})
-- **New** — {the actual contribution: technique / model size / dataset / number}
-- **Matters** — {who is affected + the concrete mechanism}
-- **Signal** — {traction figures} · {confidence}
-- **Why surfaced** — {grounded provenance line}    ← omit this whole line if provenance is empty
-```
+1. **LINKS ARE MANDATORY AND MUST BE VISIBLE.** Every item carries a primary `url` and may
+   carry a `links` object with `github` and/or `project` URLs. Surface ALL of them as distinct
+   clickable markdown links — make the title itself a link to the primary artifact, and add the
+   repo / project links inline (e.g. `[paper](url) · [code](github) · [project](project)`).
+   Never bury a link or drop one you were given. A reader should never have to guess the URL.
 
-Field rules:
-- `{type}` is one of: model · method · paper · release · infra/hardware. Lowercase, in backticks.
-- Put one blank line between items so they render as separate blocks, never run together.
-- **New** — never restate the title. Release: what shipped + the capability delta. Hardware:
-  the claimed perf-per-watt / bandwidth / ship-date figure.
-- **Matters** — "Practitioners doing X can now do Y" is good. "A significant advance" is not.
-- **Signal** — PRINT the figures from the item's structured fields, do not prose them:
-  `N HF upvotes · N GitHub stars · N HN points` (omit any that are 0; if all 0, write
-  "no tracked traction signal"). Then confidence: "single source" if one signal and no
-  independent corroboration, else "corroborated by N signals". Traction and confidence are
-  separate: a high score with low confidence is normal and useful.
-- **Why surfaced** — grounded ONLY in the item's `provenance` field (e.g.
-  "frontier author · 412 gh_stars · matches FOCUS:agents · concrete result claimed"). If
-  `provenance` is absent or empty, omit this line entirely. Never invent reasons.
-- **Market exposure** — append *only if MARKET=on and score ≥4* (see below).
+2. **Ground every factual claim in the item's fields.** Say what it actually is and why it's
+   worth a reader's time, in plain language. Name the system/method, not "this paper". When an
+   item has real traction figures (HF upvotes, GitHub stars, HN points), mention them naturally
+   (e.g. "412 stars" or "trending on HF"); when it has none, just don't mention traction —
+   don't write boilerplate like "no tracked traction signal". Skip the per-item "why surfaced"
+   provenance line entirely; it reads as machine exhaust. Let relevance show through the writing.
+
+Cover, in whatever form fits: what it is, what's genuinely new about it, and who should care.
+Keep the score visible somewhere lightweight (e.g. a trailing `· 3/5`) so ranking is legible,
+but don't make it the headline.
+
+*Grouping.* If a TOPIC CLUSTERS block is provided AND the themes are genuinely clarifying, you
+may group items under short `###` theme headers (2-4 word Title Case phrases like
+`### Video World Models`) with an optional one-line lead-in. Headers must be real themes, never
+a bare item type (`Model`, `Method`) or a fragment with stray punctuation. If the clusters
+don't add clarity, just use a flat ranked list — a clean flat list beats forced grouping.
 
 The candidate set may include hardware and releases items that score below research papers;
 include them at their actual score (watch-list is fine for a bare vendor announcement). Do
