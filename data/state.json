@@ -1,79 +1,35 @@
 {
-"arxiv:2606.19602": {
-"first_seen": "2026-06-20",
-"mag": 0.6931,
+"hfdataset:LocalLaws/LOCUS-v1": {
+"first_seen": "2026-06-21",
+"mag": 2.2807,
 "mag_history": [
-0.6931
+2.2807
 ],
 "score": 1,
 "streak": 1,
-"title": "Configurable Clinical Information Extraction with Agentic RAG: What Works, What Breaks, and Why",
-"url": "https://arxiv.org/abs/2606.19602"
+"title": "LocalLaws/LOCUS-v1 (HF Dataset)",
+"url": "https://huggingface.co/datasets/LocalLaws/LOCUS-v1"
 },
-"arxiv:2606.20536": {
-"first_seen": "2026-06-20",
-"mag": 1.3863,
+"hfdataset:openai/gsm8k": {
+"first_seen": "2026-06-21",
+"mag": 5.072,
 "mag_history": [
-1.3863
+5.072
 ],
-"score": 1,
+"score": 4,
 "streak": 1,
-"title": "The FID Lottery: Quantifying Hidden Randomness in Generative-Model Evaluation",
-"url": "https://arxiv.org/abs/2606.20536"
+"title": "openai/gsm8k (HF Dataset)",
+"url": "https://huggingface.co/datasets/openai/gsm8k"
 },
-"ghrepo:aishwaryanr/awesome-generative-ai-guide": {
-"first_seen": "2026-06-20",
-"mag": 5.116,
+"hfmodel:Mia-AiLab/Qwable-3.6-27b": {
+"first_seen": "2026-06-21",
+"mag": 3.3335,
 "mag_history": [
-5.116
-],
-"score": 3,
-"streak": 1,
-"title": "aishwaryanr/awesome-generative-ai-guide \u2014 A one stop repository for generative AI research updates, interview resources, notebooks and much more!",
-"url": "https://github.com/aishwaryanr/awesome-generative-ai-guide"
-},
-"hfdataset:Glint-Research/Complete-FABLE.5-traces-2M": {
-"first_seen": "2026-06-20",
-"mag": 2.0233,
-"mag_history": [
-2.0233
-],
-"score": 1,
-"streak": 1,
-"title": "Glint-Research/Complete-FABLE.5-traces-2M (HF Dataset)",
-"url": "https://huggingface.co/datasets/Glint-Research/Complete-FABLE.5-traces-2M"
-},
-"hfmodel:owensong/Inflect-Nano-v1": {
-"first_seen": "2026-06-20",
-"mag": 3.4232,
-"mag_history": [
-3.4232
+3.3335
 ],
 "score": 2,
 "streak": 1,
-"title": "owensong/Inflect-Nano-v1 (HF Model)",
-"url": "https://huggingface.co/owensong/Inflect-Nano-v1"
-},
-"hfmodel:yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF": {
-"first_seen": "2026-06-20",
-"mag": 3.4285,
-"mag_history": [
-3.4285
-],
-"score": 2,
-"streak": 1,
-"title": "yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF (HF Model)",
-"url": "https://huggingface.co/yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF"
-},
-"hfmodel:zai-org/GLM-5.2-FP8": {
-"first_seen": "2026-06-20",
-"mag": 3.2967,
-"mag_history": [
-3.2967
-],
-"score": 1,
-"streak": 1,
-"title": "zai-org/GLM-5.2-FP8 (HF Model)",
-"url": "https://huggingface.co/zai-org/GLM-5.2-FP8"
+"title": "Mia-AiLab/Qwable-3.6-27b (HF Model)",
+"url": "https://huggingface.co/Mia-AiLab/Qwable-3.6-27b"
 }
 }
