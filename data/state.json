@@ -1,35 +1,189 @@
 {
-"hfdataset:LocalLaws/LOCUS-v1": {
-"first_seen": "2026-06-21",
-"mag": 2.2807,
+"arxiv:2606.17480": {
+"first_seen": "2026-06-22",
+"mag": 1.3863,
 "mag_history": [
-2.2807
-],
-"score": 1,
-"streak": 1,
-"title": "LocalLaws/LOCUS-v1 (HF Dataset)",
-"url": "https://huggingface.co/datasets/LocalLaws/LOCUS-v1"
-},
-"hfdataset:openai/gsm8k": {
-"first_seen": "2026-06-21",
-"mag": 5.072,
-"mag_history": [
-5.072
-],
-"score": 4,
-"streak": 1,
-"title": "openai/gsm8k (HF Dataset)",
-"url": "https://huggingface.co/datasets/openai/gsm8k"
-},
-"hfmodel:Mia-AiLab/Qwable-3.6-27b": {
-"first_seen": "2026-06-21",
-"mag": 3.3335,
-"mag_history": [
-3.3335
+1.3863
 ],
 "score": 2,
 "streak": 1,
-"title": "Mia-AiLab/Qwable-3.6-27b (HF Model)",
-"url": "https://huggingface.co/Mia-AiLab/Qwable-3.6-27b"
+"title": "GeneralVLA-2: Geometry-Aware Reconstruction and Governed Memory for Robot Planning",
+"url": "https://arxiv.org/abs/2606.17480"
+},
+"arxiv:2606.19651": {
+"first_seen": "2026-06-22",
+"mag": 1.9459,
+"mag_history": [
+1.9459
+],
+"score": 1,
+"streak": 1,
+"title": "BrainG3N: A Dual-Purpose Tokenizer for Controllable 3D Brain MRI Generation",
+"url": "https://arxiv.org/abs/2606.19651"
+},
+"blog:https://blogs.nvidia.com/?p=94790": {
+"first_seen": "2026-06-22",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "From Materials Simulation to Experimental Astronomy, New NVIDIA AI Software Unlocks Scientific Discoveries",
+"url": "https://blogs.nvidia.com/blog/ai-for-science-software-cuda/"
+},
+"blog:https://blogs.nvidia.com/?p=94802": {
+"first_seen": "2026-06-22",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Eco Wave Power Turns Waves Into Watts With NVIDIA AI Infrastructure and Digital Twins",
+"url": "https://blogs.nvidia.com/blog/eco-wave-power-ai-digital-twins/"
+},
+"blog:https://blogs.nvidia.com/?p=94818": {
+"first_seen": "2026-06-22",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "NVIDIA Vera CPU Opens the Way for Agentic Scientific AI at Los Alamos National Laboratory",
+"url": "https://blogs.nvidia.com/blog/nvidia-vera-cpu-los-alamos-national-laboratory/"
+},
+"blog:https://blogs.nvidia.com/?p=94825": {
+"first_seen": "2026-06-22",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "At ISC, JUPITER Shows What Exascale Science Looks Like",
+"url": "https://blogs.nvidia.com/blog/jupiter-exascale-supercomputing-science/"
+},
+"blog:https://blogs.nvidia.com/?p=94841": {
+"first_seen": "2026-06-22",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Hotter Than a Hot Tub: The 45\u00b0C Breakthrough to Cool AI\u2019s Biggest Machines",
+"url": "https://blogs.nvidia.com/blog/liquid-cooling-ai-factories/"
+},
+"blog:https://blogs.nvidia.com/?p=94851": {
+"first_seen": "2026-06-22",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "NAIRR Science Program Reshapes Scientific Research, Powered by NVIDIA AI Infrastructure",
+"url": "https://blogs.nvidia.com/blog/nairr-scientific-research-ai-infrastructure/"
+},
+"blog:https://openai.com/index/samsung-electronics-chatgpt-codex-deployment": {
+"first_seen": "2026-06-22",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Samsung Electronics brings ChatGPT and Codex to employees",
+"url": "https://openai.com/index/samsung-electronics-chatgpt-codex-deployment"
+},
+"ghrepo:ChenHsing/Awesome-Video-Diffusion-Models": {
+"first_seen": "2026-06-22",
+"mag": 3.869,
+"mag_history": [
+3.869
+],
+"score": 3,
+"streak": 1,
+"title": "ChenHsing/Awesome-Video-Diffusion-Models \u2014 [CSUR] A Survey on Video Diffusion Models",
+"url": "https://github.com/ChenHsing/Awesome-Video-Diffusion-Models"
+},
+"ghrepo:headroomlabs-ai/headroom": {
+"first_seen": "2026-06-22",
+"mag": 5.3728,
+"mag_history": [
+5.3728
+],
+"score": 3,
+"streak": 1,
+"title": "headroomlabs-ai/headroom \u2014 Compress tool outputs, logs, files, and RAG chunks before they reach the LLM. 60-95% fewer tokens, same answers. Library, proxy, MCP server.",
+"url": "https://github.com/headroomlabs-ai/headroom"
+},
+"ghrepo:langchain-ai/langgraph": {
+"first_seen": "2026-06-22",
+"mag": 5.2378,
+"mag_history": [
+5.2378
+],
+"score": 3,
+"streak": 1,
+"title": "langchain-ai/langgraph \u2014 Build resilient agents.",
+"url": "https://github.com/langchain-ai/langgraph"
+},
+"hfdataset:MiG-NJU/OmniVideo-100K": {
+"first_seen": "2026-06-22",
+"mag": 1.8956,
+"mag_history": [
+1.8956
+],
+"score": 1,
+"streak": 1,
+"title": "MiG-NJU/OmniVideo-100K (HF Dataset)",
+"url": "https://huggingface.co/datasets/MiG-NJU/OmniVideo-100K"
+},
+"hfdataset:allenai/molmo-motion-1m": {
+"first_seen": "2026-06-22",
+"mag": 1.8473,
+"mag_history": [
+1.8473
+],
+"score": 2,
+"streak": 1,
+"title": "allenai/molmo-motion-1m (HF Dataset)",
+"url": "https://huggingface.co/datasets/allenai/molmo-motion-1m"
+},
+"hfdataset:ibm-research/ScarfBench": {
+"first_seen": "2026-06-22",
+"mag": 1.9832,
+"mag_history": [
+1.9832
+],
+"score": 2,
+"streak": 1,
+"title": "ibm-research/ScarfBench (HF Dataset)",
+"url": "https://huggingface.co/datasets/ibm-research/ScarfBench"
+},
+"hfmodel:datalab-to/lift": {
+"first_seen": "2026-06-22",
+"mag": 3.3628,
+"mag_history": [
+3.3628
+],
+"score": 3,
+"streak": 1,
+"title": "datalab-to/lift (HF Model)",
+"url": "https://huggingface.co/datalab-to/lift"
+},
+"hfmodel:empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF": {
+"first_seen": "2026-06-22",
+"mag": 3.3029,
+"mag_history": [
+3.3029
+],
+"score": 2,
+"streak": 1,
+"title": "empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF (HF Model)",
+"url": "https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF"
 }
 }
