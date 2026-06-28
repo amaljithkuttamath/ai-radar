@@ -1,90 +1,46 @@
 {
-"arxiv:2606.23835": {
-"first_seen": "2026-06-27",
-"mag": 1.0986,
+"hfdataset:Rapidata/svg-benchmark": {
+"first_seen": "2026-06-28",
+"mag": 1.9408,
 "mag_history": [
-1.0986
+1.9408
 ],
 "score": 2,
 "streak": 1,
-"title": "ABACUS: Adapting Unified Foundation Model for Bridging Image Count Understanding and Generation",
-"url": "https://arxiv.org/abs/2606.23835"
+"title": "Rapidata/svg-benchmark (HF Dataset)",
+"url": "https://huggingface.co/datasets/Rapidata/svg-benchmark"
 },
-"arxiv:2606.27192": {
-"first_seen": "2026-06-27",
-"mag": 2.6391,
+"hfdataset:mlabonne/open-perfectblend": {
+"first_seen": "2026-06-28",
+"mag": 3.1803,
 "mag_history": [
-2.6391
-],
-"score": 1,
-"streak": 1,
-"title": "LISA: Likelihood Score Alignment for Visual-condition Controllable Generation",
-"url": "https://arxiv.org/abs/2606.27192"
-},
-"blog:https://openai.com/index/previewing-gpt-5-6-sol": {
-"first_seen": "2026-06-27",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Previewing GPT-5.6 Sol: a next-generation model",
-"url": "https://openai.com/index/previewing-gpt-5-6-sol"
-},
-"blog:https://research.google/blog/accelerating-gemini-nano-models-on-pixel-with-frozen-multi-token-prediction/": {
-"first_seen": "2026-06-27",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Accelerating Gemini Nano models on Pixel with frozen Multi-Token Prediction",
-"url": "https://research.google/blog/accelerating-gemini-nano-models-on-pixel-with-frozen-multi-token-prediction/"
-},
-"ghrepo:scraed/LanPaint": {
-"first_seen": "2026-06-27",
-"mag": 3.5471,
-"mag_history": [
-3.5471
-],
-"score": 3,
-"streak": 1,
-"title": "scraed/LanPaint \u2014 High quality training free inpaint for every stable diffusion model. Supports ComfyUI",
-"url": "https://github.com/scraed/LanPaint"
-},
-"hfmodel:deepreinforce-ai/Ornith-1.0-35B": {
-"first_seen": "2026-06-27",
-"mag": 3.4691,
-"mag_history": [
-3.4691
-],
-"score": 3,
-"streak": 1,
-"title": "deepreinforce-ai/Ornith-1.0-35B (HF Model)",
-"url": "https://huggingface.co/deepreinforce-ai/Ornith-1.0-35B"
-},
-"hfmodel:deepreinforce-ai/Ornith-1.0-9B": {
-"first_seen": "2026-06-27",
-"mag": 3.474,
-"mag_history": [
-3.474
-],
-"score": 3,
-"streak": 1,
-"title": "deepreinforce-ai/Ornith-1.0-9B (HF Model)",
-"url": "https://huggingface.co/deepreinforce-ai/Ornith-1.0-9B"
-},
-"hfmodel:deepreinforce-ai/Ornith-1.0-9B-GGUF": {
-"first_seen": "2026-06-27",
-"mag": 3.6947,
-"mag_history": [
-3.6947
+3.1803
 ],
 "score": 2,
 "streak": 1,
-"title": "deepreinforce-ai/Ornith-1.0-9B-GGUF (HF Model)",
-"url": "https://huggingface.co/deepreinforce-ai/Ornith-1.0-9B-GGUF"
+"title": "mlabonne/open-perfectblend (HF Dataset)",
+"url": "https://huggingface.co/datasets/mlabonne/open-perfectblend"
+},
+"hfmodel:deepseek-ai/DeepSeek-V4-Pro-DSpark": {
+"first_seen": "2026-06-28",
+"mag": 3.5613,
+"mag_history": [
+3.5613
+],
+"score": 3,
+"streak": 1,
+"title": "deepseek-ai/DeepSeek-V4-Pro-DSpark (HF Model)",
+"url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-DSpark"
+},
+"hfmodel:nvidia/GLM-5.2-NVFP4": {
+"first_seen": "2026-06-28",
+"mag": 3.498,
+"mag_history": [
+3.498
+],
+"score": 3,
+"streak": 1,
+"title": "nvidia/GLM-5.2-NVFP4 (HF Model)",
+"url": "https://huggingface.co/nvidia/GLM-5.2-NVFP4"
 }
 }
