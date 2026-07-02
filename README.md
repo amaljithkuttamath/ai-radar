@@ -109,6 +109,21 @@ Climbing/cooled react to **traction-magnitude growth** (HF upvotes/likes, GitHub
 points) and score-tier changes — not to the saturated `rank_key` — so a repo doubling its stars
 actually registers. First run reports everything as new and skips the section.
 
+### Candidate diversity
+
+`distill/diversity.py` applies two stable filters to the ranked candidate set before it
+reaches the model, so one release sweep or one over-productive collector can't dominate a
+digest:
+
+- **Near-duplicate title collapse** — shingle-based Jaccard on normalized title tokens
+  (version/size tokens like `9B`, `35B`, `GGUF` are stripped) keeps the top-ranked exemplar
+  of a variant family and drops the rest.
+- **Per-source cap** — at most `MAX_PER_SOURCE=2` items from the same `source` string
+  survive; higher-ranked ones win. Set to `0` to disable.
+
+Both are stdlib-only, preserve rank order among survivors, and degrade to a no-op with
+threshold `1.0` or cap `0`. Tuned via `DIVERSITY_JACCARD` / `MAX_PER_SOURCE` env vars.
+
 ### Personalized FOCUS
 
 FOCUS is a re-rank *boost* ("is this relevant to me"), never part of the 0–5 score. Define a

@@ -20,6 +20,7 @@ from distill.rank import rank_key  # noqa: E402
 from distill.delta import compute_delta, save_state, story_arcs  # noqa: E402
 from distill.focus import active_terms as _focus_active_terms, _term_hit, _blob as _focus_blob  # noqa: E402
 from distill.cluster import cluster_items  # noqa: E402
+from distill.diversity import diversify  # noqa: E402
 
 WINDOW = os.environ.get("WINDOW", "48h")
 MAX_ITEMS = int(os.environ.get("MAX_ITEMS", "10"))
@@ -146,6 +147,10 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
               + hardware[:HARDWARE_SLOTS]
               + releases[:RELEASE_SLOTS])
     chosen.sort(key=rank_key, reverse=True)   # model sees a single ranked list
+    # Diversity pass: collapse near-duplicate titles (e.g. Foo-1.0-9B / -35B / -GGUF)
+    # and cap items-per-source so one lab's release sweep can't dominate the digest.
+    # Applied AFTER category quotas + ranking so higher-signal exemplars survive.
+    chosen = diversify(chosen)
 
     compact = []
     for i in chosen:
