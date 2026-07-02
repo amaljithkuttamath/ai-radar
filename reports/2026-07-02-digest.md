@@ -4,47 +4,62 @@
 
 # AI Radar — 2026-07-02
 
-The past 48 hours saw rapid traction for practical, accessible AI tooling, with several resources and libraries trending on GitHub. The theme: usable artifacts enabling large language model (LLM) development, time series forecasting, and generative media applications are receiving outsized attention. No breakthrough research, but a marked emphasis on tools that streamline model deployment and experimentation.
+## Top-line
+
+The week’s strongest signal is the release of SciIR, a new large-scale benchmark and dataset aimed at advancing scientific image reasoning and generation. Broader theme: dataset and methodology innovation for challenging vision-language tasks, with several benchmarks and adaptation methods landing, but signal volume is modest after widening to a 7-day window.
 
 ## What changed
 
 **New today**
-- WangRongsheng/awesome-LLM-resources — Summary of the world's best LLM resources
-- amazon-science/chronos-forecasting — Chronos: Pretrained Models for Time Series Forecasting
-- jolibrain/joliGEN — Generative AI Image and Video Toolset with GANs and Diffusion
-- qskousen/ggufy — CLI/GUI tool for safetensors and gguf model conversion
+- SciIR: A Large-scale Training Dataset and Benchmark for Scientific Image Reasoning Generation
+- fal/LTX-2.3-3DREAL-LoRA (HF Model)
+- Rank-Aware Hyperbolic Alignment for Vision-Language Dataset Distillation
+- CogSENet: Blind Image Deblurring with Blur-Conditioned Semantic Routing and Explicit Frequency Fusion
 
 ## Main list
 
-- [WangRongsheng/awesome-LLM-resources](https://github.com/WangRongsheng/awesome-LLM-resources) — A GitHub-hosted summary compiling the most notable LLM resources globally (with 8,623 stars), covering everything from generative multi-modal models and agents to AI-assisted coding, data processing, model training, inference optimization (o1, MCP), small language models, and vision-language architectures. Essential for anyone tracking the frontlines of practical LLM development. · 3/5
+### Scientific Image Reasoning and Dataset Innovation
 
-- [amazon-science/chronos-forecasting](https://github.com/amazon-science/chronos-forecasting) — Chronos offers pretrained models for time series forecasting (5,542 stars), making robust forecasting accessible for a range of applications. The library is notable for its breadth, supporting multiple model architectures and data types out of the box. Useful for practitioners in finance, retail, and infrastructure needing ready-to-use time series solutions. · 3/5
+- [SciIR: A Large-scale Training Dataset and Benchmark for Scientific Image Reasoning Generation](https://arxiv.org/abs/2606.30124) · [code](https://github.com/MAIR-Lab-HUST/SciIR) · [project](https://sci-ir.vercel.app/sciir.html)  
+  SciIR introduces a new 82k-sample dataset and benchmark for training and evaluating generative models tasked with reasoning about scientific images, focusing on semantic alignment and logical inference. The resource is immediately available ([repo](https://github.com/MAIR-Lab-HUST/SciIR)), and targets a poorly-served evaluation gap in scientific visual AI. Artifact traction is modest (3 HF upvotes, 2 stars), but this is a rare large-scale foundation for logic-driven image generation. · 3/5
 
-- [jolibrain/joliGEN](https://github.com/jolibrain/joliGEN) — A generative AI toolkit (GANs and Diffusion) for image and video, designed for “real-world” deployment (282 stars). Emphasizes practical pipelines for media generation and customization, rather than proofs-of-concept. This could be valuable for production teams and startups seeking integrated generative workflows. · 3/5
+### Vision-Language Alignment & Distillation Methods
 
-- [qskousen/ggufy](https://github.com/qskousen/ggufy) — Both a CLI and GUI toolset for converting safetensors and gguf model files, streamlining compatibility across AI tooling (62 stars). Small but practical, especially for those managing multiple models or formats in deployment pipelines. · 2/5
+- [Rank-Aware Hyperbolic Alignment for Vision-Language Dataset Distillation](https://arxiv.org/abs/2606.29464) · [code](https://github.com/andyj1/raha) · [project](https://andyj1.github.io/raha)  
+  RAHA proposes distilling vision-language datasets into highly compressed synthetic image-text pairs using hyperbolic space embedding and rank-awareness to maintain cross-modal alignment and transfer robustness. The method claims improved performance and robustness in compressed data scenarios; an artifact ([repo](https://github.com/andyj1/raha)) is provided. · 2/5
+
+### Robust Deblurring and State Space Methods
+
+- [CogSENet: Blind Image Deblurring with Blur-Conditioned Semantic Routing and Explicit Frequency Fusion](https://arxiv.org/abs/2606.30030)  
+  CogSENet tackles spatially varying blur with a semantic-aware "state space" routing module inspired by eagle vision, paired with frequency fusion. This approach enables restoration in blind settings and is claimed to outperform prior art on varied blur types. Evidence includes a strong-group authorship and use of novel spatial/frequency techniques. · 2/5
+
+### Adaptation for Image-to-Video Generation
+
+- [fal/LTX-2.3-3DREAL-LoRA (HF Model)](https://huggingface.co/fal/LTX-2.3-3DREAL-LoRA)  
+  A LoRA-based adaptation model for image-to-video generation using the LTX framework is now listed on Hugging Face. While details and metrics are limited and artifact traction is currently low, LoRA’s low-rank adaptation continues to gain ground for flexible generative tasks. · 2/5
 
 ## Watch-list
 
-_(None surfaced)_
+_None surfaced this run; all qualified items are above._
 
 ## Still developing
 
-_(None this run; all movers are newly trending)_
+_None carried over; all main-list items are new._
 
 ## Insights
 
-- GitHub continues to be the proving ground for artifact traction: all surfaced items showed strong velocity here, rather than more diffuse signals.
-- Focus is trending toward practical, modular tools—compound resource listings, multi-modal conversion utilities, and domain-specialized models rather than end-to-end research systems.
-- The high star counts on resource summaries signal ongoing appetite for curation and tool recommendations in a rapidly changing ecosystem.
-- No major research or hardware releases indicated in this window, but usable artifacts are seeing prime uptake.
+- Growing focus on evaluation and distillation for vision-language and scientific tasks—new datasets and dataset compression methods occupy the peak signal slots.
+- Released artifacts trend toward immediate usability (repos, project portals) but traction remains limited outside core research circles.
+- LoRA/adapter methods persist as practical solutions for modality shifts (image-to-video), but signal remains artifact-led rather than performance-claimed.
+- Novel architecture tweaks (semantic routing, frequency fusion) are still the main source of methodological novelty in low-level vision tasks.
 
 ## Action items
 
-- Read: [WangRongsheng/awesome-LLM-resources](https://github.com/WangRongsheng/awesome-LLM-resources), especially for a one-stop update on LLM developments and practical tools.
-- Try: [amazon-science/chronos-forecasting](https://github.com/amazon-science/chronos-forecasting) if time series forecasting is relevant; easy integration makes this worth a test.
-- Track: [jolibrain/joliGEN](https://github.com/jolibrain/joliGEN) for media pipelines, and [qskousen/ggufy](https://github.com/qskousen/ggufy) for model interoperability.
+- **Read**: SciIR paper and repo if you aim to benchmark or train scientific image reasoning models.
+- **Try**: RAHA distillation if dataset compression for vision-language tasks is relevant.
+- **Track**: CogSENet for advances in blind deblurring, especially spatially heterogeneous blur scenarios.
+- **Monitor**: LTX-2.3-3DREAL-LoRA for adoption and performance metrics as image-to-video workflows mature.
 
 ---
 
-No market exposure mapping is shown, per parameters.
+**Note:** Window widened to 7 days due to low volume after initial 48h/72h scans.

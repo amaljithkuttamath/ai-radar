@@ -1,46 +1,46 @@
 {
-"ghrepo:WangRongsheng/awesome-LLM-resources": {
+"arxiv:2606.29464": {
 "first_seen": "2026-07-02",
-"mag": 4.5312,
+"mag": 1.3863,
 "mag_history": [
-4.5312
-],
-"score": 3,
-"streak": 1,
-"title": "WangRongsheng/awesome-LLM-resources \u2014 \ud83e\uddd1\u200d\ud83d\ude80 \u5168\u4e16\u754c\u6700\u597d\u7684LLM\u8d44\u6599\u603b\u7ed3\uff08\u591a\u6a21\u6001\u751f\u6210\u3001Agent\u3001\u8f85\u52a9\u7f16\u7a0b\u3001AI\u5ba1\u7a3f\u3001\u6570\u636e\u5904\u7406\u3001\u6a21\u578b\u8bad\u7ec3\u3001\u6a21\u578b\u63a8\u7406\u3001o1 \u6a21\u578b\u3001MCP\u3001\u5c0f\u8bed\u8a00\u6a21\u578b\u3001\u89c6\u89c9\u8bed\u8a00\u6a21\u578b\uff09 | Summary of the world's best LLM resources.",
-"url": "https://github.com/WangRongsheng/awesome-LLM-resources"
-},
-"ghrepo:amazon-science/chronos-forecasting": {
-"first_seen": "2026-07-02",
-"mag": 4.3101,
-"mag_history": [
-4.3101
-],
-"score": 3,
-"streak": 1,
-"title": "amazon-science/chronos-forecasting \u2014 Chronos: Pretrained Models for Time Series Forecasting",
-"url": "https://github.com/amazon-science/chronos-forecasting"
-},
-"ghrepo:jolibrain/joliGEN": {
-"first_seen": "2026-07-02",
-"mag": 2.8227,
-"mag_history": [
-2.8227
-],
-"score": 3,
-"streak": 1,
-"title": "jolibrain/joliGEN \u2014 Generative AI Image and Video Toolset with GANs and Diffusion for Real-World Applications",
-"url": "https://github.com/jolibrain/joliGEN"
-},
-"ghrepo:qskousen/ggufy": {
-"first_seen": "2026-07-02",
-"mag": 2.0716,
-"mag_history": [
-2.0716
+1.3863
 ],
 "score": 2,
 "streak": 1,
-"title": "qskousen/ggufy \u2014 CLI/GUI tool for efficient and easy safetensors and gguf model conversion",
-"url": "https://github.com/qskousen/ggufy"
+"title": "Rank-Aware Hyperbolic Alignment for Vision-Language Dataset Distillation",
+"url": "https://arxiv.org/abs/2606.29464"
+},
+"arxiv:2606.30030": {
+"first_seen": "2026-07-02",
+"mag": 0.6931,
+"mag_history": [
+0.6931
+],
+"score": 2,
+"streak": 1,
+"title": "CogSENet: Blind Image Deblurring with Blur-Conditioned Semantic Routing and Explicit Frequency Fusion",
+"url": "https://arxiv.org/abs/2606.30030"
+},
+"arxiv:2606.30124": {
+"first_seen": "2026-07-02",
+"mag": 1.9356,
+"mag_history": [
+1.9356
+],
+"score": 3,
+"streak": 1,
+"title": "SciIR: A Large-scale Training Dataset and Benchmark for Scientific Image Reasoning Generation",
+"url": "https://arxiv.org/abs/2606.30124"
+},
+"hfmodel:fal/LTX-2.3-3DREAL-LoRA": {
+"first_seen": "2026-07-02",
+"mag": 3.474,
+"mag_history": [
+3.474
+],
+"score": 2,
+"streak": 1,
+"title": "fal/LTX-2.3-3DREAL-LoRA (HF Model)",
+"url": "https://huggingface.co/fal/LTX-2.3-3DREAL-LoRA"
 }
 }
