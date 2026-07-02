@@ -4,73 +4,47 @@
 
 # AI Radar — 2026-07-02
 
-This week’s window was dominated by concrete releases: Google’s langextract library is making waves for high-precision extraction from messy text, while robust multimodal and agent-focused benchmarks are gaining traction. No major shifts in hardware, but the emphasis is clear—practical tools and open datasets targeting reliability, memory, and domain adaptation.
+The past 48 hours saw rapid traction for practical, accessible AI tooling, with several resources and libraries trending on GitHub. The theme: usable artifacts enabling large language model (LLM) development, time series forecasting, and generative media applications are receiving outsized attention. No breakthrough research, but a marked emphasis on tools that streamline model deployment and experimentation.
 
 ## What changed
 
 **New today**
-- google/langextract — Python library for structured extraction with LLMs (Google release)
-- InternScience/Agents-A1 (HF Model)
-- PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception
-- MemSyco-Bench: Benchmarking Sycophancy in Agent Memory
-- Domain Arithmetic: One-Shot VLA Adaptation under Environmental Shifts
-- CausalMix: Data Mixture as Causal Inference for Language Model Training
-- Perceive-to-Reason: Decoupling Perception and Reasoning for Fine-Grained Visual Reasoning
-- meituan-longcat/LongCat-2.0 (HF Model)
+- WangRongsheng/awesome-LLM-resources — Summary of the world's best LLM resources
+- amazon-science/chronos-forecasting — Chronos: Pretrained Models for Time Series Forecasting
+- jolibrain/joliGEN — Generative AI Image and Video Toolset with GANs and Diffusion
+- qskousen/ggufy — CLI/GUI tool for safetensors and gguf model conversion
 
 ## Main list
 
-### Agents
-- [InternScience/Agents-A1 (HF Model)](https://huggingface.co/InternScience/Agents-A1)  
-New trending multi-modal agent model (transformers-based, text/image input to text output). Notable for its conversational capabilities and strong group authorship. Useful for developers and researchers tracking agent evolution. · 3/5
+- [WangRongsheng/awesome-LLM-resources](https://github.com/WangRongsheng/awesome-LLM-resources) — A GitHub-hosted summary compiling the most notable LLM resources globally (with 8,623 stars), covering everything from generative multi-modal models and agents to AI-assisted coding, data processing, model training, inference optimization (o1, MCP), small language models, and vision-language architectures. Essential for anyone tracking the frontlines of practical LLM development. · 3/5
 
-- [ginigen-ai/Metacognition-Bench (HF Dataset)](https://huggingface.co/datasets/ginigen-ai/Metacognition-Bench)  
-A new dataset for evaluating metacognition in AI agents, now trending. Useful for benchmarking question-answering and reasoning, aimed at improving agent introspection. · 2/5
+- [amazon-science/chronos-forecasting](https://github.com/amazon-science/chronos-forecasting) — Chronos offers pretrained models for time series forecasting (5,542 stars), making robust forecasting accessible for a range of applications. The library is notable for its breadth, supporting multiple model architectures and data types out of the box. Useful for practitioners in finance, retail, and infrastructure needing ready-to-use time series solutions. · 3/5
 
-### Evaluation
-- [PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception](https://arxiv.org/abs/2606.28322) · [code](https://github.com/M1chaelPeng/PerceptionRubrics) · [project](https://weiyana.github.io/PerceptionRubrics/)  
-Proposes a rubric-based framework to bridge the gap between benchmark scores and real-world performance for multimodal systems. Artifact available and trending on HuggingFace (26 upvotes). Practical tool for model evaluators and benchmark designers. · 3/5
+- [jolibrain/joliGEN](https://github.com/jolibrain/joliGEN) — A generative AI toolkit (GANs and Diffusion) for image and video, designed for “real-world” deployment (282 stars). Emphasizes practical pipelines for media generation and customization, rather than proofs-of-concept. This could be valuable for production teams and startups seeking integrated generative workflows. · 3/5
 
-- [Perceive-to-Reason: Decoupling Perception and Reasoning for Fine-Grained Visual Reasoning](https://arxiv.org/abs/2607.01191) · [code](https://github.com/ZJU-REAL/Perceive-to-Reason)  
-Introduces a modular approach separating perception from reasoning in vision-language models, outperforming prior approaches on challenging visual tasks. Artifact available; promising for those improving visual reasoning robustness. · 3/5
-
-### Other
-- [google/langextract — Python library for extracting structured information from unstructured text](https://github.com/google/langextract)  
-Major Google release: enables high-fidelity extraction and source-grounding from freeform text using LLMs, complete with interactive visualization. Extremely popular (36,988 stars) and likely to be significant for anyone integrating LLMs into business workflows or knowledge engineering. · 4/5
-
-- [MemSyco-Bench: Benchmarking Sycophancy in Agent Memory](https://arxiv.org/abs/2607.01071) · [code](https://github.com/XMUDeepLIT/MemSyco-Bench)  
-Offers a benchmark and analysis for “sycophancy” issues in agent memory—where agents mimic user opinions inappropriately. Trending with 17 HF upvotes; relevant for reliability and safety teams. · 3/5
-
-- [Domain Arithmetic: One-Shot VLA Adaptation under Environmental Shifts](https://arxiv.org/abs/2607.00666) · [code](https://github.com/snumprlab/dart) · [project](https://twkang43.github.io/projects/dart/)  
-Tackles robust adaptation of Vision-Language-Action models to environmental or camera shifts with a "domain arithmetic" method. Artifact available, trending moderately (15 upvotes); important for robotics and embodied AI in dynamic settings. · 3/5
-
-- [CausalMix: Data Mixture as Causal Inference for Language Model Training](https://arxiv.org/abs/2607.01104)  
-Presents a novel framework applying causal inference to optimize training data mixtures for LLMs. Strong authorship and fresh methodology; artifact is available (12 upvotes). · 3/5
-
-- [meituan-longcat/LongCat-2.0 (HF Model)](https://huggingface.co/meituan-longcat/LongCat-2.0)  
-Trending model for long-context tasks, notable mainly for signal rather than novelty. Useful reference for those tracking the evolution of large-context LLMs. · 2/5
-
-- [DavydenkoGr/AFTER (HF Dataset)](https://huggingface.co/datasets/DavydenkoGr/AFTER)  
-Released dataset for agent/benchmark scenarios; practical artifact for benchmarking purposes. · 2/5
+- [qskousen/ggufy](https://github.com/qskousen/ggufy) — Both a CLI and GUI toolset for converting safetensors and gguf model files, streamlining compatibility across AI tooling (62 stars). Small but practical, especially for those managing multiple models or formats in deployment pipelines. · 2/5
 
 ## Watch-list
 
-None surfaced this window.
+_(None surfaced)_
 
 ## Still developing
 
-None surfaced this window.
+_(None this run; all movers are newly trending)_
 
 ## Insights
 
-- Practical artifacts are dominating this week—most surfaced items ship open code or datasets, not just papers.
-- Memory, agent introspection, and domain adaptation remain prime research targets; there's visible movement on making agents more reliable and less prone to bias or sycophancy.
-- Evaluation frameworks are trending, reflecting persistent dissatisfaction with standard benchmarks for real-world robustness.
-- Google’s langextract is the standout—demonstrating demand for production-ready, high-precision tools as LLM use scales.
+- GitHub continues to be the proving ground for artifact traction: all surfaced items showed strong velocity here, rather than more diffuse signals.
+- Focus is trending toward practical, modular tools—compound resource listings, multi-modal conversion utilities, and domain-specialized models rather than end-to-end research systems.
+- The high star counts on resource summaries signal ongoing appetite for curation and tool recommendations in a rapidly changing ecosystem.
+- No major research or hardware releases indicated in this window, but usable artifacts are seeing prime uptake.
 
 ## Action items
 
-- Read the [langextract](https://github.com/google/langextract) repo for practical implementation in knowledge extraction using LLMs.
-- Evaluate [PerceptionRubrics](https://arxiv.org/abs/2606.28322) and [MemSyco-Bench](https://arxiv.org/abs/2607.01071) if you’re working on model reliability or agent safety.
-- Track [Domain Arithmetic](https://arxiv.org/abs/2607.00666) and [CausalMix](https://arxiv.org/abs/2607.01104) for new approaches to robust adaptation and training data optimization in LLMs.
-- Try [InternScience/Agents-A1](https://huggingface.co/InternScience/Agents-A1) if you’re building or benchmarking conversational agents.
+- Read: [WangRongsheng/awesome-LLM-resources](https://github.com/WangRongsheng/awesome-LLM-resources), especially for a one-stop update on LLM developments and practical tools.
+- Try: [amazon-science/chronos-forecasting](https://github.com/amazon-science/chronos-forecasting) if time series forecasting is relevant; easy integration makes this worth a test.
+- Track: [jolibrain/joliGEN](https://github.com/jolibrain/joliGEN) for media pipelines, and [qskousen/ggufy](https://github.com/qskousen/ggufy) for model interoperability.
+
+---
+
+No market exposure mapping is shown, per parameters.
