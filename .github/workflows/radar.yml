@@ -1,18 +1,21 @@
-name: radar
+name: radar (deprecated — use collect-corpus + distill)
 
-# Autonomous daily run: collect -> score -> distill -> commit the digest.
-# Collection is cheap, deterministic, and idempotent (seen.json dedups), so a daily
-# cron is safe. The committed digest lands in reports/ and seen.json is persisted
-# back so the next run dedups against it.
+# DEPRECATED as of the workflow-first split. Kept as a manual rollback for one release cycle.
+#
+# The scheduled cron has been REMOVED so this workflow never races the new collect-corpus.yml
+# + distill.yml pair. To manually roll back to the old single-blob behavior, dispatch this
+# workflow from the Actions tab; to fully remove it, delete this file after the new workflows
+# have run cleanly for a week.
+#
+# Original doc: collect -> score -> distill -> commit the digest in one job.
 
 on:
-  schedule:
-    - cron: "0 13 * * *"   # 13:00 UTC daily (~6am PT / 9am ET). Adjust to taste.
-  workflow_dispatch:        # lets you trigger a run by hand from the Actions tab
+  # schedule removed — collect-corpus.yml + distill.yml handle scheduled runs now.
+  workflow_dispatch:        # manual rollback only
     inputs:
       window:
         description: "Lookback window (e.g. 24h, 48h, 7d)"
-        default: "7d"
+        default: "48h"
       backend:
         description: "Model backend: github (free) | dryrun | anthropic"
         default: "github"
@@ -38,7 +41,7 @@ jobs:
   run:
     runs-on: ubuntu-latest
     env:
-      WINDOW: ${{ github.event.inputs.window || '7d' }}
+      WINDOW: ${{ github.event.inputs.window || '48h' }}
       RADAR_MODEL_BACKEND: ${{ github.event.inputs.backend || 'github' }}
       RADAR_AGENT: ${{ github.event.inputs.radar_agent || 'off' }}   # enrichment off by default
       # FOCUS_BACKEND=embed opts in to semantic FOCUS via GitHub Models embeddings.

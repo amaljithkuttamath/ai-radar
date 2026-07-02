@@ -1,0 +1,75 @@
+name: collect-corpus
+
+# Corpus collection is cheap, deterministic, and idempotent (seen_corpus.json dedups).
+# Running it on its own cadence — separate from distill — means:
+#   • Collectors and the model call don't share failure modes (a 429 in distill never blocks
+#     tomorrow's corpus; a broken RSS feed never kills the digest).
+#   • Multiple corpus refreshes per day are trivial (bump the cron) without paying for extra
+#     model runs.
+#   • The digest run in distill.yml sees a fully-hydrated corpus with no re-fetch.
+#
+# Commits ONLY data/raw/** and data/seen_corpus.json — never touches state_corpus.json or
+# reports/, which are distill.yml's territory. This split (see docs/state-layout.md when it
+# lands) is what prevents merge conflicts between concurrent runs.
+
+on:
+  schedule:
+    - cron: "0 11 * * *"    # 11:00 UTC daily (~4am PT / 7am ET) — 2h before distill
+  workflow_dispatch:
+    inputs:
+      window:
+        description: "Lookback window (e.g. 24h, 48h, 7d)"
+        default: "48h"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect-corpus     # never let two corpus collections overlap
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    env:
+      WINDOW: ${{ github.event.inputs.window || '48h' }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Collect corpus sources
+        run: uv run bash scripts/collect.sh
+
+      # data/raw/ is gitignored (see .gitignore — the corpus is regenerable). Because
+      # distill.yml runs in a fresh checkout, it needs the raw items from THIS run to score
+      # and synthesize. Upload as an artifact so distill.yml can download it. Retention is
+      # 3 days — more than enough for a same-day pipeline, cheap on storage.
+      - name: Upload raw corpus as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: corpus-raw
+          path: data/raw/
+          retention-days: 3
+          if-no-files-found: warn
+          overwrite: true
+
+      - name: Commit dedup ledger
+        run: |
+          git config user.name  "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          # Rebase-on-push guard: distill.yml or a manual push could have landed while we
+          # ran. Rebasing keeps commits linear and avoids a spurious merge commit.
+          git pull --rebase origin main || true
+          # data/raw/ is gitignored on purpose (regenerable corpus). Only data/seen.json (the
+          # dedup ledger that must survive between runs) is committed. distill.yml owns
+          # data/state.json; collect-social.yml will own data/seen_social.json.
+          # NOTE: state-split PR renames seen.json -> seen_corpus.json; update this path then.
+          git add -f data/seen.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No dedup-ledger changes to commit."
+          else
+            git commit -m "corpus: collect $(date -u +%Y-%m-%dT%H:%M) (window=$WINDOW)"
+            git push
+          fi

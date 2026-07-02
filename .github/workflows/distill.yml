@@ -1,0 +1,110 @@
+name: distill
+
+# Score + (optional enrich) + synthesize + reindex + (optional deliver). Reads whatever
+# collectors and any deep-dive runs have written to data/raw/ + data/dives/ — never fetches.
+#
+# Commits ONLY reports/*.md and data/state_corpus.json (the movers snapshot). Never touches
+# data/raw/ or data/seen_*.json, which belong to the collector workflows. This narrow write
+# scope is what makes concurrent runs safe.
+#
+# Reactive: fires on workflow_run when collect-corpus.yml completes successfully. This lets
+# distill grab the fresh corpus artifact directly from the triggering run (via run-id) with
+# no third-party action and no scheduled-cron guessing about how long collect will take. A
+# manual workflow_dispatch is also supported for re-distilling without re-collecting; the
+# concurrency group prevents overlap either way.
+
+on:
+  # Reactive: run as soon as collect-corpus finishes successfully. This removes the arbitrary
+  # 2h gap the old schedule had and lets distill pull the fresh artifact directly.
+  workflow_run:
+    workflows: ["collect-corpus"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      window:
+        description: "Lookback window (e.g. 24h, 48h, 7d)"
+        default: "48h"
+      backend:
+        description: "Model backend: github (free) | dryrun | anthropic"
+        default: "github"
+      radar_agent:
+        description: "Enrichment pass (per-item briefs over GitHub/HN signals): on | off"
+        default: "off"
+      deliver_email:
+        description: "Email the digest after distill (needs SMTP secrets): on | off"
+        default: "on"
+      focus_backend:
+        description: "FOCUS matching backend: lexical (default) | embed (GitHub Models semantic)"
+        default: "lexical"
+
+permissions:
+  contents: write
+  models: read              # lets GITHUB_TOKEN call GitHub Models (free inference)
+
+concurrency:
+  group: distill            # only one distill at a time
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    # workflow_run fires on both success AND failure. Only run distill when the triggering
+    # collect actually succeeded. Manual workflow_dispatch always runs regardless.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+    env:
+      WINDOW: ${{ github.event.inputs.window || '48h' }}
+      RADAR_MODEL_BACKEND: ${{ github.event.inputs.backend || 'github' }}
+      RADAR_AGENT: ${{ github.event.inputs.radar_agent || 'off' }}
+      FOCUS_BACKEND: ${{ github.event.inputs.focus_backend == 'embed' && 'embed' || '' }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Email delivery (optional). Scheduled runs email automatically; a manual run emails
+      # unless deliver_email=off. Clean no-op until secrets exist.
+      RADAR_EMAIL_TO: ${{ (github.event_name == 'schedule' || github.event.inputs.deliver_email != 'off') && secrets.RADAR_EMAIL_TO || '' }}
+      RADAR_EMAIL_FROM: ${{ secrets.RADAR_EMAIL_FROM }}
+      RADAR_SMTP_HOST: ${{ secrets.RADAR_SMTP_HOST }}
+      RADAR_SMTP_PORT: ${{ secrets.RADAR_SMTP_PORT }}
+      RADAR_SMTP_USER: ${{ secrets.RADAR_SMTP_USER }}
+      RADAR_SMTP_PASS: ${{ secrets.RADAR_SMTP_PASS }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      # data/raw/ is gitignored and lives in the collect-corpus artifact. Because this
+      # workflow is triggered by workflow_run on collect-corpus completion, we can grab the
+      # artifact from that specific run via run-id — no third-party action needed, no
+      # "which artifact is latest" ambiguity. For workflow_dispatch runs (manual re-distill
+      # without recollecting) this step is skipped and score.py runs against whatever raw
+      # items already exist locally (which will be empty in a fresh checkout; that yields a
+      # "quiet window" digest, which is the correct signal for a manual run with no data).
+      - name: Download raw corpus from triggering run
+        if: github.event_name == 'workflow_run'
+        uses: actions/download-artifact@v4
+        with:
+          name: corpus-raw
+          path: data/raw/
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Distill (score → synthesize → reindex → deliver)
+        run: uv run bash scripts/distill.sh
+
+      - name: Commit digest + movers snapshot
+        run: |
+          git config user.name  "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git pull --rebase origin main || true
+          # Only paths this workflow owns. seen_corpus.json / data/raw/ belong to
+          # collect-corpus.yml; seen_social.json / raw/social/ belong to collect-social.yml.
+          # NOTE: until the state-split PR lands, distill still writes the legacy
+          # data/state.json. Once state_corpus.json replaces it, update this path.
+          git add -f reports/*.md data/state.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No new digest to commit."
+          else
+            git commit -m "radar: digest for $(date -u +%Y-%m-%d) (window=$WINDOW)"
+            git push
+          fi
