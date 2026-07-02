@@ -156,12 +156,51 @@ python -m collectors.github_trending   # trending AI repos
 python -m collectors.hf_trending       # trending HF models + datasets
 
 # 2. score + 3. distill (the judgment pass)
-WINDOW=48h FOCUS="interpretability,agents,evals" MARKET=on bash scripts/run.sh
+WINDOW=48h FOCUS="interpretability,agents,evals" MARKET=on bash scripts/distill.sh
 ```
 
 The model call in `synthesize.py` is backend-agnostic: set `RADAR_MODEL_BACKEND=anthropic`
 (reads `ANTHROPIC_API_KEY` from env) for the synthesis pass, or `=ollama` to run a local
 model for cheap scoring/drafts. Deterministic fetching never calls a model.
+
+## Automation topology (GitHub Actions)
+
+The radar runs entirely on GitHub Actions. Rather than one monolithic workflow, concerns are
+split across per-purpose workflows so failure modes are isolated, cadences are independent,
+and commit paths never race:
+
+| Workflow | Trigger | Writes | Reads |
+|---|---|---|---|
+| `collect-corpus.yml` | schedule 11:00 UTC daily + `workflow_dispatch` | `data/seen_corpus.json`; uploads `corpus-raw` artifact | source feeds |
+| `distill.yml` | `workflow_run` on collect-corpus success + `workflow_dispatch` | `reports/*.md`, `data/state_corpus.json` | `corpus-raw` artifact, `data/dives/` |
+| `radar.yml` (deprecated) | manual only | — | — (rollback of the single-blob run) |
+
+**Why reactive, not scheduled.** `distill.yml` fires on `workflow_run` when
+`collect-corpus.yml` completes, not on its own cron. That removes the arbitrary "how long
+should distill wait for collect to finish" question and lets distill grab the collector's
+artifact via `run-id` — no cross-workflow artifact discovery, no third-party action.
+
+**Why artifacts, not committed corpus.** `data/raw/` is gitignored on purpose (the corpus
+is regenerable and would grow forever). Instead, `collect-corpus.yml` uploads it as a
+3-day-retention artifact; `distill.yml` downloads it from the triggering run. This keeps the
+repo lean while still letting the two workflows share state.
+
+**Why disjoint commit paths.** `collect-corpus` only commits `data/seen_corpus.json` (the
+dedup ledger). `distill` only commits `reports/*.md` + `data/state_corpus.json` (the
+movers snapshot). Because these sets never overlap, concurrent pushes can't collide — no
+merge-conflict retry logic needed beyond a defensive `git pull --rebase`.
+
+> **Migration note.** The corpus/social state file split (`seen_corpus.json`,
+> `state_corpus.json`, `seen_social.json`, `state_social.json`) lands in a follow-up PR. For
+> this initial split, `collect-corpus.yml` still commits the legacy `data/seen.json` /
+> `data/state.json`; the new names in the table above become active with the state-split PR.
+
+Upcoming workflows in this topology (see the workflow-first PR series):
+- `collect-social.yml` — HN + Reddit + Bluesky, every 2h.
+- `fuse-and-detect.yml` — reactive on collector completion, emits `repository_dispatch`
+  events when social heat triggers.
+- `deep-dive.yml` — reactive on `trigger_fired`, plus `workflow_dispatch` and labeled-issue
+  entry points.
 
 ## Design decisions & non-goals
 
