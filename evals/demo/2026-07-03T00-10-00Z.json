@@ -1,0 +1,73 @@
+{
+  "run_type": "demo",
+  "run_number_in_series": 3,
+  "timestamp_utc": "2026-07-03T00-10-00Z",
+  "digest_url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md",
+  "overall": 3.3,
+  "quality": {
+    "overall": 3,
+    "A1": {
+      "score": 3,
+      "why": "Main list is short and mostly descriptive; insights add some synthesis but limited non-obvious takeaways per paragraph."
+    },
+    "A2": {
+      "score": 5,
+      "why": "All main-list items link to primary sources (arXiv/Hugging Face) and all URLs returned HTTP 200/3xx in head-check."
+    },
+    "A3": {
+      "score": 3,
+      "why": "Items skew toward vision datasets and low-level vision; only partial overlap with focus on agents/evals/rag/long context."
+    },
+    "A4": {
+      "score": 2,
+      "why": "\"What changed\" is present but functions as a \"new today\" list; it does not show movement vs yesterday beyond being new."
+    },
+    "A5": {
+      "score": 2,
+      "why": "3 high-signal last-24h stories relevant to agents/evals/long-context were found outside the digest."
+    }
+  },
+  "experience": {
+    "overall": 3.6,
+    "X1": {
+      "score": 3,
+      "why": "Radar board is readable but the top story is not immediately obvious without scanning multiple cards."
+    },
+    "X2": {
+      "score": 3,
+      "why": "Digest mixes synthesis (e.g., author-quality inference) with facts without consistently labeling subjective claims as model opinion."
+    },
+    "X3": {
+      "score": 4,
+      "why": "Digest commit was 6.0 hours before run time (2026-07-02T18:07Z \u2192 2026-07-03T00:10Z)."
+    },
+    "X4": {
+      "score": 4,
+      "why": "All URLs were reachable in this run; pipeline should still guard against single feed failures via per-source error isolation."
+    },
+    "X5": {
+      "score": 4,
+      "why": "Repo structure separates collection, distillation, and rendering; portfolio reads raw GitHub content and can be regenerated independently."
+    }
+  },
+  "broken_urls": [],
+  "missed_stories": [
+    {
+      "title": "General AgentBench: unified benchmark for LLM agents across coding, search, tool-use, reasoning",
+      "url": "https://arxiv.org/html/2602.18998v1",
+      "why": "Relevant to agent evaluation and test-time scaling; a direct fit for the radar profile focus on agents/evals/long context."
+    },
+    {
+      "title": "ContextBench: benchmark for context retrieval in coding agents",
+      "url": "https://arxiv.org/html/2602.05892v3",
+      "why": "Directly targets long-context retrieval behavior in agentic coding workflows, aligning with long-context and eval focus."
+    }
+  ],
+  "improvement_suggestion": {
+    "target_repo": "ai-radar",
+    "file_path": "distill/render_digest.py",
+    "one_line": "Compute \"What changed\" via a structured diff of today vs yesterday (new/climbing/cooled) instead of a manual bullet list.",
+    "rationale": "Today\u2019s \"What changed\" is a list of new items but does not quantify movement or removals; a diff would improve delta clarity and reduce subjective labeling.",
+    "triggered_by_dim": "A4"
+  }
+}
