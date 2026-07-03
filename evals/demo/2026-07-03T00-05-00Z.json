@@ -1,0 +1,78 @@
+{
+  "run_type": "demo",
+  "run_number_in_series": 1,
+  "timestamp_utc": "2026-07-03T00:05:00Z",
+  "digest_url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md",
+  "overall": 3.6,
+  "quality": {
+    "overall": 2.8,
+    "A1": {
+      "score": 3,
+      "why": "Digest is concise, but several paragraphs restate abstracts rather than adding non-obvious implications for the owner\u2019s workflow."
+    },
+    "A2": {
+      "score": 5,
+      "why": "All main items link to primary sources (arXiv, Apple ML Research, Hugging Face) and all URLs returned 2xx/3xx in HEAD checks."
+    },
+    "A3": {
+      "score": 2,
+      "why": "Today\u2019s main list is heavily vision-focused; it under-serves the stated focus on agents, evals, RAG, interpretability, and long-context."
+    },
+    "A4": {
+      "score": 2,
+      "why": "\u2018What changed\u2019 is present, but the delta vs the prior digest isn\u2019t explained beyond \u2018new today,\u2019 and the window widening note muddies day-to-day diffing."
+    },
+    "A5": {
+      "score": 2,
+      "why": "At least three relevant last-24h items (Apple MemoryLLM, TiRex-2, Vals Public Benefits Bench v1.1) were not covered in the digest."
+    }
+  },
+  "experience": {
+    "overall": 4.4,
+    "X1": {
+      "score": 4,
+      "why": "The radar board design is dense and sortable with clear \u2018board vs brief\u2019 hierarchy, so a cold reader can identify top signals quickly."
+    },
+    "X2": {
+      "score": 5,
+      "why": "The page explicitly labels synthesis as machine-generated commentary and positions observed signals as primary."
+    },
+    "X3": {
+      "score": 4,
+      "why": "Latest digest commit time is ~6 hours before evaluation time, which is within the 6\u201312h freshness band."
+    },
+    "X4": {
+      "score": 4,
+      "why": "Client-side parallel fetches and a board-first layout reduce the chance a single feed failure breaks the whole surface."
+    },
+    "X5": {
+      "score": 5,
+      "why": "Collect/distill/render are decoupled: the site pulls raw GitHub state without requiring a rebuild, keeping regeneration independent."
+    }
+  },
+  "broken_urls": [],
+  "missed_stories": [
+    {
+      "title": "MemoryLLM: Plug-n-Play Interpretable Feed-Forward Memory for Transformers",
+      "url": "https://machinelearning.apple.com/research/memoryllm",
+      "why": "Directly relevant to interpretability and efficient inference: decouples FFNs from attention and enables token-wise lookups with on-demand VRAM transfer."
+    },
+    {
+      "title": "TiRex-2: Generalizing TiRex to Multivariate Data and Streaming",
+      "url": "https://arxiv.org/abs/2607.01204",
+      "why": "Long-horizon/streaming foundation model claim (evaluation up to 32,000,000 steps) fits long-context and efficient sequence modeling interests."
+    },
+    {
+      "title": "Public Benefits Bench v1.1",
+      "url": "https://www.vals.ai/benchmarks/public-benefits-bench",
+      "why": "An evaluation artifact with a concrete rubric and reported model rankings, aligned with the owner\u2019s evals focus and real-world RAG deployment."
+    }
+  ],
+  "improvement_suggestion": {
+    "target_repo": "ai-radar",
+    "file_path": "distill (daily digest prompt/template)",
+    "one_line": "Add a second \u2018Main list\u2019 slice that always reserves 2 slots for profile.yaml focus areas (agents/evals/RAG/interpretability/long-context), even on low-volume days.",
+    "rationale": "Today\u2019s digest was vision-heavy; a fixed quota for focus-aligned topics would improve alignment and reduce \u2018missed story\u2019 risk.",
+    "triggered_by_dim": "A3"
+  }
+}
