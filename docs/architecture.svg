@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-live" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0ea5e9"/>
+    </marker>
+    <style>
+      .stage-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; fill: #6b7280; }
+      .box { fill: #ffffff; stroke: #111827; stroke-width: 1.5; }
+      .box-collect { fill: #f0f9ff; stroke: #0369a1; }
+      .box-distill { fill: #fef3c7; stroke: #b45309; }
+      .box-eval    { fill: #f3e8ff; stroke: #7e22ce; }
+      .box-present { fill: #dcfce7; stroke: #15803d; }
+      .title  { font-size: 13px; font-weight: 700; fill: #111827; }
+      .sub    { font-size: 10.5px; fill: #4b5563; }
+      .arrow  { stroke: #6b7280; stroke-width: 1.5; fill: none; }
+      .live   { stroke: #0ea5e9; stroke-width: 1.5; fill: none; stroke-dasharray: 4 3; }
+      .note   { font-size: 10px; fill: #6b7280; font-style: italic; }
+      .lane   { fill: #f9fafb; stroke: #e5e7eb; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="460" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#111827">AI Radar — pipeline architecture</text>
+  <text x="460" y="42" text-anchor="middle" class="sub">signal -&gt; judgment -&gt; grade -&gt; present. each stage owns its own state.</text>
+
+  <!-- Lane: SOURCES -->
+  <text x="30" y="80" class="stage-label">SOURCES</text>
+  <rect x="30" y="90" width="180" height="130" rx="6" class="lane"/>
+  <text x="120" y="112" text-anchor="middle" class="sub">arXiv API</text>
+  <text x="120" y="130" text-anchor="middle" class="sub">HF Daily Papers</text>
+  <text x="120" y="148" text-anchor="middle" class="sub">Lab RSS / Atom</text>
+  <text x="120" y="166" text-anchor="middle" class="sub">GitHub trending</text>
+  <text x="120" y="184" text-anchor="middle" class="sub">HF trending models</text>
+  <text x="120" y="208" text-anchor="middle" class="note">~30 feeds, stdlib only</text>
+
+  <!-- Stage 1: COLLECT -->
+  <text x="270" y="80" class="stage-label">1 · COLLECT</text>
+  <rect x="240" y="90" width="200" height="130" rx="6" class="box box-collect"/>
+  <text x="340" y="112" text-anchor="middle" class="title">collectors/*.py</text>
+  <text x="340" y="132" text-anchor="middle" class="sub">normalise -&gt; Item schema</text>
+  <text x="340" y="148" text-anchor="middle" class="sub">dedup vs seen.json</text>
+  <text x="340" y="164" text-anchor="middle" class="sub">write JSON per item</text>
+  <text x="340" y="188" text-anchor="middle" class="note">no model calls</text>
+  <text x="340" y="204" text-anchor="middle" class="note">idempotent, cheap</text>
+
+  <!-- Arrow sources → collect -->
+  <path d="M210,155 L240,155" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- Collected state -->
+  <rect x="240" y="240" width="200" height="60" rx="4" fill="#e0f2fe" stroke="#0369a1" stroke-dasharray="3 2"/>
+  <text x="340" y="260" text-anchor="middle" class="title" font-size="11.5">data/raw/&lt;cat&gt;/&lt;date&gt;/*.json</text>
+  <text x="340" y="276" text-anchor="middle" class="sub">data/seen.json</text>
+  <text x="340" y="292" text-anchor="middle" class="note">artifact, not committed</text>
+  <path d="M340,220 L340,240" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- Stage 2: DISTILL -->
+  <text x="500" y="80" class="stage-label">2 · DISTILL</text>
+  <rect x="470" y="90" width="200" height="210" rx="6" class="box box-distill"/>
+  <text x="570" y="112" text-anchor="middle" class="title">the judgment pass</text>
+  <text x="570" y="134" text-anchor="middle" class="sub">score.py  · 0–5 traction</text>
+  <text x="570" y="150" text-anchor="middle" class="sub">focus.py  · profile re-rank</text>
+  <text x="570" y="166" text-anchor="middle" class="sub">delta.py  · new/climbing/cooled</text>
+  <text x="570" y="182" text-anchor="middle" class="sub">enrich.py · optional briefs</text>
+  <text x="570" y="198" text-anchor="middle" class="sub">synthesize.py · 1 model call</text>
+  <text x="570" y="214" text-anchor="middle" class="sub">reindex.py · nav + latest.md</text>
+  <text x="570" y="230" text-anchor="middle" class="sub">deliver.py · optional SMTP</text>
+  <text x="570" y="256" text-anchor="middle" class="note">reactive: workflow_run</text>
+  <text x="570" y="272" text-anchor="middle" class="note">on collect success</text>
+
+  <!-- Arrow collect state → distill -->
+  <path d="M440,270 C455,270 455,180 470,180" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- Digest output -->
+  <rect x="470" y="330" width="200" height="60" rx="4" fill="#fef3c7" stroke="#b45309" stroke-dasharray="3 2"/>
+  <text x="570" y="350" text-anchor="middle" class="title" font-size="11.5">reports/&lt;date&gt;-digest.md</text>
+  <text x="570" y="366" text-anchor="middle" class="sub">reports/latest.md</text>
+  <text x="570" y="382" text-anchor="middle" class="sub">data/state.json</text>
+  <path d="M570,300 L570,330" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- Stage 3: EVAL -->
+  <text x="730" y="80" class="stage-label">3 · EVAL</text>
+  <rect x="700" y="90" width="200" height="210" rx="6" class="box box-eval"/>
+  <text x="800" y="112" text-anchor="middle" class="title">the grader</text>
+  <text x="800" y="134" text-anchor="middle" class="sub">score 10 dims · 0–5 each</text>
+  <text x="800" y="150" text-anchor="middle" class="sub">HEAD-check every URL</text>
+  <text x="800" y="166" text-anchor="middle" class="sub">catch missed stories</text>
+  <text x="800" y="182" text-anchor="middle" class="sub">write evals/&lt;date&gt;.json</text>
+  <text x="800" y="198" text-anchor="middle" class="sub">refresh 30-day trend</text>
+  <text x="800" y="214" text-anchor="middle" class="sub">append backlog item</text>
+  <text x="800" y="230" text-anchor="middle" class="sub">file issue if dim &lt;= 2</text>
+  <text x="800" y="256" text-anchor="middle" class="note">runs out-of-repo · 12:00 UTC</text>
+  <text x="800" y="272" text-anchor="middle" class="note">Perplexity scheduled task</text>
+
+  <!-- Arrow distill output → eval -->
+  <path d="M670,360 C685,360 685,180 700,180" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- Eval output -->
+  <rect x="700" y="330" width="200" height="60" rx="4" fill="#f3e8ff" stroke="#7e22ce" stroke-dasharray="3 2"/>
+  <text x="800" y="350" text-anchor="middle" class="title" font-size="11.5">evals/latest.json</text>
+  <text x="800" y="366" text-anchor="middle" class="sub">evals/backlog.md</text>
+  <text x="800" y="382" text-anchor="middle" class="sub">evals/README.md</text>
+  <path d="M800,300 L800,330" class="arrow" marker-end="url(#arrow)"/>
+
+  <!-- Stage 4: PRESENT (bottom) -->
+  <text x="460" y="425" class="stage-label" text-anchor="middle">4 · PRESENT · amaljithkuttamath.github.io/radar</text>
+  <rect x="240" y="435" width="440" height="90" rx="6" class="box box-present"/>
+  <text x="460" y="458" text-anchor="middle" class="title">radar.astro · static site, live fetch</text>
+  <text x="460" y="478" text-anchor="middle" class="sub">reads state.json + reports/latest.md + evals/latest.json</text>
+  <text x="460" y="494" text-anchor="middle" class="sub">via raw.githubusercontent.com at request time</text>
+  <text x="460" y="514" text-anchor="middle" class="note">new digest lands -&gt; visible on next page load, no rebuild</text>
+
+  <!-- Live-fetch arrows into present (dashed, cyan) -->
+  <path d="M470,435 C420,435 380,320 340,300" class="live" marker-end="url(#arrow-live)"/>
+  <path d="M570,435 L570,390" class="live" marker-end="url(#arrow-live)"/>
+  <path d="M660,435 C700,435 750,410 800,390" class="live" marker-end="url(#arrow-live)"/>
+
+  <!-- Legend -->
+  <g transform="translate(30, 445)">
+    <text x="0" y="0" class="stage-label">LEGEND</text>
+    <line x1="0" y1="14" x2="24" y2="14" class="arrow" marker-end="url(#arrow)"/>
+    <text x="30" y="18" class="sub">pipeline write</text>
+    <line x1="0" y1="34" x2="24" y2="34" class="live" marker-end="url(#arrow-live)"/>
+    <text x="30" y="38" class="sub">live read (CDN)</text>
+    <rect x="0" y="50" width="16" height="10" fill="#ffffff" stroke="#111827" stroke-dasharray="3 2"/>
+    <text x="22" y="59" class="sub">durable state</text>
+  </g>
+</svg>
