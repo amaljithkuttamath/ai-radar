@@ -1,0 +1,17 @@
+# CODEOWNERS for ai-radar
+#
+# Everything in the repo requires owner review by default.
+# The self-healing loop can only open PRs against the whitelisted paths below.
+# This file makes the whitelist enforceable at the review layer, not just in
+# the bot's code, so a rogue bot PR against Python source or workflows still
+# needs @amaljithkuttamath's explicit approval to merge.
+
+*                             @amaljithkuttamath
+
+# Whitelisted paths for the self-healing loop.
+# These still require owner review (default protection above) but are the
+# only paths the loop is *allowed* to touch. See docs/self-healing.md.
+config/*.yaml                 @amaljithkuttamath
+distill/digest.md             @amaljithkuttamath
+distill/brief_spec.md         @amaljithkuttamath
+evals/backlog.md              @amaljithkuttamath
