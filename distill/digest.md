@@ -46,8 +46,11 @@ empty:
 - **New today** — items not present last run (the freshest signal).
 - **Climbing** — items whose traction rose; cite the direction, e.g. "up".
 - **Cooled** — items that lost traction or fell off.
-This is a CHANGE-LOG, not a preview of the main list. Each line is **title only** (optionally a
-3-5 word tag), never a full New/Matters write-up — the detail lives once, in the main list below.
+This is a CHANGE-LOG, not a preview of the main list. Each line is **the title as a clickable
+markdown link to the item's primary URL** (from the MOVERS block's `url` field), optionally
+followed by a 3-5 word tag — e.g. `- [Title of paper](https://arxiv.org/abs/...) — new benchmark`.
+Never a full New/Matters write-up: the detail lives once, in the main list below. Links are
+non-negotiable here just as they are in the main list; a bare title with no URL is a bug.
 At most 4-5 items per group; if a "New today" item is also a top main-list item, it's fine to
 name it here in one line, but DO NOT repeat its description. Never duplicate prose across sections.
 Keep it to the items that actually matter; do not list every mover. This section is what makes
