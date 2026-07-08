@@ -1,15 +1,9 @@
-# evals/
+# AI Radar evals
 
-Daily self-evaluation of the AI Radar pipeline and the digest it produces.
-See [`rubric.md`](./rubric.md) for the 10-dimension scoring spec and
-[`backlog.md`](./backlog.md) for the causal improvement queue.
+30-day trend (newest first).
 
-Each run writes `evals/<YYYY-MM-DD>.json` + mirrors it to `evals/latest.json`.
-The public portfolio page (`amaljithkuttamath.github.io/radar`) can read
-`latest.json` directly via `raw.githubusercontent.com` — no rebuild needed.
+| Date | Quality | Experience | Overall | Broken URLs | Dims ≤2 |
+|---|---:|---:|---:|---:|---|
+| 2026-07-07 | 3.8 | 3.6 | 3.7 | 0 | X2_instrument_honesty |
 
-## 30-day trend
-
-| Date | Quality | Experience | Overall | Note |
-|------|---------|------------|---------|------|
-| _(first run tomorrow — table auto-regenerates)_ | | | | |
+Schema: each daily eval is in `evals/YYYY-MM-DD.json`; `evals/latest.json` is the most recent.
