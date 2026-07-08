@@ -25,6 +25,7 @@ If the doc is missing or malformed, halt and escalate. Do not fall back to task-
 3. **Draft PRs only.** No agent opens a ready-for-review PR. Humans promote.
 4. **Cite evidence.** Every claim in a commit message, PR body, or eval justification cites a specific artifact (an item id, a URL, a file line, an `evals/<date>.json` field). No paraphrase, no fabrication.
 5. **Escalate on ambiguity.** If reality diverges from the contract by more than a rounding error, stop and escalate. Do not guess.
+6. **Empty is not missing.** Distinguish MISSING (unexpected, escalate) from EMPTY (expected on first run, proceed with the documented fallback). Empty results on OPTIONAL inputs never trigger escalation. Only a MISSING CORE input triggers escalation. Each role contract lists exactly which inputs are core.
 
 ## What escalation looks like
 

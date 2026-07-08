@@ -6,17 +6,18 @@ Preconditions: [`.github/AGENTS.md`](../../.github/AGENTS.md), [`invariants.md`]
 
 ## Pull
 
-Read via `gh api`:
+Only two inputs are CORE. Missing either one halts the run and escalates.
 
-- `reports/latest.md`. If 404, list `reports/`, pick the newest `YYYY-MM-DD-digest.md`.
-- Previous digest for delta.
-- `data/state.json`.
-- `amaljithkuttamath/amaljithkuttamath.github.io` → `src/pages/radar.astro`.
-- Newest 3 files under `evals/` for trend context.
-- `evals/backlog.md`.
-- `evals/rubric.md` for scoring anchors.
+- **CORE.** `reports/latest.md`. If 404, list `reports/`, pick the newest `YYYY-MM-DD-digest.md`.
+- **CORE.** `data/state.json`.
 
-Optional reads (suppress 404): prior evals, backlog, rubric. Only `reports/*` and `data/state.json` are core.
+Everything else is OPTIONAL. An empty result is a valid first-run condition, not an error.
+
+- **OPTIONAL.** Previous digest for delta. Wrap: `2>/dev/null || true`. If absent, skip "What changed" analysis and score `A4 delta_clarity` on today's content alone.
+- **OPTIONAL.** `evals/rubric.md` for scoring anchors. Wrap: `2>/dev/null || true`. If absent, fall back to the anchors embedded in this contract (see [Rubric fallback](#rubric-fallback)).
+- **OPTIONAL.** `evals/*.json` history. Wrap: `2>/dev/null || true`. **Empty is expected on the first N runs.** Do not escalate on an empty list. Skip trend-based logic (30-day table has only today's row; 3-day persistent-regression check is skipped until 3 prior evals exist).
+- **OPTIONAL.** `evals/backlog.md`. Wrap: `2>/dev/null || true`. If absent, this run creates it via append.
+- **OPTIONAL.** `amaljithkuttamath/amaljithkuttamath.github.io/src/pages/radar.astro`. Wrap: `2>/dev/null || true`. If absent, score `X1 board_legibility` on the digest markdown alone with a `why` note that the portfolio surface could not be checked.
 
 ## Freshness
 
@@ -37,13 +38,28 @@ Ten dimensions, 0-5 each, one-sentence justification per score. Full anchors in 
 
 Aggregates: `quality.overall = mean(A1..A5)`, `experience.overall = mean(X1..X5)`, `overall = mean(quality, experience)`.
 
+## Rubric fallback
+
+If `evals/rubric.md` is missing or malformed, score using these anchors:
+
+- **A1 signal_density**: 5 every paragraph adds insight beyond the abstract; 1 restated abstracts.
+- **A2 source_integrity**: capped at 2 if any URL 404s; else 5 if every claim links to a primary source.
+- **A3 focus_alignment**: 5 strong topic fit plus one adjacent surprise; 1 drift or echo chamber.
+- **A4 delta_clarity**: 5 explicit new/climbing/cooled with reasons; 1 same items relisted. If no previous digest exists, score on internal consistency of today's classifications.
+- **A5 coverage**: 0 missed=5, 1=4, 2=3, 3=2, 4+=1.
+- **X1 board_legibility**: 5 top row is unambiguously the story of the day; 1 requires reading the brief to know.
+- **X2 instrument_honesty**: 5 attribution and observed signals visually dominate; 1 brief presented as fact.
+- **X3 freshness**: `<6h=5`, `6-12=4`, `12-24=3`, `24-36=2`, `>36=1`.
+- **X4 failure_surface**: 5 isolated try/catch per fetch, quiet-window fallback works; 1 one failure cascades.
+- **X5 coupling**: 5 strict boundaries between collect/distill/render; 1 imports cross the boundary.
+
 ## Write
 
-Per [`whitelist.md#grader`](whitelist.md#grader). All writes via `gh api PUT /repos/.../contents/<path>` with fresh `sha`. Committer `radar-eval-bot <radar-eval-bot@users.noreply.github.com>`. Commit message: `evals: <date>. Quality=X.X experience=X.X`.
+Per [`whitelist.md#grader`](whitelist.md#grader). All writes via `gh api PUT /repos/.../contents/<path>` with fresh `sha`. Committer `radar-eval-bot <radar-eval-bot@users.noreply.github.com>`. Commit message: `evals: <date>. quality=X.X experience=X.X`.
 
-1. `evals/<YYYY-MM-DD>.json`. Full rubric object per [`../04-data-model.md`](../architecture.md#data-contracts) if it exists, otherwise the schema in the rubric file.
+1. `evals/<YYYY-MM-DD>.json`. Full rubric object per the schema in this contract.
 2. `evals/latest.json`. Same object, overwritten.
-3. `evals/README.md`. Regenerate the 30-day trend table from `evals/*.json` (exclude `demo/` and `pre-merge/`).
+3. `evals/README.md`. Regenerate the 30-day trend table from `evals/*.json` (exclude `demo/` and `pre-merge/`). **If no prior evals exist, the table has only today's row. That is correct output, not a bug.**
 4. `evals/backlog.md`. Append 1-3 causal improvement items derived from the lowest-scoring dims (see [Backlog appends](#backlog-appends)).
 
 ## Backlog appends
@@ -64,7 +80,7 @@ File a `[eval]` issue only when:
 
 - Any dimension scores ≤ 2, OR
 - `broken_urls.count > 0`, OR
-- Same dimension scored ≤ 3 for 3+ consecutive days (read prior evals to detect).
+- Same dimension scored ≤ 3 for 3+ consecutive days. **This check is skipped when fewer than 3 prior `evals/*.json` files exist.**
 
 Throttle: at most one issue per 72h across `ai-radar` + `amaljithkuttamath.github.io` combined. Check `gh issue list --author @me --limit 3 --json createdAt,title` on both.
 
@@ -79,14 +95,24 @@ Issue body must include:
 
 ## Deliver
 
-`send_notification` with `channels=["email"]`, `email_args={"template":"generic","subject":"AI Radar , <date> · quality=X.X experience=X.X"}`. Body: the enriched newsletter with sections per the current template. `schedule_description="Daily · 8:00 AM ET"`.
+`send_notification` with `channels=["email"]`, `email_args={"template":"generic","subject":"AI Radar. <date> · quality=X.X experience=X.X"}`. Body: the enriched newsletter with sections per the current template. `schedule_description="Daily · 8:00 AM ET"`.
 
 ## Escalation
 
-- Missing core input (`reports/*`, `data/state.json`, `rubric.md`): halt and escalate.
-- Ambiguous freshness: use `> 36h` strictly. Exact 36.0h is fresh.
-- Contract file (`grader.md` or `invariants.md`) unreadable or missing: halt, escalate. Do not fall back to task text.
-- If task text conflicts with this file, follow this file and log the diff as a comment on the newest open `[eval]` issue.
+Halt and escalate ONLY when:
+
+- A CORE input is missing or 404 (`reports/*`, `data/state.json`).
+- The contract file (`grader.md` or `invariants.md`) is unreadable or missing.
+- A `gh api PUT` fails after one retry with `sha` refetch.
+
+**Never escalate on:**
+
+- Empty `evals/*.json` history. That is a valid first-run condition.
+- Missing `evals/backlog.md`. This run creates it.
+- Missing `evals/rubric.md`. Fall back to the anchors in this contract.
+- Missing portfolio `radar.astro`. Score `X1` with a `why` note and continue.
+- Digest age exactly 36.0h. Fresh, proceed.
+- Task text conflicting with this file. Follow this file, log the diff as a comment on the newest open `[eval]` issue.
 
 ## Non-goals
 
