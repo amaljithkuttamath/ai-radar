@@ -17,3 +17,5 @@ _(none yet — first daily eval run will populate this.)_
 ## Done
 
 _(empty)_
+
+- [ ] 2026-07-07 · Fix/verify traction metrics (stars/upvotes) before publishing · distill/digest.md · Digest included specific GitHub star counts for ponytail and InverseBench that did not match the linked repo pages at evaluation time, reducing trust in instrumentation. Add a lightweight validation step (or remove hard numbers) so traction signals are either correct or clearly labeled as approximate/observed-at-time. · triggered by X2_instrument_honesty 2
