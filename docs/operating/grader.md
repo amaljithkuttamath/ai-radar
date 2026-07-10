@@ -21,7 +21,17 @@ Everything else is OPTIONAL. An empty result is a valid first-run condition, not
 
 ## Freshness
 
-Digest is stale only if age is strictly greater than 36 hours. Exactly 36.0h is fresh. If stale, end silently. Do not email, do not write evals.
+Determine the digest's publication date from these sources in priority order:
+
+1. **The `# AI Radar. YYYY-MM-DD` H1 header** inside the digest body. This is the authoritative timestamp. Regex against `^# AI Radar[. -]+(\d{4}-\d{2}-\d{2})` on the FIRST H1 in the file.
+2. **The filename** of the newest `reports/YYYY-MM-DD-digest.md` obtained via `gh api repos/.../contents/reports --jq '.[].name'`, sorted descending. Use this only if the H1 header is missing or malformed.
+
+**Never parse the date from `reports/latest.md`'s nav block** (`[<- YYYY-MM-DD](...)` at the top of the file). The nav references the PREVIOUS digest and will always be wrong.
+
+Sanity assertion: the parsed date must be within `[today - 3 days, today + 1 day]` UTC. A date outside this window is a parsing error, not a stale digest, and should be escalated (not silently ended).
+
+Digest is stale only if age from parsed date to now is strictly greater than 36 hours. Exactly 36.0h is fresh. If stale, end silently. Do not email, do not write evals.
+
 
 ## Enrich
 
