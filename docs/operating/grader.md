@@ -2,7 +2,20 @@
 
 The grader is a scheduled task at 12:00 UTC (8:00 AM ET). It reads the latest digest, scores it against the 10-dim rubric, commits eval artifacts, and files an issue when quality drops.
 
-Preconditions: [`.github/AGENTS.md`](../../.github/AGENTS.md), [`invariants.md`](invariants.md), [`whitelist.md`](whitelist.md) all loaded and honored.
+Preconditions: [`.github/AGENTS.md`](../../.github/AGENTS.md), [`invariants.md`](invariants.md), [`whitelist.md`](whitelist.md) all loaded and honored per the [contract load](#contract-load) rules below.
+
+## Contract load
+
+Load the four contract files INDIVIDUALLY, not in a shell loop. Each file must be fetched and validated on its own so a transient failure on one file doesn't corrupt the others.
+
+For each of `.github/AGENTS.md`, `docs/operating/invariants.md`, `docs/operating/whitelist.md`, `docs/operating/grader.md`:
+
+1. `gh api repos/amaljithkuttamath/ai-radar/contents/<path> --jq .content` and decode base64.
+2. If the call fails, sleep 3 seconds and retry ONCE.
+3. If the retry fails, escalate with the specific path and error. Do not proceed.
+4. If the response is empty or does not decode as UTF-8 text starting with `# `, treat as malformed and escalate.
+
+Only if all four files load cleanly, proceed. Do not use a bash `for` loop across all four; loop-level `stderr` from one file's failure can mask the success of others and trigger a false halt.
 
 ## Pull
 
@@ -21,17 +34,23 @@ Everything else is OPTIONAL. An empty result is a valid first-run condition, not
 
 ## Freshness
 
-Determine the digest's publication date from these sources in priority order:
+Determine the digest's publication timestamp from these sources in priority order:
 
-1. **The `# AI Radar. YYYY-MM-DD` H1 header** inside the digest body. This is the authoritative timestamp. Regex against `^# AI Radar[. -]+(\d{4}-\d{2}-\d{2})` on the FIRST H1 in the file.
-2. **The filename** of the newest `reports/YYYY-MM-DD-digest.md` obtained via `gh api repos/.../contents/reports --jq '.[].name'`, sorted descending. Use this only if the H1 header is missing or malformed.
+1. **Git commit time of `reports/latest.md`**. This is the authoritative timestamp.
+   ```
+   gh api "repos/amaljithkuttamath/ai-radar/commits?path=reports/latest.md&per_page=1" \
+     --jq '.[0].commit.committer.date'
+   ```
+   Returns an ISO 8601 UTC timestamp like `2026-07-11T13:44:22Z`. Compute age from this to `now()` in UTC.
+2. **H1 date treated as noon UTC**, only if the commit lookup fails. Parse `^# AI Radar[. -]+(\d{4}-\d{2}-\d{2})` from the first H1 in the digest body. Anchor at `T12:00:00Z` of that date.
 
 **Never parse the date from `reports/latest.md`'s nav block** (`[<- YYYY-MM-DD](...)` at the top of the file). The nav references the PREVIOUS digest and will always be wrong.
 
-Sanity assertion: the parsed date must be within `[today - 3 days, today + 1 day]` UTC. A date outside this window is a parsing error, not a stale digest, and should be escalated (not silently ended).
+**Never compute age from H1 date parsed as midnight UTC.** A digest published at 1:00 PM UTC on day D is not "13h old at midnight the same day"; it is `now - commit_time`.
 
-Digest is stale only if age from parsed date to now is strictly greater than 36 hours. Exactly 36.0h is fresh. If stale, end silently. Do not email, do not write evals.
+Sanity assertion: the resulting age must be in `[-12h, +72h]`. A negative age > 12h means clock skew or parser bug; an age > 72h means the pipeline has been down for days. Either case: escalate, do not silently end.
 
+Digest is stale only if age is strictly greater than 36 hours. Exactly 36.0h is fresh. If stale, end silently. Do not email, do not write evals.
 
 ## Enrich
 
@@ -92,7 +111,7 @@ File a `[eval]` issue only when:
 - `broken_urls.count > 0`, OR
 - Same dimension scored ≤ 3 for 3+ consecutive days. **This check is skipped when fewer than 3 prior `evals/*.json` files exist.**
 
-Throttle: at most one issue per 72h across `ai-radar` + `amaljithkuttamath.github.io` combined. Check `gh issue list --author @me --limit 3 --json createdAt,title` on both.
+Throttle: at most one issue per 72h across `ai-radar` + `amaljithkuttamath.github.io` combined. Check via `gh issue list --repo <repo> --author @me --limit 3 --json createdAt,title` on both. **Use the `gh issue list` subcommand, never `gh api /search/issues` (returns 404) or `gh api /repos/.../issues` (needs different flags).**
 
 Issue title: `[eval] <dim>: <one-line fix>`. Include the `eval` label so the coder can query for it.
 
@@ -112,8 +131,9 @@ Issue body must include:
 Halt and escalate ONLY when:
 
 - A CORE input is missing or 404 (`reports/*`, `data/state.json`).
-- The contract file (`grader.md` or `invariants.md`) is unreadable or missing.
+- The contract-load step failed for a specific file after one retry.
 - A `gh api PUT` fails after one retry with `sha` refetch.
+- Freshness sanity assertion trips (`age not in [-12h, +72h]`).
 
 **Never escalate on:**
 
@@ -122,6 +142,7 @@ Halt and escalate ONLY when:
 - Missing `evals/rubric.md`. Fall back to the anchors in this contract.
 - Missing portfolio `radar.astro`. Score `X1` with a `why` note and continue.
 - Digest age exactly 36.0h. Fresh, proceed.
+- `stderr` on the contract-load step if all four files nonetheless decoded to valid content. `stderr` alone is not a failure signal; check each file's content directly.
 - Task text conflicting with this file. Follow this file, log the diff as a comment on the newest open `[eval]` issue.
 
 ## Non-goals
