@@ -2,17 +2,42 @@
 
 The coder is a scheduled task at 19:00 UTC (3:00 PM ET), seven hours after the grader. It reads open `[eval]` issues and opens exactly one draft PR that would raise the failing dim.
 
-Preconditions: [`.github/AGENTS.md`](../../.github/AGENTS.md), [`invariants.md`](invariants.md), [`whitelist.md`](whitelist.md) all loaded and honored.
+Preconditions: [`.github/AGENTS.md`](../../.github/AGENTS.md), [`invariants.md`](invariants.md), [`whitelist.md`](whitelist.md) all loaded and honored per the [contract load](#contract-load) rules below.
+
+## Contract load
+
+Load the four contract files INDIVIDUALLY, not in a shell loop. Each file must be fetched and validated on its own so a transient failure on one file doesn't corrupt the others.
+
+For each of `.github/AGENTS.md`, `docs/operating/invariants.md`, `docs/operating/whitelist.md`, `docs/operating/coder.md`:
+
+1. `gh api repos/amaljithkuttamath/ai-radar/contents/<path> --jq .content` and decode base64.
+2. If the call fails, sleep 3 seconds and retry ONCE.
+3. If the retry fails, escalate with the specific path and error. Do not proceed.
+4. If the response is empty or does not decode as UTF-8 text starting with `# `, treat as malformed and escalate.
+
+Only if all four files load cleanly, proceed. Do not use a bash `for` loop across all four; loop-level `stderr` from one file's failure can mask the success of others and trigger a false halt.
+
+## GitHub API usage
+
+Always use the `gh` CLI subcommands, never low-level `gh api` REST calls, for the following operations:
+
+- **List PRs**: `gh pr list --repo amaljithkuttamath/ai-radar --author @me --label auto-improve --state open --json number,title,url`. Do NOT use `gh api repos/.../pulls` (returns 422 without base/head).
+- **List issues**: `gh issue list --repo amaljithkuttamath/ai-radar --author @me --state open --json number,title,body,createdAt,labels --limit 20`. Do NOT use `gh api /search/issues` (returns 404 in this environment).
+- **Create PR**: `gh pr create --draft --repo ...`.
+- **Create issue comment**: `gh issue comment <n> --repo ...`.
+- **Close issue**: `gh issue close <n> --repo ...`.
+
+`gh api` is only correct for reading file contents (`gh api repos/.../contents/<path>`) and for PUT writes (`gh api -X PUT repos/.../contents/<path>`). Every other GitHub interaction goes through the subcommand.
 
 ## Gates (exit early if any fail)
 
 ### G1. Max 1 open bot PR
 
-`gh pr list --author @me --label auto-improve --state open --json number,title`. If non-empty, comment on the top open `[eval]` issue with "Waiting on PR #N to resolve" (only if that isn't the most recent comment) and end silently.
+`gh pr list --repo amaljithkuttamath/ai-radar --author @me --label auto-improve --state open --json number,title,url`. If non-empty, comment on the top open `[eval]` issue with "Waiting on PR #N to resolve" (only if that isn't the most recent comment) and end silently.
 
 ### G2. Fetch open eval issues
 
-`gh issue list --author @me --state open --json number,title,body,createdAt,labels --limit 20`. Filter to titles starting `[eval]` OR labeled `eval`. Sort by severity:
+`gh issue list --repo amaljithkuttamath/ai-radar --author @me --state open --json number,title,body,createdAt,labels --limit 20`. Filter to titles starting `[eval]` OR labeled `eval`. Sort by severity:
 
 1. `broken_urls > 0` (highest)
 2. Any dim scored ≤ 1
@@ -27,7 +52,7 @@ Read `evals/latest.json`. Parse the failing dim from the issue title. If the cur
 
 ### G4. File cooldown
 
-Determine the target file per [Dim → edit mapping](#dim--edit-mapping). Query recent bot PRs: `gh pr list --author @me --label auto-improve --state all --limit 10 --json number,mergedAt,closedAt,files,createdAt,title`. If any bot PR touched the target file within the last 72h (regardless of state), skip this issue with a comment `File cooldown: <path> was touched by PR #N within 72h. Skipping this cycle.` Move to next issue.
+Determine the target file per [Dim → edit mapping](#dim--edit-mapping). Query recent bot PRs: `gh pr list --repo amaljithkuttamath/ai-radar --author @me --label auto-improve --state all --limit 10 --json number,mergedAt,closedAt,files,createdAt,title`. If any bot PR touched the target file within the last 72h (regardless of state), skip this issue with a comment `File cooldown: <path> was touched by PR #N within 72h. Skipping this cycle.` Move to next issue.
 
 If all queued issues are cooled down, end silently.
 
