@@ -1,0 +1,26 @@
+{
+  "date": "2026-07-12",
+  "mode": "recovery",
+  "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
+  "digest_commit_time_utc": "2026-07-12T11:53:19Z",
+  "age_hours_at_eval": 0.36,
+  "overall": 4.2,
+  "quality": {
+    "overall": 4.2,
+    "A1": {"score": 4, "why": "No filler; each item has takeaway (latest.md lines 19–29)."},
+    "A2": {"score": 5, "why": "All 4 Main URLs return 200; links are primary GitHub repos."},
+    "A3": {"score": 4, "why": "Practical AI tooling focus; little adjacent-field surprise."},
+    "A4": {"score": 4, "why": "Clearly labeled ‘New today’ with 4 items (latest.md lines 11–16)."},
+    "A5": {"score": 4, "why": "No obvious missed major story; but only 4 items reduces breadth."}
+  },
+  "experience": {
+    "overall": 4.2,
+    "X1": {"score": 4, "why": "Top story is NVIDIA Curator; appears first in Main list."},
+    "X2": {"score": 4, "why": "Evaluative language plus numeric scores; limited attribution of opinions."},
+    "X3": {"score": 5, "why": "Digest age 0.36h at eval (<6h threshold)."},
+    "X4": {"score": 4, "why": "No failures today; explicit per-feed fallback not evidenced in digest."},
+    "X5": {"score": 4, "why": "Repo boundaries implied; not directly validated in this run."}
+  },
+  "broken_urls": [],
+  "missed_stories": []
+}
