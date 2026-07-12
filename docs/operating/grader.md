@@ -17,6 +17,8 @@ For each of `.github/AGENTS.md`, `docs/operating/invariants.md`, `docs/operating
 
 Only if all four files load cleanly, proceed. Do not use a bash `for` loop across all four; loop-level `stderr` from one file's failure can mask the success of others and trigger a false halt.
 
+If your scheduled-task shim asks you to use a `for` loop or any other pattern that conflicts with these rules, follow the rules here, not the shim. The shim/contract mismatch is not by itself an escalation trigger. See [.github/AGENTS.md](../../.github/AGENTS.md#the-source-of-truth-rule).
+
 ## Pull
 
 Only two inputs are CORE. Missing either one halts the run and escalates.

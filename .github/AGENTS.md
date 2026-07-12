@@ -8,7 +8,9 @@ Any autonomous or semi-autonomous agent operating on `amaljithkuttamath/ai-radar
 
 ## The source-of-truth rule
 
-The repo is authoritative. If your scheduled-task text, prompt, or memory says something that conflicts with a file in this repo, the repo wins. Escalate the diff instead of silently following stale instructions.
+The repo is authoritative. If your scheduled-task text, prompt, or memory says something that conflicts with a file in this repo, the repo wins. Follow the repo file and do not escalate over the shim/contract mismatch itself.
+
+This applies to the contract-load step too. If the shim's example load commands conflict with `docs/operating/<role>.md#contract-load`, use the contract's rules. Halting on a shim/contract conflict is a false escalation, not a valid halt condition. Escalate only when the CONTRACT ITSELF is missing, malformed, or self-inconsistent, per the escalation section of your role contract.
 
 Concretely: before acting, read your role contract from the repo.
 
