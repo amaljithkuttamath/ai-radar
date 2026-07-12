@@ -69,6 +69,14 @@ Ten dimensions, 0-5 each, one-sentence justification per score. Full anchors in 
 
 Aggregates: `quality.overall = mean(A1..A5)`, `experience.overall = mean(X1..X5)`, `overall = mean(quality, experience)`.
 
+### Score in one pass
+
+Score all 10 dimensions in a SINGLE output pass, not incrementally. Load the rubric anchors in full, hold every score plus its justification in memory, then emit the complete JSON object. Do not draft A1..A3 to a file and continue in a second step; that pattern hits output-length limits mid-emit and produces a truncated eval that fails schema validation.
+
+Justifications MUST be terse: 15 words max per dimension. Cite an item id, URL, or file line. A rubric fallback with 15-word anchors is embedded below for when `evals/rubric.md` is unavailable; those anchors also demonstrate the target terseness.
+
+If you catch yourself planning 'I will write these five now and continue,' STOP. Score all 10 in memory first, then emit.
+
 ## Rubric fallback
 
 If `evals/rubric.md` is missing or malformed, score using these anchors:
