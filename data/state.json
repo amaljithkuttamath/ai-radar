@@ -1,134 +1,46 @@
 {
-"ghrepo:AI-Hypercomputer/maxtext": {
-"first_seen": "2026-07-12",
-"mag": 3.8826,
+"ghrepo:SkyworkAI/UniPic": {
+"first_seen": "2026-07-13",
+"mag": 3.3848,
 "mag_history": [
-3.8826
-],
-"score": 3,
-"streak": 1,
-"title": "AI-Hypercomputer/maxtext \u2014 A simple, performant, and scalable Jax LLM!",
-"url": "https://github.com/AI-Hypercomputer/maxtext"
-},
-"ghrepo:NVIDIA-NeMo/Curator": {
-"first_seen": "2026-07-12",
-"mag": 3.7073,
-"mag_history": [
-3.7073
+3.3848
 ],
 "score": 4,
 "streak": 1,
-"title": "NVIDIA-NeMo/Curator \u2014 Scalable data pre processing and curation toolkit for LLMs",
-"url": "https://github.com/NVIDIA-NeMo/Curator"
+"title": "SkyworkAI/UniPic \u2014 Open-source SOTA multi-image editing model",
+"url": "https://github.com/SkyworkAI/UniPic"
 },
-"ghrepo:StarlightSearch/EmbedAnything": {
-"first_seen": "2026-07-12",
-"mag": 3.5773,
+"hfdataset:AlicanKiraz0/Turkce-Atlas-Instruct": {
+"first_seen": "2026-07-13",
+"mag": 2.1948,
 "mag_history": [
-3.5773
-],
-"score": 3,
-"streak": 1,
-"title": "StarlightSearch/EmbedAnything \u2014 Highly Performant, Modular, Memory Safe and Production-ready Inference, Ingestion and Indexing built in Rust \ud83e\udd80",
-"url": "https://github.com/StarlightSearch/EmbedAnything"
-},
-"ghrepo:dust-tt/dust": {
-"first_seen": "2026-07-12",
-"mag": 3.6271,
-"mag_history": [
-3.6271
-],
-"score": 3,
-"streak": 1,
-"title": "dust-tt/dust \u2014 Custom AI agent platform to speed up your work.",
-"url": "https://github.com/dust-tt/dust"
-},
-"ghrepo:paperless-ngx/paperless-ngx": {
-"first_seen": "2026-07-12",
-"mag": 5.3337,
-"mag_history": [
-5.3337
-],
-"score": 3,
-"streak": 1,
-"title": "paperless-ngx/paperless-ngx \u2014 A community-supported supercharged document management system: scan, index and archive all your documents",
-"url": "https://github.com/paperless-ngx/paperless-ngx"
-},
-"ghrepo:rasbt/LLMs-from-scratch": {
-"first_seen": "2026-07-12",
-"mag": 5.7512,
-"mag_history": [
-5.7512
-],
-"score": 3,
-"streak": 1,
-"title": "rasbt/LLMs-from-scratch \u2014 Implement a ChatGPT-like LLM in PyTorch from scratch, step by step",
-"url": "https://github.com/rasbt/LLMs-from-scratch"
-},
-"ghrepo:taichengguo/LLM_MultiAgents_Survey_Papers": {
-"first_seen": "2026-07-12",
-"mag": 3.5812,
-"mag_history": [
-3.5812
-],
-"score": 4,
-"streak": 1,
-"title": "taichengguo/LLM_MultiAgents_Survey_Papers \u2014 Large Language Model based Multi-Agents: A Survey of Progress and Challenges (In IJCAI 2024)",
-"url": "https://github.com/taichengguo/LLM_MultiAgents_Survey_Papers"
-},
-"ghrepo:tercumantanumut/selene": {
-"first_seen": "2026-07-12",
-"mag": 2.5649,
-"mag_history": [
-2.5649
-],
-"score": 3,
-"streak": 1,
-"title": "tercumantanumut/selene \u2014 Selene is a desktop app that runs AI agents on your machine. Connect them to your WhatsApp, Telegram, Slack, or Discord. Write code, generate images, build personal assistants. All from one place. Your data stays on your device.",
-"url": "https://github.com/tercumantanumut/selene"
-},
-"ghrepo:xianshang33/llm-paper-daily": {
-"first_seen": "2026-07-12",
-"mag": 3.5816,
-"mag_history": [
-3.5816
-],
-"score": 3,
-"streak": 1,
-"title": "xianshang33/llm-paper-daily \u2014 Daily updated LLM papers.        \u6bcf\u65e5\u66f4\u65b0 LLM \u76f8\u5173\u7684\u8bba\u6587\uff0c\u6b22\u8fce\u8ba2\u9605 \ud83d\udc4f   \u559c\u6b22\u7684\u8bdd\u52a8\u52a8\u4f60\u7684\u5c0f\u624b \ud83c\udf1f \u4e00\u4e2a",
-"url": "https://github.com/xianshang33/llm-paper-daily"
-},
-"hfmodel:SupraLabs/Supra-Router-51M": {
-"first_seen": "2026-07-12",
-"mag": 3.2511,
-"mag_history": [
-3.2511
+2.1948
 ],
 "score": 1,
 "streak": 1,
-"title": "SupraLabs/Supra-Router-51M (HF Model)",
-"url": "https://huggingface.co/SupraLabs/Supra-Router-51M"
+"title": "AlicanKiraz0/Turkce-Atlas-Instruct (HF Dataset)",
+"url": "https://huggingface.co/datasets/AlicanKiraz0/Turkce-Atlas-Instruct"
 },
-"hfmodel:nvidia/NVIDIA-Nemotron-Labs-3-Puzzle-75B-A9B-NVFP4": {
-"first_seen": "2026-07-12",
-"mag": 3.2903,
+"hfdataset:openbmb/UltraX-Preview": {
+"first_seen": "2026-07-13",
+"mag": 2.1948,
 "mag_history": [
-3.2903
+2.1948
 ],
-"score": 2,
+"score": 1,
 "streak": 1,
-"title": "nvidia/NVIDIA-Nemotron-Labs-3-Puzzle-75B-A9B-NVFP4 (HF Model)",
-"url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-3-Puzzle-75B-A9B-NVFP4"
+"title": "openbmb/UltraX-Preview (HF Dataset)",
+"url": "https://huggingface.co/datasets/openbmb/UltraX-Preview"
 },
-"hfmodel:nvidia/Nemotron-Labs-Audex-30B-A3B": {
-"first_seen": "2026-07-12",
-"mag": 3.4019,
+"hfmodel:Alissonerdx/LTX-Best-Face-ID": {
+"first_seen": "2026-07-13",
+"mag": 3.3454,
 "mag_history": [
-3.4019
+3.3454
 ],
-"score": 3,
+"score": 1,
 "streak": 1,
-"title": "nvidia/Nemotron-Labs-Audex-30B-A3B (HF Model)",
-"url": "https://huggingface.co/nvidia/Nemotron-Labs-Audex-30B-A3B"
+"title": "Alissonerdx/LTX-Best-Face-ID (HF Model)",
+"url": "https://huggingface.co/Alissonerdx/LTX-Best-Face-ID"
 }
 }
