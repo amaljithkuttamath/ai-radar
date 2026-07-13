@@ -1,15 +1,57 @@
 {
   "date": "2026-07-07",
-  "run": "recovery",
-  "inputs": {
-    "digest_path": "reports/latest.md",
-    "digest_sha": "2adb530724f632b6a3385c596c6e77c528029a78",
-    "state_path": "data/state.json"
+  "mode": "recovery",
+  "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/2026-07-07-digest.md",
+  "digest_commit_time_utc": "2026-07-07T12:00:00Z",
+  "age_hours_at_eval": null,
+  "overall": 3.7,
+  "quality": {
+    "overall": 3.8,
+    "A1": {
+      "score": 4,
+      "why": "Most items include a short, specific claim about the contribution or artifact, though a few\u2026"
+    },
+    "A2": {
+      "score": 4,
+      "why": "Links are primarily to primary sources (arXiv, official NVIDIA blog, GitHub), and the checked URLs\u2026"
+    },
+    "A3": {
+      "score": 4,
+      "why": "The main list stays tightly on AI research/tools (robotics, 3D, benchmarks, inference ops) with limited\u2026"
+    },
+    "A4": {
+      "score": 4,
+      "why": "The 'New today' section is explicit and categories are internally consistent; the narrative also states\u2026"
+    },
+    "A5": {
+      "score": 3,
+      "why": "At least one notable same-day robotics tooling story (GR00T 1.7 + Isaac Teleop availability in\u2026"
+    }
   },
-  "broken_urls": {
-    "count": 0,
-    "items": []
+  "experience": {
+    "overall": 3.6,
+    "X1": {
+      "score": 4,
+      "why": "The top narrative clearly frames PixWorld as the lead story and the main list supports\u2026"
+    },
+    "X2": {
+      "score": 2,
+      "why": "Some numeric traction signals (GitHub stars) look materially wrong relative to the linked repo pages\u2026"
+    },
+    "X3": {
+      "score": 4,
+      "why": "The digest commit timestamp indicates it is ~11 hours old at the recovery-run time, which\u2026"
+    },
+    "X4": {
+      "score": 4,
+      "why": "The pipeline produces a complete digest even with empty sections (e.g., Retrieval), and the overall\u2026"
+    },
+    "X5": {
+      "score": 4,
+      "why": "Inputs and outputs appear well-separated (reports vs eval artifacts), and the digest reads like a\u2026"
+    }
   },
+  "broken_urls": [],
   "missed_stories": [
     {
       "title": "NVIDIA Isaac Teleop and GR00T 1.7 Open VLA Model Available in LeRobot",
@@ -17,91 +59,5 @@
       "why": "Published July 7, 2026; announces GR00T 1.7 and Isaac Teleop availability in LeRobot with concrete install/training/deploy guidance, and includes benchmark deltas (LIBERO) that are directly relevant to open robotics foundation-model tooling."
     }
   ],
-  "enriched_top_items": [
-    {
-      "title": "PixWorld: Unifying 3D Scene Generation and Reconstruction in Pixel Space",
-      "url": "https://arxiv.org/abs/2607.05373",
-      "primary_source": "https://arxiv.org/abs/2607.05373",
-      "why_it_matters": "PixWorld reformulates 3D reconstruction and 3D generation as one pixel-space diffusion problem (instead of latent-space diffusion), and adds geometry-aware supervision via features from a pretrained 3D foundation model, which makes it a plausible practical bridge between 'reconstruct' and 'generate' pipelines for 3D/vision teams."
-    },
-    {
-      "title": "InternVLA-A1.5: Unifying Understanding, Latent Foresight, and Action for Compositional Generalization",
-      "url": "https://arxiv.org/abs/2607.04988",
-      "primary_source": "https://arxiv.org/abs/2607.04988",
-      "why_it_matters": "InternVLA-A1.5 tries to keep pretrained VLM semantics while adding action generation, and learns 'foresight tokens' supervised by a frozen pretrained video generator (discarded at inference), which is an explicit design pattern for importing world-model priors into real-time robot control without training pixel-level video prediction."
-    },
-    {
-      "title": "Evaluating and Understanding Model Editing for Medical Vision Language Models (M3Bench)",
-      "url": "http://arxiv.org/abs/2607.05310v1",
-      "primary_source": "http://arxiv.org/abs/2607.05310v1",
-      "why_it_matters": "M3Bench is a clinically grounded stress test for multimodal medical model editing (16,276 questions) and highlights a key tradeoff: gradient-based editors transfer but can break locality, while memory-based methods preserve locality but struggle with compositional generality, which is useful guidance for post-deployment correction strategies in medical VLMs."
-    },
-    {
-      "title": "HiFA4: Training-Free 4-bit FlashAttention on Ascend HIF4 NPUs for LLM Inference",
-      "url": "http://arxiv.org/abs/2607.04302v1",
-      "primary_source": "http://arxiv.org/abs/2607.04302v1",
-      "why_it_matters": "HiFA4 proposes an operator-level 4-bit FlashAttention design for Ascend NPUs (Smooth-QK + P-Reordering) and reports reduced decision drift and fewer MMLU regressions across several models, which is a concrete sign that post-training quantization/operator tricks are becoming hardware-specific and benchmarked rather than hand-wavy."
-    },
-    {
-      "title": "NVIDIA and Hugging Face Bring New Models and Frameworks to LeRobot for the Open Robotics Community",
-      "url": "https://blogs.nvidia.com/blog/hugging-face-lerobot-models-frameworks-open-robotics/",
-      "primary_source": "https://blogs.nvidia.com/blog/hugging-face-lerobot-models-frameworks-open-robotics/",
-      "why_it_matters": "This is a concrete 'plumbing' release: NVIDIA is integrating Isaac Teleop and the open GR00T 1.7 VLA model into Hugging Face LeRobot, with a stated plan to bring Cosmos 3 next, which suggests the open robotics stack is consolidating around shared datasets/workflows rather than isolated demos."
-    }
-  ],
-  "scores": {
-    "A1_signal_density": {
-      "score": 4,
-      "why": "Most items include a short, specific claim about the contribution or artifact, though a few entries read closer to generic interest statements than distilled takeaways."
-    },
-    "A2_source_integrity": {
-      "score": 4,
-      "why": "Links are primarily to primary sources (arXiv, official NVIDIA blog, GitHub), and the checked URLs resolved; however, the digest includes specific GitHub-star counts that appear inconsistent with the linked repo pages, which weakens trust in quantitative claims."
-    },
-    "A3_focus_alignment": {
-      "score": 4,
-      "why": "The main list stays tightly on AI research/tools (robotics, 3D, benchmarks, inference ops) with limited drift, though a couple items are only loosely connected to core 'AI Radar' relevance."
-    },
-    "A4_delta_clarity": {
-      "score": 4,
-      "why": "The 'New today' section is explicit and categories are internally consistent; the narrative also states there are no major movers, which is coherent with the structure."
-    },
-    "A5_coverage": {
-      "score": 3,
-      "why": "At least one notable same-day robotics tooling story (GR00T 1.7 + Isaac Teleop availability in LeRobot with practical workflow guidance) appears missing from the digest’s main list despite being directly relevant."
-    },
-    "X1_board_legibility": {
-      "score": 4,
-      "why": "The top narrative clearly frames PixWorld as the lead story and the main list supports that, though the category placement of some items (e.g., agent-tooling repo) slightly dilutes the 'story of the day' clarity."
-    },
-    "X2_instrument_honesty": {
-      "score": 2,
-      "why": "Some numeric traction signals (GitHub stars) look materially wrong relative to the linked repo pages at evaluation time, which makes the instrumentation feel unreliable even though sources are linked."
-    },
-    "X3_freshness": {
-      "score": 4,
-      "why": "The digest commit timestamp indicates it is ~11 hours old at the recovery-run time, which falls in the 6–12 hour freshness bucket."
-    },
-    "X4_failure_surface": {
-      "score": 4,
-      "why": "The pipeline produces a complete digest even with empty sections (e.g., Retrieval), and the overall structure suggests per-section fallbacks rather than one failure cascading across the output."
-    },
-    "X5_coupling": {
-      "score": 4,
-      "why": "Inputs and outputs appear well-separated (reports vs eval artifacts), and the digest reads like a render of state rather than embedding evaluation logic in the distillation output."
-    }
-  },
-  "aggregates": {
-    "quality": {
-      "overall": 3.8
-    },
-    "experience": {
-      "overall": 3.6
-    },
-    "overall": 3.7
-  },
-  "notes": {
-    "recovery_prefix_required": true,
-    "recovery_prefix_text": "Recovery run for 2026-07-07. This morning's scheduled run escalated on a contract ambiguity; PR #23 landed the fix and this run produces today's eval."
-  }
+  "_migrated_from": "run=recovery schema v0 (2026-07-13 canonicalization)"
 }

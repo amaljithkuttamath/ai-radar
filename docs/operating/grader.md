@@ -2,13 +2,13 @@
 
 The grader is a scheduled task at 12:00 UTC (8:00 AM ET). It reads the latest digest, scores it against the 10-dim rubric, commits eval artifacts, and files an issue when quality drops.
 
-Preconditions: [`.github/AGENTS.md`](../../.github/AGENTS.md), [`invariants.md`](invariants.md), [`whitelist.md`](whitelist.md) all loaded and honored per the [contract load](#contract-load) rules below.
+Preconditions: [`.github/AGENTS.md`](../../.github/AGENTS.md), [`invariants.md`](invariants.md), [`whitelist.md`](whitelist.md), [`eval-schema.md`](eval-schema.md) all loaded and honored per the [contract load](#contract-load) rules below.
 
 ## Contract load
 
 Load the four contract files INDIVIDUALLY, not in a shell loop. Each file must be fetched and validated on its own so a transient failure on one file doesn't corrupt the others.
 
-For each of `.github/AGENTS.md`, `docs/operating/invariants.md`, `docs/operating/whitelist.md`, `docs/operating/grader.md`:
+For each of `.github/AGENTS.md`, `docs/operating/invariants.md`, `docs/operating/whitelist.md`, `docs/operating/eval-schema.md`, `docs/operating/grader.md`:
 
 1. `gh api repos/amaljithkuttamath/ai-radar/contents/<path> --jq .content` and decode base64.
 2. If the call fails, sleep 3 seconds and retry ONCE.
@@ -96,7 +96,7 @@ If `evals/rubric.md` is missing or malformed, score using these anchors:
 
 Per [`whitelist.md#grader`](whitelist.md#grader). All writes via `gh api PUT /repos/.../contents/<path>` with fresh `sha`. Committer `radar-eval-bot <radar-eval-bot@users.noreply.github.com>`. Commit message: `evals: <date>. quality=X.X experience=X.X`.
 
-1. `evals/<YYYY-MM-DD>.json`. Full rubric object per the schema in this contract.
+1. `evals/<YYYY-MM-DD>.json`. Full rubric object per [`eval-schema.md`](eval-schema.md). Every eval that lands in `evals/` must match that schema exactly; mixed shapes break `README.md` regeneration.
 2. `evals/latest.json`. Same object, overwritten.
 3. `evals/README.md`. Regenerate the 30-day trend table from `evals/*.json` (exclude `demo/` and `pre-merge/`). **If no prior evals exist, the table has only today's row. That is correct output, not a bug.**
 4. `evals/backlog.md`. Append 1-3 causal improvement items derived from the lowest-scoring dims (see [Backlog appends](#backlog-appends)).
