@@ -4,6 +4,14 @@ Daily AI newsletter, built from ~30 sources, scored by a model, graded by a rubr
 
 Today's: [reports/latest.md](reports/latest.md) · Board: [amaljithkuttamath.github.io/radar](https://amaljithkuttamath.github.io/radar) · Score: [evals/latest.json](evals/latest.json)
 
+## Eval trend (latest)
+
+| date | quality | experience | overall | mode |
+|---|---:|---:|---:|---|
+| 2026-07-13 | 3.8 | 4.2 | 4.0 | recovery |
+| 2026-07-12 | 4.2 | 4.2 | 4.2 | recovery |
+| 2026-07-11 | 3.6 | 4.2 | 3.9 | recovery |
+| 2026-07-07 | 3.8 | 3.6 | 3.7 | recovery |
 [![collect](https://github.com/amaljithkuttamath/ai-radar/actions/workflows/collect-corpus.yml/badge.svg)](https://github.com/amaljithkuttamath/ai-radar/actions/workflows/collect-corpus.yml)
 [![distill](https://github.com/amaljithkuttamath/ai-radar/actions/workflows/distill.yml/badge.svg)](https://github.com/amaljithkuttamath/ai-radar/actions/workflows/distill.yml)
 
