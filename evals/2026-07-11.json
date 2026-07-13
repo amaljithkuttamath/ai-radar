@@ -1,89 +1,57 @@
 {
   "date": "2026-07-11",
-  "run": "recovery",
-  "inputs": {
-    "digest_path": "reports/latest.md",
-    "digest_commit_time_utc": "2026-07-11T11:47:11Z",
-    "state_path": "data/state.json"
-  },
-  "broken_urls": {
-    "count": 0,
-    "items": []
-  },
-  "missed_stories": [],
-  "enriched_top_items": [
-    {
-      "title": "gradio-app/gradio \u2014 Build and share delightful machine learning apps, all in Python.",
-      "url": "https://github.com/gradio-app/gradio",
-      "primary_source": "https://github.com/gradio-app/gradio",
-      "why_it_matters": "Gradio is durable workflow glue for rapidly demoing and sharing ML pipelines; widespread adoption makes it a high-signal practical tooling trend."
-    },
-    {
-      "title": "BONES-SEED: Skeletal Everyday Embodiment Dataset (bones-studio/seed)",
-      "url": "https://huggingface.co/datasets/bones-studio/seed",
-      "primary_source": "https://huggingface.co/datasets/bones-studio/seed",
-      "why_it_matters": "Large-scale motion + language data helps humanoid robotics and multimodal grounding; a well-documented dataset is a concrete signal of investment in robotics benchmarks."
-    },
-    {
-      "title": "probabilists/azula \u2014 Diffusion models in PyTorch",
-      "url": "https://github.com/probabilists/azula",
-      "primary_source": "https://github.com/probabilists/azula",
-      "why_it_matters": "A hackable diffusion-model package can speed prototyping and unify notations; early-stage traction means it is worth watching rather than betting on."
-    }
-  ],
-  "scores": {
-    "A1_signal_density": {
+  "mode": "recovery",
+  "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/2026-07-11-digest.md",
+  "digest_commit_time_utc": "2026-07-11T11:47:11Z",
+  "age_hours_at_eval": 0.4,
+  "overall": 3.9,
+  "quality": {
+    "overall": 3.6,
+    "A1": {
       "score": 3,
       "why": "Concise and practical, but limited deeper analysis beyond short descriptions and action verbs."
     },
-    "A2_source_integrity": {
+    "A2": {
       "score": 4,
-      "why": "All links point to primary GitHub/Hugging Face pages and resolved; one numeric claim (Gradio stars \u201cover 43k\u201d) appears slightly off vs the repo page."
+      "why": "All links point to primary GitHub/Hugging Face pages and resolved; one numeric claim (Gradio stars\u2026"
     },
-    "A3_focus_alignment": {
+    "A3": {
       "score": 4,
       "why": "The set is coherent around practical ML tooling/datasets without obvious drift."
     },
-    "A4_delta_clarity": {
+    "A4": {
       "score": 4,
       "why": "The \u201cNew today\u201d block clearly separates newly trending items from the watch-list."
     },
-    "A5_coverage": {
+    "A5": {
       "score": 3,
-      "why": "Given the quiet window, coverage is adequate but no additional missed stories were added from the last 24 hours."
-    },
-    "X1_board_legibility": {
+      "why": "Given the quiet window, coverage is adequate but no additional missed stories were added from\u2026"
+    }
+  },
+  "experience": {
+    "overall": 4.2,
+    "X1": {
       "score": 4,
-      "why": "The lead item (Gradio) clearly signals the theme (practical ML tooling) and the list is easy to scan."
+      "why": "The lead item (Gradio) clearly signals the theme (practical ML tooling) and the list is\u2026"
     },
-    "X2_instrument_honesty": {
+    "X2": {
       "score": 4,
-      "why": "Traction signals are used with some caveats; improving provenance and exactness of numeric claims would raise trust."
+      "why": "Traction signals are used with some caveats; improving provenance and exactness of numeric claims would\u2026"
     },
-    "X3_freshness": {
+    "X3": {
       "score": 5,
       "why": "Digest commit time indicates it is well under 6 hours old at evaluation time."
     },
-    "X4_failure_surface": {
+    "X4": {
       "score": 4,
-      "why": "Per-file contract loading and freshness-by-commit-time reduce cascade risk, but the need for a recovery run highlights remaining surface area."
+      "why": "Per-file contract loading and freshness-by-commit-time reduce cascade risk, but the need for a recovery run\u2026"
     },
-    "X5_coupling": {
+    "X5": {
       "score": 4,
       "why": "No evidence of cross-boundary coupling; eval artifacts are separate from digest generation."
     }
   },
-  "aggregates": {
-    "quality": {
-      "overall": 3.6
-    },
-    "experience": {
-      "overall": 4.2
-    },
-    "overall": 3.9
-  },
-  "notes": {
-    "recovery_prefix_required": true,
-    "recovery_prefix_text": "Recovery run for 2026-07-11. This morning's scheduled run escalated on a contract-load stderr false alarm; PR #26 landed the fix (git-commit-time freshness, per-file load, explicit gh CLI usage) and this run produces today's eval."
-  }
+  "broken_urls": [],
+  "missed_stories": [],
+  "_migrated_from": "run=recovery schema v0 (2026-07-13 canonicalization)"
 }
