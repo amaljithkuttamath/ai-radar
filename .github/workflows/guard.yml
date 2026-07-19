@@ -32,18 +32,43 @@ jobs:
         with:
           fetch-depth: 0        # need the merge base to diff against
 
-      # Role is inferred from the branch prefix the coder contract already
-      # mandates (coder.md "Git workflow": BRANCH="improve/<dim>-..."). Human
-      # PRs get role 'human' and skip the scope check — humans widen the fence
-      # by review, which is the point of CODEOWNERS.
+      # Role is derived from the PR AUTHOR, not the branch name.
+      #
+      # An earlier draft inferred it from the branch prefix (improve/* -> coder).
+      # That is a control an agent can step around by naming its branch
+      # something else, which makes it an instruction rather than a fence — the
+      # exact class this harness exists to replace. Branch names are agent-
+      # chosen; the authenticated identity on the PR is not.
+      #
+      # Bot identities are the closed set of accounts that can open agent PRs.
+      # Anything else is a human, who widens the fence by review (CODEOWNERS).
       - name: Determine role
         id: role
+        env:
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          HEAD_REF: ${{ github.head_ref }}
         run: |
-          case "${{ github.head_ref }}" in
-            improve/*) echo "role=coder" >> "$GITHUB_OUTPUT" ;;
-            evals/*)   echo "role=grader" >> "$GITHUB_OUTPUT" ;;
-            *)         echo "role=human" >> "$GITHUB_OUTPUT" ;;
+          case "$PR_AUTHOR" in
+            radar-improve-bot|radar-improve-bot\[bot\])
+              ROLE=coder ;;
+            radar-eval-bot|radar-eval-bot\[bot\])
+              ROLE=grader ;;
+            *)
+              ROLE=human ;;
           esac
+
+          # Defence in depth: a human PR carrying an agent branch prefix is
+          # either a human testing agent behaviour or an agent authenticating as
+          # a human. Either way, apply the stricter scope rather than skipping.
+          if [ "$ROLE" = "human" ]; then
+            case "$HEAD_REF" in
+              improve/*) ROLE=coder  ; echo "::notice::Agent branch prefix on a human-authored PR; applying coder scope." ;;
+              evals/*)   ROLE=grader ; echo "::notice::Agent branch prefix on a human-authored PR; applying grader scope." ;;
+            esac
+          fi
+
+          echo "PR author: $PR_AUTHOR -> role: $ROLE"
+          echo "role=$ROLE" >> "$GITHUB_OUTPUT"
 
       - name: Check changed paths against whitelist
         if: steps.role.outputs.role != 'human'
