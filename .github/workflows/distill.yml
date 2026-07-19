@@ -108,3 +108,30 @@ jobs:
             git commit -m "radar: digest for $(date -u +%Y-%m-%d) (window=$WINDOW)"
             git push
           fi
+
+      # Dead-man's switch. On 2026-07-13 the eval loop stopped and nobody noticed
+      # for six days: a scheduled job that silently stops running produces no
+      # error, no log, and no signal — "ran fine" and "never ran" look identical
+      # from outside. Absence-of-ping is the only thing that distinguishes them.
+      #
+      # `if: success()` is load-bearing. A failed run must NOT ping, or this
+      # becomes a monitor that always reports healthy, which is strictly worse
+      # than no monitor because it manufactures confidence.
+      #
+      # Scope: this proves the pipeline RAN. It cannot prove the digest is any
+      # good — a run that succeeds while producing garbage still pings. Output
+      # quality is the grader's job, which is why the grader must not share a
+      # model family with the coder (see docs/operating/grader.md).
+      #
+      # No-ops cleanly if RADAR_HC_PING_URL is unset, so forks and PRs don't
+      # fail on a missing secret.
+      - name: Heartbeat (success only)
+        if: success()
+        env:
+          PING_URL: ${{ secrets.RADAR_HC_PING_URL }}
+        run: |
+          if [ -z "$PING_URL" ]; then
+            echo "RADAR_HC_PING_URL unset; heartbeat skipped."
+            exit 0
+          fi
+          curl -fsS -m 10 --retry 3 "$PING_URL" && echo "Heartbeat sent."

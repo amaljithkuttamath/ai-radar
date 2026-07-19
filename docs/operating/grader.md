@@ -4,6 +4,22 @@ The grader is a scheduled task at 12:00 UTC (8:00 AM ET). It reads the latest di
 
 Preconditions: [`.github/AGENTS.md`](../../.github/AGENTS.md), [`invariants.md`](invariants.md), [`whitelist.md`](whitelist.md), [`eval-schema.md`](eval-schema.md) all loaded and honored per the [contract load](#contract-load) rules below.
 
+## Model separation (required)
+
+**The grader MUST NOT run on the same model family as the coder or as `distill/synthesize.py`.**
+
+A model evaluating its own output shows self-enhancement bias of roughly +10–25%. If the grader shares a family with the thing it grades, the rubric can climb while the digest does not: `evals/latest.json` reads green for months while quality is flat or falling. That failure is invisible by construction, because the instrument and the subject agree.
+
+Record the model in every eval artifact so drift is auditable after the fact:
+
+- `synthesize.py` default backend: GitHub Models `openai/gpt-4.1` (see `RADAR_GITHUB_MODEL`).
+- Grader: any family other than the above. Pin it explicitly in the scheduled-task shim.
+- Write the grader's model id into the `grader_model` field of `evals/<date>.json`.
+
+**Pin the version, not just the family.** LLM judges re-baseline across model updates, so scores are not comparable over time unless the version is fixed and changes are recorded. When the pinned version changes, note it in the eval artifact and treat pre-change scores as a separate series.
+
+Underspecified expectations are the ones that break on a model update: prompts that leave requirements implicit are about twice as likely to regress, and models infer unstated requirements correctly only ~41% of the time. Anything this contract leaves to inference is a latent regression, so prefer stating a rule over assuming it.
+
 ## Contract load
 
 Load the four contract files INDIVIDUALLY, not in a shell loop. Each file must be fetched and validated on its own so a transient failure on one file doesn't corrupt the others.
