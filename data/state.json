@@ -1,68 +1,68 @@
 {
-"blog:https://blogs.nvidia.com/?p=96417&preview=true&preview_id=96417": {
-"first_seen": "2026-07-18",
-"mag": 0.0,
+"ghrepo:bojieli/ai-agent-book": {
+"first_seen": "2026-07-19",
+"mag": 4.2105,
 "mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "NVIDIA Vera Rubin Maximizes Intelligence per Dollar for Post-Training Workloads \u2014 a Key Metric for Agentic AI",
-"url": "https://blogs.nvidia.com/blog/nvidia-vera-rubin-post-training-intelligence-per-dollar/"
-},
-"blog:https://openai.com/index/a-scorecard-for-the-ai-age": {
-"first_seen": "2026-07-18",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "A scorecard for the AI age",
-"url": "https://openai.com/index/a-scorecard-for-the-ai-age"
-},
-"hfdataset:schema-harness/arc-agi-3-schema-traces": {
-"first_seen": "2026-07-18",
-"mag": 2.0233,
-"mag_history": [
-2.0233
-],
-"score": 1,
-"streak": 1,
-"title": "schema-harness/arc-agi-3-schema-traces (HF Dataset)",
-"url": "https://huggingface.co/datasets/schema-harness/arc-agi-3-schema-traces"
-},
-"hfmodel:GnLOLot/MiniCPM5-1B-Claude-Opus-Fable5-V2-Thinking-GGUF": {
-"first_seen": "2026-07-18",
-"mag": 3.2775,
-"mag_history": [
-3.2775
-],
-"score": 1,
-"streak": 1,
-"title": "GnLOLot/MiniCPM5-1B-Claude-Opus-Fable5-V2-Thinking-GGUF (HF Model)",
-"url": "https://huggingface.co/GnLOLot/MiniCPM5-1B-Claude-Opus-Fable5-V2-Thinking-GGUF"
-},
-"hfmodel:Wan-AI/Wan-Dancer-14B": {
-"first_seen": "2026-07-18",
-"mag": 3.3092,
-"mag_history": [
-3.3092
-],
-"score": 1,
-"streak": 1,
-"title": "Wan-AI/Wan-Dancer-14B (HF Model)",
-"url": "https://huggingface.co/Wan-AI/Wan-Dancer-14B"
-},
-"hfmodel:prism-ml/Bonsai-27B-mlx-1bit": {
-"first_seen": "2026-07-18",
-"mag": 3.3628,
-"mag_history": [
-3.3628
+4.2105
 ],
 "score": 3,
 "streak": 1,
-"title": "prism-ml/Bonsai-27B-mlx-1bit (HF Model)",
-"url": "https://huggingface.co/prism-ml/Bonsai-27B-mlx-1bit"
+"title": "bojieli/ai-agent-book \u2014 \u300a\u6df1\u5165\u7406\u89e3 AI Agent\uff1a\u8bbe\u8ba1\u539f\u7406\u4e0e\u5de5\u7a0b\u5b9e\u8df5\u300b\uff08\u674e\u535a\u6770 \u8457\uff09\u5f00\u6e90\u4e3b\u4ed3\u5e93\uff1a\u5168\u4e66\u6b63\u6587\u3001\u7f16\u8bd1\u7248 PDF \u4e0e\u6309\u7ae0\u914d\u5957\u4ee3\u7801",
+"url": "https://github.com/bojieli/ai-agent-book"
+},
+"ghrepo:deepspeedai/DeepSpeed": {
+"first_seen": "2026-07-19",
+"mag": 5.3315,
+"mag_history": [
+5.3315
+],
+"score": 3,
+"streak": 1,
+"title": "deepspeedai/DeepSpeed \u2014 DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective.",
+"url": "https://github.com/deepspeedai/DeepSpeed"
+},
+"ghrepo:microsoft/graphrag": {
+"first_seen": "2026-07-19",
+"mag": 5.2244,
+"mag_history": [
+5.2244
+],
+"score": 4,
+"streak": 1,
+"title": "microsoft/graphrag \u2014 A modular graph-based Retrieval-Augmented Generation (RAG) system",
+"url": "https://github.com/microsoft/graphrag"
+},
+"ghrepo:piesauce/awesome-dLLM-resources": {
+"first_seen": "2026-07-19",
+"mag": 1.9756,
+"mag_history": [
+1.9756
+],
+"score": 2,
+"streak": 1,
+"title": "piesauce/awesome-dLLM-resources \u2014 Frequently updated list of dLLM (Diffusion Large Language Models) papers, models, and other resources",
+"url": "https://github.com/piesauce/awesome-dLLM-resources"
+},
+"hfmodel:prism-ml/Ternary-Bonsai-27B-mlx-2bit": {
+"first_seen": "2026-07-19",
+"mag": 3.3275,
+"mag_history": [
+3.3275
+],
+"score": 2,
+"streak": 1,
+"title": "prism-ml/Ternary-Bonsai-27B-mlx-2bit (HF Model)",
+"url": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-mlx-2bit"
+},
+"hfmodel:unsloth/inkling-GGUF": {
+"first_seen": "2026-07-19",
+"mag": 3.2236,
+"mag_history": [
+3.2236
+],
+"score": 1,
+"streak": 1,
+"title": "unsloth/inkling-GGUF (HF Model)",
+"url": "https://huggingface.co/unsloth/inkling-GGUF"
 }
 }
