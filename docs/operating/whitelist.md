@@ -1,6 +1,21 @@
 # Whitelist
 
-Single source of truth for what each agent is allowed to write. Enforced in code (each agent asserts before every git operation) and at review time via [`.github/CODEOWNERS`](../../.github/CODEOWNERS).
+Single source of truth for what each agent is allowed to write.
+
+**Enforcement.** [`scripts/check_whitelist.py`](../../scripts/check_whitelist.py) parses the [machine-readable list](#machine-readable-list) below and runs as a required status check on every PR via [`.github/workflows/guard.yml`](../../.github/workflows/guard.yml). The role is inferred from the branch prefix (`improve/*` → coder, `evals/*` → grader). Review-time enforcement is [`.github/CODEOWNERS`](../../.github/CODEOWNERS).
+
+This file is the input to that check, so the YAML block below is load-bearing: edit it and agent write scope changes. That is why it sits behind CODEOWNERS and inside the fence set.
+
+**Fence paths — never writable by any agent, including roles not yet defined:**
+
+- `.github/workflows/**`
+- `.github/CODEOWNERS`, `.github/AGENTS.md`
+- `docs/operating/**`
+- `scripts/check_whitelist.py`
+
+An agent that can edit the allowlist governing it has no allowlist. This is the one restriction that does not relax as autonomy widens. The enforcer denies these paths for every role, so adding a role cannot accidentally grant them.
+
+> **Note.** Prior to the harness PR this file claimed enforcement "in code (each agent asserts before every git operation)". That assertion lived in a prose code block in [`coder.md`](coder.md) and was performed by the agent itself. An instruction inside the model's reasoning loop is not a control; the CI check above is.
 
 ## Grader
 

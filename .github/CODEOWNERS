@@ -11,6 +11,13 @@
 .github/AGENTS.md                @amaljithkuttamath
 docs/operating/                  @amaljithkuttamath
 
+# Fence configuration. These define and enforce what agents may write, so an
+# edit here can widen agent permissions. Never agent-writable; the enforcer
+# denies them for every role independently of this file.
+.github/workflows/               @amaljithkuttamath
+scripts/check_whitelist.py       @amaljithkuttamath
+tests/                           @amaljithkuttamath
+
 # Coder-writable paths (via PR only; still owner-reviewed).
 config/sources.yaml              @amaljithkuttamath
 config/profile.yaml              @amaljithkuttamath

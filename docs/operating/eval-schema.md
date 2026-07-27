@@ -10,6 +10,11 @@ If a historical eval doesn't match this schema, it needs a migration PR. The gra
 {
   "date":                    "YYYY-MM-DD",              // required. UTC calendar date of the digest.
   "mode":                    "normal",                  // required. Enum: normal | recovery | pre-merge | demo
+  "grader_model":            "<provider>/<model>@<version>",  // required. The model that produced these
+                                                        // scores. MUST differ in family from the digest's
+                                                        // synthesis model — see grader.md "Model separation".
+                                                        // Judges re-baseline across versions, so scores are
+                                                        // comparable only within a fixed pin.
   "digest_url":              "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
   "digest_commit_time_utc":  "2026-07-12T11:53:19Z",    // required. ISO 8601 UTC. Source: git commit time of reports/latest.md.
   "age_hours_at_eval":       0.36,                      // required. float. Hours between digest_commit_time_utc and eval run time.
