@@ -29,16 +29,25 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from collectors.common import ROOT  # noqa: E402
 
 REPORTS = ROOT / "reports"
+# Dated digests only. reports/ also holds the generated README.md (the index table) and
+# latest.md (a copy of the newest digest), and both are .md files.
+DIGEST_RE = re.compile(r"^\d{4}-\d{2}-\d{2}-digest\.md$")
 
 
 def latest_report() -> Path | None:
+    """The newest dated digest, or None when there is none.
+
+    Restricted to `YYYY-MM-DD-digest.md` on purpose: globbing every `*.md` and taking the
+    last one sorts `README.md` — the index table — above every digest, so a run where
+    reindex was skipped or hadn't yet written `latest.md` emailed the index instead of the
+    report. ISO dates sort chronologically, so lexical order is date order."""
     p = os.environ.get("RADAR_REPORT_PATH")
     if p:
         return Path(p)
     if not REPORTS.exists():
         return None
-    md = sorted(REPORTS.glob("*.md"))
-    return md[-1] if md else None
+    digests = sorted(q for q in REPORTS.glob("*.md") if DIGEST_RE.match(q.name))
+    return digests[-1] if digests else None
 
 
 def md_to_html(md: str) -> str:

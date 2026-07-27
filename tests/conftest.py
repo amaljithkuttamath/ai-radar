@@ -34,9 +34,25 @@ def make_item(**over) -> dict:
     return item
 
 
+@pytest.fixture(autouse=True)
+def _empty_ledger(tmp_path, monkeypatch):
+    """Every test starts from an empty tracked-item ledger.
+
+    `track.promote()` and `track.story_arcs()` read `load_ledger()` when the caller doesn't
+    hand them one, which resolves to the repo's committed `data/tracked.json` — a file the
+    daily radar run rewrites. Without this the suite's result depends on what the radar
+    happened to be watching that morning: a single tracked item leaks into every ledger a
+    test builds, and eight assertions about ledger contents fail on any day but an empty one.
+    Autouse because the leak is in the module default, so opting in per test is exactly the
+    thing that gets forgotten.
+    """
+    from distill import track
+    monkeypatch.setattr(track, "LEDGER", tmp_path / "tracked-isolated.json")
+
+
 @pytest.fixture
 def ledger_path(tmp_path, monkeypatch):
-    """Point the tracked-item ledger at a tmp file for the duration of a test."""
+    """Point the tracked-item ledger at a tmp file the test can read back."""
     from distill import track
     p = tmp_path / "tracked.json"
     monkeypatch.setattr(track, "LEDGER", p)

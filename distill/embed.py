@@ -10,11 +10,11 @@ input text so the same topic-term strings are never re-embedded across runs.
 Public API:
   embed(texts: list[str]) -> list[list[float]]  # batch, cached
   cosine(a, b) -> float
-  embed_match(item, terms) -> bool  # True if item blob is close enough to the mean term vec
+  embed_match(item, terms) -> bool | None  # None => couldn't evaluate, caller decides
 
 All external calls are wrapped in try/except so a token error, HTTP error, or any other
-failure falls through gracefully — the caller receives a float('nan') sentinel or False,
-never an exception propagated upward.
+failure falls through gracefully — the caller receives None (or a None slot in the vector
+list), never an exception propagated upward.
 """
 from __future__ import annotations
 
@@ -164,10 +164,16 @@ def _mean_vec(vecs: list[list[float]]) -> list[float] | None:
 # Public semantic match
 # ---------------------------------------------------------------------------
 
-def embed_match(item: dict, terms: tuple[str, ...], threshold: float | None = None) -> bool:
-    """True if the item blob embedding is within `threshold` cosine similarity of the
-    mean topic-term embedding. Falls back to False (not lexical) on any error, so the
-    caller (focus.py) handles the lexical fallback itself.
+def embed_match(item: dict, terms: tuple[str, ...],
+                threshold: float | None = None) -> bool | None:
+    """True/False if the item blob embedding is (not) within `threshold` cosine similarity
+    of the mean topic-term embedding.
+
+    Returns **None** when the question could not be answered at all — no GITHUB_TOKEN, HTTP
+    error, no usable vectors. That is a distinct outcome from a confident False, and the
+    caller (focus.py) needs the distinction: "not a match" means don't boost the item,
+    while "couldn't tell" means fall back to the lexical matcher. Collapsing the two into
+    False silently turned FOCUS off for the whole run whenever the endpoint was unreachable.
 
     threshold defaults to EMBED_THRESHOLD env (default 0.30).
     """
@@ -175,7 +181,7 @@ def embed_match(item: dict, terms: tuple[str, ...], threshold: float | None = No
         threshold = EMBED_THRESHOLD
     try:
         if not terms:
-            return False
+            return False                      # nothing to match against: a real verdict
         from distill.focus import _blob  # local import to avoid circular at module level
         blob_text = _blob(item)
         all_texts = [blob_text] + list(terms)
@@ -183,12 +189,11 @@ def embed_match(item: dict, terms: tuple[str, ...], threshold: float | None = No
         blob_vec = vecs[0]
         term_vecs = vecs[1:]
         if blob_vec is None:
-            return False
-        valid_term_vecs = [v for v in term_vecs if v is not None]
-        mean = _mean_vec(valid_term_vecs)
+            return None                       # the item never got embedded
+        mean = _mean_vec([v for v in term_vecs if v is not None])
         if mean is None:
-            return False
+            return None                       # no term embedded
         return cosine(blob_vec, mean) >= threshold
     except Exception as exc:
         print(f"[embed] embed_match error: {exc}", file=sys.stderr)
-        return False
+        return None

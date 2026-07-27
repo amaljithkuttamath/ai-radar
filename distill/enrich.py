@@ -21,7 +21,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from collectors.common import ROOT, parse_window, _merge_signals  # noqa: E402
+from collectors.common import ROOT, parse_window, parse_ts, _merge_signals  # noqa: E402
 from distill import tools  # noqa: E402
 from distill.rank import rank_key  # noqa: E402
 from distill.synthesize import call_github, call_anthropic, call_ollama  # noqa: E402
@@ -55,10 +55,10 @@ def load_top_n() -> list[dict]:
         for p in SCORED.glob("*.json"):
             try:
                 it = json.loads(p.read_text())
-                fetched = datetime.fromisoformat(it.get("fetched", ""))
-            except (ValueError, OSError, json.JSONDecodeError):
+            except (OSError, json.JSONDecodeError):
                 continue
-            if fetched >= cutoff:
+            fetched = parse_ts(it.get("fetched"))
+            if fetched is not None and fetched >= cutoff:
                 it["_scored_path"] = str(p)
                 items.append(it)
     items.sort(key=rank_key, reverse=True)   # same key as synthesize -> shown == enriched

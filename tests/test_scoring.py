@@ -116,3 +116,68 @@ def test_mute_beats_boost(monkeypatch, tmp_path):
 def test_focus_degrades_to_no_match_without_a_profile(no_profile):
     assert focus.active_terms() == []
     assert not focus.focus_match(make_item(title="anything at all", raw_summary=""))
+
+
+# ---------------------------------------------------------------------------
+# FOCUS_BACKEND=embed — the opt-in semantic path
+# ---------------------------------------------------------------------------
+
+def _embed_profile(monkeypatch, tmp_path):
+    """A profile with one topic, FOCUS_BACKEND=embed, and no FOCUS override."""
+    monkeypatch.delenv("FOCUS", raising=False)
+    monkeypatch.setenv("FOCUS_BACKEND", "embed")
+    p = tmp_path / "profile.yaml"
+    p.write_text("topics:\n  - name: interpretability\n")
+    monkeypatch.setattr(focus, "PROFILE", p)
+    focus._profile_terms.cache_clear()
+
+
+def test_an_unreachable_embedder_falls_back_to_lexical(monkeypatch, tmp_path):
+    """The semantic layer answering 'couldn't tell' (no token, HTTP error) must cost
+    precision, not the FOCUS signal — this used to silently match nothing for a whole run."""
+    _embed_profile(monkeypatch, tmp_path)
+    from distill import embed as embed_mod
+    monkeypatch.setattr(embed_mod, "embed_match", lambda item, terms, threshold=None: None)
+    try:
+        assert focus.focus_match(make_item(title="Interpretability of SAEs", raw_summary=""))
+        assert not focus.focus_match(make_item(title="Protein folding", raw_summary=""))
+    finally:
+        focus._profile_terms.cache_clear()
+
+
+def test_a_semantic_no_is_not_second_guessed_by_the_keyword_matcher(monkeypatch, tmp_path):
+    """A real False from the embedder is a verdict. Falling back on it too would let every
+    item the semantic layer rejected back in through the lexical door."""
+    _embed_profile(monkeypatch, tmp_path)
+    from distill import embed as embed_mod
+    monkeypatch.setattr(embed_mod, "embed_match", lambda item, terms, threshold=None: False)
+    try:
+        assert not focus.focus_match(make_item(title="Interpretability of SAEs",
+                                               raw_summary=""))
+    finally:
+        focus._profile_terms.cache_clear()
+
+
+def test_the_semantic_backend_can_match_what_no_keyword_would(monkeypatch, tmp_path):
+    _embed_profile(monkeypatch, tmp_path)
+    from distill import embed as embed_mod
+    monkeypatch.setattr(embed_mod, "embed_match", lambda item, terms, threshold=None: True)
+    try:
+        assert focus.focus_match(make_item(title="Reading circuits off a transformer",
+                                           raw_summary=""))
+    finally:
+        focus._profile_terms.cache_clear()
+
+
+def test_embed_match_reports_couldnt_evaluate_rather_than_no(monkeypatch):
+    """distill.embed's half of the contract: a failed embedding is None, not False."""
+    from distill import embed as embed_mod
+    monkeypatch.setattr(embed_mod, "embed", lambda texts: [None] * len(texts))
+    assert embed_mod.embed_match(make_item(title="x"), ("interpretability",)) is None
+
+    monkeypatch.setattr(embed_mod, "embed",
+                        lambda texts: [[1.0, 0.0]] + [None] * (len(texts) - 1))
+    assert embed_mod.embed_match(make_item(title="x"), ("interpretability",)) is None
+
+    monkeypatch.setattr(embed_mod, "embed", lambda texts: [[1.0, 0.0], [0.0, 1.0]])
+    assert embed_mod.embed_match(make_item(title="x"), ("interpretability",)) is False

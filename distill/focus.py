@@ -91,14 +91,22 @@ def focus_match(item: dict) -> bool:
     return any(_term_hit(t, blob) for t in boost)
 
 
-def embed_match(item: dict, terms: tuple[str, ...]) -> bool:  # pragma: no cover - opt-in
+def embed_match(item: dict, terms: tuple[str, ...]) -> bool:
     """Semantic FOCUS matcher via GitHub Models embeddings (FOCUS_BACKEND=embed).
     Uses distill.embed for cosine similarity between the item blob and mean topic-term
-    embeddings. Falls back to the existing lexical result on ANY error (no token, HTTP
-    error, import failure) so a misconfigured or offline backend never crashes a run."""
+    embeddings. Falls back to the lexical result whenever the semantic layer can't answer
+    (no token, HTTP error, import failure) so a misconfigured or offline backend costs
+    precision, never the FOCUS signal itself.
+
+    `distill.embed.embed_match` returns None for "couldn't evaluate" — a verdict of False
+    is a real one and must not be overridden by the keyword matcher, or an item the
+    embeddings deliberately rejected would come back through the lexical door."""
     try:
         from distill.embed import embed_match as _semantic_match  # lazy import
-        return _semantic_match(item, terms)
+        verdict = _semantic_match(item, terms)
+        if verdict is not None:
+            return verdict
     except Exception:
-        blob = _blob(item)
-        return any(_term_hit(t, blob) for t in terms)
+        pass                                  # import failure -> lexical, same as a bad token
+    blob = _blob(item)
+    return any(_term_hit(t, blob) for t in terms)

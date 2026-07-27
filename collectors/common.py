@@ -27,6 +27,23 @@ def parse_window(window: str) -> timedelta:
     return timedelta(hours=n) if unit == "h" else timedelta(days=n)
 
 
+def parse_ts(value) -> datetime | None:
+    """ISO timestamp -> timezone-aware UTC datetime, or None when it can't be read.
+
+    Everything the pipeline writes carries an aware `fetched`, but one hand-edited, truncated
+    or legacy file shouldn't be able to take down a run. `datetime.fromisoformat(None)` raises
+    TypeError (not ValueError, so the usual `except ValueError` misses it), and a naive
+    timestamp parses fine and then raises TypeError on the first comparison with an aware
+    cutoff. Both used to abort the whole stage instead of skipping the one bad item."""
+    if not isinstance(value, str) or not value:
+        return None
+    try:
+        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return dt if dt.tzinfo is not None else dt.replace(tzinfo=timezone.utc)
+
+
 def make_item(*, id: str, category: str, title: str, url: str, source: str,
               authors=None, published=None, raw_summary="", signals=None,
               links=None, keywords=None) -> dict:
@@ -116,9 +133,8 @@ def iter_raw(window: str = "48h"):
             it = json.loads(p.read_text())
         except Exception:
             continue
-        try:
-            fetched = datetime.fromisoformat(it.get("fetched", ""))
-        except ValueError:
+        fetched = parse_ts(it.get("fetched"))
+        if fetched is None:
             continue
         if fetched >= cutoff:
             it["_path"] = str(p)

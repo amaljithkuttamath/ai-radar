@@ -18,6 +18,18 @@ def test_a_release_sweep_collapses_to_its_strongest_variant():
     assert kept[0]["title"] == "Ornith-1.0-35B", "the highest-ranked variant survives"
 
 
+def test_an_item_without_an_id_is_dropped_alone():
+    """A collapsed variant must take only itself out of the list. Keying the drop set on
+    `id` meant an id-less collision registered as "" and evicted every other id-less item —
+    including unrelated ones the filter never looked at."""
+    items = [_variant("Ornith-1.0-9B", 20), _variant("Ornith-1.0-35B", 900),
+             make_item(title="Cartographer VLM", source="Lab Blog", score=3)]
+    for it in items:
+        it.pop("id")
+    kept = dedup_near_titles(items)
+    assert [i["title"] for i in kept] == ["Ornith-1.0-35B", "Cartographer VLM"]
+
+
 def test_unrelated_titles_are_left_alone():
     items = [_variant("Ornith-1.0-9B", 20), _variant("Cartographer VLM", 30)]
     assert len(dedup_near_titles(items)) == 2

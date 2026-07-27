@@ -62,26 +62,20 @@ def dedup_near_titles(items: list[dict], threshold: float = JACCARD_THRESHOLD) -
     survivors keep their original relative order. threshold >= 1.0 disables the pass."""
     if threshold >= 1.0 or len(items) < 2:
         return items
-    # Rank-sorted view so the strongest variant wins any collision.
-    ranked = sorted(items, key=rank_key, reverse=True)
-    kept: list[tuple[dict, frozenset[str]]] = []
-    dropped_ids: set[str] = set()
-    for it in ranked:
-        tok = _tokens(it.get("title", ""))
-        if not tok:
-            kept.append((it, tok))
-            continue
-        collision = False
-        for _, prev_tok in kept:
-            if _jaccard(tok, prev_tok) >= threshold:
-                collision = True
-                break
-        if collision:
-            dropped_ids.add(it.get("id", ""))
+    # Rank-sorted view (by POSITION, so the survivors are identified by where they sit in the
+    # input rather than by id — an item with no id is still exactly one item, and keying the
+    # drop set on `it.get("id", "")` used to put "" in it and take every id-less item with it).
+    ranked = sorted(range(len(items)), key=lambda i: rank_key(items[i]), reverse=True)
+    kept_tokens: list[frozenset[str]] = []
+    dropped: set[int] = set()
+    for i in ranked:
+        tok = _tokens(items[i].get("title", ""))
+        if tok and any(_jaccard(tok, prev) >= threshold for prev in kept_tokens):
+            dropped.add(i)
         else:
-            kept.append((it, tok))
+            kept_tokens.append(tok)
     # Return in the ORIGINAL order so downstream sorting is unaffected.
-    return [it for it in items if it.get("id", "") not in dropped_ids]
+    return [it for i, it in enumerate(items) if i not in dropped]
 
 
 def cap_per_source(items: list[dict], cap: int = MAX_PER_SOURCE) -> list[dict]:

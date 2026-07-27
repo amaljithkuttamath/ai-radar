@@ -15,7 +15,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from collectors.common import ROOT, parse_window  # noqa: E402
+from collectors.common import ROOT, parse_window, parse_ts  # noqa: E402
 from distill.rank import rank_key  # noqa: E402
 from distill.delta import compute_delta, save_state, story_arcs  # noqa: E402
 from distill.focus import active_terms as _focus_active_terms, _term_hit, _blob as _focus_blob  # noqa: E402
@@ -107,11 +107,8 @@ def load_scored() -> list[dict]:
                 it = json.loads(p.read_text())
             except Exception:
                 continue
-            try:
-                fetched = datetime.fromisoformat(it.get("fetched", ""))
-            except ValueError:
-                continue
-            if fetched >= cutoff:
+            fetched = parse_ts(it.get("fetched"))
+            if fetched is not None and fetched >= cutoff:
                 items.append(it)
     # rank_key (score + signal magnitude) is primary; focus_match only breaks exact ties,
     # staying a re-rank boost rather than overriding traction.

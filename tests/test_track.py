@@ -282,6 +282,18 @@ def test_write_carryovers_writes_new_ones(scored_dir):
 # Ledger IO
 # ---------------------------------------------------------------------------
 
+def test_the_suite_never_reads_the_committed_ledger():
+    """Guard for conftest's autouse isolation.
+
+    `promote()` with no ledger argument falls back to `load_ledger()`, and `LEDGER` points at
+    `data/tracked.json` — the file the daily run commits. If that default ever reaches the
+    tests again, every assertion about ledger contents starts depending on what the radar was
+    tracking that morning."""
+    from collectors.common import ROOT
+    assert track.LEDGER != ROOT / "data" / "tracked.json"
+    assert track.promote([]) == {}
+
+
 def test_a_corrupt_ledger_costs_memory_not_the_digest(ledger_path):
     ledger_path.write_text("{ this is not json")
     assert track.load_ledger() == {}
