@@ -1,35 +1,68 @@
 {
-"ghrepo:Eyeline-Labs/CineScale": {
-"first_seen": "2026-07-26",
-"mag": 2.6156,
+"blog:https://blogs.nvidia.com/?p=96867": {
+"first_seen": "2026-07-27",
+"mag": 0.0,
 "mag_history": [
-2.6156
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "NVIDIA Harnesses Vera CPU to Speed Up Design of Next-Generation CPUs and GPUs",
+"url": "https://blogs.nvidia.com/blog/vera-cpu-eda/"
+},
+"blog:https://blogs.nvidia.com/?p=96884": {
+"first_seen": "2026-07-27",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Industry Leaders Unite in Open Secure AI Alliance for AI Safety and Security",
+"url": "https://blogs.nvidia.com/blog/open-secure-ai-alliance/"
+},
+"blog:https://openai.com/index/how-ai-is-expanding-what-people-do-at-work": {
+"first_seen": "2026-07-27",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "How AI is expanding what people do at work",
+"url": "https://openai.com/index/how-ai-is-expanding-what-people-do-at-work"
+},
+"hfdataset:huggingface/forensic-refusal": {
+"first_seen": "2026-07-27",
+"mag": 1.8473,
+"mag_history": [
+1.8473
+],
+"score": 1,
+"streak": 1,
+"title": "huggingface/forensic-refusal (HF Dataset)",
+"url": "https://huggingface.co/datasets/huggingface/forensic-refusal"
+},
+"hfdataset:unstonio/pixelgpt-24x24-20k": {
+"first_seen": "2026-07-27",
+"mag": 1.9832,
+"mag_history": [
+1.9832
+],
+"score": 1,
+"streak": 1,
+"title": "unstonio/pixelgpt-24x24-20k (HF Dataset)",
+"url": "https://huggingface.co/datasets/unstonio/pixelgpt-24x24-20k"
+},
+"hfmodel:nvidia/Cosmos3-Edge": {
+"first_seen": "2026-07-27",
+"mag": 3.4232,
+"mag_history": [
+3.4232
 ],
 "score": 3,
 "streak": 1,
-"title": "Eyeline-Labs/CineScale \u2014 Tuning-Free 4K Video Generation",
-"url": "https://github.com/Eyeline-Labs/CineScale"
-},
-"ghrepo:getzep/graphiti": {
-"first_seen": "2026-07-26",
-"mag": 5.1411,
-"mag_history": [
-5.1411
-],
-"score": 3,
-"streak": 1,
-"title": "getzep/graphiti \u2014 Build Real-Time Knowledge Graphs for AI Agents",
-"url": "https://github.com/getzep/graphiti"
-},
-"hfmodel:owensong/Inflect-Micro-v2": {
-"first_seen": "2026-07-26",
-"mag": 3.4641,
-"mag_history": [
-3.4641
-],
-"score": 2,
-"streak": 1,
-"title": "owensong/Inflect-Micro-v2 (HF Model)",
-"url": "https://huggingface.co/owensong/Inflect-Micro-v2"
+"title": "nvidia/Cosmos3-Edge (HF Model)",
+"url": "https://huggingface.co/nvidia/Cosmos3-Edge"
 }
 }
