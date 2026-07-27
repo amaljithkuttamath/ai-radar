@@ -2,7 +2,7 @@
 
 Single source of truth for what each agent is allowed to write.
 
-**Enforcement.** [`scripts/check_whitelist.py`](../../scripts/check_whitelist.py) parses the [machine-readable list](#machine-readable-list) below and runs as a required status check on every PR via [`.github/workflows/guard.yml`](../../.github/workflows/guard.yml). The role is inferred from the branch prefix (`improve/*` → coder, `evals/*` → grader). Review-time enforcement is [`.github/CODEOWNERS`](../../.github/CODEOWNERS).
+**Enforcement.** [`scripts/check_whitelist.py`](../../scripts/check_whitelist.py) parses the [machine-readable list](#machine-readable-list) below and runs as a required status check on every PR via [`.github/workflows/guard.yml`](../../.github/workflows/guard.yml). The role is derived from the authenticated PR **author**, not the branch name: a branch prefix is agent-chosen, so inferring from it would be an instruction an agent can step around rather than a fence. Bot identities are a closed set; anything else is a human, who widens the fence by review. Review-time enforcement is [`.github/CODEOWNERS`](../../.github/CODEOWNERS).
 
 This file is the input to that check, so the YAML block below is load-bearing: edit it and agent write scope changes. That is why it sits behind CODEOWNERS and inside the fence set.
 
