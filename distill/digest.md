@@ -14,7 +14,8 @@ WINDOW · MAX_ITEMS · FOCUS (re-rank boost) · MARKET (off/on) · INCLUDE_THRES
 1. Load scored items in WINDOW. Drop score ≤0.
 2. **If the window is quiet, widen it** (48h → 72h → 7d) until there's real signal, and say
    you did. A rigid window that returns nothing is the failure mode this avoids.
-3. Dedup against prior runs (seen-list). Items still trending → "Still developing", one line.
+3. Items carried over from prior runs arrive pre-marked (`carryover: true`) with re-observed
+   traction → "Still developing", one line. Do not re-introduce them as new.
 4. Apply FOCUS as a re-rank boost (ordering + relevance), then write the report.
 
 ## Scoring — traction score, 0–5 (observable signals only)
@@ -108,7 +109,14 @@ Do not embellish; ground every claim in the provided arc fields.
 **Watch-list** (1 line each) — promising but unverified / not-yet-trending. Park here anything
 whose recency you can't confirm, rather than risk surfacing stale items as new.
 
-**Still developing** (1 line each) — active carryovers from prior runs.
+**Still developing** (1 line each) — items the radar is already tracking. These arrive in the
+candidate JSON with `carryover: true`, plus `runs_tracked`, `first_seen` and `traction_delta`.
+Their traction numbers were **re-read from the source moments ago**, so quote them as current.
+One line each: what it is in a half-sentence, then where its traction has gone since
+`first_seen` — e.g. `- [Title](url) — 3rd run, 186 → 402 stars.` Never call a carryover new,
+never re-tell its full write-up (it had one on the day it landed). A carryover whose
+`traction_delta` is strongly positive belongs in the main list instead; say plainly that it is
+a continuing story rather than a new arrival.
 
 **Insights** (2–4 bullets) — patterns ACROSS items the per-item view misses.
 
@@ -128,4 +136,7 @@ Mechanism mapping — **not** investment advice, not a price forecast:
 - Link only to artifacts actually present in the corpus — never fabricate.
 - "Released" ≠ "announced/teased" — label which.
 - Report only signals actually observed; don't infer trending you didn't check.
+- Every traction figure in the candidate JSON was read from its source during this run. Quote
+  those numbers verbatim — do not round them into a vibe ("thousands of stars"), and never
+  supply a figure the item didn't give you.
 - Market exposure is mechanism-mapping only; this is not a licensed advisor.

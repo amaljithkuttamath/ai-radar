@@ -14,6 +14,8 @@ reports/*
 !reports/*.md
 !data/seen.json
 !data/state.json
+# The carryover ledger: which items the radar is still watching, and their traction history.
+!data/tracked.json
 
 # local harness artifact
 .claude/scheduled_tasks.lock

@@ -20,6 +20,12 @@ export WINDOW="${WINDOW:-48h}"
 echo "== score =="
 $PY -m distill.score
 
+# Re-observe items already on the radar and re-enter them as candidates. Must run AFTER
+# score.py, which clears data/scored/ at the start of every run. A failure here costs the
+# carryover section, never the digest.
+echo "== track (re-observe carryovers) =="
+$PY -m distill.track || echo "  track stage failed (distill continues on fresh items only)"
+
 if [ "${RADAR_AGENT:-off}" = "on" ]; then
   echo "== enrich (top ${RADAR_AGENT_TOP_N:-5} items) =="
   $PY -m distill.enrich || echo "  enrich stage failed or skipped (distill continues on scored items)"

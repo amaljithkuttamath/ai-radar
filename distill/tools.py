@@ -60,6 +60,42 @@ def fetch_github_repo(owner: str, repo: str, token: str | None = None) -> dict |
     }
 
 
+def fetch_hf_repo(kind: str, hf_id: str) -> dict | None:
+    """huggingface.co/api/{models,datasets}/{id} — the same endpoints hf_trending collects
+    from, but for ONE known id. Used by track.py to re-observe a tracked artifact's likes and
+    downloads at publish time. Returns None on 404/error (repo renamed, made private, gone)."""
+    if kind not in ("models", "datasets") or not hf_id:
+        return None
+    try:
+        d = _get_json(f"https://huggingface.co/api/{kind}/{urllib.parse.quote(hf_id)}")
+    except Exception as ex:
+        print(f"[tools] hf {kind} {hf_id} failed: {ex}", file=sys.stderr)
+        return None
+    return {
+        "hf_likes": d.get("likes") or 0,
+        "hf_downloads": d.get("downloads") or 0,
+        "hf_trending": d.get("trendingScore") or 0,
+    }
+
+
+def fetch_hf_paper(arxiv_id: str) -> dict | None:
+    """huggingface.co/api/papers/{arxiv_id} — current upvote/comment count for a paper that
+    passed through HF Daily Papers. This is how a paper's traction is re-observed on later
+    runs: the daily_papers feed only carries the count on the day it was featured."""
+    if not arxiv_id:
+        return None
+    # HF indexes papers by the version-less arxiv id, which is what our ids already carry.
+    try:
+        d = _get_json(f"https://huggingface.co/api/papers/{urllib.parse.quote(arxiv_id)}")
+    except Exception as ex:
+        print(f"[tools] hf paper {arxiv_id} failed: {ex}", file=sys.stderr)
+        return None
+    return {
+        "hf_upvotes": d.get("upvotes") or 0,
+        "hf_comments": d.get("numComments") or 0,
+    }
+
+
 def fetch_hn_signal(title: str) -> dict | None:
     """HN Algolia search (free, unauthed) for the paper title. Returns the top story's
     points/comments/url, or None if there's no real hit. Title search is fuzzy, so we only

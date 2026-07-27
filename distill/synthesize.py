@@ -45,6 +45,14 @@ SUMMARY_CHARS = int(os.environ.get("SUMMARY_CHARS", _SUMMARY_DEFAULT))
 HARDWARE_SLOTS = int(os.environ.get("HARDWARE_SLOTS", "2"))
 RELEASE_SLOTS = int(os.environ.get("RELEASE_SLOTS", "5"))
 
+# Carryover budget. Items the radar is already tracking (distill/track.py) re-enter the
+# candidate pool with freshly observed traction. They get a small reserved slice so the digest
+# stays mostly about what's new — but when the fresh window is thin, that slice widens to
+# QUIET_FLOOR. A quiet collection day is precisely when a radar should fall back on what it is
+# already watching; the alternative, historically, was publishing a digest with zero items.
+CARRYOVER_SLOTS = int(os.environ.get("CARRYOVER_SLOTS", "4"))
+QUIET_FLOOR = int(os.environ.get("QUIET_FLOOR", "6"))
+
 # How many ranked movers to send per bucket. The model only writes a sentence or two for the
 # "What changed" section, so it needs counts + a ranked sample, not every mover serialized in
 # full. A busy 7d window can mark 300+ items "new"; dumping them all blew past GitHub Models'
@@ -134,18 +142,28 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
     max_candidates = MAX_CANDIDATES if max_candidates is None else max_candidates
     summary_chars = SUMMARY_CHARS if summary_chars is None else summary_chars
     enriched = load_enriched()
-    keep = [i for i in items if (i.get("score") or 0) >= max(2, THRESHOLD - 1)]
+    # Fresh (first seen this window) vs carryover (already on the radar, re-observed today).
+    # The category quotas below are about balancing *today's* collection, so they run over
+    # fresh items only; carryovers get their own budget afterwards.
+    fresh = [i for i in items if not i.get("carryover")]
+    carried = [i for i in items if i.get("carryover")]
+    keep = [i for i in fresh if (i.get("score") or 0) >= max(2, THRESHOLD - 1)]
 
     # Category quotas: guarantee non-research a few slots (they score lower than research
     # papers structurally, e.g. a vendor blog has no HF/GitHub trending). Lower floor (>=1)
     # lets them in; the model still sees their real score and routes them correctly.
     research = [i for i in keep if i["category"] == "research"]
-    hardware = [i for i in items if i["category"] == "hardware" and (i.get("score") or 0) >= 1]
-    releases = [i for i in items if i["category"] == "releases" and (i.get("score") or 0) >= 1]
+    hardware = [i for i in fresh if i["category"] == "hardware" and (i.get("score") or 0) >= 1]
+    releases = [i for i in fresh if i["category"] == "releases" and (i.get("score") or 0) >= 1]
     research_slots = max(0, max_candidates - HARDWARE_SLOTS - RELEASE_SLOTS)
     chosen = (research[:research_slots]
               + hardware[:HARDWARE_SLOTS]
               + releases[:RELEASE_SLOTS])
+    # Carryover slice, widened when today's collection was quiet (see CARRYOVER_SLOTS).
+    slots = (CARRYOVER_SLOTS if len(chosen) >= QUIET_FLOOR
+             else max(CARRYOVER_SLOTS, QUIET_FLOOR - len(chosen)))
+    carried.sort(key=rank_key, reverse=True)
+    chosen += carried[:slots]
     chosen.sort(key=rank_key, reverse=True)   # model sees a single ranked list
     # Diversity pass: collapse near-duplicate titles (e.g. Foo-1.0-9B / -35B / -GGUF)
     # and cap items-per-source so one lab's release sweep can't dominate the digest.
@@ -176,6 +194,14 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
             row["links"] = links
         if prov:
             row["provenance"] = prov
+        if i.get("carryover"):
+            # Tell the model this is a carryover so it can route it to "Still developing"
+            # rather than presenting a week-old item as today's news. traction_delta is the
+            # magnitude change since we started tracking: positive means still climbing.
+            row["carryover"] = True
+            row["runs_tracked"] = i.get("streak", 1)
+            row["first_seen"] = i.get("first_seen", "")
+            row["traction_delta"] = i.get("traction_delta", 0)
         if not _strip_briefs:
             e = enriched.get(i["id"])
             if e and e.get("brief"):
@@ -234,7 +260,12 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
         "for genuine novelty / challenging a common assumption (max 5), and explain it. "
         "Items with focus_match=true are in a FOCUS area — use that ONLY as a re-rank boost "
         "for ordering and relevance, never added to the score. Skip low-signal items rather "
-        "than padding.\n\n"
+        "than padding.\n"
+        "Items with carryover=true are NOT new: the radar has been tracking them for "
+        "`runs_tracked` runs since `first_seen`, and their traction figures were re-observed "
+        "just now. Put them under 'Still developing' with their current numbers, unless "
+        "traction_delta is strongly positive — a carryover that is still climbing hard has "
+        "earned a main-list slot. Never describe a carryover as new.\n\n"
         f"{json.dumps(compact, indent=2)}"
     )
     return system, user, len(compact)
@@ -442,7 +473,22 @@ def main() -> None:
     # Snapshot state only for real backends (template and dryrun don't advance state).
     if BACKEND not in ("dryrun", "template"):
         save_state(items)
-    print(f"[distill] wrote {out}  (backend={BACKEND}, {len(items)} scored items)")
+        # Put today's digest-worthy items on the radar so the next run can re-observe their
+        # traction. Promotion happens only after a digest is actually written — a run that
+        # failed to publish shouldn't leave the ledger claiming it saw these items.
+        try:
+            from distill.track import load_ledger, promote, save_ledger
+            before = load_ledger()
+            after = promote(items, before)
+            save_ledger(after)
+            if len(after) != len(before):
+                print(f"[distill] tracking +{len(after) - len(before)} new items "
+                      f"({len(after)} on the radar)")
+        except Exception as ex:
+            print(f"[distill] promotion skipped: {ex}", file=sys.stderr)
+    n_carry = sum(1 for i in items if i.get("carryover"))
+    print(f"[distill] wrote {out}  (backend={BACKEND}, {len(items)} scored items, "
+          f"{n_carry} carryover)")
 
 
 if __name__ == "__main__":

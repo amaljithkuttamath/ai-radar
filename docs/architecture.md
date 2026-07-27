@@ -48,6 +48,7 @@ Every state file has exactly one writer. Concurrent runs can't collide by constr
 | `data/seen.json` | `collect` | `collect` next run |
 | `reports/**` | `distill` | `grader`, site, humans |
 | `data/state.json` | `distill` | `distill` next run, site |
+| `data/tracked.json` | `distill` | `distill` next run |
 | `evals/**` | grader | site, humans |
 
 ## Distill internals
@@ -55,7 +56,9 @@ Every state file has exactly one writer. Concurrent runs can't collide by constr
 ```mermaid
 flowchart LR
   A[data/raw/**] --> S[score.py<br/>0-5 traction]
-  S --> F[focus.py<br/>alias-aware re-rank]
+  S --> T[track.py<br/>re-observe carryovers]
+  TL[(data/tracked.json)] <--> T
+  T --> F[focus.py<br/>alias-aware re-rank]
   F --> D[delta.py<br/>diff vs previous]
   D --> DV[diversity.py<br/>near-dup + per-source cap]
   DV --> E[enrich.py<br/>optional briefs]
@@ -70,7 +73,8 @@ Per-module contracts:
 
 - **`score.py`**. Pure function of `Item` and category rules. Same input, same output. No time-of-day, no state. `focus_match` is not part of the score.
 - **`focus.py`**. Lexical alias-aware matcher over `profile.yaml`. `FOCUS` env overrides for one-off lenses. `FOCUS_BACKEND=embed` is stubbed.
-- **`delta.py`**. Classifies items `new / climbing / cooled / steady` versus previous `state.json`. Uses traction magnitude (`hf_upvotes + gh_stars`), not `rank_key`, because rank saturates.
+- **`track.py`**. The radar's memory. Owns `data/tracked.json`: promotes digest-worthy items, re-reads their traction from the source of record every run (GitHub stars, HF likes, HF paper upvotes), and re-enters them as candidates re-scored against current signals. Prunes on TTL, consecutive misses, flat traction, and a size cap. Without it `delta.py` compares two disjoint sets and every change-over-time section is empty — see [ADR-0004](architecture/adr/0004-carryover-tracking-ledger.md). Bounded HTTP, no model, degrades to "no observation" on any failure.
+- **`delta.py`**. Classifies items `new / climbing / cooled / steady` versus previous `state.json`. Uses traction magnitude (`hf_upvotes + gh_stars`), not `rank_key`, because rank saturates. `story_arcs()` reads `tracked.json`, not `state.json` — only the ledger accumulates a real streak.
 - **`diversity.py`**. Near-duplicate title collapse (Jaccard on shingles, version tokens stripped) plus per-source cap (default 2). Stdlib. Rank order preserved. No-op with `DIVERSITY_JACCARD=1.0` or `MAX_PER_SOURCE=0`.
 - **`enrich.py`**. Optional per-item briefs, one model call each. Off by default. Any brief that fails is dropped; digest still ships.
 - **`synthesize.py`**. One model call. Prompt is `distill/digest.md` (version-controlled). Backends: `github` (default), `anthropic`, `ollama`, `dryrun`.
@@ -132,13 +136,33 @@ Issue filed when: any dim ≤ 2, or `broken_urls > 0`, or same dim ≤ 3 for 3 c
 **`state.json`** (movers snapshot, written by `delta.py`):
 
 ```jsonc
+// Flat id -> snapshot map. Replaced wholesale each run; this is the previous run's scored
+// set, not a durable history. `streak` here is vestigial — see tracked.json below.
 {
-  "as_of": "2026-07-06T12:11:00Z",
-  "items": {
-    "arxiv:2406.01234": {
-      "score": 4, "traction_magnitude": 1230,
-      "score_tier": "high", "last_seen": "..."
-    }
+  "arxiv:2406.01234": {
+    "score": 4, "mag": 5.14, "title": "...", "url": "https://...",
+    "streak": 1, "first_seen": "2026-07-06", "mag_history": [5.14]
+  }
+}
+```
+
+**`tracked.json`** (carryover ledger, written by `track.py` — [ADR-0004](architecture/adr/0004-carryover-tracking-ledger.md)):
+
+```jsonc
+// The radar's memory. Capped at 60 entries; every row is re-observed each run.
+{
+  "ghrepo:getzep/graphiti": {
+    "id": "ghrepo:getzep/graphiti", "title": "...", "url": "https://...",
+    "source": "GitHub Trending", "category": "releases",
+    "links": {}, "summary": "...", "keywords": [],
+    "first_seen": "2026-07-26",     // never overwritten
+    "last_seen":  "2026-07-29",     // last run that actually observed it
+    "streak":     3,                // consecutive runs OBSERVED (not merely remembered)
+    "misses":     0,                // consecutive failed re-fetches; 3 => dropped
+    "flat_runs":  0,                // consecutive runs with no traction gain; 5 => dropped
+    "signals":    { "gh_stars": 29208 },   // latest observation, merged not replaced
+    "mag_history": [5.14, 5.22, 5.39],     // one entry per observation
+    "peak_mag":   5.39                     // used by the size cap and refresh ordering
   }
 }
 ```
@@ -165,6 +189,7 @@ sequenceDiagram
   participant Cron as GH Cron
   participant Collect as collect-corpus.yml
   participant Distill as distill.yml
+  participant Sources as GitHub / HF APIs
   participant Repo as git main
   participant Model as LLM
   participant Grader as daily grader
@@ -175,10 +200,12 @@ sequenceDiagram
   Collect->>Collect: fetch, normalise, dedup
   Collect->>Repo: commit seen.json + upload corpus-raw artifact
   Collect->>Distill: workflow_run event
-  Distill->>Distill: score, focus, delta, diversity, enrich
+  Distill->>Distill: score
+  Distill->>Sources: re-read traction for tracked items
+  Distill->>Distill: focus, delta, diversity, enrich
   Distill->>Model: one synthesis call
   Model-->>Distill: markdown
-  Distill->>Repo: commit reports/**, state.json
+  Distill->>Repo: commit reports/**, state.json, tracked.json
 
   Note over Grader: 12:00 UTC (Perplexity)
   Grader->>Repo: gh api GET digest + state

@@ -101,7 +101,10 @@ jobs:
           # collect-corpus.yml; seen_social.json / raw/social/ belong to collect-social.yml.
           # NOTE: until the state-split PR lands, distill still writes the legacy
           # data/state.json. Once state_corpus.json replaces it, update this path.
-          git add -f reports/*.md data/state.json 2>/dev/null || true
+          # data/tracked.json is the carryover ledger (distill/track.py). Like state.json it
+          # must survive between runs — it is the radar's memory, and an item's streak is
+          # only meaningful if the ledger it lives in is the same one the next run reads.
+          git add -f reports/*.md data/state.json data/tracked.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No new digest to commit."
           else

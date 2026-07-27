@@ -1,4 +1,9 @@
 # Which collectors to run, and default distillation parameters.
+#
+# NOTE: nothing reads this file at runtime — the defaults live in the modules and are
+# overridden by env (scripts/distill.sh and the workflow inputs set them). This is the
+# human-readable record of what those defaults are; change a value here AND its env default,
+# or you have only changed the documentation.
 
 collectors:
   - arxiv
@@ -13,6 +18,18 @@ distill:
   focus: []
   market: off        # on => append mechanism-mapping to score>=4 items (NOT advice)
   include_threshold: 2   # score >= this -> main list; ==1 -> watch-list; <=0 drop
+
+track:               # carryover ledger — see distill/track.py and ADR-0004. Always on: it
+  ttl_days: 14       #   is what makes movers, story arcs and "Still developing" possible.
+  max_tracked: 60    # hard ledger size cap (it is committed every run, so keep it small)
+  min_score: 3       # promote items at/above this score after a successful digest
+  max_misses: 3      # consecutive failed re-fetches before an item is dropped as dead
+  max_flat_runs: 5   # consecutive runs with no traction gain before an item ages out
+  refresh_budget: 60 # ceiling on re-observation HTTP calls per run (highest peaks first)
+  carryover_slots: 4 # candidate slots reserved for carryovers on a normal day
+  quiet_floor: 6     #   ...widened to this many candidates when the fresh window is thin
+  # Env overrides: TRACK_TTL_DAYS, TRACK_MAX, TRACK_MIN_SCORE, TRACK_MAX_MISSES,
+  # TRACK_MAX_FLAT_RUNS, TRACK_REFRESH_BUDGET, CARRYOVER_SLOTS, QUIET_FLOOR.
 
 deliver:                 # optional email push of the digest (distill/deliver.py).
   email: false           # true (or set RADAR_EMAIL_TO env) to send. Needs SMTP_* secrets.

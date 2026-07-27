@@ -1,0 +1,63 @@
+name: test
+
+# Unit + integration tests for the distillation pipeline. Deliberately hermetic: no network,
+# no model backend, no secrets. Everything the pipeline fetches is injected in the tests, so
+# this job cannot be flaked by a slow feed or a rate limit — the failure modes the collect and
+# distill workflows are designed to absorb at runtime should never gate a merge here.
+#
+# Runs on every push and PR that touches the pipeline. Nothing is committed.
+
+on:
+  push:
+    paths:
+      - "collectors/**"
+      - "distill/**"
+      - "tests/**"
+      - "pyproject.toml"
+      - ".github/workflows/test.yml"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # The floor is what pyproject declares (requires-python >= 3.10); the ceiling is what
+        # the Actions runners default to. Both are exercised because the pipeline runs on
+        # whatever uv resolves in CI.
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run tests
+        run: uv run --group dev pytest -q
+
+      - name: Check the pipeline modules import cleanly
+        # A syntax error or bad import in a stage that only runs in CI (enrich, deliver,
+        # embed) would otherwise surface as a failed nightly run rather than a failed build.
+        run: |
+          uv run python -c "
+          import importlib
+          for m in ['collectors.arxiv', 'collectors.hf_papers', 'collectors.lab_blogs',
+                    'collectors.github_trending', 'collectors.hf_trending',
+                    'distill.score', 'distill.rank', 'distill.focus', 'distill.diversity',
+                    'distill.delta', 'distill.track', 'distill.cluster', 'distill.enrich',
+                    'distill.synthesize', 'distill.reindex', 'distill.deliver',
+                    'distill.tools', 'distill.embed']:
+              importlib.import_module(m)
+          print('all pipeline modules import')
+          "

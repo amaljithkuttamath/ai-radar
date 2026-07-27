@@ -24,7 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from collectors.common import ROOT  # noqa: E402
-from math import log1p  # noqa: E402
+from distill.rank import magnitude as _magnitude  # noqa: E402
 
 STATE_PATH = ROOT / "data" / "state.json"
 # "Climbing/cooled" must react to traction GROWTH, not just integer-score jumps. rank_key's
@@ -32,7 +32,10 @@ STATE_PATH = ROOT / "data" / "state.json"
 # it — diffing rank_key would make these sections almost never fire. Instead we diff a raw
 # (unsaturated) signal magnitude, where doubling traction is a clear, detectable move.
 # A score (integer tier) change is always a mover regardless of magnitude delta.
-MAG_MOVE_EPS = float(os.environ.get("DELTA_MAG_EPS", "0.5"))   # ~+65% traction to register
+# Threshold is on the WEIGHTED magnitude, so what it costs depends on the signal: hf_upvotes
+# carry weight 1.0 (~+65% registers), gh_stars weight 0.5 (~+170%, i.e. roughly a tripling).
+# Stars are the noisier, more inflated counter, so needing a bigger move there is the point.
+MAG_MOVE_EPS = float(os.environ.get("DELTA_MAG_EPS", "0.5"))
 _MAG_HISTORY_CAP = 7  # rolling mag history length per item
 _STORY_ARC_MIN_STREAK = 3  # minimum consecutive runs to qualify as a story arc
 _STORY_ARCS_CAP = 10  # max arcs emitted in the prompt
@@ -45,16 +48,6 @@ def _load_state() -> dict[str, dict]:
         except Exception:
             return {}
     return {}
-
-
-def _magnitude(item: dict) -> float:
-    """Unsaturated traction magnitude (log-scaled so a 0->10 jump and 1000->10000 jump are
-    comparable, but NOT squashed into [0,1) the way rank_key's tiebreak is)."""
-    sig = item.get("signals") or {}
-    return (log1p(sig.get("hf_upvotes") or 0)
-            + 0.7 * log1p(sig.get("hf_likes") or 0)
-            + 0.5 * log1p(sig.get("gh_stars") or 0)
-            + 0.3 * log1p(sig.get("hn_points") or 0))
 
 
 def _snapshot(items: list[dict], prev: dict[str, dict] | None = None) -> dict[str, dict]:
@@ -134,41 +127,21 @@ def save_state(items: list[dict]) -> None:
 
 
 def story_arcs(cap: int = _STORY_ARCS_CAP) -> list[dict]:
-    """Return up to `cap` story arcs from state.json: items seen for >= _STORY_ARC_MIN_STREAK
+    """Return up to `cap` story arcs: items observed across >= _STORY_ARC_MIN_STREAK
     consecutive runs with a rising magnitude trend. Each arc is a compact summary dict:
       {title, url, streak, first_seen, mag_pct_change}
-    Returns an empty list when state is absent, too small, or no arcs qualify.
-    Degrades cleanly on any error."""
-    try:
-        state = _load_state()
-        if not state:
-            return []
-        arcs: list[dict] = []
-        for iid, snap in state.items():
-            streak = int(snap.get("streak") or 0)
-            if streak < _STORY_ARC_MIN_STREAK:
-                continue
-            mag_history: list[float] = snap.get("mag_history") or []
-            if len(mag_history) < 2:
-                continue
-            # Rising: last mag > first mag in the rolling window
-            first_mag = mag_history[0]
-            last_mag = mag_history[-1]
-            if last_mag <= first_mag:
-                continue
-            pct = round((last_mag - first_mag) / max(first_mag, 0.01) * 100, 1)
-            arcs.append({
-                "title": snap.get("title", ""),
-                "url": snap.get("url", ""),
-                "streak": streak,
-                "first_seen": snap.get("first_seen", ""),
-                "mag_pct_change": pct,
-            })
-        # Sort by magnitude growth percentage descending, then streak length
-        arcs.sort(key=lambda a: (a["mag_pct_change"], a["streak"]), reverse=True)
-        return arcs[:cap]
-    except Exception:
-        return []
+
+    Reads the TRACKED LEDGER (data/tracked.json), not state.json. state.json is a snapshot of
+    whatever a single run scored, and because collection dedups an item forever, no item ever
+    appeared in two consecutive snapshots — the streak counter it stores has been stuck at 1
+    for the life of the repo, so this function could never return anything. The ledger is
+    refreshed by re-observing each tracked item every run, which is what makes a streak a
+    real measurement. See distill/track.py.
+
+    Returns an empty list when the ledger is absent or no arcs qualify. Degrades on any error.
+    """
+    from distill.track import story_arcs as _ledger_arcs   # local: keeps import order simple
+    return _ledger_arcs(min_streak=_STORY_ARC_MIN_STREAK, cap=cap)
 
 
 def main() -> None:

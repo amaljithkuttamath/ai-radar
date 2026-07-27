@@ -9,6 +9,16 @@ dependencies = [
     "feedparser>=6.0",
 ]
 
+[dependency-groups]
+# Tests only. The pipeline itself stays stdlib + pyyaml + feedparser, so CI's collect and
+# distill jobs never install this group.
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
 [tool.uv]
 # Run collectors/distill with: uv run python -m collectors.arxiv  (etc.)
 # or the whole cycle: uv run bash scripts/run.sh
+# Tests: uv run --group dev pytest

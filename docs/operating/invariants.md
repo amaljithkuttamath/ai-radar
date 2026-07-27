@@ -12,6 +12,7 @@ Every state file has exactly one writer. Concurrent runs cannot collide by const
 | `data/seen.json` | `collect-corpus.yml` | itself next run |
 | `reports/**` | `distill.yml` | grader, site, humans |
 | `data/state.json` | `distill.yml` | itself next run, site |
+| `data/tracked.json` | `distill.yml` | itself next run |
 | `evals/<YYYY-MM-DD>.json`, `evals/latest.json`, `evals/README.md` | grader | site, coder, humans |
 | `evals/backlog.md` | grader (append during run) and coder (direct commit for X-axis / manual) | humans |
 | `evals/rubric.md` | humans, via PR | grader (read-only) |
