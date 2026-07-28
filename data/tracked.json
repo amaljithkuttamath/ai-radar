@@ -1,24 +1,176 @@
 {
+"arxiv:2607.24280": {
+"category": "research",
+"first_seen": "2026-07-28",
+"flat_runs": 0,
+"id": "arxiv:2607.24280",
+"keywords": [],
+"last_seen": "2026-07-28",
+"links": {},
+"mag_history": [
+4.1271
+],
+"misses": 0,
+"peak_mag": 4.1271,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 61
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Agentic search enables large language models to solve knowledge-intensive tasks by interleaving multi-step reasoning with retrieval, yet optimizing this with outcome-based reinforcement learning (RL) provides only sparse supervision. Knowledge distillation can supply denser guidance, and advanced proprietary models with their strong reasoning capabilities are promising teachers. While distilling f",
+"title": "From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search",
+"url": "https://arxiv.org/abs/2607.24280"
+},
+"arxiv:2607.24653": {
+"category": "research",
+"first_seen": "2026-07-28",
+"flat_runs": 0,
+"id": "arxiv:2607.24653",
+"keywords": [],
+"last_seen": "2026-07-28",
+"links": {
+"github": "https://github.com/MoonshotAI/Kimi-K3",
+"project": "https://www.kimi.com/blog/kimi-k3"
+},
+"mag_history": [
+5.3613
+],
+"misses": 0,
+"peak_mag": 5.3613,
+"signals": {
+"hf_comments": 4,
+"hf_upvotes": 212
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "We introduce Kimi K3, a 2.8T parameter Mixture-of-Experts model with 104 billion activated parameters, native vision capabilities, and a 1-million-token context window. Kimi K3 is built on Kimi Delta Attention and Attention Residuals, which improve information flow across sequence length and model depth. Together with Stable LatentMoE, which effectively activates 16 of 896 routed experts per token",
+"title": "Kimi K3: Open Frontier Intelligence",
+"url": "https://arxiv.org/abs/2607.24653"
+},
+"arxiv:2607.24720": {
+"category": "research",
+"first_seen": "2026-07-28",
+"flat_runs": 0,
+"id": "arxiv:2607.24720",
+"keywords": [],
+"last_seen": "2026-07-28",
+"links": {
+"github": "https://github.com/Quester-one/PlanPhysCode",
+"project": "https://quester-one.github.io/PlanPhysWebsite/"
+},
+"mag_history": [
+2.7726
+],
+"misses": 0,
+"peak_mag": 2.7726,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 15
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Multi-turn long-horizon planning is critical for foundation model agents, yet how to fundamentally improve it remains unclear. Existing models are trained on uncontrollable and opaque Internet data, making it difficult to identify how planning ability is acquired, shaped, and integrated. To address this challenge, we introduce a unified and controlled multi-turn environment that enables precise co",
+"title": "The Physics of Multi-Turn Long-Horizon Planning: From Pre-training to Post-training via Single- and Multi-Teacher On-Policy Agentic Distillation",
+"url": "https://arxiv.org/abs/2607.24720"
+},
+"arxiv:2607.24743": {
+"category": "research",
+"first_seen": "2026-07-28",
+"flat_runs": 0,
+"id": "arxiv:2607.24743",
+"keywords": [],
+"last_seen": "2026-07-28",
+"links": {
+"github": "https://github.com/alibaba-damo-academy/ClinFusion",
+"project": "https://github.com/alibaba-damo-academy/ClinFusion"
+},
+"mag_history": [
+1.6094
+],
+"misses": 0,
+"peak_mag": 1.6094,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 4
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Multimodal large language models (MLLMs) hold immense potential to revolutionize clinical practice, yet deploying them in the medical domain is fundamentally a vision-centric challenge: models must absorb knowledge from heterogeneous 2D and 3D medical images, and evaluation protocols must align with radiologists' clinical practice and provide an accurate, fine-grained and factualness-driven assess",
+"title": "ClinFusion: A Vision-Centric Multimodal LLM System for Holistic Medical Understanding",
+"url": "https://arxiv.org/abs/2607.24743"
+},
+"arxiv:2607.24744": {
+"category": "research",
+"first_seen": "2026-07-28",
+"flat_runs": 0,
+"id": "arxiv:2607.24744",
+"keywords": [],
+"last_seen": "2026-07-28",
+"links": {
+"github": "https://github.com/worldbench/awesome-embodied-data-pyramid",
+"project": "https://jasper-aaa.github.io/embodied-data-pyramid/"
+},
+"mag_history": [
+3.4012
+],
+"misses": 0,
+"peak_mag": 3.4012,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 29
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Multimodal foundation models learned to see and to speak by consuming the whole internet. Embodied agents admit no such shortcut, since they require data that couple observations with physical states and actions. These signals can be provided, to varying degrees, by multiple data sources. In this work, we organize the embodied data ecosystem as a \"pyramid\" spanning five complementary sources: real",
+"title": "Data Pyramid for Embodied Manipulation",
+"url": "https://arxiv.org/abs/2607.24744"
+},
+"hfmodel:microsoft/Fara1.5-27B": {
+"category": "releases",
+"first_seen": "2026-07-28",
+"flat_runs": 0,
+"id": "hfmodel:microsoft/Fara1.5-27B",
+"keywords": [],
+"last_seen": "2026-07-28",
+"links": {},
+"mag_history": [
+3.5868
+],
+"misses": 0,
+"peak_mag": 3.5868,
+"signals": {
+"hf_downloads": 1543,
+"hf_likes": 167,
+"hf_trending": 166
+},
+"source": "HF Trending Models",
+"streak": 1,
+"summary": "image-text-to-text \u00b7 tags: transformers, safetensors, qwen3_5, image-text-to-text, computer-use, cua",
+"title": "microsoft/Fara1.5-27B (HF Model)",
+"url": "https://huggingface.co/microsoft/Fara1.5-27B"
+},
 "hfmodel:nvidia/Cosmos3-Edge": {
 "category": "releases",
 "first_seen": "2026-07-27",
 "flat_runs": 0,
 "id": "hfmodel:nvidia/Cosmos3-Edge",
 "keywords": [],
-"last_seen": "2026-07-27",
+"last_seen": "2026-07-28",
 "links": {},
 "mag_history": [
-3.4232
+3.4232,
+3.4337
 ],
 "misses": 0,
-"peak_mag": 3.4232,
+"peak_mag": 3.4337,
 "signals": {
-"hf_downloads": 33127,
-"hf_likes": 132,
-"hf_trending": 129
+"hf_downloads": 35119,
+"hf_likes": 134,
+"hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 1,
+"streak": 2,
 "summary": "\u00b7 tags: cosmos, diffusers, safetensors, cosmos3_edge, nvidia, cosmos3",
 "title": "nvidia/Cosmos3-Edge (HF Model)",
 "url": "https://huggingface.co/nvidia/Cosmos3-Edge"

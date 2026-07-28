@@ -1,68 +1,201 @@
 {
-"blog:https://blogs.nvidia.com/?p=96867": {
-"first_seen": "2026-07-27",
-"mag": 0.0,
+"arxiv:2607.24027": {
+"first_seen": "2026-07-28",
+"mag": 3.1781,
 "mag_history": [
-0.0
+3.1781
+],
+"score": 2,
+"streak": 1,
+"title": "Sol-Attn: Accelerating Video Generation Inference via On-the-Fly Attention Sparsification",
+"url": "https://arxiv.org/abs/2607.24027"
+},
+"arxiv:2607.24241": {
+"first_seen": "2026-07-28",
+"mag": 1.0986,
+"mag_history": [
+1.0986
+],
+"score": 2,
+"streak": 1,
+"title": "FilmBench: A Film-Grade Benchmark for Cinematic Video Generation",
+"url": "https://arxiv.org/abs/2607.24241"
+},
+"arxiv:2607.24280": {
+"first_seen": "2026-07-28",
+"mag": 4.1271,
+"mag_history": [
+4.1271
+],
+"score": 4,
+"streak": 1,
+"title": "From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search",
+"url": "https://arxiv.org/abs/2607.24280"
+},
+"arxiv:2607.24516": {
+"first_seen": "2026-07-28",
+"mag": 1.7918,
+"mag_history": [
+1.7918
 ],
 "score": 1,
 "streak": 1,
-"title": "NVIDIA Harnesses Vera CPU to Speed Up Design of Next-Generation CPUs and GPUs",
-"url": "https://blogs.nvidia.com/blog/vera-cpu-eda/"
+"title": "DecoupleMix: Decoupled Ratio Search and Convex Allocation for Scalable VLM Data Recipes",
+"url": "https://arxiv.org/abs/2607.24516"
 },
-"blog:https://blogs.nvidia.com/?p=96884": {
-"first_seen": "2026-07-27",
-"mag": 0.0,
+"arxiv:2607.24651": {
+"first_seen": "2026-07-28",
+"mag": 0.6931,
 "mag_history": [
-0.0
+0.6931
 ],
-"score": 1,
+"score": 2,
 "streak": 1,
-"title": "Industry Leaders Unite in Open Secure AI Alliance for AI Safety and Security",
-"url": "https://blogs.nvidia.com/blog/open-secure-ai-alliance/"
+"title": "Evidence Attribution in Visual Document Understanding without Coordinates or Region Labels",
+"url": "https://arxiv.org/abs/2607.24651"
 },
-"blog:https://openai.com/index/how-ai-is-expanding-what-people-do-at-work": {
-"first_seen": "2026-07-27",
-"mag": 0.0,
+"arxiv:2607.24653": {
+"first_seen": "2026-07-28",
+"mag": 5.3613,
 "mag_history": [
-0.0
+5.3613
 ],
-"score": 1,
+"score": 4,
 "streak": 1,
-"title": "How AI is expanding what people do at work",
-"url": "https://openai.com/index/how-ai-is-expanding-what-people-do-at-work"
+"title": "Kimi K3: Open Frontier Intelligence",
+"url": "https://arxiv.org/abs/2607.24653"
 },
-"hfdataset:huggingface/forensic-refusal": {
-"first_seen": "2026-07-27",
-"mag": 1.8473,
+"arxiv:2607.24720": {
+"first_seen": "2026-07-28",
+"mag": 2.7726,
 "mag_history": [
-1.8473
-],
-"score": 1,
-"streak": 1,
-"title": "huggingface/forensic-refusal (HF Dataset)",
-"url": "https://huggingface.co/datasets/huggingface/forensic-refusal"
-},
-"hfdataset:unstonio/pixelgpt-24x24-20k": {
-"first_seen": "2026-07-27",
-"mag": 1.9832,
-"mag_history": [
-1.9832
-],
-"score": 1,
-"streak": 1,
-"title": "unstonio/pixelgpt-24x24-20k (HF Dataset)",
-"url": "https://huggingface.co/datasets/unstonio/pixelgpt-24x24-20k"
-},
-"hfmodel:nvidia/Cosmos3-Edge": {
-"first_seen": "2026-07-27",
-"mag": 3.4232,
-"mag_history": [
-3.4232
+2.7726
 ],
 "score": 3,
 "streak": 1,
+"title": "The Physics of Multi-Turn Long-Horizon Planning: From Pre-training to Post-training via Single- and Multi-Teacher On-Policy Agentic Distillation",
+"url": "https://arxiv.org/abs/2607.24720"
+},
+"arxiv:2607.24731": {
+"first_seen": "2026-07-28",
+"mag": 3.5835,
+"mag_history": [
+3.5835
+],
+"score": 2,
+"streak": 1,
+"title": "Rethinking Classifier-Free Guidance in On-Policy Diffusion Distillation",
+"url": "https://arxiv.org/abs/2607.24731"
+},
+"arxiv:2607.24743": {
+"first_seen": "2026-07-28",
+"mag": 1.6094,
+"mag_history": [
+1.6094
+],
+"score": 3,
+"streak": 1,
+"title": "ClinFusion: A Vision-Centric Multimodal LLM System for Holistic Medical Understanding",
+"url": "https://arxiv.org/abs/2607.24743"
+},
+"arxiv:2607.24744": {
+"first_seen": "2026-07-28",
+"mag": 3.4012,
+"mag_history": [
+3.4012
+],
+"score": 3,
+"streak": 1,
+"title": "Data Pyramid for Embodied Manipulation",
+"url": "https://arxiv.org/abs/2607.24744"
+},
+"hfdataset:AlicanKiraz0/Turkish-CoT-Instruct-Dataset": {
+"first_seen": "2026-07-28",
+"mag": 1.9408,
+"mag_history": [
+1.9408
+],
+"score": 1,
+"streak": 1,
+"title": "AlicanKiraz0/Turkish-CoT-Instruct-Dataset (HF Dataset)",
+"url": "https://huggingface.co/datasets/AlicanKiraz0/Turkish-CoT-Instruct-Dataset"
+},
+"hfdataset:NVEagle/LocateAnything-Data": {
+"first_seen": "2026-07-28",
+"mag": 1.8956,
+"mag_history": [
+1.8956
+],
+"score": 1,
+"streak": 1,
+"title": "NVEagle/LocateAnything-Data (HF Dataset)",
+"url": "https://huggingface.co/datasets/NVEagle/LocateAnything-Data"
+},
+"hfdataset:moonshotai/PerceptionBench": {
+"first_seen": "2026-07-28",
+"mag": 2.2246,
+"mag_history": [
+2.2246
+],
+"score": 1,
+"streak": 1,
+"title": "moonshotai/PerceptionBench (HF Dataset)",
+"url": "https://huggingface.co/datasets/moonshotai/PerceptionBench"
+},
+"hfmodel:baseten/GLM-5.2-Vision-NVFP4": {
+"first_seen": "2026-07-28",
+"mag": 3.3964,
+"mag_history": [
+3.3964
+],
+"score": 2,
+"streak": 1,
+"title": "baseten/GLM-5.2-Vision-NVFP4 (HF Model)",
+"url": "https://huggingface.co/baseten/GLM-5.2-Vision-NVFP4"
+},
+"hfmodel:microsoft/Fara1.5-27B": {
+"first_seen": "2026-07-28",
+"mag": 3.5868,
+"mag_history": [
+3.5868
+],
+"score": 3,
+"streak": 1,
+"title": "microsoft/Fara1.5-27B (HF Model)",
+"url": "https://huggingface.co/microsoft/Fara1.5-27B"
+},
+"hfmodel:moonshotai/Kimi-K3": {
+"first_seen": "2026-07-28",
+"mag": 6.2435,
+"mag_history": [
+6.2435
+],
+"score": 2,
+"streak": 1,
+"title": "moonshotai/Kimi-K3 (HF Model)",
+"url": "https://huggingface.co/moonshotai/Kimi-K3"
+},
+"hfmodel:nvidia/Cosmos3-Edge": {
+"first_seen": "2026-07-27",
+"mag": 3.4337,
+"mag_history": [
+3.4232,
+3.4337
+],
+"score": 3,
+"streak": 2,
 "title": "nvidia/Cosmos3-Edge (HF Model)",
 "url": "https://huggingface.co/nvidia/Cosmos3-Edge"
+},
+"hfmodel:unsloth/Kimi-K3": {
+"first_seen": "2026-07-28",
+"mag": 3.4019,
+"mag_history": [
+3.4019
+],
+"score": 2,
+"streak": 1,
+"title": "unsloth/Kimi-K3 (HF Model)",
+"url": "https://huggingface.co/unsloth/Kimi-K3"
 }
 }
