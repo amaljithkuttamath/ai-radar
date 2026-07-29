@@ -5,19 +5,20 @@
 "flat_runs": 0,
 "id": "arxiv:2607.24280",
 "keywords": [],
-"last_seen": "2026-07-28",
+"last_seen": "2026-07-29",
 "links": {},
 "mag_history": [
-4.1271
+4.1271,
+4.3175
 ],
 "misses": 0,
-"peak_mag": 4.1271,
+"peak_mag": 4.3175,
 "signals": {
-"hf_comments": 1,
-"hf_upvotes": 61
+"hf_comments": 0,
+"hf_upvotes": 74
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "Agentic search enables large language models to solve knowledge-intensive tasks by interleaving multi-step reasoning with retrieval, yet optimizing this with outcome-based reinforcement learning (RL) provides only sparse supervision. Knowledge distillation can supply denser guidance, and advanced proprietary models with their strong reasoning capabilities are promising teachers. While distilling f",
 "title": "From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search",
 "url": "https://arxiv.org/abs/2607.24280"
@@ -28,25 +29,47 @@
 "flat_runs": 0,
 "id": "arxiv:2607.24653",
 "keywords": [],
-"last_seen": "2026-07-28",
+"last_seen": "2026-07-29",
 "links": {
 "github": "https://github.com/MoonshotAI/Kimi-K3",
 "project": "https://www.kimi.com/blog/kimi-k3"
 },
 "mag_history": [
-5.3613
+5.3613,
+9.9586
 ],
 "misses": 0,
-"peak_mag": 5.3613,
+"peak_mag": 9.9586,
 "signals": {
-"hf_comments": 4,
-"hf_upvotes": 212
+"gh_stars": 4176,
+"hf_comments": 0,
+"hf_upvotes": 326
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "We introduce Kimi K3, a 2.8T parameter Mixture-of-Experts model with 104 billion activated parameters, native vision capabilities, and a 1-million-token context window. Kimi K3 is built on Kimi Delta Attention and Attention Residuals, which improve information flow across sequence length and model depth. Together with Stable LatentMoE, which effectively activates 16 of 896 routed experts per token",
 "title": "Kimi K3: Open Frontier Intelligence",
 "url": "https://arxiv.org/abs/2607.24653"
+},
+"arxiv:2607.24688": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.24688",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Entity matching identifies records that refer to the same real-world entity. Language models can be adapted to this task through bi-encoder, cross-encoder, and generative matcher architectures. However, prior studies often conflate matcher architecture with differences in model backbone, model variant(reflecting different pretraining objectives), and model size, making it difficult to isolate the ",
+"title": "Beyond Scale and Generation: Understanding Language Model-based Entity Matching",
+"url": "http://arxiv.org/abs/2607.24688v1"
 },
 "arxiv:2607.24720": {
 "category": "research",
@@ -54,22 +77,24 @@
 "flat_runs": 0,
 "id": "arxiv:2607.24720",
 "keywords": [],
-"last_seen": "2026-07-28",
+"last_seen": "2026-07-29",
 "links": {
 "github": "https://github.com/Quester-one/PlanPhysCode",
 "project": "https://quester-one.github.io/PlanPhysWebsite/"
 },
 "mag_history": [
-2.7726
+2.7726,
+4.3344
 ],
 "misses": 0,
-"peak_mag": 2.7726,
+"peak_mag": 4.3344,
 "signals": {
-"hf_comments": 1,
-"hf_upvotes": 15
+"gh_stars": 10,
+"hf_comments": 0,
+"hf_upvotes": 22
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "Multi-turn long-horizon planning is critical for foundation model agents, yet how to fundamentally improve it remains unclear. Existing models are trained on uncontrollable and opaque Internet data, making it difficult to identify how planning ability is acquired, shaped, and integrated. To address this challenge, we introduce a unified and controlled multi-turn environment that enables precise co",
 "title": "The Physics of Multi-Turn Long-Horizon Planning: From Pre-training to Post-training via Single- and Multi-Teacher On-Policy Agentic Distillation",
 "url": "https://arxiv.org/abs/2607.24720"
@@ -80,22 +105,24 @@
 "flat_runs": 0,
 "id": "arxiv:2607.24743",
 "keywords": [],
-"last_seen": "2026-07-28",
+"last_seen": "2026-07-29",
 "links": {
 "github": "https://github.com/alibaba-damo-academy/ClinFusion",
 "project": "https://github.com/alibaba-damo-academy/ClinFusion"
 },
 "mag_history": [
-1.6094
+1.6094,
+2.8842
 ],
 "misses": 0,
-"peak_mag": 1.6094,
+"peak_mag": 2.8842,
 "signals": {
-"hf_comments": 1,
-"hf_upvotes": 4
+"gh_stars": 4,
+"hf_comments": 0,
+"hf_upvotes": 7
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "Multimodal large language models (MLLMs) hold immense potential to revolutionize clinical practice, yet deploying them in the medical domain is fundamentally a vision-centric challenge: models must absorb knowledge from heterogeneous 2D and 3D medical images, and evaluation protocols must align with radiologists' clinical practice and provide an accurate, fine-grained and factualness-driven assess",
 "title": "ClinFusion: A Vision-Centric Multimodal LLM System for Holistic Medical Understanding",
 "url": "https://arxiv.org/abs/2607.24743"
@@ -106,25 +133,477 @@
 "flat_runs": 0,
 "id": "arxiv:2607.24744",
 "keywords": [],
-"last_seen": "2026-07-28",
+"last_seen": "2026-07-29",
 "links": {
 "github": "https://github.com/worldbench/awesome-embodied-data-pyramid",
 "project": "https://jasper-aaa.github.io/embodied-data-pyramid/"
 },
 "mag_history": [
-3.4012
+3.4012,
+5.7059
 ],
 "misses": 0,
-"peak_mag": 3.4012,
+"peak_mag": 5.7059,
 "signals": {
-"hf_comments": 1,
-"hf_upvotes": 29
+"gh_stars": 82,
+"hf_comments": 0,
+"hf_upvotes": 32
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "Multimodal foundation models learned to see and to speak by consuming the whole internet. Embodied agents admit no such shortcut, since they require data that couple observations with physical states and actions. These signals can be provided, to varying degrees, by multiple data sources. In this work, we organize the embodied data ecosystem as a \"pyramid\" spanning five complementary sources: real",
 "title": "Data Pyramid for Embodied Manipulation",
 "url": "https://arxiv.org/abs/2607.24744"
+},
+"arxiv:2607.25070": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25070",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Radio Frequency Fingerprinting (RFFP) has emerged as a promising approach for device authentication by exploiting hardware-specific impairments embedded in transmitted signals. Yet existing methods largely overlook a major drawback: RFFP sensitivity to temperature--a critical factor influenced by both internal and environmental conditions--which can significantly alter device signatures and degrad",
+"title": "Characterizing and Mitigating the Effects of Device Temperature on RF Fingerprinting Accuracy",
+"url": "http://arxiv.org/abs/2607.25070v1"
+},
+"arxiv:2607.25186": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25186",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Background: Most medical large language model (LLM) benchmarks focus on examination knowledge or isolated tasks and may not reflect the longitudinal, multimodal, and safety-critical workflow of cardiovascular care. Objective: To develop MyoCardBench, a real-world benchmark spanning the cardiovascular care continuum, and assess LLM performance across clinical dimensions and specialist tasks. Method",
+"title": "MyoCardBench: A Real-World Data Benchmark for Evaluating Large Language Models in Clinically Authentic Cardiovascular Care Scenarios",
+"url": "http://arxiv.org/abs/2607.25186v1"
+},
+"arxiv:2607.25196": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25196",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Contrastive decoding (CD) has been proposed as a training-free strategy for mitigating object hallucinations in multimodal large language models (MLLMs), with reported gains on benchmarks such as POPE. However, recent work has questioned whether these gains reflect genuine improvements in visual grounding. In this study, we reproduce and extend the findings of \"The Mirage of Performance Gains: Why",
+"title": "Rethinking CD: A Reproducibility Study and Extension on the Ineffectiveness of Contrastive Decoding at Mitigating Object Hallucinations in MLLMs",
+"url": "http://arxiv.org/abs/2607.25196v1"
+},
+"arxiv:2607.25289": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25289",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "On-device speech emotion recognition (SER) is critical for real-time applications, yet large self-supervised models that excel at SER are too costly for edge devices. Multi-teacher knowledge distillation can compress them into a lightweight student, but two challenges remain: teacher reliability varies across batches, and logit-level distillation ignores inter-sample relational structure. We propo",
+"title": "AMRD: Adaptive Multi-Teacher Relational Distillation for Lightweight Speech Emotion Recognition",
+"url": "http://arxiv.org/abs/2607.25289v1"
+},
+"arxiv:2607.25294": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25294",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Real-world tasks often require models to learn from task-specific context rather than relying only on pre-trained knowledge. While recent work has highlighted this capability as context learning, existing evaluations mainly focus on textual contexts. In many practical settings, however, the context to be learned from is multimodal: scientific findings are conveyed through figures and tables, finan",
+"title": "CLBench-V: Evaluating Multimodal Context Learning from Grounding to Knowledge Acquisition",
+"url": "http://arxiv.org/abs/2607.25294v1"
+},
+"arxiv:2607.25299": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25299",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Optimization over the Stiefel manifold plays a significant role in various machine learning tasks. Existing methods either use the retraction operators, requiring costly orthonormalization for large-scale matrices, or employ landing methods that rely on careful step size selection and penalty parameter tuning. To address these challenges, we propose a retraction-free and penalty parameter-free alg",
+"title": "Retraction-Free Optimization over the Stiefel Manifold for the LoRA Fine-Tuning",
+"url": "http://arxiv.org/abs/2607.25299v1"
+},
+"arxiv:2607.25338": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25338",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.AI",
+"streak": 1,
+"summary": "Achieving a coherent integration of spectral richness and spatial fidelity remains a central objective in hyperspectral image fusion. However, existing hyperspectral image fusion methods struggle to effectively model geometric constraints. In the spatial domain, weak spatial-spectral interaction limits geometry-aware feature learning and suppresses high-frequency structural information, resulting ",
+"title": "Dual-Domain Manifold Modeling for Hyperspectral Image Fusion",
+"url": "http://arxiv.org/abs/2607.25338v1"
+},
+"arxiv:2607.25471": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25471",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.AI",
+"streak": 1,
+"summary": "Graph Neural Networks (GNNs) and Large Language Models (LLMs) have each advanced recommendation systems by modeling structural and semantic signals, respectively. However, integrating their complementary strengths remains challenging, particularly in sparse settings where maintaining semantic precision is critical. We propose TRWH (Text-driven Random Walk Heterogeneous Graph Neural Network), a nov",
+"title": "TRWH: A Text-Driven Random Walk Heterogeneous GNN for Semantic-Aware Sparse Recommendation",
+"url": "http://arxiv.org/abs/2607.25471v1"
+},
+"arxiv:2607.25487": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25487",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.AI",
+"streak": 1,
+"summary": "Vision-Language-Action (VLA) models translate natural-language commands into robot action sequences, but leading systems on the LIBERO-Plus robustness benchmark use three- to seven-billion-parameter backbones whose memory demands can exceed embedded robotic budgets. We present CoTinyVLA, a 0.9B-parameter action model on a Qwen3.5-0.8B backbone that obtains that robustness by structuring supervisio",
+"title": "CoTinyVLA: Chain-of-Thought Distillation for a Sub-Billion-Parameter Vision-Language-Action Model",
+"url": "http://arxiv.org/abs/2607.25487v1"
+},
+"arxiv:2607.25565": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25565",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {
+"github": "https://github.com/jintae-00/ReDesign",
+"project": "https://jintae-00.github.io/ReDesign/"
+},
+"mag_history": [
+3.7377
+],
+"misses": 0,
+"peak_mag": 3.7377,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 41
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Recovering an editable design file from a raster image is a common and costly bottleneck in modern design workflows, yet remains challenging since editability depends on recovering multi-modal attributes, such as typography, vector geometry, colors, grouping, and layer ordering. We present ReDesign, an agentic framework that grows an editable layer hierarchy by selecting and composing specialized ",
+"title": "ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition",
+"url": "https://arxiv.org/abs/2607.25565"
+},
+"arxiv:2607.25589": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25589",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Medical-imaging AI benchmarks combine datasets, DICOM rendering, prompts, provider APIs, automated labels, statistical code, manuscripts, and repository releases. Agreement across these artifacts is usually assumed rather than tested. We performed a retrospective forensic reproducibility audit of a preserved chest-radiograph vision-language model (VLM) pilot; no model was called again and no image",
+"title": "Forensic Reproducibility Audit of a Radiology Vision-Language Model Benchmark: From Intended Protocol to Released Artifact",
+"url": "http://arxiv.org/abs/2607.25589v1"
+},
+"arxiv:2607.25641": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25641",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.AI",
+"streak": 1,
+"summary": "While text-to-image models exhibit remarkable visual fidelity, they frequently violate fundamental physical commonsense. Existing benchmarks often rely on coarse-grained descriptions, failing to diagnose the mastery of specific physical principles. Moreover, the high stochasticity of generative processes causes current prompt optimization methods to suffer from gradient hallucinations, where optim",
+"title": "OmniPhys: Knowledge-Graph-Driven Benchmarking and Collective Optimization for Physical Commonsense in Text-to-Image Generation",
+"url": "http://arxiv.org/abs/2607.25641v1"
+},
+"arxiv:2607.25751": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25751",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "In this paper, we propose the Rule-based Visiting Circulation (RVC) model in tackling the challenge in the IEEE Big Data Cup 2022: Trip Destination Prediction. Given trips containing travel information, personal attributes, origin zones, and their features in the training metropolitan areas, the task is to predict the destination of every trip in a targeted metropolitan area whose destinations are",
+"title": "An Embarrassingly Simple Rule-based Visiting Circulation Approach to Trip Destination Prediction",
+"url": "http://arxiv.org/abs/2607.25751v1"
+},
+"arxiv:2607.25763": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25763",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "This paper proposes a multitask wireless foundation model via adaptive low-rank masked autoencoders (WALoMA), a unified multi-task foundation model for sixth-generation (6G) wireless physical layer architectures, to address the limitations of specialized, task-specific deep learning models and the practical challenge of scarce labeled wireless datasets. By leveraging concepts inspired by foundatio",
+"title": "WALoMA: A Multitask Wireless Foundation Model via Adaptive Low-Rank Masked Autoencoders",
+"url": "http://arxiv.org/abs/2607.25763v1"
+},
+"arxiv:2607.25895": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25895",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {
+"project": "https://cloud.simpleai.tech/simple-world-lab/hifi-umi/"
+},
+"mag_history": [
+4.4659
+],
+"misses": 0,
+"peak_mag": 4.4659,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 86
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Learning deployable manipulation policies is bottlenecked by the scarcity of data that is both high-fidelity and scalable. Real-robot teleoperation is accurate but costly to scale; robot-free UMI capture scales readily, and current practice uses the resulting data mainly for pre-training, adding a small real-robot \"anchor\" at post-training. We ask whether raising the fidelity of robot-free UMI dat",
+"title": "HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone",
+"url": "https://arxiv.org/abs/2607.25895"
+},
+"arxiv:2607.25926": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.25926",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.AI",
+"streak": 1,
+"summary": "Face de-identification (De-ID) aims to remove or conceal personally identifiable facial features in images or videos to prevent identity recognition while preserving utility for downstream tasks. With the rising emphasis on data privacy and responsible AI, face De-ID has emerged as an active research area spanning computer vision and privacy-preserving communities. Early approaches, and many conte",
+"title": "Face De-Identification: A Domain-Centric Survey from Capture to Processing",
+"url": "http://arxiv.org/abs/2607.25926v1"
+},
+"arxiv:2607.26004": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.26004",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {
+"github": "https://github.com/NVlabs/fastgen",
+"project": "https://research.nvidia.com/labs/genair/pdd/"
+},
+"mag_history": [
+1.7918
+],
+"misses": 0,
+"peak_mag": 1.7918,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 5
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Generation in video diffusion or flow models is computationally expensive due to the slow and iterative sampling process. Current state-of-the-art (SOTA) acceleration methods heavily rely on variational score distillation (VSD) and adversarial losses to distill diffusion models into few-step generators. Albeit achieving high-quality video generation, these training losses are notoriously hard to o",
+"title": "Parallel Decoding Distillation for Fast Image and Video Generation",
+"url": "https://arxiv.org/abs/2607.26004"
+},
+"arxiv:2607.26043": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.26043",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Enhancing classification performance in mammography remains a persistent challenge across both small curated datasets and large-scale clinical cohorts. Conventional transfer learning approaches often neglect dataset-specific characteristics, while recent neighborhood-informed methods have been restricted to narrow tasks with rigid formulations, limiting their scalability to population-level datase",
+"title": "Re-thinking Mammography Transfer Learning: The Dataset-Informed Transfer Learning (DITL) Framework for Breast Cancer Screening and Lesion Diagnosis",
+"url": "http://arxiv.org/abs/2607.26043v1"
+},
+"arxiv:2607.26057": {
+"category": "research",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "arxiv:2607.26057",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {
+"github": "https://github.com/ZJU-REAL/Relay-OPD",
+"project": "https://zju-real.github.io/Relay-OPD/"
+},
+"mag_history": [
+2.8332
+],
+"misses": 0,
+"peak_mag": 2.8332,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 16
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "On-policy distillation (OPD) grounds token-level supervision in the student's own trajectory, yet suffers from prefix failure: once the student commits to a wrong reasoning direction, all subsequent generation builds on this deviation, producing misdirected continuations that elicit unreliable supervision and waste compute. We identify a teacher-student continuation asymmetry on failed prefixes, w",
+"title": "Pass the Baton: Trajectory-Relayed On-Policy Distillation",
+"url": "https://arxiv.org/abs/2607.26057"
+},
+"ghrepo:Correr-Zhou/OmniShow": {
+"category": "releases",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "ghrepo:Correr-Zhou/OmniShow",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+3.0699
+],
+"misses": 0,
+"peak_mag": 3.0699,
+"signals": {
+"gh_forks": 26,
+"gh_stars": 463
+},
+"source": "GitHub Trending (Python)",
+"streak": 1,
+"summary": "[ICML 2026] ByteDance's All-in-One Video Generation Model for Human-Object Interaction Video Generation",
+"title": "Correr-Zhou/OmniShow \u2014 [ICML 2026] ByteDance's All-in-One Video Generation Model for Human-Object Interaction Video Generation",
+"url": "https://github.com/Correr-Zhou/OmniShow"
+},
+"hfmodel:LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF": {
+"category": "releases",
+"first_seen": "2026-07-29",
+"flat_runs": 0,
+"id": "hfmodel:LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF",
+"keywords": [],
+"last_seen": "2026-07-29",
+"links": {},
+"mag_history": [
+3.7295
+],
+"misses": 0,
+"peak_mag": 3.7295,
+"signals": {
+"hf_downloads": 99660,
+"hf_likes": 205,
+"hf_trending": 108
+},
+"source": "HF Trending Models",
+"streak": 1,
+"summary": "image-text-to-text \u00b7 tags: hermes, gguf, uncensored, qwen3.6, moe, vision",
+"title": "LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF (HF Model)",
+"url": "https://huggingface.co/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF"
 },
 "hfmodel:microsoft/Fara1.5-27B": {
 "category": "releases",
@@ -132,20 +611,21 @@
 "flat_runs": 0,
 "id": "hfmodel:microsoft/Fara1.5-27B",
 "keywords": [],
-"last_seen": "2026-07-28",
+"last_seen": "2026-07-29",
 "links": {},
 "mag_history": [
-3.5868
+3.5868,
+3.6729
 ],
 "misses": 0,
-"peak_mag": 3.5868,
+"peak_mag": 3.6729,
 "signals": {
 "hf_downloads": 1543,
-"hf_likes": 167,
-"hf_trending": 166
+"hf_likes": 189,
+"hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 1,
+"streak": 2,
 "summary": "image-text-to-text \u00b7 tags: transformers, safetensors, qwen3_5, image-text-to-text, computer-use, cua",
 "title": "microsoft/Fara1.5-27B (HF Model)",
 "url": "https://huggingface.co/microsoft/Fara1.5-27B"
@@ -156,21 +636,22 @@
 "flat_runs": 0,
 "id": "hfmodel:nvidia/Cosmos3-Edge",
 "keywords": [],
-"last_seen": "2026-07-28",
+"last_seen": "2026-07-29",
 "links": {},
 "mag_history": [
 3.4232,
-3.4337
+3.4337,
+3.474
 ],
 "misses": 0,
-"peak_mag": 3.4337,
+"peak_mag": 3.474,
 "signals": {
 "hf_downloads": 35119,
-"hf_likes": 134,
+"hf_likes": 142,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 2,
+"streak": 3,
 "summary": "\u00b7 tags: cosmos, diffusers, safetensors, cosmos3_edge, nvidia, cosmos3",
 "title": "nvidia/Cosmos3-Edge (HF Model)",
 "url": "https://huggingface.co/nvidia/Cosmos3-Edge"
