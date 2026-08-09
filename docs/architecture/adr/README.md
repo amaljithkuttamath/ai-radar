@@ -8,3 +8,4 @@ Load-bearing decisions. Michael Nygard format. Immutable once accepted; a change
 | 0002 | [Reactive `workflow_run` trigger](0002-reactive-workflow-run-trigger.md) | Accepted |
 | 0003 | [Eval loop runs out-of-repo](0003-eval-loop-out-of-repo.md) | Accepted |
 | 0004 | [Carryover tracking ledger with traction re-observation](0004-carryover-tracking-ledger.md) | Accepted |
+| 0005 | [Artifact freshness monitoring](0005-artifact-freshness-monitoring.md) | Accepted |

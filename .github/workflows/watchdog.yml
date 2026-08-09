@@ -13,9 +13,32 @@ name: watchdog
 # digest every morning. The pipeline was healthy while its supervisor was dead.
 # A success-ping on a healthy component cannot detect a failed independent one.
 #
-# So this job checks the ARTIFACT, not the process: how old is evals/latest.json?
-# Staleness is the one signal that is true regardless of why the grader stopped
-# — task deleted, token expired, silent error, or provider outage.
+# So this job checks ARTIFACTS, not processes: how old is the thing that should
+# have been produced? Staleness is the one signal that is true regardless of why
+# a producer stopped — task deleted, token expired, silent error, provider outage.
+#
+# ---------------------------------------------------------------------------
+# 2026-08-09. Two defects found by investigating ten days of red runs, both
+# fixed here:
+#
+#   1. `gh issue create --label watchdog` had been failing with "'watchdog' not
+#      found" on every single fire — the label was never created in the repo.
+#      Under `set -euo pipefail` that aborted the step, so no issue was EVER
+#      filed. The alerting surface carrying the runbook had never once worked,
+#      and the "one open issue at a time" dedup never engaged. The watchdog
+#      built to catch silent failures was failing silently. The label is now
+#      created idempotently before use.
+#
+#   2. It only ever watched evals. Distill broke on 2026-07-31 (HTTP 410 from
+#      the model backend) and produced no digest for ten days; this workflow
+#      stayed exactly as red as it already was for the eval outage and said
+#      nothing new. A monitor that watches one of three artifacts reports
+#      "stale" for the wrong reason and hides the other two.
+#
+# Thresholds and classification now come from `scripts/health.py`, which is the
+# single definition of "stale" shared with health.yml and the status page. This
+# workflow decides what to DO about a bad reading; it does not decide what bad
+# means. That split is what stops the two surfaces drifting apart again.
 
 on:
   schedule:
@@ -24,6 +47,7 @@ on:
 
 permissions:
   contents: read
+  actions: read             # health.py reads workflow run conclusions
   issues: write             # opens one staleness issue; never writes code
 
 concurrency:
@@ -33,50 +57,48 @@ concurrency:
 jobs:
   eval-freshness:
     runs-on: ubuntu-latest
-    env:
-      # The grader runs daily. 48h tolerates one missed run (provider blip,
-      # GitHub delay) without crying wolf, and catches a genuine stop on day two.
-      MAX_AGE_HOURS: 48
     steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 0    # need commit times, not just file contents
+          # Freshness is commit time, not a timestamp inside the file: a producer
+          # that writes a stale-but-well-formed artifact, or dies mid-write, can
+          # leave the JSON's own `date` field looking current. git's commit time
+          # is the one clock the producer does not author. Needs full history.
+          fetch-depth: 0
 
-      # Commit time, not a timestamp inside the file: a grader that writes a
-      # stale-but-well-formed artifact, or one that dies mid-write, can leave
-      # the JSON's own `date` field looking current. git's commit time is the
-      # one clock the grader does not author.
-      - name: Check evals/latest.json freshness
+      # stdlib-only and no `uv`: this job must still run when the pipeline it
+      # watches cannot even install its dependencies.
+      - name: Read health signals
         id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
+          python3 scripts/health.py --reasons > /tmp/reasons.tsv || true
+          cat /tmp/reasons.tsv
 
-          if [ ! -f evals/latest.json ]; then
-            echo "stale=true"                     >> "$GITHUB_OUTPUT"
-            echo "reason=evals/latest.json is missing entirely" >> "$GITHUB_OUTPUT"
-            echo "age_h=n/a"                      >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
+          # Only `down` escalates. `warn` is a signal drifting toward its
+          # threshold — worth seeing on the status page, not worth an issue and
+          # a red run. A watchdog that fires on drift trains you to ignore it,
+          # which reproduces the original failure by a different route.
+          DOWN=$(grep '^down' /tmp/reasons.tsv | cut -f2- || true)
 
-          LAST_EPOCH=$(git log -1 --format=%ct -- evals/latest.json)
-          if [ -z "$LAST_EPOCH" ]; then
-            echo "stale=true"                     >> "$GITHUB_OUTPUT"
-            echo "reason=no commit history for evals/latest.json" >> "$GITHUB_OUTPUT"
-            echo "age_h=n/a"                      >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          AGE_H=$(( ( $(date -u +%s) - LAST_EPOCH ) / 3600 ))
-          echo "Last eval commit: $(date -u -d "@$LAST_EPOCH" '+%Y-%m-%d %H:%M UTC')"
-          echo "Age: ${AGE_H}h (threshold ${MAX_AGE_HOURS}h)"
-          echo "age_h=${AGE_H}" >> "$GITHUB_OUTPUT"
-
-          if [ "$AGE_H" -gt "$MAX_AGE_HOURS" ]; then
-            echo "stale=true"  >> "$GITHUB_OUTPUT"
-            echo "reason=last eval committed ${AGE_H}h ago" >> "$GITHUB_OUTPUT"
-          else
+          if [ -z "$DOWN" ]; then
             echo "stale=false" >> "$GITHUB_OUTPUT"
+            echo "All watched artifacts are inside their thresholds."
+            exit 0
           fi
+
+          echo "stale=true" >> "$GITHUB_OUTPUT"
+          # Multi-line output has to be delimited; a bare `key=value` truncates
+          # at the first newline and would silently report only the first fault.
+          {
+            echo "reason<<REASON_EOF"
+            echo "$DOWN"
+            echo "REASON_EOF"
+          } >> "$GITHUB_OUTPUT"
+          # Single-line form for the issue title.
+          echo "summary=$(echo "$DOWN" | head -1)" >> "$GITHUB_OUTPUT"
 
       # One open issue at a time. A watchdog that files daily trains you to
       # ignore it, which reproduces the original failure by a different route.
@@ -85,29 +107,51 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REASON: ${{ steps.check.outputs.reason }}
-          AGE_H: ${{ steps.check.outputs.age_h }}
+          SUMMARY: ${{ steps.check.outputs.summary }}
         run: |
           set -euo pipefail
+
+          # Create the label before using it. `gh issue create --label` hard-fails
+          # on an unknown label, which is exactly how this workflow filed nothing
+          # for a month. `--force` makes it idempotent, so this is a no-op on
+          # every run after the first.
+          gh label create watchdog \
+            --description "Filed by .github/workflows/watchdog.yml" \
+            --color B60205 \
+            --force
+
           EXISTING=$(gh issue list --label watchdog --state open \
                        --json number --jq '.[0].number // empty')
           if [ -n "$EXISTING" ]; then
             echo "Issue #${EXISTING} already open; not filing a duplicate."
             exit 0
           fi
+
           # Body lives in a committed file, not inline: markdown emphasis and
           # list markers collide with YAML syntax inside a run block, and a
           # reviewable file beats an escaped heredoc. REASON is generated by the
-          # step above (never user input), so sed substitution is safe here.
-          sed "s|__REASON__|${REASON}|" .github/watchdog-issue-body.md > /tmp/watchdog-body.md
+          # step above (never user input). Substituted with awk rather than sed
+          # because REASON is now multi-line, which sed cannot substitute.
+          awk -v r="$REASON" '{gsub(/__REASON__/, r)}1' \
+            .github/watchdog-issue-body.md > /tmp/watchdog-body.md
+
           gh issue create \
-            --title "[watchdog] eval loop appears stopped (${AGE_H}h since last eval)" \
+            --title "[watchdog] pipeline artifact stale — ${SUMMARY}" \
             --label watchdog \
             --body-file /tmp/watchdog-body.md
 
       # Fail the run too, so it shows red in the Actions tab even if issue
       # notifications are muted. Two independent surfaces for one signal.
+      #
+      # This runs last and unconditionally-on-stale so that a failure in the
+      # issue step above can no longer swallow the alarm: previously the aborted
+      # `gh issue create` exited the job before this step, so the run went red
+      # for the wrong reason and the actual staleness was never stated.
       - name: Fail on staleness
-        if: steps.check.outputs.stale == 'true'
+        if: always() && steps.check.outputs.stale == 'true'
         run: |
-          echo "::error::Eval loop stale: ${{ steps.check.outputs.reason }}"
+          echo "::error::Pipeline artifact stale:"
+          echo "${{ steps.check.outputs.reason }}" | while read -r line; do
+            echo "::error::  ${line}"
+          done
           exit 1

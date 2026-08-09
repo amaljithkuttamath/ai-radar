@@ -16,6 +16,7 @@ Every state file has exactly one writer. Concurrent runs cannot collide by const
 | `evals/<YYYY-MM-DD>.json`, `evals/latest.json`, `evals/README.md` | grader | site, coder, humans |
 | `evals/backlog.md` | grader (append during run) and coder (direct commit for X-axis / manual) | humans |
 | `evals/rubric.md` | humans, via PR | grader (read-only) |
+| `data/health.json`, the `health:*` block in `README.md` | `health.yml` | status page, `watchdog.yml`, humans |
 
 The `evals/backlog.md` shared-write is the only exception; see [I-02](#i-02-backlogmd-shared-write-rules).
 
