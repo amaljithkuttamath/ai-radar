@@ -41,7 +41,7 @@ Four stages, one repo, one writer per state.
 
 1. **Collect.** stdlib fetchers pull arXiv, HF Daily Papers, lab RSS, GitHub trending, HF trending. Every item lands as JSON in `data/raw/`, deduped against `data/seen.json`. Daily at 11:00 UTC. No model calls, so a bad feed can't burn tokens.
 2. **Distill.** Score the corpus (0–5 heuristic, stdlib), re-read traction for everything already on the radar, re-rank against `profile.yaml` topics, diff against yesterday to find movers, apply diversity filters, one model call to write `reports/<date>-digest.md`. Fires on `workflow_run` when collect finishes.
-3. **Grade.** A separate daily task at 12:00 UTC reads the digest, HEAD-checks every URL, scores 10 rubric dimensions, commits `evals/<date>.json`, files an issue if any dimension drops below 2. The grader lives outside CI so it can't rescue a pipeline it just criticised.
+3. **Grade.** A separate daily task at 12:00 UTC runs `python -m grader`: it HEAD-checks every URL, scores 10 rubric dimensions, commits `evals/<date>.json`, and flags an issue if any dimension drops below 2. Two of the ten are never asked of a model — freshness is arithmetic and the source-integrity ceiling is an observed HTTP status — and the grader refuses to run at all if its model family matches the one that wrote the digest. Execution lives outside CI so it can't rescue a pipeline it just criticised ([ADR-0003](docs/architecture/adr/0003-eval-loop-out-of-repo.md)); the code lives here so it can be tested and seen to have stopped ([ADR-0007](docs/architecture/adr/0007-grader-implementation-in-repo.md)).
 4. **Present.** The Astro site reads `state.json`, `reports/latest.md`, and `evals/latest.json` live from `raw.githubusercontent.com`. New digest here shows up on next page load. No rebuild.
 
 Watching all four: `health.py` writes one reading to `data/health.json` daily at 16:00 UTC, after every other stage has had its slot. The status page renders it; `watchdog.yml` escalates on it. The reporter never repairs and the escalator never measures — [ADR-0005](docs/architecture/adr/0005-artifact-freshness-monitoring.md).
@@ -84,6 +84,7 @@ has the details.
 config/         sources.yaml, routines.yaml, profile.yaml (the three dials)
 collectors/     source adapters, stdlib only
 distill/        score, focus, track, delta, diversity, enrich, synthesize, reindex, deliver
+grader/         the eval loop: freshness, links, separation fence, judge, artifacts
 tests/          pytest suite; no network, no model, no secrets
 evals/          rubric, backlog, per-day JSON, latest.json
 data/           raw/ (gitignored), seen.json, state.json, tracked.json, health.json
