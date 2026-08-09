@@ -68,11 +68,28 @@ jobs:
       # The page is static and reads health.json live from raw.githubusercontent
       # at view time, so publishing it is independent of the reading above: a
       # failed commit still leaves a page that shows the true (stale) state.
+      #
+      # Both steps are continue-on-error, and deliberately so. Publishing is the
+      # least important thing this job does — the reading is already committed
+      # above, and the README table and watchdog both work without a page. If
+      # Pages is disabled or misconfigured, that must not paint this workflow
+      # red: a monitor that reports its own failure as a pipeline failure is the
+      # precise confusion this design exists to prevent. Check this job's log,
+      # not its colour, when the page stops updating.
       - name: Upload status page
         uses: actions/upload-pages-artifact@v3
+        continue-on-error: true
         with:
           path: site/
 
       - name: Deploy to Pages
         id: deploy
         uses: actions/deploy-pages@v4
+        continue-on-error: true
+
+      - name: Note if publishing failed
+        if: steps.deploy.outcome != 'success'
+        run: |
+          echo "::warning::Status page not published (${{ steps.deploy.outcome }}). "\
+               "data/health.json and the README table are still current. If this is "\
+               "the first run, enable Pages: Settings > Pages > Source = GitHub Actions."
