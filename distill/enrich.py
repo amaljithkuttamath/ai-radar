@@ -26,7 +26,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from collectors.common import ROOT, parse_window, _merge_signals  # noqa: E402
 from distill import tools  # noqa: E402
 from distill.rank import rank_key  # noqa: E402
-from distill.synthesize import call_anthropic, call_ollama, resolve_backend  # noqa: E402
+from distill.synthesize import (call_anthropic, call_ollama,  # noqa: E402
+                                call_openai_compat, resolve_backend)
 
 WINDOW = os.environ.get("WINDOW", "48h")
 # Resolve through the same rules as synthesis so `auto` and the retired `github` mean the
@@ -49,7 +50,8 @@ BRIEF_SPEC = (ROOT / "distill" / "brief_spec.md").read_text()
 # the single synthesis call. Neither tier nor endpoint exists now. Anthropic bills by
 # token with no per-tier daily cap, so briefs and synthesis share one model and the split
 # has nothing left to protect.
-_CALLERS = {"anthropic": call_anthropic, "ollama": call_ollama}
+_CALLERS = {"anthropic": call_anthropic, "openai": call_openai_compat,
+            "ollama": call_ollama}
 
 
 def _safe_id(item_id: str) -> str:

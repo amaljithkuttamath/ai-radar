@@ -2,8 +2,12 @@
 as the system prompt, write reports/<date>-digest.md.
 
 Backend-agnostic. Set RADAR_MODEL_BACKEND:
-  auto       -> anthropic if ANTHROPIC_API_KEY is set, else template (default in CI)
+  auto       -> anthropic if ANTHROPIC_API_KEY, else openai if OPENAI_API_KEY, else
+                template (default in CI)
   anthropic  -> uses ANTHROPIC_API_KEY (synthesis quality)
+  openai     -> any OpenAI-compatible endpoint via RADAR_OPENAI_BASE_URL. This is the
+                free-tier slot GitHub Models used to fill: Groq, Google AI Studio and
+                Cerebras all speak this shape with no card.
   ollama     -> uses local http://localhost:11434 (cheap)
   template   -> no model; deterministic digest assembled from the scored items
   dryrun     -> no model; dumps the assembled prompt for inspection (default locally)
@@ -54,7 +58,7 @@ _REQUESTED_BACKEND = os.environ.get("RADAR_MODEL_BACKEND", "dryrun").lower()
 PERMANENT_HTTP = frozenset({400, 401, 403, 404, 410})
 
 # Backends that reach a model over the network, and therefore can fail permanently.
-_MODEL_BACKENDS = frozenset({"anthropic", "ollama"})
+_MODEL_BACKENDS = frozenset({"anthropic", "openai", "ollama"})
 
 
 def resolve_backend(requested: str, env: dict | None = None) -> tuple[str, str | None]:
@@ -74,10 +78,16 @@ def resolve_backend(requested: str, env: dict | None = None) -> tuple[str, str |
         return requested, None
     if env.get("ANTHROPIC_API_KEY"):
         return "anthropic", None
-    # No key, no card, still has to publish something. The template digest is a real
-    # digest — scored items, observed signals, no invented prose — just not a synthesized one.
-    return "template", ("no ANTHROPIC_API_KEY set; falling back to the template backend "
-                        "(deterministic, no synthesis)")
+    # OPENAI_API_KEY covers any OpenAI-compatible provider, chosen by RADAR_OPENAI_BASE_URL
+    # — Groq, Google AI Studio and Cerebras all speak this shape on free, cardless tiers.
+    # That is the slot GitHub Models used to fill, and filling it again is what stops the
+    # pipeline sitting on `template` indefinitely.
+    if env.get("OPENAI_API_KEY"):
+        return "openai", None
+    # Neither key. Still has to publish something: the template digest is a real digest —
+    # scored items, observed signals, no invented prose — just not a synthesized one.
+    return "template", ("no ANTHROPIC_API_KEY or OPENAI_API_KEY set; falling back to the "
+                        "template backend (deterministic, no synthesis)")
 
 
 BACKEND, _BACKEND_NOTE = resolve_backend(_REQUESTED_BACKEND)
@@ -366,10 +376,45 @@ def call_anthropic(system: str, user: str) -> str:
     return "".join(b.get("text", "") for b in data.get("content", []))
 
 
+def call_openai_compat(system: str, user: str) -> str:
+    """Any provider speaking the OpenAI chat-completions shape, selected by base URL.
+
+    This is the replacement for what GitHub Models used to be: free-tier inference with no
+    card. It is deliberately one function rather than one per vendor, because the shape is
+    the same everywhere and the only thing that actually differs is the base URL, the model
+    id, and which env var holds the key. Hard-coding a vendor here is how you end up with a
+    `call_github` to delete when that vendor withdraws.
+
+    Known-good free tiers as of 2026-08, all cardless, all far above this pipeline's
+    ~2 calls/day (see docs/architecture/adr/0006):
+
+        Groq            https://api.groq.com/openai/v1        llama-3.3-70b-versatile
+        Google AI Std.  https://generativelanguage.googleapis.com/v1beta/openai
+                                                              gemini-2.5-pro
+        Cerebras        https://api.cerebras.ai/v1            llama-3.3-70b
+
+    Set RADAR_OPENAI_BASE_URL + RADAR_OPENAI_MODEL + OPENAI_API_KEY.
+    """
+    base = os.environ.get("RADAR_OPENAI_BASE_URL", "https://api.openai.com/v1").rstrip("/")
+    body = json.dumps({
+        "model": os.environ.get("RADAR_OPENAI_MODEL", "gpt-4.1"),
+        "messages": [{"role": "system", "content": system},
+                     {"role": "user", "content": user}],
+    }).encode()
+    req = urllib.request.Request(
+        f"{base}/chat/completions", data=body,
+        headers={"Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
+                 "Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=120) as r:
+        data = json.loads(r.read())
+    return data["choices"][0]["message"]["content"]
+
+
 # `call_github` lived here until 2026-08. GitHub Models was retired on 2026-07-30 and
 # https://models.github.ai/inference returns 410 Gone permanently, so the function is
 # deleted rather than kept behind a flag: a helper that dials a dead host is a trap for
 # the next person wiring up a backend. History has it if the shape is ever wanted again.
+# `call_openai_compat` above is its successor: same free-tier role, no vendor baked in.
 
 
 def call_ollama(system: str, user: str) -> str:
@@ -536,7 +581,8 @@ def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: 
         dict(_strip_briefs=True, max_candidates=12, summary_chars=180),
         dict(_strip_briefs=True, max_candidates=max(MAX_ITEMS, 8), summary_chars=120),
     ]
-    caller = {"anthropic": call_anthropic, "ollama": call_ollama}[BACKEND]
+    caller = {"anthropic": call_anthropic, "openai": call_openai_compat,
+              "ollama": call_ollama}[BACKEND]
 
     last_413: urllib.error.HTTPError | None = None
     for n, kw in enumerate(attempts):

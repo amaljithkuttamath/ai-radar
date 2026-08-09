@@ -114,7 +114,17 @@ bash scripts/distill.sh
 open reports/latest.md
 ```
 
-Backends: `auto` (default in CI — `anthropic` if `ANTHROPIC_API_KEY` is set, else `template`), `anthropic`, `ollama`, `template` (no model, deterministic), `dryrun`. `github` is retired and redirects to `auto` — see [ADR-0006](docs/architecture/adr/0006-model-backend-after-github-models.md).
+Backends: `auto` (default in CI — `anthropic` if `ANTHROPIC_API_KEY`, else `openai` if `OPENAI_API_KEY`, else `template`), `anthropic`, `openai`, `ollama`, `template` (no model, deterministic), `dryrun`. `github` is retired and redirects to `auto` — see [ADR-0006](docs/architecture/adr/0006-model-backend-after-github-models.md).
+
+**Free inference.** `openai` means any OpenAI-compatible endpoint, not OpenAI specifically. GitHub Models was the free, cardless backend until it was retired on 2026-07-30; these fill the same slot, and this pipeline makes about two model calls a day:
+
+| Provider | `RADAR_OPENAI_BASE_URL` | `RADAR_OPENAI_MODEL` | Free tier |
+|---|---|---|---|
+| Groq | `https://api.groq.com/openai/v1` | `llama-3.3-70b-versatile` | ~14,400 req/day |
+| Google AI Studio | `https://generativelanguage.googleapis.com/v1beta/openai` | `gemini-2.5-pro` | ~1,500 req/day, 1M context |
+| Cerebras | `https://api.cerebras.ai/v1` | `llama-3.3-70b` | ~1M tokens/day |
+
+Set the key as the `OPENAI_API_KEY` secret and the other two as repository *variables*. Pick a **different family** for the grader (`RADAR_GRADER_*`) — `grader/separation.py` refuses to run otherwise, and two of these are different families, so one free account each covers both.
 
 ## Tests
 

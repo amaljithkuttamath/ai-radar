@@ -62,6 +62,13 @@ jobs:
       # digest when it doesn't, so the workflow publishes either way and lights up the
       # moment the secret is added. Clean no-op until then.
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # The free-tier slot GitHub Models used to fill. OPENAI_API_KEY is the key for
+      # whatever OpenAI-compatible provider RADAR_OPENAI_BASE_URL points at — Groq,
+      # Google AI Studio and Cerebras all speak that shape with no card and quotas far
+      # above this pipeline's ~2 calls/day. `auto` picks it up automatically.
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      RADAR_OPENAI_BASE_URL: ${{ vars.RADAR_OPENAI_BASE_URL }}
+      RADAR_OPENAI_MODEL: ${{ vars.RADAR_OPENAI_MODEL }}
       # Email delivery (optional). Scheduled runs email automatically; a manual run emails
       # unless deliver_email=off. Clean no-op until secrets exist.
       RADAR_EMAIL_TO: ${{ (github.event_name == 'schedule' || github.event.inputs.deliver_email != 'off') && secrets.RADAR_EMAIL_TO || '' }}

@@ -46,6 +46,10 @@ A second defect surfaced while testing the fallback: `call_template` recovered i
 - `anthropic` is metered. There is no free tier equivalent to what was lost, and per-run cost now scales with `RADAR_AGENT` and candidate count.
 - The grader's model-separation rule (`grader.md`) required the grader to differ in family from `synthesize.py`. With Anthropic as the synthesis backend, a grader pinned to an Anthropic model would violate it. Whoever restores the eval loop must pick a different family — this is a live constraint, not a hypothetical.
 
+**Amended 2026-08-09.** The first cut of this ADR left `auto` choosing between `anthropic` and `template`, which meant anyone without a paid key sat on the template digest permanently. That mistook "GitHub Models is gone" for "free inference is gone". It is not: Groq (~14,400 req/day on Llama 3.3 70B), Google AI Studio (~1,500 req/day on Gemini 2.5 Pro) and Cerebras (~1M tokens/day) all offer cardless free tiers speaking the OpenAI chat-completions shape, and this pipeline makes roughly two model calls a day. `auto` now tries `anthropic`, then `openai`, then `template`, and `call_openai_compat` takes its provider from `RADAR_OPENAI_BASE_URL` rather than baking one in — the mistake that produced a `call_github` to delete.
+
+This also resolves the grader constraint recorded below from the other direction: with synthesis on a free Llama or Gemini tier, the grader can sit on a different free tier and satisfy the separation fence without a paid key on either side.
+
 **Rejected.**
 
 - *Microsoft Foundry / Azure AI*, the migration path GitHub pointed at. It needs an Azure subscription and resource provisioning; the free, cardless property that made GitHub Models the right default does not survive the move, so it buys complexity without buying back the original benefit.

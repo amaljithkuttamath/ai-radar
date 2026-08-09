@@ -101,7 +101,27 @@ def test_auto_prefers_anthropic_when_a_key_exists():
 def test_auto_falls_back_to_template_without_a_key():
     backend, note = synthesize.resolve_backend("auto", {})
     assert backend == "template"
-    assert "ANTHROPIC_API_KEY" in note
+    assert "ANTHROPIC_API_KEY" in note and "OPENAI_API_KEY" in note
+
+
+def test_auto_uses_an_openai_compatible_key_when_present():
+    """OPENAI_API_KEY covers any provider speaking that shape — Groq, Google AI Studio,
+    Cerebras — which is the free, cardless slot GitHub Models used to occupy. Without this
+    rung, `auto` drops straight to template and the pipeline sits there indefinitely."""
+    assert synthesize.resolve_backend("auto", {"OPENAI_API_KEY": "k"}) == ("openai", None)
+
+
+def test_anthropic_wins_when_both_keys_are_present():
+    """A paid key is a deliberate choice; a free one is a floor. Preferring the free tier
+    when someone has configured both would silently downgrade them."""
+    env = {"ANTHROPIC_API_KEY": "a", "OPENAI_API_KEY": "o"}
+    assert synthesize.resolve_backend("auto", env)[0] == "anthropic"
+
+
+def test_retired_github_redirects_onto_the_free_tier_when_available():
+    backend, note = synthesize.resolve_backend("github", {"OPENAI_API_KEY": "k"})
+    assert backend == "openai"
+    assert "retired" in note
 
 
 def test_retired_github_backend_redirects_rather_than_failing():
@@ -117,15 +137,18 @@ def test_retired_github_backend_redirects_rather_than_failing():
 
 
 def test_explicit_backends_pass_through_untouched():
-    for name in ("anthropic", "ollama", "template", "dryrun"):
+    for name in ("anthropic", "openai", "ollama", "template", "dryrun"):
         assert synthesize.resolve_backend(name, {}) == (name, None)
 
 
 # --- degradation on backend failure ---------------------------------------
 
-@pytest.fixture
-def anthropic_backend(monkeypatch):
-    monkeypatch.setattr(synthesize, "BACKEND", "anthropic")
+@pytest.fixture(params=["anthropic", "openai"])
+def anthropic_backend(monkeypatch, request):
+    """Parameterised over both network backends: a free-tier provider withdrawing is
+    exactly the event this whole module exists for, and it must degrade identically."""
+    monkeypatch.setattr(synthesize, "BACKEND", request.param)
+    return request.param
 
 
 @pytest.mark.parametrize("code", sorted(synthesize.PERMANENT_HTTP))
@@ -135,6 +158,7 @@ def test_permanent_http_errors_degrade_instead_of_raising(code, anthropic_backen
         raise _http(code)
 
     monkeypatch.setattr(synthesize, "call_anthropic", boom)
+    monkeypatch.setattr(synthesize, "call_openai_compat", boom)
     out = synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
 
     assert "Degraded run" in out
@@ -146,7 +170,8 @@ def test_degraded_digest_names_itself_as_unsynthesized(anthropic_backend, monkey
     """`X2 instrument_honesty`: a reader must be able to tell an assembled list from a
     written brief. Shipping the former under the latter's name is the failure the rubric
     exists to catch, and it would be invisible to everything except a human reading it."""
-    monkeypatch.setattr(synthesize, "call_anthropic", lambda s, u: (_ for _ in ()).throw(_http(410)))
+    for fn in ("call_anthropic", "call_openai_compat"):
+        monkeypatch.setattr(synthesize, fn, lambda s, u: (_ for _ in ()).throw(_http(410)))
     out = synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
 
     assert "no model synthesis" in out.lower()
@@ -160,6 +185,7 @@ def test_unreachable_backend_degrades(anthropic_backend, monkeypatch):
         raise urllib.error.URLError("nodename nor servname provided")
 
     monkeypatch.setattr(synthesize, "call_anthropic", boom)
+    monkeypatch.setattr(synthesize, "call_openai_compat", boom)
     out = synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
     assert "Degraded run" in out
 
@@ -167,13 +193,15 @@ def test_unreachable_backend_degrades(anthropic_backend, monkeypatch):
 def test_transient_server_errors_still_raise(anthropic_backend, monkeypatch):
     """A 500 or 429 is the provider having a bad minute. Degrading on those would quietly
     swap a retry for a worse digest and hide a problem worth seeing."""
-    monkeypatch.setattr(synthesize, "call_anthropic", lambda s, u: (_ for _ in ()).throw(_http(500)))
+    for fn in ("call_anthropic", "call_openai_compat"):
+        monkeypatch.setattr(synthesize, fn, lambda s, u: (_ for _ in ()).throw(_http(500)))
     with pytest.raises(urllib.error.HTTPError):
         synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
 
 
 def test_success_returns_the_model_output_untouched(anthropic_backend, monkeypatch):
-    monkeypatch.setattr(synthesize, "call_anthropic", lambda s, u: "# A real synthesized digest")
+    for fn in ("call_anthropic", "call_openai_compat"):
+        monkeypatch.setattr(synthesize, fn, lambda s, u: "# A real synthesized digest")
     out = synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
     assert out == "# A real synthesized digest"
     assert "Degraded" not in out
@@ -189,6 +217,7 @@ def test_413_exhausts_the_shrink_ladder_then_degrades(anthropic_backend, monkeyp
         raise _http(413)
 
     monkeypatch.setattr(synthesize, "call_anthropic", always_too_large)
+    monkeypatch.setattr(synthesize, "call_openai_compat", always_too_large)
     monkeypatch.setattr(synthesize, "build_prompt",
                         lambda items, **kw: ("sys", _prompt_with(_CAND), 1))
     out = synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
