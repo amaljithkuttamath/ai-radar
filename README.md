@@ -2,7 +2,25 @@
 
 Daily AI newsletter, built from ~30 sources, scored by a model, graded by a rubric.
 
-Today's: [reports/latest.md](reports/latest.md) · Board: [amaljithkuttamath.github.io/radar](https://amaljithkuttamath.github.io/radar) · Score: [evals/latest.json](evals/latest.json)
+Today's: [reports/latest.md](reports/latest.md) · Board: [amaljithkuttamath.github.io/radar](https://amaljithkuttamath.github.io/radar) · Score: [evals/latest.json](evals/latest.json) · Health: [status page](https://amaljithkuttamath.github.io/ai-radar/)
+
+## Pipeline health
+
+<!-- health:start -->
+
+| signal | status | detail |
+|---|---|---|
+| [Daily digest](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🔴 down | last digest committed 9d ago |
+| [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🔴 down | grader last committed 26d ago |
+| [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/workflows/collect-corpus.yml) | ⚪ unknown | no runs observed |
+| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/workflows/distill.yml) | ⚪ unknown | no runs observed |
+| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/workflows/watchdog.yml) | ⚪ unknown | no runs observed |
+
+Generated 2026-08-09 11:54 UTC by `scripts/health.py`.
+
+<!-- health:end -->
+
+Regenerated daily by [`scripts/health.py`](scripts/health.py) via [`health.yml`](.github/workflows/health.yml). Full reading in [`data/health.json`](data/health.json); rendered live on the [status page](https://amaljithkuttamath.github.io/ai-radar/).
 
 ## Eval trend (latest)
 
@@ -23,8 +41,10 @@ Four stages, one repo, one writer per state.
 
 1. **Collect.** stdlib fetchers pull arXiv, HF Daily Papers, lab RSS, GitHub trending, HF trending. Every item lands as JSON in `data/raw/`, deduped against `data/seen.json`. Daily at 11:00 UTC. No model calls, so a bad feed can't burn tokens.
 2. **Distill.** Score the corpus (0–5 heuristic, stdlib), re-read traction for everything already on the radar, re-rank against `profile.yaml` topics, diff against yesterday to find movers, apply diversity filters, one model call to write `reports/<date>-digest.md`. Fires on `workflow_run` when collect finishes.
-3. **Grade.** A separate daily task at 12:00 UTC reads the digest, HEAD-checks every URL, scores 10 rubric dimensions, commits `evals/<date>.json`, files an issue if any dimension drops below 2. The grader lives outside CI so it can't rescue a pipeline it just criticised.
+3. **Grade.** A separate daily task at 12:00 UTC runs `python -m grader`: it HEAD-checks every URL, scores 10 rubric dimensions, commits `evals/<date>.json`, and flags an issue if any dimension drops below 2. Two of the ten are never asked of a model — freshness is arithmetic and the source-integrity ceiling is an observed HTTP status — and the grader refuses to run at all if its model family matches the one that wrote the digest. Execution lives outside CI so it can't rescue a pipeline it just criticised ([ADR-0003](docs/architecture/adr/0003-eval-loop-out-of-repo.md)); the code lives here so it can be tested and seen to have stopped ([ADR-0007](docs/architecture/adr/0007-grader-implementation-in-repo.md)).
 4. **Present.** The Astro site reads `state.json`, `reports/latest.md`, and `evals/latest.json` live from `raw.githubusercontent.com`. New digest here shows up on next page load. No rebuild.
+
+Watching all four: `health.py` writes one reading to `data/health.json` daily at 16:00 UTC, after every other stage has had its slot. The status page renders it; `watchdog.yml` escalates on it. The reporter never repairs and the escalator never measures — [ADR-0005](docs/architecture/adr/0005-artifact-freshness-monitoring.md).
 
 Details in [docs/architecture.md](docs/architecture.md). Decisions in [docs/architecture/adr/](docs/architecture/adr/).
 
@@ -64,12 +84,14 @@ has the details.
 config/         sources.yaml, routines.yaml, profile.yaml (the three dials)
 collectors/     source adapters, stdlib only
 distill/        score, focus, track, delta, diversity, enrich, synthesize, reindex, deliver
+grader/         the eval loop: freshness, links, separation fence, judge, artifacts
 tests/          pytest suite; no network, no model, no secrets
 evals/          rubric, backlog, per-day JSON, latest.json
-data/           raw/ (gitignored), seen.json, state.json, tracked.json
+data/           raw/ (gitignored), seen.json, state.json, tracked.json, health.json
 reports/        dated digests, README index, latest.md
-scripts/        collect.sh, distill.sh, run.sh
-.github/        collect-corpus.yml, distill.yml, test.yml
+scripts/        collect.sh, distill.sh, run.sh, health.py
+site/           status page (static; reads data/health.json live)
+.github/        collect-corpus.yml, distill.yml, test.yml, health.yml, watchdog.yml
 docs/           architecture.svg + architecture.md + adr/
 ```
 
@@ -86,13 +108,13 @@ python -m collectors.hf_trending
 
 WINDOW=48h \
 FOCUS="interpretability,agents,evals" \
-RADAR_MODEL_BACKEND=github \
+RADAR_MODEL_BACKEND=auto \
 bash scripts/distill.sh
 
 open reports/latest.md
 ```
 
-Backends: `github` (default, free, uses `GITHUB_TOKEN`), `anthropic`, `ollama`, `dryrun`.
+Backends: `auto` (default in CI — `anthropic` if `ANTHROPIC_API_KEY` is set, else `template`), `anthropic`, `ollama`, `template` (no model, deterministic), `dryrun`. `github` is retired and redirects to `auto` — see [ADR-0006](docs/architecture/adr/0006-model-backend-after-github-models.md).
 
 ## Tests
 
@@ -106,6 +128,14 @@ score → track → synthesize under the exact CI conditions (empty `data/raw/`,
 already in `seen.json`) that used to leave the radar with nothing to say.
 
 ## Runbook
+
+**Where to look first.** The [status page](https://amaljithkuttamath.github.io/ai-radar/) or the health table at the top of this README. If the page says *Monitor stale*, believe that over everything below it — `health.yml` has stopped and every reading on the page is history.
+
+**Status page shows a workflow as `unknown`.** Nobody looked; the Actions API read failed. Not a pipeline fault. Check `health.yml`'s own run.
+
+**Digest stale but distill is green.** Worse than a red distill: the run succeeded and committed nothing. Check the "Commit digest" step — most likely `git diff --cached --quiet` found no change because synthesis wrote an identical file, or the push was rejected.
+
+**Digest says "Degraded run — no model synthesis".** The synthesis backend failed permanently or no `ANTHROPIC_API_KEY` is set. The digest is real — scored items, observed traction — but has no top-line read or insights. Set the key to restore synthesis; the banner disappears on the next run. See [ADR-0006](docs/architecture/adr/0006-model-backend-after-github-models.md).
 
 **Collector 500s.** Log will show which feed. Others continued.
 

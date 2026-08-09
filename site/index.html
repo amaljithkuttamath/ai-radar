@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Radar — pipeline health</title>
+<!--
+  Status page for the ai-radar pipeline.
+
+  Reads data/health.json live from raw.githubusercontent.com on every load, the
+  same way the Astro board reads state.json and evals/latest.json. No build step
+  and no server: a new health.json on main shows up on the next refresh.
+
+  Two things this page treats as first-class, because both were real outages:
+
+    * It reports the AGE of health.json, not just its contents. A monitor whose
+      writer has stopped shows its last good reading forever and reads as green.
+      If the data is older than one cadence, that is the headline, and every
+      other reading on the page is marked not-current.
+
+    * It distinguishes "could not read" from "healthy". A failed fetch renders as
+      unknown, never as OK.
+-->
+<style>
+  /* Light is the base; only the tokens change in dark, so nothing can be defined
+     in one theme and missing in the other. */
+  :root {
+    --bg: #fbfbfa;   --panel: #fff;    --ink: #1a1a18;  --muted: #6b6b66;
+    --line: #e4e4e0; --ok: #1a7f4b;    --warn: #a86a00; --down: #c2341d;
+    --unknown: #6b6b66;
+    --ok-bg: #e8f5ee; --warn-bg: #fdf3e0; --down-bg: #fbeae7; --unknown-bg: #f0f0ee;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #16171a;   --panel: #1e1f23; --ink: #e9e9e6;  --muted: #9a9a94;
+      --line: #2e3036; --ok: #4ec98a;    --warn: #e0a53c; --down: #f0705a;
+      --unknown: #9a9a94;
+      --ok-bg: #17301f; --warn-bg: #33280f; --down-bg: #3a1d18; --unknown-bg: #26272b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16171a;   --panel: #1e1f23; --ink: #e9e9e6;  --muted: #9a9a94;
+    --line: #2e3036; --ok: #4ec98a;    --warn: #e0a53c; --down: #f0705a;
+    --unknown: #9a9a94;
+    --ok-bg: #17301f; --warn-bg: #33280f; --down-bg: #3a1d18; --unknown-bg: #26272b;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.55 ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 60rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+
+  header { margin-bottom: 1.75rem; }
+  h1 { font-size: 1.35rem; margin: 0 0 .25rem; letter-spacing: -.01em; }
+  .sub { color: var(--muted); font-size: .875rem; margin: 0; }
+  .sub a { color: inherit; }
+
+  .banner {
+    display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
+    padding: 1rem 1.15rem; border-radius: .6rem; margin: 1.5rem 0;
+    border: 1px solid var(--line);
+  }
+  .banner .dot { width: .7rem; height: .7rem; border-radius: 50%; flex: none;
+                 align-self: center; }
+  .banner strong { font-size: 1.05rem; }
+  .banner .note { color: var(--muted); font-size: .875rem; }
+
+  .s-ok      { background: var(--ok-bg); }      .s-ok .dot      { background: var(--ok); }
+  .s-warn    { background: var(--warn-bg); }    .s-warn .dot    { background: var(--warn); }
+  .s-down    { background: var(--down-bg); }    .s-down .dot    { background: var(--down); }
+  .s-unknown { background: var(--unknown-bg); } .s-unknown .dot { background: var(--unknown); }
+
+  h2 { font-size: .78rem; text-transform: uppercase; letter-spacing: .07em;
+       color: var(--muted); margin: 2rem 0 .7rem; font-weight: 600; }
+
+  .grid { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: .55rem;
+    padding: .95rem 1.05rem;
+  }
+  .card .top { display: flex; align-items: center; gap: .5rem; margin-bottom: .3rem; }
+  .card .dot { width: .58rem; height: .58rem; border-radius: 50%; flex: none; }
+  .card-ok .dot { background: var(--ok); } .card-warn .dot { background: var(--warn); }
+  .card-down .dot { background: var(--down); } .card-unknown .dot { background: var(--unknown); }
+  .card .name { font-weight: 600; font-size: .95rem; }
+  .card .name a { color: inherit; text-decoration: none; }
+  .card .name a:hover { text-decoration: underline; }
+  .card .detail { color: var(--muted); font-size: .85rem; }
+  .card .meter { height: 3px; border-radius: 2px; background: var(--line); margin-top: .7rem;
+                 overflow: hidden; }
+  .card .meter i { display: block; height: 100%; }
+  .card-ok .meter i { background: var(--ok); } .card-warn .meter i { background: var(--warn); }
+  .card-down .meter i { background: var(--down); }
+
+  /* Wide content scrolls inside its own box; the page body never scrolls sideways. */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: .55rem;
+               background: var(--panel); }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; min-width: 34rem; }
+  th, td { text-align: left; padding: .6rem .9rem; border-bottom: 1px solid var(--line); }
+  th { font-weight: 600; color: var(--muted); font-size: .78rem; text-transform: uppercase;
+       letter-spacing: .05em; }
+  tr:last-child td { border-bottom: 0; }
+  td a { color: inherit; }
+  .pill { display: inline-flex; align-items: center; gap: .35rem; font-size: .8rem;
+          font-weight: 600; }
+  .pill .dot { width: .5rem; height: .5rem; border-radius: 50%; }
+  .p-ok { color: var(--ok); } .p-ok .dot { background: var(--ok); }
+  .p-warn { color: var(--warn); } .p-warn .dot { background: var(--warn); }
+  .p-down { color: var(--down); } .p-down .dot { background: var(--down); }
+  .p-unknown { color: var(--unknown); } .p-unknown .dot { background: var(--unknown); }
+
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: .82rem;
+           border-top: 1px solid var(--line); padding-top: 1rem; }
+  footer a { color: inherit; }
+  .stale-flag { color: var(--warn); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>AI Radar — pipeline health</h1>
+    <p class="sub">
+      Live from
+      <a id="src" href="#">data/health.json</a> ·
+      <a href="https://github.com/amaljithkuttamath/ai-radar/actions">Actions</a> ·
+      <a href="https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md">Latest digest</a>
+    </p>
+  </header>
+
+  <div id="banner" class="banner s-unknown">
+    <span class="dot"></span>
+    <strong>Loading…</strong>
+    <span class="note">reading health.json</span>
+  </div>
+
+  <div id="body" hidden>
+    <h2>Artifacts</h2>
+    <div class="grid" id="signals"></div>
+
+    <h2>Workflows</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Workflow</th><th>Status</th><th>Last run</th><th>Detail</th></tr></thead>
+        <tbody id="workflows"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    <span id="stamp"></span>
+    <span id="stale"></span><br>
+    Written by <code>scripts/health.py</code> on a schedule; this page renders it and never
+    computes health itself. Source:
+    <a href="https://github.com/amaljithkuttamath/ai-radar">amaljithkuttamath/ai-radar</a>.
+  </footer>
+</div>
+
+<script>
+const REPO = "amaljithkuttamath/ai-radar";
+const SRC  = `https://raw.githubusercontent.com/${REPO}/main/data/health.json`;
+
+// health.json is rewritten daily. Past this, the writer itself is suspect and the
+// readings below are history, not status.
+const MONITOR_MAX_AGE_H = 26;
+
+const LABEL = {
+  ok:      ["All systems nominal", "every tracked signal is inside its threshold"],
+  warn:    ["Degraded",            "at least one signal is drifting"],
+  down:    ["Down",                "at least one signal has breached its threshold"],
+  unknown: ["Unknown",             "could not read health.json"],
+};
+
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c =>
+  ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+
+const hoursSince = iso => (Date.now() - new Date(iso).getTime()) / 3.6e6;
+
+function ago(iso) {
+  if (!iso) return "never";
+  const h = hoursSince(iso);
+  if (!isFinite(h)) return "unknown";
+  if (h < 1)  return "just now";
+  if (h < 48) return `${Math.floor(h)}h ago`;
+  return `${Math.floor(h / 24)}d ago`;
+}
+
+function setBanner(status, headline, note) {
+  const el = document.getElementById("banner");
+  el.className = `banner s-${status}`;
+  el.innerHTML = `<span class="dot"></span><strong>${esc(headline)}</strong>` +
+                 `<span class="note">${esc(note)}</span>`;
+}
+
+function renderSignals(signals) {
+  document.getElementById("signals").innerHTML = signals.map(s => {
+    // Fraction of the allowed age already spent — the meter reads as "how much
+    // budget is left before this breaches", not as an abstract score.
+    const pct = (s.age_h == null || !s.threshold_h)
+      ? 100 : Math.max(2, Math.min(100, (s.age_h / s.threshold_h) * 100));
+    return `<div class="card card-${esc(s.status)}">
+      <div class="top"><span class="dot"></span>
+        <span class="name"><a href="${esc(s.url)}">${esc(s.label)}</a></span></div>
+      <div class="detail">${esc(s.detail)}</div>
+      <div class="detail">threshold ${esc(s.threshold_h)}h</div>
+      <div class="meter"><i style="width:${pct}%"></i></div>
+    </div>`;
+  }).join("");
+}
+
+function renderWorkflows(workflows) {
+  document.getElementById("workflows").innerHTML = workflows.map(w => {
+    const status = w.observed ? w.status : "unknown";
+    const detail = !w.observed ? "no runs observed"
+      : w.fail_streak ? `${w.fail_streak} consecutive failure${w.fail_streak > 1 ? "s" : ""}`
+      : `last run ${w.conclusion ?? "unknown"}`;
+    return `<tr>
+      <td><a href="${esc(w.url)}">${esc(w.label)}</a></td>
+      <td><span class="pill p-${esc(status)}"><span class="dot"></span>${esc(status)}</span></td>
+      <td>${esc(ago(w.last_run_at))}</td>
+      <td>${esc(detail)}</td>
+    </tr>`;
+  }).join("");
+}
+
+async function load() {
+  document.getElementById("src").href = SRC;
+  let health;
+  try {
+    // cache: no-store — raw.githubusercontent caches aggressively, and a status
+    // page serving a cached reading is the failure mode this page exists to catch.
+    const res = await fetch(SRC, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    health = await res.json();
+  } catch (err) {
+    setBanner("unknown", LABEL.unknown[0], `${LABEL.unknown[1]} (${err.message})`);
+    document.getElementById("stamp").textContent =
+      "No reading available — health.json is missing or unreadable.";
+    return;
+  }
+
+  renderSignals(health.signals ?? []);
+  renderWorkflows(health.workflows ?? []);
+  document.getElementById("body").hidden = false;
+
+  const age = hoursSince(health.generated);
+  const stale = isFinite(age) && age > MONITOR_MAX_AGE_H;
+
+  if (stale) {
+    // The monitor's own silence outranks whatever it last said.
+    setBanner("unknown", "Monitor stale",
+      `health.json was last written ${ago(health.generated)} — readings below are not current`);
+  } else {
+    const [head, note] = LABEL[health.status] ?? LABEL.unknown;
+    setBanner(health.status ?? "unknown", head, note);
+  }
+
+  document.getElementById("stamp").textContent =
+    `Reading generated ${ago(health.generated)} (${esc(health.generated)}).`;
+  document.getElementById("stale").innerHTML = stale
+    ? ` <span class="stale-flag">The writer may have stopped.</span>` : "";
+}
+
+load();
+</script>
+</body>
+</html>

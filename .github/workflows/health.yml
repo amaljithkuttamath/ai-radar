@@ -1,0 +1,95 @@
+name: health
+
+# Collapses every health signal in the repo into one artifact (data/health.json)
+# and publishes the status page that renders it.
+#
+# Why a separate workflow rather than a step inside distill: distill is exactly
+# one of the things being monitored, and it has been failing every day since
+# 2026-07-31. A monitor that runs as a step of the thing it watches reports
+# nothing precisely when there is something to report. Same reasoning as ADR-0003
+# for the grader, applied one level down.
+#
+# This job only ever REPORTS. It does not retry, repair, or escalate — going red
+# here would conflate "the pipeline is broken" with "the monitor is broken", and
+# telling those apart is the entire point. Escalation belongs to watchdog.yml.
+#
+# Writes data/health.json and the delimited block in README.md, and nothing else
+# (invariant I-01: one writer per state file).
+
+on:
+  schedule:
+    # 16:00 UTC — after collect (11:00), distill (reactive, ~11:30), the grader's
+    # 12:00 slot, and watchdog (15:00). Last in the chain, so a reading reflects
+    # the day that just happened rather than yesterday's.
+    - cron: "0 16 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write         # commits data/health.json + the README block
+  actions: read           # reads workflow run conclusions via the API
+  pages: write            # publishes the status page
+  id-token: write         # required by actions/deploy-pages
+
+concurrency:
+  group: health
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # Freshness is measured from commit times, so the full history is the
+          # input. On a shallow clone every artifact looks as new as the clone.
+          fetch-depth: 0
+
+      # No uv, no dependency install: health.py is stdlib-only on purpose. This
+      # job's whole value is running when something else is broken, so it must not
+      # be able to fail on a resolver.
+      - name: Compute health
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/health.py --readme
+
+      - name: Commit health.json + README block
+        run: |
+          git config user.name  "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git pull --rebase origin main || true
+          git add data/health.json README.md
+          if git diff --cached --quiet; then
+            echo "Health unchanged."
+          else
+            git commit -m "health: $(date -u +%Y-%m-%dT%H:%M) reading"
+            git push
+          fi
+
+      # The page is static and reads health.json live from raw.githubusercontent
+      # at view time, so publishing it is independent of the reading above: a
+      # failed commit still leaves a page that shows the true (stale) state.
+      #
+      # Both steps are continue-on-error, and deliberately so. Publishing is the
+      # least important thing this job does — the reading is already committed
+      # above, and the README table and watchdog both work without a page. If
+      # Pages is disabled or misconfigured, that must not paint this workflow
+      # red: a monitor that reports its own failure as a pipeline failure is the
+      # precise confusion this design exists to prevent. Check this job's log,
+      # not its colour, when the page stops updating.
+      - name: Upload status page
+        uses: actions/upload-pages-artifact@v3
+        continue-on-error: true
+        with:
+          path: site/
+
+      - name: Deploy to Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+
+      - name: Note if publishing failed
+        if: steps.deploy.outcome != 'success'
+        run: |
+          echo "::warning::Status page not published (${{ steps.deploy.outcome }}). "\
+               "data/health.json and the README table are still current. If this is "\
+               "the first run, enable Pages: Settings > Pages > Source = GitHub Actions."

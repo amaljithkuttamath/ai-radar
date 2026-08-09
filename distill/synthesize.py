@@ -2,15 +2,35 @@
 as the system prompt, write reports/<date>-digest.md.
 
 Backend-agnostic. Set RADAR_MODEL_BACKEND:
+  auto       -> anthropic if ANTHROPIC_API_KEY is set, else template (default in CI)
   anthropic  -> uses ANTHROPIC_API_KEY (synthesis quality)
-  github     -> uses GitHub Models, auth via GITHUB_TOKEN (free; default in CI)
   ollama     -> uses local http://localhost:11434 (cheap)
-  dryrun     -> no model; dumps the assembled prompt for inspection (default)
+  template   -> no model; deterministic digest assembled from the scored items
+  dryrun     -> no model; dumps the assembled prompt for inspection (default locally)
+  github     -> RETIRED, see below. Accepted and redirected so old configs still run.
+
+GitHub Models was fully retired on 2026-07-30 (announced 2026-06-16, brownouts on
+07-16 and 07-23). `models.github.ai/inference` now returns `410 Gone` for both
+chat completions and embeddings, permanently. This pipeline ran on it as the
+default CI backend, so distill failed on every run from 2026-07-31 and published
+no digest for ten days while collect-corpus stayed green.
+
+Two things changed as a result, and both matter more than the endpoint swap:
+
+  * A permanent backend failure now DEGRADES to the template digest instead of
+    killing the run. Ten days of nothing was not caused by the retirement — it
+    was caused by an uncaught exception on a code path with no fallback. A dead
+    provider should cost quality, not the entire product.
+
+  * The degraded digest says so, in the digest itself. A reader must be able to
+    tell a synthesized brief from an assembled list; silently shipping the
+    latter under the former's name is the `X2 instrument_honesty` failure the
+    rubric exists to catch.
 
 Run: python -m distill.synthesize
 """
 from __future__ import annotations
-import os, sys, json, urllib.request, urllib.error
+import os, re, sys, json, urllib.request, urllib.error
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -26,17 +46,58 @@ WINDOW = os.environ.get("WINDOW", "48h")
 MAX_ITEMS = int(os.environ.get("MAX_ITEMS", "10"))
 MARKET = os.environ.get("MARKET", "off").lower() == "on"
 THRESHOLD = int(os.environ.get("INCLUDE_THRESHOLD", "2"))
-BACKEND = os.environ.get("RADAR_MODEL_BACKEND", "dryrun").lower()
+_REQUESTED_BACKEND = os.environ.get("RADAR_MODEL_BACKEND", "dryrun").lower()
+
+# HTTP codes no amount of retrying or payload-shrinking can fix. 410 is the one that
+# bit us (a retired product), but a revoked key (401) or a deleted model (404) fail
+# exactly as permanently, and all of them should degrade rather than abort.
+PERMANENT_HTTP = frozenset({400, 401, 403, 404, 410})
+
+# Backends that reach a model over the network, and therefore can fail permanently.
+_MODEL_BACKENDS = frozenset({"anthropic", "ollama"})
+
+
+def resolve_backend(requested: str, env: dict | None = None) -> tuple[str, str | None]:
+    """(backend, note). `note` is a human-facing warning, or None when nothing surprising
+    happened. Pure so the selection rules are testable without touching the network.
+
+    `github` is accepted rather than rejected. Hard-failing on it would break every
+    existing config — distill.yml, the README, anyone's shell — and re-create the
+    outage it is meant to end. It redirects, loudly.
+    """
+    env = os.environ if env is None else env
+    if requested == "github":
+        chosen, _ = resolve_backend("auto", env)
+        return chosen, ("RADAR_MODEL_BACKEND=github is retired (GitHub Models shut down "
+                        f"2026-07-30); using '{chosen}'. Set the variable explicitly to silence this.")
+    if requested != "auto":
+        return requested, None
+    if env.get("ANTHROPIC_API_KEY"):
+        return "anthropic", None
+    # No key, no card, still has to publish something. The template digest is a real
+    # digest — scored items, observed signals, no invented prose — just not a synthesized one.
+    return "template", ("no ANTHROPIC_API_KEY set; falling back to the template backend "
+                        "(deterministic, no synthesis)")
+
+
+BACKEND, _BACKEND_NOTE = resolve_backend(_REQUESTED_BACKEND)
+if _BACKEND_NOTE:
+    print(f"[distill] {_BACKEND_NOTE}", file=sys.stderr)
 SCORED = ROOT / "data" / "scored"
 ENRICHED = ROOT / "data" / "enriched"
 SPEC = (ROOT / "distill" / "digest.md").read_text()
 
-# Payload caps. GitHub Models' free tier has a ~16k-token INPUT limit, so the candidate
-# set must stay small there (a busy 7d window scores 500+ items). The digest only emits
-# MAX_ITEMS anyway, so a tight candidate list is plenty. Other backends can take more.
+# Payload caps. These were sized around GitHub Models' ~16k-token INPUT ceiling, which is
+# why the per-backend override table existed (github: 24 candidates / 360 summary chars).
+# That backend is gone and every remaining one takes a far larger prompt, so the table is
+# empty and everything gets the roomy default. The 413 shrink ladder in
+# `synthesize_with_fallback` stays regardless — it is the generic defence against a
+# provider-specific input limit, and the next backend will have one too.
 # Overridable via env for tuning.
-_CAND_DEFAULT = {"github": 24}.get(BACKEND, 60)
-_SUMMARY_DEFAULT = {"github": 360}.get(BACKEND, 600)
+_PER_BACKEND_CAND: dict[str, int] = {}
+_PER_BACKEND_SUMMARY: dict[str, int] = {}
+_CAND_DEFAULT = _PER_BACKEND_CAND.get(BACKEND, 60)
+_SUMMARY_DEFAULT = _PER_BACKEND_SUMMARY.get(BACKEND, 600)
 MAX_CANDIDATES = int(os.environ.get("MAX_CANDIDATES", _CAND_DEFAULT))
 SUMMARY_CHARS = int(os.environ.get("SUMMARY_CHARS", _SUMMARY_DEFAULT))
 
@@ -305,25 +366,10 @@ def call_anthropic(system: str, user: str) -> str:
     return "".join(b.get("text", "") for b in data.get("content", []))
 
 
-def call_github(system: str, user: str, model: str | None = None) -> str:
-    """GitHub Models — OpenAI-compatible, free, auth via GITHUB_TOKEN (models:read scope).
-    Default backend in CI: no paid key, no card. https://models.github.ai/inference
-    `model` lets callers pick a tier (synthesis uses the strong gpt-4.1; briefs use the
-    cheaper-quota gpt-4.1-mini so 8 brief calls don't exhaust the High-tier daily budget)."""
-    body = json.dumps({
-        "model": model or os.environ.get("RADAR_GITHUB_MODEL", "openai/gpt-4.1"),
-        "messages": [{"role": "system", "content": system},
-                     {"role": "user", "content": user}],
-    }).encode()
-    req = urllib.request.Request(
-        "https://models.github.ai/inference/chat/completions", data=body,
-        headers={"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
-                 "Content-Type": "application/json",
-                 "Accept": "application/vnd.github+json",
-                 "X-GitHub-Api-Version": "2026-03-10"})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        data = json.loads(r.read())
-    return data["choices"][0]["message"]["content"]
+# `call_github` lived here until 2026-08. GitHub Models was retired on 2026-07-30 and
+# https://models.github.ai/inference returns 410 Gone permanently, so the function is
+# deleted rather than kept behind a flag: a helper that dials a dead host is a trap for
+# the next person wiring up a backend. History has it if the shape is ever wanted again.
 
 
 def call_ollama(system: str, user: str) -> str:
@@ -337,24 +383,57 @@ def call_ollama(system: str, user: str) -> str:
         return json.loads(r.read()).get("response", "")
 
 
+_DECODER = json.JSONDecoder()
+
+
+def extract_candidates(user: str) -> list | None:
+    """Recover the candidate array `build_prompt` appends to the end of the user message.
+
+    The obvious regex — `\\[\\s*\\{.*\\}\\s*\\]` with DOTALL — is wrong, and wrong in a way
+    that only shows up on real data. The prompt carries several top-level JSON blocks
+    (MOVERS, story arcs, clusters, then candidates), so a greedy match spans from the first
+    to the last and yields a string that is not valid JSON. With an empty delta there is
+    only one array and it appears to work, which is why it survived: every test fixture had
+    a quiet window. In production it made the template backend emit "Could not parse items
+    JSON" — harmless while template was a testing mode, load-bearing now that it is the
+    fallback a dead provider degrades to.
+
+    So: walk the top-level array starts from the end and take the last one that actually
+    decodes. `raw_decode` stops at the end of the value and ignores trailing text, and a
+    literal newline never appears inside a JSON string (it is escaped), so `\\n[` at column
+    zero reliably marks a top-level array rather than a nested or quoted one.
+    """
+    for idx in reversed([m.start() + 1 for m in re.finditer(r"\n\[", user)]):
+        try:
+            value, _ = _DECODER.raw_decode(user, idx)
+        except ValueError:
+            continue
+        if isinstance(value, list):
+            return value
+    return None
+
+
 def call_template(system: str, user: str) -> str:
     """No-model backend: generate a structured report from the top scored items directly.
-    Useful for testing the pipeline or running without API keys."""
-    import json, re
-    json_match = re.search(r'\[\s*\{.*\}\s*\]', user, re.DOTALL)
-    if not json_match:
-        return "# AI Radar — Template Error\n\nCould not extract items from prompt."
-    try:
-        items = json.loads(json_match.group(0))
-    except json.JSONDecodeError:
-        return "# AI Radar — Template Error\n\nCould not parse items JSON."
+    Runs without an API key, and is what a permanent backend failure degrades to."""
+    items = extract_candidates(user)
+    if items is None:
+        # Loud, because this is the floor. Nothing catches a bad digest below this point.
+        print("[distill] template backend could not recover the candidate array from the "
+              "prompt; emitting an error digest", file=sys.stderr)
+        return ("# AI Radar — Template Error\n\n"
+                "Could not recover the candidate items from the assembled prompt. "
+                "This is a bug in `distill/synthesize.py:extract_candidates`, not a "
+                "collection failure — the corpus is intact and re-running distill after "
+                "a fix will produce the digest.\n")
 
     today = f"{datetime.now(timezone.utc):%Y-%m-%d}"
     lines = [
         f"# AI Radar — {today}",
         "",
         f"**Top-line** — {len(items)} candidate items scored in the last {WINDOW}. "
-        "Run with `RADAR_MODEL_BACKEND=github` or `anthropic` for model synthesis and insights.",
+        "Run with `RADAR_MODEL_BACKEND=anthropic` (or `auto` with ANTHROPIC_API_KEY set) "
+        "for model synthesis and insights.",
         ""
     ]
 
@@ -399,7 +478,7 @@ def call_template(system: str, user: str) -> str:
 
     lines.append("**Insights**")
     lines.append("- Template backend shows raw scored items without model judgment.")
-    lines.append(f"- Set a model backend for synthesis: `export RADAR_MODEL_BACKEND=github` + `export GITHUB_TOKEN=...`")
+    lines.append("- Set a model backend for synthesis: `export RADAR_MODEL_BACKEND=anthropic` + `export ANTHROPIC_API_KEY=...`")
     lines.append("")
 
     lines.append("**Action items**")
@@ -423,55 +502,103 @@ def _log_prompt_stats(system: str, user: str, n_items: int,
           f"| shrink_level={shrink_level} | items={n_items}", file=sys.stderr)
 
 
+def degraded_banner(backend: str, reason: str) -> str:
+    """The notice prepended to a digest that lost its synthesis step.
+
+    Load-bearing, not decorative. A degraded digest is an assembled list of scored
+    items, not a written brief, and a reader who cannot tell the two apart has been
+    misled about what produced the words in front of them — `X2 instrument_honesty`
+    in the rubric. It also names the cause, because the alternative is a reader
+    concluding the radar got worse rather than that a provider went away.
+    """
+    return (
+        f"> **Degraded run — no model synthesis.** The `{backend}` backend failed "
+        f"permanently ({reason}), so this digest was assembled directly from scored "
+        "items and observed signals. Rankings and traction numbers are real; the "
+        "connective prose, the top-line read, and the insights are absent rather "
+        "than machine-written. See `docs/architecture/adr/0006-model-backend-after-"
+        "github-models.md`.\n\n"
+    )
+
+
+def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: int) -> str:
+    """Call the configured backend; degrade to the template digest on a permanent failure.
+
+    The shrink ladder handles 413 (payload too large) by rebuilding a smaller prompt.
+    That was the only error class the old code handled, and every other HTTP error
+    re-raised straight out of `main()` — which is why a `410 Gone` took the pipeline
+    down for ten days instead of costing one day's prose.
+    """
+    attempts = [
+        dict(),
+        dict(_strip_briefs=True),
+        dict(_strip_briefs=True, max_candidates=18, summary_chars=240),
+        dict(_strip_briefs=True, max_candidates=12, summary_chars=180),
+        dict(_strip_briefs=True, max_candidates=max(MAX_ITEMS, 8), summary_chars=120),
+    ]
+    caller = {"anthropic": call_anthropic, "ollama": call_ollama}[BACKEND]
+
+    last_413: urllib.error.HTTPError | None = None
+    for n, kw in enumerate(attempts):
+        if n:
+            print(f"[distill] 413 on synthesis; shrinking payload "
+                  f"(attempt {n}/{len(attempts)-1}: {kw})", file=sys.stderr)
+            system, user, n_cand = build_prompt(items, **kw)
+        _log_prompt_stats(system, user, len(items), n_cand, n)
+        try:
+            return caller(system, user)
+        except urllib.error.HTTPError as ex:
+            if ex.code == 413:
+                last_413 = ex
+                continue
+            if ex.code in PERMANENT_HTTP:
+                print(f"[distill] {BACKEND} backend failed permanently (HTTP {ex.code} "
+                      f"{ex.reason}); degrading to the template digest", file=sys.stderr)
+                return degraded_banner(BACKEND, f"HTTP {ex.code} {ex.reason}") + \
+                    call_template(system, user)
+            raise
+        except urllib.error.URLError as ex:
+            # DNS failure / refused connection / TLS error. Indistinguishable from a
+            # retired host at this layer, and equally not worth losing the digest over.
+            print(f"[distill] {BACKEND} backend unreachable ({ex.reason}); "
+                  "degrading to the template digest", file=sys.stderr)
+            return degraded_banner(BACKEND, str(ex.reason)) + call_template(system, user)
+
+    print("[distill] still 413 after shrinking to the floor; degrading to template",
+          file=sys.stderr)
+    return degraded_banner(BACKEND, f"HTTP 413 after {len(attempts)} shrink attempts") + \
+        call_template(system, user)
+
+
 def main() -> None:
     items = load_scored()
     system, user, n_cand = build_prompt(items)
-    if BACKEND == "anthropic":
-        _log_prompt_stats(system, user, len(items), n_cand, 0)
-        report = call_anthropic(system, user)
-    elif BACKEND == "github":
-        attempts = [
-            dict(),
-            dict(_strip_briefs=True),
-            dict(_strip_briefs=True, max_candidates=18, summary_chars=240),
-            dict(_strip_briefs=True, max_candidates=12, summary_chars=180),
-            dict(_strip_briefs=True, max_candidates=max(MAX_ITEMS, 8), summary_chars=120),
-        ]
-        report = None
-        last_413: urllib.error.HTTPError | None = None
-        for n, kw in enumerate(attempts):
-            if n:
-                print(f"[distill] 413 on synthesis; shrinking payload "
-                      f"(attempt {n}/{len(attempts)-1}: {kw})", file=sys.stderr)
-                system, user, n_cand = build_prompt(items, **kw)
-            _log_prompt_stats(system, user, len(items), n_cand, n)
-            try:
-                report = call_github(system, user)
-                break
-            except urllib.error.HTTPError as ex:
-                if ex.code == 413:
-                    last_413 = ex
-                    continue
-                raise
-        if report is None:
-            print("[distill] still 413 after shrinking to the floor; giving up",
-                  file=sys.stderr)
-            raise last_413  # type: ignore[misc]
-    elif BACKEND == "ollama":
-        _log_prompt_stats(system, user, len(items), n_cand, 0)
-        report = call_ollama(system, user)
+    if BACKEND in _MODEL_BACKENDS:
+        report = synthesize_with_fallback(items, system, user, n_cand)
     elif BACKEND == "template":
         report = call_template(system, user)
     else:
         _log_prompt_stats(system, user, len(items), n_cand, 0)
         report = ("# DRYRUN — assembled prompt (no model called)\n\n"
-                  "Set RADAR_MODEL_BACKEND=github (free), anthropic, ollama, or template to generate the digest.\n\n"
+                  "Set RADAR_MODEL_BACKEND=auto, anthropic, ollama, or template to generate the digest.\n\n"
                   "## SYSTEM\n" + system + "\n\n## USER\n" + user)
     out = ROOT / "reports" / f"{datetime.now(timezone.utc):%Y-%m-%d}-digest.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(report)
-    # Snapshot state only for real backends (template and dryrun don't advance state).
-    if BACKEND not in ("dryrun", "template"):
+    # Advance state whenever a real digest was published.
+    #
+    # This used to exclude `template` alongside `dryrun`, on the reasoning that both were
+    # testing modes. That stopped being true when GitHub Models was retired: with no API
+    # key, `auto` resolves to `template` and it becomes the steady-state production
+    # backend. Leaving it excluded would publish a digest daily while never snapshotting
+    # state or promoting to the ledger — so every "what changed" diff would compare against
+    # a frozen yesterday and carryover would slowly empty out. A silently degrading radar
+    # is worse than a visibly broken one.
+    #
+    # `dryrun` still never advances: it writes no real digest, only the assembled prompt.
+    # `RADAR_NO_STATE=1` keeps the old safety valve for anyone running the pipeline locally
+    # against a real checkout who does not want to dirty state.json / tracked.json.
+    if BACKEND != "dryrun" and os.environ.get("RADAR_NO_STATE", "") != "1":
         save_state(items)
         # Put today's digest-worthy items on the radar so the next run can re-observe their
         # traction. Promotion happens only after a digest is actually written — a run that

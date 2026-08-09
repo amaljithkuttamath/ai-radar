@@ -2,11 +2,39 @@
 
 The grader is a scheduled task at 12:00 UTC (8:00 AM ET). It reads the latest digest, scores it against the 10-dim rubric, commits eval artifacts, and files an issue when quality drops.
 
+## Implementation
+
+**This contract now has an implementation: the [`grader/`](../../grader/) package. Run it with `python -m grader`.**
+
+Until 2026-08 it did not. The grader was a prompt inside an external scheduled task that reconstructed this whole document from prose every morning — which meant it had no tests, no version history, and no run record to be absent from. It stopped on 2026-07-13 and nobody noticed for 26 days. A specification with no implementation cannot be observed to have stopped.
+
+What changed is the implementation, not the execution. Per [ADR-0003](../architecture/adr/0003-eval-loop-out-of-repo.md) the eval loop still runs **outside** this repo, so a distill bug cannot suppress its own criticism; the external task now invokes `python -m grader` instead of improvising it. See [ADR-0007](../architecture/adr/0007-grader-implementation-in-repo.md).
+
+Which parts are code, and which are still the runner's:
+
+| Step | Where it lives now |
+|------|--------------------|
+| Freshness, staleness gate, `X3` | `grader/freshness.py` — deterministic, no model |
+| URL liveness, the `A2` ceiling | `grader/links.py` — observed HTTP status, never judged |
+| Model separation | `grader/separation.py` — **a fence, not a rule**; refuses to run |
+| The eight judgement dims | `grader/judge.py` — one model call, one JSON object |
+| Assembly, schema, `evals/` writes, backlog, issue conditions | `grader/artifacts.py` |
+| Orchestration | `grader/cli.py` |
+| Scheduling, `git` commit + push, filing the issue | **still the external runner** |
+
+`python -m grader` prints `ISSUE-WORTHY: <reason>` on stdout (and sets `issue_reason` in `$GITHUB_OUTPUT`) when the conditions below are met. It does not file the issue itself: filing needs a token and the 72h cross-repo throttle, which is state the runner holds.
+
+Everything below remains the authority on *why* each rule exists. Where this prose and the code disagree, that is a bug in one of them — the code is tested against these rules in [`tests/test_grader.py`](../../tests/test_grader.py).
+
 Preconditions: [`.github/AGENTS.md`](../../.github/AGENTS.md), [`invariants.md`](invariants.md), [`whitelist.md`](whitelist.md), [`eval-schema.md`](eval-schema.md) all loaded and honored per the [contract load](#contract-load) rules below.
 
 ## Model separation (required)
 
 **The grader MUST NOT run on the same model family as the coder or as `distill/synthesize.py`.**
+
+*Enforced in code* by [`grader/separation.py`](../../grader/separation.py), which resolves both model families and raises `SeparationViolation` before spending a token. An unrecognised model id is refused rather than assumed safe. This used to be prose alone, which is the same mistake `whitelist.md` made before `scripts/check_whitelist.py` existed: an instruction inside the agent's reasoning loop is not a control.
+
+Note the live constraint after [ADR-0006](../architecture/adr/0006-model-backend-after-github-models.md): `synthesize.py` now runs on Anthropic when `ANTHROPIC_API_KEY` is set, so the grader must be pinned to a different family (`RADAR_GRADER_BACKEND` + `RADAR_GRADER_MODEL`). When the pipeline degrades to the `template` backend it makes no model call at all, and separation is vacuous — the fence allows any family in that case.
 
 A model evaluating its own output shows self-enhancement bias of roughly +10–25%. If the grader shares a family with the thing it grades, the rubric can climb while the digest does not: `evals/latest.json` reads green for months while quality is flat or falling. That failure is invisible by construction, because the instrument and the subject agree.
 

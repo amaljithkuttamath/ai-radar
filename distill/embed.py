@@ -68,7 +68,27 @@ def _save_cached(key: str, vec: list[float]) -> None:
 
 def _call_embeddings(texts: list[str]) -> list[list[float]]:
     """Call the GitHub Models embeddings endpoint. Returns one vector per input text.
-    Raises on HTTP/network error — callers are responsible for handling."""
+    Raises on HTTP/network error — callers are responsible for handling.
+
+    Currently always raises without making a request: GitHub Models was retired on
+    2026-07-30 and this endpoint returns `410 Gone` permanently. Failing here rather
+    than over the wire keeps the doomed round-trip out of every distill run, and the
+    message says why — the previous behaviour logged a bare "HTTP Error 410: Gone"
+    daily, which reads as a transient blip rather than a dead product.
+
+    Callers already treat an exception as "no vectors", so FOCUS matching degrades to
+    the lexical backend on its own. Restoring semantic FOCUS means pointing `_ENDPOINT`
+    at a live provider and giving it that provider's auth — see ADR-0006.
+    """
+    raise RuntimeError(
+        "GitHub Models embeddings were retired 2026-07-30 (HTTP 410 Gone). "
+        "FOCUS_BACKEND=embed is unavailable until _ENDPOINT is repointed; "
+        "falling back to lexical matching.")
+
+
+def _call_embeddings_http(texts: list[str]) -> list[list[float]]:
+    """The original wire call, kept intact for whoever repoints `_ENDPOINT` at a live
+    OpenAI-compatible provider. Not reachable until `_call_embeddings` delegates to it."""
     token = os.environ.get("GITHUB_TOKEN", "")
     if not token:
         raise RuntimeError("GITHUB_TOKEN not set — cannot call embeddings endpoint")

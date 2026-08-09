@@ -11,6 +11,32 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 
+@pytest.fixture(autouse=True)
+def _isolate_persistent_state(tmp_path, monkeypatch):
+    """Redirect every persistent path at a tmp dir, for every test, without being asked.
+
+    The docstring above has warned about this since the suite was written, and eleven tests
+    still forgot — `test_track.py` and `test_delta.py` called `promote`/`_run` without
+    taking `ledger_path`, so `track.LEDGER` stayed pointed at the committed
+    `data/tracked.json`. They passed while that file was small and drifted into failure as
+    daily runs grew it to 50 items: `assert stats["observed"] == 1` was reading 13 real
+    carryovers alongside the one the test created. Nothing was wrong with the code under
+    test, so the failures looked like flakes and the whole suite stayed red on every PR
+    (`guard.yml` runs it), which trains you to ignore a red check.
+
+    A convention that has to be remembered is not isolation. Autouse makes forgetting
+    impossible: the opt-in fixtures below still work and simply override this with their
+    own tmp path, and a test that wants the real files must now say so explicitly.
+    """
+    from distill import delta, track
+
+    scored = tmp_path / "_auto_scored"
+    scored.mkdir(exist_ok=True)
+    monkeypatch.setattr(track, "LEDGER", tmp_path / "_auto_tracked.json")
+    monkeypatch.setattr(track, "SCORED", scored)
+    monkeypatch.setattr(delta, "STATE_PATH", tmp_path / "_auto_state.json")
+
+
 def make_item(**over) -> dict:
     """A scored-item dict with sane defaults. Pass overrides for the field under test."""
     item = {

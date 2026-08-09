@@ -89,6 +89,21 @@ def load_ledger(path: Path | None = None) -> dict[str, dict]:
 
 
 def save_ledger(ledger: dict[str, dict], path: Path | None = None) -> None:
+    """Persist the radar's memory. Honours `RADAR_NO_STATE=1`, which makes the whole
+    write a no-op.
+
+    That escape hatch is not theoretical. `README.md` tells you to run
+    `bash scripts/distill.sh` locally against a real checkout, and re-observation drops an
+    item after three unreachable fetches — so one local run behind a proxy, an outage, or
+    an expired GITHUB_TOKEN silently deletes most of the committed ledger and stages it
+    for commit. Running the pipeline must not be able to destroy the thing the pipeline
+    remembers. An explicit `path` (the test fixtures) always writes: it is already pointed
+    somewhere disposable.
+    """
+    if path is None and os.environ.get("RADAR_NO_STATE", "") == "1":
+        print(f"[track] RADAR_NO_STATE=1; not writing {LEDGER.name} "
+              f"({len(ledger)} items held in memory only)", file=sys.stderr)
+        return
     p = path or LEDGER
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(ledger, indent=0, sort_keys=True))

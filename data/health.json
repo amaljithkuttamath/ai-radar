@@ -1,0 +1,57 @@
+{
+  "generated": "2026-08-09T11:54:43.310510+00:00",
+  "repo": "amaljithkuttamath/ai-radar",
+  "status": "down",
+  "signals": [
+    {
+      "key": "digest",
+      "label": "Daily digest",
+      "status": "down",
+      "age_h": 239.5,
+      "threshold_h": 48,
+      "detail": "last digest committed 9d ago",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md"
+    },
+    {
+      "key": "evals",
+      "label": "Eval loop",
+      "status": "down",
+      "age_h": 647.3,
+      "threshold_h": 48,
+      "detail": "grader last committed 26d ago",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json"
+    }
+  ],
+  "workflows": [
+    {
+      "key": "collect-corpus",
+      "label": "Collect corpus",
+      "status": "unknown",
+      "conclusion": null,
+      "fail_streak": 0,
+      "last_run_at": null,
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/workflows/collect-corpus.yml",
+      "observed": false
+    },
+    {
+      "key": "distill",
+      "label": "Distill digest",
+      "status": "unknown",
+      "conclusion": null,
+      "fail_streak": 0,
+      "last_run_at": null,
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/workflows/distill.yml",
+      "observed": false
+    },
+    {
+      "key": "watchdog",
+      "label": "Watchdog",
+      "status": "unknown",
+      "conclusion": null,
+      "fail_streak": 0,
+      "last_run_at": null,
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/workflows/watchdog.yml",
+      "observed": false
+    }
+  ]
+}
