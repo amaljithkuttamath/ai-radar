@@ -107,13 +107,13 @@ python -m collectors.hf_trending
 
 WINDOW=48h \
 FOCUS="interpretability,agents,evals" \
-RADAR_MODEL_BACKEND=github \
+RADAR_MODEL_BACKEND=auto \
 bash scripts/distill.sh
 
 open reports/latest.md
 ```
 
-Backends: `github` (default, free, uses `GITHUB_TOKEN`), `anthropic`, `ollama`, `dryrun`.
+Backends: `auto` (default in CI — `anthropic` if `ANTHROPIC_API_KEY` is set, else `template`), `anthropic`, `ollama`, `template` (no model, deterministic), `dryrun`. `github` is retired and redirects to `auto` — see [ADR-0006](docs/architecture/adr/0006-model-backend-after-github-models.md).
 
 ## Tests
 
@@ -133,6 +133,8 @@ already in `seen.json`) that used to leave the radar with nothing to say.
 **Status page shows a workflow as `unknown`.** Nobody looked; the Actions API read failed. Not a pipeline fault. Check `health.yml`'s own run.
 
 **Digest stale but distill is green.** Worse than a red distill: the run succeeded and committed nothing. Check the "Commit digest" step — most likely `git diff --cached --quiet` found no change because synthesis wrote an identical file, or the push was rejected.
+
+**Digest says "Degraded run — no model synthesis".** The synthesis backend failed permanently or no `ANTHROPIC_API_KEY` is set. The digest is real — scored items, observed traction — but has no top-line read or insights. Set the key to restore synthesis; the banner disappears on the next run. See [ADR-0006](docs/architecture/adr/0006-model-backend-after-github-models.md).
 
 **Collector 500s.** Log will show which feed. Others continued.
 

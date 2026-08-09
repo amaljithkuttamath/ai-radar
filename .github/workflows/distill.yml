@@ -25,8 +25,8 @@ on:
         description: "Lookback window (e.g. 24h, 48h, 7d)"
         default: "48h"
       backend:
-        description: "Model backend: github (free) | dryrun | anthropic"
-        default: "github"
+        description: "Model backend: auto | anthropic | template | ollama | dryrun"
+        default: "auto"
       radar_agent:
         description: "Enrichment pass (per-item briefs over GitHub/HN signals): on | off"
         default: "off"
@@ -34,12 +34,11 @@ on:
         description: "Email the digest after distill (needs SMTP secrets): on | off"
         default: "on"
       focus_backend:
-        description: "FOCUS matching backend: lexical (default) | embed (GitHub Models semantic)"
+        description: "FOCUS matching backend: lexical (default) | embed (unavailable, see ADR-0006)"
         default: "lexical"
 
 permissions:
   contents: write
-  models: read              # lets GITHUB_TOKEN call GitHub Models (free inference)
 
 concurrency:
   group: distill            # only one distill at a time
@@ -55,10 +54,14 @@ jobs:
       (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
     env:
       WINDOW: ${{ github.event.inputs.window || '48h' }}
-      RADAR_MODEL_BACKEND: ${{ github.event.inputs.backend || 'github' }}
+      RADAR_MODEL_BACKEND: ${{ github.event.inputs.backend || 'auto' }}
       RADAR_AGENT: ${{ github.event.inputs.radar_agent || 'off' }}
       FOCUS_BACKEND: ${{ github.event.inputs.focus_backend == 'embed' && 'embed' || '' }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Synthesis backend. `auto` picks anthropic when this key exists and the template
+      # digest when it doesn't, so the workflow publishes either way and lights up the
+      # moment the secret is added. Clean no-op until then.
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       # Email delivery (optional). Scheduled runs email automatically; a manual run emails
       # unless deliver_email=off. Clean no-op until secrets exist.
       RADAR_EMAIL_TO: ${{ (github.event_name == 'schedule' || github.event.inputs.deliver_email != 'off') && secrets.RADAR_EMAIL_TO || '' }}

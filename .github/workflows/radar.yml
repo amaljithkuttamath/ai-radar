@@ -26,12 +26,11 @@ on:
         description: "Email the digest after distill (needs SMTP secrets): on | off"
         default: "on"
       focus_backend:
-        description: "FOCUS matching backend: lexical (default) | embed (GitHub Models semantic)"
+        description: "FOCUS matching backend: lexical (default) | embed (unavailable, see ADR-0006)"
         default: "lexical"
 
 permissions:
   contents: write           # needed to commit the digest + seen.json back to the repo
-  models: read              # lets GITHUB_TOKEN call GitHub Models (free inference)
 
 concurrency:
   group: radar              # never let two scheduled runs overlap

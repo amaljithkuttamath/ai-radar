@@ -20,8 +20,16 @@ def isolated(tmp_path, monkeypatch):
 
 
 def _candidates(user: str) -> list[dict]:
-    """The compact candidate array build_prompt appends to the user message."""
-    return json.loads(re.search(r"\n(\[[\s\S]*\])\s*$", user).group(1))
+    """The compact candidate array build_prompt appends to the user message.
+
+    Delegates to the production extractor rather than re-implementing it. The local regex
+    this replaced had the same greedy-span bug as the one in `call_template`, and was
+    equally invisible here: these fixtures produce an empty delta, so the candidate array
+    is the only top-level JSON block and a greedy match happens to land on it.
+    """
+    got = synthesize.extract_candidates(user)
+    assert got is not None, "candidate array not recoverable from the prompt"
+    return got
 
 
 # Distinct subject words per item. The diversity pass collapses near-duplicate titles, so a

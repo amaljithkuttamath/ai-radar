@@ -218,3 +218,53 @@ def test_render_markdown_includes_every_row():
     md = render_markdown(_health(DOWN, DOWN, streak=10))
     assert "Eval loop" in md and "Distill digest" in md
     assert "🔴" in md
+
+
+# --- degraded-synthesis signal --------------------------------------------
+
+def test_degraded_marker_matches_the_string_synthesize_actually_writes():
+    """health.py duplicates the marker as a literal so it can stay stdlib-only. That is a
+    fine trade only while something checks the copies agree — otherwise the status page
+    silently reports every degraded digest as fully synthesized."""
+    import health as h
+    from distill import synthesize
+
+    banner = synthesize.degraded_banner("anthropic", "HTTP 410 Gone")
+    assert h.DEGRADED_MARKER in banner
+
+
+def test_degraded_digest_is_detected(tmp_path):
+    import health as h
+    from distill import synthesize
+
+    d = tmp_path / "latest.md"
+    d.write_text(synthesize.degraded_banner("anthropic", "HTTP 410 Gone") + "# AI Radar\n")
+    assert h.digest_is_degraded(d) is True
+
+
+def test_synthesized_digest_is_not_flagged(tmp_path):
+    import health as h
+
+    d = tmp_path / "latest.md"
+    d.write_text("# AI Radar — 2026-08-09\n\n**Top-line** — a real synthesized read.\n")
+    assert h.digest_is_degraded(d) is False
+
+
+def test_missing_digest_is_unknown_not_healthy(tmp_path):
+    import health as h
+    assert h.digest_is_degraded(tmp_path / "nope.md") is None
+
+
+def test_degraded_digest_warns_without_escalating(monkeypatch):
+    """A degraded digest is still a digest. WARN surfaces it; DOWN would page someone over
+    a budget decision."""
+    import health as h
+
+    monkeypatch.setattr(h, "fetch_runs", lambda *a, **kw: [])
+    monkeypatch.setattr(h, "git_age_hours", lambda *a, **kw: 1.0)
+    monkeypatch.setattr(h, "digest_is_degraded", lambda *a, **kw: True)
+
+    built = h.build_health()
+    synth = [s for s in built["signals"] if s["key"] == "synthesis"][0]
+    assert synth["status"] == WARN
+    assert built["status"] == WARN

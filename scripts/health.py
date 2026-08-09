@@ -77,6 +77,13 @@ _RANK = {UNKNOWN: 0, OK: 0, WARN: 1, DOWN: 2}
 DIGEST_MAX_AGE_H = int(os.environ.get("DIGEST_MAX_AGE_HOURS", "48"))
 EVAL_MAX_AGE_H = int(os.environ.get("EVAL_MAX_AGE_HOURS", "48"))
 
+# Marker `distill/synthesize.py:degraded_banner` writes into a digest produced without model
+# synthesis. Duplicated as a literal rather than imported: this script is stdlib-only so it
+# still runs when the pipeline's dependencies don't resolve, and importing `distill` would
+# pull in pyyaml. `tests/test_health.py` asserts the two stay in step.
+DEGRADED_MARKER = "Degraded run — no model synthesis"
+LATEST_DIGEST = ROOT / "reports" / "latest.md"
+
 # Workflows worth reporting, and whether a failure is fatal to the product.
 # `watchdog` is expected to be red whenever evals are stale — that is it working,
 # not it broken — so its own redness is reported as a warning and the underlying
@@ -170,6 +177,16 @@ def git_age_hours(pathspec: str, now: datetime | None = None) -> float | None:
     return (now.timestamp() - int(stamp)) / 3600.0
 
 
+def digest_is_degraded(path: Path | None = None) -> bool | None:
+    """True if the latest digest was assembled without model synthesis, False if it carries
+    synthesis, None if there is no readable digest to judge."""
+    p = LATEST_DIGEST if path is None else path
+    try:
+        return DEGRADED_MARKER in p.read_text()
+    except OSError:
+        return None
+
+
 def fetch_runs(workflow_file: str, limit: int = 15) -> list[dict]:
     """Recent `main` runs for one workflow, newest first. Returns [] on any error —
     the API being unreachable is not evidence that the pipeline is broken, and a
@@ -210,6 +227,25 @@ def build_health(now: datetime | None = None) -> dict:
         "age_h": None if digest_age is None else round(digest_age, 1),
         "threshold_h": DIGEST_MAX_AGE_H,
         "detail": f"last digest committed {humanise_age(digest_age)}",
+        "url": f"https://github.com/{REPO}/blob/main/reports/latest.md",
+    })
+
+    # Freshness alone would report green on a digest that is punctual and empty of
+    # judgement. After the 2026-07-30 backend retirement the pipeline can publish daily
+    # with no synthesis at all — exactly the shape of failure this repo keeps re-learning:
+    # the artifact is present, on time, and quietly worth less. WARN rather than DOWN,
+    # because a degraded digest is still a digest and the fix is a budget decision.
+    degraded = digest_is_degraded()
+    signals.append({
+        "key": "synthesis",
+        "label": "Model synthesis",
+        "status": WARN if degraded else (OK if degraded is False else UNKNOWN),
+        "age_h": None,
+        "threshold_h": None,
+        "detail": ("latest digest was assembled without a model (no key, or the backend "
+                   "failed)" if degraded else
+                   "latest digest carries model synthesis" if degraded is False else
+                   "no digest to inspect"),
         "url": f"https://github.com/{REPO}/blob/main/reports/latest.md",
     })
 

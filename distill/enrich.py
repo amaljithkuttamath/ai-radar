@@ -3,11 +3,13 @@
 NOT an agent loop. For each of the top-N scored items it does deterministic tool fetches
 (GitHub stars, HN points — see distill/tools.py; no model), then makes exactly ONE model call
 to write a brief over the assembled evidence. Total model cost = N briefs (+ the later 1
-synthesis call) = N+1, which fits the GitHub Models free tier.
+synthesis call) = N+1. That bound was sized for a free per-day call quota; it still matters
+on a metered backend, where it caps spend per run rather than calls per day.
 
-Backend-agnostic: reuses synthesize.py's call_github/call_anthropic/call_ollama dispatch, so
-RADAR_MODEL_BACKEND=github (free, CI default), ollama (local, no limits), or anthropic (paid)
-all work unchanged.
+Backend-agnostic: reuses synthesize.py's caller dispatch and its `resolve_backend` rules, so
+RADAR_MODEL_BACKEND=anthropic (paid) or ollama (local, no limits) work unchanged. There is no
+template equivalent here — a brief is model output by definition — so a backend with no caller
+(dryrun, or `auto` with no key) yields evidence-only briefs rather than a degraded one.
 
 Rate-limit survival: a hard per-run call budget, retry-on-429 with Retry-After, and a per-item
 checkpoint (each brief is written to disk before the next call) so a killed run still publishes
@@ -24,23 +26,30 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from collectors.common import ROOT, parse_window, _merge_signals  # noqa: E402
 from distill import tools  # noqa: E402
 from distill.rank import rank_key  # noqa: E402
-from distill.synthesize import call_github, call_anthropic, call_ollama  # noqa: E402
+from distill.synthesize import call_anthropic, call_ollama, resolve_backend  # noqa: E402
 
 WINDOW = os.environ.get("WINDOW", "48h")
-BACKEND = os.environ.get("RADAR_MODEL_BACKEND", "dryrun").lower()
+# Resolve through the same rules as synthesis so `auto` and the retired `github` mean the
+# same thing in both stages. Enrichment has no template equivalent — a brief is model
+# output by definition — so an unresolvable backend yields evidence-only briefs, which is
+# what `_model_brief` already does for dryrun.
+BACKEND, _ = resolve_backend(os.environ.get("RADAR_MODEL_BACKEND", "dryrun").lower())
 TOP_N = int(os.environ.get("RADAR_AGENT_TOP_N", "8"))        # match MAX_ITEMS so shown==enriched
 BUDGET = int(os.environ.get("RADAR_AGENT_BUDGET", "10"))     # 8 briefs + margin
 SLEEP = float(os.environ.get("RADAR_AGENT_SLEEP", "5"))       # spacing between model calls
-GH_TOKEN = os.environ.get("GITHUB_TOKEN")
-# Briefs use a cheaper-quota model (Low tier, 150/day) so 8 brief calls don't burn the
-# High-tier budget the synthesis call (gpt-4.1, 50/day) needs.
-BRIEF_MODEL = os.environ.get("BRIEF_GITHUB_MODEL", "openai/gpt-4.1-mini")
+GH_TOKEN = os.environ.get("GITHUB_TOKEN")   # still used by tools.py for repo/star lookups
 
 SCORED = ROOT / "data" / "scored"
 ENRICHED = ROOT / "data" / "enriched"
 BRIEF_SPEC = (ROOT / "distill" / "brief_spec.md").read_text()
 
-_CALLERS = {"github": call_github, "anthropic": call_anthropic, "ollama": call_ollama}
+# `github` is gone from this map along with the two-tier model split it existed to serve:
+# GitHub Models metered a High tier (gpt-4.1, 50/day) separately from a Low tier
+# (gpt-4.1-mini, 150/day), so briefs deliberately used the cheaper one to avoid starving
+# the single synthesis call. Neither tier nor endpoint exists now. Anthropic bills by
+# token with no per-tier daily cap, so briefs and synthesis share one model and the split
+# has nothing left to protect.
+_CALLERS = {"anthropic": call_anthropic, "ollama": call_ollama}
 
 
 def _safe_id(item_id: str) -> str:
@@ -87,8 +96,6 @@ def _model_brief(item: dict, evidence: dict) -> str:
         f"URL: {item.get('url','')}\nSCORE: {item.get('score')}\n\n"
         f"EVIDENCE (fetched, real):\n{json.dumps(evidence, indent=2)}"
     )
-    if BACKEND == "github":                # briefs use the cheaper-quota model
-        return caller(BRIEF_SPEC, user, BRIEF_MODEL)
     return caller(BRIEF_SPEC, user)
 
 
