@@ -20,14 +20,10 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+import llm
 from grader.separation import assert_separated
 
 ROOT = Path(__file__).resolve().parent.parent
-
-BACKEND = os.environ.get("RADAR_GRADER_BACKEND", "anthropic").lower()
-MODEL = os.environ.get("RADAR_GRADER_MODEL", "")
-BASE_URL = os.environ.get("RADAR_GRADER_BASE_URL", "")
-TIMEOUT = 180
 
 # The eight the model actually judges. A2 is included — the model still assesses whether
 # claims cite primary sources — but its score is capped afterwards by the observed link
@@ -93,61 +89,16 @@ def build_prompt(digest: str, rubric: str, age_h: float,
     return system, "".join(parts)
 
 
-# --- backends --------------------------------------------------------------
-
-def _call_anthropic(system: str, user: str, model: str) -> str:
-    body = json.dumps({
-        "model": model, "max_tokens": 4000, "system": system,
-        "messages": [{"role": "user", "content": user}],
-    }).encode()
-    req = urllib.request.Request(
-        BASE_URL or "https://api.anthropic.com/v1/messages", data=body,
-        headers={"x-api-key": os.environ["ANTHROPIC_API_KEY"],
-                 "anthropic-version": "2023-06-01", "content-type": "application/json"})
-    with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-        data = json.loads(r.read())
-    return "".join(b.get("text", "") for b in data.get("content", []))
-
-
-def _call_openai(system: str, user: str, model: str) -> str:
-    """OpenAI-compatible chat completions. `RADAR_GRADER_BASE_URL` points this at any
-    provider speaking the same shape, which is most of them — that is the cheapest way to
-    keep a family available for separation as providers come and go."""
-    body = json.dumps({
-        "model": model,
-        "messages": [{"role": "system", "content": system},
-                     {"role": "user", "content": user}],
-    }).encode()
-    req = urllib.request.Request(
-        (BASE_URL or "https://api.openai.com/v1") + "/chat/completions", data=body,
-        headers={"Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
-                 "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-        data = json.loads(r.read())
-    return data["choices"][0]["message"]["content"]
-
-
-def _call_ollama(system: str, user: str, model: str) -> str:
-    body = json.dumps({"model": model, "system": system, "prompt": user,
-                       "stream": False}).encode()
-    req = urllib.request.Request(
-        (BASE_URL or "http://localhost:11434") + "/api/generate", data=body,
-        headers={"content-type": "application/json"})
-    with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-        return json.loads(r.read()).get("response", "")
-
-
-_CALLERS = {"anthropic": _call_anthropic, "openai": _call_openai, "ollama": _call_ollama}
-
-_DEFAULT_MODEL = {
-    "anthropic": "claude-opus-4-8",
-    "openai": "gpt-4.1",
-    "ollama": "qwen3:4b",
-}
+# --- the model call -------------------------------------------------------
+# One provider, shared with synthesis (see llm.py). The grader used to carry its own
+# backend enum, its own base URL, and its own copies of the anthropic/openai/ollama
+# callers — three functions that differed from distill's only in which module they
+# lived in. What the grader actually needs to differ is the model FAMILY, which
+# `separation.py` enforces; the transport was never the thing keeping it independent.
 
 
 def resolve_model() -> str:
-    return MODEL or _DEFAULT_MODEL.get(BACKEND, "")
+    return llm.model_for(llm.GRADER)
 
 
 # --- parsing ---------------------------------------------------------------
@@ -214,20 +165,18 @@ def judge(digest: str, rubric: str, age_h: float, broken: list[dict],
     """(verdict, model_id). Enforces model separation before spending a token on the call."""
     model = resolve_model()
     if not model:
-        raise JudgeError(f"no model configured for RADAR_GRADER_BACKEND={BACKEND!r}; "
-                         "set RADAR_GRADER_MODEL")
+        raise JudgeError(
+            "no grader model configured. Set RADAR_GRADER_MODEL, or point "
+            "RADAR_LLM_BASE_URL at a provider serving more than one model family "
+            "(`python3 -m llm --catalog`). The grader needs a different family from "
+            "synthesis, not a different provider.")
     assert_separated(model, env)          # raises SeparationViolation
-
-    caller = _CALLERS.get(BACKEND)
-    if caller is None:
-        raise JudgeError(f"unknown RADAR_GRADER_BACKEND={BACKEND!r}; "
-                         f"expected one of {', '.join(sorted(_CALLERS))}")
 
     system, user = build_prompt(digest, rubric, age_h, broken, prev_digest)
     try:
-        raw = caller(system, user, model)
-    except KeyError as ex:                # a missing API-key env var
-        raise JudgeError(f"{ex} is not set for RADAR_GRADER_BACKEND={BACKEND}") from ex
+        raw = llm.chat(system, user, model)
+    except llm.LLMError as ex:
+        raise JudgeError(str(ex)) from ex
     except (urllib.error.URLError, OSError) as ex:
         raise JudgeError(f"grader model call failed: {ex}") from ex
     return parse_verdict(raw), model

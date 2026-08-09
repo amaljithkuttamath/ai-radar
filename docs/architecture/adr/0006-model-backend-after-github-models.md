@@ -50,6 +50,12 @@ A second defect surfaced while testing the fallback: `call_template` recovered i
 
 This also resolves the grader constraint recorded below from the other direction: with synthesis on a free Llama or Gemini tier, the grader can sit on a different free tier and satisfy the separation fence without a paid key on either side.
 
+**Amended 2026-08-09 (second pass).** The first amendment restored free inference but kept a per-stage provider surface: `distill` read `RADAR_OPENAI_*`, `grader` read a parallel `RADAR_GRADER_BACKEND`/`_BASE_URL`, and satisfying the separation rule meant two accounts and two keys. That divided providers by *responsibility*, which the rule never asked for — separation is about model **family**, a property of the model, not of the account it bills to.
+
+Both stages now share one provider through [`llm.py`](../../../llm.py): `RADAR_LLM_BASE_URL` + `RADAR_LLM_API_KEY`, one OpenAI-compatible endpoint, roles differing only in which model they name. A gateway serving several families through one URL satisfies the fence on a single free key, and per-role defaults are chosen from different families so the operator need not know any model ids at all. This also deleted a real liability: `separation.py` had been re-deriving the synthesis model by mirroring `distill`'s backend resolution, duplication that needed a drift test to stay honest. Both roles read `llm.model_for()` now, so there is no mirror left to drift.
+
+The caveat is worth recording: a single-family provider cannot satisfy the fence alone. Perplexity serves only `sonar`; Groq and Google AI Studio are effectively one family each. Their profiles leave the grader role empty so the run escalates with a message naming the fix, rather than quietly grading a model with its sibling.
+
 **Rejected.**
 
 - *Microsoft Foundry / Azure AI*, the migration path GitHub pointed at. It needs an Azure subscription and resource provisioning; the free, cardless property that made GitHub Models the right default does not survive the move, so it buys complexity without buying back the original benefit.

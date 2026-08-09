@@ -116,15 +116,18 @@ open reports/latest.md
 
 Backends: `auto` (default in CI — `anthropic` if `ANTHROPIC_API_KEY`, else `openai` if `OPENAI_API_KEY`, else `template`), `anthropic`, `openai`, `ollama`, `template` (no model, deterministic), `dryrun`. `github` is retired and redirects to `auto` — see [ADR-0006](docs/architecture/adr/0006-model-backend-after-github-models.md).
 
-**Free inference.** `openai` means any OpenAI-compatible endpoint, not OpenAI specifically. GitHub Models was the free, cardless backend until it was retired on 2026-07-30; these fill the same slot, and this pipeline makes about two model calls a day:
+**One provider, both stages.** Synthesis and the grader share a single key and endpoint ([`llm.py`](llm.py)) — providers are not divided by responsibility. What has to differ is the model *family*, not the account: a model grading its own family self-enhances by ~10–25%, so [`grader/separation.py`](grader/separation.py) checks the model id and refuses if the two match. A gateway serving many families through one OpenAI-compatible URL therefore satisfies the fence on one free key:
 
-| Provider | `RADAR_OPENAI_BASE_URL` | `RADAR_OPENAI_MODEL` | Free tier |
-|---|---|---|---|
-| Groq | `https://api.groq.com/openai/v1` | `llama-3.3-70b-versatile` | ~14,400 req/day |
-| Google AI Studio | `https://generativelanguage.googleapis.com/v1beta/openai` | `gemini-2.5-pro` | ~1,500 req/day, 1M context |
-| Cerebras | `https://api.cerebras.ai/v1` | `llama-3.3-70b` | ~1M tokens/day |
+```bash
+RADAR_LLM_BASE_URL=https://openrouter.ai/api/v1   # one endpoint, 400+ models, ~200 free req/day
+RADAR_LLM_API_KEY=sk-or-...                       # one key
+```
 
-Set the key as the `OPENAI_API_KEY` secret and the other two as repository *variables*. Pick a **different family** for the grader (`RADAR_GRADER_*`) — `grader/separation.py` refuses to run otherwise, and two of these are different families, so one free account each covers both.
+That is the whole configuration. You don't have to pick models — `llm.py` defaults each role to a different family (`meta-llama/llama-3.3-70b-instruct` for synthesis, `google/gemini-2.5-pro` for grading). Override with `RADAR_SYNTHESIS_MODEL` / `RADAR_GRADER_MODEL`, and run `python3 -m llm --catalog` to list what your provider serves with families detected.
+
+Single-family providers can't do both roles: Perplexity serves only `sonar`, Groq and Google AI Studio are effectively one family each. They're fine for synthesis, but the grader then needs a second family — which is what the gateway buys you.
+
+The pipeline makes about **two model calls a day**, so free tiers clear it by orders of magnitude.
 
 ## Tests
 

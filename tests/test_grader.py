@@ -17,6 +17,7 @@ from datetime import datetime, timedelta, timezone
 import pytest
 
 from grader import artifacts, freshness, judge, links
+import llm
 from grader.separation import SeparationViolation, assert_separated, family, synthesis_model
 
 UTC = timezone.utc
@@ -165,24 +166,34 @@ def test_synthesis_model_mirrors_the_pipeline(env, expected):
     assert synthesis_model(env) == expected
 
 
-def test_separation_mirror_agrees_with_the_real_pipeline():
-    """separation.py deliberately re-implements distill's backend resolution instead of
-    importing it — importing the graded pipeline into its grader couples them at the seam
-    ADR-0003 keeps apart, and would drag pyyaml into a stdlib-only tool. This is the guard
-    that keeps the copy honest."""
-    from distill.synthesize import resolve_backend
+def test_both_roles_read_one_shared_provider():
+    """separation.py used to re-derive the synthesis model by mirroring distill's
+    backend resolution — duplication that needed a drift test to stay honest. Both
+    roles now read `llm.model_for`, so the mirror (and its test) are gone; this pins
+    what replaced them."""
+    env = {"RADAR_LLM_BASE_URL": "https://openrouter.ai/api/v1",
+           "RADAR_LLM_API_KEY": "k"}
+    assert synthesis_model(env) == llm.model_for(llm.SYNTHESIS, env)
 
-    for env in ({"RADAR_MODEL_BACKEND": "auto", "ANTHROPIC_API_KEY": "k"},
-                {"RADAR_MODEL_BACKEND": "auto"},
-                {"RADAR_MODEL_BACKEND": "github", "ANTHROPIC_API_KEY": "k"},
-                {"RADAR_MODEL_BACKEND": "github"},
-                {"RADAR_MODEL_BACKEND": "template"}):
-        pipeline_backend, _ = resolve_backend(env["RADAR_MODEL_BACKEND"], env)
-        mirrored = synthesis_model(env)
-        if pipeline_backend == "anthropic":
-            assert mirrored is not None, f"mirror lost the anthropic call for {env}"
-        else:
-            assert mirrored is None, f"mirror invented a model call for {env}"
+
+def test_one_provider_two_families_passes_the_fence():
+    """The whole point of unifying: a single account, a single key, and the grader is
+    still provably not grading its own family."""
+    env = {"RADAR_LLM_BASE_URL": "https://openrouter.ai/api/v1",
+           "RADAR_LLM_API_KEY": "k"}
+    grader_model = llm.model_for(llm.GRADER, env)
+    assert assert_separated(grader_model, env) != family(synthesis_model(env))
+
+
+def test_same_model_for_both_roles_is_refused():
+    """The failure the fence exists for, now reachable through one provider: pointing
+    both roles at the same model must not become easier just because it is one key."""
+    env = {"RADAR_LLM_BASE_URL": "https://openrouter.ai/api/v1",
+           "RADAR_LLM_API_KEY": "k",
+           "RADAR_SYNTHESIS_MODEL": "anthropic/claude-sonnet-5",
+           "RADAR_GRADER_MODEL": "anthropic/claude-opus-5"}
+    with pytest.raises(SeparationViolation, match="anthropic"):
+        assert_separated("anthropic/claude-opus-5", env)
 
 
 # --- verdict parsing -------------------------------------------------------

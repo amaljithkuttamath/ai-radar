@@ -101,14 +101,21 @@ def test_auto_prefers_anthropic_when_a_key_exists():
 def test_auto_falls_back_to_template_without_a_key():
     backend, note = synthesize.resolve_backend("auto", {})
     assert backend == "template"
-    assert "ANTHROPIC_API_KEY" in note and "OPENAI_API_KEY" in note
+    assert "RADAR_LLM_BASE_URL" in note
 
 
-def test_auto_uses_an_openai_compatible_key_when_present():
-    """OPENAI_API_KEY covers any provider speaking that shape — Groq, Google AI Studio,
-    Cerebras — which is the free, cardless slot GitHub Models used to occupy. Without this
-    rung, `auto` drops straight to template and the pipeline sits there indefinitely."""
+def test_auto_uses_the_shared_provider_when_configured():
+    """One base URL + one key is the whole configuration, and it serves synthesis and
+    the grader alike. Without this rung `auto` drops to template and the pipeline sits
+    there indefinitely."""
+    env = {"RADAR_LLM_BASE_URL": "https://openrouter.ai/api/v1", "RADAR_LLM_API_KEY": "k"}
+    assert synthesize.resolve_backend("auto", env) == ("openai", None)
+
+
+def test_direct_vendor_keys_still_work():
+    """Configurations written before providers were unified keep running."""
     assert synthesize.resolve_backend("auto", {"OPENAI_API_KEY": "k"}) == ("openai", None)
+    assert synthesize.resolve_backend("auto", {"ANTHROPIC_API_KEY": "k"})[0] == "anthropic"
 
 
 def test_anthropic_wins_when_both_keys_are_present():
