@@ -166,23 +166,29 @@ def test_synthesis_model_mirrors_the_pipeline(env, expected):
     assert synthesis_model(env) == expected
 
 
+# One provider, two models pinned from `python3 -m llm --resolve` — the shape a real
+# deployment has. Ids are illustrative; only their families matter to the fence.
+_ONE_PROVIDER = {
+    "RADAR_LLM_BASE_URL": "https://openrouter.ai/api/v1",
+    "RADAR_LLM_API_KEY": "k",
+    "RADAR_SYNTHESIS_MODEL": "meta-llama/llama-3.3-70b-instruct:free",
+    "RADAR_GRADER_MODEL": "deepseek/deepseek-v3:free",
+}
+
+
 def test_both_roles_read_one_shared_provider():
     """separation.py used to re-derive the synthesis model by mirroring distill's
     backend resolution — duplication that needed a drift test to stay honest. Both
     roles now read `llm.model_for`, so the mirror (and its test) are gone; this pins
     what replaced them."""
-    env = {"RADAR_LLM_BASE_URL": "https://openrouter.ai/api/v1",
-           "RADAR_LLM_API_KEY": "k"}
-    assert synthesis_model(env) == llm.model_for(llm.SYNTHESIS, env)
+    assert synthesis_model(_ONE_PROVIDER) == llm.model_for(llm.SYNTHESIS, _ONE_PROVIDER)
 
 
 def test_one_provider_two_families_passes_the_fence():
     """The whole point of unifying: a single account, a single key, and the grader is
     still provably not grading its own family."""
-    env = {"RADAR_LLM_BASE_URL": "https://openrouter.ai/api/v1",
-           "RADAR_LLM_API_KEY": "k"}
-    grader_model = llm.model_for(llm.GRADER, env)
-    assert assert_separated(grader_model, env) != family(synthesis_model(env))
+    grader_model = llm.model_for(llm.GRADER, _ONE_PROVIDER)
+    assert assert_separated(grader_model, _ONE_PROVIDER) != family(synthesis_model(_ONE_PROVIDER))
 
 
 def test_same_model_for_both_roles_is_refused():

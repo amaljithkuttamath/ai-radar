@@ -101,10 +101,13 @@ def family(model_id: str) -> str | None:
 # anything. These are starting points, not promises — provider catalogues change under
 # you, so `--catalog` is the source of truth and a wrong id fails loudly naming it.
 _PROFILES = {
-    "openrouter.ai": {
-        SYNTHESIS: "meta-llama/llama-3.3-70b-instruct",
-        GRADER: "google/gemini-2.5-pro",
-    },
+    # OpenRouter deliberately ships NO default ids. Its free tier is the reason to pick
+    # it, and free variants carry a `:free` suffix while the bare id is the metered one
+    # — so a plausible-looking default is a 402 that degrades to the template digest and
+    # reads exactly like the pipeline still being broken. Rather than hardcode ids that
+    # cannot be verified without calling the API, `--resolve` reads the live catalogue
+    # and prints the two lines to set. One command beats a guess that fails tomorrow.
+    "openrouter.ai": {SYNTHESIS: "", GRADER: ""},
     "api.groq.com": {
         SYNTHESIS: "llama-3.3-70b-versatile",
         GRADER: "",   # Llama-dominated: no second family here. Point the grader elsewhere.
@@ -216,6 +219,49 @@ def chat(system: str, user: str, model: str, *, max_tokens: int = 4000) -> str:
         raise LLMError(f"unexpected response shape from {base_url()}: {str(data)[:200]}") from ex
 
 
+def is_free(model: dict) -> bool:
+    """True when the provider prices both directions at zero.
+
+    OpenAI-compatible catalogues are not uniform here — OpenRouter reports
+    `pricing: {prompt, completion}` as decimal strings, others omit pricing entirely.
+    Absent pricing is treated as NOT free: assuming free because a field is missing is
+    how a "free tier" setup quietly starts billing.
+    """
+    pricing = model.get("pricing") or {}
+    if not pricing:
+        return False
+    try:
+        return all(float(pricing.get(k, 1)) == 0.0 for k in ("prompt", "completion"))
+    except (TypeError, ValueError):
+        return False
+
+
+def resolve_pair(free_only: bool = True) -> dict:
+    """Pick a model for each role from the live catalogue, from two DIFFERENT families.
+
+    This is the answer to "which models?" that does not involve anybody guessing — not
+    the operator, and not whoever wrote this file. Provider catalogues change under you;
+    the catalogue is the only thing that knows what is currently served and at what price.
+
+    Deterministic: candidates are sorted by (-context_length, id), so the same catalogue
+    always yields the same pair and a pinned config stays reproducible.
+    """
+    models = [m for m in catalog() if not free_only or is_free(m)]
+    ranked = sorted(models, key=lambda m: (-(m.get("context_length") or 0), m.get("id", "")))
+
+    chosen: dict[str, str] = {}
+    used_families: set[str] = set()
+    for role in ROLES:
+        for m in ranked:
+            mid = m.get("id", "")
+            fam = family(mid)
+            if fam and fam not in used_families:
+                chosen[role] = mid
+                used_families.add(fam)
+                break
+    return chosen
+
+
 def catalog() -> list[dict]:
     """`GET {base}/models`, the OpenAI-compatible discovery endpoint. Used by
     `--catalog` so choosing a model is a command rather than a guess."""
@@ -232,16 +278,39 @@ def catalog() -> list[dict]:
 
 
 def _main() -> None:
+    if "--resolve" in sys.argv:
+        free_only = "--any" not in sys.argv
+        try:
+            pair = resolve_pair(free_only=free_only)
+        except LLMError as ex:
+            print(f"[llm] {ex}", file=sys.stderr)
+            raise SystemExit(1)
+        if len(pair) < len(ROLES):
+            print(f"[llm] could not find {len(ROLES)} models from different families"
+                  f"{' among free ones' if free_only else ''} on {base_url()}.\n"
+                  "       Retry with --any, or use a provider with a broader catalogue —\n"
+                  "       the grader's separation fence needs two families.", file=sys.stderr)
+            raise SystemExit(1)
+        print(f"# resolved from {base_url()}"
+              f"{' (free models only)' if free_only else ''}\n")
+        for role, mid in pair.items():
+            print(f"RADAR_{role.upper()}_MODEL={mid}    # family: {family(mid)}")
+        print("\n# Set these as repository variables; they pin the choice so a catalogue\n"
+              "# change cannot silently move you to a different model mid-week.")
+        return
+
     if "--catalog" in sys.argv:
         try:
             models = catalog()
         except LLMError as ex:
             print(f"[llm] {ex}", file=sys.stderr)
             raise SystemExit(1)
-        rows = sorted(((family(m.get("id", "")) or "?", m.get("id", "")) for m in models))
-        print(f"{len(rows)} models on {base_url()}\n")
-        for fam, mid in rows:
-            print(f"  {fam:<12} {mid}")
+        rows = sorted((family(m.get("id", "")) or "?", m.get("id", ""), is_free(m))
+                      for m in models)
+        n_free = sum(1 for *_, free in rows if free)
+        print(f"{len(rows)} models on {base_url()} ({n_free} free)\n")
+        for fam, mid, free in rows:
+            print(f"  {'free' if free else '    '} {fam:<12} {mid}")
         fams = sorted({f for f, _ in rows if f != "?"})
         print(f"\nfamilies served: {', '.join(fams) or 'none recognised'}")
         if len(fams) < 2:

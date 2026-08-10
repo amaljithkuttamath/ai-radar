@@ -123,7 +123,17 @@ RADAR_LLM_BASE_URL=https://openrouter.ai/api/v1   # one endpoint, 400+ models, ~
 RADAR_LLM_API_KEY=sk-or-...                       # one key
 ```
 
-That is the whole configuration. You don't have to pick models — `llm.py` defaults each role to a different family (`meta-llama/llama-3.3-70b-instruct` for synthesis, `google/gemini-2.5-pro` for grading). Override with `RADAR_SYNTHESIS_MODEL` / `RADAR_GRADER_MODEL`, and run `python3 -m llm --catalog` to list what your provider serves with families detected.
+You still don't have to pick models — one command does it from the live catalogue:
+
+```bash
+python3 -m llm --resolve          # free models only; --any to include metered
+# RADAR_SYNTHESIS_MODEL=...:free    # family: meta
+# RADAR_GRADER_MODEL=...:free       # family: deepseek
+```
+
+It reads what the provider actually serves right now, filters to genuinely free models (both prompt and completion priced at zero — absent pricing counts as *not* free), and picks two from **different** families so the fence passes. Deterministic, so re-running gives the same pair. Set the two lines as repository variables to pin the choice; `--catalog` lists everything with families and free/paid marked.
+
+No OpenRouter model ids are hardcoded, deliberately: its free variants carry a `:free` suffix while the bare id is metered, so a plausible-looking default is a 402 that degrades to the template digest and reads exactly like the pipeline is still broken.
 
 Single-family providers can't do both roles: Perplexity serves only `sonar`, Groq and Google AI Studio are effectively one family each. They're fine for synthesis, but the grader then needs a second family — which is what the gateway buys you.
 
