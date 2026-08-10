@@ -1,24 +1,33 @@
 {
-  "generated": "2026-08-09T11:54:43.310510+00:00",
+  "generated": "2026-08-10T16:39:18.920332+00:00",
   "repo": "amaljithkuttamath/ai-radar",
   "status": "down",
   "signals": [
     {
       "key": "digest",
       "label": "Daily digest",
-      "status": "down",
-      "age_h": 239.5,
+      "status": "ok",
+      "age_h": 4.9,
       "threshold_h": 48,
-      "detail": "last digest committed 9d ago",
+      "detail": "last digest committed 4h ago",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md"
+    },
+    {
+      "key": "synthesis",
+      "label": "Model synthesis",
+      "status": "ok",
+      "age_h": null,
+      "threshold_h": null,
+      "detail": "latest digest carries model synthesis",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md"
     },
     {
       "key": "evals",
       "label": "Eval loop",
       "status": "down",
-      "age_h": 647.3,
+      "age_h": 676.0,
       "threshold_h": 48,
-      "detail": "grader last committed 26d ago",
+      "detail": "grader last committed 28d ago",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json"
     }
   ],
@@ -26,32 +35,32 @@
     {
       "key": "collect-corpus",
       "label": "Collect corpus",
-      "status": "unknown",
-      "conclusion": null,
+      "status": "ok",
+      "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": null,
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/workflows/collect-corpus.yml",
-      "observed": false
+      "last_run_at": "2026-08-10T11:42:46Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/31384669474",
+      "observed": true
     },
     {
       "key": "distill",
       "label": "Distill digest",
-      "status": "unknown",
-      "conclusion": null,
+      "status": "ok",
+      "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": null,
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/workflows/distill.yml",
-      "observed": false
+      "last_run_at": "2026-08-10T11:46:48Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/31384709085",
+      "observed": true
     },
     {
       "key": "watchdog",
       "label": "Watchdog",
-      "status": "unknown",
-      "conclusion": null,
-      "fail_streak": 0,
-      "last_run_at": null,
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/workflows/watchdog.yml",
-      "observed": false
+      "status": "warn",
+      "conclusion": "failure",
+      "fail_streak": 15,
+      "last_run_at": "2026-08-10T15:56:22Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/31406251153",
+      "observed": true
     }
   ]
 }
