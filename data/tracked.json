@@ -170,66 +170,6 @@
 "title": "Data Pyramid for Embodied Manipulation",
 "url": "https://arxiv.org/abs/2607.24744"
 },
-"arxiv:2607.25070": {
-"category": "research",
-"first_seen": "2026-07-29",
-"flat_runs": 0,
-"id": "arxiv:2607.25070",
-"keywords": [],
-"last_seen": "2026-07-29",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Radio Frequency Fingerprinting (RFFP) has emerged as a promising approach for device authentication by exploiting hardware-specific impairments embedded in transmitted signals. Yet existing methods largely overlook a major drawback: RFFP sensitivity to temperature--a critical factor influenced by both internal and environmental conditions--which can significantly alter device signatures and degrad",
-"title": "Characterizing and Mitigating the Effects of Device Temperature on RF Fingerprinting Accuracy",
-"url": "http://arxiv.org/abs/2607.25070v1"
-},
-"arxiv:2607.25186": {
-"category": "research",
-"first_seen": "2026-07-29",
-"flat_runs": 0,
-"id": "arxiv:2607.25186",
-"keywords": [],
-"last_seen": "2026-07-29",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.CL",
-"streak": 1,
-"summary": "Background: Most medical large language model (LLM) benchmarks focus on examination knowledge or isolated tasks and may not reflect the longitudinal, multimodal, and safety-critical workflow of cardiovascular care. Objective: To develop MyoCardBench, a real-world benchmark spanning the cardiovascular care continuum, and assess LLM performance across clinical dimensions and specialist tasks. Method",
-"title": "MyoCardBench: A Real-World Data Benchmark for Evaluating Large Language Models in Clinically Authentic Cardiovascular Care Scenarios",
-"url": "http://arxiv.org/abs/2607.25186v1"
-},
-"arxiv:2607.25196": {
-"category": "research",
-"first_seen": "2026-07-29",
-"flat_runs": 0,
-"id": "arxiv:2607.25196",
-"keywords": [],
-"last_seen": "2026-07-29",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Contrastive decoding (CD) has been proposed as a training-free strategy for mitigating object hallucinations in multimodal large language models (MLLMs), with reported gains on benchmarks such as POPE. However, recent work has questioned whether these gains reflect genuine improvements in visual grounding. In this study, we reproduce and extend the findings of \"The Mirage of Performance Gains: Why",
-"title": "Rethinking CD: A Reproducibility Study and Extension on the Ineffectiveness of Contrastive Decoding at Mitigating Object Hallucinations in MLLMs",
-"url": "http://arxiv.org/abs/2607.25196v1"
-},
 "arxiv:2607.25289": {
 "category": "research",
 "first_seen": "2026-07-29",
@@ -278,66 +218,6 @@
 "summary": "Real-world tasks often require models to learn from task-specific context rather than relying only on pre-trained knowledge. While recent work has highlighted this capability as context learning, existing evaluations mainly focus on textual contexts. In many practical settings, however, the context to be learned from is multimodal: scientific findings are conveyed through figures and tables, finan",
 "title": "CLBench-V: Evaluating Multimodal Context Learning from Grounding to Knowledge Acquisition",
 "url": "http://arxiv.org/abs/2607.25294v1"
-},
-"arxiv:2607.25299": {
-"category": "research",
-"first_seen": "2026-07-29",
-"flat_runs": 0,
-"id": "arxiv:2607.25299",
-"keywords": [],
-"last_seen": "2026-07-29",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Optimization over the Stiefel manifold plays a significant role in various machine learning tasks. Existing methods either use the retraction operators, requiring costly orthonormalization for large-scale matrices, or employ landing methods that rely on careful step size selection and penalty parameter tuning. To address these challenges, we propose a retraction-free and penalty parameter-free alg",
-"title": "Retraction-Free Optimization over the Stiefel Manifold for the LoRA Fine-Tuning",
-"url": "http://arxiv.org/abs/2607.25299v1"
-},
-"arxiv:2607.25338": {
-"category": "research",
-"first_seen": "2026-07-29",
-"flat_runs": 0,
-"id": "arxiv:2607.25338",
-"keywords": [],
-"last_seen": "2026-07-29",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.AI",
-"streak": 1,
-"summary": "Achieving a coherent integration of spectral richness and spatial fidelity remains a central objective in hyperspectral image fusion. However, existing hyperspectral image fusion methods struggle to effectively model geometric constraints. In the spatial domain, weak spatial-spectral interaction limits geometry-aware feature learning and suppresses high-frequency structural information, resulting ",
-"title": "Dual-Domain Manifold Modeling for Hyperspectral Image Fusion",
-"url": "http://arxiv.org/abs/2607.25338v1"
-},
-"arxiv:2607.25471": {
-"category": "research",
-"first_seen": "2026-07-29",
-"flat_runs": 0,
-"id": "arxiv:2607.25471",
-"keywords": [],
-"last_seen": "2026-07-29",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.AI",
-"streak": 1,
-"summary": "Graph Neural Networks (GNNs) and Large Language Models (LLMs) have each advanced recommendation systems by modeling structural and semantic signals, respectively. However, integrating their complementary strengths remains challenging, particularly in sparse settings where maintaining semantic precision is critical. We propose TRWH (Text-driven Random Walk Heterogeneous Graph Neural Network), a nov",
-"title": "TRWH: A Text-Driven Random Walk Heterogeneous GNN for Semantic-Aware Sparse Recommendation",
-"url": "http://arxiv.org/abs/2607.25471v1"
 },
 "arxiv:2607.25487": {
 "category": "research",
@@ -393,86 +273,6 @@
 "title": "ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition",
 "url": "https://arxiv.org/abs/2607.25565"
 },
-"arxiv:2607.25589": {
-"category": "research",
-"first_seen": "2026-07-29",
-"flat_runs": 0,
-"id": "arxiv:2607.25589",
-"keywords": [],
-"last_seen": "2026-07-29",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.CL",
-"streak": 1,
-"summary": "Medical-imaging AI benchmarks combine datasets, DICOM rendering, prompts, provider APIs, automated labels, statistical code, manuscripts, and repository releases. Agreement across these artifacts is usually assumed rather than tested. We performed a retrospective forensic reproducibility audit of a preserved chest-radiograph vision-language model (VLM) pilot; no model was called again and no image",
-"title": "Forensic Reproducibility Audit of a Radiology Vision-Language Model Benchmark: From Intended Protocol to Released Artifact",
-"url": "http://arxiv.org/abs/2607.25589v1"
-},
-"arxiv:2607.25641": {
-"category": "research",
-"first_seen": "2026-07-29",
-"flat_runs": 0,
-"id": "arxiv:2607.25641",
-"keywords": [],
-"last_seen": "2026-07-29",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.AI",
-"streak": 1,
-"summary": "While text-to-image models exhibit remarkable visual fidelity, they frequently violate fundamental physical commonsense. Existing benchmarks often rely on coarse-grained descriptions, failing to diagnose the mastery of specific physical principles. Moreover, the high stochasticity of generative processes causes current prompt optimization methods to suffer from gradient hallucinations, where optim",
-"title": "OmniPhys: Knowledge-Graph-Driven Benchmarking and Collective Optimization for Physical Commonsense in Text-to-Image Generation",
-"url": "http://arxiv.org/abs/2607.25641v1"
-},
-"arxiv:2607.25751": {
-"category": "research",
-"first_seen": "2026-07-29",
-"flat_runs": 0,
-"id": "arxiv:2607.25751",
-"keywords": [],
-"last_seen": "2026-07-29",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "In this paper, we propose the Rule-based Visiting Circulation (RVC) model in tackling the challenge in the IEEE Big Data Cup 2022: Trip Destination Prediction. Given trips containing travel information, personal attributes, origin zones, and their features in the training metropolitan areas, the task is to predict the destination of every trip in a targeted metropolitan area whose destinations are",
-"title": "An Embarrassingly Simple Rule-based Visiting Circulation Approach to Trip Destination Prediction",
-"url": "http://arxiv.org/abs/2607.25751v1"
-},
-"arxiv:2607.25763": {
-"category": "research",
-"first_seen": "2026-07-29",
-"flat_runs": 0,
-"id": "arxiv:2607.25763",
-"keywords": [],
-"last_seen": "2026-07-29",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "This paper proposes a multitask wireless foundation model via adaptive low-rank masked autoencoders (WALoMA), a unified multi-task foundation model for sixth-generation (6G) wireless physical layer architectures, to address the limitations of specialized, task-specific deep learning models and the practical challenge of scarce labeled wireless datasets. By leveraging concepts inspired by foundatio",
-"title": "WALoMA: A Multitask Wireless Foundation Model via Adaptive Low-Rank Masked Autoencoders",
-"url": "http://arxiv.org/abs/2607.25763v1"
-},
 "arxiv:2607.25895": {
 "category": "research",
 "first_seen": "2026-07-29",
@@ -499,26 +299,6 @@
 "summary": "Learning deployable manipulation policies is bottlenecked by the scarcity of data that is both high-fidelity and scalable. Real-robot teleoperation is accurate but costly to scale; robot-free UMI capture scales readily, and current practice uses the resulting data mainly for pre-training, adding a small real-robot \"anchor\" at post-training. We ask whether raising the fidelity of robot-free UMI dat",
 "title": "HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone",
 "url": "https://arxiv.org/abs/2607.25895"
-},
-"arxiv:2607.25926": {
-"category": "research",
-"first_seen": "2026-07-29",
-"flat_runs": 0,
-"id": "arxiv:2607.25926",
-"keywords": [],
-"last_seen": "2026-07-29",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.AI",
-"streak": 1,
-"summary": "Face de-identification (De-ID) aims to remove or conceal personally identifiable facial features in images or videos to prevent identity recognition while preserving utility for downstream tasks. With the rising emphasis on data privacy and responsible AI, face De-ID has emerged as an active research area spanning computer vision and privacy-preserving communities. Early approaches, and many conte",
-"title": "Face De-Identification: A Domain-Centric Survey from Capture to Processing",
-"url": "http://arxiv.org/abs/2607.25926v1"
 },
 "arxiv:2607.26004": {
 "category": "research",
@@ -548,26 +328,6 @@
 "summary": "Generation in video diffusion or flow models is computationally expensive due to the slow and iterative sampling process. Current state-of-the-art (SOTA) acceleration methods heavily rely on variational score distillation (VSD) and adversarial losses to distill diffusion models into few-step generators. Albeit achieving high-quality video generation, these training losses are notoriously hard to o",
 "title": "Parallel Decoding Distillation for Fast Image and Video Generation",
 "url": "https://arxiv.org/abs/2607.26004"
-},
-"arxiv:2607.26043": {
-"category": "research",
-"first_seen": "2026-07-29",
-"flat_runs": 0,
-"id": "arxiv:2607.26043",
-"keywords": [],
-"last_seen": "2026-07-29",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Enhancing classification performance in mammography remains a persistent challenge across both small curated datasets and large-scale clinical cohorts. Conventional transfer learning approaches often neglect dataset-specific characteristics, while recent neighborhood-informed methods have been restricted to narrow tasks with rigid formulations, limiting their scalability to population-level datase",
-"title": "Re-thinking Mammography Transfer Learning: The Dataset-Informed Transfer Learning (DITL) Framework for Breast Cancer Screening and Lesion Diagnosis",
-"url": "http://arxiv.org/abs/2607.26043v1"
 },
 "arxiv:2607.26057": {
 "category": "research",
@@ -609,7 +369,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.CL",
@@ -629,7 +389,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.AI",
@@ -649,7 +409,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.LG",
@@ -669,7 +429,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.LG",
@@ -689,7 +449,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.CL",
@@ -709,7 +469,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.AI",
@@ -729,7 +489,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.AI",
@@ -802,7 +562,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.LG",
@@ -822,7 +582,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.CL",
@@ -842,7 +602,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.LG",
@@ -886,7 +646,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.LG",
@@ -906,7 +666,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.LG",
@@ -926,7 +686,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.LG",
@@ -946,7 +706,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.LG",
@@ -1110,6 +870,30 @@
 "summary": "image-text-to-text \u00b7 tags: hermes, gguf, uncensored, qwen3.6, moe, vision",
 "title": "LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF (HF Model)",
 "url": "https://huggingface.co/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF"
+},
+"hfmodel:meta-models/Muse-Glimmer-30B": {
+"category": "releases",
+"first_seen": "2026-08-10",
+"flat_runs": 0,
+"id": "hfmodel:meta-models/Muse-Glimmer-30B",
+"keywords": [],
+"last_seen": "2026-08-10",
+"links": {},
+"mag_history": [
+3.5167
+],
+"misses": 0,
+"peak_mag": 3.5167,
+"signals": {
+"hf_downloads": 0,
+"hf_likes": 151,
+"hf_trending": 149
+},
+"source": "HF Trending Models",
+"streak": 1,
+"summary": "image-text-to-text \u00b7 tags: transformers, safetensors, muse_glimmer, image-text-to-text, conversational, arxiv:2504.13181",
+"title": "meta-models/Muse-Glimmer-30B (HF Model)",
+"url": "https://huggingface.co/meta-models/Muse-Glimmer-30B"
 },
 "hfmodel:microsoft/Fara1.5-27B": {
 "category": "releases",

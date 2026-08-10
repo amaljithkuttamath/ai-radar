@@ -4,65 +4,57 @@
 
 # AI Radar — 2026-08-10
 
-**Top-line:** The radar is tracking two agentic design-and-evaluation frameworks that have compounded traction across three consecutive runs — ReDesign (editable layer recovery from raster images) and HumanCLAW (VLM embodiment benchmark). Both ship code and project pages, and both match your focus areas. The window's theme: **agentic tooling that produces verifiable, editable artifacts**.
-
----
+ReDesign’s agentic design-recovery pipeline continues its multi-run climb (now +82% traction since July 29), while two new multimodal models — Meta’s Muse-Glimmer-30B and Kijai’s MiniMax-H3 experimental — land on Hugging Face. The window’s theme: turning raster assets into editable structures, and open multimodal weights dropping with minimal fanfare.
 
 ## What changed
 
 **New today**
-- [CLBench-V: Evaluating Multimodal Context Learning from Grounding to Knowledge Acquisition](http://arxiv.org/abs/2607.25294v1) — new benchmark
-
-**Climbing**
-- [ClinFusion: A Vision-Centric Multimodal LLM System for Holistic Medical Understanding](https://arxiv.org/abs/2607.24743) — medical VLM
-- [HumanCLAW: Can Vision-Language Models Act Through a Body?](https://arxiv.org/abs/2607.27180) — embodiment eval
-- [ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition](https://arxiv.org/abs/2607.25565) — design recovery
-- [Parallel Decoding Distillation for Fast Image and Video Generation](https://arxiv.org/abs/2607.26004) — fast generation
-
-**Cooled**
-- [UrbanDS: A Graph-Guided LLM Multi-Agent System for Data-Intensive Urban Tasks](http://arxiv.org/abs/2607.26724v1) — urban agents
-- [Credit Cards, Confusion, Computation, and Consequences: What Can We Uncover About Language Model Reasoning?](http://arxiv.org/abs/2607.26952v1) — reasoning probe
-- [Neural Architecture Search for Traffic Prediction: A Survey of Methods, Challenges, and Future Directions](http://arxiv.org/abs/2607.26467v1) — NAS survey
-
----
+- [meta-models/Muse-Glimmer-30B](https://huggingface.co/meta-models/Muse-Glimmer-30B) — Meta multimodal release
+- [Kijai/MiniMax-H3-experimental](https://huggingface.co/Kijai/MiniMax-H3-experimental) — MiniMax H3 weights
+- [MatrAIx2026/MatrAIx_Persona_1M](https://huggingface.co/datasets/MatrAIx2026/MatrAIx_Persona_1M) — persona dataset
+- [biglam/british-library-book-images](https://huggingface.co/datasets/biglam/british-library-book-images) — BL book image corpus
 
 ## Main list
 
-### ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition · 4/5
-[Paper](https://arxiv.org/abs/2607.25565) · [Code](https://github.com/jintae-00/ReDesign) · [Project](https://jintae-00.github.io/ReDesign/) — An agentic framework that reconstructs a fully editable, layered design file (typography, vectors, colors, groups, layer order) from a flat raster image. The system decomposes the task into specialized agents for detection, segmentation, vectorization, and hierarchy assembly. **Continuing story**: 3rd run, GitHub stars 189 → 195, HF upvotes 65 → 67. Ships a working repo and demo; targets a genuine production bottleneck in design workflows.
+**ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition** — Continuing story (3rd run, +82% traction since 2026-07-29). An agentic system that reconstructs a full, editable layer hierarchy — typography, vectors, colors, grouping, z-order — from a flat raster image. Ships a repo and project page; 189 GitHub stars and 65 HF upvotes this run. · 4/5  
+[paper](https://arxiv.org/abs/2607.25565) · [code](https://github.com/jintae-00/ReDesign) · [project](https://jintae-00.github.io/ReDesign/)
 
-### HumanCLAW: Can Vision-Language Models Act Through a Body? · 4/5
-[Paper](https://arxiv.org/abs/2607.27180) · [Code](https://github.com/Human-CLAW/HumanCLAW) · [Project](https://human-claw.github.io/) — A benchmark that decouples VLM decision-making from low-level motor control by placing the model in a simulated humanoid body. Tasks span navigation, manipulation, and tool use; failure modes are classified as cognitive vs. physical. **Continuing story**: 2nd run, GitHub stars 63 → 71, HF upvotes 76 → 82. Addresses a real evaluation gap for embodied AI; the framework and environments are runnable today.
+**meta-models/Muse-Glimmer-30B** — Meta’s new 30B image-text-to-text model (arXiv:2504.13181), released on Hugging Face in safetensors/transformers format. Trending on HF with strong Tier-2 traction; conversational multimodal weights ready to download. · 3/5  
+[model](https://huggingface.co/meta-models/Muse-Glimmer-30B)
 
----
-
-## Story arcs
-- **CLBench-V: Evaluating Multimodal Context Learning from Grounding to Knowledge Acquisition** — seen 3 runs, traction +39,120% since first seen on 2026-07-29.
-- **Parallel Decoding Distillation for Fast Image and Video Generation** — seen 3 runs, traction +249% since first seen on 2026-07-29.
-- **ClinFusion: A Vision-Centric Multimodal LLM System for Holistic Medical Understanding** — seen 4 runs, traction +197.5% since first seen on 2026-07-28.
-- **Kimi K3: Open Frontier Intelligence** — seen 4 runs, traction +99.6% since first seen on 2026-07-28.
-- **Pass the Baton: Trajectory-Relayed On-Policy Distillation** — seen 3 runs, traction +87.2% since first seen on 2026-07-29.
-- **ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition** — seen 3 runs, traction +82.3% since first seen on 2026-07-29.
-- **Data Pyramid for Embodied Manipulation** — seen 4 runs, traction +79.1% since first seen on 2026-07-28.
-- **The Physics of Multi-Turn Long-Horizon Planning: From Pre-training to Post-training via Single- and Multi-Teacher On-Policy Agentic Distillation** — seen 4 runs, traction +65.1% since first seen on 2026-07-28.
-- **LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF (HF Model)** — seen 3 runs, traction +14.9% since first seen on 2026-07-29.
-- **HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone** — seen 3 runs, traction +13.2% since first seen on 2026-07-29.
-
----
+**Kijai/MiniMax-H3-experimental** — Experimental MiniMax H3 weights mirrored by Kijai; tags indicate US region. Trending on HF with solid Tier-2 signal, though no public benchmark or paper linked yet. · 2/5  
+[model](https://huggingface.co/Kijai/MiniMax-H3-experimental)
 
 ## Watch-list
-- (no items at score 1 in this window)
 
----
+- **MatrAIx_Persona_1M** — 1M-row persona dataset (Parquet, text-generation task); small scale (<1K rows per split), early release. [dataset](https://huggingface.co/datasets/MatrAIx2026/MatrAIx_Persona_1M)
+- **british-library-book-images** — Machine-annotated book images from the British Library; supports classification, image-to-text, and text-to-image tasks. [dataset](https://huggingface.co/datasets/biglam/british-library-book-images)
+
+## Still developing
+
+- **HumanCLAW: Can Vision-Language Models Act Through a Body?** — 2nd run, traction +2.3× since 2026-07-30. Decouples VLM decision-making from motor control to evaluate embodied reasoning; 76 HF upvotes, 63 GitHub stars. [paper](https://arxiv.org/abs/2607.27180) · [code](https://github.com/Human-CLAW/HumanCLAW) · [project](https://human-claw.github.io/)
+
+## Story arcs
+
+- **CLBench-V: Evaluating Multimodal Context Learning** — seen 3 runs, traction +39,120% since 2026-07-29.
+- **Parallel Decoding Distillation for Fast Image and Video Generation** — seen 3 runs, traction +249% since 2026-07-29.
+- **ClinFusion: A Vision-Centric Multimodal LLM System for Holistic Medical Understanding** — seen 4 runs, traction +197.5% since 2026-07-28.
+- **Kimi K3: Open Frontier Intelligence** — seen 4 runs, traction +99.6% since 2026-07-28.
+- **Pass the Baton: Trajectory-Relayed On-Policy Distillation** — seen 3 runs, traction +87.2% since 2026-07-29.
+- **ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition** — seen 3 runs, traction +82.3% since 2026-07-29.
+- **Data Pyramid for Embodied Manipulation** — seen 4 runs, traction +79.1% since 2026-07-28.
+- **The Physics of Multi-Turn Long-Horizon Planning** — seen 4 runs, traction +65.1% since 2026-07-28.
+- **LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF** — seen 3 runs, traction +14.9% since 2026-07-29.
+- **HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone** — seen 3 runs, traction +13.2% since 2026-07-29.
 
 ## Insights
-- **Agentic decomposition is producing shippable tools** — both top items break a complex inverse problem (design recovery, embodiment eval) into composable agents with released code. The pattern: specialize, orchestrate, ship.
-- **Evaluation frameworks are outpacing model papers in traction** — HumanCLAW and CLBench-V (story arc leader) are gaining faster than the model releases; the field is bottlenecked on *how to measure*, not just *what to build*.
-- **Medical and design domains are absorbing multimodal agents first** — ClinFusion (medical) and ReDesign (design) both show sustained climb; vertical workflows with clear ground truth attract agentic R&D.
 
----
+- **Agentic decomposition is crossing into creative tooling.** ReDesign shows a pattern: break a messy inverse problem (raster → layered design) into specialized subtasks orchestrated by an agent. Expect more “raster-to-structured” pipelines for CAD, UI, and video.
+- **Frontier labs are quietly open-weighting multimodal models.** Muse-Glimmer-30B and MiniMax-H3 arrived without blog posts or benchmarks — just weights on HF. The signal is in the release cadence, not the announcement.
+- **Evaluation is shifting from static benchmarks to embodied decoupling.** HumanCLAW’s framework (separate VLM choice from motor execution) addresses a blind spot in current VLM leaderboards.
 
 ## Action items
-- **Try** — Clone ReDesign and run the demo on your own design screenshots; the layer-hierarchy output is the artifact you'd hand to a designer.
-- **Track** — HumanCLAW's task suite and failure taxonomy; if you're building embodied agents, this is the eval harness to adopt.
-- **Read** — CLBench-V (story arc #1) for a taxonomy of multimodal context-learning capabilities; it frames the next benchmark cycle.
+
+- **Try:** Clone ReDesign’s repo and run the demo on your own design screenshots — the layer hierarchy export is the differentiator.
+- **Track:** Muse-Glimmer-30B for community fine-tunes; the 30B scale hits a sweet spot for single-GPU inference.
+- **Read:** HumanCLAW’s framework paper if you evaluate VLMs for robotics — the decoupling methodology is reusable.
