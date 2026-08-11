@@ -2,14 +2,15 @@
 "arxiv:2607.24280": {
 "category": "research",
 "first_seen": "2026-07-28",
-"flat_runs": 1,
+"flat_runs": 2,
 "id": "arxiv:2607.24280",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {},
 "mag_history": [
 4.1271,
 4.3175,
+4.4188,
 4.4188,
 4.4188
 ],
@@ -20,7 +21,7 @@
 "hf_upvotes": 82
 },
 "source": "HF Daily Papers",
-"streak": 4,
+"streak": 5,
 "summary": "Agentic search enables large language models to solve knowledge-intensive tasks by interleaving multi-step reasoning with retrieval, yet optimizing this with outcome-based reinforcement learning (RL) provides only sparse supervision. Knowledge distillation can supply denser guidance, and advanced proprietary models with their strong reasoning capabilities are promising teachers. While distilling f",
 "title": "From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search",
 "url": "https://arxiv.org/abs/2607.24280"
@@ -31,7 +32,7 @@
 "flat_runs": 0,
 "id": "arxiv:2607.24653",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {
 "github": "https://github.com/MoonshotAI/Kimi-K3",
 "project": "https://www.kimi.com/blog/kimi-k3"
@@ -40,17 +41,18 @@
 5.3613,
 9.9586,
 10.3845,
-10.6998
+10.6998,
+10.7094
 ],
 "misses": 0,
-"peak_mag": 10.6998,
+"peak_mag": 10.7094,
 "signals": {
-"gh_stars": 8291,
+"gh_stars": 8349,
 "hf_comments": 0,
-"hf_upvotes": 486
+"hf_upvotes": 489
 },
 "source": "HF Daily Papers",
-"streak": 4,
+"streak": 5,
 "summary": "We introduce Kimi K3, a 2.8T parameter Mixture-of-Experts model with 104 billion activated parameters, native vision capabilities, and a 1-million-token context window. Kimi K3 is built on Kimi Delta Attention and Attention Residuals, which improve information flow across sequence length and model depth. Together with Stable LatentMoE, which effectively activates 16 of 896 routed experts per token",
 "title": "Kimi K3: Open Frontier Intelligence",
 "url": "https://arxiv.org/abs/2607.24653"
@@ -58,14 +60,15 @@
 "arxiv:2607.24688": {
 "category": "research",
 "first_seen": "2026-07-29",
-"flat_runs": 1,
+"flat_runs": 2,
 "id": "arxiv:2607.24688",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {},
 "mag_history": [
 0.0,
 0.6931,
+0.0,
 0.0
 ],
 "misses": 0,
@@ -75,7 +78,7 @@
 "hf_upvotes": 0
 },
 "source": "arXiv cs.CL",
-"streak": 3,
+"streak": 4,
 "summary": "Entity matching identifies records that refer to the same real-world entity. Language models can be adapted to this task through bi-encoder, cross-encoder, and generative matcher architectures. However, prior studies often conflate matcher architecture with differences in model backbone, model variant(reflecting different pretraining objectives), and model size, making it difficult to isolate the ",
 "title": "Beyond Scale and Generation: Understanding Language Model-based Entity Matching",
 "url": "http://arxiv.org/abs/2607.24688v1"
@@ -83,10 +86,10 @@
 "arxiv:2607.24720": {
 "category": "research",
 "first_seen": "2026-07-28",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2607.24720",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {
 "github": "https://github.com/Quester-one/PlanPhysCode",
 "project": "https://quester-one.github.io/PlanPhysWebsite/"
@@ -95,6 +98,7 @@
 2.7726,
 4.3344,
 4.4613,
+4.5783,
 4.5783
 ],
 "misses": 0,
@@ -105,7 +109,7 @@
 "hf_upvotes": 26
 },
 "source": "HF Daily Papers",
-"streak": 4,
+"streak": 5,
 "summary": "Multi-turn long-horizon planning is critical for foundation model agents, yet how to fundamentally improve it remains unclear. Existing models are trained on uncontrollable and opaque Internet data, making it difficult to identify how planning ability is acquired, shaped, and integrated. To address this challenge, we introduce a unified and controlled multi-turn environment that enables precise co",
 "title": "The Physics of Multi-Turn Long-Horizon Planning: From Pre-training to Post-training via Single- and Multi-Teacher On-Policy Agentic Distillation",
 "url": "https://arxiv.org/abs/2607.24720"
@@ -116,7 +120,7 @@
 "flat_runs": 0,
 "id": "arxiv:2607.24743",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {
 "github": "https://github.com/alibaba-damo-academy/ClinFusion",
 "project": "https://github.com/alibaba-damo-academy/ClinFusion"
@@ -125,17 +129,18 @@
 1.6094,
 2.8842,
 3.3709,
-4.7875
+4.7875,
+4.8991
 ],
 "misses": 0,
-"peak_mag": 4.7875,
+"peak_mag": 4.8991,
 "signals": {
-"gh_stars": 99,
+"gh_stars": 124,
 "hf_comments": 0,
 "hf_upvotes": 11
 },
 "source": "HF Daily Papers",
-"streak": 4,
+"streak": 5,
 "summary": "Multimodal large language models (MLLMs) hold immense potential to revolutionize clinical practice, yet deploying them in the medical domain is fundamentally a vision-centric challenge: models must absorb knowledge from heterogeneous 2D and 3D medical images, and evaluation protocols must align with radiologists' clinical practice and provide an accurate, fine-grained and factualness-driven assess",
 "title": "ClinFusion: A Vision-Centric Multimodal LLM System for Holistic Medical Understanding",
 "url": "https://arxiv.org/abs/2607.24743"
@@ -146,7 +151,7 @@
 "flat_runs": 0,
 "id": "arxiv:2607.24744",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {
 "github": "https://github.com/worldbench/awesome-embodied-data-pyramid",
 "project": "https://jasper-aaa.github.io/embodied-data-pyramid/"
@@ -155,17 +160,18 @@
 3.4012,
 5.7059,
 5.8579,
-6.0923
+6.0923,
+6.0993
 ],
 "misses": 0,
-"peak_mag": 6.0923,
+"peak_mag": 6.0993,
 "signals": {
-"gh_stars": 142,
+"gh_stars": 144,
 "hf_comments": 0,
 "hf_upvotes": 36
 },
 "source": "HF Daily Papers",
-"streak": 4,
+"streak": 5,
 "summary": "Multimodal foundation models learned to see and to speak by consuming the whole internet. Embodied agents admit no such shortcut, since they require data that couple observations with physical states and actions. These signals can be provided, to varying degrees, by multiple data sources. In this work, we organize the embodied data ecosystem as a \"pyramid\" spanning five complementary sources: real",
 "title": "Data Pyramid for Embodied Manipulation",
 "url": "https://arxiv.org/abs/2607.24744"
@@ -173,13 +179,14 @@
 "arxiv:2607.25289": {
 "category": "research",
 "first_seen": "2026-07-29",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2607.25289",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {},
 "mag_history": [
 0.0,
+1.0986,
 1.0986
 ],
 "misses": 0,
@@ -189,7 +196,7 @@
 "hf_upvotes": 2
 },
 "source": "arXiv cs.LG",
-"streak": 2,
+"streak": 3,
 "summary": "On-device speech emotion recognition (SER) is critical for real-time applications, yet large self-supervised models that excel at SER are too costly for edge devices. Multi-teacher knowledge distillation can compress them into a lightweight student, but two challenges remain: teacher reliability varies across batches, and logit-level distillation ignores inter-sample relational structure. We propo",
 "title": "AMRD: Adaptive Multi-Teacher Relational Distillation for Lightweight Speech Emotion Recognition",
 "url": "http://arxiv.org/abs/2607.25289v1"
@@ -197,14 +204,15 @@
 "arxiv:2607.25294": {
 "category": "research",
 "first_seen": "2026-07-29",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2607.25294",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {},
 "mag_history": [
 0.0,
 3.6636,
+3.912,
 3.912
 ],
 "misses": 0,
@@ -214,7 +222,7 @@
 "hf_upvotes": 49
 },
 "source": "arXiv cs.LG",
-"streak": 3,
+"streak": 4,
 "summary": "Real-world tasks often require models to learn from task-specific context rather than relying only on pre-trained knowledge. While recent work has highlighted this capability as context learning, existing evaluations mainly focus on textual contexts. In many practical settings, however, the context to be learned from is multimodal: scientific findings are conveyed through figures and tables, finan",
 "title": "CLBench-V: Evaluating Multimodal Context Learning from Grounding to Knowledge Acquisition",
 "url": "http://arxiv.org/abs/2607.25294v1"
@@ -222,12 +230,13 @@
 "arxiv:2607.25487": {
 "category": "research",
 "first_seen": "2026-07-29",
-"flat_runs": 2,
+"flat_runs": 3,
 "id": "arxiv:2607.25487",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {},
 "mag_history": [
+0.0,
 0.0,
 0.0,
 0.0
@@ -239,7 +248,7 @@
 "hf_upvotes": 0
 },
 "source": "arXiv cs.AI",
-"streak": 3,
+"streak": 4,
 "summary": "Vision-Language-Action (VLA) models translate natural-language commands into robot action sequences, but leading systems on the LIBERO-Plus robustness benchmark use three- to seven-billion-parameter backbones whose memory demands can exceed embedded robotic budgets. We present CoTinyVLA, a 0.9B-parameter action model on a Qwen3.5-0.8B backbone that obtains that robustness by structuring supervisio",
 "title": "CoTinyVLA: Chain-of-Thought Distillation for a Sub-Billion-Parameter Vision-Language-Action Model",
 "url": "http://arxiv.org/abs/2607.25487v1"
@@ -250,7 +259,7 @@
 "flat_runs": 0,
 "id": "arxiv:2607.25565",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {
 "github": "https://github.com/jintae-00/ReDesign",
 "project": "https://jintae-00.github.io/ReDesign/"
@@ -258,17 +267,18 @@
 "mag_history": [
 3.7377,
 5.9809,
-6.8132
+6.8132,
+6.821
 ],
 "misses": 0,
-"peak_mag": 6.8132,
+"peak_mag": 6.821,
 "signals": {
-"gh_stars": 189,
+"gh_stars": 192,
 "hf_comments": 0,
 "hf_upvotes": 65
 },
 "source": "HF Daily Papers",
-"streak": 3,
+"streak": 4,
 "summary": "Recovering an editable design file from a raster image is a common and costly bottleneck in modern design workflows, yet remains challenging since editability depends on recovering multi-modal attributes, such as typography, vector geometry, colors, grouping, and layer ordering. We present ReDesign, an agentic framework that grows an editable layer hierarchy by selecting and composing specialized ",
 "title": "ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition",
 "url": "https://arxiv.org/abs/2607.25565"
@@ -276,16 +286,17 @@
 "arxiv:2607.25895": {
 "category": "research",
 "first_seen": "2026-07-29",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2607.25895",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {
 "project": "https://cloud.simpleai.tech/simple-world-lab/hifi-umi/"
 },
 "mag_history": [
 4.4659,
 4.9488,
+5.0562,
 5.0562
 ],
 "misses": 0,
@@ -295,7 +306,7 @@
 "hf_upvotes": 156
 },
 "source": "HF Daily Papers",
-"streak": 3,
+"streak": 4,
 "summary": "Learning deployable manipulation policies is bottlenecked by the scarcity of data that is both high-fidelity and scalable. Real-robot teleoperation is accurate but costly to scale; robot-free UMI capture scales readily, and current practice uses the resulting data mainly for pre-training, adding a small real-robot \"anchor\" at post-training. We ask whether raising the fidelity of robot-free UMI dat",
 "title": "HiFi-UMI: Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone",
 "url": "https://arxiv.org/abs/2607.25895"
@@ -306,7 +317,7 @@
 "flat_runs": 0,
 "id": "arxiv:2607.26004",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {
 "github": "https://github.com/NVlabs/fastgen",
 "project": "https://research.nvidia.com/labs/genair/pdd/"
@@ -314,17 +325,18 @@
 "mag_history": [
 1.7918,
 5.701,
-6.253
+6.253,
+6.3117
 ],
 "misses": 0,
-"peak_mag": 6.253,
+"peak_mag": 6.3117,
 "signals": {
-"gh_stars": 933,
+"gh_stars": 936,
 "hf_comments": 0,
-"hf_upvotes": 16
+"hf_upvotes": 17
 },
 "source": "HF Daily Papers",
-"streak": 3,
+"streak": 4,
 "summary": "Generation in video diffusion or flow models is computationally expensive due to the slow and iterative sampling process. Current state-of-the-art (SOTA) acceleration methods heavily rely on variational score distillation (VSD) and adversarial losses to distill diffusion models into few-step generators. Albeit achieving high-quality video generation, these training losses are notoriously hard to o",
 "title": "Parallel Decoding Distillation for Fast Image and Video Generation",
 "url": "https://arxiv.org/abs/2607.26004"
@@ -335,7 +347,7 @@
 "flat_runs": 0,
 "id": "arxiv:2607.26057",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {
 "github": "https://github.com/ZJU-REAL/Relay-OPD",
 "project": "https://zju-real.github.io/Relay-OPD/"
@@ -343,173 +355,35 @@
 "mag_history": [
 2.8332,
 5.0152,
-5.304
+5.304,
+5.3318
 ],
 "misses": 0,
-"peak_mag": 5.304,
+"peak_mag": 5.3318,
 "signals": {
-"gh_stars": 34,
+"gh_stars": 36,
 "hf_comments": 0,
 "hf_upvotes": 33
 },
 "source": "HF Daily Papers",
-"streak": 3,
+"streak": 4,
 "summary": "On-policy distillation (OPD) grounds token-level supervision in the student's own trajectory, yet suffers from prefix failure: once the student commits to a wrong reasoning direction, all subsequent generation builds on this deviation, producing misdirected continuations that elicit unreliable supervision and waste compute. We identify a teacher-student continuation asymmetry on failed prefixes, w",
 "title": "Pass the Baton: Trajectory-Relayed On-Policy Distillation",
 "url": "https://arxiv.org/abs/2607.26057"
 },
-"arxiv:2607.26200": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.26200",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.CL",
-"streak": 1,
-"summary": "Content-moderation classifiers are usually evaluated in isolation, but deployment requires choosing where to intervene and what follows a flag. We evaluate these choices using two end-to-end customer-outcome metrics rather than component accuracy: Usefulness, the fraction of turns with a shown, non-harmful, relevant response, and Harmful Exposure, the fraction with a shown harmful response. Latenc",
-"title": "Choosing Where and How to Moderate: End-to-End Trade-offs in Filter Placement and Response Rewriting",
-"url": "http://arxiv.org/abs/2607.26200v1"
-},
-"arxiv:2607.26313": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.26313",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.AI",
-"streak": 1,
-"summary": "Agentic systems act, so a defect in the evidence they retrieve becomes a wrong action with a currency cost. The most dangerous enterprise defects are metadata-borne: a stale price or a superseded record, perfectly well-formed in the payload and betrayed only by freshness, lineage, or provenance. Such a defect never enters the agent's context, and an agent cannot doubt data it cannot see. On a pric",
-"title": "SARC-DQ: Runtime Data-Quality Gating for Agentic AI: Silent Evidence Defects, the Incompetence Shield, and Downstream-Only Remediation",
-"url": "http://arxiv.org/abs/2607.26313v1"
-},
-"arxiv:2607.26467": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.26467",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Traffic prediction is a core task in intelligent transportation systems, supporting applications such as adaptive signal control, route guidance, and ride-hailing dispatch. Deep learning models, including graph convolutional networks, recurrent networks, and Transformers, achieve strong results on standard benchmarks, but their architectures are designed by hand, requiring significant expert effor",
-"title": "Neural Architecture Search for Traffic Prediction: A Survey of Methods, Challenges, and Future Directions",
-"url": "http://arxiv.org/abs/2607.26467v1"
-},
-"arxiv:2607.26481": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.26481",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Detecting when the statistical behavior of an engineered system changes, and identifying which component is responsible, are core problems in the monitoring of telecommunication networks, robotic platforms, security infrastructure, and multi-agent systems. In safety- and mission-critical deployments, such decisions must be accompanied by statistical reliability guarantees rather than by point esti",
-"title": "Conformal Changepoint Localization and Root Cause Analysis with Corrupted Observations",
-"url": "http://arxiv.org/abs/2607.26481v1"
-},
-"arxiv:2607.26555": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.26555",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.CL",
-"streak": 1,
-"summary": "Multimodal fake news detectors often generalize poorly across domains because they learn to trust unreliable evidence: domain-specific shortcuts amplified by imbalanced data and semantically inconsistent text-image pairs that make cross-modal evidence unreliable. We propose Expert-Guided Mutual Distillation (EGMD), which learns what evidence to trust across the prediction pipeline. At the input le",
-"title": "Where Detectors Fail: Closing the Tail-Domain Gap with Expert-Guided Mutual Distillation",
-"url": "http://arxiv.org/abs/2607.26555v1"
-},
-"arxiv:2607.26621": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.26621",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.AI",
-"streak": 1,
-"summary": "Large language models (LLMs) have demonstrated strong reasoning capabilities, motivating their adoption as backbones for foundation recommendation models (FRMs). Existing approaches typically enhance recommendation with explicit Chain-of-Thought (CoT) under the Think-then-Answer paradigm. However, generating lengthy rationales introduces substantial inference overhead, while fixed CoT templates st",
-"title": "WhisperRec: Latent Reasoning for Efficient Foundation Recommendation Models",
-"url": "http://arxiv.org/abs/2607.26621v1"
-},
-"arxiv:2607.26724": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.26724",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.AI",
-"streak": 1,
-"summary": "Large language model (LLM) agents have been widely applied in automating data science tasks. However, existing methods typically rely on a limited set of provided datasets, and they face challenges in data-intensive scenarios that require discovering and leveraging relevant information from large-scale and heterogeneous data repositories. Urban tasks are representative examples of such scenarios, ",
-"title": "UrbanDS: A Graph-Guided LLM Multi-Agent System for Data-Intensive Urban Tasks",
-"url": "http://arxiv.org/abs/2607.26724v1"
-},
 "arxiv:2607.26784": {
 "category": "research",
 "first_seen": "2026-07-30",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2607.26784",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {
 "github": "https://github.com/Within-yao/SkillRise"
 },
 "mag_history": [
 2.7726,
+4.9128,
 4.9128
 ],
 "misses": 0,
@@ -520,7 +394,7 @@
 "hf_upvotes": 28
 },
 "source": "HF Daily Papers",
-"streak": 2,
+"streak": 3,
 "summary": "Large language model agents often encounter related yet distinct tasks that share reusable solution patterns. Yet standard agentic reinforcement learning treats tasks as independent episodes, while existing approaches to skill learning either focus on repeated attempts of one task or use pipelines with multiple stages that entangle extraction, retrieval, and execution. We introduce SkillRise, a un",
 "title": "SkillRise: Agentic Reinforcement Learning for Cross-Task Skill Evolution",
 "url": "https://arxiv.org/abs/2607.26784"
@@ -528,15 +402,16 @@
 "arxiv:2607.26791": {
 "category": "research",
 "first_seen": "2026-07-30",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2607.26791",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {
 "project": "https://github.com/Alibaba-NLP/qqr/tree/main/data/secrespond"
 },
 "mag_history": [
 0.0,
+1.6094,
 1.6094
 ],
 "misses": 0,
@@ -546,80 +421,21 @@
 "hf_upvotes": 4
 },
 "source": "HF Daily Papers",
-"streak": 2,
+"streak": 3,
 "summary": "Large Language Model (LLM) agents are increasingly adopted in real-world security operations with access to host artifacts and command-line interfaces (CLIs), making it critical to thoroughly assess their security capabilities. However, existing cybersecurity benchmarks focus on pre-compromise settings where agents are placed in a clean and idealized environment before an attack occurs. This leave",
 "title": "SecRespond: Benchmarking AI Agents for Real-World Post-Compromise Incident Response",
 "url": "https://arxiv.org/abs/2607.26791"
 },
-"arxiv:2607.26922": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.26922",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Multi-agent LLM pipeline systems break down the task among multiple roles for better reasoning, but are benchmarked mainly with large-scale commercial models. In this study, we investigate Parishad, a structured multi-agent system involving five roles, by deploying it on Qwen2.5-7B-Instruct, a local model, on two datasets: GSM8K (500 questions) and HumanEval (164 questions), compared with promptin",
-"title": "Two Calls Beat Five Agents: Evaluating Multi-Agent Pipelines Against Self-Refinement for Local Language Models",
-"url": "http://arxiv.org/abs/2607.26922v1"
-},
-"arxiv:2607.26952": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.26952",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.CL",
-"streak": 1,
-"summary": "We introduce CreditCardQA, the first financial literacy benchmark for numerical reasoning derived from real credit card agreements. The dataset contains 1,800 questions, including first-person variants that reflect how consumers naturally ask about fees, interest, and payments. We evaluate a range of large language and reasoning models under Chain-of-Thought (CoT) and Program-of-Thought (PoT) prom",
-"title": "Credit Cards, Confusion, Computation, and Consequences: What Can We Uncover About Language Model Reasoning?",
-"url": "http://arxiv.org/abs/2607.26952v1"
-},
-"arxiv:2607.26993": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.26993",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Face presentation attack detection (PAD) remains challenging under cross-dataset evaluation, where domain shift degrades models trained on a single dataset. The scarcity of large-scale labeled data motivates adapting pretrained vision models rather than training task-specific architectures from scratch, raising a fundamental question: do general-purpose vision foundation models encode PAD-relevant",
-"title": "Foundation Models for Face Presentation Attack Detection: A Unified Linear-Probing Benchmark",
-"url": "http://arxiv.org/abs/2607.26993v1"
-},
 "arxiv:2607.27065": {
 "category": "research",
 "first_seen": "2026-07-30",
-"flat_runs": 1,
+"flat_runs": 2,
 "id": "arxiv:2607.27065",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {},
 "mag_history": [
+0.0,
 0.0,
 0.0
 ],
@@ -630,104 +446,25 @@
 "hf_upvotes": 0
 },
 "source": "arXiv cs.AI",
-"streak": 2,
+"streak": 3,
 "summary": "While automated defect detection such as the detection of surface scratched is an important aspect in industrial quality control, the scarcity of annotated defect data make this task challenging. This paper presents a procedural rendering pipeline that generates large-scale annotated synthetic training data using BlenderProc, with configurable material appearance, camera modes, and domain randomiz",
 "title": "ScratchSim: A Procedural Synthetic Data Pipeline for Surface Scratch Detection",
 "url": "http://arxiv.org/abs/2607.27065v1"
 },
-"arxiv:2607.27076": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.27076",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Continuous cuffless blood pressure (BP) monitoring remains challenging due to motion artifacts, physiological variability, and the limited robustness of conventional pulse transit time (PTT) models under dynamic conditions. Many prior approaches rely on multi-second windows to stabilize estimation, an assumption that is frequently violated during real-world monitoring with intermittent signal corr",
-"title": "Single-Beat Cuffless Blood Pressure Estimation Using Ear-PPG and ECG with a Lightweight Hybrid Learning Framework",
-"url": "http://arxiv.org/abs/2607.27076v1"
-},
-"arxiv:2607.27081": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.27081",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Fine-tuning is the dominant paradigm for specializing large language models (LLMs), yet it exposes a critical vulnerability: malicious data providers can embed harmful behaviors into downstream corpora, creating models that retain professional skills while violating human values on demand. Existing safety-realignment defenses often fail in practice due to three key limitations: they frequently cau",
-"title": "On-Policy Distillation for LLM Safety: A Routing Approach to Template-Robust Realignment",
-"url": "http://arxiv.org/abs/2607.27081v1"
-},
-"arxiv:2607.27083": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.27083",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "As LLM agents increasingly depend on diverse external services such as search engines, databases, and connectors, agent harnesses face a fundamental tool-selection challenge: acquiring too few tools leaves the task under-informed, while too many adds cost, context load, and privacy exposure. Routers and retrievers can rank candidate tools by relevance, but a ranking alone does not determine how ma",
-"title": "Scores Are Not Decisions: Cost-Aware Stopping for Tool Acquisition in LLM Agents",
-"url": "http://arxiv.org/abs/2607.27083v1"
-},
-"arxiv:2607.27106": {
-"category": "research",
-"first_seen": "2026-07-30",
-"flat_runs": 0,
-"id": "arxiv:2607.27106",
-"keywords": [],
-"last_seen": "2026-07-30",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 2,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Emergency Departments (EDs) are critical access points in healthcare systems, yet they face persistent pressure from unpredictable patient demand, seasonal surges, and non-urgent visits. Effective ED planning requires forecasts at multiple decision-making levels: hospitals need local demand estimates for staffing and bed management, regions require forecasts to coordinate healthcare units, and nat",
-"title": "Hierarchical Spatio-Temporal Transformer for Coherent Emergency Department Forecasting",
-"url": "http://arxiv.org/abs/2607.27106v1"
-},
 "arxiv:2607.27180": {
 "category": "research",
 "first_seen": "2026-07-30",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2607.27180",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {
 "github": "https://github.com/Human-CLAW/HumanCLAW",
 "project": "https://human-claw.github.io/"
 },
 "mag_history": [
 4.1109,
+6.4232,
 6.4232
 ],
 "misses": 0,
@@ -738,7 +475,7 @@
 "hf_upvotes": 76
 },
 "source": "HF Daily Papers",
-"streak": 2,
+"streak": 3,
 "summary": "Evaluating whether a vision-language model (VLM) can act through a physical body is challenging. The outcome of an action couples the VLM's decision with motor control. When a task fails, it is hard to tell whether the VLM made a bad choice or the motor controller simply failed to execute it, e.g., losing balance and falling. In this work, we introduce HumanCLAW, an evaluation framework that decou",
 "title": "HumanCLAW: Can Vision-Language Models Act Through a Body?",
 "url": "https://arxiv.org/abs/2607.27180"
@@ -749,38 +486,556 @@
 "flat_runs": 0,
 "id": "arxiv:2607.27205",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {
 "github": "https://github.com/H-EmbodVis/TurboVLA",
 "project": "https://h-embodvis.github.io/TurboVLA/"
 },
 "mag_history": [
 4.7005,
-7.9522
+7.9522,
+7.9665
 ],
 "misses": 0,
-"peak_mag": 7.9522,
+"peak_mag": 7.9665,
 "signals": {
-"gh_stars": 411,
+"gh_stars": 423,
 "hf_comments": 0,
 "hf_upvotes": 139
 },
 "source": "HF Daily Papers",
-"streak": 2,
+"streak": 3,
 "summary": "Vision-language-action (VLA) models commonly adopt an LLM-centric V to L to A pathway, where visual observations are projected into the representation space of a large language model before being decoded into robot actions. Although effective, this design incurs substantial computation and memory overhead at every policy invocation. In this work, we introduce TurboVLA, a new VLA paradigm that refo",
 "title": "TurboVLA: Real-Time Vision-Language-Action Model at 32 Hz on an RTX 4090 with <1 GB VRAM",
 "url": "https://arxiv.org/abs/2607.27205"
 },
+"arxiv:2608.07346": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.07346",
+"keywords": [
+"large language models",
+"agent harnesses",
+"Agent Auditing Engine",
+"Agent Task Protocol",
+"Monitor",
+"execution traces",
+"multidimensional metrics",
+"execution efficiency"
+],
+"last_seen": "2026-08-11",
+"links": {
+"github": "https://github.com/datamllab/A2E"
+},
+"mag_history": [
+1.6094
+],
+"misses": 0,
+"peak_mag": 1.6094,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 4
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "With the rapid advancement of large language models (LLMs), harnesses have become essential infrastructure for deploying agents across a wide range of domains. The fast-evolving harness ecosystem has also made rigorous capability evaluation increasingly important. However, efficiently building an end-to-end, systematic, and comprehensive evaluation pipeline remains a significant challenge. To addr",
+"title": "A^2E : An End-to-End Agent Auditing Engine",
+"url": "https://arxiv.org/abs/2608.07346"
+},
+"arxiv:2608.08989": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.08989",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Public infant cry corpora are small, label-incompatible, and almost always evaluated one corpus at a time. We ask what this practice hides and what fixes it. Across four cry corpora screened by a multi-level leakage audit (byte-level and embedding-level deduplication plus a within-corpus train-test near-duplicate audit), we probe four frozen encoders and a handcrafted baseline under a unified five",
+"title": "How Far Do Foundation Models Transfer to Infant Signals? A Cross-Dataset Transfer Audit with a Unified Need Ontology",
+"url": "http://arxiv.org/abs/2608.08989v1"
+},
+"arxiv:2608.09096": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09096",
+"keywords": [
+"harness evolution",
+"autonomous agents",
+"Evo-Bench",
+"harness-guided construction",
+"auxiliary-task evolution",
+"sensitivity-aware stratified splitting",
+"cross-suite generalization",
+"reasoning structures"
+],
+"last_seen": "2026-08-11",
+"links": {
+"github": "https://github.com/RUCAIBox/Evo-Bench",
+"project": "https://evobench.org/"
+},
+"mag_history": [
+2.0794
+],
+"misses": 0,
+"peak_mag": 2.0794,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 7
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Large Language Models (LLMs) have driven rapid progress in autonomous agents, yet standard evaluations remain confined to static task solving. An emerging frontier is harness evolution---the agent's capacity to autonomously optimize its own operating harness. However, systematically benchmarking this capability remains challenging, as existing evaluations fail to isolate harness improvements from ",
+"title": "Evo-Bench: Can Language Models Improve Agent Harness?",
+"url": "https://arxiv.org/abs/2608.09096"
+},
+"arxiv:2608.09106": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09106",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Large language models (LLMs) have demonstrated strong performance across a wide range of legal tasks. In legal practice, time is a critical concept that governs the validity of statutes, the progression of legal cases, and the enforcement of procedural deadlines. However, legal temporal capabilities remain underexplored in existing legal AI benchmarks. To address this gap, we propose LexKairos, a ",
+"title": "LexKairos: Benchmarking Legal Temporal Capabilities in LLMs",
+"url": "http://arxiv.org/abs/2608.09106v1"
+},
+"arxiv:2608.09154": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09154",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Large language models (LLMs) are increasingly expected to follow long lists of constraints in complex instructions, and synthesizing instructions from a reference document (i.e., back-translation) is a widely used method to measure/enhance LLMs' ability to follow complex instructions. However, this method introduces a critical loophole: the constraint synthesis model copies text from the reference",
+"title": "UNSPECIFIC: General Constraint Synthesis for Breaking Copy-and-Paste Shortcut in LLM Instruction Following",
+"url": "http://arxiv.org/abs/2608.09154v1"
+},
+"arxiv:2608.09162": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09162",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Tabular data presents unique challenges for deep learning due to its heterogeneous nature, where numeric features exhibit diverse distributions, scales, and statistical properties. Although recent advances have improved how models learn from tabular data, how numeric data are transformed into model-friendly representations remains comparatively underexplored. We introduce the stretch transformatio",
+"title": "Tabular Numeric Stretch Transformation",
+"url": "http://arxiv.org/abs/2608.09162v1"
+},
+"arxiv:2608.09221": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09221",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Federated Learning (FL) enables collaborative model training across distributed client devices while preserving data privacy. However, FL faces significant challenges due to data heterogeneity, particularly in terms of label distribution skewness and variations in dataset sizes, which can lead to biased model updates and hinder convergence. To address this, we propose FedTVD, a novel FL algorithm ",
+"title": "FedTVD: Balancing Data Quality and Quantity for Robust Federated Learning",
+"url": "http://arxiv.org/abs/2608.09221v1"
+},
+"arxiv:2608.09270": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09270",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.AI",
+"streak": 1,
+"summary": "Fine-grained cross-modal understanding in drone views is essential for aerial vision-language navigation. However, the inherent wide field of view and overhead perspective of drone scenarios impose dual challenges on vision-language understanding. At the macro level, overwhelming background clutter in visual representations leads to Cross-Modal Focus Misalignment, where the model prioritizes globa",
+"title": "GRASP: Granularity-Aware Region Alignment and Semantic Prototype Learning for Fine-Grained Cross-Modal Understanding in Drone Views",
+"url": "http://arxiv.org/abs/2608.09270v1"
+},
+"arxiv:2608.09360": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09360",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "The demand for maritime surveillance has given rise to the need for monitoring fishing vessel activities, particularly in addressing the challenge of \"dark vessels\" that operate without Automatic Identification System (AIS) transmission. This study presents a novel approach for detecting small-scale fishing vessels using nighttime light (NTL) imagery from the SDGSAT-1 satellite, combined with deep",
+"title": "Deep Learning based Detection of Fishing Vessels and Fishing Monitoring using Nightlight Images",
+"url": "http://arxiv.org/abs/2608.09360v1"
+},
+"arxiv:2608.09412": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09412",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.AI",
+"streak": 1,
+"summary": "KV-cache compression reduces long-context memory, but aggregate task scores reveal neither which correct executions fail nor why. We present KVDiagnosis, a diagnostic dataset and benchmark with three contributions. First, a 25-method taxonomy groups methods into five mechanism families and links them to eight verified implementations and their valid diagnostic measurements. Second, for every suppo",
+"title": "KVDiagnosis: A Diagnostic Benchmark for KV-Cache Compression in Long-Context Language Models",
+"url": "http://arxiv.org/abs/2608.09412v1"
+},
+"arxiv:2608.09580": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09580",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.AI",
+"streak": 1,
+"summary": "Cross-Domain Sequential Recommendation (CDSR) aims to alleviate data sparsity by transferring dynamic user interests across related domains. A key challenge lies in effectively bridging these domains. In single-domain modeling, models cannot distinguish between domain-specific and domain-invariant interests. Recent methods merge domain-specific sequences chronologically into a mixed-domain sequenc",
+"title": "CoRCi: Cross-Reconstruction of Coherent Interests Modeling in Cross-Domain Sequential Recommendation",
+"url": "http://arxiv.org/abs/2608.09580v1"
+},
+"arxiv:2608.09636": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09636",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.AI",
+"streak": 1,
+"summary": "Accurate 3D neuron segmentation in fluorescence microscopy is critical for neuroscience. However, the sparse and elongated morphology of neurons poses significant challenges to existing segmentation methods. These methods struggle to preserve both local details and global topology, leading to fragmented results. To address this, we propose NeuroRefiner, a multi-agent system that formalizes the hum",
+"title": "NeuroRefiner: Morphology-Aware Multi-Agent Refinement for 3D Fluorescence Microscopy Neuron Segmentation",
+"url": "http://arxiv.org/abs/2608.09636v1"
+},
+"arxiv:2608.09650": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09650",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Reranking medical procedures against patient queries is a critical component of health insurance information retrieval, complicated by a substantial lexical gap between patient language and clinical nomenclature. We present a systematic comparison of two reranking paradigms for this production task: (1) small cross-encoders (MedCPT, MiniLM-L12) fine-tuned with listwise learning-to-rank objectives ",
+"title": "Listwise Cross-Encoder Fine-Tuning vs. Agentic Instruction Tuning for LLM Rerankers: A Systematic Study in Medical Procedure Reranking",
+"url": "http://arxiv.org/abs/2608.09650v1"
+},
+"arxiv:2608.09765": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09765",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Audio Description (AD) is a verbal narration of key visual content in videos, enabling access for visually impaired audiences. Unlike standard video captioning, AD is a structured editorial task: descriptions must be inserted into gaps in dialogue and must convey only what is needed to understand the narrative being told. However, existing approaches formulate AD generation in an artificial settin",
+"title": "REFRAMED: Towards Realistic Audio Description Generation for Movies",
+"url": "http://arxiv.org/abs/2608.09765v1"
+},
+"arxiv:2608.09779": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09779",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Answering complex conditional questions using Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) remains a challenge, particularly in domain-specific contexts where general-purpose LLMs and RAG tend to underperform. We hypothesize that augmenting RAG with unstructured and structured knowledge, extracted from both documents and knowledge graphs (KGs), can improve reasoning and an",
+"title": "KGCaRe: Explainable Complex Conditional Question Answering using Automatic Knowledge Graph Construction and Context Retrieval with LLMs",
+"url": "http://arxiv.org/abs/2608.09779v1"
+},
+"arxiv:2608.09802": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09802",
+"keywords": [
+"SWE-Bench ProMax",
+"code refactoring",
+"multilingual benchmark",
+"cross-file refactoring",
+"agent scaffolds",
+"resolve rate"
+],
+"last_seen": "2026-08-11",
+"links": {
+"project": "https://huggingface.co/datasets/swe-bench-promax/SWE-Bench-ProMax"
+},
+"mag_history": [
+4.3307
+],
+"misses": 0,
+"peak_mag": 4.3307,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 75
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "As AI coding agents take on increasingly complex, long-horizon software engineering tasks, existing benchmarks are rapidly saturating and their evaluation quality has come under serious scrutiny: a recent audit found that nearly 60% of unsolved SWE-bench Verified instances contain flawed tests -- either overly narrow tests that reject correct solutions or overly broad tests that check unstated req",
+"title": "SWE-Bench ProMax: Benchmarking Agents on Large-Scale Multilingual Code Refactoring",
+"url": "https://arxiv.org/abs/2608.09802"
+},
+"arxiv:2608.09819": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09819",
+"keywords": [
+"Mixture-of-LoRA",
+"LoRA adapters",
+"Model-Harness Co-design",
+"recursive self-improvement",
+"MindForge",
+"LongStraw",
+"sparse MoE",
+"GenUI"
+],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+4.3694
+],
+"misses": 0,
+"peak_mag": 4.3694,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 78
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Macaron-V1 is an open agent-model family for experiential intelligence: learning from experience in real environments and continuing to learn after deployment. It is organized around two system goals. Adaptation is pursued through recursive improvement of versioned model-harness pairs, where experience from one configuration is evaluated under an external contract and used to construct its success",
+"title": "Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA",
+"url": "https://arxiv.org/abs/2608.09819"
+},
+"arxiv:2608.09826": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09826",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Reinforcement learning with verifiable rewards yields no group-relative signal when rollout groups are uniformly correct or uniformly wrong, which account for 63.0-68.0% of groups in our experiments. We propose SKALD (Skill-Anchored Latent Distillation), an on-policy self-distillation framework that uses two context views of the same Qwen3-Base model: a question-only student and a teacher conditio",
+"title": "Distill Skills into Weights, Not Prompts: Abstract Skills as Privileged Signals for On-Policy Self-Distillation",
+"url": "http://arxiv.org/abs/2608.09826v1"
+},
+"arxiv:2608.09836": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09836",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "On-policy distillation (OPD) has emerged as a core component of modern LLM post-training pipelines, yet we reveal a failure mode: degenerate agreement, where students exploit repetitive loops to achieve near-perfect token agreement with the teacher despite globally flawed responses. We therefore shift our focus from agreement to teacher-student mismatch, and find that mismatch tokens can be mainly",
+"title": "Mismatch Matters: On-Policy Distillation Beyond Token Agreement",
+"url": "http://arxiv.org/abs/2608.09836v1"
+},
+"arxiv:2608.09873": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09873",
+"keywords": [
+"video generation",
+"scientific reasoning",
+"MLLM-as-Judge",
+"prompt grounding",
+"causal correctness",
+"perceptual-quality"
+],
+"last_seen": "2026-08-11",
+"links": {
+"github": "https://github.com/sci-vbench/sci-vbench"
+},
+"mag_history": [
+3.091
+],
+"misses": 0,
+"peak_mag": 3.091,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 21
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "We introduce Sci-VBench, a comprehensive benchmark for evaluating knowledge- and reasoning-intensive video generation across scientific domains. It contains 1,253 expert-annotated examples spanning 60 subjects across four core disciplines: Natural Science, Healthcare, Humanities & Social Sciences, and Engineering. Each example requires models to generate temporally rich videos that demand scientif",
+"title": "Sci-VBench: Evaluating Knowledge- and Reasoning-Intensive Video Generation in Science Domains",
+"url": "https://arxiv.org/abs/2608.09873"
+},
+"arxiv:2608.09888": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09888",
+"keywords": [
+"in-context learning",
+"recurrent latent reasoning",
+"high-dimensional latent space",
+"ARC-AGI-1",
+"cost-accuracy Pareto frontier"
+],
+"last_seen": "2026-08-11",
+"links": {
+"github": "https://github.com/pathwaycom/arc-task-gen"
+},
+"mag_history": [
+3.2958
+],
+"misses": 0,
+"peak_mag": 3.2958,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 26
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "We introduce BDH-CQ, a reasoning model that combines in-context learning with recurrent latent reasoning. Inputs presented at inference time continuously update the model's recurrent memory; the model then solves a query through iterative computation in a high-dimensional latent space, without verbalizing its intermediate reasoning. We evaluate the model on the public ARC-AGI-1 evaluation set and ",
+"title": "BDH-CQ: In-Context Learning with Recurrent Latent Reasoning",
+"url": "https://arxiv.org/abs/2608.09888"
+},
+"arxiv:2608.09930": {
+"category": "research",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "arxiv:2608.09930",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Automated Text-to-Speech (TTS) evaluation methods (Mean Opinion Score (MOS) predictors and Audio Large Language Models (Audio-LLM) judges) are expected to reflect human perception, yet it is unclear how well they capture the distinct aspects of speech that listeners actually perceive. We deconstruct \"naturalness\" into a linguistically grounded annotation schema spanning 10 distinct perceptual dime",
+"title": "Beyond Naturalness: Probing Automated Text-To-Speech Evaluators on Linguistically Grounded Dimensions",
+"url": "http://arxiv.org/abs/2608.09930v1"
+},
 "ghrepo:Correr-Zhou/OmniShow": {
 "category": "releases",
 "first_seen": "2026-07-29",
-"flat_runs": 1,
+"flat_runs": 2,
 "id": "ghrepo:Correr-Zhou/OmniShow",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {},
 "mag_history": [
 3.0699,
+3.071,
 3.071,
 3.071
 ],
@@ -791,7 +1046,7 @@
 "gh_stars": 464
 },
 "source": "GitHub Trending (Python)",
-"streak": 3,
+"streak": 4,
 "summary": "[ICML 2026] ByteDance's All-in-One Video Generation Model for Human-Object Interaction Video Generation",
 "title": "Correr-Zhou/OmniShow \u2014 [ICML 2026] ByteDance's All-in-One Video Generation Model for Human-Object Interaction Video Generation",
 "url": "https://github.com/Correr-Zhou/OmniShow"
@@ -802,20 +1057,21 @@
 "flat_runs": 0,
 "id": "ghrepo:Dokploy/dokploy",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {},
 "mag_history": [
 5.2485,
-5.2523
+5.2523,
+5.2528
 ],
 "misses": 0,
-"peak_mag": 5.2523,
+"peak_mag": 5.2528,
 "signals": {
-"gh_forks": 2843,
-"gh_stars": 36482
+"gh_forks": 2848,
+"gh_stars": 36517
 },
 "source": "GitHub Trending (TypeScript)",
-"streak": 2,
+"streak": 3,
 "summary": "Open Source Alternative to Vercel, Netlify and Heroku.",
 "title": "Dokploy/dokploy \u2014 Open Source Alternative to Vercel, Netlify and Heroku.",
 "url": "https://github.com/Dokploy/dokploy"
@@ -826,21 +1082,22 @@
 "flat_runs": 0,
 "id": "hfdataset:XYZAILab/XYZ-Aquila-SFT",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {},
 "mag_history": [
 3.7463,
-4.1338
+4.1338,
+4.1395
 ],
 "misses": 0,
-"peak_mag": 4.1338,
+"peak_mag": 4.1395,
 "signals": {
-"hf_downloads": 1528,
-"hf_likes": 366,
+"hf_downloads": 1646,
+"hf_likes": 369,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 2,
+"streak": 3,
 "summary": "\u00b7 tags: task_categories:text-generation, task_categories:question-answering, language:en, language:zh, license:apache-2.0, size_categories:1K<n<10K",
 "title": "XYZAILab/XYZ-Aquila-SFT (HF Dataset)",
 "url": "https://huggingface.co/datasets/XYZAILab/XYZ-Aquila-SFT"
@@ -851,22 +1108,23 @@
 "flat_runs": 0,
 "id": "hfmodel:LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {},
 "mag_history": [
 3.7295,
 3.7975,
-4.2857
+4.2857,
+4.3084
 ],
 "misses": 0,
-"peak_mag": 4.2857,
+"peak_mag": 4.3084,
 "signals": {
-"hf_downloads": 396282,
-"hf_likes": 455,
+"hf_downloads": 436140,
+"hf_likes": 470,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 3,
+"streak": 4,
 "summary": "image-text-to-text \u00b7 tags: hermes, gguf, uncensored, qwen3.6, moe, vision",
 "title": "LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF (HF Model)",
 "url": "https://huggingface.co/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF"
@@ -877,20 +1135,21 @@
 "flat_runs": 0,
 "id": "hfmodel:meta-models/Muse-Glimmer-30B",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {},
 "mag_history": [
-3.5167
+3.5167,
+4.7869
 ],
 "misses": 0,
-"peak_mag": 3.5167,
+"peak_mag": 4.7869,
 "signals": {
 "hf_downloads": 0,
-"hf_likes": 151,
-"hf_trending": 149
+"hf_likes": 932,
+"hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 1,
+"streak": 2,
 "summary": "image-text-to-text \u00b7 tags: transformers, safetensors, muse_glimmer, image-text-to-text, conversational, arxiv:2504.13181",
 "title": "meta-models/Muse-Glimmer-30B (HF Model)",
 "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B"
@@ -901,53 +1160,50 @@
 "flat_runs": 0,
 "id": "hfmodel:microsoft/Fara1.5-27B",
 "keywords": [],
-"last_seen": "2026-08-10",
+"last_seen": "2026-08-11",
 "links": {},
 "mag_history": [
 3.5868,
 3.6729,
 3.7659,
-3.9543
+3.9543,
+3.9592
 ],
 "misses": 0,
-"peak_mag": 3.9543,
+"peak_mag": 3.9592,
 "signals": {
-"hf_downloads": 3455,
-"hf_likes": 283,
-"hf_trending": 0
-},
-"source": "HF Trending Models",
-"streak": 4,
-"summary": "image-text-to-text \u00b7 tags: transformers, safetensors, qwen3_5, image-text-to-text, computer-use, cua",
-"title": "microsoft/Fara1.5-27B (HF Model)",
-"url": "https://huggingface.co/microsoft/Fara1.5-27B"
-},
-"hfmodel:nvidia/Cosmos3-Edge": {
-"category": "releases",
-"first_seen": "2026-07-27",
-"flat_runs": 0,
-"id": "hfmodel:nvidia/Cosmos3-Edge",
-"keywords": [],
-"last_seen": "2026-08-10",
-"links": {},
-"mag_history": [
-3.4232,
-3.4337,
-3.474,
-3.4837,
-3.5394
-],
-"misses": 0,
-"peak_mag": 3.5394,
-"signals": {
-"hf_downloads": 55393,
-"hf_likes": 156,
+"hf_downloads": 3648,
+"hf_likes": 285,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
 "streak": 5,
-"summary": "\u00b7 tags: cosmos, diffusers, safetensors, cosmos3_edge, nvidia, cosmos3",
-"title": "nvidia/Cosmos3-Edge (HF Model)",
-"url": "https://huggingface.co/nvidia/Cosmos3-Edge"
+"summary": "image-text-to-text \u00b7 tags: transformers, safetensors, qwen3_5, image-text-to-text, computer-use, cua",
+"title": "microsoft/Fara1.5-27B (HF Model)",
+"url": "https://huggingface.co/microsoft/Fara1.5-27B"
+},
+"hfmodel:unsloth/Muse-Glimmer-30B-GGUF": {
+"category": "releases",
+"first_seen": "2026-08-11",
+"flat_runs": 0,
+"id": "hfmodel:unsloth/Muse-Glimmer-30B-GGUF",
+"keywords": [],
+"last_seen": "2026-08-11",
+"links": {},
+"mag_history": [
+3.8871
+],
+"misses": 0,
+"peak_mag": 3.8871,
+"signals": {
+"hf_downloads": 0,
+"hf_likes": 257,
+"hf_trending": 254
+},
+"source": "HF Trending Models",
+"streak": 1,
+"summary": "image-text-to-text \u00b7 tags: transformers, gguf, unsloth, meta, image-text-to-text, arxiv:2504.13181",
+"title": "unsloth/Muse-Glimmer-30B-GGUF (HF Model)",
+"url": "https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF"
 }
 }
