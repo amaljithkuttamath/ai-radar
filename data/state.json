@@ -1,16 +1,17 @@
 {
 "arxiv:2608.07346": {
 "first_seen": "2026-08-11",
-"mag": 4.3132,
+"mag": 4.3567,
 "mag_history": [
 1.6094,
 4.0073,
 4.064,
 4.3132,
-4.3132
+4.3132,
+4.3567
 ],
 "score": 2,
-"streak": 5,
+"streak": 6,
 "title": "A^2E : An End-to-End Agent Auditing Engine",
 "url": "https://arxiv.org/abs/2608.07346"
 },
@@ -22,10 +23,11 @@
 3.6379,
 3.6379,
 3.7863,
+3.9174,
 3.9174
 ],
 "score": 4,
-"streak": 5,
+"streak": 6,
 "title": "Evo-Bench: Can Language Models Improve Agent Harness?",
 "url": "https://arxiv.org/abs/2608.09096"
 },
@@ -37,25 +39,27 @@
 4.8283,
 4.8363,
 4.852,
+4.8598,
 4.8598
 ],
 "score": 4,
-"streak": 5,
+"streak": 6,
 "title": "SWE-Bench ProMax: Benchmarking Agents on Large-Scale Multilingual Code Refactoring",
 "url": "https://arxiv.org/abs/2608.09802"
 },
 "arxiv:2608.09819": {
 "first_seen": "2026-08-11",
-"mag": 5.8051,
+"mag": 5.8081,
 "mag_history": [
 4.3694,
 5.7714,
 5.793,
 5.8051,
-5.8051
+5.8051,
+5.8081
 ],
 "score": 2,
-"streak": 5,
+"streak": 6,
 "title": "Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA",
 "url": "https://arxiv.org/abs/2608.09819"
 },
@@ -67,39 +71,42 @@
 4.0604,
 4.0943,
 4.0943,
+4.2059,
 4.2059
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "Sci-VBench: Evaluating Knowledge- and Reasoning-Intensive Video Generation in Science Domains",
 "url": "https://arxiv.org/abs/2608.09873"
 },
 "arxiv:2608.09888": {
 "first_seen": "2026-08-11",
-"mag": 10.3932,
+"mag": 10.4966,
 "mag_history": [
 3.2958,
 9.6066,
 9.9178,
 10.1391,
-10.3932
+10.3932,
+10.4966
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "BDH-CQ: In-Context Learning with Recurrent Latent Reasoning",
 "url": "https://arxiv.org/abs/2608.09888"
 },
 "arxiv:2608.10692": {
 "first_seen": "2026-08-12",
-"mag": 2.4849,
+"mag": 2.5649,
 "mag_history": [
 1.7918,
 2.3979,
 2.4849,
-2.4849
+2.4849,
+2.5649
 ],
 "score": 2,
-"streak": 4,
+"streak": 5,
 "title": "SPIEval: Evaluating Large Language Models as Mobile Assistants over Scattered Personal Information",
 "url": "https://arxiv.org/abs/2608.10692"
 },
@@ -110,10 +117,11 @@
 4.3175,
 5.1059,
 5.1705,
+5.1874,
 5.1874
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "Beyond Pixels: From Video Priors to 4D Worlds",
 "url": "https://arxiv.org/abs/2608.10744"
 },
@@ -124,53 +132,43 @@
 1.6094,
 4.6162,
 4.7683,
+4.9114,
 4.9114
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "Reference-Free Post-Training of Open Large Language Models for Multilingual Machine Translation",
 "url": "https://arxiv.org/abs/2608.10812"
 },
 "arxiv:2608.10875": {
 "first_seen": "2026-08-12",
-"mag": 3.989,
+"mag": 4.1328,
 "mag_history": [
 2.3979,
 3.8062,
 3.8633,
-3.989
+3.989,
+4.1328
 ],
 "score": 2,
-"streak": 4,
+"streak": 5,
 "title": "VibeLifeBench: Can Your Life Agent Be Proactive and Persistent in a Living World?",
 "url": "https://arxiv.org/abs/2608.10875"
 },
 "arxiv:2608.10915": {
 "first_seen": "2026-08-12",
-"mag": 5.2417,
+"mag": 5.247,
 "mag_history": [
 4.5433,
 5.193,
 5.2204,
-5.2417
+5.2417,
+5.247
 ],
 "score": 2,
-"streak": 4,
+"streak": 5,
 "title": "ComBodied Agents: a New Paradigm of Human-Centric Agentic AI",
 "url": "https://arxiv.org/abs/2608.10915"
-},
-"arxiv:2608.11492": {
-"first_seen": "2026-08-13",
-"mag": 0.0,
-"mag_history": [
-0.0,
-0.0,
-0.0
-],
-"score": 3,
-"streak": 3,
-"title": "Cross-Corpus Evaluation of Generalizable Vulnerability Detection in IoT Firmware",
-"url": "http://arxiv.org/abs/2608.11492v1"
 },
 "arxiv:2608.11562": {
 "first_seen": "2026-08-13",
@@ -178,25 +176,13 @@
 "mag_history": [
 1.9459,
 2.1972,
+2.3026,
 2.3026
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "From Synthesis to Removal: Physics-Grounded Reflection Simulation and Diffusion-Based Video Dereflection",
 "url": "https://arxiv.org/abs/2608.11562"
-},
-"arxiv:2608.11656": {
-"first_seen": "2026-08-13",
-"mag": 0.0,
-"mag_history": [
-0.0,
-0.0,
-0.0
-],
-"score": 2,
-"streak": 3,
-"title": "Continuous-Latent Predictive Modeling with Semantic Alignment for EEG-Language Foundation Models",
-"url": "http://arxiv.org/abs/2608.11656v1"
 },
 "arxiv:2608.11683": {
 "first_seen": "2026-08-13",
@@ -204,10 +190,11 @@
 "mag_history": [
 0.0,
 0.0,
+0.0,
 0.0
 ],
 "score": 2,
-"streak": 3,
+"streak": 4,
 "title": "FrontierFinance: A Challenging Benchmark for Measuring Frontier Intelligence of Finance Agents",
 "url": "http://arxiv.org/abs/2608.11683v1"
 },
@@ -217,22 +204,24 @@
 "mag_history": [
 0.0,
 0.0,
+0.0,
 0.0
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "Advancing MLLM-based UAV Image Understanding and Reasoning: A Benchmark and a Training-Free Multi-Agent System",
 "url": "http://arxiv.org/abs/2608.11738v1"
 },
 "arxiv:2608.11745": {
 "first_seen": "2026-08-14",
-"mag": 4.3787,
+"mag": 4.8016,
 "mag_history": [
 2.3026,
-4.3787
+4.3787,
+4.8016
 ],
 "score": 2,
-"streak": 2,
+"streak": 3,
 "title": "LiveAnimate: Stable Long-Form Streaming Human Animation in Real-Time",
 "url": "https://arxiv.org/abs/2608.11745"
 },
@@ -242,10 +231,11 @@
 "mag_history": [
 0.0,
 0.0,
+0.0,
 0.0
 ],
 "score": 2,
-"streak": 3,
+"streak": 4,
 "title": "Automated binary classification of hazelnut X-ray images: A deep-learning benchmark for quality assessment",
 "url": "http://arxiv.org/abs/2608.11759v1"
 },
@@ -255,36 +245,39 @@
 "mag_history": [
 0.0,
 0.0,
+0.0,
 0.0
 ],
 "score": 2,
-"streak": 3,
+"streak": 4,
 "title": "TELLME: Test-Enhanced Learning for Language Model Enrichment",
 "url": "http://arxiv.org/abs/2608.11788v1"
 },
 "arxiv:2608.11924": {
 "first_seen": "2026-08-13",
-"mag": 8.8253,
+"mag": 8.8493,
 "mag_history": [
 4.3567,
 8.7995,
-8.8253
+8.8253,
+8.8493
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "Spark-to-Paper: End-to-End Research Paper Generation as a Composable Skill",
 "url": "https://arxiv.org/abs/2608.11924"
 },
 "arxiv:2608.12036": {
 "first_seen": "2026-08-13",
-"mag": 6.2614,
+"mag": 6.2994,
 "mag_history": [
 3.9512,
 6.1517,
-6.2614
+6.2614,
+6.2994
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "Mechanist: AI as a Scientific Instrument for Discovering the Mechanisms of Intelligence",
 "url": "https://arxiv.org/abs/2608.12036"
 },
@@ -294,23 +287,25 @@
 "mag_history": [
 0.0,
 0.0,
+0.0,
 0.0
 ],
 "score": 2,
-"streak": 3,
+"streak": 4,
 "title": "FQTree: Fine-grained Quantization and Hardware Generation of Boosted Decision Trees",
 "url": "http://arxiv.org/abs/2608.12140v1"
 },
 "arxiv:2608.12307": {
 "first_seen": "2026-08-13",
-"mag": 4.6913,
+"mag": 4.7005,
 "mag_history": [
 4.2905,
 4.6634,
-4.6913
+4.6913,
+4.7005
 ],
 "score": 2,
-"streak": 3,
+"streak": 4,
 "title": "AI4AI at Test-Time: Strong-to-Weak Capability Transfer via Harnesses",
 "url": "https://arxiv.org/abs/2608.12307"
 },
@@ -320,131 +315,175 @@
 "mag_history": [
 3.1355,
 3.2581,
+3.2581,
 3.2581
 ],
 "score": 2,
-"streak": 3,
+"streak": 4,
 "title": "StateFlow: Building, Evolving, and Accessing 3D World States for Previsualization",
 "url": "https://arxiv.org/abs/2608.12314"
 },
 "arxiv:2608.12743": {
 "first_seen": "2026-08-14",
-"mag": 3.5553,
+"mag": 3.7612,
 "mag_history": [
 3.2581,
-3.5553
+3.5553,
+3.7612
 ],
-"score": 2,
-"streak": 2,
+"score": 3,
+"streak": 3,
 "title": "Spatial Memory Agent: Experience-Grounded Procedure Memory for Spatial Intelligence",
 "url": "https://arxiv.org/abs/2608.12743"
 },
 "arxiv:2608.12990": {
 "first_seen": "2026-08-14",
-"mag": 5.7227,
+"mag": 6.0904,
 "mag_history": [
 1.0986,
-5.7227
+5.7227,
+6.0904
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "LycheeMemory V2: Efficient Long-Term Memory for LLM Agents via Semantic Segment-Level Consolidation",
 "url": "https://arxiv.org/abs/2608.12990"
 },
 "arxiv:2608.13049": {
 "first_seen": "2026-08-14",
-"mag": 2.4849,
+"mag": 2.8332,
 "mag_history": [
 1.7918,
-2.4849
+2.4849,
+2.8332
 ],
-"score": 3,
-"streak": 2,
+"score": 4,
+"streak": 3,
 "title": "H2R-Bench: Benchmarking Human-to-Robot Manipulation Video Generation in World Models",
 "url": "https://arxiv.org/abs/2608.13049"
 },
 "arxiv:2608.13489": {
 "first_seen": "2026-08-14",
-"mag": 6.3917,
+"mag": 6.556,
 "mag_history": [
 4.3438,
-6.3917
+6.3917,
+6.556
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation",
 "url": "https://arxiv.org/abs/2608.13489"
 },
 "arxiv:2608.13546": {
 "first_seen": "2026-08-14",
-"mag": 4.7362,
+"mag": 4.804,
 "mag_history": [
 4.2485,
-4.7362
+4.7362,
+4.804
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "Alaya-EVOKE: From Linear-Scaling Supervision to Endless World",
 "url": "https://arxiv.org/abs/2608.13546"
 },
 "arxiv:2608.13552": {
 "first_seen": "2026-08-14",
-"mag": 5.6487,
+"mag": 5.7879,
 "mag_history": [
 3.4012,
-5.6487
+5.6487,
+5.7879
 ],
 "score": 4,
-"streak": 2,
+"streak": 3,
 "title": "PlayWorld: Benchmarking World Models with Agent Players over Long-Horizon Objectives",
 "url": "https://arxiv.org/abs/2608.13552"
 },
 "arxiv:2608.13560": {
 "first_seen": "2026-08-14",
-"mag": 5.6834,
+"mag": 5.9883,
 "mag_history": [
 3.3673,
-5.6834
+5.6834,
+5.9883
 ],
-"score": 3,
-"streak": 2,
+"score": 4,
+"streak": 3,
 "title": "AutoDesign: Meta-Harness Optimization for Long-Horizon Agentic Design",
 "url": "https://arxiv.org/abs/2608.13560"
 },
+"blog:https://openai.com/index/new-policy-ideas-for-the-intelligence-age": {
+"first_seen": "2026-08-17",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "New policy ideas for the Intelligence Age",
+"url": "https://openai.com/index/new-policy-ideas-for-the-intelligence-age"
+},
 "ghrepo:Echo-Team-Joy-Future-Academy-JD/Echo-Memory": {
 "first_seen": "2026-08-13",
-"mag": 2.7255,
+"mag": 2.7277,
 "mag_history": [
 2.7382,
 2.7403,
-2.7255
+2.7255,
+2.7277
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "Echo-Team-Joy-Future-Academy-JD/Echo-Memory \u2014 Official code for Echo-Memory: a controlled study of memory in action-conditioned video world models (Context, Compression, Spatial, State-Space).",
 "url": "https://github.com/Echo-Team-Joy-Future-Academy-JD/Echo-Memory"
 },
-"ghrepo:MaximeVandegar/Papers-in-100-Lines-of-Code": {
-"first_seen": "2026-08-16",
-"mag": 3.9786,
+"ghrepo:FareedKhan-dev/train-llm-from-scratch": {
+"first_seen": "2026-08-17",
+"mag": 4.5605,
 "mag_history": [
-3.9786
+4.5605
 ],
 "score": 3,
 "streak": 1,
+"title": "FareedKhan-dev/train-llm-from-scratch \u2014 A straightforward method for training your LLM, from downloading data to generating text.",
+"url": "https://github.com/FareedKhan-dev/train-llm-from-scratch"
+},
+"ghrepo:MaximeVandegar/Papers-in-100-Lines-of-Code": {
+"first_seen": "2026-08-16",
+"mag": 3.9791,
+"mag_history": [
+3.9786,
+3.9791
+],
+"score": 3,
+"streak": 2,
 "title": "MaximeVandegar/Papers-in-100-Lines-of-Code \u2014 Implementation of papers in 100 lines of code.",
 "url": "https://github.com/MaximeVandegar/Papers-in-100-Lines-of-Code"
 },
 "ghrepo:Observal/Observal": {
 "first_seen": "2026-08-16",
-"mag": 3.8836,
+"mag": 3.8838,
 "mag_history": [
-3.8836
+3.8836,
+3.8838
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "Observal/Observal \u2014 Observal is a local registry and analytics platform for your AI components.  Setup Observal, define the scope and share your Skills, MCPs and Agents.",
 "url": "https://github.com/Observal/Observal"
+},
+"ghrepo:fallenshock/FlowEdit": {
+"first_seen": "2026-08-17",
+"mag": 3.4608,
+"mag_history": [
+3.4608
+],
+"score": 4,
+"streak": 1,
+"title": "fallenshock/FlowEdit \u2014 Official implementation of the paper: \"FlowEdit: Inversion-Free Text-Based Editing Using Pre-Trained Flow Models\"",
+"url": "https://github.com/fallenshock/FlowEdit"
 },
 "ghrepo:gracezhao1997/Awesome-Video-World-Models-with-AR-Diffusion": {
 "first_seen": "2026-08-13",
@@ -452,21 +491,23 @@
 "mag_history": [
 3.2705,
 3.2705,
+3.2712,
 3.2712
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "gracezhao1997/Awesome-Video-World-Models-with-AR-Diffusion \u2014 A Curated List of Awesome Video World Models with AR Diffusion: Covering Algorithms, Applications, and Infrastructure, Aimed at Serving as a Comprehensive Resource for Researchers, Practitioners, and Enthusiasts.",
 "url": "https://github.com/gracezhao1997/Awesome-Video-World-Models-with-AR-Diffusion"
 },
 "ghrepo:mrbizarro/Phosphene": {
 "first_seen": "2026-08-16",
-"mag": 2.5313,
+"mag": 2.5469,
 "mag_history": [
-2.5313
+2.5313,
+2.5469
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "mrbizarro/Phosphene \u2014 Run MiniMax Hailuo H3 and LTX-2.5 video generation locally on a Mac. Joint audio+video, character LoRA training, one-click Pinokio install. MLX \u2014 no CUDA, no cloud, no API key.",
 "url": "https://github.com/mrbizarro/Phosphene"
 },
@@ -477,140 +518,173 @@
 2.7667,
 2.7687,
 2.7687,
+2.7687,
 2.7687
 ],
 "score": 4,
-"streak": 4,
+"streak": 5,
 "title": "tsiendragon/qwen-image-finetune \u2014 Repo for Qwen Image Finetune",
 "url": "https://github.com/tsiendragon/qwen-image-finetune"
 },
 "hfdataset:cais/hle": {
 "first_seen": "2026-08-16",
-"mag": 4.7694,
+"mag": 4.7709,
 "mag_history": [
-4.7694
+4.7694,
+4.7709
 ],
 "score": 4,
-"streak": 1,
+"streak": 2,
 "title": "cais/hle (HF Dataset)",
 "url": "https://huggingface.co/datasets/cais/hle"
 },
-"hfmodel:MiniMaxAI/MiniMax-Music3": {
-"first_seen": "2026-08-14",
-"mag": 4.6748,
+"hfdataset:saidutta69/fable-5-premium": {
+"first_seen": "2026-08-17",
+"mag": 1.9408,
 "mag_history": [
-4.3844,
-4.6748
+1.9408
+],
+"score": 1,
+"streak": 1,
+"title": "saidutta69/fable-5-premium (HF Dataset)",
+"url": "https://huggingface.co/datasets/saidutta69/fable-5-premium"
+},
+"hfmodel:JonathanColetti/Qwen3.8-27B-Uncensored-GGUF": {
+"first_seen": "2026-08-17",
+"mag": 3.8706,
+"mag_history": [
+3.8706
 ],
 "score": 3,
-"streak": 2,
+"streak": 1,
+"title": "JonathanColetti/Qwen3.8-27B-Uncensored-GGUF (HF Model)",
+"url": "https://huggingface.co/JonathanColetti/Qwen3.8-27B-Uncensored-GGUF"
+},
+"hfmodel:MiniMaxAI/MiniMax-Music3": {
+"first_seen": "2026-08-14",
+"mag": 4.7451,
+"mag_history": [
+4.3844,
+4.6748,
+4.7451
+],
+"score": 3,
+"streak": 3,
 "title": "MiniMaxAI/MiniMax-Music3 (HF Model)",
 "url": "https://huggingface.co/MiniMaxAI/MiniMax-Music3"
 },
 "hfmodel:Qwen/Qwen3.8-2.4T-A95B": {
 "first_seen": "2026-08-13",
-"mag": 4.8305,
+"mag": 4.852,
 "mag_history": [
 4.5696,
 4.7323,
-4.8305
+4.8305,
+4.852
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "Qwen/Qwen3.8-2.4T-A95B (HF Model)",
 "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
 },
 "hfmodel:deepseek-ai/DeepSeek-V4-Pro-0813": {
 "first_seen": "2026-08-14",
-"mag": 4.3682,
+"mag": 4.4245,
 "mag_history": [
 4.1709,
-4.3682
+4.3682,
+4.4245
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "deepseek-ai/DeepSeek-V4-Pro-0813 (HF Model)",
 "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813"
 },
 "hfmodel:endless-frontier/BigBang-v1": {
 "first_seen": "2026-08-13",
-"mag": 3.7053,
+"mag": 3.7123,
 "mag_history": [
 3.6618,
 3.6839,
-3.7053
+3.7053,
+3.7123
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "endless-frontier/BigBang-v1 (HF Model)",
 "url": "https://huggingface.co/endless-frontier/BigBang-v1"
 },
 "hfmodel:meta-models/Muse-Glimmer-30B": {
 "first_seen": "2026-08-10",
-"mag": 5.1644,
+"mag": 5.1843,
 "mag_history": [
 3.5167,
 4.7869,
 4.9507,
 5.0507,
 5.107,
-5.1644
+5.1644,
+5.1843
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "meta-models/Muse-Glimmer-30B (HF Model)",
 "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B"
 },
 "hfmodel:meta-models/Muse-Glimmer-30B-GGUF": {
 "first_seen": "2026-08-12",
-"mag": 3.9665,
+"mag": 4.0133,
 "mag_history": [
 3.7691,
 3.865,
 3.8952,
-3.9665
+3.9665,
+4.0133
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "meta-models/Muse-Glimmer-30B-GGUF (HF Model)",
 "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B-GGUF"
 },
 "hfmodel:nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4": {
 "first_seen": "2026-08-13",
-"mag": 3.9493,
+"mag": 3.9973,
 "mag_history": [
 3.7787,
 3.8364,
-3.9493
+3.9493,
+3.9973
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4 (HF Model)",
 "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4"
 },
 "hfmodel:orcarouter/Qwen3.8-27B-Uncensored-FP8": {
 "first_seen": "2026-08-16",
-"mag": 3.8871,
+"mag": 4.1709,
 "mag_history": [
-3.8871
+3.8871,
+4.1709
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "orcarouter/Qwen3.8-27B-Uncensored-FP8 (HF Model)",
 "url": "https://huggingface.co/orcarouter/Qwen3.8-27B-Uncensored-FP8"
 },
 "hfmodel:unsloth/Muse-Glimmer-30B-GGUF": {
 "first_seen": "2026-08-11",
-"mag": 4.2671,
+"mag": 4.2994,
 "mag_history": [
 3.8871,
 4.0572,
 4.1544,
 4.194,
-4.2671
+4.2671,
+4.2994
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "unsloth/Muse-Glimmer-30B-GGUF (HF Model)",
 "url": "https://huggingface.co/unsloth/Muse-Glimmer-30B-GGUF"
 }
