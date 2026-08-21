@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-20T16:18:27.289112+00:00",
+  "generated": "2026-08-21T16:16:59.078618+00:00",
   "repo": "amaljithkuttamath/ai-radar",
   "status": "down",
   "signals": [
@@ -25,9 +25,9 @@
       "key": "evals",
       "label": "Eval loop",
       "status": "down",
-      "age_h": 915.7,
+      "age_h": 939.7,
       "threshold_h": 48,
-      "detail": "grader last committed 38d ago",
+      "detail": "grader last committed 39d ago",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json"
     }
   ],
@@ -38,8 +38,8 @@
       "status": "ok",
       "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": "2026-08-20T11:19:43Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/32363229555",
+      "last_run_at": "2026-08-21T11:18:38Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/32476586921",
       "observed": true
     },
     {
@@ -48,8 +48,8 @@
       "status": "ok",
       "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": "2026-08-20T11:22:53Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/32363268535",
+      "last_run_at": "2026-08-21T11:21:01Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/32476621060",
       "observed": true
     },
     {
@@ -58,8 +58,8 @@
       "status": "warn",
       "conclusion": "failure",
       "fail_streak": 15,
-      "last_run_at": "2026-08-20T15:28:19Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/32386302867",
+      "last_run_at": "2026-08-21T15:27:32Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/32497676715",
       "observed": true
     }
   ]
