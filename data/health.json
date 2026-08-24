@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-23T16:09:26.672124+00:00",
+  "generated": "2026-08-24T16:20:25.529825+00:00",
   "repo": "amaljithkuttamath/ai-radar",
   "status": "down",
   "signals": [
@@ -7,7 +7,7 @@
       "key": "digest",
       "label": "Daily digest",
       "status": "ok",
-      "age_h": 4.9,
+      "age_h": 5.0,
       "threshold_h": 48,
       "detail": "last digest committed 4h ago",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md"
@@ -25,9 +25,9 @@
       "key": "evals",
       "label": "Eval loop",
       "status": "down",
-      "age_h": 987.5,
+      "age_h": 1011.7,
       "threshold_h": 48,
-      "detail": "grader last committed 41d ago",
+      "detail": "grader last committed 42d ago",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json"
     }
   ],
@@ -38,8 +38,8 @@
       "status": "ok",
       "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": "2026-08-23T11:14:13Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/32635955242",
+      "last_run_at": "2026-08-24T11:19:47Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/32721263693",
       "observed": true
     },
     {
@@ -48,8 +48,8 @@
       "status": "ok",
       "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": "2026-08-23T11:15:29Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/32635973165",
+      "last_run_at": "2026-08-24T11:21:04Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/32721303148",
       "observed": true
     },
     {
@@ -58,8 +58,8 @@
       "status": "warn",
       "conclusion": "failure",
       "fail_streak": 15,
-      "last_run_at": "2026-08-23T15:17:07Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/32648057493",
+      "last_run_at": "2026-08-24T15:34:23Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/32745650887",
       "observed": true
     }
   ]
