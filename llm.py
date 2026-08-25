@@ -64,6 +64,7 @@ _FAMILY_HINTS = {
     "mistral": "mistral", "mixtral": "mistral", "magistral": "mistral",
     "deepseek": "deepseek",
     "grok": "xai", "x-ai": "xai",
+    "nemotron": "nvidia", "nvidia": "nvidia",
     "sonar": "perplexity", "perplexity": "perplexity",
     "command": "cohere", "cohere": "cohere",
     "nova": "amazon",
