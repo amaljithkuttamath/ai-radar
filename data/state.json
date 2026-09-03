@@ -4,168 +4,100 @@
 "mag": 6.1934,
 "mag_history": [
 6.1003,
-6.1003,
 6.1323,
 6.1429,
 6.1429,
 6.1534,
+6.1934,
 6.1934
 ],
 "score": 3,
-"streak": 11,
+"streak": 12,
 "title": "Co-RL: Unsupervised Reasoning Emerges from Diverse Cohort in Multi-agent RL",
 "url": "https://arxiv.org/abs/2608.17253"
 },
-"arxiv:2608.17271": {
-"first_seen": "2026-08-19",
-"mag": 6.9882,
-"mag_history": [
-6.5598,
-6.6861,
-6.7997,
-6.9078,
-6.9497,
-6.9551,
-6.9882
-],
-"score": 4,
-"streak": 12,
-"title": "ASI-Bench: At the Dawn of Artificial Superintelligence",
-"url": "https://arxiv.org/abs/2608.17271"
-},
-"arxiv:2608.17310": {
-"first_seen": "2026-08-19",
-"mag": 6.7444,
-"mag_history": [
-6.5461,
-6.5999,
-6.6391,
-6.658,
-6.6673,
-6.7283,
-6.7444
-],
-"score": 3,
-"streak": 12,
-"title": "Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements",
-"url": "https://arxiv.org/abs/2608.17310"
-},
-"arxiv:2608.17512": {
-"first_seen": "2026-08-19",
-"mag": 6.6832,
-"mag_history": [
-6.6548,
-6.6571,
-6.6593,
-6.6659,
-6.6681,
-6.6768,
-6.6832
-],
-"score": 4,
-"streak": 12,
-"title": "Embodied-Navigator: Point, Think, Memorize, and Align for Efficient Navigation",
-"url": "https://arxiv.org/abs/2608.17512"
-},
-"arxiv:2608.17566": {
-"first_seen": "2026-08-19",
-"mag": 4.5055,
-"mag_history": [
-4.382,
-4.4016,
-4.4205,
-4.4562,
-4.4562,
-4.4732,
-4.5055
-],
-"score": 2,
-"streak": 12,
-"title": "CoinVE-200K: A Large-Scale High-Quality Dataset for Compositional Instruction-Guided Video Editing",
-"url": "https://arxiv.org/abs/2608.17566"
-},
 "arxiv:2608.18565": {
 "first_seen": "2026-08-20",
-"mag": 6.9275,
+"mag": 6.9405,
 "mag_history": [
-6.7838,
 6.8176,
 6.8645,
 6.8864,
 6.8935,
 6.9005,
-6.9275
+6.9275,
+6.9405
 ],
 "score": 3,
-"streak": 11,
+"streak": 12,
 "title": "SemaPLC: A Project-Grounded, Verification-Gated Agent Harness for PLC Code Generation",
 "url": "https://arxiv.org/abs/2608.18565"
 },
 "arxiv:2608.19197": {
 "first_seen": "2026-08-20",
-"mag": 6.1726,
+"mag": 6.1956,
 "mag_history": [
-5.9534,
 6.0384,
 6.0826,
 6.0896,
 6.1033,
 6.1423,
-6.1726
+6.1726,
+6.1956
 ],
 "score": 3,
-"streak": 11,
+"streak": 12,
 "title": "SPADE: Self-Play in Adaptive Synthetic Executable Environments",
 "url": "https://arxiv.org/abs/2608.19197"
 },
 "arxiv:2608.19799": {
 "first_seen": "2026-08-21",
-"mag": 6.355,
+"mag": 6.3616,
 "mag_history": [
-6.1487,
 6.1907,
 6.2759,
 6.3127,
 6.3127,
 6.3484,
-6.355
+6.355,
+6.3616
 ],
 "score": 3,
-"streak": 10,
+"streak": 11,
 "title": "SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?",
 "url": "https://arxiv.org/abs/2608.19799"
 },
 "arxiv:2608.19880": {
 "first_seen": "2026-08-21",
-"mag": 8.7234,
+"mag": 8.7369,
 "mag_history": [
-8.4292,
 8.4967,
 8.5407,
 8.5536,
 8.5679,
 8.6777,
-8.7234
+8.7234,
+8.7369
 ],
 "score": 3,
-"streak": 10,
+"streak": 11,
 "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
 "url": "https://arxiv.org/abs/2608.19880"
 },
 "arxiv:2608.20335": {
 "first_seen": "2026-08-21",
-"mag": 7.9387,
+"mag": 7.9528,
 "mag_history": [
-7.4839,
 7.6148,
 7.6702,
 7.741,
 7.8034,
 7.8923,
-7.9387
+7.9387,
+7.9528
 ],
 "score": 3,
-"streak": 10,
+"streak": 11,
 "title": "4DAnyone: Create Anyone in 4D from a Casual Monocular Video",
 "url": "https://arxiv.org/abs/2608.20335"
 },
@@ -178,87 +110,93 @@
 3.7136,
 3.7377,
 3.7377,
+3.7377,
 3.7377
 ],
 "score": 4,
-"streak": 6,
+"streak": 7,
 "title": "MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks",
 "url": "https://arxiv.org/abs/2608.23035"
 },
 "arxiv:2608.23189": {
 "first_seen": "2026-08-25",
-"mag": 8.181,
+"mag": 8.1815,
 "mag_history": [
 3.9703,
 8.0293,
 8.0944,
 8.1101,
 8.1787,
-8.181
+8.181,
+8.1815
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "EchoWM: Open and Enterable Omnimodal World Models",
 "url": "https://arxiv.org/abs/2608.23189"
 },
 "arxiv:2608.23283": {
 "first_seen": "2026-08-25",
-"mag": 8.9435,
+"mag": 8.9918,
 "mag_history": [
 5.0039,
 8.5384,
 8.7891,
 8.8558,
 8.9142,
-8.9435
+8.9435,
+8.9918
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "Apodex 1.1: Scaling Agentic Intelligence for Complex Work",
 "url": "https://arxiv.org/abs/2608.23283"
 },
 "arxiv:2608.24053": {
 "first_seen": "2026-08-26",
-"mag": 7.7404,
+"mag": 7.7714,
 "mag_history": [
 3.9318,
 7.2046,
 7.5055,
 7.6875,
-7.7404
+7.7404,
+7.7714
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "WeMM-Embedding: WeChat Multi-Modal Embedding Technical Report",
 "url": "https://arxiv.org/abs/2608.24053"
 },
 "arxiv:2608.24646": {
 "first_seen": "2026-08-26",
-"mag": 7.015,
+"mag": 7.0351,
 "mag_history": [
 3.7842,
 6.4372,
 6.6547,
 6.9302,
-7.015
+7.015,
+7.0351
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "On-Policy Self-Distillation in Diffusion Models",
 "url": "https://arxiv.org/abs/2608.24646"
 },
 "arxiv:2608.24876": {
 "first_seen": "2026-08-26",
-"mag": 5.7972,
+"mag": 5.8309,
 "mag_history": [
 2.8332,
 2.8332,
 2.8332,
 2.8332,
-5.7972
+5.7972,
+5.8309
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "Recursive Experiential-Working Memory Evolution for Long-Horizon Agent Harnesses",
 "url": "https://arxiv.org/abs/2608.24876"
 },
@@ -269,63 +207,68 @@
 2.7726,
 2.7726,
 2.7726,
+2.8332,
 2.8332
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "Video-IFBench: Evaluating Instruction Following of Multimodal LLMs in Video Understanding Scenarios",
 "url": "https://arxiv.org/abs/2608.25529"
 },
 "arxiv:2608.25580": {
 "first_seen": "2026-09-02",
-"mag": 4.7185,
+"mag": 4.7482,
 "mag_history": [
-4.7185
+4.7185,
+4.7482
 ],
 "score": 2,
-"streak": 1,
+"streak": 2,
 "title": "V-Rubrics: Visual Faithfulness via Rubric-Based Reinforcement Learning",
 "url": "https://arxiv.org/abs/2608.25580"
 },
 "arxiv:2608.25593": {
 "first_seen": "2026-08-27",
-"mag": 7.5143,
+"mag": 7.5602,
 "mag_history": [
 3.8712,
 6.7845,
 7.4084,
-7.5143
+7.5143,
+7.5602
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
 "url": "https://arxiv.org/abs/2608.25593"
 },
 "arxiv:2608.26005": {
 "first_seen": "2026-08-27",
-"mag": 8.3225,
+"mag": 8.3714,
 "mag_history": [
 5.0106,
 7.5951,
 8.1839,
-8.3225
+8.3225,
+8.3714
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "VoiceMem: Streaming Dual-Brain Memory for Real-Time Interaction",
 "url": "https://arxiv.org/abs/2608.26005"
 },
 "arxiv:2608.26067": {
 "first_seen": "2026-08-27",
-"mag": 5.5666,
+"mag": 5.5977,
 "mag_history": [
 2.8332,
 2.8332,
 2.8332,
-5.5666
+5.5666,
+5.5977
 ],
 "score": 4,
-"streak": 4,
+"streak": 5,
 "title": "StreamPI: Streaming Multimodal Temporal Modeling for Vision-Language-Action Models",
 "url": "https://arxiv.org/abs/2608.26067"
 },
@@ -336,3467 +279,3154 @@
 3.7842,
 6.8501,
 7.1967,
+7.2463,
 7.2463
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "VBVR-Pro: A Scalable and Verifiable Suite for Native Visual Reasoning",
 "url": "https://arxiv.org/abs/2608.26105"
 },
 "arxiv:2608.26809": {
 "first_seen": "2026-08-28",
-"mag": 2.6391,
+"mag": 2.8842,
 "mag_history": [
 1.6094,
 1.6094,
-2.6391
+2.6391,
+2.8842
 ],
 "score": 2,
-"streak": 3,
+"streak": 4,
 "title": "Thinking on Shots: Consistent Multi-Shot Video Editing with Agentic Reasoning",
 "url": "https://arxiv.org/abs/2608.26809"
 },
 "arxiv:2608.26872": {
 "first_seen": "2026-08-28",
-"mag": 4.382,
+"mag": 4.3944,
 "mag_history": [
 4.0254,
 4.3041,
-4.382
+4.382,
+4.3944
 ],
 "score": 2,
-"streak": 3,
+"streak": 4,
 "title": "Self-OPD: On-Policy Distillation for Flow Matching Models without Teacher",
 "url": "https://arxiv.org/abs/2608.26872"
 },
 "arxiv:2608.27123": {
 "first_seen": "2026-08-28",
-"mag": 3.31,
+"mag": 3.5088,
 "mag_history": [
 1.0986,
 1.0986,
-3.31
+3.31,
+3.5088
 ],
 "score": 2,
-"streak": 3,
+"streak": 4,
 "title": "EditaLive! Unified Character Video Editing for Live Streaming",
 "url": "https://arxiv.org/abs/2608.27123"
 },
 "arxiv:2608.27260": {
 "first_seen": "2026-08-28",
-"mag": 4.2485,
+"mag": 4.2627,
 "mag_history": [
 4.0254,
 4.1744,
-4.2485
+4.2485,
+4.2627
 ],
 "score": 2,
-"streak": 3,
+"streak": 4,
 "title": "What Makes Good Agentic Data? An ACE Lens on Data Generation for LLM Agents",
 "url": "https://arxiv.org/abs/2608.27260"
 },
 "arxiv:2608.27345": {
 "first_seen": "2026-08-28",
-"mag": 5.9288,
+"mag": 5.9428,
 "mag_history": [
 4.3041,
 5.9074,
-5.9288
+5.9288,
+5.9428
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "PAWBench: How Far Are We from Probabilistically Aligned World Modeling?",
 "url": "https://arxiv.org/abs/2608.27345"
 },
 "arxiv:2608.27448": {
 "first_seen": "2026-08-28",
-"mag": 6.2008,
+"mag": 6.2389,
 "mag_history": [
 4.1431,
 6.0536,
-6.2008
+6.2008,
+6.2389
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "TTPO: Test-Time Policy Optimization",
 "url": "https://arxiv.org/abs/2608.27448"
 },
 "arxiv:2608.27456": {
 "first_seen": "2026-08-28",
-"mag": 7.0369,
+"mag": 7.0459,
 "mag_history": [
 4.2485,
 7.0453,
-7.0369
+7.0369,
+7.0459
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City",
 "url": "https://arxiv.org/abs/2608.27456"
 },
-"arxiv:2609.00193": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
+"arxiv:2609.00474": {
+"first_seen": "2026-09-03",
+"mag": 1.6094,
 "mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Provably Efficient Federated Reinforcement Learning with Linear Function Approximation and Logarithmic Communication Cost",
-"url": "http://arxiv.org/abs/2609.00193v1"
-},
-"arxiv:2609.00279": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Exact Global MCMC with Denoising Diffusion",
-"url": "http://arxiv.org/abs/2609.00279v1"
-},
-"arxiv:2609.00402": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "A convolutional framework for detecting event-driven dynamics in energy price series",
-"url": "http://arxiv.org/abs/2609.00402v1"
-},
-"arxiv:2609.00515": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "The Interlingua Hypothesis: LLMs Translate via a Latent Task-agnostic Feature Space",
-"url": "http://arxiv.org/abs/2609.00515v1"
-},
-"arxiv:2609.00519": {
-"first_seen": "2026-09-02",
-"mag": 1.3863,
-"mag_history": [
-1.3863
-],
-"score": 0,
-"streak": 1,
-"title": "The Safeguard Worked. Is the LLM System Safer?",
-"url": "https://arxiv.org/abs/2609.00519"
-},
-"arxiv:2609.00549": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Skill Following: Evaluating Actual Skill Use in Retrieval-Enabled LLM Agents",
-"url": "http://arxiv.org/abs/2609.00549v1"
-},
-"arxiv:2609.00550": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Same Semantics, Different Outcome: On the Modality Robustness of Multimodal LLMs under Knowledge Conflict",
-"url": "http://arxiv.org/abs/2609.00550v1"
-},
-"arxiv:2609.00551": {
-"first_seen": "2026-09-02",
-"mag": 1.9459,
-"mag_history": [
-1.9459
+1.6094
 ],
 "score": 2,
 "streak": 1,
-"title": "EM^2Mem: Event-Centric Multimodal Memory for Large Language Models",
-"url": "https://arxiv.org/abs/2609.00551"
-},
-"arxiv:2609.00565": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Aligned but Flattened: Analyzing the Trade-off between Cultural Alignment and Diversity in LLMs",
-"url": "http://arxiv.org/abs/2609.00565v1"
-},
-"arxiv:2609.00566": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "EEG-VID: Task-Guided Latent Predictive Pretraining for EEG Decoding and Assistive Target Selection",
-"url": "http://arxiv.org/abs/2609.00566v1"
-},
-"arxiv:2609.00570": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "VoiceLongMemEval: Do Assistants Remember How You Sounded?",
-"url": "http://arxiv.org/abs/2609.00570v1"
-},
-"arxiv:2609.00576": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Consistency Without Alignment: Item-Sensitive Language Models Indistinguishable From Random",
-"url": "http://arxiv.org/abs/2609.00576v1"
-},
-"arxiv:2609.00577": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "GeoPAR: Large-Scale Multi-Agent Combinatorial Optimization with Geometry-Guided Parallel Autoregressive Learning",
-"url": "http://arxiv.org/abs/2609.00577v1"
-},
-"arxiv:2609.00579": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Predicting Program Exit Code with LLMs and Programming Language Semantics",
-"url": "http://arxiv.org/abs/2609.00579v1"
-},
-"arxiv:2609.00581": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Enoki: Efficient Multi-Level Hallucination Detection",
-"url": "http://arxiv.org/abs/2609.00581v1"
-},
-"arxiv:2609.00585": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Real-Time Neuromorphic Spectrum Intelligence Simulator",
-"url": "http://arxiv.org/abs/2609.00585v1"
-},
-"arxiv:2609.00588": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Quit While You're Ahead: Quit for Efficient Candidate Generation in Machine Translation Reranking",
-"url": "http://arxiv.org/abs/2609.00588v1"
-},
-"arxiv:2609.00590": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "CRAFT: Fine-Tuning Pre-hoc Explainability in AI-native 6G RAN",
-"url": "http://arxiv.org/abs/2609.00590v1"
-},
-"arxiv:2609.00597": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Topological Steering",
-"url": "http://arxiv.org/abs/2609.00597v1"
-},
-"arxiv:2609.00605": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Confess What You Know: Forget-Set Misalignment with Model Knowledge in LLM Unlearning",
-"url": "http://arxiv.org/abs/2609.00605v1"
-},
-"arxiv:2609.00608": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Investigating Assistant Bias in LLM User Simulators Using a Role Vector",
-"url": "http://arxiv.org/abs/2609.00608v1"
-},
-"arxiv:2609.00615": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "BeamRMX: Radiation-Pattern-Driven Learning for Generalizable Beam Radio Map Prediction and Beam Management",
-"url": "http://arxiv.org/abs/2609.00615v1"
-},
-"arxiv:2609.00616": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "An efficient EM algorithm for both element-wise and structural missingness in matrix-variate normal mixture models",
-"url": "http://arxiv.org/abs/2609.00616v1"
-},
-"arxiv:2609.00621": {
-"first_seen": "2026-09-02",
-"mag": 1.7918,
-"mag_history": [
-1.7918
-],
-"score": 1,
-"streak": 1,
-"title": "Control-Data Flow Separation: Stable Prompt Optimization in Multi-Agent LLMs",
-"url": "https://arxiv.org/abs/2609.00621"
-},
-"arxiv:2609.00624": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Trust Your Guide Only When Certain: Uncertainty-Aware Sparse Alignment at Inference Time",
-"url": "http://arxiv.org/abs/2609.00624v1"
-},
-"arxiv:2609.00629": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "ExpArt-KG: Artwork Image Description Generation through Iterative Exploration of Knowledge Graphs",
-"url": "http://arxiv.org/abs/2609.00629v1"
+"title": "Exploring Collaboration between a language and a non-language agent",
+"url": "https://arxiv.org/abs/2609.00474"
 },
 "arxiv:2609.00632": {
 "first_seen": "2026-09-02",
 "mag": 0.0,
 "mag_history": [
+0.0,
 0.0
 ],
-"score": 3,
-"streak": 1,
+"score": 2,
+"streak": 2,
 "title": "Breaking the Structural Identity: Personalized Federated LoRA Fine-tuning under Rank Heterogeneity",
 "url": "http://arxiv.org/abs/2609.00632v1"
 },
-"arxiv:2609.00638": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "It Takes Two to Match: Co-Evolving Generative Retriever with Reinforcement Learning",
-"url": "http://arxiv.org/abs/2609.00638v1"
-},
-"arxiv:2609.00644": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Disciplined Bilevel Programming",
-"url": "http://arxiv.org/abs/2609.00644v1"
-},
-"arxiv:2609.00647": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "DK-GBMKKM: Dynamic Kernel-Space Granular-Ball Multiple Kernel $k$-Means Clustering",
-"url": "http://arxiv.org/abs/2609.00647v1"
-},
-"arxiv:2609.00652": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Self-Reports Are Not Verification: Environment-Grounded Auditing of LLM Operators in Evolutionary Search",
-"url": "http://arxiv.org/abs/2609.00652v1"
-},
-"arxiv:2609.00653": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "EEG-AS: Instance-Level Foundation Model Selection for EEG Foundation Models via Behavior Reconstruction",
-"url": "http://arxiv.org/abs/2609.00653v1"
-},
-"arxiv:2609.00654": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "SciTrue: Reliable Scientific Claim Validation with Frontier and Open Language Models at the NTCIR SciClaimEval Task",
-"url": "http://arxiv.org/abs/2609.00654v1"
-},
-"arxiv:2609.00679": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "HarmoCore: Functional Latent Diffusion for Sparse Reconstruction of Oscillatory Wave Fields",
-"url": "http://arxiv.org/abs/2609.00679v1"
-},
-"arxiv:2609.00683": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Creative Generation via Multi-Agent Debate: Does Debate Suppress Diversity?",
-"url": "http://arxiv.org/abs/2609.00683v1"
-},
-"arxiv:2609.00685": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Visual Framing for News Stance Detection via Image Generation",
-"url": "http://arxiv.org/abs/2609.00685v1"
-},
-"arxiv:2609.00686": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "A Study of Hidden-State Optimization Order in Predictive Coding Networks",
-"url": "http://arxiv.org/abs/2609.00686v1"
-},
-"arxiv:2609.00689": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "SCoNE: Selective Context-aware Neuron Editing for Robust Retrieval-Augmented Generation",
-"url": "http://arxiv.org/abs/2609.00689v1"
-},
-"arxiv:2609.00691": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Verdict Instability of OOD Scores under Reference Resampling",
-"url": "http://arxiv.org/abs/2609.00691v1"
-},
-"arxiv:2609.00696": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "MUGEN: Generating Unlearnable Graph Examples for Multiple Learning Tasks",
-"url": "http://arxiv.org/abs/2609.00696v1"
-},
-"arxiv:2609.00699": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Patterning in Practice: Debiasing Reward Models with Susceptibilities",
-"url": "http://arxiv.org/abs/2609.00699v1"
-},
-"arxiv:2609.00700": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Value Over Language Model: Detecting Original Contribution in Writing",
-"url": "http://arxiv.org/abs/2609.00700v1"
-},
-"arxiv:2609.00706": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "A Certificate-Producing Cascade for Equational Implication: The SAIR EQT2 Stage 2 Solver",
-"url": "http://arxiv.org/abs/2609.00706v1"
-},
-"arxiv:2609.00709": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Controllable Image Captioning with Prompt-Conditioned Scene Rewards",
-"url": "http://arxiv.org/abs/2609.00709v1"
-},
-"arxiv:2609.00710": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Prediction-Assisted Pricing and Admission for LLM APIs with Stochastic Token Consumption",
-"url": "http://arxiv.org/abs/2609.00710v1"
-},
-"arxiv:2609.00714": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "ChatDev 2.0: A No-Code Multi-Agent Platform for Developing Everything",
-"url": "http://arxiv.org/abs/2609.00714v1"
-},
-"arxiv:2609.00715": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "MaskCode: Mask Transformer for Feedback-Assisted Coding With Linear Block Codes",
-"url": "http://arxiv.org/abs/2609.00715v1"
-},
-"arxiv:2609.00728": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "SOVER: Formal Certification of Optimization Reformulations via LLM-Assisted SMT Verification",
-"url": "http://arxiv.org/abs/2609.00728v1"
-},
-"arxiv:2609.00731": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Agentic Empirical Asset Pricing: Methodological Foundations",
-"url": "http://arxiv.org/abs/2609.00731v1"
-},
-"arxiv:2609.00734": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Online Self-Weighted Fine-Tuning",
-"url": "http://arxiv.org/abs/2609.00734v1"
-},
-"arxiv:2609.00746": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Text Capability Loss in Vision-Language Adaptation: An Attention-Sink Diagnosis",
-"url": "http://arxiv.org/abs/2609.00746v1"
-},
-"arxiv:2609.00747": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Can Large Language Models Forecast What Researchers Study Next?",
-"url": "http://arxiv.org/abs/2609.00747v1"
-},
-"arxiv:2609.00748": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Measuring Optimal Transport in Transformer Depth",
-"url": "http://arxiv.org/abs/2609.00748v1"
-},
-"arxiv:2609.00753": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "How Do Language Models Choose Between Context and Memory?",
-"url": "http://arxiv.org/abs/2609.00753v1"
-},
-"arxiv:2609.00756": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Joint Training Is Not Enough: Conditioned Cross-Granularity Training for Multimodal Document Understanding",
-"url": "http://arxiv.org/abs/2609.00756v1"
-},
-"arxiv:2609.00759": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Compile, Don't Memorize: A Context Compilation Architecture (CCA) for In-Context Learning",
-"url": "http://arxiv.org/abs/2609.00759v1"
-},
-"arxiv:2609.00760": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "A Unified Mechanistic Analysis of Knowledge- and Safety-Based Refusals",
-"url": "http://arxiv.org/abs/2609.00760v1"
-},
-"arxiv:2609.00762": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Frozen Cores Need Task Signal: Fisher-Whitened Cross-Covariance for Low-Resource LLM Adaptation",
-"url": "http://arxiv.org/abs/2609.00762v1"
-},
-"arxiv:2609.00764": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Are You Thinking What I am Thinking? : Examining Conceptual Separation in Neural Architectures",
-"url": "http://arxiv.org/abs/2609.00764v1"
-},
 "arxiv:2609.00768": {
 "first_seen": "2026-09-02",
-"mag": 2.4849,
+"mag": 2.8904,
 "mag_history": [
-2.4849
+2.4849,
+2.8904
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "DiagEvo: Diagnosis-Guided Self-Evolution via Hierarchical Error Memory",
 "url": "https://arxiv.org/abs/2609.00768"
 },
-"arxiv:2609.00773": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Deep Skew-t Mixture Models",
-"url": "http://arxiv.org/abs/2609.00773v1"
-},
-"arxiv:2609.00774": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Semi-Supervised Classification with Informative Missing Labels in Weibull Mixture Models",
-"url": "http://arxiv.org/abs/2609.00774v1"
-},
-"arxiv:2609.00782": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "When Features Become Instances: Inverted Contrastive Learning for Unsupervised Feature Selection",
-"url": "http://arxiv.org/abs/2609.00782v1"
-},
-"arxiv:2609.00789": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Subspace Levenberg Marquardt Algorithms in Training Neural Networks",
-"url": "http://arxiv.org/abs/2609.00789v1"
-},
-"arxiv:2609.00791": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "Instella-MoE Technical Report",
-"url": "http://arxiv.org/abs/2609.00791v1"
-},
-"arxiv:2609.00796": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "SFAD: Speculative Factuality-Aware Decoding",
-"url": "http://arxiv.org/abs/2609.00796v1"
-},
-"arxiv:2609.00802": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "TEIDAN: A Multilingual Multiparty Dialogue Corpus",
-"url": "http://arxiv.org/abs/2609.00802v1"
-},
-"arxiv:2609.00808": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Ctrl-F-Resist. Practices, Challenges, and Technical Needs of Civil Society Organizations Monitoring the Far-Right Online",
-"url": "http://arxiv.org/abs/2609.00808v1"
-},
-"arxiv:2609.00823": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Polished but Unresolved: Identifying Late-Stage Pressure States in Long-Horizon Tool-Use Agents",
-"url": "http://arxiv.org/abs/2609.00823v1"
-},
-"arxiv:2609.00829": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "HarnessEvolve: Learning from Reference Trajectories for Reliable Agent Self-Evolution",
-"url": "http://arxiv.org/abs/2609.00829v1"
-},
-"arxiv:2609.00832": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "TWIX: a Two-Stage Approach for End-To-End Named Entity Recognition and Relation Extraction",
-"url": "http://arxiv.org/abs/2609.00832v1"
-},
-"arxiv:2609.00833": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Dense Process Supervision for Search Agents via Fact Utility Estimation",
-"url": "http://arxiv.org/abs/2609.00833v1"
-},
-"arxiv:2609.00834": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Replacing Training with Memory: Listwise Selection for Text-to-SQL",
-"url": "http://arxiv.org/abs/2609.00834v1"
-},
-"arxiv:2609.00844": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Staged Linguistic Seeding: Grounded Query Expansion for Verified-Unit QA in AI Contact Centers",
-"url": "http://arxiv.org/abs/2609.00844v1"
-},
-"arxiv:2609.00847": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "A Checklist to assess the energy and carbon impacts of ML/AI applications in Earth System Modeling",
-"url": "http://arxiv.org/abs/2609.00847v1"
-},
-"arxiv:2609.00854": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Does Fault Localization Beat a Fresh Attempt? A Placebo-Controlled Study of Test-Guided Code Repair",
-"url": "http://arxiv.org/abs/2609.00854v1"
-},
-"arxiv:2609.00858": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Verifiable Disaster Storylines and Causal Knowledge Graphs: A Citation-Grounded Pipeline from Heterogeneous Humanitarian Sources",
-"url": "http://arxiv.org/abs/2609.00858v1"
-},
-"arxiv:2609.00863": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Conditional Flow Matching for ML-Based Inverse Design Problems",
-"url": "http://arxiv.org/abs/2609.00863v1"
-},
-"arxiv:2609.00865": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "MemoryWalker: Stop Training Agents on Contexts They Never Saw",
-"url": "http://arxiv.org/abs/2609.00865v1"
-},
-"arxiv:2609.00868": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "The Visual Insensitivity Gap: Diagnosing When Vision-Language Models Fail to Use Visual Evidence",
-"url": "http://arxiv.org/abs/2609.00868v1"
-},
-"arxiv:2609.00872": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Sharp Mixed Spectral Barron Regularity of Coulombic Many-Electron Wave Functions",
-"url": "http://arxiv.org/abs/2609.00872v1"
-},
-"arxiv:2609.00873": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Membership Inference in Fine-tuned Diffusion Language Models via Token-level Memorization Asymmetry",
-"url": "http://arxiv.org/abs/2609.00873v1"
-},
-"arxiv:2609.00875": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "FractalNet-Based Heterogeneous Federated Learning for Orbital Edge Intelligence in Satellite Mega-Constellations: A Wildfire Case Study",
-"url": "http://arxiv.org/abs/2609.00875v1"
-},
-"arxiv:2609.00879": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Towards reliable multimodal disaster severity assessment through preference optimization and explainable vision-language reasoning",
-"url": "http://arxiv.org/abs/2609.00879v1"
-},
-"arxiv:2609.00883": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "iPINN for Broadband CARS Phase Retrieval: A Framework for Function Approximation and Inverse Modeling Problems in Nonlinear Spectroscopy",
-"url": "http://arxiv.org/abs/2609.00883v1"
-},
-"arxiv:2609.00885": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Denoising Diffusion Generative Models Secretly Calculate Attentions",
-"url": "http://arxiv.org/abs/2609.00885v1"
-},
-"arxiv:2609.00891": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "CacheBridge: Efficient Cross-Model KV Cache Transfer",
-"url": "http://arxiv.org/abs/2609.00891v1"
-},
-"arxiv:2609.00892": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "CARE: Contrastive Anchor-based Rubric Evolution for Large Language Model Post-Training",
-"url": "http://arxiv.org/abs/2609.00892v1"
-},
-"arxiv:2609.00896": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Poisson-Gamma Dynamical Systems with Time-varying Transition Dynamics",
-"url": "http://arxiv.org/abs/2609.00896v1"
-},
-"arxiv:2609.00898": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Vision-Language-Guided Pseudo-Labels for Unsupervised Domain Adaptation in Semantic Segmentation for Waste Sorting",
-"url": "http://arxiv.org/abs/2609.00898v1"
-},
-"arxiv:2609.00899": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Direct Optimization of a 3D Finite-Source Reflector via Neural-Network Parameterization",
-"url": "http://arxiv.org/abs/2609.00899v1"
-},
-"arxiv:2609.00904": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "In-Context Neurofeedback: Can LLMs Control Their Internal Representations through Privileged Access?",
-"url": "http://arxiv.org/abs/2609.00904v1"
-},
-"arxiv:2609.00905": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "When Metropolis and Hastings Meet Bradley and Terry: Exact MCMC From Preference Voting",
-"url": "http://arxiv.org/abs/2609.00905v1"
-},
-"arxiv:2609.00918": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "RPCBench: A Benchmark for Proactive Premise Critique in LLM-based Recommendation",
-"url": "http://arxiv.org/abs/2609.00918v1"
-},
-"arxiv:2609.00921": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "VIBE-Bench: Evaluating Personalized Large Language Models When Profiles Don't Mean Preferences",
-"url": "http://arxiv.org/abs/2609.00921v1"
-},
-"arxiv:2609.00924": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Beyond the Image Plane: World-Grounded Queries for Multi-Object Tracking",
-"url": "http://arxiv.org/abs/2609.00924v1"
-},
-"arxiv:2609.00925": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Context-Grounding Gains Are Mediated by Pre-existing Machinery: Auditing GRPO, SFT, and DPO",
-"url": "http://arxiv.org/abs/2609.00925v1"
-},
-"arxiv:2609.00935": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "DualStake: Dual-Path Confidence Calibration in Deep Research Agents",
-"url": "http://arxiv.org/abs/2609.00935v1"
-},
-"arxiv:2609.00940": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "A Dataset for Modeling Iterative Problem-Solving",
-"url": "http://arxiv.org/abs/2609.00940v1"
-},
-"arxiv:2609.00946": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Embedded Conditional Independence Tests for Large Language Model Generated Text with an Application to German Parliament Speeches",
-"url": "http://arxiv.org/abs/2609.00946v1"
-},
-"arxiv:2609.00948": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "From Terminology to Diagrams: Visual-Instruction Generation for Scientific Diagram Understanding",
-"url": "http://arxiv.org/abs/2609.00948v1"
-},
-"arxiv:2609.00949": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Calibration is the Bottleneck: An Action-Class Diagnostic of Multi-Turn Tool-Calling",
-"url": "http://arxiv.org/abs/2609.00949v1"
-},
-"arxiv:2609.00958": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "PersianAnonymizer: Evaluating LLM-Labeled Training for Efficient NER-based Anonymization in Persian",
-"url": "http://arxiv.org/abs/2609.00958v1"
-},
-"arxiv:2609.00961": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Few-Shot Out of Domain Intent Detection with Covariance Corrected Mahalanobis Distance",
-"url": "http://arxiv.org/abs/2609.00961v1"
-},
-"arxiv:2609.00967": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "CoBRA: Learning Tool-Use Boundaries via Counterfactual Margins",
-"url": "http://arxiv.org/abs/2609.00967v1"
-},
-"arxiv:2609.00968": {
-"first_seen": "2026-09-02",
-"mag": 1.0986,
-"mag_history": [
-1.0986
-],
-"score": 2,
-"streak": 1,
-"title": "ReFlowSET: Representation-Aligned Latent Flow Matching for SAR-to-EO Image Translation",
-"url": "https://arxiv.org/abs/2609.00968"
-},
-"arxiv:2609.00969": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "The zbMATH Open Knowledge Graph: Tracing Centuries of Mathematical Research",
-"url": "http://arxiv.org/abs/2609.00969v1"
-},
-"arxiv:2609.00982": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Disclosure-Gated User Simulation for Companion-Agent Evaluation",
-"url": "http://arxiv.org/abs/2609.00982v1"
-},
-"arxiv:2609.00984": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Semi-Supervised Virtual Staining via Morphology Preservation and Histopathological Realism Constraints",
-"url": "http://arxiv.org/abs/2609.00984v1"
-},
-"arxiv:2609.00987": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "On the Human and Computer Alignment of Attribute-Based Music Matches",
-"url": "http://arxiv.org/abs/2609.00987v1"
-},
-"arxiv:2609.00998": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Inspicio: Open-Vocabulary, LLM-Based Sense Retrieval for Historical Languages",
-"url": "http://arxiv.org/abs/2609.00998v1"
-},
-"arxiv:2609.00999": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Right Frame, Wrong Rule: Cultural Cues Expose the Financial Knowledge Gap They Were Meant to Close",
-"url": "http://arxiv.org/abs/2609.00999v1"
-},
-"arxiv:2609.01004": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "SinkPruner: Sink-Free Visual Token Pruning for Multimodal Large Language Models",
-"url": "http://arxiv.org/abs/2609.01004v1"
-},
-"arxiv:2609.01006": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Figures as Programs: Recursive Generation of Editable Scientific Figures",
-"url": "http://arxiv.org/abs/2609.01006v1"
-},
-"arxiv:2609.01015": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "A Network Science Perspective on Evaluating Deep Graph Generative Models",
-"url": "http://arxiv.org/abs/2609.01015v1"
-},
-"arxiv:2609.01016": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Phrase-Localized Language-Contrastive Guidance: Training-Free Localized Accent Control for Code-Switching Text-to-Speech",
-"url": "http://arxiv.org/abs/2609.01016v1"
-},
-"arxiv:2609.01024": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "PCoMoE: Shifting MoE Inference from Monolithic Expert Selection to Fine-Grained Path Composition",
-"url": "http://arxiv.org/abs/2609.01024v1"
-},
-"arxiv:2609.01030": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Web Price Extraction: State of the Art and an Adaptive Browserless Implementation",
-"url": "http://arxiv.org/abs/2609.01030v1"
-},
-"arxiv:2609.01032": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "On Synthesis of Metric Interval Temporal Logics",
-"url": "http://arxiv.org/abs/2609.01032v1"
-},
-"arxiv:2609.01034": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "The Multiple Timescales of Gradient Descent on the Edge of Stability: A Perturbative Derivation of the Central Flow",
-"url": "http://arxiv.org/abs/2609.01034v1"
-},
-"arxiv:2609.01035": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Spawn Freely, Act Sparingly: Progressive Risk Vesting for Recursive LLM-Agent Trees",
-"url": "http://arxiv.org/abs/2609.01035v1"
-},
-"arxiv:2609.01038": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Data-Driven Persona-Conditioned Agents for A/B Test Simulation",
-"url": "http://arxiv.org/abs/2609.01038v1"
-},
-"arxiv:2609.01040": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Causal Evidentiary Governance for High-Risk Machine Learning Systems",
-"url": "http://arxiv.org/abs/2609.01040v1"
-},
-"arxiv:2609.01041": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "ViTAMINS: An Empirical Study of Training Self-Supervised Vision Transformers with Synthetic Hard Negatives",
-"url": "http://arxiv.org/abs/2609.01041v1"
-},
-"arxiv:2609.01043": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "From Truncation to Commitment: Persistent Context in Uniform Discrete Diffusion",
-"url": "http://arxiv.org/abs/2609.01043v1"
-},
-"arxiv:2609.01045": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "AgentFactory: Towards Automated Agentic System Design and Optimization",
-"url": "http://arxiv.org/abs/2609.01045v1"
-},
-"arxiv:2609.01046": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "HiveTraceGuard-Pro: A Compact Generative Guardrail for Prompt Injection, Jailbreaks, and Adversarial Obfuscation",
-"url": "http://arxiv.org/abs/2609.01046v1"
-},
-"arxiv:2609.01048": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Lagged Coupling: Internal Representations Become Readable Before They Become Causal",
-"url": "http://arxiv.org/abs/2609.01048v1"
-},
-"arxiv:2609.01049": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "QILP-0: Constructing Observational Declarative Twins of Quantum Circuits",
-"url": "http://arxiv.org/abs/2609.01049v1"
-},
-"arxiv:2609.01051": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "SAGE: Subpopulation-Aware Generative Enhancement for Mitigating Spurious Correlations",
-"url": "http://arxiv.org/abs/2609.01051v1"
-},
-"arxiv:2609.01056": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "WorldBench: Culturally Grounded Benchmark for Multilingual Agents",
-"url": "http://arxiv.org/abs/2609.01056v1"
-},
-"arxiv:2609.01057": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "User Representation via Cross Multi-source Behavior Pre-training for Mobile Games",
-"url": "http://arxiv.org/abs/2609.01057v1"
-},
-"arxiv:2609.01058": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "ARISE-RL: Agentic Rubric-Grounded Iterative Self-Evolution with Reinforcement Learning",
-"url": "http://arxiv.org/abs/2609.01058v1"
-},
-"arxiv:2609.01061": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Accelerating Reinforcement Learning via MPC Solver-Gradient Guidance for Weights-varying MPC",
-"url": "http://arxiv.org/abs/2609.01061v1"
-},
-"arxiv:2609.01062": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Space Generative AI with Solar Energy Harvesting",
-"url": "http://arxiv.org/abs/2609.01062v1"
-},
-"arxiv:2609.01064": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Artificial Rosetta Stone: Constrained Maximum A Posteriori (MAP) Reconstruction of Symbolic Raga Sequences via Order-k Markov Models",
-"url": "http://arxiv.org/abs/2609.01064v1"
-},
-"arxiv:2609.01068": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "OUTLETS: Output-Length Prediction from Speculative Decoding Backbones",
-"url": "http://arxiv.org/abs/2609.01068v1"
-},
-"arxiv:2609.01072": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Let Confidence Change, Not the Prediction: Prediction-Preserving Repair for Post-hoc Calibration",
-"url": "http://arxiv.org/abs/2609.01072v1"
-},
-"arxiv:2609.01073": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Post-hoc Alignment of LLM-judges to Human Judgment Distribution",
-"url": "http://arxiv.org/abs/2609.01073v1"
-},
-"arxiv:2609.01076": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Text-guided flow matching enables sample-efficient crystal structure generation",
-"url": "http://arxiv.org/abs/2609.01076v1"
-},
-"arxiv:2609.01081": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "StateSwap: Probing Support-Elimination Hidden States in Multiple-Choice Questions",
-"url": "http://arxiv.org/abs/2609.01081v1"
-},
-"arxiv:2609.01090": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Modelpedia: A Catalog of Model Findings for the Meta-Science of AI",
-"url": "http://arxiv.org/abs/2609.01090v1"
-},
-"arxiv:2609.01091": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Subliminal Learning as Trait-Direction Drift: A Mechanism and Targeted Control under SFT Distillation",
-"url": "http://arxiv.org/abs/2609.01091v1"
-},
-"arxiv:2609.01100": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Beyond Magnitude: Contrastive Routing for Modular Mixture-of-Experts",
-"url": "http://arxiv.org/abs/2609.01100v1"
-},
-"arxiv:2609.01102": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Neural Symbollic Regression Using Deep Learning and Sparse Modelling",
-"url": "http://arxiv.org/abs/2609.01102v1"
-},
-"arxiv:2609.01103": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "When Modality Gap Reduction Fails: Prediction-Level Hubness in CLIP",
-"url": "http://arxiv.org/abs/2609.01103v1"
-},
-"arxiv:2609.01106": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Hints Help But Do They Teach? Evaluating Skills Transfer in Code Generation",
-"url": "http://arxiv.org/abs/2609.01106v1"
-},
-"arxiv:2609.01108": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Replicating TRACE: A Practitioner's Guide to Its Threshold and Particle Budget",
-"url": "http://arxiv.org/abs/2609.01108v1"
-},
-"arxiv:2609.01111": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "ClinTraceBench: Source-Verifiable Longitudinal Clinical Reasoning over EHR-Derived Dialogues",
-"url": "http://arxiv.org/abs/2609.01111v1"
-},
-"arxiv:2609.01113": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "EDRAC: Benchmarking Arabic Dialect Reading Comprehension",
-"url": "http://arxiv.org/abs/2609.01113v1"
-},
-"arxiv:2609.01117": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Latent Recurrent Thoughts: Recurrent Refinement of Proposed Latents for Reasoning with Frozen LLMs",
-"url": "http://arxiv.org/abs/2609.01117v1"
-},
-"arxiv:2609.01120": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "DNC-IMM: Early Lane-Change Intention Recognition via Neural Calibration Based on Driving Context Information",
-"url": "http://arxiv.org/abs/2609.01120v1"
-},
-"arxiv:2609.01126": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "When Does Online Adaptation Pay on the Edge? A Leakage-Free Evaluation of Warmup, Learning-Rate Selection, and Resource Trade-offs for Time-Series Forecasting",
-"url": "http://arxiv.org/abs/2609.01126v1"
-},
-"arxiv:2609.01129": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Scaled Idempotence in Transformer Attention: Paired OV Geometry and Shared-Value Algebras",
-"url": "http://arxiv.org/abs/2609.01129v1"
-},
-"arxiv:2609.01135": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Overfitting Mitigation via Singular Value Decomposition in Minimum Bayes Risk Decoding",
-"url": "http://arxiv.org/abs/2609.01135v1"
-},
-"arxiv:2609.01139": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Does task decomposition improve automatic NLG evaluation?",
-"url": "http://arxiv.org/abs/2609.01139v1"
-},
-"arxiv:2609.01141": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Revisiting Face Recognition for Monozygotic Twins: The Celeb Twins Test Set",
-"url": "http://arxiv.org/abs/2609.01141v1"
-},
-"arxiv:2609.01146": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "StainPresetNet: Stain Preset Network for Fast Multi-to-Multi Stain Normalization",
-"url": "http://arxiv.org/abs/2609.01146v1"
-},
-"arxiv:2609.01147": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "On the Design Fundamentals of Pixel Text Representation Learning",
-"url": "http://arxiv.org/abs/2609.01147v1"
-},
-"arxiv:2609.01151": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Subword Segmental BabyLMs: Learning to Tokenise for Sample-Efficient Pretraining",
-"url": "http://arxiv.org/abs/2609.01151v1"
-},
-"arxiv:2609.01158": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Superposed Latent Autoencoder",
-"url": "http://arxiv.org/abs/2609.01158v1"
-},
-"arxiv:2609.01161": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "CopyShield: A Cross-Level Benchmark of Copyright Defenses in LLMs",
-"url": "http://arxiv.org/abs/2609.01161v1"
-},
-"arxiv:2609.01166": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Nonparametric inference for density-dependent McKean--Vlasov diffusions",
-"url": "http://arxiv.org/abs/2609.01166v1"
-},
-"arxiv:2609.01168": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Jailbreaking Text-to-Image Models Through Cracks: Navigating Heterogeneous Safety Filters via Multi-Agent Debate",
-"url": "http://arxiv.org/abs/2609.01168v1"
-},
-"arxiv:2609.01170": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Pre-carved Niches: The Formation Dynamics of Modular Task Partitions in Early LLM Training",
-"url": "http://arxiv.org/abs/2609.01170v1"
-},
-"arxiv:2609.01182": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "LLMPEDIA: Browsing, Verifying, and Comparing the Parametric Encyclopedic Knowledge of LLMs",
-"url": "http://arxiv.org/abs/2609.01182v1"
-},
-"arxiv:2609.01187": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Athena: Vulnerability-Affected Library Identification via Knowledge Graph Completion",
-"url": "http://arxiv.org/abs/2609.01187v1"
-},
-"arxiv:2609.01188": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "PersuaRL: Reinforcement Learning-Driven Multi-Expert Selection for Persuasive Dialogue Generation in Insurance",
-"url": "http://arxiv.org/abs/2609.01188v1"
-},
-"arxiv:2609.01194": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Births are difficult to predict even with rich survey and full-population register data",
-"url": "http://arxiv.org/abs/2609.01194v1"
-},
-"arxiv:2609.01195": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "CaRL-EM: Cost-Aware Reinforcement Learning for Entity Matching with LLMs",
-"url": "http://arxiv.org/abs/2609.01195v1"
-},
-"arxiv:2609.01198": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "FinLifeBench: Exhaustive Life-Event History and Financial-State Reconstruction from Longitudinal Banking Dialogue",
-"url": "http://arxiv.org/abs/2609.01198v1"
-},
-"arxiv:2609.01202": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Towards AI-Assisted Clinical Trial Matching: Practical Considerations, Multicenter Evaluation, and Real-World Deployment",
-"url": "http://arxiv.org/abs/2609.01202v1"
-},
-"arxiv:2609.01209": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Autonomous discovery of new structure-plausibility laws for explainable and rapid crystal diagnosis and screening",
-"url": "http://arxiv.org/abs/2609.01209v1"
-},
-"arxiv:2609.01210": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "Who Judges the Judges? A Chinese Safety QA Benchmark for Evaluating LLM Responses and Safety Judges",
-"url": "http://arxiv.org/abs/2609.01210v1"
-},
-"arxiv:2609.01212": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Recent Developments in Transformer Inference Deployment on FPGA Platforms: A Survey",
-"url": "http://arxiv.org/abs/2609.01212v1"
-},
-"arxiv:2609.01215": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "REFACTOR-VLA: Unsupervised Library Learning of Typed Motor Programs",
-"url": "http://arxiv.org/abs/2609.01215v1"
-},
-"arxiv:2609.01216": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "H2Table: Hierarchical Hypergraph-Enhanced Large Language Models for Complex Table Reasoning",
-"url": "http://arxiv.org/abs/2609.01216v1"
-},
-"arxiv:2609.01217": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Prompt-Robust Language Models: Which Training Strategies Work?",
-"url": "http://arxiv.org/abs/2609.01217v1"
-},
-"arxiv:2609.01231": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Multi-Head Self Attention is a Parameter Identification Mechanism",
-"url": "http://arxiv.org/abs/2609.01231v1"
-},
-"arxiv:2609.01232": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Position Matters: Feature Inversion Attacks in ViT Split Inference with Token Reduction and Shuffling",
-"url": "http://arxiv.org/abs/2609.01232v1"
-},
-"arxiv:2609.01235": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "MutMem-V2: Cryptographically Authorized Mutation in Persistent Agent Memory Portable Verification and Reproducible Evidence",
-"url": "http://arxiv.org/abs/2609.01235v1"
-},
-"arxiv:2609.01240": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "From Language to Behavior: Scaling Sequence Transformers for Industrial Recommendation Ranking with Rec-Native Designs",
-"url": "http://arxiv.org/abs/2609.01240v1"
-},
-"arxiv:2609.01244": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Post-Training Science for Supervised Fine-Tuning",
-"url": "http://arxiv.org/abs/2609.01244v1"
-},
-"arxiv:2609.01245": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "Explore More, Drift Less: Outcome-Only Reinforcement Learning Can Suffice for Long-Horizon Interactive Agents",
-"url": "http://arxiv.org/abs/2609.01245v1"
-},
-"arxiv:2609.01246": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Ready to Speak: Aligning LLMs for TTS-Friendly Text Generation",
-"url": "http://arxiv.org/abs/2609.01246v1"
-},
-"arxiv:2609.01249": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "One Prompt Is Enough: Watermark Laundering Through Foundation Image Models",
-"url": "http://arxiv.org/abs/2609.01249v1"
-},
-"arxiv:2609.01257": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Measuring the Behavioral Fidelity of Long-Horizon Human Activity Simulations",
-"url": "http://arxiv.org/abs/2609.01257v1"
-},
-"arxiv:2609.01260": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Dual Process Motion Planning",
-"url": "http://arxiv.org/abs/2609.01260v1"
-},
-"arxiv:2609.01262": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Solving In-Table Prediction Problems by Deep Neural Networks with Performance Evaluation Using Synthetic Data",
-"url": "http://arxiv.org/abs/2609.01262v1"
-},
-"arxiv:2609.01271": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "What Does an Agentic Software Engineering Benchmark Measure? Profiling Task Demands and Agent Behaviour Beyond What Category Labels Reveal",
-"url": "http://arxiv.org/abs/2609.01271v1"
-},
-"arxiv:2609.01272": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Making Prospective Memory SLM-Shaped: Typed Intention Stores for Small-Model Agents",
-"url": "http://arxiv.org/abs/2609.01272v1"
-},
-"arxiv:2609.01273": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Position: Privacy Is a Claim, Not a Property of Synthetic Data",
-"url": "http://arxiv.org/abs/2609.01273v1"
-},
-"arxiv:2609.01274": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "From Base Rollouts to RL Reasoning: A Budgeted Search Perspective",
-"url": "http://arxiv.org/abs/2609.01274v1"
-},
-"arxiv:2609.01275": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "The Constitutional Coverage Trilemma in AI Governance",
-"url": "http://arxiv.org/abs/2609.01275v1"
-},
-"arxiv:2609.01277": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "TimeSteer: Inference-Time Speech Scheduling in Joint Audio-Visual Diffusion Models",
-"url": "http://arxiv.org/abs/2609.01277v1"
-},
-"arxiv:2609.01279": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "Some Emotions Run Deeper: Layer-wise Probing and Causal Intervention in Large Language Models",
-"url": "http://arxiv.org/abs/2609.01279v1"
-},
-"arxiv:2609.01281": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "EmbodiedSkills: A Unified Framework for Orchestrating, Training, and Deploying VLA Agents",
-"url": "http://arxiv.org/abs/2609.01281v1"
-},
-"arxiv:2609.01282": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "HiLRP: Toward One Trustworthy Explanation for Vision Transformer: Conservation-Valid Attribution via Attention Primitives",
-"url": "http://arxiv.org/abs/2609.01282v1"
-},
-"arxiv:2609.01286": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Analog-DB: An Agent-First Analog Integrated Circuit Database, From Blocks to Systems",
-"url": "http://arxiv.org/abs/2609.01286v1"
-},
-"arxiv:2609.01292": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Relational Task Generation Language: A Declarative Specification Framework for Relational Deep Learning",
-"url": "http://arxiv.org/abs/2609.01292v1"
-},
-"arxiv:2609.01294": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Explore Before Committing: Hypothesis-Guided Search for Deep Research Agents",
-"url": "http://arxiv.org/abs/2609.01294v1"
-},
-"arxiv:2609.01310": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "GazeRefine: Expert Gaze as a Test-Time Prompt for Training-Free Medical Image Segmentation",
-"url": "http://arxiv.org/abs/2609.01310v1"
-},
-"arxiv:2609.01311": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "One-Layer Transformer Provably Learns Multiclass One-Nearest Neighbor in Context",
-"url": "http://arxiv.org/abs/2609.01311v1"
-},
-"arxiv:2609.01315": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "A Composable Evaluation System for Reproducible Omni-Modal Foundation Model Evaluation",
-"url": "http://arxiv.org/abs/2609.01315v1"
-},
-"arxiv:2609.01316": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "MIDR: Enrichment-Augmented Indexing for Multimodal Document Retrieval",
-"url": "http://arxiv.org/abs/2609.01316v1"
-},
-"arxiv:2609.01318": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Reliability Challenges in Diffusion Vision-Language Models",
-"url": "http://arxiv.org/abs/2609.01318v1"
-},
-"arxiv:2609.01319": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Matched Queries for Curvature and Density at Branching Junctions",
-"url": "http://arxiv.org/abs/2609.01319v1"
-},
-"arxiv:2609.01320": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Automated Event Log Generation from Unstructured Text Using Finetuned LLMs",
-"url": "http://arxiv.org/abs/2609.01320v1"
-},
-"arxiv:2609.01322": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Exploring Sparse Autoencoders in Text-Based Causal Confounding Adjustment",
-"url": "http://arxiv.org/abs/2609.01322v1"
-},
-"arxiv:2609.01325": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "VerTox: Verifiable Reward-Guided Corpus Poisoning Against Neural Ranking Models",
-"url": "http://arxiv.org/abs/2609.01325v1"
-},
-"arxiv:2609.01335": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Bandits in Prod: Hyperparameter Optimization at Inference Time",
-"url": "http://arxiv.org/abs/2609.01335v1"
-},
-"arxiv:2609.01337": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "LEAP: Likelihood Elicitation and Aggregation for LLM-based Probabilistic Forecasting",
-"url": "http://arxiv.org/abs/2609.01337v1"
-},
-"arxiv:2609.01338": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "mzCache: On-Device LLM Memory Management under Multitasking",
-"url": "http://arxiv.org/abs/2609.01338v1"
-},
-"arxiv:2609.01341": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Probing Factual Knowledge Transfer with Training Data Interventions",
-"url": "http://arxiv.org/abs/2609.01341v1"
-},
 "arxiv:2609.01343": {
 "first_seen": "2026-09-02",
-"mag": 4.1589,
+"mag": 4.4659,
 "mag_history": [
-4.1589
+4.1589,
+4.4659
 ],
-"score": 3,
-"streak": 1,
+"score": 2,
+"streak": 2,
 "title": "SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers",
 "url": "https://arxiv.org/abs/2609.01343"
 },
-"arxiv:2609.01345": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Cheap Verifiers, Large Blind Spots: Measuring the Reliability Cost of Cost-Saving Cascades",
-"url": "http://arxiv.org/abs/2609.01345v1"
-},
-"arxiv:2609.01351": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Scalable Rao-Blackwellized Online Planning for High-Dimensional POMDPs",
-"url": "http://arxiv.org/abs/2609.01351v1"
-},
-"arxiv:2609.01352": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "CHARM: Character Hallucination for Multicultural Role Play Benchmark",
-"url": "http://arxiv.org/abs/2609.01352v1"
-},
-"arxiv:2609.01353": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "SymFold: Synergizing Evolutionary and Structural Priors for Accurate Protein Inverse Folding",
-"url": "http://arxiv.org/abs/2609.01353v1"
-},
-"arxiv:2609.01354": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Where the Verifier Fails: A Category-Level Audit of Reward Signals in RLVR",
-"url": "http://arxiv.org/abs/2609.01354v1"
-},
-"arxiv:2609.01355": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Exact Risk-Complexity Laws for Projective Boundaries in Scenario Optimization and Distribution-Free Certification",
-"url": "http://arxiv.org/abs/2609.01355v1"
-},
-"arxiv:2609.01356": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Separating Syntax from Language: A Mechanistic Account of Translation in Multilingual LLMs",
-"url": "http://arxiv.org/abs/2609.01356v1"
-},
-"arxiv:2609.01357": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "PopPert: Population-level Joint-Distribution Modeling for Single-Cell Perturbation Prediction",
-"url": "http://arxiv.org/abs/2609.01357v1"
-},
-"arxiv:2609.01360": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "EDGE: Error Dependency Graph-Guided Multi-Error Attribution in Multi-Agent LLM Systems",
-"url": "http://arxiv.org/abs/2609.01360v1"
-},
-"arxiv:2609.01361": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Investigating Linear Probe Robustness to Linguistic Register, Medical Specialty, and Corpus Shifts in Medical QA",
-"url": "http://arxiv.org/abs/2609.01361v1"
-},
-"arxiv:2609.01369": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "How Correct Is Your Answer? A Semantic Correctness Framework for Open QA Evaluation",
-"url": "http://arxiv.org/abs/2609.01369v1"
-},
-"arxiv:2609.01374": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Behaviorally Effective LoRA Writes Are Sparse and Structured",
-"url": "http://arxiv.org/abs/2609.01374v1"
-},
-"arxiv:2609.01375": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "IntroConformal: Conformal Factuality Guarantees for Large Vision-Language Models via Introspective Signals",
-"url": "http://arxiv.org/abs/2609.01375v1"
-},
-"arxiv:2609.01379": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Polish ModernBERT: The Long and Short of Polish Language Understanding",
-"url": "http://arxiv.org/abs/2609.01379v1"
-},
-"arxiv:2609.01383": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "InSight: A Benchmark for Agentic Claim Verification in Interactive Visualizations",
-"url": "http://arxiv.org/abs/2609.01383v1"
-},
-"arxiv:2609.01386": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "When Tokenization is Secretly Output Supervision",
-"url": "http://arxiv.org/abs/2609.01386v1"
-},
-"arxiv:2609.01397": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Measuring consistency via ensemble margin and local prediction variability: Auditing decision systems in the presence of predictive multiplicity",
-"url": "http://arxiv.org/abs/2609.01397v1"
-},
 "arxiv:2609.01404": {
 "first_seen": "2026-09-02",
-"mag": 2.9957,
+"mag": 3.7274,
 "mag_history": [
-2.9957
+2.9957,
+3.7274
 ],
-"score": 3,
-"streak": 1,
+"score": 2,
+"streak": 2,
 "title": "Evaluating Multimodal LLMs as Generalist Vision-Language-Action Agents for Drone Control: Commanding, Approaching, Tracking and Searching",
 "url": "https://arxiv.org/abs/2609.01404"
 },
-"arxiv:2609.01406": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Contribution-Aware Bandwidth Allocation for Multimodal Split Learning",
-"url": "http://arxiv.org/abs/2609.01406v1"
-},
-"arxiv:2609.01408": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Neuro-Symbolic Geometric Abstraction (NeuSOGA): From Observations to Symbolic Mathematical Representations",
-"url": "http://arxiv.org/abs/2609.01408v1"
-},
-"arxiv:2609.01409": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "EdiTikZ: Scientific Figure Editing from Revision Trajectories",
-"url": "http://arxiv.org/abs/2609.01409v1"
-},
-"arxiv:2609.01410": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "On the Reliability of Generative Augmentation: A Wasserstein-Based Theoretical and Empirical Study",
-"url": "http://arxiv.org/abs/2609.01410v1"
-},
-"arxiv:2609.01417": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Predicting Subsurface Abnormalities Growth using Physics-Informed Neural Networks",
-"url": "http://arxiv.org/abs/2609.01417v1"
-},
-"arxiv:2609.01418": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Provably Safe Sim-to-Real Transfer",
-"url": "http://arxiv.org/abs/2609.01418v1"
-},
-"arxiv:2609.01422": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "From Rollouts to Recipes: Self-Contained Post-Training for LLMs",
-"url": "http://arxiv.org/abs/2609.01422v1"
-},
-"arxiv:2609.01425": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "CATeye: Coupled Attribute-Topology Invariance Learning for Voucher Abuse Detection",
-"url": "http://arxiv.org/abs/2609.01425v1"
-},
-"arxiv:2609.01426": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Semantic-Guided Multimodal Preprocessing for Vision Transformer-Based Clear Cell Renal Cell Carcinoma Grading",
-"url": "http://arxiv.org/abs/2609.01426v1"
-},
-"arxiv:2609.01428": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "TRIAGE: Three-level Routing and Intelligent Agent Guidance for Efficient Execution",
-"url": "http://arxiv.org/abs/2609.01428v1"
-},
-"arxiv:2609.01430": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Learning Sparse Decision Trees via Transformer Variational Auto-Encoders",
-"url": "http://arxiv.org/abs/2609.01430v1"
-},
-"arxiv:2609.01431": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Efficiently Estimating Optimal Hyperparameter Scaling Laws through Power-Law Entropy Search",
-"url": "http://arxiv.org/abs/2609.01431v1"
-},
-"arxiv:2609.01432": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Citing Less Critically: LLMs Reshape the Rhetoric and Reach of Scientific Citation",
-"url": "http://arxiv.org/abs/2609.01432v1"
-},
-"arxiv:2609.01437": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?",
-"url": "http://arxiv.org/abs/2609.01437v1"
-},
-"arxiv:2609.01441": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Edge-Girth as a Structural Edge Feature for Graph Neural Networks",
-"url": "http://arxiv.org/abs/2609.01441v1"
-},
-"arxiv:2609.01449": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Diffusion as a Training Curriculum for Timestep-Free Iterative Reasoning",
-"url": "http://arxiv.org/abs/2609.01449v1"
-},
-"arxiv:2609.01453": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Does Imitation Learning Preserve Temporal Robustness in Dexterous Manipulation? An Expert-Learner Comparison Across Task Execution Speeds",
-"url": "http://arxiv.org/abs/2609.01453v1"
-},
-"arxiv:2609.01455": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "When Safety Routing Breaks: Understanding Alignment Fragility under Benign Fine-Tuning",
-"url": "http://arxiv.org/abs/2609.01455v1"
-},
-"arxiv:2609.01456": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "AutoConcept: Training-Free Concept-Guided Reranking for Metadata-Available Composed Image Retrieval",
-"url": "http://arxiv.org/abs/2609.01456v1"
-},
-"arxiv:2609.01466": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Parsing the Stream: A Live Trace Model for Long-Horizon Agents and Their Observers",
-"url": "http://arxiv.org/abs/2609.01466v1"
-},
-"arxiv:2609.01481": {
-"first_seen": "2026-09-02",
-"mag": 2.0794,
-"mag_history": [
-2.0794
-],
-"score": 3,
-"streak": 1,
-"title": "Harness-of-Harness: Multi-Day Autonomous Software Development with Continual Improvement",
-"url": "https://arxiv.org/abs/2609.01481"
-},
-"arxiv:2609.01487": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Defense-as-Skill: Evolving Runtime Guard Skill for Skill-Augmented Agents",
-"url": "http://arxiv.org/abs/2609.01487v1"
-},
-"arxiv:2609.01491": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "GlossoGen: Emergent Language in Complex Multi-Agent LLM Interactions",
-"url": "http://arxiv.org/abs/2609.01491v1"
-},
-"arxiv:2609.01493": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Rethinking Learnability in Offline Data-driven Optimization",
-"url": "http://arxiv.org/abs/2609.01493v1"
-},
-"arxiv:2609.01495": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Optimizing Byzantine Node Placement in Decentralized Federated Learning",
-"url": "http://arxiv.org/abs/2609.01495v1"
-},
-"arxiv:2609.01507": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "LatentPress: Context Compression Beyond Text and Vision",
-"url": "http://arxiv.org/abs/2609.01507v1"
-},
-"arxiv:2609.01515": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "TempCloze: Can Video-LLMs Identify the Missing Middle?",
-"url": "http://arxiv.org/abs/2609.01515v1"
-},
-"arxiv:2609.01519": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "When Guardrails Look Effective: Construct Validity Failures in LLM Agent Commerce Evaluation",
-"url": "http://arxiv.org/abs/2609.01519v1"
-},
-"arxiv:2609.01525": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Relational-Core Graph Analytics Querying graphs at SQL scale, and why the node/edge model is a performance tax, not a truer picture of connected data",
-"url": "http://arxiv.org/abs/2609.01525v1"
-},
-"arxiv:2609.01526": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "EvoSCM: Scientific Belief Revision Through Causal Model Evolution and Experimentation",
-"url": "http://arxiv.org/abs/2609.01526v1"
-},
-"arxiv:2609.01528": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Sierpi\u0144ski--Knopp Wasserstein Distance for Persistence Diagrams and Applications to 2-Wasserstein Approximation",
-"url": "http://arxiv.org/abs/2609.01528v1"
-},
-"arxiv:2609.01532": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Knowledge Distillation During Mid-Training Favors Reasoning over Factual Recall",
-"url": "http://arxiv.org/abs/2609.01532v1"
-},
-"arxiv:2609.01535": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "Can LLMs Design Video Coding Tools? A Case Study on Planar Mode",
-"url": "http://arxiv.org/abs/2609.01535v1"
-},
-"arxiv:2609.01537": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 3,
-"streak": 1,
-"title": "Quantum Sparse Autoencoders for Q-Matrix Estimation in Cognitive Diagnosis",
-"url": "http://arxiv.org/abs/2609.01537v1"
-},
-"arxiv:2609.01544": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Variable Selection for Feature-Based Newsvendor",
-"url": "http://arxiv.org/abs/2609.01544v1"
-},
-"arxiv:2609.01548": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "SDARE-Bench: Evaluating Large Language Models on Conversational Stigma Detection and Response in Dyadic and Group Dialogue",
-"url": "http://arxiv.org/abs/2609.01548v1"
-},
-"arxiv:2609.01549": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "NashDreamer: Model-Based Reinforcement Learning for Zero-Sum Imperfect-Information Games",
-"url": "http://arxiv.org/abs/2609.01549v1"
-},
-"arxiv:2609.01550": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "A Mathematical Theory of Reusable Neural Bases for Network Compression",
-"url": "http://arxiv.org/abs/2609.01550v1"
-},
-"arxiv:2609.01552": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Can LLMs Discover Scientific Laws in Real and Parallel Worlds?",
-"url": "http://arxiv.org/abs/2609.01552v1"
-},
-"arxiv:2609.01554": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "BS: Take the Hint - Interactive Multitracer PET/CT Lesion Segmentation with a Scribble-Conditioned ResEnc U-Net",
-"url": "http://arxiv.org/abs/2609.01554v1"
-},
-"arxiv:2609.01556": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Retrieved but not ranked: surface-form bias in structural retrieval, from mathematics to agent trajectories",
-"url": "http://arxiv.org/abs/2609.01556v1"
-},
-"arxiv:2609.01558": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Gradient-Update Mismatch: Rethinking Conflict-Free Training of Physics-Informed Neural Networks",
-"url": "http://arxiv.org/abs/2609.01558v1"
-},
-"arxiv:2609.01560": {
-"first_seen": "2026-09-02",
-"mag": 3.6376,
-"mag_history": [
-3.6376
-],
-"score": 2,
-"streak": 1,
-"title": "H3-World: Turning Language Understanding into World Control",
-"url": "https://arxiv.org/abs/2609.01560"
-},
-"arxiv:2609.01563": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "A systematic Approach to constructing a Chance-and-Risk Matrix for Semiconductor Supply Chains",
-"url": "http://arxiv.org/abs/2609.01563v1"
-},
-"arxiv:2609.01564": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "From Confusion to Clarity: Confusion-Aware Retrieval and Knowledge Injection for Text Classification",
-"url": "http://arxiv.org/abs/2609.01564v1"
-},
-"arxiv:2609.01567": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Selective Agent Guidance via Entropy: Learning Autonomous Policies from Imperfect VLM Teachers",
-"url": "http://arxiv.org/abs/2609.01567v1"
-},
 "arxiv:2609.01572": {
 "first_seen": "2026-09-02",
-"mag": 3.3673,
+"mag": 3.5264,
 "mag_history": [
-3.3673
+3.3673,
+3.5264
 ],
-"score": 3,
-"streak": 1,
+"score": 2,
+"streak": 2,
 "title": "From Production Traffic to Post-Training: Building a Self-Hosted LLM That Covers the Corporate Request Mix",
 "url": "https://arxiv.org/abs/2609.01572"
 },
-"arxiv:2609.01573": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Scaling Near-Optimal SFT-RL Annotation Budget Allocation from Small to Large LLMs",
-"url": "http://arxiv.org/abs/2609.01573v1"
-},
-"arxiv:2609.01575": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Closing Cost-Quality Gap in Document VLMs: Difficulty-Aware Data Curation and Quality-Adjusted Deployment Economics",
-"url": "http://arxiv.org/abs/2609.01575v1"
-},
-"arxiv:2609.01576": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Pointwise Majorization for sub-Weibull and Mixed Tail Processes with Applications in Quadratic Chaos and Ergodic Diffusions",
-"url": "http://arxiv.org/abs/2609.01576v1"
-},
-"arxiv:2609.01587": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 2,
-"streak": 1,
-"title": "The Structure of Quantization Damage in LLMs: Why the Next Bit Should Be Spent Globally",
-"url": "http://arxiv.org/abs/2609.01587v1"
-},
-"arxiv:2609.01588": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 0,
-"streak": 1,
-"title": "Designing Proactive Thought Partners for Writing",
-"url": "http://arxiv.org/abs/2609.01588v1"
-},
 "arxiv:2609.01591": {
 "first_seen": "2026-09-02",
-"mag": 5.7071,
+"mag": 7.8702,
 "mag_history": [
-5.7071
+5.7071,
+7.8702
 ],
-"score": 4,
-"streak": 1,
+"score": 3,
+"streak": 2,
 "title": "StudentSim: Training LLM-based Student Simulators",
 "url": "https://arxiv.org/abs/2609.01591"
 },
-"arxiv:2609.01595": {
-"first_seen": "2026-09-02",
+"arxiv:2609.01687": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Learning Evidence Sufficiency Boundaries for Selective Answering in Grounded Multi-Hop QA",
+"url": "http://arxiv.org/abs/2609.01687v1"
+},
+"arxiv:2609.01736": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Harness Engineering in LLM Tool Use via Agent-Native Reusable Tool Primitives",
+"url": "http://arxiv.org/abs/2609.01736v1"
+},
+"arxiv:2609.01737": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "SpeakPay: Domain-Adaptive LoRA Fine-Tuning of Whisper for Low-Resource Nepali Financial Speech Recognition",
+"url": "http://arxiv.org/abs/2609.01737v1"
+},
+"arxiv:2609.01741": {
+"first_seen": "2026-09-03",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 0,
 "streak": 1,
-"title": "Mechanism Design for Alignment and Control",
-"url": "http://arxiv.org/abs/2609.01595v1"
+"title": "When Can a Machine Trust a Statute? A Survival Certificate for Machine-Extracted Legal Logic",
+"url": "http://arxiv.org/abs/2609.01741v1"
 },
-"arxiv:2609.01596": {
-"first_seen": "2026-09-02",
+"arxiv:2609.01761": {
+"first_seen": "2026-09-03",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 0,
 "streak": 1,
-"title": "Facet-0: A Robotic Foundation Model for Contact-Rich Precise Manipulation",
-"url": "http://arxiv.org/abs/2609.01596v1"
+"title": "Pooling and Drift in Delayed Bandits",
+"url": "http://arxiv.org/abs/2609.01761v1"
 },
-"arxiv:2609.01597": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "The Rise of Verbal Reinforcement Learning",
-"url": "http://arxiv.org/abs/2609.01597v1"
-},
-"arxiv:2609.01600": {
-"first_seen": "2026-09-02",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "CordisBench: Can Language Models Reason About Component Lifecycles in Dynamic Agent Harnesses?",
-"url": "http://arxiv.org/abs/2609.01600v1"
-},
-"arxiv:2609.01601": {
-"first_seen": "2026-09-02",
+"arxiv:2609.01772": {
+"first_seen": "2026-09-03",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 2,
 "streak": 1,
-"title": "Adaptive Critical Token-Aware Retrieval for Repository-Level Code Generation",
-"url": "http://arxiv.org/abs/2609.01601v1"
+"title": "MemeCULT-1K: Benchmarking South Asian Cultural Context and Humor Understanding of Multimodal Models",
+"url": "http://arxiv.org/abs/2609.01772v1"
 },
-"arxiv:2609.01603": {
-"first_seen": "2026-09-02",
+"arxiv:2609.01783": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Robust Bayesian Inference for Unnormalized Models with Mixed-Domain Data",
+"url": "http://arxiv.org/abs/2609.01783v1"
+},
+"arxiv:2609.01788": {
+"first_seen": "2026-09-03",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 2,
 "streak": 1,
-"title": "Efficient SWE Agent Benchmarking via Trajectory-Aware Evaluation",
-"url": "http://arxiv.org/abs/2609.01603v1"
+"title": "VakyArth: Evaluating Pragmatic Competence in LLMs across Indic Languages",
+"url": "http://arxiv.org/abs/2609.01788v1"
 },
-"arxiv:2609.01604": {
-"first_seen": "2026-09-02",
+"arxiv:2609.01794": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Disentangling Statistical Preemption from Entrenchment in Language Models' Avoidance of Overgeneralization",
+"url": "http://arxiv.org/abs/2609.01794v1"
+},
+"arxiv:2609.01798": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "How Do Prompt Variations Affect Energy Consumption in On-Device LLMs?",
+"url": "http://arxiv.org/abs/2609.01798v1"
+},
+"arxiv:2609.01810": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "TalkFa: A Unified Benchmark for Farsi Dialogue Generation and Understanding",
+"url": "http://arxiv.org/abs/2609.01810v1"
+},
+"arxiv:2609.01828": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "AVERT: Audio-Verified Adjudication for Spoken Dialogue State Tracking",
+"url": "http://arxiv.org/abs/2609.01828v1"
+},
+"arxiv:2609.01832": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Interpretable Symptom Vectors for Depression in a Large Language Model",
+"url": "http://arxiv.org/abs/2609.01832v1"
+},
+"arxiv:2609.01833": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Candidate Generation and Definition-Guided Verification for Sentence-Level Depression Symptom Recognition",
+"url": "http://arxiv.org/abs/2609.01833v1"
+},
+"arxiv:2609.01846": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Cite or Decline: A Strict Course-Grounded Chatbot for STEM Lecture Videos",
+"url": "http://arxiv.org/abs/2609.01846v1"
+},
+"arxiv:2609.01852": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "The Memory Trust Gap: Capability-Dependent Failures in Persistent-Memory Agents",
+"url": "http://arxiv.org/abs/2609.01852v1"
+},
+"arxiv:2609.01865": {
+"first_seen": "2026-09-03",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 2,
 "streak": 1,
-"title": "Beyond Scores: Understanding LLM-as-a-Judge Mechanisms in Summarization Evaluation",
-"url": "http://arxiv.org/abs/2609.01604v1"
+"title": "ExecRetrieval: Measuring the Functional-Correctness Gap in Code-Embedding Retrieval",
+"url": "http://arxiv.org/abs/2609.01865v1"
 },
-"arxiv:2609.01607": {
-"first_seen": "2026-09-02",
-"mag": 2.9957,
+"arxiv:2609.01867": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
 "mag_history": [
-2.9957
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Thinking effort aligns between humans and reasoning models in abductive reasoning",
+"url": "http://arxiv.org/abs/2609.01867v1"
+},
+"arxiv:2609.01878": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "GAPS: Dimension-Level Gates for Conditional Activation Steering",
+"url": "http://arxiv.org/abs/2609.01878v1"
+},
+"arxiv:2609.01896": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
 ],
 "score": 2,
 "streak": 1,
-"title": "Uncovering Understanding-Generation Synergy in Native Unified Multimodal Models: From Representation, Task to System",
-"url": "https://arxiv.org/abs/2609.01607"
+"title": "OutageDiT: A Generative Foundation Model for Power Outage Forecasting and Scenario Simulation",
+"url": "http://arxiv.org/abs/2609.01896v1"
 },
-"blog:https://blogs.nvidia.com/?p=98014": {
-"first_seen": "2026-09-02",
+"arxiv:2609.01902": {
+"first_seen": "2026-09-03",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 1,
 "streak": 1,
-"title": "NVIDIA and CrowdStrike Strengthen Agentic Cybersecurity Frontier",
-"url": "https://blogs.nvidia.com/blog/nvidia-crowdstrike-fal-con-2026/"
+"title": "Accurate in space, unreliable in time: how LLMs represent national cultural change",
+"url": "http://arxiv.org/abs/2609.01902v1"
 },
-"blog:https://deepmind.google/blog/introducing-agentic-video-in-gemini/": {
-"first_seen": "2026-09-02",
+"arxiv:2609.01914": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Basin Geometry and Reliable Recall of Dynamical Memories in Reservoir Computing",
+"url": "http://arxiv.org/abs/2609.01914v1"
+},
+"arxiv:2609.01918": {
+"first_seen": "2026-09-03",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 1,
 "streak": 1,
-"title": "Introducing agentic video understanding with Gemini",
-"url": "https://deepmind.google/blog/introducing-agentic-video-in-gemini/"
+"title": "Grounded, Compute-Efficient LLM Policy Agents for Energy-Poverty Equity in Physically-Constrained Peer-to-Peer Energy Markets",
+"url": "http://arxiv.org/abs/2609.01918v1"
 },
-"blog:https://openai.com/index/ai-native-company-workflows": {
-"first_seen": "2026-09-02",
+"arxiv:2609.01925": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "CRISP: Cliff-awaRe Input-adaptive Sparse Prefilling with Structural-Mass-Motivated Routing",
+"url": "http://arxiv.org/abs/2609.01925v1"
+},
+"arxiv:2609.01933": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "OR-Transformer: Scaling Real-Time Decision-Making to 1,000 Items",
+"url": "http://arxiv.org/abs/2609.01933v1"
+},
+"arxiv:2609.01936": {
+"first_seen": "2026-09-03",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 1,
 "streak": 1,
-"title": "How AI-native companies turn workflows into operating capability",
-"url": "https://openai.com/index/ai-native-company-workflows"
+"title": "Sparse Readout Prism: Explaining Logit-Lens Scores in Features Instead of Tokens",
+"url": "http://arxiv.org/abs/2609.01936v1"
 },
-"blog:https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources": {
-"first_seen": "2026-09-02",
+"arxiv:2609.01942": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Refining Heuristic-Based Bitcoin Address Clustering with Graph Neural Networks",
+"url": "http://arxiv.org/abs/2609.01942v1"
+},
+"arxiv:2609.01945": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Pushing Forward Multi-Secret-Key Homomorphic Encryption for Private Average Aggregation",
+"url": "http://arxiv.org/abs/2609.01945v1"
+},
+"arxiv:2609.01947": {
+"first_seen": "2026-09-03",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 1,
 "streak": 1,
-"title": "Healthcare organizations can now connect EHR and additional industry data to ChatGPT",
-"url": "https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources"
+"title": "On-Policy Distillation Meets Off-Policy GRPO: Training Compact Instruction-Following Rerankers",
+"url": "http://arxiv.org/abs/2609.01947v1"
 },
-"blog:https://openai.com/index/gilbert-tobin": {
-"first_seen": "2026-09-02",
+"arxiv:2609.01952": {
+"first_seen": "2026-09-03",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 1,
 "streak": 1,
-"title": "How law firm Gilbert + Tobin governs and scales AI with OpenAI",
-"url": "https://openai.com/index/gilbert-tobin"
+"title": "Convergence Theory of Knowledge Distillation in Asynchronous P2P Gossip Learning Network",
+"url": "http://arxiv.org/abs/2609.01952v1"
 },
-"blog:https://openai.com/index/path-to-astra": {
-"first_seen": "2026-09-02",
+"arxiv:2609.01956": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "FlashKAN: B-Spline KANs via Truncated Power Form",
+"url": "http://arxiv.org/abs/2609.01956v1"
+},
+"arxiv:2609.01957": {
+"first_seen": "2026-09-03",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 1,
 "streak": 1,
-"title": "Path to Astra: critical capabilities and frontier safeguards",
-"url": "https://openai.com/index/path-to-astra"
+"title": "Network-Aware Forecasting on Wireless Access Points",
+"url": "http://arxiv.org/abs/2609.01957v1"
 },
-"blog:https://research.google/blog/mapping-global-methane-emissions-from-space-with-deep-learning/": {
-"first_seen": "2026-09-02",
+"arxiv:2609.01962": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "Post-Training Ternarization of Qwen3-4B Capability, Effective Bit Budget, Storage Compression, and Deployment",
+"url": "http://arxiv.org/abs/2609.01962v1"
+},
+"arxiv:2609.01967": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "A Unified Particle Filter LSTM for Data-Driven Process Simulation",
+"url": "http://arxiv.org/abs/2609.01967v1"
+},
+"arxiv:2609.01971": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "NS-Copilot: An LLM-Driven Agent System for Autonomous Neuroscience Analysis",
+"url": "http://arxiv.org/abs/2609.01971v1"
+},
+"arxiv:2609.01976": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Knowing Is Not Enough: Information Retrievability as a Precondition to Effective LLM Oversight",
+"url": "http://arxiv.org/abs/2609.01976v1"
+},
+"arxiv:2609.01982": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Benchmarking Language Models for Statistical Problem Formulation",
+"url": "http://arxiv.org/abs/2609.01982v1"
+},
+"arxiv:2609.01985": {
+"first_seen": "2026-09-03",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 1,
 "streak": 1,
-"title": "Mapping global methane emissions from space with deep learning",
-"url": "https://research.google/blog/mapping-global-methane-emissions-from-space-with-deep-learning/"
+"title": "When Agents Implement Systems: A Case Study in Defects, Detection, and Evaluation Rigor",
+"url": "http://arxiv.org/abs/2609.01985v1"
+},
+"arxiv:2609.01987": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "Morphology signal in whole slide image foundation models can automatically triage slides",
+"url": "http://arxiv.org/abs/2609.01987v1"
+},
+"arxiv:2609.01991": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "CAHR-Net: Condition-Adaptive Hysteresis Reconstruction for Compact and Interpretable Magnetic Core Loss Modeling",
+"url": "http://arxiv.org/abs/2609.01991v1"
+},
+"arxiv:2609.01992": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "ClaimReceipt: Verifying Evidence Sufficiency and Coverage in Agent Evaluations",
+"url": "http://arxiv.org/abs/2609.01992v1"
+},
+"arxiv:2609.01997": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Linear Fusion MultiDiffusion for Fast Training-Free Spherical Panorama Generation",
+"url": "http://arxiv.org/abs/2609.01997v1"
+},
+"arxiv:2609.01999": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Posterior Tempering Explains Variance Inflation in Linear and Generalized Linear Thompson Sampling",
+"url": "http://arxiv.org/abs/2609.01999v1"
+},
+"arxiv:2609.02002": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "InsightSeg: Reusing Correction Insights for Guideline-Consistent Segmentation",
+"url": "http://arxiv.org/abs/2609.02002v1"
+},
+"arxiv:2609.02004": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "InstEditSeg: Instruction-Driven Image Editing for Polyp and Skin Lesion Segmentation",
+"url": "http://arxiv.org/abs/2609.02004v1"
+},
+"arxiv:2609.02006": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Train What You Deploy: Closing the MLP Reachability Gap in Low-Rank Clone Distillation",
+"url": "http://arxiv.org/abs/2609.02006v1"
+},
+"arxiv:2609.02011": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Seed-Anchored Budget-Bounded Graph Rendering for Question Answering on Industry-Standard Power-Grid Information and Exchange Models",
+"url": "http://arxiv.org/abs/2609.02011v1"
+},
+"arxiv:2609.02013": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "What Would it Cost to End Extreme Poverty?",
+"url": "http://arxiv.org/abs/2609.02013v1"
+},
+"arxiv:2609.02015": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "How Output Format Confounds Data Quality and Capability in Instruction Tuning",
+"url": "http://arxiv.org/abs/2609.02015v1"
+},
+"arxiv:2609.02016": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Perceptually Regularized Diffusion Model for Image Super-Resolution",
+"url": "http://arxiv.org/abs/2609.02016v1"
+},
+"arxiv:2609.02018": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Source-Free Class Relearning: Diagnosing Forgetting in Class Unlearning",
+"url": "http://arxiv.org/abs/2609.02018v1"
+},
+"arxiv:2609.02029": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "HeadWiseKV: Budgeted Per-Head Cache Residency for Hybrid Long-Context Language Models",
+"url": "http://arxiv.org/abs/2609.02029v1"
+},
+"arxiv:2609.02042": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Act More, Decide Less: Skill-Guided Adaptive Action Chunking for Long-Horizon LLM Agents",
+"url": "http://arxiv.org/abs/2609.02042v1"
+},
+"arxiv:2609.02046": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Modeling What Changes: Sparse, Residual World Models for Object-Centric Manipulation",
+"url": "http://arxiv.org/abs/2609.02046v1"
+},
+"arxiv:2609.02049": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "The Dynamics of Continuous Mixture Collapse in Language Models",
+"url": "http://arxiv.org/abs/2609.02049v1"
+},
+"arxiv:2609.02054": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "A Tri-Agent Framework for Evaluating and Aligning Question Clarification Capabilities of Large Language Models",
+"url": "http://arxiv.org/abs/2609.02054v1"
+},
+"arxiv:2609.02055": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Privacy Washing: Detecting Internal Contradictions in Privacy Policies",
+"url": "http://arxiv.org/abs/2609.02055v1"
+},
+"arxiv:2609.02056": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "HyGRAIL: Cost-Aware and Evidence-Grounded Scientific Hypothesis Discovery over Knowledge Graphs",
+"url": "http://arxiv.org/abs/2609.02056v1"
+},
+"arxiv:2609.02057": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Monitoring Web Agents Without Internal Signals: Observable Trajectories and Key-Step Supervision",
+"url": "http://arxiv.org/abs/2609.02057v1"
+},
+"arxiv:2609.02059": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "DocHop: Benchmarking Out-of-domain Multi-hop Reasoning in Information-Dense Documents",
+"url": "http://arxiv.org/abs/2609.02059v1"
+},
+"arxiv:2609.02060": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "MineTRACE: An Evidence-Grounded Interactive Reasoning System for Mineral Prospectivity",
+"url": "http://arxiv.org/abs/2609.02060v1"
+},
+"arxiv:2609.02067": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "ToolGate: An Executable Acceptance Pipeline for Tool-Dependent Scientific Benchmark Construction",
+"url": "http://arxiv.org/abs/2609.02067v1"
+},
+"arxiv:2609.02068": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "DynG-Diff: A State-Aware Dynamic Guidance Diffusion Framework for Probabilistic Time Series Forecasting",
+"url": "http://arxiv.org/abs/2609.02068v1"
+},
+"arxiv:2609.02074": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "CHIME: Credit-Aware Hierarchical Memory Evolution for Long-Horizon Agentic Planning",
+"url": "http://arxiv.org/abs/2609.02074v1"
+},
+"arxiv:2609.02082": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Transfer Safety Awareness for Cross-Modal Safety Drift in Multimodal Large Language Models",
+"url": "http://arxiv.org/abs/2609.02082v1"
+},
+"arxiv:2609.02083": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "XMerge: Cross-Axis Selection and Reconstructive Layer Merging for LLM Depth Compression",
+"url": "http://arxiv.org/abs/2609.02083v1"
+},
+"arxiv:2609.02085": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "TC-Next: Zero-Shot Multimodal Cyclone Forecasting",
+"url": "http://arxiv.org/abs/2609.02085v1"
+},
+"arxiv:2609.02089": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "IDEEA: training-free Input-Dependent stEEring via Activation cluster matching",
+"url": "http://arxiv.org/abs/2609.02089v1"
+},
+"arxiv:2609.02091": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Selective Knowledge Edit Reversal via Gated Singular Vector Shrinkage",
+"url": "http://arxiv.org/abs/2609.02091v1"
+},
+"arxiv:2609.02092": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Beyond Outcome Gaps: Process-Aware Fairness Diagnosis for LLM-based Multi-Agent Decision Systems",
+"url": "http://arxiv.org/abs/2609.02092v1"
+},
+"arxiv:2609.02093": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Compositional Spectral Prompts for LLM-based Online Time Series Forecasting",
+"url": "http://arxiv.org/abs/2609.02093v1"
+},
+"arxiv:2609.02094": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "MASkills: Continual Skills Optimization for Multi-Agent LLM Systems",
+"url": "http://arxiv.org/abs/2609.02094v1"
+},
+"arxiv:2609.02095": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "READY or Not: Reliable Enterprise Agent Deployment",
+"url": "http://arxiv.org/abs/2609.02095v1"
+},
+"arxiv:2609.02101": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Federated LoRA Adaptation of BiomedCLIP Across Four International Chest X-Ray Cohorts",
+"url": "http://arxiv.org/abs/2609.02101v1"
+},
+"arxiv:2609.02106": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Git4Data: Database-Native Version Control for AI Agents",
+"url": "http://arxiv.org/abs/2609.02106v1"
+},
+"arxiv:2609.02107": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "A Unified Rate-Distortion Perspective on Vector, Product, and Scalar Quantization",
+"url": "http://arxiv.org/abs/2609.02107v1"
+},
+"arxiv:2609.02108": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Predict, Don't Iterate: Efficient Adaptive-Length Infilling for Diffusion Language Models",
+"url": "http://arxiv.org/abs/2609.02108v1"
+},
+"arxiv:2609.02109": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "MeanField Surrogate Modeling for Scalable Runtime Scheduling of Concurrent Heterogeneous AI Inference on Shared GPUs",
+"url": "http://arxiv.org/abs/2609.02109v1"
+},
+"arxiv:2609.02110": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "A Computational Comparison of Fourier Spectral Differentiation and Spatial Automatic Differentiation in Periodic Physics-Informed Neural Networks",
+"url": "http://arxiv.org/abs/2609.02110v1"
+},
+"arxiv:2609.02111": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Disease Burden over Skin Tone: Decomposing the Dermatology-AI Generalization Gap",
+"url": "http://arxiv.org/abs/2609.02111v1"
+},
+"arxiv:2609.02115": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "text2ql: Multi-Target Natural Language Querying via a Language-Agnostic Intermediate Representation",
+"url": "http://arxiv.org/abs/2609.02115v1"
+},
+"arxiv:2609.02116": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Semantic Signal-Assisted Inspection and Recovery Allocation in Reverse Logistics",
+"url": "http://arxiv.org/abs/2609.02116v1"
+},
+"arxiv:2609.02122": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "AI agents reshape consensus formation in human groups",
+"url": "http://arxiv.org/abs/2609.02122v1"
+},
+"arxiv:2609.02126": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Scalable Bayesian Optimization of Composite Functions for Image-Based Inverse Problems in Materials Characterization",
+"url": "http://arxiv.org/abs/2609.02126v1"
+},
+"arxiv:2609.02129": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Beyond Context Windows: Persistent Discovery Context for Data-Centric Agents",
+"url": "http://arxiv.org/abs/2609.02129v1"
+},
+"arxiv:2609.02131": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "C$^{3}$T: Counterfactual Causal Reasoning for Sentiment Shifts in Social-Media Conversation Trees",
+"url": "http://arxiv.org/abs/2609.02131v1"
+},
+"arxiv:2609.02133": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "EmoStance: Response-Side Affective-Orientation Control for Empathetic Response Generation via Emoji Weak Supervision",
+"url": "http://arxiv.org/abs/2609.02133v1"
+},
+"arxiv:2609.02138": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "HyperMC: Multi-Fidelity Hyperparameter Tuning for Stochastic Gradient MCMC",
+"url": "http://arxiv.org/abs/2609.02138v1"
+},
+"arxiv:2609.02140": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "SoK: Where Do Flow Labels Come From? Auditing Label Provenance in Encrypted Traffic Benchmarks",
+"url": "http://arxiv.org/abs/2609.02140v1"
+},
+"arxiv:2609.02143": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "A Power Law in Logarithm's Clothing: On the Scalability of Graph-Based Vector Search",
+"url": "http://arxiv.org/abs/2609.02143v1"
+},
+"arxiv:2609.02145": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Online Non-Monotone DR-Submodular Maximization Matching the Offline $0.401$ Factor",
+"url": "http://arxiv.org/abs/2609.02145v1"
+},
+"arxiv:2609.02149": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "OmegaUse-SOP: SOP Engineering for Professional Computer Use from Human Demonstrations",
+"url": "http://arxiv.org/abs/2609.02149v1"
+},
+"arxiv:2609.02152": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Beyond Modality Harmony: Orthogonal Purification and Topology-Guided MoE for Conflict-Aware Multimodal Recommendation",
+"url": "http://arxiv.org/abs/2609.02152v1"
+},
+"arxiv:2609.02153": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "A Layered Taxonomy for Chinese Learner Grammatical Error Annotation",
+"url": "http://arxiv.org/abs/2609.02153v1"
+},
+"arxiv:2609.02155": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Exact Limits of Random Projections for Preserving Geometry: Distance Recovery, Nearest-Neighbor Rankings, and Covariance Shape in Gaussian Models",
+"url": "http://arxiv.org/abs/2609.02155v1"
+},
+"arxiv:2609.02158": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "OBJECTION! Lawyer Agents Mitigate Guilty Bias in Legal Judgment Prediction",
+"url": "http://arxiv.org/abs/2609.02158v1"
+},
+"arxiv:2609.02160": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "GeoSPRINT: Geometric Redundancy-Aware Step Pruning for Inference in Diffusion Trajectories",
+"url": "http://arxiv.org/abs/2609.02160v1"
+},
+"arxiv:2609.02162": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "GenCAR: Generative Counterfactual Alignment with Risk-Controlled Selection for Out-of-Distribution Recommendation",
+"url": "http://arxiv.org/abs/2609.02162v1"
+},
+"arxiv:2609.02163": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Do Cantonese-Adapted Language Models Better Predict Cantonese Reading? A Cross-Model Eye-Tracking Evaluation",
+"url": "http://arxiv.org/abs/2609.02163v1"
+},
+"arxiv:2609.02168": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "FUSE: An Evaluating Framework for Dangerous Capabilities of LLMs",
+"url": "http://arxiv.org/abs/2609.02168v1"
+},
+"arxiv:2609.02170": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "DMRL: Document-Mediated Reinforcement Learning for Skill Optimization in Advertising Recommendation",
+"url": "http://arxiv.org/abs/2609.02170v1"
+},
+"arxiv:2609.02172": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Breadth Beats Depth: Improving GCG-Based Jailbreak Optimization with Breadth-Oriented Suffix Search",
+"url": "http://arxiv.org/abs/2609.02172v1"
+},
+"arxiv:2609.02177": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "WeaveMark: Robust and Scalable Multi-bit LLM Watermarking via Coded Payload Spreading",
+"url": "http://arxiv.org/abs/2609.02177v1"
+},
+"arxiv:2609.02186": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Quantum MeanFlow: single-shot generative sampling on NISQ hardware",
+"url": "http://arxiv.org/abs/2609.02186v1"
+},
+"arxiv:2609.02191": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Examining the Vulnerability of Multi-Agent Medical Systems to Human Interventions for Clinical Reasoning",
+"url": "http://arxiv.org/abs/2609.02191v1"
+},
+"arxiv:2609.02194": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Learning the Constitutive Behavior of Materials via Neural Operators and Causal Attention: Case Studies in Plasticity and Damage",
+"url": "http://arxiv.org/abs/2609.02194v1"
+},
+"arxiv:2609.02196": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Schr\u00f6dinger Bridges on Lie Group Manifolds for Probabilistic Intrinsic Generation",
+"url": "http://arxiv.org/abs/2609.02196v1"
+},
+"arxiv:2609.02203": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "SMart: A Multi-source Multi-phase Time Series Representation Transfer Framework",
+"url": "http://arxiv.org/abs/2609.02203v1"
+},
+"arxiv:2609.02207": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "LeakageBench: Document-Level Leakage Risk for Redacting Personally Identifiable Information in Document Images",
+"url": "http://arxiv.org/abs/2609.02207v1"
+},
+"arxiv:2609.02209": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Prototype-guided transfer of sparse literature knowledge for electrolyte additive discovery",
+"url": "http://arxiv.org/abs/2609.02209v1"
+},
+"arxiv:2609.02215": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "ASCII Attack: Recontextualising Harmful Requests as Artistic Critique in Large Language Models",
+"url": "http://arxiv.org/abs/2609.02215v1"
+},
+"arxiv:2609.02216": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "PEARL: Path-Entity Aligned Relational Learning with Contextual Subgraphs for Inductive Knowledge Graph Completion",
+"url": "http://arxiv.org/abs/2609.02216v1"
+},
+"arxiv:2609.02217": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "SkillGLoW: Procedural-Family Skill Consolidation for Self-Improving Agents on Long-Horizon Task Streams",
+"url": "http://arxiv.org/abs/2609.02217v1"
+},
+"arxiv:2609.02219": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Hardware-Accelerated Instance Segmentation for Resource-Constrained Space Robotics with Criticality Analysis",
+"url": "http://arxiv.org/abs/2609.02219v1"
+},
+"arxiv:2609.02224": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Signal or Noise? Auditing Rotation-Induced Saliency Drift in Medical and Aerial Imaging",
+"url": "http://arxiv.org/abs/2609.02224v1"
+},
+"arxiv:2609.02231": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "PhoenixNest-Video: Evidence-Grounded Multimodal Agent Framework for Automated Video Interview Assessment",
+"url": "http://arxiv.org/abs/2609.02231v1"
+},
+"arxiv:2609.02233": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "InfraPatch: Cross-Task Targeted Grayscale Patch Attacks on Infrared-Adapted Vision-Language Models",
+"url": "http://arxiv.org/abs/2609.02233v1"
+},
+"arxiv:2609.02236": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "PGPO: Potential-Guided Policy Optimization for Multi-Turn Agentic Tasks",
+"url": "http://arxiv.org/abs/2609.02236v1"
+},
+"arxiv:2609.02237": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Recursive Value Learning for Long-Horizon Offline Goal-Conditioned RL",
+"url": "http://arxiv.org/abs/2609.02237v1"
+},
+"arxiv:2609.02241": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Similarity-Aware Personalized Federated Learning in Heterogeneous Environments",
+"url": "http://arxiv.org/abs/2609.02241v1"
+},
+"arxiv:2609.02242": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Propose to Learn, Learn to Propose: Evaluability-Aware Assistance under Bounded Rationality",
+"url": "http://arxiv.org/abs/2609.02242v1"
+},
+"arxiv:2609.02244": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Task-Level Natural Language Priors as Learning Signals for Low-Resource LLM Training",
+"url": "http://arxiv.org/abs/2609.02244v1"
+},
+"arxiv:2609.02246": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "LLM-as-a-Judge Is Not an Oracle: Why Self-Improving Agents Need Deterministic Guardrails",
+"url": "http://arxiv.org/abs/2609.02246v1"
+},
+"arxiv:2609.02247": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "SAUF-Net: Structure--Appearance Representation Learning with Uncertainty Feedback for Semi-Supervised Medical Image Segmentation",
+"url": "http://arxiv.org/abs/2609.02247v1"
+},
+"arxiv:2609.02250": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "RideSkill: A Hierarchical Algorithm for Generalized Ride Sharing with LLM-Driven Automatic Evolution",
+"url": "http://arxiv.org/abs/2609.02250v1"
+},
+"arxiv:2609.02252": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "DiffuSearch: How Hybrid Trajectory Planning Benefits from Aligned Objectives in Diffusion and Action Space",
+"url": "http://arxiv.org/abs/2609.02252v1"
+},
+"arxiv:2609.02253": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "APEx: Distillation of Agent Procedural Experience for Adaptive Deep Research Question Answering",
+"url": "http://arxiv.org/abs/2609.02253v1"
+},
+"arxiv:2609.02262": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "From Detection to Characterization: A Large-Scale Study of Ragebait on Japanese X",
+"url": "http://arxiv.org/abs/2609.02262v1"
+},
+"arxiv:2609.02264": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Codebook Agent: Amortized Topology Design for LLM Multi-Agent Systems",
+"url": "http://arxiv.org/abs/2609.02264v1"
+},
+"arxiv:2609.02265": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "CAPTURE: Disentangling Preference Drift from Memory Poisoning in Personalized LLM Agents",
+"url": "http://arxiv.org/abs/2609.02265v1"
+},
+"arxiv:2609.02268": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Retrosynthesis of Synthetic Media for Explainable AI Provenance Forensics",
+"url": "http://arxiv.org/abs/2609.02268v1"
+},
+"arxiv:2609.02270": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "CrashDiffuser: VLM-Guided Collision Intent Reasoning for Fine-Grained Safety-Critical Traffic Scenario Generation",
+"url": "http://arxiv.org/abs/2609.02270v1"
+},
+"arxiv:2609.02272": {
+"first_seen": "2026-09-03",
+"mag": 1.7918,
+"mag_history": [
+1.7918
+],
+"score": 3,
+"streak": 1,
+"title": "PaperCompiler: Faithful Paper-to-Code Generation via Repository-Level Specification Compilation",
+"url": "https://arxiv.org/abs/2609.02272"
+},
+"arxiv:2609.02273": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "CoMerge: Conflict-Driven Preference Optimization for Multi-Task Model Merging",
+"url": "http://arxiv.org/abs/2609.02273v1"
+},
+"arxiv:2609.02275": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Do Large Language Models Capture the Diversity in their Training Data?",
+"url": "http://arxiv.org/abs/2609.02275v1"
+},
+"arxiv:2609.02277": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Auditory Illusion Benchmark for Large Audio Language Models",
+"url": "http://arxiv.org/abs/2609.02277v1"
+},
+"arxiv:2609.02282": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "RouteGraph-Mona: Confusion-Aware Routing Fine-Tuning for Mineral Image Classification",
+"url": "http://arxiv.org/abs/2609.02282v1"
+},
+"arxiv:2609.02285": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Entangled Representations Amplify Collateral Damage in Unlearning",
+"url": "http://arxiv.org/abs/2609.02285v1"
+},
+"arxiv:2609.02286": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "From topology learning to graph generation: A unifying perspective",
+"url": "http://arxiv.org/abs/2609.02286v1"
+},
+"arxiv:2609.02291": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "VoRTeC: Taming Foundation Flow for One-step Real time Video Compression",
+"url": "http://arxiv.org/abs/2609.02291v1"
+},
+"arxiv:2609.02292": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "SCX Router: Streaming Zero-Shot Model Selection with a Decoder-KV Classifier and a Real-World Task Ontology",
+"url": "http://arxiv.org/abs/2609.02292v1"
+},
+"arxiv:2609.02293": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "SEAL: Reinforcing Global Safety in Mixture-of-Experts through Shared Expert ALignment",
+"url": "http://arxiv.org/abs/2609.02293v1"
+},
+"arxiv:2609.02302": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Improving Evaluation Realism with Inference-Time Compute and Deployment Scaffolds",
+"url": "http://arxiv.org/abs/2609.02302v1"
+},
+"arxiv:2609.02304": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Bayes-Optimal BER and AUC: Estimation and Evaluation of Estimators",
+"url": "http://arxiv.org/abs/2609.02304v1"
+},
+"arxiv:2609.02309": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Efficient GUI Agents: A Systems Survey of Observation, Memory, Action, and Runtime Optimization",
+"url": "http://arxiv.org/abs/2609.02309v1"
+},
+"arxiv:2609.02315": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "DiffIE: Diffusion-based Open Information Extraction",
+"url": "http://arxiv.org/abs/2609.02315v1"
+},
+"arxiv:2609.02316": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Counter-GEO-Bench: Evaluating Defenses Against Information-Distorting Generative Engine Optimization",
+"url": "http://arxiv.org/abs/2609.02316v1"
+},
+"arxiv:2609.02322": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "What Is Worth Representing? Representational Empowerment for Continual Model Construction",
+"url": "http://arxiv.org/abs/2609.02322v1"
+},
+"arxiv:2609.02328": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Poisoning Attacks on the PGM-index",
+"url": "http://arxiv.org/abs/2609.02328v1"
+},
+"arxiv:2609.02333": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "ORB-SVM : An Innovative Hybrid Framework for Efficient Brain Tumor Detection from MRI Scans",
+"url": "http://arxiv.org/abs/2609.02333v1"
+},
+"arxiv:2609.02336": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "SALA: Semantic-Aware Logical Alignment for Complex Reasoning in In-Context Learning",
+"url": "http://arxiv.org/abs/2609.02336v1"
+},
+"arxiv:2609.02339": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "AGI Maze Prediction Datasets: A Compact Benchmark for Learning World Dynamics with Transformers",
+"url": "http://arxiv.org/abs/2609.02339v1"
+},
+"arxiv:2609.02343": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "SonicCaps: Large-Scale Diverse and Fine-Grained Captioning for Improved Audio-Retrieval",
+"url": "http://arxiv.org/abs/2609.02343v1"
+},
+"arxiv:2609.02344": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Subcellularly Resolved Single-Cell Embedding Learning with Transcriptomic data, Protein Structure and Localization Information",
+"url": "http://arxiv.org/abs/2609.02344v1"
+},
+"arxiv:2609.02354": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Fair Stable Matching: A Nash Social Welfare Approach",
+"url": "http://arxiv.org/abs/2609.02354v1"
+},
+"arxiv:2609.02358": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Humanoid Safe Stop via Learned Stoppability Value",
+"url": "http://arxiv.org/abs/2609.02358v1"
+},
+"arxiv:2609.02364": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Towards a Foundational Ontology for Identifying and Resolving Contradictions in Dialogue-based Human-Robot Interactions",
+"url": "http://arxiv.org/abs/2609.02364v1"
+},
+"arxiv:2609.02366": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "NE-R1: Enhancing Named Entity Recognition Model via Reinforcement Learning",
+"url": "http://arxiv.org/abs/2609.02366v1"
+},
+"arxiv:2609.02371": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "Diagnosing with Insights: Structured Analysis of Agent Failures via Behavioral Abstractions",
+"url": "http://arxiv.org/abs/2609.02371v1"
+},
+"arxiv:2609.02373": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Percolation Dynamics in Optimization : Variance Cascades and Discrete Scale Invariance",
+"url": "http://arxiv.org/abs/2609.02373v1"
+},
+"arxiv:2609.02379": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "MultiGhostBench: A Multilingual Benchmark for Long-Form LLM-Generated Text Attribution under Distribution Shifts",
+"url": "http://arxiv.org/abs/2609.02379v1"
+},
+"arxiv:2609.02382": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "A computational approach to maximum likelihood thresholds for colored Gaussian graphical models",
+"url": "http://arxiv.org/abs/2609.02382v1"
+},
+"arxiv:2609.02391": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "PolERo: Studying Political Evasion in Romanian",
+"url": "http://arxiv.org/abs/2609.02391v1"
+},
+"arxiv:2609.02396": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Improving Health Literacy through Lay Summarization of Radiological Reports: An Evaluation of BioNER and Retrieval-Augmented Generation",
+"url": "http://arxiv.org/abs/2609.02396v1"
+},
+"arxiv:2609.02399": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Contrastive Explanations in Quantitative Bipolar Argumentation Frameworks",
+"url": "http://arxiv.org/abs/2609.02399v1"
+},
+"arxiv:2609.02404": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Evidence for Shared Routing Geometry and Dynamics in Sparse Mixture-of-Experts",
+"url": "http://arxiv.org/abs/2609.02404v1"
+},
+"arxiv:2609.02414": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Before the Script, Set the Stage: How Worldview Simulation Amplifies Psychologically Grounded Persuasion in Multi-Turn Jailbreaking",
+"url": "http://arxiv.org/abs/2609.02414v1"
+},
+"arxiv:2609.02417": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Coverage, Not Targeting: A Structural Regime in Multi-Turn Agent Credit Assignment",
+"url": "http://arxiv.org/abs/2609.02417v1"
+},
+"arxiv:2609.02421": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "UTP-Bench: Uncertainty-aware Travel Planning Benchmark",
+"url": "http://arxiv.org/abs/2609.02421v1"
+},
+"arxiv:2609.02422": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "IFW-BLS: Dual-Robust Broad Learning System with Intuitionistic Fuzzy Wave Loss",
+"url": "http://arxiv.org/abs/2609.02422v1"
+},
+"arxiv:2609.02438": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "When Decodability Is Not Enough: Logical Validity Representations, Behavioral Dissociation, and Causal Tests in Language Models",
+"url": "http://arxiv.org/abs/2609.02438v1"
+},
+"arxiv:2609.02440": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Towards One-for-All Robustness Across a Continuum of Threat Levels",
+"url": "http://arxiv.org/abs/2609.02440v1"
+},
+"arxiv:2609.02450": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "CACTUS: Mask-Guided Semantic Clean-Label Backdoors in Decentralized Federated Learning",
+"url": "http://arxiv.org/abs/2609.02450v1"
+},
+"arxiv:2609.02451": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Scalable Kronecker-Fisher Approximation: Efficient Hessian Analysis for Billion-Parameter Language Models Compression",
+"url": "http://arxiv.org/abs/2609.02451v1"
+},
+"arxiv:2609.02453": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Addressing Trust in AI Systems through Education: A Didactic Perspective",
+"url": "http://arxiv.org/abs/2609.02453v1"
+},
+"arxiv:2609.02459": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "CivBench: A Long-Horizon Benchmark for Tool-Mediated Agents in Civilization VI",
+"url": "http://arxiv.org/abs/2609.02459v1"
+},
+"arxiv:2609.02468": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "DeepAffinity: Long-Term Aspect Preference Prediction in eCommerce using Small Language Models",
+"url": "http://arxiv.org/abs/2609.02468v1"
+},
+"arxiv:2609.02473": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Learning to Fuse LLMs with Ontology Rankers for Rare-Disease Diagnosis",
+"url": "http://arxiv.org/abs/2609.02473v1"
+},
+"arxiv:2609.02480": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "PragAlign: Feedback-Guided Pragmatic Alignment for Controlled Synthetic Dialogue Generation",
+"url": "http://arxiv.org/abs/2609.02480v1"
+},
+"arxiv:2609.02482": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "How LLMs Build Fictional Worlds: Setting and Narrative Space in AI-Generated Creative Storytelling",
+"url": "http://arxiv.org/abs/2609.02482v1"
+},
+"arxiv:2609.02486": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "ViSAR: Training-Free Adaptive-$k$ Retrieval for Visual Document Question Answering",
+"url": "http://arxiv.org/abs/2609.02486v1"
+},
+"arxiv:2609.02496": {
+"first_seen": "2026-09-03",
+"mag": 0.6931,
+"mag_history": [
+0.6931
+],
+"score": 1,
+"streak": 1,
+"title": "Debias-SparseGPT: Bias-Aware Pruning for Large Language Models",
+"url": "https://arxiv.org/abs/2609.02496"
+},
+"arxiv:2609.02497": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "RINSE: Robust Target-Time Normality Estimation for Zero-Shot Graph Anomaly Detection",
+"url": "http://arxiv.org/abs/2609.02497v1"
+},
+"arxiv:2609.02499": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Training seeds and model-selection stability in recommender-system evaluation",
+"url": "http://arxiv.org/abs/2609.02499v1"
+},
+"arxiv:2609.02502": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Blending Concepts: Benchmarking Visual Metaphor Generation in Text-to-Image Models",
+"url": "http://arxiv.org/abs/2609.02502v1"
+},
+"arxiv:2609.02507": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Rethinking the Teacher-Student Framework for Test-Time Adaptation",
+"url": "http://arxiv.org/abs/2609.02507v1"
+},
+"arxiv:2609.02510": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Orthogonal Ensembles and Tested Explanations for Performer-Independent Body-Motion Emotion Recognition",
+"url": "http://arxiv.org/abs/2609.02510v1"
+},
+"arxiv:2609.02519": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Spectral Initialization and Scheduled Graph Smoothness for Uncertain Knowledge Graph Completion",
+"url": "http://arxiv.org/abs/2609.02519v1"
+},
+"arxiv:2609.02526": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "When Persona Attributes Improve Population Alignment in Large Language Models",
+"url": "http://arxiv.org/abs/2609.02526v1"
+},
+"arxiv:2609.02529": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "Fine-Grained Anomaly Perception in Wild UGC-Enhanced Images: A Comprehensive Dataset and Difference-Fusion Framework",
+"url": "http://arxiv.org/abs/2609.02529v1"
+},
+"arxiv:2609.02538": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "A Comparative Study of Graph Representations for GNN-Based Power Grid Control in L2RPN",
+"url": "http://arxiv.org/abs/2609.02538v1"
+},
+"arxiv:2609.02540": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "TrajMind: Chaining Role-Specialized LoRAs for Fast-and-Slow Collective Trajectory Anomaly Diagnosis",
+"url": "http://arxiv.org/abs/2609.02540v1"
+},
+"arxiv:2609.02548": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Learn from Whoever Is Right: Answer-Verified Multi-Teacher Distillation for Multi-Domain LLMs",
+"url": "http://arxiv.org/abs/2609.02548v1"
+},
+"arxiv:2609.02549": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "ProbeMatchDTI: Probe-Driven Multi-Scale Biochemical Pattern Matching for Drug-Target Interaction Prediction",
+"url": "http://arxiv.org/abs/2609.02549v1"
+},
+"arxiv:2609.02566": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Online Reinforcement Learning in the Met Office Unified Model through Distributed Model-Agent Coupling",
+"url": "http://arxiv.org/abs/2609.02566v1"
+},
+"arxiv:2609.02568": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Learning-Based Reconstruction Attacks on Coordinate-Obfuscated Point Clouds",
+"url": "http://arxiv.org/abs/2609.02568v1"
+},
+"arxiv:2609.02580": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Competitive Market Behavior of LLMs",
+"url": "http://arxiv.org/abs/2609.02580v1"
+},
+"arxiv:2609.02606": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Predictors of Loneliness in Older Adults Using Multimodal Analysis of Speech and Language",
+"url": "http://arxiv.org/abs/2609.02606v1"
+},
+"arxiv:2609.02620": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Collective creativity in hybrid societies",
+"url": "http://arxiv.org/abs/2609.02620v1"
+},
+"arxiv:2609.02622": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Source Distribution Estimation by Posterior Averaging",
+"url": "http://arxiv.org/abs/2609.02622v1"
+},
+"arxiv:2609.02623": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Scalable Direction-Following TTS via Voice Impression-Guided Pseudo Triplet Construction",
+"url": "http://arxiv.org/abs/2609.02623v1"
+},
+"arxiv:2609.02624": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Automated Vulnerability Injection in Smart Contracts Using Large Language Models",
+"url": "http://arxiv.org/abs/2609.02624v1"
+},
+"arxiv:2609.02638": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Oracle, will I ever learn? A study of prediction convergence and complementarity across link prediction models",
+"url": "http://arxiv.org/abs/2609.02638v1"
+},
+"arxiv:2609.02639": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "TaRA: Training-Aware Low-Rank Adaptation Initialization",
+"url": "http://arxiv.org/abs/2609.02639v1"
+},
+"arxiv:2609.02646": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Differentiable Electricity-Market Clearing for Gradient-Based Planning",
+"url": "http://arxiv.org/abs/2609.02646v1"
+},
+"arxiv:2609.02649": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "Loom: Weaving Diagnostic Strands into Free-Text Consensus via Embedding-Space Reweighting",
+"url": "http://arxiv.org/abs/2609.02649v1"
+},
+"arxiv:2609.02651": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "WinoQueer-NL: Assessing Bias in Dutch Language Models toward LGBTQ+ Identities",
+"url": "http://arxiv.org/abs/2609.02651v1"
+},
+"arxiv:2609.02652": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Unfolding the Leech Lattice: Fused Multi-Shell Decoding and VRAM Layouts for 2-Bit LLM Weights",
+"url": "http://arxiv.org/abs/2609.02652v1"
+},
+"arxiv:2609.02659": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Dimension Dependent Correlation Gap Bounds under Restricted Independence",
+"url": "http://arxiv.org/abs/2609.02659v1"
+},
+"arxiv:2609.02672": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "oHC: Orthogonal Hyper-Connections on SO(4) via Quaternions",
+"url": "http://arxiv.org/abs/2609.02672v1"
+},
+"arxiv:2609.02677": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Eliciting ESG Preferences for Reinforcement Learning-Based Portfolio Optimization",
+"url": "http://arxiv.org/abs/2609.02677v1"
+},
+"arxiv:2609.02679": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "From Tokens to Semantics: Leveraging Complementary Signals for Hallucination Detection in Black-Box LLMs",
+"url": "http://arxiv.org/abs/2609.02679v1"
+},
+"arxiv:2609.02684": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "H3DNAS: Hardware-Aware ONNX-Native 3D Point Cloud Model Compression",
+"url": "http://arxiv.org/abs/2609.02684v1"
+},
+"arxiv:2609.02685": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "DKL: Decoupled Knowledge Learning for Instruction-Tuned Language Models",
+"url": "http://arxiv.org/abs/2609.02685v1"
+},
+"arxiv:2609.02702": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "Trace as State: Reasoning Traces as Conditional States for Long-Context Transformers",
+"url": "http://arxiv.org/abs/2609.02702v1"
+},
+"arxiv:2609.02707": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Door-in-the-Face Requests and Refusal Behaviour in Large Language Models",
+"url": "http://arxiv.org/abs/2609.02707v1"
+},
+"arxiv:2609.02727": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Neural operators approximate strongly continuous convex monotone semigroups",
+"url": "http://arxiv.org/abs/2609.02727v1"
+},
+"arxiv:2609.02728": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Momentum in large-batch training: Polyak enlarges the critical batch size, Nesterov improves data efficiency",
+"url": "http://arxiv.org/abs/2609.02728v1"
+},
+"arxiv:2609.02730": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "CORAL: An LLM-Native Harness for Production Recommender Systems",
+"url": "http://arxiv.org/abs/2609.02730v1"
+},
+"arxiv:2609.02731": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "RVSD: Retrieval Vision Sparse Decoding for Mitigating Visual Hallucinations in Large Vision-Language Models",
+"url": "http://arxiv.org/abs/2609.02731v1"
+},
+"arxiv:2609.02734": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 3,
+"streak": 1,
+"title": "LoRA-TSD: Tangent-Space Spectral Descent for LoRA via Muon-Style Updates",
+"url": "http://arxiv.org/abs/2609.02734v1"
+},
+"arxiv:2609.02735": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Choosing a PEFT Variant for Per-Patient Dysarthric ASR: A Single-Speaker Case Study on Two ASR Bases",
+"url": "http://arxiv.org/abs/2609.02735v1"
+},
+"arxiv:2609.02737": {
+"first_seen": "2026-09-03",
+"mag": 3.7842,
+"mag_history": [
+3.7842
+],
+"score": 3,
+"streak": 1,
+"title": "Language Models Can Control Their Own Attention",
+"url": "https://arxiv.org/abs/2609.02737"
+},
+"arxiv:2609.02741": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "SPADE: SPaT Attack Detection from the Connected Vehicle's Perspective",
+"url": "http://arxiv.org/abs/2609.02741v1"
+},
+"arxiv:2609.02745": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Incremental Pooled LLM Evaluation for Cost-Effective Retrieval Model Selection",
+"url": "http://arxiv.org/abs/2609.02745v1"
+},
+"arxiv:2609.02746": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "HiPoly: a hierarchical polymer-native AI framework for property prediction and generative design",
+"url": "http://arxiv.org/abs/2609.02746v1"
+},
+"arxiv:2609.02749": {
+"first_seen": "2026-09-03",
+"mag": 5.8435,
+"mag_history": [
+5.8435
+],
+"score": 3,
+"streak": 1,
+"title": "Repo-To-Skill: Distilling GitHub Repositories Into AI4AI Skills",
+"url": "https://arxiv.org/abs/2609.02749"
+},
+"arxiv:2609.02750": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Bilevel Coordinated Reflection: A Game-Theoretic Approach to Multi-Agent LLM Systems",
+"url": "http://arxiv.org/abs/2609.02750v1"
+},
+"arxiv:2609.02754": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Untangling the Mechanisms of Misleading Context in Medical Question Answering",
+"url": "http://arxiv.org/abs/2609.02754v1"
+},
+"arxiv:2609.02760": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Measurement-Driven Sub-Network Selection for On-Premise Retrieval-Augmented Factory Agents",
+"url": "http://arxiv.org/abs/2609.02760v1"
+},
+"arxiv:2609.02766": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Do Tabular Foundation Models Know Physics? Contamination, Units, and the Deterministic Limit",
+"url": "http://arxiv.org/abs/2609.02766v1"
+},
+"arxiv:2609.02771": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "From Reweighting to Rewriting: Unlocking the Intervention Effects of Influential Samples in Training Data Attribution",
+"url": "http://arxiv.org/abs/2609.02771v1"
+},
+"arxiv:2609.02772": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "HyperStyler: Low-resource Authorship Style Transfer via Context-aware Style Navigation and Hypernetworks",
+"url": "http://arxiv.org/abs/2609.02772v1"
+},
+"arxiv:2609.02774": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "CodePoisonRAG: Knowledge Poisoning Attacks on Retrieval-Augmented Code Generation",
+"url": "http://arxiv.org/abs/2609.02774v1"
+},
+"arxiv:2609.02780": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "ShallowStream: Index Shallow then Answer Deep for Streaming Video Understanding",
+"url": "http://arxiv.org/abs/2609.02780v1"
+},
+"arxiv:2609.02783": {
+"first_seen": "2026-09-03",
+"mag": 4.6444,
+"mag_history": [
+4.6444
+],
+"score": 4,
+"streak": 1,
+"title": "EarlyEval: Cheaper Agent Evaluation via Early Outcome Prediction",
+"url": "https://arxiv.org/abs/2609.02783"
+},
+"arxiv:2609.02786": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "SafeEvolve: Harness-Policy Co-Evolution from Agent Experience for Safety Alignment",
+"url": "http://arxiv.org/abs/2609.02786v1"
+},
+"arxiv:2609.02790": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Full-Model Optimality for Tunable Linear Generative Priors in Compressed Sensing",
+"url": "http://arxiv.org/abs/2609.02790v1"
+},
+"arxiv:2609.02796": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "DiscoSign: Discourse-Aware Text to Sign Language Gloss Translation",
+"url": "http://arxiv.org/abs/2609.02796v1"
+},
+"arxiv:2609.02797": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Dutch Books for Language Models",
+"url": "http://arxiv.org/abs/2609.02797v1"
+},
+"arxiv:2609.02804": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "frb100-40 After Two Decades: An Optimality Certificate and a Preregistered Search Study",
+"url": "http://arxiv.org/abs/2609.02804v1"
+},
+"arxiv:2609.02805": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Large Language Models (LLMs) for Telecom Root Cause Analysis (RCA): A Structured Reasoning Framework for Evidence-Grounded Diagnosis",
+"url": "http://arxiv.org/abs/2609.02805v1"
+},
+"arxiv:2609.02812": {
+"first_seen": "2026-09-03",
+"mag": 2.3979,
+"mag_history": [
+2.3979
+],
+"score": 1,
+"streak": 1,
+"title": "VibeVoice-ASR-Streaming Technical Report",
+"url": "https://arxiv.org/abs/2609.02812"
+},
+"arxiv:2609.02817": {
+"first_seen": "2026-09-03",
+"mag": 2.7726,
+"mag_history": [
+2.7726
+],
+"score": 3,
+"streak": 1,
+"title": "Cliff: Learning Process Rewards from the First Mistake",
+"url": "https://arxiv.org/abs/2609.02817"
+},
+"arxiv:2609.02821": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "AI Contextual Measurement for Recovering Individual and Group-Level Effects: Validation Against Survey Measures and an Occupational Application",
+"url": "http://arxiv.org/abs/2609.02821v1"
+},
+"arxiv:2609.02832": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Copula Transformations for Data-Consistent Inversion",
+"url": "http://arxiv.org/abs/2609.02832v1"
+},
+"arxiv:2609.02833": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Learning Spectral-Like Mesh-Free Discretisations",
+"url": "http://arxiv.org/abs/2609.02833v1"
+},
+"arxiv:2609.02846": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "UE5M3 FP4 Block Scaling for Stable Language Model Pretraining",
+"url": "http://arxiv.org/abs/2609.02846v1"
+},
+"arxiv:2609.02849": {
+"first_seen": "2026-09-03",
+"mag": 1.9459,
+"mag_history": [
+1.9459
+],
+"score": 1,
+"streak": 1,
+"title": "Post-Training Language Models for Gold-Medal Performance in Coding Competitions",
+"url": "https://arxiv.org/abs/2609.02849"
+},
+"arxiv:2609.02852": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "The Implications of Linguistic Illegibility for LLM Security",
+"url": "http://arxiv.org/abs/2609.02852v1"
+},
+"arxiv:2609.02855": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 0,
+"streak": 1,
+"title": "Improved Gradient Descent Lower Bounds Beyond Nesterov",
+"url": "http://arxiv.org/abs/2609.02855v1"
+},
+"arxiv:2609.02859": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "User Feedback Provides a Unique Signal that LLMs Can not Detect",
+"url": "http://arxiv.org/abs/2609.02859v1"
+},
+"arxiv:2609.02861": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Towards Trustworthy Autonomous Robots: An Explainable AI-Based Decision Framework",
+"url": "http://arxiv.org/abs/2609.02861v1"
+},
+"arxiv:2609.02876": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "GRADSOLVE: fast exact gradients for ODE ensembles on GPUs",
+"url": "http://arxiv.org/abs/2609.02876v1"
+},
+"arxiv:2609.02881": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Graph Machine: Towards Better Pretraining via Edges",
+"url": "http://arxiv.org/abs/2609.02881v1"
+},
+"arxiv:2609.02885": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Discriminative World Models for Web Agents",
+"url": "http://arxiv.org/abs/2609.02885v1"
+},
+"arxiv:2609.02886": {
+"first_seen": "2026-09-03",
+"mag": 4.7707,
+"mag_history": [
+4.7707
+],
+"score": 4,
+"streak": 1,
+"title": "SolarWM: Open Data and Scalable Training for Long-Horizon Video World Models",
+"url": "https://arxiv.org/abs/2609.02886"
+},
+"arxiv:2609.02887": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "A Common Measure of Communication for Speech Brain-Computer Interfaces",
+"url": "http://arxiv.org/abs/2609.02887v1"
+},
+"blog:https://blogs.nvidia.com/?p=98028": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "\u2018NBA 2K27\u2019 With NVIDIA DLSS 5 Leads 28 New Games Coming to GeForce NOW",
+"url": "https://blogs.nvidia.com/blog/geforce-now-thursday-september-2026-games-list/"
+},
+"blog:https://blogs.nvidia.com/?p=98049": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "NVIDIA to Acquire Hugging Face",
+"url": "https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/"
+},
+"blog:https://deepmind.google/blog/introducing-gemini-3-8-flash-and-38-flash-cyber/": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+"url": "https://deepmind.google/blog/introducing-gemini-3-8-flash-and-38-flash-cyber/"
+},
+"blog:https://deepmind.google/blog/proactive-cyber-defense-for-governments-and-enterprises/": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Proactive cyber defense for governments and enterprises",
+"url": "https://deepmind.google/blog/proactive-cyber-defense-for-governments-and-enterprises/"
+},
+"blog:https://openai.com/index/atv-big-air-tour": {
+"first_seen": "2026-09-03",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "ATV Big Air Tour turned 3 days of work into 3 hours with ChatGPT",
+"url": "https://openai.com/index/atv-big-air-tour"
 },
 "ghrepo:Carasibana/ComfyUI-H3-FaceRefine": {
 "first_seen": "2026-08-26",
-"mag": 2.8747,
+"mag": 2.8795,
 "mag_history": [
 2.8469,
 2.8469,
 2.8585,
 2.8585,
-2.8747
+2.8747,
+2.8795
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "Carasibana/ComfyUI-H3-FaceRefine \u2014 Refine and improve the quality of small faces in MiniMax H3 video. Per-frame face tracking, crop, refine with H3, stitch back.",
 "url": "https://github.com/Carasibana/ComfyUI-H3-FaceRefine"
 },
 "ghrepo:ItzCrazyKns/Vane": {
 "first_seen": "2026-09-02",
-"mag": 5.2537,
+"mag": 5.2539,
 "mag_history": [
-5.2537
+5.2537,
+5.2539
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "ItzCrazyKns/Vane \u2014 Vane is an AI-powered answering engine.",
 "url": "https://github.com/ItzCrazyKns/Vane"
 },
 "ghrepo:ScrapeGraphAI/Scrapegraph-ai": {
 "first_seen": "2026-08-24",
-"mag": 5.161,
+"mag": 5.1622,
 "mag_history": [
-5.152,
 5.1525,
 5.1533,
 5.1543,
 5.1549,
 5.1569,
-5.161
+5.161,
+5.1622
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "ScrapeGraphAI/Scrapegraph-ai \u2014 Python scraper based on AI",
 "url": "https://github.com/ScrapeGraphAI/Scrapegraph-ai"
+},
+"ghrepo:X-GenGroup/Flow-Factory": {
+"first_seen": "2026-09-03",
+"mag": 3.2683,
+"mag_history": [
+3.2683
+],
+"score": 3,
+"streak": 1,
+"title": "X-GenGroup/Flow-Factory \u2014 A unified framework for easy fine-tuning in Flow-Matching models",
+"url": "https://github.com/X-GenGroup/Flow-Factory"
 },
 "ghrepo:candle-org/MindAct": {
 "first_seen": "2026-08-31",
 "mag": 3.4127,
 "mag_history": [
 3.4127,
+3.4127,
 3.4127
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "candle-org/MindAct \u2014 MindSpore +  \ud83e\udd17Huggingface: Run any Transformers/Diffusers model on MindSpore with seamless compatibility and acceleration.",
 "url": "https://github.com/candle-org/MindAct"
 },
@@ -3809,10 +3439,11 @@
 3.0774,
 3.0806,
 3.0817,
+3.0817,
 3.0817
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "gudaochangsheng/RefAlign \u2014 [ECCV 2026] Official PyTorch implementation of RefAlign: Representation Alignment for Reference-to-Video Generation",
 "url": "https://github.com/gudaochangsheng/RefAlign"
 },
@@ -3823,266 +3454,307 @@
 2.5766,
 2.5766,
 2.5766,
+2.5881,
 2.5881
 ],
 "score": 4,
-"streak": 4,
+"streak": 5,
 "title": "mertizci/noai-watermark \u2014 Remove invisible AI watermarks (SynthID, StableSignature, TreeRing) and strip AI metadata from images. Open-source CLI & Python toolkit.",
 "url": "https://github.com/mertizci/noai-watermark"
 },
-"hfdataset:nyu-mll/glue": {
-"first_seen": "2026-08-31",
-"mag": 4.4779,
+"ghrepo:simchowitzlabpublic/nano-world-model": {
+"first_seen": "2026-09-03",
+"mag": 3.2931,
 "mag_history": [
-4.4383,
-4.4779
+3.2931
 ],
 "score": 3,
-"streak": 2,
+"streak": 1,
+"title": "simchowitzlabpublic/nano-world-model \u2014 A Minimalist, Batteries-included Repository for Advancing World Model Science.",
+"url": "https://github.com/simchowitzlabpublic/nano-world-model"
+},
+"hfdataset:Vyber07/cyber-security": {
+"first_seen": "2026-09-03",
+"mag": 2.6489,
+"mag_history": [
+2.6489
+],
+"score": 1,
+"streak": 1,
+"title": "Vyber07/cyber-security (HF Dataset)",
+"url": "https://huggingface.co/datasets/Vyber07/cyber-security"
+},
+"hfdataset:junchaoh-cs/SolarWM-Data": {
+"first_seen": "2026-09-03",
+"mag": 1.9408,
+"mag_history": [
+1.9408
+],
+"score": 1,
+"streak": 1,
+"title": "junchaoh-cs/SolarWM-Data (HF Dataset)",
+"url": "https://huggingface.co/datasets/junchaoh-cs/SolarWM-Data"
+},
+"hfdataset:kuben-developer/tiktok-videos-4b": {
+"first_seen": "2026-09-03",
+"mag": 2.6647,
+"mag_history": [
+2.6647
+],
+"score": 1,
+"streak": 1,
+"title": "kuben-developer/tiktok-videos-4b (HF Dataset)",
+"url": "https://huggingface.co/datasets/kuben-developer/tiktok-videos-4b"
+},
+"hfdataset:nyu-mll/glue": {
+"first_seen": "2026-08-31",
+"mag": 4.5087,
+"mag_history": [
+4.4383,
+4.4779,
+4.5087
+],
+"score": 3,
+"streak": 3,
 "title": "nyu-mll/glue (HF Dataset)",
 "url": "https://huggingface.co/datasets/nyu-mll/glue"
 },
+"hfdataset:spatialverse/UniPhys-Bench": {
+"first_seen": "2026-09-03",
+"mag": 2.0233,
+"mag_history": [
+2.0233
+],
+"score": 1,
+"streak": 1,
+"title": "spatialverse/UniPhys-Bench (HF Dataset)",
+"url": "https://huggingface.co/datasets/spatialverse/UniPhys-Bench"
+},
 "hfmodel:0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF": {
 "first_seen": "2026-08-22",
-"mag": 4.1183,
+"mag": 4.128,
 "mag_history": [
-3.8734,
 3.9084,
 3.9493,
 3.9833,
 4.0088,
 4.0594,
-4.1183
+4.1183,
+4.128
 ],
 "score": 3,
-"streak": 9,
+"streak": 10,
 "title": "0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF (HF Model)",
 "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF"
 },
-"hfmodel:HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF": {
-"first_seen": "2026-08-19",
-"mag": 4.729,
-"mag_history": [
-4.4258,
-4.4813,
-4.5142,
-4.5706,
-4.6055,
-4.6888,
-4.729
-],
-"score": 3,
-"streak": 12,
-"title": "HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF (HF Model)",
-"url": "https://huggingface.co/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF"
-},
 "hfmodel:ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF": {
 "first_seen": "2026-09-02",
-"mag": 3.5028,
+"mag": 3.7496,
 "mag_history": [
-3.5028
+3.5028,
+3.7496
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF (HF Model)",
 "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF"
 },
 "hfmodel:OBLITERATUS/Qwen3.8-27B-OBLITERATED": {
 "first_seen": "2026-08-21",
-"mag": 4.85,
+"mag": 4.8662,
 "mag_history": [
-4.5499,
 4.6006,
 4.6588,
 4.7167,
 4.7428,
 4.8141,
-4.85
+4.85,
+4.8662
 ],
 "score": 3,
-"streak": 10,
+"streak": 11,
 "title": "OBLITERATUS/Qwen3.8-27B-OBLITERATED (HF Model)",
 "url": "https://huggingface.co/OBLITERATUS/Qwen3.8-27B-OBLITERATED"
 },
 "hfmodel:Qwen/Qwen3.8-Flash-Next": {
 "first_seen": "2026-08-27",
-"mag": 5.9195,
+"mag": 5.9302,
 "mag_history": [
 5.7928,
 5.8296,
 5.8881,
-5.9195
+5.9195,
+5.9302
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "Qwen/Qwen3.8-Flash-Next (HF Model)",
 "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
 },
+"hfmodel:XHToken/Spark-X2.5-4B": {
+"first_seen": "2026-09-03",
+"mag": 3.5121,
+"mag_history": [
+3.5121
+],
+"score": 2,
+"streak": 1,
+"title": "XHToken/Spark-X2.5-4B (HF Model)",
+"url": "https://huggingface.co/XHToken/Spark-X2.5-4B"
+},
 "hfmodel:alibaba-pai/MiniMax-H3-Fun-Controlnet-Union": {
 "first_seen": "2026-08-28",
-"mag": 3.5909,
+"mag": 3.5951,
 "mag_history": [
 3.5259,
 3.5868,
-3.5909
+3.5909,
+3.5951
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "alibaba-pai/MiniMax-H3-Fun-Controlnet-Union (HF Model)",
 "url": "https://huggingface.co/alibaba-pai/MiniMax-H3-Fun-Controlnet-Union"
 },
 "hfmodel:deepseek-ai/DeepSeek-V4-Flash-Vision-Exp": {
 "first_seen": "2026-08-31",
-"mag": 4.3289,
+"mag": 4.3884,
 "mag_history": [
 3.9641,
-4.3289
+4.3289,
+4.3884
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp (HF Model)",
 "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp"
 },
 "hfmodel:empero-ai/Qwen3.8-27B-Ridge-GGUF": {
 "first_seen": "2026-08-20",
-"mag": 4.0444,
+"mag": 4.0508,
 "mag_history": [
-3.8761,
 3.9058,
 3.9189,
 3.9368,
 3.9567,
 4.0179,
-4.0444
+4.0444,
+4.0508
 ],
 "score": 3,
-"streak": 11,
+"streak": 12,
 "title": "empero-ai/Qwen3.8-27B-Ridge-GGUF (HF Model)",
 "url": "https://huggingface.co/empero-ai/Qwen3.8-27B-Ridge-GGUF"
 },
 "hfmodel:huihui-ai/Huihui-Qwen3.8-27B-abliterated": {
 "first_seen": "2026-08-22",
-"mag": 4.0761,
+"mag": 4.0905,
 "mag_history": [
-3.9111,
 3.9518,
 3.9689,
 3.9903,
 4.0088,
 4.0465,
-4.0761
+4.0761,
+4.0905
 ],
 "score": 3,
-"streak": 9,
+"streak": 10,
 "title": "huihui-ai/Huihui-Qwen3.8-27B-abliterated (HF Model)",
 "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-abliterated"
 },
 "hfmodel:huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF": {
 "first_seen": "2026-08-22",
-"mag": 4.3432,
+"mag": 4.3641,
 "mag_history": [
-4.0246,
 4.0945,
 4.1318,
 4.1958,
 4.2315,
 4.3069,
-4.3432
+4.3432,
+4.3641
 ],
 "score": 3,
-"streak": 9,
+"streak": 10,
 "title": "huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF (HF Model)",
 "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF"
 },
 "hfmodel:orcarouter/Qwen3.8-27B-Uncensored-GGUF": {
 "first_seen": "2026-08-21",
-"mag": 4.535,
+"mag": 4.553,
 "mag_history": [
-4.1888,
 4.2495,
 4.2903,
 4.3375,
 4.3804,
 4.4755,
-4.535
+4.535,
+4.553
 ],
 "score": 3,
-"streak": 10,
+"streak": 11,
 "title": "orcarouter/Qwen3.8-27B-Uncensored-GGUF (HF Model)",
 "url": "https://huggingface.co/orcarouter/Qwen3.8-27B-Uncensored-GGUF"
 },
-"hfmodel:orcarouter/Qwen3.8-27B-Uncensored-MLX": {
-"first_seen": "2026-08-19",
-"mag": 5.0022,
-"mag_history": [
-4.8312,
-4.8769,
-4.9173,
-4.9423,
-4.9531,
-4.9922,
-5.0022
-],
-"score": 3,
-"streak": 12,
-"title": "orcarouter/Qwen3.8-27B-Uncensored-MLX (HF Model)",
-"url": "https://huggingface.co/orcarouter/Qwen3.8-27B-Uncensored-MLX"
-},
 "hfmodel:orcarouter/Qwen3.8-Flash-Next-Uncensored-GGUF": {
 "first_seen": "2026-09-02",
-"mag": 3.6466,
+"mag": 3.7227,
 "mag_history": [
-3.6466
+3.6466,
+3.7227
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "orcarouter/Qwen3.8-Flash-Next-Uncensored-GGUF (HF Model)",
 "url": "https://huggingface.co/orcarouter/Qwen3.8-Flash-Next-Uncensored-GGUF"
 },
 "hfmodel:ornith-ai/Ornith-1.5-35B-A3B": {
 "first_seen": "2026-08-21",
-"mag": 4.391,
+"mag": 4.3976,
 "mag_history": [
-4.1507,
 4.2113,
 4.2527,
 4.2994,
 4.3246,
 4.3668,
-4.391
+4.391,
+4.3976
 ],
 "score": 3,
-"streak": 10,
+"streak": 11,
 "title": "ornith-ai/Ornith-1.5-35B-A3B (HF Model)",
 "url": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B"
 },
 "hfmodel:peculiar-ragdoll/Qwen-Sharp-Chat-Templates": {
 "first_seen": "2026-08-25",
-"mag": 3.9903,
+"mag": 3.9996,
 "mag_history": [
 3.8364,
 3.8706,
 3.8978,
 3.9058,
 3.9543,
-3.9903
+3.9903,
+3.9996
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "peculiar-ragdoll/Qwen-Sharp-Chat-Templates (HF Model)",
 "url": "https://huggingface.co/peculiar-ragdoll/Qwen-Sharp-Chat-Templates"
 },
 "hfmodel:unsloth/Qwen3.8-Flash-Next-GGUF": {
 "first_seen": "2026-08-27",
-"mag": 4.5967,
+"mag": 4.6312,
 "mag_history": [
 4.2671,
 4.3627,
 4.5109,
-4.5967
+4.5967,
+4.6312
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "unsloth/Qwen3.8-Flash-Next-GGUF (HF Model)",
 "url": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF"
 }

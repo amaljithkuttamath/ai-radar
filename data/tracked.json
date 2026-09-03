@@ -2,7 +2,7 @@
 "arxiv:2608.17253": {
 "category": "research",
 "first_seen": "2026-08-20",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2608.17253",
 "keywords": [
 "reinforcement learning",
@@ -14,7 +14,7 @@
 "correlated errors",
 "training collapse"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/DrStranded/Co-RL",
 "project": "https://drstranded.github.io/Co-RL"
@@ -30,6 +30,7 @@
 6.1429,
 6.1429,
 6.1534,
+6.1934,
 6.1934
 ],
 "misses": 0,
@@ -40,189 +41,10 @@
 "hf_upvotes": 95
 },
 "source": "HF Daily Papers",
-"streak": 11,
+"streak": 12,
 "summary": "Reinforcement learning (RL) has emerged as a powerful approach for improving reasoning in language and vision-language models, yet its strongest successes still depend heavily on ground-truth supervision (e.g., verifiable reward). Such annotations are costly to obtain and become increasingly scarce as reasoning capabilities advance beyond what humans can reliably evaluate. Self-rewarding RL reduce",
 "title": "Co-RL: Unsupervised Reasoning Emerges from Diverse Cohort in Multi-agent RL",
 "url": "https://arxiv.org/abs/2608.17253"
-},
-"arxiv:2608.17271": {
-"category": "research",
-"first_seen": "2026-08-19",
-"flat_runs": 0,
-"id": "arxiv:2608.17271",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {
-"github": "https://github.com/apexin-ai/ASI-Bench",
-"project": "https://asibench.apexin.ai/"
-},
-"mag_history": [
-3.7377,
-5.9713,
-6.1814,
-6.3729,
-6.4624,
-6.5598,
-6.6861,
-6.7997,
-6.9078,
-6.9497,
-6.9551,
-6.9882
-],
-"misses": 0,
-"peak_mag": 6.9882,
-"signals": {
-"gh_stars": 277,
-"hf_comments": 0,
-"hf_upvotes": 64
-},
-"source": "HF Daily Papers",
-"streak": 12,
-"summary": "Artificial superintelligence (ASI) requires AI to move beyond mastering existing knowledge toward exploring the unknown, creating new knowledge, and turning new ideas into verifiable results. However, the capabilities of today's AI systems are still largely built on learning, compressing, and applying existing human knowledge. Accordingly, existing benchmarks primarily test whether AI can produce ",
-"title": "ASI-Bench: At the Dawn of Artificial Superintelligence",
-"url": "https://arxiv.org/abs/2608.17271"
-},
-"arxiv:2608.17310": {
-"category": "research",
-"first_seen": "2026-08-19",
-"flat_runs": 0,
-"id": "arxiv:2608.17310",
-"keywords": [
-"evolution strategies",
-"reinforcement learning",
-"long-horizon agentic reasoning",
-"credit assignment",
-"full-parameter optimization",
-"Agentic ESOpt",
-"parameter-context co-evolution",
-"reward-weighted update"
-],
-"last_seen": "2026-09-02",
-"links": {
-"github": "https://github.com/zz1358m/Agentic-ESOpt",
-"project": "https://zz1358m.github.io/Project-Agentic-ESOpt"
-},
-"mag_history": [
-3.5264,
-6.3379,
-6.4167,
-6.5012,
-6.525,
-6.5461,
-6.5999,
-6.6391,
-6.658,
-6.6673,
-6.7283,
-6.7444
-],
-"misses": 0,
-"peak_mag": 6.7444,
-"signals": {
-"gh_stars": 62,
-"hf_comments": 0,
-"hf_upvotes": 106
-},
-"source": "HF Daily Papers",
-"streak": 12,
-"summary": "Reinforcement Learning (RL) has been promising in single-turn LLM fine-tuning. However, long-horizon agentic reasoning introduces increasingly branching interactions and sparse rewards, exposing several limitations of RL: its heavyweight backpropagation-based training stack makes it impractical to fine-tune larger LLMs, and longer-horizon trajectories make credit assignment in RL substantially har",
-"title": "Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements",
-"url": "https://arxiv.org/abs/2608.17310"
-},
-"arxiv:2608.17512": {
-"category": "research",
-"first_seen": "2026-08-19",
-"flat_runs": 0,
-"id": "arxiv:2608.17512",
-"keywords": [
-"Large Vision-Language Models",
-"Pixel-to-3D Action Formulation",
-"2D visual prompting",
-"SLAM controller",
-"Chain-of-Thought",
-"Anchor-Trajectory Memory",
-"Space-Time Indicators",
-"Group Relative Policy Optimization"
-],
-"last_seen": "2026-09-02",
-"links": {
-"github": "https://github.com/ZJU-OmniAI/Embodied-Omni",
-"project": "https://zju-omniai.github.io/Embodied-Navigator/"
-},
-"mag_history": [
-3.6109,
-6.5447,
-6.5447,
-6.6066,
-6.6526,
-6.6548,
-6.6571,
-6.6593,
-6.6659,
-6.6681,
-6.6768,
-6.6832
-],
-"misses": 0,
-"peak_mag": 6.6832,
-"signals": {
-"gh_stars": 235,
-"hf_comments": 0,
-"hf_upvotes": 51
-},
-"source": "HF Daily Papers",
-"streak": 12,
-"summary": "Although Large Vision-Language Models (VLMs) have significantly advanced embodied navigation, their direct deployment remains challenging, as existing methods often force VLMs into unnatural action spaces that misalign with their 2D pre-training priors, compounded by rigid reasoning schedules and inefficient memory management. To overcome these limitations, we propose TAMP-Nav, a unified framework",
-"title": "Embodied-Navigator: Point, Think, Memorize, and Align for Efficient Navigation",
-"url": "https://arxiv.org/abs/2608.17512"
-},
-"arxiv:2608.17566": {
-"category": "research",
-"first_seen": "2026-08-19",
-"flat_runs": 0,
-"id": "arxiv:2608.17566",
-"keywords": [
-"compositional instruction-guided video editing",
-"CoinVE-200K",
-"CoinVE-Bench",
-"CoinVE-Edit",
-"region-aware attention",
-"Wan2.1-T2V-14B",
-"Qwen3-VL-8B-Instruct",
-"temporal consistency"
-],
-"last_seen": "2026-09-02",
-"links": {
-"github": "https://github.com/coinve200k/CoinVE-200K",
-"project": "https://coinve200k.github.io/"
-},
-"mag_history": [
-2.5649,
-4.2178,
-4.3181,
-4.382,
-4.382,
-4.382,
-4.4016,
-4.4205,
-4.4562,
-4.4562,
-4.4732,
-4.5055
-],
-"misses": 0,
-"peak_mag": 4.5055,
-"signals": {
-"gh_stars": 31,
-"hf_comments": 0,
-"hf_upvotes": 15
-},
-"source": "HF Daily Papers",
-"streak": 12,
-"summary": "The quality and diversity of instruction-based video editing datasets are steadily improving, yet existing datasets mainly focus on single editing operations and fall short in supporting compositional instruction-guided video editing. In particular, multiple editing intents must be jointly understood and faithfully executed within the same video. To address this issue, we introduce CoinVE-200K, a ",
-"title": "CoinVE-200K: A Large-Scale High-Quality Dataset for Compositional Instruction-Guided Video Editing",
-"url": "https://arxiv.org/abs/2608.17566"
 },
 "arxiv:2608.18565": {
 "category": "research",
@@ -239,7 +61,7 @@
 "static behavior",
 "dynamic behavior"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/midea-ai/SemaPLC"
 },
@@ -254,17 +76,18 @@
 6.8864,
 6.8935,
 6.9005,
-6.9275
+6.9275,
+6.9405
 ],
 "misses": 0,
-"peak_mag": 6.9275,
+"peak_mag": 6.9405,
 "signals": {
-"gh_stars": 75,
+"gh_stars": 77,
 "hf_comments": 0,
 "hf_upvotes": 116
 },
 "source": "HF Daily Papers",
-"streak": 11,
+"streak": 12,
 "summary": "Programmable logic controllers (PLCs) run industrial plants, and large language models can already generate independent program organization units (POUs) for them. Whether such logic integrates into an existing PLC project and then runs correctly has been checked only in limited tests. We present SemaPLC, a project-grounded and verification-gated agent harness assembled from conventional tools but",
 "title": "SemaPLC: A Project-Grounded, Verification-Gated Agent Harness for PLC Code Generation",
 "url": "https://arxiv.org/abs/2608.18565"
@@ -284,7 +107,7 @@
 "reasoning agent",
 "privileged hints"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/spade-rl/spade",
 "project": "https://spade-rl.github.io/"
@@ -300,17 +123,18 @@
 6.0896,
 6.1033,
 6.1423,
-6.1726
+6.1726,
+6.1956
 ],
 "misses": 0,
-"peak_mag": 6.1726,
+"peak_mag": 6.1956,
 "signals": {
-"gh_stars": 84,
+"gh_stars": 88,
 "hf_comments": 0,
 "hf_upvotes": 51
 },
 "source": "HF Daily Papers",
-"streak": 11,
+"streak": 12,
 "summary": "Continuous self-improvement requires an ever-expanding pool of self-generated, diverse, adaptive goals. For language agents, existing training environment pools (hand-curated, statically synthesized, or frozen-verifier) keep the goal distribution fixed as the learner scales. We introduce SPADE (Self-Play in Adaptive Synthetic Executable Environments), a self-play RL framework in which a single LLM",
 "title": "SPADE: Self-Play in Adaptive Synthetic Executable Environments",
 "url": "https://arxiv.org/abs/2608.19197"
@@ -329,7 +153,7 @@
 "scientific knowledge",
 "ablation"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/OpenMOSS/SWE-bench-Science",
 "project": "https://swescience.github.io"
@@ -344,17 +168,18 @@
 6.3127,
 6.3127,
 6.3484,
-6.355
+6.355,
+6.3616
 ],
 "misses": 0,
-"peak_mag": 6.355,
+"peak_mag": 6.3616,
 "signals": {
-"gh_stars": 75,
+"gh_stars": 76,
 "hf_comments": 0,
 "hf_upvotes": 65
 },
 "source": "HF Daily Papers",
-"streak": 10,
+"streak": 11,
 "summary": "Software increasingly functions as part of the scientific instrument itself, making failures in scientific code capable of compromising not only program behavior but also the evidence underlying scientific conclusions. Yet existing evaluations of coding agents largely emphasize aggregate task success, providing limited insight into why agents fail when repairing scientific software. We introduce S",
 "title": "SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?",
 "url": "https://arxiv.org/abs/2608.19799"
@@ -374,7 +199,7 @@
 "reinforcement learning",
 "co-evolution"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/google-research/envharness",
 "project": "https://envharness.com/"
@@ -389,17 +214,18 @@
 8.5536,
 8.5679,
 8.6777,
-8.7234
+8.7234,
+8.7369
 ],
 "misses": 0,
-"peak_mag": 8.7234,
+"peak_mag": 8.7369,
 "signals": {
-"gh_stars": 502,
+"gh_stars": 512,
 "hf_comments": 0,
-"hf_upvotes": 273
+"hf_upvotes": 274
 },
 "source": "HF Daily Papers",
-"streak": 10,
+"streak": 11,
 "summary": "LLM agents learn by interacting with environments, yet these environments are hand-built and static: blind to an agent's weaknesses, and quickly left behind as it improves. While recent environment generation methods attempt to address this, they require domain-specific pipelines, rely on expensive or unreliable verifiers, and still produce static environments. To alleviate the engineering burden ",
 "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
 "url": "https://arxiv.org/abs/2608.19880"
@@ -419,7 +245,7 @@
 "multiview-consistent video generation",
 "4D human reconstruction"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/ant-research/4DAnyone",
 "project": "https://4danyone.github.io/"
@@ -434,17 +260,18 @@
 7.741,
 7.8034,
 7.8923,
-7.9387
+7.9387,
+7.9528
 ],
 "misses": 0,
-"peak_mag": 7.9387,
+"peak_mag": 7.9528,
 "signals": {
-"gh_stars": 1113,
+"gh_stars": 1145,
 "hf_comments": 0,
 "hf_upvotes": 83
 },
 "source": "HF Daily Papers",
-"streak": 10,
+"streak": 11,
 "summary": "We present 4DAnyone, a framework for reconstructing 4D humans from an uncalibrated monocular video by generating reconstruction-grade multiview-consistent videos and lifting them into 4D Gaussian Splatting (4DGS). Existing camera-controlled video diffusion models synthesize plausible novel-view videos but fail to maintain consistency when scaled to the tens of target views required for 4DGS recons",
 "title": "4DAnyone: Create Anyone in 4D from a Casual Monocular Video",
 "url": "https://arxiv.org/abs/2608.20335"
@@ -452,7 +279,7 @@
 "arxiv:2608.23035": {
 "category": "research",
 "first_seen": "2026-08-25",
-"flat_runs": 2,
+"flat_runs": 3,
 "id": "arxiv:2608.23035",
 "keywords": [
 "tool-calling",
@@ -464,13 +291,14 @@
 "composite skills",
 "function-calling sandbox"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "project": "https://tongyi-mai.github.io/MobilePA-Bench/"
 },
 "mag_history": [
 3.4965,
 3.7136,
+3.7377,
 3.7377,
 3.7377,
 3.7377
@@ -482,7 +310,7 @@
 "hf_upvotes": 41
 },
 "source": "HF Daily Papers",
-"streak": 5,
+"streak": 6,
 "summary": "As on-device LLM agents evolve into personal copilots, the mobile operating system has become a key testbed for this paradigm, making rigorous capability evaluation essential. Yet existing benchmarks fall into two camps, each with a critical blind spot: GUI-centric benchmarks test surface-level screen manipulation while overlooking background tool use and long-horizon planning, whereas static func",
 "title": "MobilePA-Bench: Benchmarking Mobile Planner Agents on Complex Real-World Tasks",
 "url": "https://arxiv.org/abs/2608.23035"
@@ -502,7 +330,7 @@
 "progressive training",
 "autoregressive post-training"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/jd-opensource/JoyAI-Echo",
 "project": "https://echo-team-joy-future-academy-jd.github.io/Echo-1.5-Page/wm/"
@@ -513,17 +341,18 @@
 8.0944,
 8.1101,
 8.1787,
-8.181
+8.181,
+8.1815
 ],
 "misses": 0,
-"peak_mag": 8.181,
+"peak_mag": 8.1815,
 "signals": {
-"gh_stars": 1993,
+"gh_stars": 1995,
 "hf_comments": 0,
 "hf_upvotes": 79
 },
 "source": "HF Daily Papers",
-"streak": 6,
+"streak": 7,
 "summary": "We present EchoWM, an omnimodal world model for enterable generative media that responds to continuous navigation while jointly generating 720p video, environmental sound, music and speech. We organize interaction around camera intent: in first-person scenes, it specifies observer motion, while in third-person scenes, camera--character dynamics are learned from data without view-specific controlle",
 "title": "EchoWM: Open and Enterable Omnimodal World Models",
 "url": "https://arxiv.org/abs/2608.23189"
@@ -542,7 +371,7 @@
 "asynchronous integration",
 "trajectory training"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/ApodexAI/FrontierAgent",
 "project": "https://www.apodex.com/blog/apodex-1.1-scaling-agentic-intelligence-for-complex-work"
@@ -553,17 +382,18 @@
 8.7891,
 8.8558,
 8.9142,
-8.9435
+8.9435,
+8.9918
 ],
 "misses": 0,
-"peak_mag": 8.9435,
+"peak_mag": 8.9918,
 "signals": {
-"gh_stars": 1381,
+"gh_stars": 1521,
 "hf_comments": 0,
 "hf_upvotes": 205
 },
 "source": "HF Daily Papers",
-"streak": 6,
+"streak": 7,
 "summary": "General-purpose language models can reason and synthesize knowledge, but complex work also requires sustained interaction with files, information sources, and executable code, together with state maintenance, failure recovery, and verifiable delivery. We call this working capability: sustained, verifiable progress toward a real-world objective. Apodex 1.1 develops this capability along two complem",
 "title": "Apodex 1.1: Scaling Agentic Intelligence for Complex Work",
 "url": "https://arxiv.org/abs/2608.23283"
@@ -580,7 +410,7 @@
 "MMEB-v2",
 "universal multimodal embedding models"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/Tencent/WeMM-Embedding"
 },
@@ -589,17 +419,18 @@
 7.2046,
 7.5055,
 7.6875,
-7.7404
+7.7404,
+7.7714
 ],
 "misses": 0,
-"peak_mag": 7.7404,
+"peak_mag": 7.7714,
 "signals": {
-"gh_stars": 1078,
+"gh_stars": 1115,
 "hf_comments": 0,
-"hf_upvotes": 69
+"hf_upvotes": 70
 },
 "source": "HF Daily Papers",
-"streak": 5,
+"streak": 6,
 "summary": "Universal multimodal embeddings are becoming a core component of modern AI systems, enabling heterogeneous content to be represented in a shared space for applications such as retrieval, recommendation, classification, and agentic systems. In this report, we present WeMM-Embedding, a family of universal multimodal embedding models supporting text, images, videos, visual documents, and arbitrarily ",
 "title": "WeMM-Embedding: WeChat Multi-Modal Embedding Technical Report",
 "url": "https://arxiv.org/abs/2608.24053"
@@ -619,7 +450,7 @@
 "behavior policy",
 "reward gradients"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/worldbench/DiffusionOPSD",
 "project": "https://diffusionopsd.github.io/"
@@ -629,17 +460,18 @@
 6.4372,
 6.6547,
 6.9302,
-7.015
+7.015,
+7.0351
 ],
 "misses": 0,
-"peak_mag": 7.015,
+"peak_mag": 7.0351,
 "signals": {
-"gh_stars": 267,
+"gh_stars": 278,
 "hf_comments": 0,
 "hf_upvotes": 67
 },
 "source": "HF Daily Papers",
-"streak": 5,
+"streak": 6,
 "summary": "Reinforcement learning can align diffusion models with human preferences and task-specific objectives, but endpoint rewards do not specify how an intermediate denoising prediction should change. We introduce DiffusionOPSD as an on-policy self-distillation framework that converts image-level reward guidance into explicit targets for clean-output predictions at sampled queries. At each outer iterati",
 "title": "On-Policy Self-Distillation in Diffusion Models",
 "url": "https://arxiv.org/abs/2608.24646"
@@ -659,24 +491,25 @@
 "validation-gated updates",
 "long-horizon agent harnesses"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/Gen-Verse/Recuris",
 "project": "https://github.com/Gen-Verse/Recuris"
 },
 "mag_history": [
 2.8332,
-5.7972
+5.7972,
+5.8309
 ],
 "misses": 0,
-"peak_mag": 5.7972,
+"peak_mag": 5.8309,
 "signals": {
-"gh_stars": 128,
+"gh_stars": 137,
 "hf_comments": 0,
 "hf_upvotes": 28
 },
 "source": "HF Daily Papers",
-"streak": 2,
+"streak": 3,
 "summary": "Recursive self-improvement (RSI) remains hard in long-horizon tasks, where growing histories obscure the task state and misalign skill invocation. We introduce Recuris, a recursive Experiential-Working Memory architecture for long-horizon agent harnesses, in which Working Memory tracks task progress and guides skill selection from Experiential Memory, grounding skill use in current needs rather th",
 "title": "Recursive Experiential-Working Memory Evolution for Long-Horizon Agent Harnesses",
 "url": "https://arxiv.org/abs/2608.24876"
@@ -684,7 +517,7 @@
 "arxiv:2608.25529": {
 "category": "research",
 "first_seen": "2026-08-27",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2608.25529",
 "keywords": [
 "Multimodal Large Language Models",
@@ -696,13 +529,14 @@
 "format requirements",
 "conditional structures"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/Alexios-hub/Video-IFBench",
 "project": "https://alexios-hub.github.io/Video-IFBench/"
 },
 "mag_history": [
 2.7726,
+2.8332,
 2.8332
 ],
 "misses": 0,
@@ -713,7 +547,7 @@
 "hf_upvotes": 16
 },
 "source": "HF Daily Papers",
-"streak": 2,
+"streak": 3,
 "summary": "Multimodal Large Language Models (MLLMs) have shown strong performance in video understanding. However, their ability to follow instructions in this domain remains under-explored. Real-world video understanding requires models not only to interpret video content correctly, but also to satisfy diverse user-specified constraints. Existing benchmarks focus primarily on task accuracy rather than instr",
 "title": "Video-IFBench: Evaluating Instruction Following of Multimodal LLMs in Video Understanding Scenarios",
 "url": "https://arxiv.org/abs/2608.25529"
@@ -733,24 +567,25 @@
 "Qwen3-VL-8B-Instruct",
 "OpenMMReasoner"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/shulin16/v-rubrics",
 "project": "https://shulin16.github.io/v-rubrics/"
 },
 "mag_history": [
 2.6391,
-4.7185
+4.7185,
+4.7482
 ],
 "misses": 0,
-"peak_mag": 4.7185,
+"peak_mag": 4.7482,
 "signals": {
-"gh_stars": 48,
+"gh_stars": 51,
 "hf_comments": 0,
 "hf_upvotes": 15
 },
 "source": "HF Daily Papers",
-"streak": 2,
+"streak": 3,
 "summary": "Vision-language models can produce fluent answers that are insufficiently grounded in the visual evidence: a single unsupported object, chart value, or intermediate inference can undermine an otherwise plausible response. We argue that this is a credit-assignment failure in multimodal post-training. Scalar outcome rewards indicate whether an answer is acceptable, but do not identify which visual f",
 "title": "V-Rubrics: Visual Faithfulness via Rubric-Based Reinforcement Learning",
 "url": "https://arxiv.org/abs/2608.25580"
@@ -770,7 +605,7 @@
 "distillation",
 "DeepSearchQA"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/bingreeky/JIT",
 "project": "https://bingreeky.github.io/JIT-site/"
@@ -779,17 +614,18 @@
 3.8712,
 6.7845,
 7.4084,
-7.5143
+7.5143,
+7.5602
 ],
 "misses": 0,
-"peak_mag": 7.5143,
+"peak_mag": 7.5602,
 "signals": {
-"gh_stars": 249,
+"gh_stars": 273,
 "hf_comments": 0,
 "hf_upvotes": 115
 },
 "source": "HF Daily Papers",
-"streak": 4,
+"streak": 5,
 "summary": "Agent capability is not determined by the model alone. The agent harness, encompassing memory management, planning strategy, action protocol, and tool/skill orchestration, can dominate the contribution of the underlying foundation model. Yet harness design remains manual, task-specific, and fundamentally unscalable. We present JIT-Agent, a harness intelligence model trained to synthesize task-adap",
 "title": "JIT-Agent: Scaling Harness Intelligence via Just-in-Time Harness Evolution",
 "url": "https://arxiv.org/abs/2608.25593"
@@ -809,7 +645,7 @@
 "affective attribution",
 "dual-node persona modeling"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/xzf-thu/VoiceMem",
 "project": "https://xzf-thu.github.io/VoiceMem/"
@@ -818,17 +654,18 @@
 5.0106,
 7.5951,
 8.1839,
-8.3225
+8.3225,
+8.3714
 ],
 "misses": 0,
-"peak_mag": 8.3225,
+"peak_mag": 8.3714,
 "signals": {
-"gh_stars": 552,
+"gh_stars": 602,
 "hf_comments": 0,
-"hf_upvotes": 174
+"hf_upvotes": 175
 },
 "source": "HF Daily Papers",
-"streak": 4,
+"streak": 5,
 "summary": "Conversational systems, such as duplex speech language models (SLMs), still lack a streaming, accurate, and empathetic memory system as their soul. We introduce VoiceMem, a simple memory architecture with a parallel informational left brain, an emotional right brain, and streaming memory I/O mechanisms. We further build a complete pipeline for memory-aware SLM training, long-horizon evaluation, an",
 "title": "VoiceMem: Streaming Dual-Brain Memory for Real-Time Interaction",
 "url": "https://arxiv.org/abs/2608.26005"
@@ -848,24 +685,25 @@
 "random-interval streaming training",
 "length extrapolation"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/hku-sail/StreamPI",
 "project": "https://happinesslz.github.io/projects/StreamPI/"
 },
 "mag_history": [
 2.8332,
-5.5666
+5.5666,
+5.5977
 ],
 "misses": 0,
-"peak_mag": 5.5666,
+"peak_mag": 5.5977,
 "signals": {
-"gh_stars": 170,
+"gh_stars": 181,
 "hf_comments": 0,
 "hf_upvotes": 19
 },
 "source": "HF Daily Papers",
-"streak": 2,
+"streak": 3,
 "summary": "Vision-Language-Action (VLA) models have demonstrated effectiveness in robot manipulation, yet state-of-the-art models such as pi0.5 operate under a single-frame paradigm, limiting their ability to retain past observations and develop precise spatial perception. In this paper, we propose StreamPI, a streaming multimodal temporal modeling framework that equips single-frame VLA with temporal reasoni",
 "title": "StreamPI: Streaming Multimodal Temporal Modeling for Vision-Language-Action Models",
 "url": "https://arxiv.org/abs/2608.26067"
@@ -873,7 +711,7 @@
 "arxiv:2608.26105": {
 "category": "research",
 "first_seen": "2026-08-27",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2608.26105",
 "keywords": [
 "native visual reasoning",
@@ -885,7 +723,7 @@
 "interleaved generation",
 "vision-native trajectories"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/Video-Reason/VBVR-Pro",
 "project": "https://video-reason.com/"
@@ -894,6 +732,7 @@
 3.7842,
 6.8501,
 7.1967,
+7.2463,
 7.2463
 ],
 "misses": 0,
@@ -904,7 +743,7 @@
 "hf_upvotes": 269
 },
 "source": "HF Daily Papers",
-"streak": 4,
+"streak": 5,
 "summary": "Native visual reasoning treats visual generation as the medium of reasoning itself: visual states (i.e. images and videos) are not merely inputs to be understood or outputs to be rendered, but first-class substrates for problem solving beyond language. Yet progress remains bottlenecked by the lack of scalable training tasks, reliable feedback, and controlled comparisons across generative substrate",
 "title": "VBVR-Pro: A Scalable and Verifiable Suite for Native Visual Reasoning",
 "url": "https://arxiv.org/abs/2608.26105"
@@ -920,7 +759,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.LG",
@@ -940,7 +779,7 @@
 "mag_history": [
 0.0
 ],
-"misses": 1,
+"misses": 2,
 "peak_mag": 0.0,
 "signals": {},
 "source": "arXiv cs.LG",
@@ -1023,24 +862,25 @@
 "Vision-Language Models",
 "MMLVE-Bench"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/Wucy0519/MMLVE",
 "project": "https://wucy0519.github.io/MMLVE/"
 },
 "mag_history": [
 1.6094,
-2.6391
+2.6391,
+2.8842
 ],
 "misses": 0,
-"peak_mag": 2.6391,
+"peak_mag": 2.8842,
 "signals": {
-"gh_stars": 3,
+"gh_stars": 4,
 "hf_comments": 0,
-"hf_upvotes": 6
+"hf_upvotes": 7
 },
 "source": "HF Daily Papers",
-"streak": 2,
+"streak": 3,
 "summary": "While generative AI has significantly advanced video editing, existing methods primarily focus on single-shot or short video clips. Editing long videos with multiple instructions remains a formidable challenge. Naive chunking strategies, e.g., fixed-duration segmentation, often lead to entity fragmentation, severe editing hallucinations, and disrupted temporal continuity. To bridge this gap, we in",
 "title": "Thinking on Shots: Consistent Multi-Shot Video Editing with Agentic Reasoning",
 "url": "https://arxiv.org/abs/2608.26809"
@@ -1060,21 +900,22 @@
 "pull-push objective",
 "direction-aware attenuation"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 4.0254,
 4.3041,
-4.382
+4.382,
+4.3944
 ],
 "misses": 0,
-"peak_mag": 4.382,
+"peak_mag": 4.3944,
 "signals": {
 "hf_comments": 0,
-"hf_upvotes": 79
+"hf_upvotes": 80
 },
 "source": "HF Daily Papers",
-"streak": 3,
+"streak": 4,
 "summary": "On-policy distillation (OPD), which leverages a pre-trained, specialized teacher model to provide dense supervisory signals, has achieved significant success in Large Language Models (LLMs) and has recently been adapted to flow matching models. However, this paradigm suffers from two major issues: First, training a separate, task-specific teacher for every new objective incurs high computational c",
 "title": "Self-OPD: On-Policy Distillation for Flow Matching Models without Teacher",
 "url": "https://arxiv.org/abs/2608.26872"
@@ -1094,24 +935,25 @@
 "two-step sampler",
 "RoPE"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/GVCLab/EditaLive",
 "project": "https://huai-chang.github.io/EditaLive/"
 },
 "mag_history": [
 1.0986,
-3.31
+3.31,
+3.5088
 ],
 "misses": 0,
-"peak_mag": 3.31,
+"peak_mag": 3.5088,
 "signals": {
-"gh_stars": 29,
+"gh_stars": 30,
 "hf_comments": 0,
-"hf_upvotes": 4
+"hf_upvotes": 5
 },
 "source": "HF Daily Papers",
-"streak": 2,
+"streak": 3,
 "summary": "Conventional video editing primarily focuses on scene-level content, whereas live streaming places greater emphasis on the human subject. However, directly applying existing video-editing methods to human-centric live streaming remains challenging, as they may introduce facial-expression inconsistencies and typically depend on multiple offline inference steps, making them unsuitable for real-time ",
 "title": "EditaLive! Unified Character Video Editing for Live Streaming",
 "url": "https://arxiv.org/abs/2608.27123"
@@ -1131,21 +973,22 @@
 "execution-grounded accuracy",
 "learner-relative complexity"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 4.0254,
 4.1744,
-4.2485
+4.2485,
+4.2627
 ],
 "misses": 0,
-"peak_mag": 4.2485,
+"peak_mag": 4.2627,
 "signals": {
 "hf_comments": 0,
-"hf_upvotes": 69
+"hf_upvotes": 70
 },
 "source": "HF Daily Papers",
-"streak": 3,
+"streak": 4,
 "summary": "LLM agents increasingly rely on generated interaction data to learn how to interact with external environments. Agentic data generation must maintain consistency among environments, tasks, interactions, and success signals while producing experience that is useful rather than merely abundant. Existing work spans many agent domains, but domain-centered organization and heterogeneous evaluation ofte",
 "title": "What Makes Good Agentic Data? An ACE Lens on Data Generation for LLM Agents",
 "url": "https://arxiv.org/abs/2608.27260"
@@ -1164,7 +1007,7 @@
 "PAWEval",
 "distributional criterion"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/Andrew0613/PAWBench",
 "project": "https://pawbench.github.io/"
@@ -1172,17 +1015,18 @@
 "mag_history": [
 4.3041,
 5.9074,
-5.9288
+5.9288,
+5.9428
 ],
 "misses": 0,
-"peak_mag": 5.9288,
+"peak_mag": 5.9428,
 "signals": {
 "gh_stars": 6,
 "hf_comments": 0,
-"hf_upvotes": 141
+"hf_upvotes": 143
 },
 "source": "HF Daily Papers",
-"streak": 3,
+"streak": 4,
 "summary": "Recent video generation models are increasingly framed as world models. Many physical processes can unfold in more than one valid way. Therefore, a world model should reproduce not only a plausible trajectory, but also the distribution of possible behaviors under the same initial observation and action. We call this distribution-level requirement probabilistic alignment. However, existing evaluati",
 "title": "PAWBench: How Far Are We from Probabilistically Aligned World Modeling?",
 "url": "https://arxiv.org/abs/2608.27345"
@@ -1201,7 +1045,7 @@
 "Grouped RL",
 "token-level selection"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/ZJU-REAL/TTPO",
 "project": "https://zju-real.github.io/TTPO/"
@@ -1209,17 +1053,18 @@
 "mag_history": [
 4.1431,
 6.0536,
-6.2008
+6.2008,
+6.2389
 ],
 "misses": 0,
-"peak_mag": 6.2008,
+"peak_mag": 6.2389,
 "signals": {
-"gh_stars": 37,
+"gh_stars": 39,
 "hf_comments": 0,
-"hf_upvotes": 79
+"hf_upvotes": 80
 },
 "source": "HF Daily Papers",
-"streak": 3,
+"streak": 4,
 "summary": "Recent prominent post-training methods, such as Reinforcement Learning (RL) and On-Policy Self-Distillation (OPSD), have driven rapid progress in mathematical reasoning for large language models, yet their reliance on ground-truth labels precludes test-time training (TTT). Replacing ground truth with majority-vote pseudo-labels is a natural alternative, yet it is fragile: an incorrect vote corrupt",
 "title": "TTPO: Test-Time Policy Optimization",
 "url": "https://arxiv.org/abs/2608.27448"
@@ -1227,7 +1072,7 @@
 "arxiv:2608.27456": {
 "category": "research",
 "first_seen": "2026-08-28",
-"flat_runs": 1,
+"flat_runs": 0,
 "id": "arxiv:2608.27456",
 "keywords": [
 "multimodal large language models",
@@ -1239,7 +1084,7 @@
 "spatial reasoning",
 "pedestrian-aware movement"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/UrbanGround/UrbanGround",
 "project": "https://urbanground.github.io"
@@ -1247,17 +1092,18 @@
 "mag_history": [
 4.2485,
 7.0453,
-7.0369
+7.0369,
+7.0459
 ],
 "misses": 0,
-"peak_mag": 7.0453,
+"peak_mag": 7.0459,
 "signals": {
 "gh_stars": 106,
 "hf_comments": 0,
-"hf_upvotes": 109
+"hf_upvotes": 110
 },
 "source": "HF Daily Papers",
-"streak": 3,
+"streak": 4,
 "summary": "Multimodal large language models (MLLMs) can interpret a street view, but urban agency depends on whether such local evidence remains useful after the agent starts to move. In this paper, we investigate how far current MLLM agents can turn local urban perception into reliable action in a complicated real-scale city. We propose UrbanGround, the first sandbox to make this question testable in a phys",
 "title": "UrbanGround: From Local Perception to Spatial Agency in a Real-Scale City",
 "url": "https://arxiv.org/abs/2608.27456"
@@ -1317,21 +1163,22 @@
 "challenger",
 "curriculum learning"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "project": "https://arxiv.org/abs/2609.00768"
 },
 "mag_history": [
-2.4849
+2.4849,
+2.8904
 ],
 "misses": 0,
-"peak_mag": 2.4849,
+"peak_mag": 2.8904,
 "signals": {
-"hf_comments": 1,
-"hf_upvotes": 11
+"hf_comments": 0,
+"hf_upvotes": 17
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "Self-play is an effective paradigm for language-model self-evolution, but without guidance, solver performance can plateau or decline across rounds. Unguided methods steer question generation with signals such as difficulty, learnability, or diversity. These signals keep questions challenging and varied but do not specify which unresolved reasoning weaknesses later rounds should target. Guided met",
 "title": "DiagEvo: Diagnosis-Guided Self-Evolution via Hierarchical Error Memory",
 "url": "https://arxiv.org/abs/2609.00768"
@@ -1356,226 +1203,6 @@
 "title": "Instella-MoE Technical Report",
 "url": "http://arxiv.org/abs/2609.00791v1"
 },
-"arxiv:2609.00935": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.00935",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Deep Research agents tackle knowledge-intensive tasks through multi-round retrieval and decision-oriented generation. However, these agents suffer from severe overconfidence, making their expressed confidence unreliable for user trust and downstream abstention. To address this, we augment the Deep Research pipeline with step confidence elicitation after each retrieval, building on the commonly use",
-"title": "DualStake: Dual-Path Confidence Calibration in Deep Research Agents",
-"url": "http://arxiv.org/abs/2609.00935v1"
-},
-"arxiv:2609.00948": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.00948",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.CL",
-"streak": 1,
-"summary": "Vision-language models (VLMs) have demonstrated strong performance in visual question answering with natural images. However, they continue to struggle with scientific diagrams, which are designed to convey functional or relational meaning rather than literal scenes. We therefore introduce a framework for generating large-scale diagram-grounded instruction data by leveraging terminology derived fr",
-"title": "From Terminology to Diagrams: Visual-Instruction Generation for Scientific Diagram Understanding",
-"url": "http://arxiv.org/abs/2609.00948v1"
-},
-"arxiv:2609.01004": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01004",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Despite their strong multimodal understanding ability, multimodal large language models (MLLMs) incur substantial computational overhead when processing long visual token sequences. To reduce inference costs, recent studies have explored visual token pruning through vision-centric or text-guided strategies. However, these methods often overlook high-norm outlier tokens, i.e., tokens with abnormall",
-"title": "SinkPruner: Sink-Free Visual Token Pruning for Multimodal Large Language Models",
-"url": "http://arxiv.org/abs/2609.01004v1"
-},
-"arxiv:2609.01046": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01046",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.AI",
-"streak": 1,
-"summary": "Production LLMs must handle inputs that attempt to override system instructions, bypass safety policies or elicit harmful responses. A common mitigation is a separate guardrail model. Existing reports, however, provide little evidence on Russian prompt injection or Russian surface obfuscation. We present HiveTraceGuard-Pro, a 0.6B generative guardrail LoRA-tuned from Qwen3-0.6B. It is trained on R",
-"title": "HiveTraceGuard-Pro: A Compact Generative Guardrail for Prompt Injection, Jailbreaks, and Adversarial Obfuscation",
-"url": "http://arxiv.org/abs/2609.01046v1"
-},
-"arxiv:2609.01051": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01051",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Spurious correlations pose a significant challenge to the robustness of modern machine learning. The inherent imbalance in dataset distributions often leads traditional Empirical Risk Minimization (ERM) models to rely on majority spurious attributes for classification, resulting in poor performance on minority groups. This problem becomes particularly challenging when the spurious attributes are u",
-"title": "SAGE: Subpopulation-Aware Generative Enhancement for Mitigating Spurious Correlations",
-"url": "http://arxiv.org/abs/2609.01051v1"
-},
-"arxiv:2609.01161": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01161",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Large language models can reproduce memorized text verbatim, yet copyright defenses are usually evaluated under incompatible protocols. We introduce CopyShield, a controlled benchmark comparing three representative defenses at distinct intervention levels: contrastive decoding (output), Direct Preference Optimization (behavioral), and activation intervention (representation). We evaluate CopyShiel",
-"title": "CopyShield: A Cross-Level Benchmark of Copyright Defenses in LLMs",
-"url": "http://arxiv.org/abs/2609.01161v1"
-},
-"arxiv:2609.01188": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01188",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.CL",
-"streak": 1,
-"summary": "Large Language Models (LLMs) are revolutionizing digital communication by powering conversational agents deployed across domains such as customer service, digital sales, and insurance. These agents, built on LLMs, can understand user input, retrieve relevant information, and generate coherent responses. However, while they excel at factual communication, they often lack the ability to engage in tr",
-"title": "PersuaRL: Reinforcement Learning-Driven Multi-Expert Selection for Persuasive Dialogue Generation in Insurance",
-"url": "http://arxiv.org/abs/2609.01188v1"
-},
-"arxiv:2609.01210": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01210",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.AI",
-"streak": 1,
-"summary": "Safety benchmarks for large language models often assess the risk of a user query, although the outcome of question answering depends on whether the response violates a policy. This distinction is critical in Chinese harmful-content evaluation, where linguistic variation and adversarial transformations can obscure risky intent. We introduce C-SafeQA, a policy-grounded benchmark for response-level ",
-"title": "Who Judges the Judges? A Chinese Safety QA Benchmark for Evaluating LLM Responses and Safety Judges",
-"url": "http://arxiv.org/abs/2609.01210v1"
-},
-"arxiv:2609.01216": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01216",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.AI",
-"streak": 1,
-"summary": "Tables are ubiquitous across diverse domains, yet reasoning over them remains a significant challenge for modern large language models (LLMs). Current approaches typically linearize tables into sequences, inherently overlooking their intrinsic two-dimensional and hierarchical structure. To address this, we propose H2Table (Hierarchical Hypergraph-Enhanced Table Reasoning), a novel framework that r",
-"title": "H2Table: Hierarchical Hypergraph-Enhanced Large Language Models for Complex Table Reasoning",
-"url": "http://arxiv.org/abs/2609.01216v1"
-},
-"arxiv:2609.01245": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01245",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Reinforcement learning is a natural way to post-train LLM agents for long-horizon interactive tasks judged only by end-of-task verification, yet a shared belief holds that outcome-only RL soon hits a ceiling on small open models. Recent work therefore compensates around the training with denser rewards, SFT priors, skill libraries, curated memory, or multi-agent orchestration. We argue the ceiling",
-"title": "Explore More, Drift Less: Outcome-Only Reinforcement Learning Can Suffice for Long-Horizon Interactive Agents",
-"url": "http://arxiv.org/abs/2609.01245v1"
-},
-"arxiv:2609.01279": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01279",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.CL",
-"streak": 1,
-"summary": "Emotion is expressed in text along a wide spectrum, from surface lexical cues to inferences entangled with content. Most layer-wise analyses of emotion in LLMs use a single corpus, leaving open whether the depth at which emotion becomes accessible is a property of the model or also of the text source. We investigate this across three datasets spanning different degrees of explicitness and contextu",
-"title": "Some Emotions Run Deeper: Layer-wise Probing and Causal Intervention in Large Language Models",
-"url": "http://arxiv.org/abs/2609.01279v1"
-},
 "arxiv:2609.01343": {
 "category": "research",
 "first_seen": "2026-09-02",
@@ -1591,62 +1218,23 @@
 "Chinchilla",
 "KV cache"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
-4.1589
+4.1589,
+4.4659
 ],
 "misses": 0,
-"peak_mag": 4.1589,
+"peak_mag": 4.4659,
 "signals": {
-"hf_comments": 1,
-"hf_upvotes": 63
+"hf_comments": 0,
+"hf_upvotes": 86
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "Looped Transformers increase effective depth by iterating a shared block of layers, but most evaluations compare at fixed model size, conflating architectural advantage with extra FLOPs. We study looping on Mixture-of-Experts Transformers while closely matching per-token FLOPs, total non-embedding parameters, and KV cache. Through a series of ablations, we arrive at a recipe we call SMELT (Sparse ",
 "title": "SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers",
 "url": "https://arxiv.org/abs/2609.01343"
-},
-"arxiv:2609.01357": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01357",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.AI",
-"streak": 1,
-"summary": "Predicting transcriptional responses to specific perturbations is critical for understanding cellular regulatory mechanisms and accelerating drug discovery. Single-cell RNA sequencing destroys each measured cell, yielding only unpaired populations of control and perturbed cells. However, existing methods typically model perturbation prediction at the single-cell level and assume cell-to-cell corre",
-"title": "PopPert: Population-level Joint-Distribution Modeling for Single-Cell Perturbation Prediction",
-"url": "http://arxiv.org/abs/2609.01357v1"
-},
-"arxiv:2609.01383": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01383",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.CL",
-"streak": 1,
-"summary": "Vision Language Models have demonstrated remarkable proficiency in interpreting static visual artifacts, but modern data analysis is inherently dynamic, requiring the active interrogation of interactive environments. Existing benchmarks are predominantly constrained to static imagery and one-shot question answering and fail to capture the epistemic demands of this domain, where evidence is frequen",
-"title": "InSight: A Benchmark for Agentic Claim Verification in Interactive Visualizations",
-"url": "http://arxiv.org/abs/2609.01383v1"
 },
 "arxiv:2609.01404": {
 "category": "research",
@@ -1663,65 +1251,27 @@
 "action protocol",
 "terminating action"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/naver-ai/DroneCATS",
 "project": "https://github.com/naver-ai/DroneCATS"
 },
 "mag_history": [
-2.9957
+2.9957,
+3.7274
 ],
 "misses": 0,
-"peak_mag": 2.9957,
+"peak_mag": 3.7274,
 "signals": {
-"hf_comments": 1,
-"hf_upvotes": 19
+"gh_stars": 2,
+"hf_comments": 0,
+"hf_upvotes": 23
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "Multimodal Large Language Models (MLLMs) are strong perceivers of images and video. We ask how far that reach extends into acting: dropping an MLLM directly into a drone's control loop, with its entire action space declared solely in the prompt. Recent systems approach this setting but increasingly narrow the model's decision-making. We widen it back. We introduce DroneCATS-Agent, an architecture ",
 "title": "Evaluating Multimodal LLMs as Generalist Vision-Language-Action Agents for Drone Control: Commanding, Approaching, Tracking and Searching",
 "url": "https://arxiv.org/abs/2609.01404"
-},
-"arxiv:2609.01409": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01409",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.CL",
-"streak": 1,
-"summary": "Vision-language models (VLMs) have shown strong performance in generating scientific figures from text or images. However, producing publication-ready figures requires iterative refinement, making scientific figure editing an important yet largely unexplored task. Existing approaches rely on costly proprietary agentic systems, focus primarily on evaluation, or construct training supervision from s",
-"title": "EdiTikZ: Scientific Figure Editing from Revision Trajectories",
-"url": "http://arxiv.org/abs/2609.01409v1"
-},
-"arxiv:2609.01425": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01425",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Voucher abuse poses a major challenge in e-commerce, where malicious users exploit promotional vouchers for profit. Unfortunately, fraud patterns evolve rapidly over time and across regions, causing distribution shifts that degrade existing detection models unless retrained frequently. To tackle this, we propose the Coupled Attribute-Topology Invariance Learning framework (CATeye). The key challen",
-"title": "CATeye: Coupled Attribute-Topology Invariance Learning for Voucher Abuse Detection",
-"url": "http://arxiv.org/abs/2609.01425v1"
 },
 "arxiv:2609.01481": {
 "category": "research",
@@ -1738,44 +1288,25 @@
 "versioned project histories",
 "GameCraft-Bench"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "project": "https://flesymeb.github.io/HarnessOfHarness/"
 },
 "mag_history": [
-2.0794
+2.0794,
+2.5649
 ],
 "misses": 0,
-"peak_mag": 2.0794,
+"peak_mag": 2.5649,
 "signals": {
 "hf_comments": 0,
-"hf_upvotes": 7
+"hf_upvotes": 12
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "This paper studies autonomous software development, in which LLM-based coding agents transform high-level requirements into complete, functional, and usable software systems without human intervention. We introduce Harness-of-Harness (HoH), a framework that enables coding agents to continually improve software during autonomous development. HoH operates on existing coding-agent harnesses, and orga",
 "title": "Harness-of-Harness: Multi-Day Autonomous Software Development with Continual Improvement",
 "url": "https://arxiv.org/abs/2609.01481"
-},
-"arxiv:2609.01537": {
-"category": "research",
-"first_seen": "2026-09-02",
-"flat_runs": 0,
-"id": "arxiv:2609.01537",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Q-matrices play a central role in cognitive diagnosis within educational data mining (EDM), specifying which latent skills each assessment item requires. Data-driven Q-matrix estimation remains challenging when assessments involve many correlated skills and when real response patterns depart from idealized generative assumptions. We introduce a novel quantum sparse autoencoder (QSAE) for Q-matrix ",
-"title": "Quantum Sparse Autoencoders for Q-Matrix Estimation in Cognitive Diagnosis",
-"url": "http://arxiv.org/abs/2609.01537v1"
 },
 "arxiv:2609.01572": {
 "category": "research",
@@ -1792,21 +1323,22 @@
 "deterministic verifiers",
 "calibrated LLM judges"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "project": "https://huggingface.co/t-tech/T-pro-it-2.1"
 },
 "mag_history": [
-3.3673
+3.3673,
+3.5264
 ],
 "misses": 0,
-"peak_mag": 3.3673,
+"peak_mag": 3.5264,
 "signals": {
-"hf_comments": 2,
-"hf_upvotes": 28
+"hf_comments": 0,
+"hf_upvotes": 33
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "Data-residency constraints force enterprises to self-host LLMs, but continuous adoption of newer models without decommissioning their predecessors expands the serving fleet, fragmenting a finite GPU pool. We consolidate traffic from over 200 internal applications onto a single model by closing quality gaps identified through production error analysis along three axes: instruction following, functi",
 "title": "From Production Traffic to Post-Training: Building a Self-Hosted LLM That Covers the Corporate Request Mix",
 "url": "https://arxiv.org/abs/2609.01572"
@@ -1825,25 +1357,504 @@
 "reinforcement learning",
 "reward model"
 ],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {
 "github": "https://github.com/microsoft/StudentSim",
 "project": "https://microsoft.github.io/StudentSim/"
 },
 "mag_history": [
-5.7071
+5.7071,
+7.8702
 ],
 "misses": 0,
-"peak_mag": 5.7071,
+"peak_mag": 7.8702,
 "signals": {
-"hf_comments": 2,
-"hf_upvotes": 300
+"gh_stars": 29,
+"hf_comments": 0,
+"hf_upvotes": 477
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "AI tutors are most useful when they adapt to each student's strengths, weaknesses, and preferred guidance, but evidence about which guidance works for which student is sparse, slow, and costly to collect from real learners. Student simulators can provide this signal as a proxy, yet existing approaches are limited: state-tracking models fit student behavior but struggle to process explanations or c",
 "title": "StudentSim: Training LLM-based Student Simulators",
 "url": "https://arxiv.org/abs/2609.01591"
+},
+"arxiv:2609.01810": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.01810",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Farsi, spoken by more than 120 million people, lacks a comprehensive benchmark for dialogue generation and understanding. We introduce TALKFA, a unified benchmark comprising three complementary datasets: (1) WIKI-FADIAL, 4.2K Wikipedia-grounded dialogues for knowledge-grounded generation; (2) DAILYDIALOG-FA, 6.6K dialogues annotated for dialogue acts and emotions; and (3) PLAYDIAL-FA, 2.1K theatri",
+"title": "TalkFa: A Unified Benchmark for Farsi Dialogue Generation and Understanding",
+"url": "http://arxiv.org/abs/2609.01810v1"
+},
+"arxiv:2609.01852": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.01852",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Persistent memory supports personalized agents, but a stale stored fact can override current authoritative evidence without warning. We study when this harm begins as model capability changes. We evaluate a frozen, closed-set, action-scored benchmark with 2 suites that represent 2 different meanings of \"no memory\" (a Benefit suite, unsolvable without the stored fact, and a Safety suite, in which a",
+"title": "The Memory Trust Gap: Capability-Dependent Failures in Persistent-Memory Agents",
+"url": "http://arxiv.org/abs/2609.01852v1"
+},
+"arxiv:2609.01962": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.01962",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Ultra-low-bit language models can reduce storage and memory bandwidth, but a nominal \"1.58-bit\" label does not fully describe the stored representation, retained capability, or runtime behavior.   We study an end-to-end post-training conversion of Qwen, an instruction-tuned 4B-parameter model, using KOTMS rotation, E2M-ATQ ternarization, and GPTQ-style error compensation from TWLA. The experiment ",
+"title": "Post-Training Ternarization of Qwen3-4B Capability, Effective Bit Budget, Storage Compression, and Deployment",
+"url": "http://arxiv.org/abs/2609.01962v1"
+},
+"arxiv:2609.01987": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.01987",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Patient exams in the cancer diagnosis and staging process typically generate several whole slide images (WSIs). One of the initial steps in training models on WSI data is identifying one or a few slides containing tumor or other diagnostic biomarkers necessary for downstream prediction tasks such as estimating recurrence risk or progression-free survival. This step requires tedious manual curation",
+"title": "Morphology signal in whole slide image foundation models can automatically triage slides",
+"url": "http://arxiv.org/abs/2609.01987v1"
+},
+"arxiv:2609.02158": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02158",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Legal Judgment Prediction (LJP) models are typically trained on documents that describe facts from a prosecutorial perspective. Existing datasets further exhibit severe label imbalance toward guilty outcomes. Consequently, these models suffer from \"Guilty Bias\", blindly accepting the prosecution's narrative as objective truth. Previous studies employing three-step reasoning structures or training ",
+"title": "OBJECTION! Lawyer Agents Mitigate Guilty Bias in Legal Judgment Prediction",
+"url": "http://arxiv.org/abs/2609.02158v1"
+},
+"arxiv:2609.02272": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02272",
+"keywords": [
+"paper-to-code generation",
+"repository-level specifications",
+"cross-file dependencies",
+"non-degradation requirements",
+"provenance tracking",
+"PaperCompiler",
+"Paper2CodeBench"
+],
+"last_seen": "2026-09-03",
+"links": {
+"github": "https://github.com/Daethalous/PaperCompiler"
+},
+"mag_history": [
+1.7918
+],
+"misses": 0,
+"peak_mag": 1.7918,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 5
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Faithfully translating research papers into repository-level implementations remains challenging because papers often describe methods at a high level, leave implementation assumptions implicit, and require generated repositories to preserve method logic, evaluation protocols, and cross-file consistency. Despite recent advances in paper-to-code agents, their intermediate outputs are often presente",
+"title": "PaperCompiler: Faithful Paper-to-Code Generation via Repository-Level Specification Compilation",
+"url": "https://arxiv.org/abs/2609.02272"
+},
+"arxiv:2609.02282": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02282",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.AI",
+"streak": 1,
+"summary": "Mineral image classification is important for geological exploration and resource development, but it remains challenging due to substantial intra-class variations in appearance and high inter-class visual similarity. Multi-cognitive Visual Adapter (Mona) is a vision-oriented parameter-efficient adapter that adapts pre-trained visual models by tuning only a few parameters. However, Mona statically",
+"title": "RouteGraph-Mona: Confusion-Aware Routing Fine-Tuning for Mineral Image Classification",
+"url": "http://arxiv.org/abs/2609.02282v1"
+},
+"arxiv:2609.02343": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02343",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Recent advances in audio-language modeling have been driven by large-scale audio captioning datasets. However, existing datasets remain limited by low semantic diversity, generic descriptions lacking acoustic details, and one-to-one audio-caption mappings that poorly reflect the inherent ambiguity of auditory perception. We introduce SonicCaps, a large-scale audio captioning dataset comprising ~15",
+"title": "SonicCaps: Large-Scale Diverse and Fine-Grained Captioning for Improved Audio-Retrieval",
+"url": "http://arxiv.org/abs/2609.02343v1"
+},
+"arxiv:2609.02371": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02371",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.AI",
+"streak": 1,
+"summary": "With the proliferation of LLM agents, the ability to understand and diagnose failures in agents is essential to achieving superior effectiveness and trustworthiness. As agent failures often manifest via long and complex trajectories, manually finding the needles in the haystack is untenable. However, traditional diagnosis techniques for software bugs can hardly address LLM agent failures, while co",
+"title": "Diagnosing with Insights: Structured Analysis of Agent Failures via Behavioral Abstractions",
+"url": "http://arxiv.org/abs/2609.02371v1"
+},
+"arxiv:2609.02421": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02421",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Large Language Models (LLMs) have recently demonstrated strong capabilities in automated travel itinerary generation. However, real- world travel planning is inherently uncertain: transportation delays, crowd fluctuations, and unexpected stochastic delays frequently inval- idate otherwise feasible schedules. Existing benchmarks like TravelPlanner and TripCraft assume deterministic environments, ev",
+"title": "UTP-Bench: Uncertainty-aware Travel Planning Benchmark",
+"url": "http://arxiv.org/abs/2609.02421v1"
+},
+"arxiv:2609.02529": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02529",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.AI",
+"streak": 1,
+"summary": "Image enhancement and restoration have become standard back-end operations on short-video and social media platforms to boost UGC visual experience. Yet these processes inevitably introduce visual anomalies--especially in faces, texts, and textures--that directly undermine perceptual fidelity and viewer trust. While existing IQA methods perform well on classic distortions, they target holistic qua",
+"title": "Fine-Grained Anomaly Perception in Wild UGC-Enhanced Images: A Comprehensive Dataset and Difference-Fusion Framework",
+"url": "http://arxiv.org/abs/2609.02529v1"
+},
+"arxiv:2609.02639": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02639",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Low-Rank Adaptation (LoRA) has become a de facto standard for parameter-efficient fine-tuning (PEFT), yet its performance is highly sensitive to initialization due to the information bottleneck imposed by low-rank decomposition. Existing approaches attempt to construct high-quality LoRA initializations by exploiting principal components of pretrained weights, activations, or gradients. However, th",
+"title": "TaRA: Training-Aware Low-Rank Adaptation Initialization",
+"url": "http://arxiv.org/abs/2609.02639v1"
+},
+"arxiv:2609.02649": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02649",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Aggregating noisy, conflicting textual hypotheses into a reliable consensus is a fundamental challenge when deploying NLP systems in real-world industrial settings. While monolithic Large Language Model (LLM) agents offer unbounded expressivity for tasks like Root Cause Analysis (RCA), they suffer from context limits, compounding hallucinations, and prohibitive inference latency. Traditional weak ",
+"title": "Loom: Weaving Diagnostic Strands into Free-Text Consensus via Embedding-Space Reweighting",
+"url": "http://arxiv.org/abs/2609.02649v1"
+},
+"arxiv:2609.02702": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02702",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.CL",
+"streak": 1,
+"summary": "Transformers process information causally, but long-context reasoning may depend on task state discovered only later. We formalize this mismatch through conditional state update tasks. For causal state update processors, providing the condition first can require exponentially less memory in the worst case than providing it last.   Motivated by this principle, we introduce Trace as State. We use co",
+"title": "Trace as State: Reasoning Traces as Conditional States for Long-Context Transformers",
+"url": "http://arxiv.org/abs/2609.02702v1"
+},
+"arxiv:2609.02734": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02734",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+0.0
+],
+"misses": 0,
+"peak_mag": 0.0,
+"signals": {},
+"source": "arXiv cs.LG",
+"streak": 1,
+"summary": "Low-rank adaptation (LoRA) is the standard way to fine-tune large models, yet when its two factors are trained independently, the update ignores the geometry of the low-rank weight change it induces. We introduce LoRA-TSD, an optimizer that treats every LoRA step as a tangent vector of the fixed-rank matrix manifold and takes the spectral-norm steepest-descent step of Muon inside that tangent spac",
+"title": "LoRA-TSD: Tangent-Space Spectral Descent for LoRA via Muon-Style Updates",
+"url": "http://arxiv.org/abs/2609.02734v1"
+},
+"arxiv:2609.02737": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02737",
+"keywords": [
+"Declarative Attention",
+"KV cache",
+"chain-of-thought",
+"global attention",
+"sparse attention",
+"long-context"
+],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+3.7842
+],
+"misses": 0,
+"peak_mag": 3.7842,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 43
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Language models spend most of their attention on a small fraction of context, yet they read the entire KV cache to find the few tokens that matter. If the user asks about a previous detail in a 1M-token conversation, global attention layers must scan the full context to generate each token of the reply. A prominent approach mitigates this cost by pre-selecting relevant tokens via lightweight proxy",
+"title": "Language Models Can Control Their Own Attention",
+"url": "https://arxiv.org/abs/2609.02737"
+},
+"arxiv:2609.02749": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02749",
+"keywords": [
+"autonomous agents",
+"machine-learning research",
+"operational knowledge",
+"skill distillation",
+"DisCo",
+"AREX-Skill Library",
+"MLE-bench",
+"PaperBench"
+],
+"last_seen": "2026-09-03",
+"links": {
+"github": "https://github.com/VectorSpaceLab/AREX-Skill"
+},
+"mag_history": [
+5.8435
+],
+"misses": 0,
+"peak_mag": 5.8435,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 344
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Autonomous agents are beginning to carry out machine-learning (ML) research end to end. These agents combine a model backbone with a harness for planning, execution, memory, and verification, but this architecture still leaves domain-specific know-how outside the agent. We call this missing layer operational knowledge, the know-how that separates knowing a method from making it work. That knowledg",
+"title": "Repo-To-Skill: Distilling GitHub Repositories Into AI4AI Skills",
+"url": "https://arxiv.org/abs/2609.02749"
+},
+"arxiv:2609.02783": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02783",
+"keywords": [
+"LLM agents",
+"early outcome prediction",
+"EarlyEval",
+"LightGBM classifiers",
+"behavioral features",
+"SWE-bench Verified",
+"TerminalBench",
+"Toolathlon"
+],
+"last_seen": "2026-09-03",
+"links": {
+"github": "https://github.com/inphotoo/earlyeval"
+},
+"mag_history": [
+4.6444
+],
+"misses": 0,
+"peak_mag": 4.6444,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 103
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Evaluating LLM agents is essential for guiding their development, yet it has grown prohibitively expensive: a single pass of a frontier model over an agentic benchmark can cost hundreds to thousands of dollars, a price paid repeatedly across iterative development cycles. Prior efforts, centered on benchmark distillation, reduce the number of evaluation tasks but leave the cost of executing each re",
+"title": "EarlyEval: Cheaper Agent Evaluation via Early Outcome Prediction",
+"url": "https://arxiv.org/abs/2609.02783"
+},
+"arxiv:2609.02817": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02817",
+"keywords": [
+"reinforcement learning with verifiable rewards",
+"process reward modeling",
+"on-policy distillation",
+"reward shaping",
+"token-level advantages",
+"GRPO"
+],
+"last_seen": "2026-09-03",
+"links": {
+"project": "https://x.com/peixuanhakhan/status/2095334137909359011"
+},
+"mag_history": [
+2.7726
+],
+"misses": 0,
+"peak_mag": 2.7726,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 15
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "Reinforcement learning with verifiable rewards (RLVR) has emerged as a powerful paradigm for large language model (LLM) post-training, but its reliance on coarse outcome rewards leads to limited guidance on intermediate reasoning processes. Existing approaches such as process reward modeling and on-policy distillation introduce additional constraints, such as reliance on a specialized reward model",
+"title": "Cliff: Learning Process Rewards from the First Mistake",
+"url": "https://arxiv.org/abs/2609.02817"
+},
+"arxiv:2609.02886": {
+"category": "research",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "arxiv:2609.02886",
+"keywords": [
+"video world models",
+"multi-source data engine",
+"backbone-native adaptation",
+"camera-conditioning",
+"autoregressive initialization",
+"distribution matching distillation",
+"causal models"
+],
+"last_seen": "2026-09-03",
+"links": {
+"github": "https://github.com/Junchao-cs/SolarWM",
+"project": "https://junchao-cs.github.io/SolarWM-Web/"
+},
+"mag_history": [
+4.7707
+],
+"misses": 0,
+"peak_mag": 4.7707,
+"signals": {
+"hf_comments": 1,
+"hf_upvotes": 117
+},
+"source": "HF Daily Papers",
+"streak": 1,
+"summary": "We introduce SolarWM, a fully open foundation for building interactive video world models from data preparation through long-horizon inference. Training across heterogeneous data sources and video backbones is challenging: datasets differ in temporal scale, camera geometry, visual quality, motion, and captioning styles, while video generators use distinct representations and architectures. Naive d",
+"title": "SolarWM: Open Data and Scalable Training for Long-Horizon Video World Models",
+"url": "https://arxiv.org/abs/2609.02886"
 },
 "ghrepo:Carasibana/ComfyUI-H3-FaceRefine": {
 "category": "releases",
@@ -1851,21 +1862,22 @@
 "flat_runs": 0,
 "id": "ghrepo:Carasibana/ComfyUI-H3-FaceRefine",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 2.8469,
 2.8585,
-2.8747
+2.8747,
+2.8795
 ],
 "misses": 0,
-"peak_mag": 2.8747,
+"peak_mag": 2.8795,
 "signals": {
 "gh_forks": 23,
-"gh_stars": 313
+"gh_stars": 316
 },
 "source": "GitHub Trending (Python)",
-"streak": 3,
+"streak": 4,
 "summary": "Refine and improve the quality of small faces in MiniMax H3 video. Per-frame face tracking, crop, refine with H3, stitch back.",
 "title": "Carasibana/ComfyUI-H3-FaceRefine \u2014 Refine and improve the quality of small faces in MiniMax H3 video. Per-frame face tracking, crop, refine with H3, stitch back.",
 "url": "https://github.com/Carasibana/ComfyUI-H3-FaceRefine"
@@ -1876,19 +1888,20 @@
 "flat_runs": 0,
 "id": "ghrepo:ItzCrazyKns/Vane",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
-5.2537
+5.2537,
+5.2539
 ],
 "misses": 0,
-"peak_mag": 5.2537,
+"peak_mag": 5.2539,
 "signals": {
-"gh_forks": 4066,
-"gh_stars": 36587
+"gh_forks": 4068,
+"gh_stars": 36596
 },
 "source": "GitHub Trending (TypeScript)",
-"streak": 1,
+"streak": 2,
 "summary": "Vane is an AI-powered answering engine.",
 "title": "ItzCrazyKns/Vane \u2014 Vane is an AI-powered answering engine.",
 "url": "https://github.com/ItzCrazyKns/Vane"
@@ -1899,7 +1912,7 @@
 "flat_runs": 0,
 "id": "ghrepo:ScrapeGraphAI/Scrapegraph-ai",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 5.152,
@@ -1908,29 +1921,54 @@
 5.1543,
 5.1549,
 5.1569,
-5.161
+5.161,
+5.1622
 ],
 "misses": 0,
-"peak_mag": 5.161,
+"peak_mag": 5.1622,
 "signals": {
-"gh_forks": 3021,
-"gh_stars": 30392
+"gh_forks": 3033,
+"gh_stars": 30468
 },
 "source": "GitHub Trending (Python)",
-"streak": 7,
+"streak": 8,
 "summary": "Python scraper based on AI",
 "title": "ScrapeGraphAI/Scrapegraph-ai \u2014 Python scraper based on AI",
 "url": "https://github.com/ScrapeGraphAI/Scrapegraph-ai"
 },
+"ghrepo:X-GenGroup/Flow-Factory": {
+"category": "releases",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "ghrepo:X-GenGroup/Flow-Factory",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+3.2683
+],
+"misses": 0,
+"peak_mag": 3.2683,
+"signals": {
+"gh_forks": 59,
+"gh_stars": 689
+},
+"source": "GitHub Trending (Python)",
+"streak": 1,
+"summary": "A unified framework for easy fine-tuning in Flow-Matching models",
+"title": "X-GenGroup/Flow-Factory \u2014 A unified framework for easy fine-tuning in Flow-Matching models",
+"url": "https://github.com/X-GenGroup/Flow-Factory"
+},
 "ghrepo:candle-org/MindAct": {
 "category": "releases",
 "first_seen": "2026-08-31",
-"flat_runs": 1,
+"flat_runs": 2,
 "id": "ghrepo:candle-org/MindAct",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
+3.4127,
 3.4127,
 3.4127
 ],
@@ -1941,7 +1979,7 @@
 "gh_stars": 920
 },
 "source": "GitHub Trending (Python)",
-"streak": 2,
+"streak": 3,
 "summary": "MindSpore +  \ud83e\udd17Huggingface: Run any Transformers/Diffusers model on MindSpore with seamless compatibility and acceleration.",
 "title": "candle-org/MindAct \u2014 MindSpore +  \ud83e\udd17Huggingface: Run any Transformers/Diffusers model on MindSpore with seamless compatibility and acceleration.",
 "url": "https://github.com/candle-org/MindAct"
@@ -1949,15 +1987,16 @@
 "ghrepo:gudaochangsheng/RefAlign": {
 "category": "releases",
 "first_seen": "2026-08-25",
-"flat_runs": 1,
+"flat_runs": 2,
 "id": "ghrepo:gudaochangsheng/RefAlign",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 3.0667,
 3.0774,
 3.0806,
+3.0817,
 3.0817,
 3.0817
 ],
@@ -1968,7 +2007,7 @@
 "gh_stars": 474
 },
 "source": "GitHub Trending (Python)",
-"streak": 5,
+"streak": 6,
 "summary": "[ECCV 2026] Official PyTorch implementation of RefAlign: Representation Alignment for Reference-to-Video Generation",
 "title": "gudaochangsheng/RefAlign \u2014 [ECCV 2026] Official PyTorch implementation of RefAlign: Representation Alignment for Reference-to-Video Generation",
 "url": "https://github.com/gudaochangsheng/RefAlign"
@@ -1976,13 +2015,14 @@
 "ghrepo:mertizci/noai-watermark": {
 "category": "releases",
 "first_seen": "2026-08-27",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "ghrepo:mertizci/noai-watermark",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 2.5766,
+2.5881,
 2.5881
 ],
 "misses": 0,
@@ -1992,10 +2032,33 @@
 "gh_stars": 176
 },
 "source": "GitHub Trending (Python)",
-"streak": 2,
+"streak": 3,
 "summary": "Remove invisible AI watermarks (SynthID, StableSignature, TreeRing) and strip AI metadata from images. Open-source CLI & Python toolkit.",
 "title": "mertizci/noai-watermark \u2014 Remove invisible AI watermarks (SynthID, StableSignature, TreeRing) and strip AI metadata from images. Open-source CLI & Python toolkit.",
 "url": "https://github.com/mertizci/noai-watermark"
+},
+"ghrepo:simchowitzlabpublic/nano-world-model": {
+"category": "releases",
+"first_seen": "2026-09-03",
+"flat_runs": 0,
+"id": "ghrepo:simchowitzlabpublic/nano-world-model",
+"keywords": [],
+"last_seen": "2026-09-03",
+"links": {},
+"mag_history": [
+3.2931
+],
+"misses": 0,
+"peak_mag": 3.2931,
+"signals": {
+"gh_forks": 48,
+"gh_stars": 724
+},
+"source": "GitHub Trending (Python)",
+"streak": 1,
+"summary": "A Minimalist, Batteries-included Repository for Advancing World Model Science.",
+"title": "simchowitzlabpublic/nano-world-model \u2014 A Minimalist, Batteries-included Repository for Advancing World Model Science.",
+"url": "https://github.com/simchowitzlabpublic/nano-world-model"
 },
 "hfdataset:nyu-mll/glue": {
 "category": "releases",
@@ -2003,21 +2066,22 @@
 "flat_runs": 0,
 "id": "hfdataset:nyu-mll/glue",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 4.4383,
-4.4779
+4.4779,
+4.5087
 ],
 "misses": 0,
-"peak_mag": 4.4779,
+"peak_mag": 4.5087,
 "signals": {
-"hf_downloads": 590833,
-"hf_likes": 599,
+"hf_downloads": 623130,
+"hf_likes": 626,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 2,
+"streak": 3,
 "summary": "\u00b7 tags: task_categories:text-classification, task_ids:acceptability-classification, task_ids:natural-language-inference, task_ids:semantic-similarity-scoring, task_ids:sentiment-classification, task_ids:text-scoring",
 "title": "nyu-mll/glue (HF Dataset)",
 "url": "https://huggingface.co/datasets/nyu-mll/glue"
@@ -2028,7 +2092,7 @@
 "flat_runs": 0,
 "id": "hfmodel:0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 3.7755,
@@ -2039,55 +2103,21 @@
 3.9833,
 4.0088,
 4.0594,
-4.1183
+4.1183,
+4.128
 ],
 "misses": 0,
-"peak_mag": 4.1183,
+"peak_mag": 4.128,
 "signals": {
-"hf_downloads": 1210189,
-"hf_likes": 358,
+"hf_downloads": 1279204,
+"hf_likes": 363,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 9,
+"streak": 10,
 "summary": "text-generation \u00b7 tags: transformers, gguf, qwen3.8, qwen3.5, heretic, abliterated",
 "title": "0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF (HF Model)",
 "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF"
-},
-"hfmodel:HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF": {
-"category": "releases",
-"first_seen": "2026-08-19",
-"flat_runs": 0,
-"id": "hfmodel:HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-3.8509,
-4.0636,
-4.1763,
-4.2811,
-4.3586,
-4.4258,
-4.4813,
-4.5142,
-4.5706,
-4.6055,
-4.6888,
-4.729
-],
-"misses": 0,
-"peak_mag": 4.729,
-"signals": {
-"hf_downloads": 1276092,
-"hf_likes": 858,
-"hf_trending": 0
-},
-"source": "HF Trending Models",
-"streak": 12,
-"summary": "image-text-to-text \u00b7 tags: gguf, uncensored, qwen3.8, multimodal, vision, mtp",
-"title": "HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF (HF Model)",
-"url": "https://huggingface.co/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF"
 },
 "hfmodel:ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF": {
 "category": "releases",
@@ -2095,20 +2125,21 @@
 "flat_runs": 0,
 "id": "hfmodel:ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
-3.5028
+3.5028,
+3.7496
 ],
 "misses": 0,
-"peak_mag": 3.5028,
+"peak_mag": 3.7496,
 "signals": {
-"hf_downloads": 56208,
-"hf_likes": 148,
-"hf_trending": 140
+"hf_downloads": 100110,
+"hf_likes": 211,
+"hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 1,
+"streak": 2,
 "summary": "image-text-to-text \u00b7 tags: gguf, gsq, rco, quantization, mixed-precision, ist-daslab",
 "title": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF (HF Model)",
 "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF"
@@ -2119,7 +2150,7 @@
 "flat_runs": 0,
 "id": "hfmodel:OBLITERATUS/Qwen3.8-27B-OBLITERATED",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 4.1203,
@@ -2131,17 +2162,18 @@
 4.7167,
 4.7428,
 4.8141,
-4.85
+4.85,
+4.8662
 ],
 "misses": 0,
-"peak_mag": 4.85,
+"peak_mag": 4.8662,
 "signals": {
-"hf_downloads": 805791,
-"hf_likes": 1020,
+"hf_downloads": 848781,
+"hf_likes": 1044,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 10,
+"streak": 11,
 "summary": "text-generation \u00b7 tags: mlx, safetensors, gguf, qwen3_5, abliterated, uncensored",
 "title": "OBLITERATUS/Qwen3.8-27B-OBLITERATED (HF Model)",
 "url": "https://huggingface.co/OBLITERATUS/Qwen3.8-27B-OBLITERATED"
@@ -2152,23 +2184,24 @@
 "flat_runs": 0,
 "id": "hfmodel:Qwen/Qwen3.8-Flash-Next",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 5.7928,
 5.8296,
 5.8881,
-5.9195
+5.9195,
+5.9302
 ],
 "misses": 0,
-"peak_mag": 5.9195,
+"peak_mag": 5.9302,
 "signals": {
-"hf_downloads": 207941,
-"hf_likes": 4704,
+"hf_downloads": 263287,
+"hf_likes": 4777,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 4,
+"streak": 5,
 "summary": "image-text-to-text \u00b7 tags: transformers, safetensors, qwen4_exp, image-text-to-text, conversational, license:other",
 "title": "Qwen/Qwen3.8-Flash-Next (HF Model)",
 "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
@@ -2179,22 +2212,23 @@
 "flat_runs": 0,
 "id": "hfmodel:alibaba-pai/MiniMax-H3-Fun-Controlnet-Union",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 3.5259,
 3.5868,
-3.5909
+3.5909,
+3.5951
 ],
 "misses": 0,
-"peak_mag": 3.5909,
+"peak_mag": 3.5951,
 "signals": {
-"hf_downloads": 6013,
-"hf_likes": 168,
+"hf_downloads": 7200,
+"hf_likes": 169,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 3,
+"streak": 4,
 "summary": "text-to-video \u00b7 tags: videox_fun, controlnet, video-to-video, text-to-video, image-text-to-video, license:other",
 "title": "alibaba-pai/MiniMax-H3-Fun-Controlnet-Union (HF Model)",
 "url": "https://huggingface.co/alibaba-pai/MiniMax-H3-Fun-Controlnet-Union"
@@ -2205,21 +2239,22 @@
 "flat_runs": 0,
 "id": "hfmodel:deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 3.9641,
-4.3289
+4.3289,
+4.3884
 ],
 "misses": 0,
-"peak_mag": 4.3289,
+"peak_mag": 4.3884,
 "signals": {
-"hf_downloads": 17893,
-"hf_likes": 484,
+"hf_downloads": 54571,
+"hf_likes": 527,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 2,
+"streak": 3,
 "summary": "image-text-to-text \u00b7 tags: transformers, safetensors, deepseek_v4, text-generation, image-text-to-text, license:mit",
 "title": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp (HF Model)",
 "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp"
@@ -2230,7 +2265,7 @@
 "flat_runs": 0,
 "id": "hfmodel:empero-ai/Qwen3.8-27B-Ridge-GGUF",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 3.7627,
@@ -2243,17 +2278,18 @@
 3.9368,
 3.9567,
 4.0179,
-4.0444
+4.0444,
+4.0508
 ],
 "misses": 0,
-"peak_mag": 4.0444,
+"peak_mag": 4.0508,
 "signals": {
-"hf_downloads": 325908,
-"hf_likes": 322,
+"hf_downloads": 350684,
+"hf_likes": 325,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 11,
+"streak": 12,
 "summary": "image-text-to-text \u00b7 tags: gguf, llama.cpp, quantized, qwen3.8, qwen3.5, ridge",
 "title": "empero-ai/Qwen3.8-27B-Ridge-GGUF (HF Model)",
 "url": "https://huggingface.co/empero-ai/Qwen3.8-27B-Ridge-GGUF"
@@ -2264,7 +2300,7 @@
 "flat_runs": 0,
 "id": "hfmodel:huihui-ai/Huihui-Qwen3.8-27B-abliterated",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 3.8335,
@@ -2275,17 +2311,18 @@
 3.9903,
 4.0088,
 4.0465,
-4.0761
+4.0761,
+4.0905
 ],
 "misses": 0,
-"peak_mag": 4.0761,
+"peak_mag": 4.0905,
 "signals": {
-"hf_downloads": 53895,
-"hf_likes": 337,
+"hf_downloads": 57431,
+"hf_likes": 344,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 9,
+"streak": 10,
 "summary": "image-text-to-text \u00b7 tags: transformers, safetensors, qwen3_5, image-text-to-text, abliterated, uncensored",
 "title": "huihui-ai/Huihui-Qwen3.8-27B-abliterated (HF Model)",
 "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-abliterated"
@@ -2296,7 +2333,7 @@
 "flat_runs": 0,
 "id": "hfmodel:huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 3.8364,
@@ -2307,17 +2344,18 @@
 4.1958,
 4.2315,
 4.3069,
-4.3432
+4.3432,
+4.3641
 ],
 "misses": 0,
-"peak_mag": 4.3432,
+"peak_mag": 4.3641,
 "signals": {
-"hf_downloads": 1869259,
-"hf_likes": 494,
+"hf_downloads": 1933019,
+"hf_likes": 509,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 9,
+"streak": 10,
 "summary": "image-text-to-text \u00b7 tags: transformers, gguf, abliterated, uncensored, huihui, qwen3",
 "title": "huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF (HF Model)",
 "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF"
@@ -2328,7 +2366,7 @@
 "flat_runs": 0,
 "id": "hfmodel:orcarouter/Qwen3.8-27B-Uncensored-GGUF",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 3.9005,
@@ -2340,55 +2378,21 @@
 4.3375,
 4.3804,
 4.4755,
-4.535
+4.535,
+4.553
 ],
 "misses": 0,
-"peak_mag": 4.535,
+"peak_mag": 4.553,
 "signals": {
-"hf_downloads": 254529,
-"hf_likes": 650,
+"hf_downloads": 262325,
+"hf_likes": 667,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 10,
+"streak": 11,
 "summary": "image-text-to-text \u00b7 tags: gguf, abliterated, qwen, qwen3, qwen3.8, llama.cpp",
 "title": "orcarouter/Qwen3.8-27B-Uncensored-GGUF (HF Model)",
 "url": "https://huggingface.co/orcarouter/Qwen3.8-27B-Uncensored-GGUF"
-},
-"hfmodel:orcarouter/Qwen3.8-27B-Uncensored-MLX": {
-"category": "releases",
-"first_seen": "2026-08-19",
-"flat_runs": 0,
-"id": "hfmodel:orcarouter/Qwen3.8-27B-Uncensored-MLX",
-"keywords": [],
-"last_seen": "2026-09-02",
-"links": {},
-"mag_history": [
-4.2463,
-4.5456,
-4.6507,
-4.7208,
-4.7648,
-4.8312,
-4.8769,
-4.9173,
-4.9423,
-4.9531,
-4.9922,
-5.0022
-],
-"misses": 0,
-"peak_mag": 5.0022,
-"signals": {
-"hf_downloads": 121028,
-"hf_likes": 1268,
-"hf_trending": 0
-},
-"source": "HF Trending Models",
-"streak": 12,
-"summary": "image-text-to-text \u00b7 tags: mlx, safetensors, qwen3_5, abliterated, qwen3.8, uncensored",
-"title": "orcarouter/Qwen3.8-27B-Uncensored-MLX (HF Model)",
-"url": "https://huggingface.co/orcarouter/Qwen3.8-27B-Uncensored-MLX"
 },
 "hfmodel:orcarouter/Qwen3.8-Flash-Next-Uncensored-GGUF": {
 "category": "releases",
@@ -2396,20 +2400,21 @@
 "flat_runs": 0,
 "id": "hfmodel:orcarouter/Qwen3.8-Flash-Next-Uncensored-GGUF",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
-3.6466
+3.6466,
+3.7227
 ],
 "misses": 0,
-"peak_mag": 3.6466,
+"peak_mag": 3.7227,
 "signals": {
-"hf_downloads": 64325,
-"hf_likes": 182,
-"hf_trending": 155
+"hf_downloads": 85105,
+"hf_likes": 203,
+"hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 1,
+"streak": 2,
 "summary": "image-text-to-text \u00b7 tags: gguf, abliterated, uncensored, qwen, qwen3.8, qwen4",
 "title": "orcarouter/Qwen3.8-Flash-Next-Uncensored-GGUF (HF Model)",
 "url": "https://huggingface.co/orcarouter/Qwen3.8-Flash-Next-Uncensored-GGUF"
@@ -2420,7 +2425,7 @@
 "flat_runs": 0,
 "id": "hfmodel:ornith-ai/Ornith-1.5-35B-A3B",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 3.8816,
@@ -2432,17 +2437,18 @@
 4.2994,
 4.3246,
 4.3668,
-4.391
+4.391,
+4.3976
 ],
 "misses": 0,
-"peak_mag": 4.391,
+"peak_mag": 4.3976,
 "signals": {
-"hf_downloads": 206651,
-"hf_likes": 529,
+"hf_downloads": 228706,
+"hf_likes": 534,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 10,
+"streak": 11,
 "summary": "text-generation \u00b7 tags: transformers, safetensors, qwen3_5_moe, image-text-to-text, text-generation, conversational",
 "title": "ornith-ai/Ornith-1.5-35B-A3B (HF Model)",
 "url": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B"
@@ -2453,7 +2459,7 @@
 "flat_runs": 0,
 "id": "hfmodel:peculiar-ragdoll/Qwen-Sharp-Chat-Templates",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 3.8364,
@@ -2461,17 +2467,18 @@
 3.8978,
 3.9058,
 3.9543,
-3.9903
+3.9903,
+3.9996
 ],
 "misses": 0,
-"peak_mag": 3.9903,
+"peak_mag": 3.9996,
 "signals": {
 "hf_downloads": 0,
-"hf_likes": 298,
+"hf_likes": 302,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 6,
+"streak": 7,
 "summary": "\u00b7 tags: mlx, jinja, chat-template, qwen, qwen3.5, qwen3.6",
 "title": "peculiar-ragdoll/Qwen-Sharp-Chat-Templates (HF Model)",
 "url": "https://huggingface.co/peculiar-ragdoll/Qwen-Sharp-Chat-Templates"
@@ -2482,23 +2489,24 @@
 "flat_runs": 0,
 "id": "hfmodel:unsloth/Qwen3.8-Flash-Next-GGUF",
 "keywords": [],
-"last_seen": "2026-09-02",
+"last_seen": "2026-09-03",
 "links": {},
 "mag_history": [
 4.2671,
 4.3627,
 4.5109,
-4.5967
+4.5967,
+4.6312
 ],
 "misses": 0,
-"peak_mag": 4.5967,
+"peak_mag": 4.6312,
 "signals": {
-"hf_downloads": 431339,
-"hf_likes": 710,
+"hf_downloads": 535984,
+"hf_likes": 746,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 4,
+"streak": 5,
 "summary": "image-text-to-text \u00b7 tags: gguf, unsloth, image-text-to-text, base_model:Qwen/Qwen3.8-Flash-Next, base_model:quantized:Qwen/Qwen3.8-Flash-Next, license:other",
 "title": "unsloth/Qwen3.8-Flash-Next-GGUF (HF Model)",
 "url": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF"
