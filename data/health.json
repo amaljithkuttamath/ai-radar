@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-02T18:59:57.662288+00:00",
+  "generated": "2026-09-03T18:54:46.624709+00:00",
   "repo": "amaljithkuttamath/ai-radar",
   "status": "down",
   "signals": [
@@ -7,7 +7,7 @@
       "key": "digest",
       "label": "Daily digest",
       "status": "ok",
-      "age_h": 4.1,
+      "age_h": 4.0,
       "threshold_h": 48,
       "detail": "last digest committed 4h ago",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md"
@@ -25,9 +25,9 @@
       "key": "evals",
       "label": "Eval loop",
       "status": "down",
-      "age_h": 1230.4,
+      "age_h": 1254.3,
       "threshold_h": 48,
-      "detail": "grader last committed 51d ago",
+      "detail": "grader last committed 52d ago",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json"
     }
   ],
@@ -38,8 +38,8 @@
       "status": "ok",
       "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": "2026-09-02T14:51:38Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/33644750009",
+      "last_run_at": "2026-09-03T14:50:11Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/33769142194",
       "observed": true
     },
     {
@@ -48,8 +48,8 @@
       "status": "ok",
       "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": "2026-09-02T14:53:48Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/33644805738",
+      "last_run_at": "2026-09-03T14:53:50Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/33769192389",
       "observed": true
     },
     {
@@ -58,8 +58,8 @@
       "status": "warn",
       "conclusion": "failure",
       "fail_streak": 15,
-      "last_run_at": "2026-09-02T18:23:01Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/33666826422",
+      "last_run_at": "2026-09-03T18:18:13Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/33789662004",
       "observed": true
     }
   ]
