@@ -1,15 +1,15 @@
 {
-  "generated": "2026-09-07T19:26:27.721926+00:00",
+  "generated": "2026-09-08T19:01:16.244630+00:00",
   "repo": "amaljithkuttamath/ai-radar",
   "status": "down",
   "signals": [
     {
       "key": "digest",
       "label": "Daily digest",
-      "status": "ok",
-      "age_h": 3.2,
+      "status": "warn",
+      "age_h": 26.8,
       "threshold_h": 48,
-      "detail": "last digest committed 3h ago",
+      "detail": "last digest committed 26h ago",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md"
     },
     {
@@ -25,9 +25,9 @@
       "key": "evals",
       "label": "Eval loop",
       "status": "down",
-      "age_h": 1350.8,
+      "age_h": 1374.4,
       "threshold_h": 48,
-      "detail": "grader last committed 56d ago",
+      "detail": "grader last committed 57d ago",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json"
     }
   ],
@@ -38,18 +38,18 @@
       "status": "ok",
       "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": "2026-09-07T16:14:03Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/34142248957",
+      "last_run_at": "2026-09-08T14:50:29Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/34240824673",
       "observed": true
     },
     {
       "key": "distill",
       "label": "Distill digest",
-      "status": "ok",
-      "conclusion": "success",
-      "fail_streak": 0,
-      "last_run_at": "2026-09-07T16:15:41Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/34142287778",
+      "status": "warn",
+      "conclusion": "failure",
+      "fail_streak": 1,
+      "last_run_at": "2026-09-08T14:51:09Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/34240878164",
       "observed": true
     },
     {
@@ -58,8 +58,8 @@
       "status": "warn",
       "conclusion": "failure",
       "fail_streak": 15,
-      "last_run_at": "2026-09-07T18:57:49Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/34153704873",
+      "last_run_at": "2026-09-08T18:15:34Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/34261944436",
       "observed": true
     }
   ]

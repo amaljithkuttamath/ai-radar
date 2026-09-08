@@ -10,14 +10,14 @@ Today's: [reports/latest.md](reports/latest.md) · Board: [amaljithkuttamath.git
 
 | signal | status | detail |
 |---|---|---|
-| [Daily digest](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟢 ok | last digest committed 3h ago |
+| [Daily digest](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟡 warn | last digest committed 26h ago |
 | [Model synthesis](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟢 ok | latest digest carries model synthesis |
-| [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🔴 down | grader last committed 56d ago |
-| [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/34142248957) | 🟢 ok | last run success |
-| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/34142287778) | 🟢 ok | last run success |
-| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/34153704873) | 🟡 warn | 15 consecutive failures |
+| [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🔴 down | grader last committed 57d ago |
+| [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/34240824673) | 🟢 ok | last run success |
+| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/34240878164) | 🟡 warn | 1 consecutive failures |
+| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/34261944436) | 🟡 warn | 15 consecutive failures |
 
-Generated 2026-09-07 19:26 UTC by `scripts/health.py`.
+Generated 2026-09-08 19:01 UTC by `scripts/health.py`.
 
 <!-- health:end -->
 
