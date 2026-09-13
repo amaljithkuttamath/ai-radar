@@ -1,52 +1,35 @@
 {
-"arxiv:2608.26809": {
-"first_seen": "2026-08-28",
-"mag": 2.8842,
-"mag_history": [
-2.8842,
-2.8842,
-2.8842,
-2.8842,
-2.8842,
-2.8842,
-2.8842
-],
-"score": 2,
-"streak": 10,
-"title": "Thinking on Shots: Consistent Multi-Shot Video Editing with Agentic Reasoning",
-"url": "https://arxiv.org/abs/2608.26809"
-},
 "arxiv:2609.00768": {
 "first_seen": "2026-09-02",
-"mag": 3.0445,
+"mag": 3.1355,
 "mag_history": [
-2.8904,
 2.9444,
 3.0445,
 3.0445,
 3.0445,
 3.0445,
-3.0445
+3.0445,
+3.1355
 ],
 "score": 3,
-"streak": 8,
+"streak": 9,
 "title": "DiagEvo: Diagnosis-Guided Self-Evolution via Hierarchical Error Memory",
 "url": "https://arxiv.org/abs/2609.00768"
 },
 "arxiv:2609.01343": {
 "first_seen": "2026-09-02",
-"mag": 4.6347,
+"mag": 4.654,
 "mag_history": [
-4.4659,
 4.5109,
 4.5326,
 4.5747,
 4.5951,
 4.6052,
-4.6347
+4.6347,
+4.654
 ],
 "score": 2,
-"streak": 8,
+"streak": 9,
 "title": "SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers",
 "url": "https://arxiv.org/abs/2609.01343"
 },
@@ -54,32 +37,33 @@
 "first_seen": "2026-09-02",
 "mag": 3.8815,
 "mag_history": [
-3.7274,
 3.8451,
 3.8451,
 3.8451,
+3.8815,
 3.8815,
 3.8815,
 3.8815
 ],
 "score": 2,
-"streak": 8,
+"streak": 9,
 "title": "Evaluating Multimodal LLMs as Generalist Vision-Language-Action Agents for Drone Control: Commanding, Approaching, Tracking and Searching",
 "url": "https://arxiv.org/abs/2609.01404"
 },
 "arxiv:2609.01481": {
 "first_seen": "2026-09-04",
-"mag": 2.8904,
+"mag": 2.9444,
 "mag_history": [
 2.8332,
 2.8332,
 2.8904,
 2.8904,
 2.8904,
-2.8904
+2.8904,
+2.9444
 ],
 "score": 2,
-"streak": 6,
+"streak": 7,
 "title": "Harness-of-Harness: Multi-Day Autonomous Software Development with Continual Improvement",
 "url": "https://arxiv.org/abs/2609.01481"
 },
@@ -91,162 +75,165 @@
 3.5264,
 3.5264,
 3.5264,
-3.5264,
 3.5553,
+3.5835,
 3.5835
 ],
 "score": 2,
-"streak": 8,
+"streak": 9,
 "title": "From Production Traffic to Post-Training: Building a Self-Hosted LLM That Covers the Corporate Request Mix",
 "url": "https://arxiv.org/abs/2609.01572"
 },
 "arxiv:2609.01591": {
 "first_seen": "2026-09-02",
-"mag": 8.0824,
+"mag": 8.0845,
 "mag_history": [
-7.8702,
 7.937,
 7.9676,
 7.9967,
 8.0389,
 8.053,
-8.0824
+8.0824,
+8.0845
 ],
 "score": 3,
-"streak": 8,
+"streak": 9,
 "title": "StudentSim: Training LLM-based Student Simulators",
 "url": "https://arxiv.org/abs/2609.01591"
 },
 "arxiv:2609.02737": {
 "first_seen": "2026-09-03",
-"mag": 4.2905,
+"mag": 4.3307,
 "mag_history": [
-3.7842,
 4.0943,
 4.0943,
 4.1431,
 4.1744,
 4.2047,
-4.2905
+4.2905,
+4.3307
 ],
 "score": 2,
-"streak": 7,
+"streak": 8,
 "title": "Language Models Can Control Their Own Attention",
 "url": "https://arxiv.org/abs/2609.02737"
 },
 "arxiv:2609.02749": {
 "first_seen": "2026-09-03",
-"mag": 9.0982,
+"mag": 9.1092,
 "mag_history": [
-5.8435,
 8.781,
 8.8648,
 8.9148,
 8.9781,
 9.0585,
-9.0982
+9.0982,
+9.1092
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "Repo-To-Skill: Distilling GitHub Repositories Into AI4AI Skills",
 "url": "https://arxiv.org/abs/2609.02749"
 },
 "arxiv:2609.02783": {
 "first_seen": "2026-09-03",
-"mag": 5.7521,
+"mag": 5.7687,
 "mag_history": [
-4.6444,
 5.6321,
 5.6321,
 5.6321,
 5.6495,
 5.6666,
-5.7521
+5.7521,
+5.7687
 ],
 "score": 4,
-"streak": 7,
+"streak": 8,
 "title": "EarlyEval: Cheaper Agent Evaluation via Early Outcome Prediction",
 "url": "https://arxiv.org/abs/2609.02783"
 },
 "arxiv:2609.02817": {
 "first_seen": "2026-09-03",
-"mag": 2.9957,
+"mag": 3.091,
 "mag_history": [
-2.7726,
 2.7726,
 2.7726,
 2.8332,
 2.8904,
 2.9957,
-2.9957
+2.9957,
+3.091
 ],
 "score": 2,
-"streak": 7,
+"streak": 8,
 "title": "Cliff: Learning Process Rewards from the First Mistake",
 "url": "https://arxiv.org/abs/2609.02817"
 },
 "arxiv:2609.02886": {
 "first_seen": "2026-09-03",
-"mag": 8.1594,
+"mag": 8.2014,
 "mag_history": [
-4.7707,
 7.8599,
 7.9059,
 7.9663,
 8.0108,
 8.1007,
-8.1594
+8.1594,
+8.2014
 ],
 "score": 4,
-"streak": 7,
+"streak": 8,
 "title": "SolarWM: Open Data and Scalable Training for Long-Horizon Video World Models",
 "url": "https://arxiv.org/abs/2609.02886"
 },
 "arxiv:2609.03430": {
 "first_seen": "2026-09-04",
-"mag": 5.1874,
+"mag": 5.1985,
 "mag_history": [
 4.1431,
 5.0689,
 5.0876,
 5.118,
 5.1417,
-5.1874
+5.1874,
+5.1985
 ],
 "score": 2,
-"streak": 6,
+"streak": 7,
 "title": "Random Attention: Rethinking KV Cache Eviction for Efficient Reasoning",
 "url": "https://arxiv.org/abs/2609.03430"
 },
 "arxiv:2609.03796": {
 "first_seen": "2026-09-04",
-"mag": 5.4553,
+"mag": 5.4638,
 "mag_history": [
 4.585,
 5.3279,
 5.425,
 5.4337,
 5.451,
-5.4553
+5.4553,
+5.4638
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "LLaDA-Image: Building Strong Image Generators with Fully Open Training Recipes",
 "url": "https://arxiv.org/abs/2609.03796"
 },
 "arxiv:2609.04098": {
 "first_seen": "2026-09-04",
-"mag": 4.4067,
+"mag": 4.4308,
 "mag_history": [
 4.1109,
 4.2905,
 4.3041,
 4.3175,
 4.382,
-4.4067
+4.4067,
+4.4308
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "Why Gated DeltaNet Survives 4-Bit Quantization: NVFP4 W4A4 for the Recurrent Half of a Hybrid 27B LLM",
 "url": "https://arxiv.org/abs/2609.04098"
 },
@@ -259,90 +246,96 @@
 3.4012,
 3.434,
 3.4657,
+3.4657,
 3.4657
 ],
 "score": 2,
-"streak": 6,
+"streak": 7,
 "title": "Beyond Retrieval: Progressive Latent Memory Evolution for Streaming Video Understanding",
 "url": "https://arxiv.org/abs/2609.04131"
 },
 "arxiv:2609.04148": {
 "first_seen": "2026-09-04",
-"mag": 5.6768,
+"mag": 5.6802,
 "mag_history": [
 4.8978,
 5.4205,
 5.5947,
 5.624,
 5.6733,
-5.6768
+5.6768,
+5.6802
 ],
 "score": 2,
-"streak": 6,
+"streak": 7,
 "title": "Terminal-Universe: Turning Agent Trajectories into Scalable Terminal Environments",
 "url": "https://arxiv.org/abs/2609.04148"
 },
 "arxiv:2609.04172": {
 "first_seen": "2026-09-04",
-"mag": 4.5326,
+"mag": 4.5539,
 "mag_history": [
 4.0431,
 4.3041,
 4.3307,
 4.4067,
 4.4427,
-4.5326
+4.5326,
+4.5539
 ],
 "score": 2,
-"streak": 6,
+"streak": 7,
 "title": "Rethinking On-Policy Distillation of Large Language Models II: One Training Example",
 "url": "https://arxiv.org/abs/2609.04172"
 },
 "arxiv:2609.04196": {
 "first_seen": "2026-09-04",
-"mag": 4.2047,
+"mag": 4.2341,
 "mag_history": [
 3.8918,
 4.1897,
 4.2047,
 4.2047,
 4.2047,
-4.2047
+4.2047,
+4.2341
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "Puffin-World: Scaling a Unified Multimodal Model with Native 3D World States",
 "url": "https://arxiv.org/abs/2609.04196"
 },
 "arxiv:2609.04199": {
 "first_seen": "2026-09-04",
-"mag": 5.9428,
+"mag": 5.9506,
 "mag_history": [
 4.1431,
 5.6168,
 5.7557,
 5.8944,
 5.9375,
-5.9428
+5.9428,
+5.9506
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions",
 "url": "https://arxiv.org/abs/2609.04199"
 },
 "arxiv:2609.04201": {
 "first_seen": "2026-09-04",
-"mag": 3.8712,
+"mag": 3.912,
 "mag_history": [
 3.2581,
 3.8286,
 3.8501,
 3.8501,
 3.8501,
-3.8712
+3.8712,
+3.912
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "Scal3R: Learning Efficient Multi-Relative Pose Query for Scalable Online 3D Reconstruction",
 "url": "https://arxiv.org/abs/2609.04201"
 },
@@ -351,10 +344,11 @@
 "mag": 0.0,
 "mag_history": [
 0.0,
+0.0,
 0.0
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "BanglaMemeX: Advancing Cultural Metaphoric Image Interpretation in Bangla with a Multimodal Explainable Dataset",
 "url": "http://arxiv.org/abs/2609.08029v1"
 },
@@ -363,34 +357,37 @@
 "mag": 0.0,
 "mag_history": [
 0.0,
+0.0,
 0.0
 ],
 "score": 2,
-"streak": 2,
+"streak": 3,
 "title": "A Machine Learning Framework for Predicting Restaurant Food Waste to Support Sustainable Food Management",
 "url": "http://arxiv.org/abs/2609.08078v1"
 },
 "arxiv:2609.08084": {
 "first_seen": "2026-09-09",
-"mag": 7.1036,
+"mag": 7.2757,
 "mag_history": [
 3.7136,
-7.1036
+7.1036,
+7.2757
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "Marigold V2: Revisiting Diffusion Transformers for Monocular Depth Estimation",
 "url": "https://arxiv.org/abs/2609.08084"
 },
 "arxiv:2609.08183": {
 "first_seen": "2026-09-09",
-"mag": 8.5767,
+"mag": 8.7016,
 "mag_history": [
 5.4931,
-8.5767
+8.5767,
+8.7016
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness",
 "url": "https://arxiv.org/abs/2609.08183"
 },
@@ -399,214 +396,176 @@
 "mag": 0.0,
 "mag_history": [
 0.0,
+0.0,
 0.0
 ],
 "score": 2,
-"streak": 2,
+"streak": 3,
 "title": "Beyond Coherence: Benchmarking Professional Editing-Technique Execution in Multi-Shot Audio-Video Generation",
 "url": "http://arxiv.org/abs/2609.08275v1"
 },
 "arxiv:2609.08345": {
 "first_seen": "2026-09-09",
-"mag": 3.0445,
+"mag": 4.3175,
 "mag_history": [
 3.0445,
-3.0445
+3.0445,
+4.3175
 ],
 "score": 2,
-"streak": 2,
+"streak": 3,
 "title": "CoVeR: Coverage-Based Token Pruning for Multi-View 3D Reasoning in VLMs",
 "url": "https://arxiv.org/abs/2609.08345"
 },
 "arxiv:2609.08368": {
 "first_seen": "2026-09-09",
-"mag": 7.978,
+"mag": 7.9831,
 "mag_history": [
 3.7377,
-7.978
+7.978,
+7.9831
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "Miles v0.1: Production-Level Post-Training",
 "url": "https://arxiv.org/abs/2609.08368"
 },
 "arxiv:2609.08404": {
 "first_seen": "2026-09-09",
-"mag": 3.091,
+"mag": 3.9512,
 "mag_history": [
 3.091,
-3.091
+3.091,
+3.9512
 ],
 "score": 2,
-"streak": 2,
+"streak": 3,
 "title": "Environments as Scaffold: Enriching Feedback to Bootstrap Self-Evolving Agents in Long-Horizon Tasks",
 "url": "https://arxiv.org/abs/2609.08404"
 },
 "arxiv:2609.08798": {
 "first_seen": "2026-09-09",
-"mag": 5.4067,
+"mag": 5.4285,
 "mag_history": [
 4.3307,
-5.4067
+5.4067,
+5.4285
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "Eliciting Weak-to-Strong Generalization with On-Policy Reverse Distillation",
 "url": "https://arxiv.org/abs/2609.08798"
 },
 "arxiv:2609.08936": {
 "first_seen": "2026-09-09",
-"mag": 8.4902,
+"mag": 8.6468,
 "mag_history": [
 4.9273,
-8.4902
+8.4902,
+8.6468
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "AuK Technical Report: An Open-Source Foundational Model for Speech Generation and Editing",
 "url": "https://arxiv.org/abs/2609.08936"
 },
 "arxiv:2609.08977": {
 "first_seen": "2026-09-09",
-"mag": 7.4595,
+"mag": 7.5063,
 "mag_history": [
 4.5433,
-7.4595
+7.4595,
+7.5063
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "Omni Interaction Agent Technical Report",
 "url": "https://arxiv.org/abs/2609.08977"
 },
 "arxiv:2609.09123": {
 "first_seen": "2026-09-09",
-"mag": 5.9056,
+"mag": 6.0113,
 "mag_history": [
 3.7612,
-5.9056
+5.9056,
+6.0113
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "Mask Forcing: Improving Autoregressive Video Diffusion Distillation via Dual-Noise Masking Rollout",
 "url": "https://arxiv.org/abs/2609.09123"
 },
 "arxiv:2609.09158": {
 "first_seen": "2026-09-09",
-"mag": 2.9957,
+"mag": 3.1355,
 "mag_history": [
 2.9957,
-2.9957
+2.9957,
+3.1355
 ],
 "score": 2,
-"streak": 2,
+"streak": 3,
 "title": "TANGO: Humanoid Navigation in Cluttered Environments with a Whole-Body Vision-Language-Action Model",
 "url": "https://arxiv.org/abs/2609.09158"
 },
-"blog:https://openai.com/index/cognition-devin-testing-with-astra": {
-"first_seen": "2026-09-12",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Cognition helps Devin test its own work with GPT\u20116 Astra",
-"url": "https://openai.com/index/cognition-devin-testing-with-astra"
-},
-"blog:https://openai.com/index/perplexity-improving-accuracy-with-astra": {
-"first_seen": "2026-09-12",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Perplexity trusts GPT-6 Astra with end-to-end systems",
-"url": "https://openai.com/index/perplexity-improving-accuracy-with-astra"
-},
-"blog:https://openai.com/index/scaling-storage-one-billion-users-part-one": {
-"first_seen": "2026-09-12",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users",
-"url": "https://openai.com/index/scaling-storage-one-billion-users-part-one"
-},
-"ghrepo:Carasibana/ComfyUI-H3-FaceRefine": {
-"first_seen": "2026-08-26",
-"mag": 2.9417,
-"mag_history": [
-2.8795,
-2.8826,
-2.8826,
-2.8995,
-2.91,
-2.9417,
-2.9417
-],
-"score": 3,
-"streak": 12,
-"title": "Carasibana/ComfyUI-H3-FaceRefine \u2014 Refine and improve the quality of small faces in MiniMax H3 video. Per-frame face tracking, crop, refine with H3, stitch back.",
-"url": "https://github.com/Carasibana/ComfyUI-H3-FaceRefine"
-},
 "ghrepo:ItzCrazyKns/Vane": {
 "first_seen": "2026-09-02",
-"mag": 5.2554,
+"mag": 5.2555,
 "mag_history": [
-5.2539,
 5.2541,
 5.2544,
 5.2546,
 5.2548,
 5.2551,
-5.2554
+5.2554,
+5.2555
 ],
 "score": 3,
-"streak": 8,
+"streak": 9,
 "title": "ItzCrazyKns/Vane \u2014 Vane is an AI-powered answering engine.",
 "url": "https://github.com/ItzCrazyKns/Vane"
 },
 "ghrepo:Junchao-cs/SolarWM": {
 "first_seen": "2026-09-04",
-"mag": 3.1622,
+"mag": 3.1841,
 "mag_history": [
 2.9472,
 2.9714,
 3.0105,
 3.0479,
 3.1103,
-3.1622
+3.1622,
+3.1841
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "Junchao-cs/SolarWM \u2014 Open data and scalable training for long-horizon video world models.",
 "url": "https://github.com/Junchao-cs/SolarWM"
 },
 "ghrepo:OpenCharAI/OpenChar": {
 "first_seen": "2026-09-07",
-"mag": 2.8418,
+"mag": 2.8469,
 "mag_history": [
 2.8349,
 2.8418,
-2.8418
+2.8418,
+2.8469
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "OpenCharAI/OpenChar \u2014 AI character studio for portable identity. Build multi model consistent characters, train LoRAs, and generate on your own GPU.",
 "url": "https://github.com/OpenCharAI/OpenChar"
 },
 "ghrepo:TheDesignFounder/DreamLayer-Eval": {
 "first_seen": "2026-09-09",
-"mag": 3.0093,
+"mag": 3.0105,
 "mag_history": [
 3.0093,
-3.0093
+3.0093,
+3.0105
 ],
 "score": 4,
-"streak": 2,
+"streak": 3,
 "title": "TheDesignFounder/DreamLayer-Eval \u2014 DreamLayer Eval: open-source benchmarking for image and video diffusion models. Automate prompts, seeds, and metrics for reproducible results. A research project from DreamLayer AI (dreamlayer.io).",
 "url": "https://github.com/TheDesignFounder/DreamLayer-Eval"
 },
@@ -614,16 +573,16 @@
 "first_seen": "2026-09-03",
 "mag": 3.2727,
 "mag_history": [
-3.2683,
 3.2691,
 3.2691,
 3.2691,
 3.2698,
 3.2712,
+3.2727,
 3.2727
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "X-GenGroup/Flow-Factory \u2014 A unified framework for easy fine-tuning in Flow-Matching models",
 "url": "https://github.com/X-GenGroup/Flow-Factory"
 },
@@ -631,39 +590,24 @@
 "first_seen": "2026-09-12",
 "mag": 3.124,
 "mag_history": [
+3.124,
 3.124
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "apple-aiml-research/ml-mdm \u2014 Train high-quality text-to-image diffusion models in a data & compute efficient manner",
 "url": "https://github.com/apple-aiml-research/ml-mdm"
-},
-"ghrepo:mertizci/noai-watermark": {
-"first_seen": "2026-08-27",
-"mag": 2.5852,
-"mag_history": [
-2.5881,
-2.5881,
-2.5881,
-2.5881,
-2.5852,
-2.5852,
-2.5852
-],
-"score": 4,
-"streak": 11,
-"title": "mertizci/noai-watermark \u2014 Remove invisible AI watermarks (SynthID, StableSignature, TreeRing) and strip AI metadata from images. Open-source CLI & Python toolkit.",
-"url": "https://github.com/mertizci/noai-watermark"
 },
 "ghrepo:microsoft/foldingdiff": {
 "first_seen": "2026-09-09",
 "mag": 3.1711,
 "mag_history": [
 3.1702,
+3.1711,
 3.1711
 ],
 "score": 4,
-"streak": 2,
+"streak": 3,
 "title": "microsoft/foldingdiff \u2014 Diffusion models of protein structure; trigonometry and attention are all you need!",
 "url": "https://github.com/microsoft/foldingdiff"
 },
@@ -673,10 +617,11 @@
 "mag_history": [
 4.1405,
 4.1409,
+4.1406,
 4.1406
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "nunchux-ai/nunchaku \u2014 [ICLR2025 Spotlight] SVDQuant: Absorbing Outliers by Low-Rank Components for 4-Bit Diffusion Models",
 "url": "https://github.com/nunchux-ai/nunchaku"
 },
@@ -684,16 +629,16 @@
 "first_seen": "2026-09-03",
 "mag": 3.302,
 "mag_history": [
-3.2931,
 3.2938,
 3.2938,
 3.2945,
 3.2965,
 3.2979,
+3.302,
 3.302
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "simchowitzlabpublic/nano-world-model \u2014 A Minimalist, Batteries-included Repository for Advancing World Model Science.",
 "url": "https://github.com/simchowitzlabpublic/nano-world-model"
 },
@@ -703,199 +648,208 @@
 "mag_history": [
 3.3398,
 3.3398,
+3.3392,
 3.3392
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "teticio/audio-diffusion \u2014 Apply diffusion models using the new Hugging Face diffusers package to synthesize music instead of images.",
 "url": "https://github.com/teticio/audio-diffusion"
 },
 "ghrepo:urchade/GLiNER": {
 "first_seen": "2026-09-06",
-"mag": 4.1001,
+"mag": 4.1006,
 "mag_history": [
 4.0963,
 4.0968,
 4.0978,
-4.1001
+4.1001,
+4.1006
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "urchade/GLiNER \u2014 Generalist and Lightweight Model for Named Entity Recognition (Extract any entity types from texts)",
 "url": "https://github.com/urchade/GLiNER"
 },
+"ghrepo:virgiliojr94/book-to-skill": {
+"first_seen": "2026-09-13",
+"mag": 5.161,
+"mag_history": [
+5.161
+],
+"score": 3,
+"streak": 1,
+"title": "virgiliojr94/book-to-skill \u2014 Turn any technical book PDF into a Claude Code skill \u2014 ready to study, reference, and use while you work.",
+"url": "https://github.com/virgiliojr94/book-to-skill"
+},
 "hfdataset:gaia-benchmark/GAIA": {
 "first_seen": "2026-09-09",
-"mag": 4.6853,
+"mag": 4.6862,
 "mag_history": [
 4.6748,
-4.6853
+4.6853,
+4.6862
 ],
 "score": 4,
-"streak": 2,
+"streak": 3,
 "title": "gaia-benchmark/GAIA (HF Dataset)",
 "url": "https://huggingface.co/datasets/gaia-benchmark/GAIA"
 },
 "hfdataset:nyu-mll/glue": {
 "first_seen": "2026-08-31",
-"mag": 4.8003,
+"mag": 4.8382,
 "mag_history": [
-4.5087,
 4.5435,
 4.5838,
 4.6161,
 4.6218,
 4.6922,
-4.8003
+4.8003,
+4.8382
 ],
 "score": 3,
-"streak": 9,
+"streak": 10,
 "title": "nyu-mll/glue (HF Dataset)",
 "url": "https://huggingface.co/datasets/nyu-mll/glue"
 },
 "hfmodel:DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF": {
 "first_seen": "2026-09-05",
-"mag": 4.3572,
+"mag": 4.4848,
 "mag_history": [
 3.6947,
 3.8276,
 3.9444,
 4.1923,
-4.3572
+4.3572,
+4.4848
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF (HF Model)",
 "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF"
 },
 "hfmodel:Edge0/Edge0-35B-A3B-preview": {
 "first_seen": "2026-09-12",
-"mag": 4.0444,
+"mag": 4.6424,
 "mag_history": [
-4.0444
+4.0444,
+4.6424
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "Edge0/Edge0-35B-A3B-preview (HF Model)",
 "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview"
 },
 "hfmodel:ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF": {
 "first_seen": "2026-09-02",
-"mag": 4.729,
+"mag": 4.7943,
 "mag_history": [
-3.7496,
 3.9393,
 4.1125,
 4.2702,
 4.36,
 4.5897,
-4.729
+4.729,
+4.7943
 ],
 "score": 3,
-"streak": 8,
+"streak": 9,
 "title": "ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF (HF Model)",
 "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF"
 },
 "hfmodel:OpenVDN/vdn-minimax-h3": {
 "first_seen": "2026-09-06",
-"mag": 3.9737,
+"mag": 3.9903,
 "mag_history": [
 3.7261,
 3.7787,
 3.9215,
-3.9737
+3.9737,
+3.9903
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "OpenVDN/vdn-minimax-h3 (HF Model)",
 "url": "https://huggingface.co/OpenVDN/vdn-minimax-h3"
 },
 "hfmodel:deepseek-ai/DeepSeek-V4-Flash-Vision-Exp": {
 "first_seen": "2026-08-31",
-"mag": 4.7436,
+"mag": 4.7562,
 "mag_history": [
-4.3884,
 4.4529,
 4.5263,
 4.5967,
 4.6669,
 4.7125,
-4.7436
+4.7436,
+4.7562
 ],
 "score": 3,
-"streak": 9,
+"streak": 10,
 "title": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp (HF Model)",
 "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp"
 },
 "hfmodel:google-bert/bert-base-uncased": {
 "first_seen": "2026-09-04",
-"mag": 5.6557,
+"mag": 5.6682,
 "mag_history": [
 5.5851,
 5.5934,
 5.6017,
 5.6026,
 5.6258,
-5.6557
+5.6557,
+5.6682
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "google-bert/bert-base-uncased (HF Model)",
 "url": "https://huggingface.co/google-bert/bert-base-uncased"
 },
 "hfmodel:openai-community/gpt2": {
 "first_seen": "2026-09-04",
-"mag": 5.7993,
+"mag": 5.8098,
 "mag_history": [
 5.7358,
 5.7442,
 5.7524,
 5.7537,
 5.7738,
-5.7993
+5.7993,
+5.8098
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "openai-community/gpt2 (HF Model)",
 "url": "https://huggingface.co/openai-community/gpt2"
 },
 "hfmodel:openai/clip-vit-base-patch32": {
 "first_seen": "2026-09-09",
-"mag": 5.0902,
+"mag": 5.116,
 "mag_history": [
 5.0244,
-5.0902
+5.0902,
+5.116
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "openai/clip-vit-base-patch32 (HF Model)",
 "url": "https://huggingface.co/openai/clip-vit-base-patch32"
 },
-"hfmodel:openbmb/MiniCPM5-2B-GGUF": {
-"first_seen": "2026-09-12",
-"mag": 3.6692,
-"mag_history": [
-3.6692
-],
-"score": 2,
-"streak": 1,
-"title": "openbmb/MiniCPM5-2B-GGUF (HF Model)",
-"url": "https://huggingface.co/openbmb/MiniCPM5-2B-GGUF"
-},
 "hfmodel:orcarouter/Qwen3.8-Flash-Next-Uncensored-GGUF": {
 "first_seen": "2026-09-02",
-"mag": 3.9737,
+"mag": 3.9996,
 "mag_history": [
-3.7227,
 3.7724,
 3.8306,
 3.8423,
 3.8678,
 3.9111,
-3.9737
+3.9737,
+3.9996
 ],
 "score": 3,
-"streak": 8,
+"streak": 9,
 "title": "orcarouter/Qwen3.8-Flash-Next-Uncensored-GGUF (HF Model)",
 "url": "https://huggingface.co/orcarouter/Qwen3.8-Flash-Next-Uncensored-GGUF"
 }
