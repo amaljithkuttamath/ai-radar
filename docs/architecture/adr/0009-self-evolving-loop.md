@@ -1,6 +1,6 @@
 # ADR-0009. Self-evolution: a degrading evaluator, a deferred ground truth, and bounded autonomy
 
-**Status.** Proposed, 2026-09. Extends ADR-0003, ADR-0005 and ADR-0007. Amends invariant I-03.
+**Status.** Accepted and implemented, 2026-09. Extends ADR-0003, ADR-0005 and ADR-0007. Amends invariant I-03.
 
 ## Context
 
@@ -171,3 +171,39 @@ Stage 1 is worth doing whether or not stages 2–4 ever ship, and it is the one 
 - Gao, Schulman & Hilton, [*Scaling Laws for Reward Model Overoptimization*](https://arxiv.org/abs/2210.10760), ICML 2023.
 - Zhang, Hu, Lu, Lange & Clune, [*Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents*](https://arxiv.org/abs/2505.22954), 2025.
 - Novikov et al., [*AlphaEvolve: A coding agent for scientific and algorithmic discovery*](https://arxiv.org/abs/2506.13131), 2025.
+
+## Implementation notes
+
+Shipped 2026-09-20, all four stages. Three deliberate deviations from the design above,
+each because building it surfaced something the design had not:
+
+**The archive is a derived view, not an append-only ledger.** §2 proposed
+`evals/archive.jsonl`, appended at merge time. Everything it needs is already in the eval
+history, because `provenance.py` stamps each eval with the tunable files' revisions — so a
+change event is a *transition* in those stamps, and `grader/archive.py` recomputes the
+archive from the evals instead of maintaining a copy. One writer instead of two (I-01), no
+possibility of disagreeing with the evals it summarises, and — the reason that matters most
+here — it cannot silently stop, because a ledger that stops being appended looks exactly like
+a period with no changes. It is also retroactive: improving the attribution rule re-attributes
+every past change rather than only future ones.
+
+**`Still developing` is not a forecast.** §3 named it as a source of claims. Reading the real
+digests, its entries routinely say "traction flat" — the section asserts continued attention,
+not continued rise. Scoring it as "up" would have manufactured a stream of wrong verdicts
+against claims the digest never made, and a corrupted ground truth is worse than none: the
+brake would be measuring the fiction it exists to catch. `Climbing`, `Story arcs` and `Cooled`
+remain.
+
+**Tier 0 also runs in CI.** Not in the original design, and the larger call. `eval-deterministic.yml`
+runs the deterministic half reactively after each distill. This does not contradict ADR-0003,
+whose reasoning is about *judgement*: tier 0 is arithmetic over committed artifacts and
+imports nothing from `distill`, so a distill bug cannot reach in and soften a number. The
+judged half stays external, on its own credential, clock and model family. What it buys is a
+producer that cannot silently cease to exist — a workflow's absence is a missing run in a
+list and its failure is a red badge, both of which `health.py` already watches. Two runners
+over one path are reconciled by monotonicity rather than locking: `write_eval` refuses to
+replace a judged eval with a deterministic one, so no landing order can lose information.
+
+**Still open.** `RADAR_GRADER_MODEL` remains unset, so tier 1 does not run and the trend is
+deterministic-only until a grader model is configured. That is now a degradation rather than
+an outage, which was the point — but it is not the same as the loop being whole.

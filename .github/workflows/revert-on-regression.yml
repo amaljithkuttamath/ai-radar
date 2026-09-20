@@ -1,0 +1,146 @@
+name: revert-on-regression
+
+# The thing that makes auto-merge safe — ADR-0009 §4, invariant I-12.
+#
+# Auto-merge is defensible only because it is undoable without a human. Gao, Schulman &
+# Hilton (ICML 2023) is the reason this exists rather than a tighter gate: you cannot predict
+# the point at which optimising a proxy starts degrading the real thing, so you cannot gate
+# your way out of it in advance. What you can do is watch the ground truth afterwards and
+# undo the change that preceded the fall.
+#
+# The signals it reads are the trusted set: re-observation rate and forecast accuracy, both
+# computed solely from paths the coder cannot edit (invariant I-10, enforced by
+# `check_whitelist.py`). A brake wired to a metric the optimiser can move is not a brake.
+#
+# It reverts the most recent auto-merged commit and nothing else. Reverting a human's commit
+# on a statistical signal would be a far larger claim than this evidence supports, and the
+# archive's verdict is retrospective — it says a change preceded a fall, not that it caused
+# one. That asymmetry is why the response is "undo the cheap, automatic, one-file change and
+# tell someone", rather than anything cleverer.
+
+on:
+  schedule:
+    # 20:00 UTC — after the day's collect, distill and deterministic eval have landed, so
+    # the window it reads is closed rather than half-written.
+    - cron: '0 20 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: revert-on-regression
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # the archive is derived from history; it needs all of it
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Look for a regression attributable to an auto-merge
+        id: check
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, pathlib, subprocess, sys
+          sys.path.insert(0, ".")
+          from grader import archive, artifacts, trusted
+
+          history = artifacts.load_history()
+          arch = archive.build(history)
+
+          # Two independent reasons to act, both requiring the trusted set to have fallen:
+          #   - the archive attributes a recent change as `harmed`
+          #   - the Goodhart brake sees rubric up, ground truth down
+          # The second is the one a tighter gate could never catch, because at merge time
+          # the change looked fine on every measurable axis.
+          harmed = next((a for a in arch if a["verdict"] == "harmed"), None)
+          goodhart = trusted.divergence(history)
+          finding = harmed or goodhart
+          if not finding:
+              print("regression=")
+              raise SystemExit(0)
+
+          # Only auto-merged commits are revertible without a human. `--grep` on the marker
+          # the merge step writes into the squash subject.
+          sha = subprocess.run(
+              ["git", "log", "--format=%H", "--grep=\\[auto-merged\\]", "-1"],
+              capture_output=True, text=True).stdout.strip()
+          if not sha:
+              print("regression=")
+              print(f"note=regression seen but no auto-merged commit to revert: {finding}")
+              raise SystemExit(0)
+
+          detail = finding.get("detail") or finding.get("why") or "trusted metric regressed"
+          print(f"regression={sha}")
+          pathlib.Path("/tmp/finding.txt").write_text(detail)
+          PY
+
+      - name: Revert it
+        if: steps.check.outputs.regression != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHA: ${{ steps.check.outputs.regression }}
+        run: |
+          set -euo pipefail
+          FINDING=$(cat /tmp/finding.txt)
+          git config user.name  "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+
+          # A single `git revert`, which is what I-12 requires of every auto-merged change
+          # and why the merge step squashes.
+          git revert --no-edit "$SHA"
+          git commit --amend -m "$(printf '%s\n' \
+            "revert: auto-merged change preceded a trusted-metric regression" \
+            "" \
+            "This reverts ${SHA}." \
+            "" \
+            "${FINDING}" \
+            "" \
+            "Reverted automatically under ADR-0009 §4 (invariant I-12). The trusted" \
+            "metrics are computed from paths the coder cannot edit, so this is a signal" \
+            "the change could not have optimised for." \
+            "" \
+            "The attribution is retrospective: it says the change preceded the fall, not" \
+            "that it caused it. That is why the response is to undo a one-file, reversible" \
+            "change and open an issue, rather than anything more confident.")"
+
+          for attempt in 1 2 3 4; do
+            if git push; then break; fi
+            git pull --rebase --autostash origin main || true
+            sleep $((attempt * 2))
+          done
+
+          gh label create goodhart \
+            --description "Trusted metric regressed after a change" --color D93F0B --force
+          gh issue create \
+            --title "[goodhart] reverted ${SHA:0:7} — trusted metric regressed" \
+            --label goodhart \
+            --body "$(printf '%s\n' \
+              "An auto-merged change was reverted automatically." \
+              "" \
+              "**Finding.** ${FINDING}" \
+              "" \
+              "**Why this is not a judgement call.** The trusted set is defined" \
+              "mechanically: a metric qualifies only if it is computed solely from code" \
+              "and state outside the coder's whitelist (invariant I-10). So this movement" \
+              "is in a number the change could not have been optimising for." \
+              "" \
+              "**What to check.** \`evals/archive.json\` for the attribution, and" \
+              "\`evals/forecasts.jsonl\` if the metric was forecast accuracy." \
+              "" \
+              "If the revert was wrong, re-apply the change and note it here — the archive" \
+              "records verdicts, not permanent bans, and an edit class recovers on its next" \
+              "non-harmful verdict." \
+              "" \
+              "---" \
+              "_Generated by [Claude Code](https://claude.ai/code)_")"

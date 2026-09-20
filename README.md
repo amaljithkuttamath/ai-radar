@@ -42,7 +42,9 @@ Four stages, one repo, one writer per state.
 
 1. **Collect.** stdlib fetchers pull arXiv, HF Daily Papers, lab RSS, GitHub trending, HF trending. Every item lands as JSON in `data/raw/`, deduped against `data/seen.json`. Daily at 11:00 UTC. No model calls, so a bad feed can't burn tokens.
 2. **Distill.** Score the corpus (0–5 heuristic, stdlib), re-read traction for everything already on the radar, re-rank against `profile.yaml` topics, diff against yesterday to find movers, apply diversity filters, one model call to write `reports/<date>-digest.md`. Fires on `workflow_run` when collect finishes.
-3. **Grade.** A separate daily task at 12:00 UTC runs `python -m grader`: it HEAD-checks every URL, scores 10 rubric dimensions, commits `evals/<date>.json`, and flags an issue if any dimension drops below 2. Two of the ten are never asked of a model — freshness is arithmetic and the source-integrity ceiling is an observed HTTP status — and the grader refuses to run at all if its model family matches the one that wrote the digest. Execution lives outside CI so it can't rescue a pipeline it just criticised ([ADR-0003](docs/architecture/adr/0003-eval-loop-out-of-repo.md)); the code lives here so it can be tested and seen to have stopped ([ADR-0007](docs/architecture/adr/0007-grader-implementation-in-repo.md)).
+3. **Grade.** A cascade ([ADR-0009](docs/architecture/adr/0009-self-evolving-loop.md)). **Tier 0** is deterministic, stdlib-only and model-free — link statuses, section structure, main-list parse, and the traction re-observation rate — and runs in CI after every distill, so it cannot silently stop. **Tier 1** is the one model call that scores the eight judged dimensions, run by a separate daily task at 12:00 UTC on a different model family. If tier 1 is unavailable for any reason the eval is still written, as `mode: deterministic`, with the judged dimensions *omitted* rather than zeroed. Losing the model costs the eval's resolution, never its existence — before this, one unset variable produced no eval for 69 days, twice.
+
+   The grader refuses to run at all if its model family matches the one that wrote the digest. Judgement lives outside CI so it can't rescue a pipeline it just criticised ([ADR-0003](docs/architecture/adr/0003-eval-loop-out-of-repo.md)); the code lives here so it can be tested and seen to have stopped ([ADR-0007](docs/architecture/adr/0007-grader-implementation-in-repo.md)).
 4. **Present.** The Astro site reads `state.json`, `reports/latest.md`, and `evals/latest.json` live from `raw.githubusercontent.com`. New digest here shows up on next page load. No rebuild.
 
 Watching all four: `health.py` writes one reading to `data/health.json` daily at 16:00 UTC, after every other stage has had its slot. The status page renders it; `watchdog.yml` escalates on it. The reporter never repairs and the escalator never measures — [ADR-0005](docs/architecture/adr/0005-artifact-freshness-monitoring.md).
@@ -60,6 +62,9 @@ Details in [docs/architecture.md](docs/architecture.md). Decisions in [docs/arch
 - Every eval score cites the item, URL, or file line that produced it.
 - A traction number in the digest was read from its source during that run.
 - "Climbing" means two observations of the same counter, not two guesses.
+- Unknown is omitted, never defaulted — a missing score is a gap, not a zero.
+- A metric may referee an improvement only if the improver cannot edit its source.
+- No agent edits the thing that grades it.
 
 ## The radar part
 
@@ -87,14 +92,18 @@ has the details.
 config/         sources.yaml, routines.yaml, profile.yaml (the three dials)
 collectors/     source adapters, stdlib only
 distill/        score, focus, track, delta, diversity, enrich, synthesize, reindex, deliver
-grader/         the eval loop: freshness, links, separation fence, judge, artifacts
+grader/         the eval loop: deterministic (tier 0), forecast, trusted, archive,
+                freshness, links, separation fence, judge, artifacts
 tests/          pytest suite; no network, no model, no secrets
-evals/          rubric, backlog, per-day JSON, latest.json
+evals/          rubric, backlog, per-day JSON, latest.json, attempts + forecasts
+                (jsonl), archive.json (derived)
 data/           raw/ (gitignored), seen.json, state.json, tracked.json, health.json
 reports/        dated digests, README index, latest.md
-scripts/        collect.sh, distill.sh, run.sh, health.py
+scripts/        collect.sh, distill.sh, run.sh, health.py, check_whitelist.py,
+                automerge.py (the auto-merge gate)
 site/           status page (static; reads data/health.json live)
-.github/        collect-corpus.yml, distill.yml, test.yml, health.yml, watchdog.yml
+.github/        collect-corpus.yml, distill.yml, test.yml, health.yml, watchdog.yml,
+                eval-deterministic.yml, auto-improve.yml, revert-on-regression.yml
 docs/           architecture.svg + architecture.md + adr/
 ```
 
@@ -180,3 +189,44 @@ Not investment advice. `MARKET=on` maps exposure, never suggests trades.
 Not a firehose. Six items that matter beat forty that don't.
 
 Not a leaderboard. The rubric grades this digest against itself over time.
+
+## Self-evolving, and what that is allowed to mean
+
+The loop grades itself, files its own findings, and merges a narrow class of its own fixes.
+It stalled twice before it could do any of that — for 28 days and then 41 more — and both
+times every individual component reported itself correctly. The design that came out of
+those two incidents is [ADR-0009](docs/architecture/adr/0009-self-evolving-loop.md); the
+short version is four properties, each of which exists because its absence caused an outage.
+
+**It degrades instead of stopping.** Evaluation is a cascade. Tier 0 is arithmetic over
+committed artifacts and needs no model; tier 1 is the judgement. Losing the model costs the
+eval's resolution, never its existence. Before this, one unset environment variable produced
+no eval, so no issue, so an empty queue, for 69 days.
+
+**It knows what its changes did.** Every eval records the revisions of the tunable files
+that produced the digest, so `change → outcome` is expressible and
+[`evals/archive.json`](evals/archive.json) is derived from the eval history rather than
+maintained beside it. Verdicts are used to *retire* what harms, not to select what helps —
+one sample a day cannot support selection, and pretending otherwise is how you overfit to
+noise.
+
+**It is graded partly by the future.** When a digest says *Climbing* it makes a falsifiable
+claim; `data/tracked.json` settles it three runs later. That is the one signal here that is
+not a model's opinion and that no wording change can move, which is exactly what makes it
+usable as a brake ([Gao et al., 2023](https://arxiv.org/abs/2210.10760)). A metric qualifies
+as *trusted* only if it is computed from paths the improver cannot edit —
+`scripts/check_whitelist.py` enforces that, on every run.
+
+**It cannot edit its own examiner, and says which examiner it had.** `grader/*` and
+`evals/rubric.md` are fence paths, and every eval carries a hash of the deterministic
+checker. The [Darwin Gödel Machine](https://arxiv.org/abs/2505.22954) had a variant delete
+the marker tokens its own detector searched for and score a perfect 2.0 while solving
+nothing — with objective hacking *more* frequent when the checker was visible to the agent.
+Visibility can't be removed here. The edit can.
+
+What it is **not**: an evolutionary search. AlphaEvolve and the DGM work because their
+objectives are exactly gradable millions of times in parallel. This produces one newsletter
+a day and its objective is partly taste, so the machinery is attribution and retirement, not
+population search. And a model of a different family still reads the prose, because
+[self-preference is causal](https://arxiv.org/abs/2404.13076) and nothing above replaces
+that fence.

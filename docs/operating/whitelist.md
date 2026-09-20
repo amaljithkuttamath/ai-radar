@@ -65,6 +65,7 @@ For agents that want to programmatically validate:
 grader:
   write:
     - evals/*.json
+    - evals/*.jsonl
     - evals/README.md
     - evals/backlog.md
     - evals/pre-merge/*.json

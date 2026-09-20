@@ -1,0 +1,179 @@
+name: auto-improve
+
+# Bounded autonomy for coder PRs — ADR-0009 §4, amending invariant I-03.
+#
+# I-03 was "draft PRs only; the owner promotes after inspection". It is now "draft PRs only
+# *outside the auto-merge class*", and the class is defined in `scripts/automerge.py` — in
+# code, with tests, rather than in prose. A gate written in YAML cannot be unit-tested, and
+# an untested gate is the only thing standing between an agent and `main`.
+#
+# The trade being made, stated plainly: throughput for a narrow class of change, in exchange
+# for a human no longer reading every one-line prompt tweak. It is bounded by five
+# conjunctive conditions (whitelisted path, text not code, one file and <=20 lines, no
+# tier-0 regression in a pre-merge shadow eval, one auto-merge per 72h), by the archive's
+# retirement veto, and by revert-on-regression afterwards. Anything that fails any condition
+# gets a comment explaining why and stays a draft, which is exactly the old behaviour.
+#
+# This job never merges a PR touching a fence path, and `automerge.py` refuses those first
+# and separately: a PR touching the evaluator is not a near miss, it is the I-08 case.
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  # Per PR, cancelling supersedes: a new push invalidates the previous decision, and a stale
+  # ALLOW racing a new commit is exactly how an ungated change reaches main.
+  group: auto-improve-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    # `pull_request_target` runs with repository write and the BASE ref's workflow
+    # definition. That is required here (a fork PR's token could not merge) and it is why
+    # nothing below ever checks out or executes the PR head's code: the shadow eval runs
+    # `grader/` from the base, reading only the PR's text files. A PR that edits a `.py`
+    # file is refused by the gate, so the two rules reinforce each other.
+    if: >-
+      contains(github.event.pull_request.labels.*.name, 'auto-improve') &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the base
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Collect the diff
+        id: diff
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          gh pr view "$PR" --json files \
+            --jq '.files[].path' > /tmp/changed.txt
+          echo "additions=$(gh pr view "$PR" --json additions --jq .additions)" >> "$GITHUB_OUTPUT"
+          echo "deletions=$(gh pr view "$PR" --json deletions --jq .deletions)" >> "$GITHUB_OUTPUT"
+          echo "Changed paths:"; cat /tmp/changed.txt
+
+          # Condition 4, measured rather than assumed: how many auto-merges landed inside
+          # the cooldown. `--search` on merge date keeps this a single API call.
+          SINCE=$(date -u -d '72 hours ago' +%Y-%m-%d)
+          RECENT=$(gh pr list --state merged --label auto-improve \
+                     --search "merged:>=${SINCE}" --json number --jq 'length')
+          echo "recent=${RECENT}" >> "$GITHUB_OUTPUT"
+
+      - name: Shadow eval — tier 0 on the PR's text, run by the base's grader
+        id: shadow
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          # main's reading first, from the eval the CI job already committed.
+          python3 -c "
+          import json, pathlib
+          p = pathlib.Path('evals/latest.json')
+          t = json.loads(p.read_text()).get('tier0', {}) if p.exists() else {}
+          pathlib.Path('/tmp/tier0-before.json').write_text(json.dumps(t))
+          "
+          # Then apply ONLY the PR's text files over the base tree and re-run tier 0. The
+          # code doing the evaluating is still the base's, which is the whole point.
+          gh pr diff "$PR" --patch > /tmp/pr.patch
+          git apply --include='*.md' --include='*.yaml' --include='*.yml' \
+            --exclude='*.py' /tmp/pr.patch || {
+              echo "::notice::patch did not apply cleanly to the base; no shadow eval"
+              exit 0
+            }
+          python3 -m grader --tier0-only --mode pre-merge --dry-run > /tmp/shadow.json || true
+          python3 -c "
+          import json, pathlib, sys
+          raw = pathlib.Path('/tmp/shadow.json').read_text()
+          start = raw.find('{')
+          if start == -1:
+              sys.exit(0)
+          ev = json.loads(raw[start:])
+          pathlib.Path('/tmp/tier0-after.json').write_text(json.dumps(ev.get('tier0', {})))
+          "
+          git checkout -- .
+
+      - name: Decide
+        id: gate
+        continue-on-error: true      # a refusal is a normal outcome, not a failed build
+        run: |
+          set -uo pipefail
+          python3 scripts/automerge.py \
+            --files-from /tmp/changed.txt \
+            --additions '${{ steps.diff.outputs.additions }}' \
+            --deletions '${{ steps.diff.outputs.deletions }}' \
+            --recent-automerges '${{ steps.diff.outputs.recent }}' \
+            --tier0-before /tmp/tier0-before.json \
+            --tier0-after /tmp/tier0-after.json \
+            --archive evals/archive.json \
+            --json > /tmp/decision.json
+          echo "allowed=$(jq -r .allowed /tmp/decision.json)" >> "$GITHUB_OUTPUT"
+          cat /tmp/decision.json
+
+      - name: Merge
+        if: steps.gate.outputs.allowed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          # Squash, so the change is exactly one commit. Revert-on-regression has to be a
+          # single `git revert` (invariant I-12), and a merge commit is not that.
+          gh pr ready "$PR"
+          gh pr merge "$PR" --squash --delete-branch \
+            --subject "$(gh pr view "$PR" --json title --jq .title) [auto-merged]"
+          gh pr comment "$PR" --body "$(printf '%s\n' \
+            "Auto-merged under ADR-0009 §4." \
+            "" \
+            "Every condition held: whitelisted path, prompt/config text only, within the" \
+            "size bound, no tier-0 regression in the pre-merge shadow eval, and no other" \
+            "auto-merge inside the 72h window." \
+            "" \
+            "**This is armed for automatic revert.** If a trusted metric degrades over the" \
+            "next 7 days, \`revert-on-regression\` undoes this commit and the archive" \
+            "records the change as \`harmed\`. Trusted metrics are the ones the coder" \
+            "cannot reach — re-observation rate and forecast accuracy." \
+            "" \
+            "---" \
+            "_Generated by [Claude Code](https://claude.ai/code)_")"
+
+      - name: Explain the hold
+        if: steps.gate.outputs.allowed != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          REASONS=$(jq -r '.refusals[] | "- " + .' /tmp/decision.json 2>/dev/null || echo "- gate did not run")
+          # One comment per head sha, not per event: `synchronize` fires on every push and
+          # a thread of identical refusals is not more information.
+          MARKER="<!-- automerge:${{ github.event.pull_request.head.sha }} -->"
+          if gh pr view "$PR" --json comments --jq '.comments[].body' | grep -qF "$MARKER"; then
+            echo "Already explained this revision."
+            exit 0
+          fi
+          gh pr comment "$PR" --body "$(printf '%s\n' \
+            "$MARKER" \
+            "Held for human review — this PR is outside the auto-merge class." \
+            "" \
+            "$REASONS" \
+            "" \
+            "That is not a failure: it is the default for anything the gate cannot verify" \
+            "mechanically. The PR stays a draft until you promote it." \
+            "" \
+            "---" \
+            "_Generated by [Claude Code](https://claude.ai/code)_")"

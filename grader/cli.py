@@ -32,8 +32,8 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from grader import (artifacts, attempts, deterministic, forecast, freshness, judge,
-                    links, provenance, trusted)
+from grader import (archive, artifacts, attempts, deterministic, forecast, freshness,
+                    judge, links, provenance, trusted)
 from grader.separation import SeparationViolation
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -232,6 +232,22 @@ def run(argv: list[str] | None = None) -> int:
     appended = artifacts.append_backlog(artifacts.backlog_items(ev, date))
     print(f"[grader] wrote {', '.join(p.name for p in written)}, README.md"
           f"{', backlog.md' if appended else ''}")
+
+    # --- attribution + the brake -------------------------------------------
+    # Rebuilt from the eval history rather than appended to, so it cannot drift from the
+    # evals it summarises and cannot silently stop being written.
+    arch = archive.build(history)
+    retired_classes = archive.retired(arch)
+    archive.write(arch, retired_classes)
+    print(f"[grader] archive: {archive.render(arch, retired_classes)}")
+
+    if finding := trusted.divergence(history):
+        # Reported, never acted on here (ADR-0005's reporter/escalator split). Acting is
+        # `scripts/automerge.py`'s job, which is also the only thing that can revert.
+        print(f"[grader] GOODHART: {finding['detail']}")
+        if os.environ.get("GITHUB_OUTPUT"):
+            with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+                fh.write(f"goodhart={finding['metric']}\n")
 
     _log_attempt(outcome="judged" if artifacts.is_judged(ev) else "deterministic",
                  reason=degraded_reason, grader_model=model, tier0=tier0)
