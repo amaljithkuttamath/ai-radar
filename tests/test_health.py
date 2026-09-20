@@ -471,3 +471,75 @@ def test_unknown_signal_renders_without_crashing_the_report():
 def test_humanise_duration_has_no_ago_suffix():
     assert humanise_duration(40 * 24) == "40d"
     assert humanise_age(40 * 24) == "40d ago"
+
+
+# --- the eval loop's two halves fail independently ---------------------------
+# Since ADR-0009 a tier-0 eval is committed after every distill, so freshness alone can no
+# longer tell "the grader ran" from "a model judged it". Reporting the first as the second
+# would put a green light on the exact outage this file exists to catch.
+
+def test_a_deterministic_latest_eval_is_detected(tmp_path):
+    import health as h
+    p = tmp_path / "latest.json"
+    p.write_text('{"mode": "deterministic", "date": "2026-09-19"}')
+    assert h.latest_eval_is_unjudged(p) is True
+
+
+def test_a_judged_latest_eval_is_not_flagged(tmp_path):
+    import health as h
+    p = tmp_path / "latest.json"
+    p.write_text('{"mode": "normal", "overall": 4.0}')
+    assert h.latest_eval_is_unjudged(p) is False
+
+
+def test_a_missing_eval_is_the_freshness_signals_finding_not_this_one(tmp_path):
+    """Reporting it here as well would double-count one fault."""
+    import health as h
+    assert h.latest_eval_is_unjudged(tmp_path / "nope.json") is False
+    assert h.latest_eval_is_unjudged(tmp_path) is False
+
+
+def test_the_mode_string_matches_what_the_grader_actually_writes():
+    """Duplicated rather than imported, so health.py stays stdlib-only. The duplicate must
+    not drift."""
+    from grader import artifacts
+    assert artifacts.DETERMINISTIC == "deterministic"
+
+
+def test_a_fresh_but_unjudged_eval_warns_instead_of_reading_green(monkeypatch):
+    """The whole point. A punctual tier-0 eval must not report the eval loop healthy while
+    no model has judged anything for months."""
+    import health as h
+
+    monkeypatch.setattr(h, "fetch_runs", lambda *a, **kw: [])
+    monkeypatch.setattr(h, "git_age_hours", lambda *a, **kw: 1.0)
+    monkeypatch.setattr(h, "latest_eval_is_unjudged", lambda *a, **kw: True)
+
+    built = h.build_health()
+    evals = [s for s in built["signals"] if s["key"] == "evals"][0]
+    assert evals["status"] == WARN
+    assert "no model judgement" in evals["detail"]
+
+
+def test_a_fresh_judged_eval_still_reads_green(monkeypatch):
+    import health as h
+
+    monkeypatch.setattr(h, "fetch_runs", lambda *a, **kw: [])
+    monkeypatch.setattr(h, "git_age_hours", lambda *a, **kw: 1.0)
+    monkeypatch.setattr(h, "latest_eval_is_unjudged", lambda *a, **kw: False)
+
+    evals = [s for s in h.build_health()["signals"] if s["key"] == "evals"][0]
+    assert evals["status"] == OK
+
+
+def test_a_stale_unjudged_eval_stays_down_rather_than_softening_to_warn(monkeypatch):
+    """The unjudged rule may only ever lower a reading from OK. A stale eval is DOWN
+    regardless of which tier produced it."""
+    import health as h
+
+    monkeypatch.setattr(h, "fetch_runs", lambda *a, **kw: [])
+    monkeypatch.setattr(h, "git_age_hours", lambda *a, **kw: 5000.0)
+    monkeypatch.setattr(h, "latest_eval_is_unjudged", lambda *a, **kw: True)
+
+    evals = [s for s in h.build_health()["signals"] if s["key"] == "evals"][0]
+    assert evals["status"] == DOWN

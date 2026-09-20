@@ -242,6 +242,23 @@ def git_age_hours(pathspec: str, now: datetime | None = None) -> float | None:
     return (now.timestamp() - int(stamp)) / 3600.0
 
 
+def latest_eval_is_unjudged(path: Path | None = None) -> bool:
+    """True if `evals/latest.json` carries a deterministic (tier-0 only) eval.
+
+    Stdlib-only and duplicated rather than importing `grader.artifacts`, for the reason
+    this whole file is stdlib-only: it must still run when the pipeline's dependencies are
+    what is broken. `tests/test_health.py` asserts the mode string stays in step.
+
+    Absent or unreadable returns False: "there is no eval" is the freshness signal's
+    finding, not this one's, and reporting it twice would double-count one fault.
+    """
+    p = path or (ROOT / "evals" / "latest.json")
+    try:
+        return json.loads(p.read_text()).get("mode") == "deterministic"
+    except (OSError, json.JSONDecodeError, AttributeError):
+        return False
+
+
 def digest_is_degraded(path: Path | None = None) -> bool | None:
     """True if the latest digest was assembled without model synthesis, False if it carries
     synthesis, None if there is no readable digest to judge."""
@@ -367,16 +384,27 @@ def build_health(now: datetime | None = None) -> dict:
         "url": f"https://github.com/{REPO}/blob/main/reports/latest.md",
     })
 
+    # Since ADR-0009 the eval has two halves that fail independently, and freshness alone
+    # can no longer tell them apart. `eval-deterministic.yml` commits a tier-0 eval after
+    # every distill, so `evals/latest.json` is punctual whether or not a model ever judged
+    # it — which would report a green eval loop while the judged trend stayed 69 days
+    # stale. That is the precise shape of failure this file was written for, arriving
+    # through a new door. So a fresh-but-unjudged eval is WARN, never OK.
     eval_age = git_age_hours("evals/latest.json", now)
+    eval_status = age_signal_status(eval_age, EVAL_MAX_AGE_H, shallow)
+    unjudged = latest_eval_is_unjudged()
+    if eval_status == OK and unjudged:
+        eval_status = WARN
     signals.append({
         "key": "evals",
         "label": "Eval loop",
-        "status": age_signal_status(eval_age, EVAL_MAX_AGE_H, shallow),
+        "status": eval_status,
         "age_h": None if eval_age is None or shallow else round(eval_age, 1),
         "threshold_h": EVAL_MAX_AGE_H,
         # The grader is an external scheduled task (ADR-0003) and appears in no
         # workflow run list, so artifact age is the only signal that exists here.
-        "detail": _age_detail("grader last committed {age}", eval_age, shallow),
+        "detail": (_age_detail("grader last committed {age}", eval_age, shallow)
+                   + (" · tier 0 only, no model judgement" if unjudged else "")),
         "url": f"https://github.com/{REPO}/blob/main/evals/latest.json",
     })
 
