@@ -8,6 +8,8 @@ Item format:
 
 ## Open — pipeline (ai-radar)
 
+- [ ] 2026-09-20 · Fix tier-0 `main_list_nonempty` · `distill/digest.md` — main list is empty — the digest has nothing to say — triggered by deterministic check main_list_nonempty
+
 - [ ] 2026-09-19 · Fix tier-0 `links_resolve` · `distill/digest.md` — 2 broken link(s), first http://arxiv.org/abs/2609.19916v1 — triggered by deterministic check links_resolve
 
 - [ ] 2026-07-27 · Spot-check a re-observed count against the rendered page · `distill/track.py` — Re-observation reads the GitHub/HF APIs, which is the source of record, but nothing confirms the number the digest prints matches what a reader sees on the linked page. One spot-check per run would close the loop the X2 findings opened. — triggered by X2_instrument_honesty 2 (follow-on to the three items closed 2026-07-27)
