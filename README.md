@@ -135,15 +135,18 @@ RADAR_LLM_BASE_URL=https://openrouter.ai/api/v1   # one endpoint, 400+ models, ~
 RADAR_LLM_API_KEY=sk-or-...                       # one key
 ```
 
-You still don't have to pick models — one command does it from the live catalogue:
+**You don't have to pick models at all.** A role with no pinned id resolves itself from the provider's live catalogue at run time: free models only (both prompt and completion priced at zero — absent pricing counts as *not* free), skipping any family the other role is pinned to, deterministic so a stable catalogue gives a stable choice. The id is recorded on every eval, so drift stays auditable.
+
+That fallback exists because every provider profile in [`llm.py`](llm.py) ships `GRADER: ""` — no provider can promise a second family will still be free and un-throttled tomorrow. The result was that the grader had no model unless a human pinned one by hand, and for 69 days nobody did. Resolution is only responsible enough to attempt because the failure beneath it is now graceful: if the catalogue is unreachable or serves no second family, the run writes a tier-0 eval instead of stopping.
+
+To see or pin the choice:
 
 ```bash
-python3 -m llm --resolve          # free models only; --any to include metered
-# RADAR_SYNTHESIS_MODEL=...:free    # family: meta
-# RADAR_GRADER_MODEL=...:free       # family: deepseek
+python3 -m llm --resolve          # print the pair it would use; --any to include metered
+python3 -m llm --catalog          # everything served, with families and free/paid marked
 ```
 
-It reads what the provider actually serves right now, filters to genuinely free models (both prompt and completion priced at zero — absent pricing counts as *not* free), and picks two from **different** families so the fence passes. Deterministic, so re-running gives the same pair. Set the two lines as repository variables to pin the choice; `--catalog` lists everything with families and free/paid marked.
+Pin `RADAR_SYNTHESIS_MODEL` / `RADAR_GRADER_MODEL` as repository variables if you want a fixed pair — a pinned id is never overridden. `RADAR_AUTO_MODEL=0` disables resolution; `RADAR_ALLOW_METERED=1` lets it consider paid models when no free second family exists.
 
 No OpenRouter model ids are hardcoded, deliberately: its free variants carry a `:free` suffix while the bare id is metered, so a plausible-looking default is a 402 that degrades to the template digest and reads exactly like the pipeline is still broken.
 

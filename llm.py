@@ -147,15 +147,107 @@ def _profile(env: dict | None = None) -> dict:
     return {}
 
 
-def model_for(role: str, env: dict | None = None) -> str:
-    """The model id for a role: explicit override first, then the provider's default
-    pair, then empty. Empty is a real answer — it means this provider cannot serve the
-    role and the caller must say so rather than guess an id."""
+def pinned_model(role: str, env: dict | None = None) -> str:
+    """The model id a human or a profile chose for `role`, with no catalogue lookup.
+
+    Kept separate from `model_for` for one structural reason: auto-resolution has to know
+    which family the *other* role occupies, and if it asked `model_for` it could trigger
+    the other role's auto-resolution, which would ask back. This is the recursion-free
+    answer, and it is the only thing auto-resolution is allowed to consult.
+    """
     env = os.environ if env is None else env
     explicit = env.get(f"RADAR_{role.upper()}_MODEL", "")
     if explicit:
         return explicit
     return _profile(env).get(role, "")
+
+
+# Cached per process. `model_for` is called by the separation fence for both sides of
+# every check, and an uncached network call in that path would turn a fence into a
+# latency budget. Keyed by (role, base_url) so a test switching providers is not served
+# a stale answer.
+_AUTO_CACHE: dict[tuple, str] = {}
+
+
+def auto_model(role: str, env: dict | None = None, timeout: int = 15) -> str:
+    """Resolve `role` from the provider's live catalogue, avoiding the other role's family.
+
+    This exists because the operator should not have to know model ids — the same reason
+    the providers were unified behind one key and URL. Every `_PROFILES` entry above ships
+    `GRADER: ""`, because no provider can promise a second family will still be free and
+    un-throttled tomorrow. The result was that the grader had *no* model unless somebody
+    pinned one by hand, and for 69 days nobody did.
+
+    Three properties make this safe rather than a guess:
+
+      * **Free only by default.** OpenRouter's free variants carry a `:free` suffix while
+        the bare id is metered, so an id that merely looks plausible is a 402. Absent
+        pricing counts as not free (`is_free`).
+      * **Family-aware.** It excludes whatever family the other role is *pinned* to, so a
+        resolved grader cannot collide with the digest's actual author. Where the other
+        role is itself unpinned there is nothing to collide with yet, and
+        `separation.assert_separated` still has the final say — this never replaces the
+        fence, it just stops handing the fence an empty string.
+      * **Never fatal.** Any failure returns "", which since ADR-0009 degrades to a
+        tier-0 eval rather than halting the run. That composition is the point: automatic
+        resolution is only responsible enough to attempt because the failure mode beneath
+        it is now graceful.
+
+    Deterministic given a catalogue, so a stable provider yields a stable model, and the
+    id is recorded on every eval (`grader_model`) so drift stays auditable.
+    """
+    env = os.environ if env is None else env
+    if env.get("RADAR_AUTO_MODEL", "1") == "0":
+        return ""
+    if not (base_url(env) and (env.get("RADAR_LLM_API_KEY") or env.get("OPENAI_API_KEY"))):
+        return ""
+
+    key = (role, base_url(env))
+    if key in _AUTO_CACHE:
+        return _AUTO_CACHE[key]
+
+    avoid = {family(pinned_model(other, env)) for other in ROLES if other != role}
+    avoid.discard(None)
+
+    try:
+        models = catalog(env, timeout=timeout)
+    except LLMError as ex:
+        print(f"[llm] auto-resolution for {role} unavailable: {ex}", file=sys.stderr)
+        _AUTO_CACHE[key] = ""
+        return ""
+
+    allow_metered = env.get("RADAR_ALLOW_METERED", "0") == "1"
+    ranked = sorted((m for m in models if allow_metered or is_free(m)),
+                    key=lambda m: (-(m.get("context_length") or 0), m.get("id", "")))
+    for m in ranked:
+        mid = m.get("id", "")
+        fam = family(mid)
+        # An unrecognised family is skipped, not chosen. The fence would refuse it anyway
+        # (ADR-0007), and picking one here would produce a confusing refusal about a model
+        # nobody selected.
+        if fam and fam not in avoid:
+            _AUTO_CACHE[key] = mid
+            print(f"[llm] auto-resolved {role}={mid} (family: {fam}"
+                  f"{', avoiding ' + ', '.join(sorted(avoid)) if avoid else ''})",
+                  file=sys.stderr)
+            return mid
+
+    print(f"[llm] no {'' if allow_metered else 'free '}model on {base_url(env)} outside "
+          f"{sorted(avoid) or 'any'} family — the fence needs two families", file=sys.stderr)
+    _AUTO_CACHE[key] = ""
+    return ""
+
+
+def model_for(role: str, env: dict | None = None) -> str:
+    """The model id for a role: explicit override, then the provider's default pair, then
+    the live catalogue, then empty.
+
+    The catalogue step only ever runs when the answer would otherwise be "" — that is, when
+    the alternative is not a worse model but *no model and no eval*. So it cannot change a
+    configuration that already works, and it cannot silently move a pinned one.
+    """
+    env = os.environ if env is None else env
+    return pinned_model(role, env) or auto_model(role, env)
 
 
 def configured(env: dict | None = None) -> bool:
@@ -263,19 +355,25 @@ def resolve_pair(free_only: bool = True) -> dict:
     return chosen
 
 
-def catalog() -> list[dict]:
+def catalog(env: dict | None = None, timeout: int = 30) -> list[dict]:
     """`GET {base}/models`, the OpenAI-compatible discovery endpoint. Used by
-    `--catalog` so choosing a model is a command rather than a guess."""
-    if not configured():
+    `--catalog` so choosing a model is a command rather than a guess, and by
+    `auto_model` so it is not even a command.
+
+    `env` is threaded through like every other reader here, so a caller can ask about a
+    configuration other than the ambient one — which is what the separation fence does.
+    """
+    env = os.environ if env is None else env
+    if not configured(env):
         raise LLMError("RADAR_LLM_BASE_URL and RADAR_LLM_API_KEY must both be set")
     req = urllib.request.Request(
-        f"{base_url()}/models",
-        headers={"Authorization": f"Bearer {api_key()}"})
+        f"{base_url(env)}/models",
+        headers={"Authorization": f"Bearer {api_key(env)}"})
     try:
-        with urllib.request.urlopen(req, timeout=30) as r:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
             return json.loads(r.read()).get("data", [])
     except (urllib.error.URLError, OSError, ValueError) as ex:
-        raise LLMError(f"could not read {base_url()}/models: {ex}") from ex
+        raise LLMError(f"could not read {base_url(env)}/models: {ex}") from ex
 
 
 def _main() -> None:

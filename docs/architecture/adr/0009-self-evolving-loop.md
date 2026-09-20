@@ -204,6 +204,24 @@ list and its failure is a red badge, both of which `health.py` already watches. 
 over one path are reconciled by monotonicity rather than locking: `write_eval` refuses to
 replace a judged eval with a deterministic one, so no landing order can lose information.
 
-**Still open.** `RADAR_GRADER_MODEL` remains unset, so tier 1 does not run and the trend is
-deterministic-only until a grader model is configured. That is now a degradation rather than
-an outage, which was the point — but it is not the same as the loop being whole.
+**The grader resolves its own model.** Added after the four stages landed, once the cascade
+made it safe. `RADAR_GRADER_MODEL` being unset was not an oversight — every `_PROFILES` entry
+ships `GRADER: ""`, because no provider can promise a second family will still be free and
+un-throttled tomorrow, and a plausible-looking hardcoded id is a 402. So the correct default
+was "nothing", and "nothing" meant no eval for 69 days.
+
+`llm.auto_model` resolves a role with no pinned id from the provider's live catalogue: free
+only, excluding the family the other role is *pinned* to, deterministic, cached per process,
+and recorded on every eval so drift stays auditable. It consults `pinned_model` rather than
+`model_for` for the other role's family, which is what keeps two unpinned roles from asking
+each other forever. It runs only when the answer would otherwise be empty, so it cannot move
+a configuration that already works.
+
+This is only responsible because of §1. Resolution can fail — an unreachable catalogue, a
+catalogue with no second free family — and every failure returns "", which now degrades to a
+tier-0 eval instead of halting the run. Automatic behaviour is safe in proportion to how
+gracefully it fails, and the graceful failure had to exist first.
+
+**Still open.** Nothing here supplies a *credential*. With no `RADAR_LLM_API_KEY` there is no
+catalogue to read and the trend stays deterministic-only. That is a degradation rather than an
+outage, which was the point — but it is not the same as the loop being whole.

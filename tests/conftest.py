@@ -36,6 +36,18 @@ def _isolate_persistent_state(tmp_path, monkeypatch):
     monkeypatch.setattr(track, "SCORED", scored)
     monkeypatch.setattr(delta, "STATE_PATH", tmp_path / "_auto_state.json")
 
+    # Same argument, applied to the network. `llm.model_for` now falls back to reading the
+    # provider's live catalogue when a role has no pinned model, and the separation fence
+    # calls it for both sides of every check — so a test that sets a base URL and key but
+    # pins only one role would reach for the network and hang on the timeout. The suite's
+    # rule is no network, and a rule that has to be remembered is not a rule.
+    # Patched as a function rather than via `RADAR_AUTO_MODEL=0`: the fence is routinely
+    # called with an explicit env dict, which `setenv` would not reach. Tests that
+    # exercise auto-resolution bind the real function before this replaces it.
+    import llm
+    llm._AUTO_CACHE.clear()
+    monkeypatch.setattr(llm, "auto_model", lambda *a, **kw: "")
+
 
 def make_item(**over) -> dict:
     """A scored-item dict with sane defaults. Pass overrides for the field under test."""

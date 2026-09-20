@@ -165,11 +165,15 @@ def judge(digest: str, rubric: str, age_h: float, broken: list[dict],
     """(verdict, model_id). Enforces model separation before spending a token on the call."""
     model = resolve_model()
     if not model:
+        # Reached only after auto-resolution has also come up empty (llm.auto_model), so
+        # the remedy is never "pin something" alone — the catalogue was unreachable, or it
+        # genuinely serves no free model outside synthesis's family.
         raise JudgeError(
-            "no grader model configured. Set RADAR_GRADER_MODEL, or point "
-            "RADAR_LLM_BASE_URL at a provider serving more than one model family "
-            "(`python3 -m llm --catalog`). The grader needs a different family from "
-            "synthesis, not a different provider.")
+            f"no grader model available on {llm.base_url() or '(no provider configured)'}. "
+            "Resolution from the live catalogue found nothing usable: the grader needs a "
+            "model of a DIFFERENT FAMILY from synthesis, not a different provider. Check "
+            "`python3 -m llm --catalog`; pin RADAR_GRADER_MODEL to override, or set "
+            "RADAR_ALLOW_METERED=1 if only paid models remain.")
     assert_separated(model, env)          # raises SeparationViolation
 
     system, user = build_prompt(digest, rubric, age_h, broken, prev_digest)
