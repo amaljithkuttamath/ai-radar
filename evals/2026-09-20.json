@@ -6,32 +6,31 @@
   "digest_commit_time_utc": "2026-09-20T14:25:52Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
-    "module_hash": "d377ff8ff237",
+    "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
       "links_total": 12,
       "links_broken": 0,
-      "links_unreachable": 0,
-      "main_items": 0,
-      "main_score_mean": null,
-      "sections_present": 6,
+      "links_unverified": 0,
+      "main_items": 4,
+      "main_score_mean": 3.25,
+      "sections_present": 8,
+      "expected_sections": 6,
       "tracked_items": 63,
       "reobservation_rate": 0.698,
       "traction_observations": 39,
-      "degraded_synthesis": false,
-      "forecast_accuracy": null,
-      "claims_open": 2
+      "degraded_synthesis": false
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "all required sections present"
+        "detail": "title and 8 section(s); 6/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
-        "ok": false,
-        "detail": "main list is empty — the digest has nothing to say"
+        "ok": true,
+        "detail": "4 main-list item(s)"
       },
       {
         "key": "links_resolve",
@@ -49,9 +48,7 @@
         "detail": "re-observed 70% of 63 tracked items"
       }
     ],
-    "failed": [
-      "main_list_nonempty"
-    ]
+    "failed": []
   },
   "revs": {
     "prompt_rev": "ce62c6d",
