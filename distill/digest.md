@@ -3,6 +3,21 @@
 Input: scored items in `data/scored/` within {WINDOW}. Output: a dated report in `reports/`.
 This is the prompt `synthesize.py` sends to the model, with the scored items appended.
 
+## Output contract — read this first
+Your entire response is published verbatim as the newsletter. Nobody edits it.
+
+- Begin with the `# AI Radar — <date>` heading. No preamble, no restatement of the task,
+  no "Let me analyze" — the first character of your reply is the `#`.
+- Do your thinking silently. Working notes, parameter recaps and step-by-step planning are
+  not output; if you emit them they are what readers get.
+- Write the digest first and elaborate afterwards if there is room. A response that runs
+  out of budget mid-plan publishes nothing usable.
+
+This is not a style preference. On three days in six weeks the whole response was planning
+notes, cut off mid-sentence, and that is what shipped. `synthesize.py` now refuses a
+response with no title or no sections and publishes the template digest instead, so
+ignoring this costs the day's synthesis outright.
+
 ## Objective
 Turn the collected corpus into a high-precision read: what matters, what to do about it.
 Precision over recall — surface the few things that count; skip the rest, don't pad.

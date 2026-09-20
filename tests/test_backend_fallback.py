@@ -22,6 +22,7 @@ import urllib.error
 
 import pytest
 
+import llm
 from distill import synthesize, track
 
 
@@ -206,12 +207,52 @@ def test_transient_server_errors_still_raise(anthropic_backend, monkeypatch):
         synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
 
 
+_REAL_DIGEST = ("# AI Radar — 2026-09-20\n\n**Top-line:** Something.\n\n"
+                "## Main list\n\n### 1. An item · 4/5\nBody.\n")
+
+
 def test_success_returns_the_model_output_untouched(anthropic_backend, monkeypatch):
     for fn in ("call_anthropic", "call_openai_compat"):
-        monkeypatch.setattr(synthesize, fn, lambda s, u: "# A real synthesized digest")
+        monkeypatch.setattr(synthesize, fn, lambda s, u: _REAL_DIGEST)
     out = synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
-    assert out == "# A real synthesized digest"
+    assert out == _REAL_DIGEST.strip()
     assert "Degraded" not in out
+
+
+def test_a_successful_call_that_returns_a_transcript_still_degrades(
+        anthropic_backend, monkeypatch):
+    """The gap that let three planning transcripts ship: every defence above this asks
+    whether the request succeeded, and none asked whether the answer did. A 200 carrying
+    the model's working is a failed synthesis wearing a success code."""
+    transcript = "Let me analyze this task carefully. I need to produce a digest.\n" * 50
+    for fn in ("call_anthropic", "call_openai_compat"):
+        monkeypatch.setattr(synthesize, fn, lambda s, u: transcript)
+    out = synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
+    assert "Degraded run" in out
+    assert "Let me analyze" not in out
+
+
+def test_a_truncated_response_salvages_a_digest_when_one_is_there(
+        anthropic_backend, monkeypatch):
+    """Truncation is not automatically a loss. If the digest was written before the budget
+    ran out, publishing it beats degrading — but it is never published unread."""
+    def truncated(s, u):
+        raise llm.Truncated("ceiling hit", partial=_REAL_DIGEST + "\n### 2. Cut off mid-")
+    for fn in ("call_anthropic", "call_openai_compat"):
+        monkeypatch.setattr(synthesize, fn, truncated)
+    out = synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
+    assert out.startswith("# AI Radar")
+    assert "Degraded run" not in out
+
+
+def test_a_truncated_response_with_no_digest_degrades(anthropic_backend, monkeypatch):
+    def truncated(s, u):
+        raise llm.Truncated("ceiling hit", partial="Let me analyze this task carefully. " * 50)
+    for fn in ("call_anthropic", "call_openai_compat"):
+        monkeypatch.setattr(synthesize, fn, truncated)
+    out = synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
+    assert "Degraded run" in out
+    assert "Let me analyze" not in out
 
 
 def test_413_exhausts_the_shrink_ladder_then_degrades(anthropic_backend, monkeypatch):

@@ -42,6 +42,14 @@ import urllib.request
 
 TIMEOUT = int(os.environ.get("RADAR_LLM_TIMEOUT", "180"))
 
+# The output ceiling. 4000 was sized for a model that answers directly, and the pipeline
+# now runs on whatever the catalogue offers — which is increasingly a reasoning model that
+# spends thousands of tokens thinking first. At 4000, three digests in six weeks were
+# nothing but truncated planning notes. 16000 leaves room to think and still answer; the
+# provider caps it lower if the model cannot go that high, and `Truncated` says so either
+# way rather than letting a cut-off response pass as an answer.
+MAX_TOKENS = int(os.environ.get("RADAR_LLM_MAX_TOKENS", "16000"))
+
 # Roles, not providers. Add a role here and it inherits config, families and defaults.
 SYNTHESIS = "synthesis"
 GRADER = "grader"
@@ -298,7 +306,21 @@ class LLMError(Exception):
     permanent-vs-transient distinction in `distill/synthesize.py` depends on it."""
 
 
-def chat(system: str, user: str, model: str, *, max_tokens: int = 4000) -> str:
+class Truncated(LLMError):
+    """The model hit the token ceiling before it finished.
+
+    A subclass of `LLMError` so existing handlers keep working, and distinct so callers
+    that *can* do something about it — retry with a bigger budget, salvage a usable
+    prefix — are able to. `partial` carries what did arrive, because sometimes the answer
+    is in there ahead of the truncation and throwing it away loses the day's digest.
+    """
+
+    def __init__(self, message: str, partial: str = ""):
+        super().__init__(message)
+        self.partial = partial
+
+
+def chat(system: str, user: str, model: str, *, max_tokens: int = MAX_TOKENS) -> str:
     """One OpenAI-compatible chat completion.
 
     Every provider worth using speaks this shape, which is exactly why the pipeline
@@ -333,9 +355,23 @@ def chat(system: str, user: str, model: str, *, max_tokens: int = 4000) -> str:
     except (urllib.error.URLError, OSError) as ex:
         raise LLMError(f"{base_url()} unreachable: {ex}") from ex
     try:
-        return data["choices"][0]["message"]["content"]
+        choice = data["choices"][0]
+        content = choice["message"]["content"]
     except (KeyError, IndexError, TypeError) as ex:
         raise LLMError(f"unexpected response shape from {base_url()}: {str(data)[:200]}") from ex
+
+    # `finish_reason: length` means the model hit the token ceiling mid-sentence. This
+    # used to be discarded, and the cost was three published newsletters that were
+    # nothing but the model's own truncated planning notes: a reasoning model spent its
+    # whole 4000-token budget thinking and never reached the digest, the call returned
+    # 200, and the transcript was written to reports/ unread. A truncated response is a
+    # failed response, and the caller cannot tell unless this says so.
+    if choice.get("finish_reason") == "length":
+        raise Truncated(
+            f"{model} hit the {max_tokens}-token ceiling before finishing "
+            f"({len(content)} chars returned). Raise max_tokens, or use a model that "
+            "does not spend the budget on reasoning.", partial=content)
+    return content
 
 
 def is_free(model: dict) -> bool:

@@ -369,7 +369,11 @@ def _compact_delta(delta: dict, top: int = MOVERS_TOP) -> dict:
 def call_anthropic(system: str, user: str) -> str:
     body = json.dumps({
         "model": os.environ.get("RADAR_ANTHROPIC_MODEL", "claude-opus-4-8"),
-        "max_tokens": 4000, "system": system,
+        # Matches llm.MAX_TOKENS. The native Anthropic path does not go through llm.chat,
+        # so the two ceilings are set separately and a test asserts they agree — a digest
+        # budget that depends on which caller you took is a bug waiting for a provider
+        # switch.
+        "max_tokens": llm.MAX_TOKENS, "system": system,
         "messages": [{"role": "user", "content": user}],
     }).encode()
     req = urllib.request.Request(
@@ -548,6 +552,75 @@ def degraded_banner(backend: str, reason: str) -> str:
     )
 
 
+# Reasoning models wrap their working in these before answering. Stripped rather than
+# trusted-absent, because the pipeline now runs on whatever free model the catalogue
+# offers (`llm.auto_model`) and half of those think out loud by default.
+_REASONING_BLOCK = re.compile(
+    r"<\s*(think|thinking|reasoning|scratchpad)\s*>.*?<\s*/\s*\1\s*>",
+    re.I | re.S)
+# An unclosed opener means the response was cut off mid-thought — everything after it is
+# working, not output.
+_REASONING_OPEN = re.compile(r"<\s*(?:think|thinking|reasoning|scratchpad)\s*>", re.I)
+_DIGEST_H1 = re.compile(r"^#\s+\S.*$", re.M)
+
+
+class NotADigest(Exception):
+    """The model returned 200 and the body is not a digest."""
+
+
+def usable_digest(raw: str) -> str:
+    """Return the digest inside a model response, or raise `NotADigest`.
+
+    This exists because on 2026-08-14, 2026-08-25 and 2026-09-18 the newsletter that
+    shipped was the model's own planning notes — 13KB opening "Let me analyze this task
+    carefully", truncated mid-sentence, no title, no sections. A reasoning model spent its
+    entire token budget thinking, the HTTP call returned 200, and the body was written to
+    `reports/` without anyone looking at it. Nothing in the pipeline asked whether a
+    successful response was a *digest*; it only asked whether the request succeeded.
+
+    Two recoveries and one refusal:
+
+      * Explicit reasoning blocks (`<think>...</think>`) are removed. A truncated,
+        never-closed opener means everything after it is working, so that is dropped too.
+      * Prose before the first H1 is dropped. Models routinely narrate before answering,
+        and the digest that follows is perfectly good — losing the day over a preamble
+        would be its own bug.
+      * Whatever is left must actually look like a digest. If it does not, this raises
+        and the caller degrades to the template with a banner, which is ADR-0006's rule:
+        an honest degraded digest beats a confident wrong one.
+
+    Deliberately shape-based, not phrase-based. Matching "Let me analyze" would catch the
+    three known transcripts and nothing else; requiring a title and a section catches the
+    class.
+    """
+    text = _REASONING_BLOCK.sub("", raw)
+    if opener := _REASONING_OPEN.search(text):
+        text = text[:opener.start()]
+
+    if h1 := _DIGEST_H1.search(text):
+        text = text[h1.start():]
+
+    body = text.strip()
+    if not body:
+        raise NotADigest("model returned nothing but reasoning")
+    if not _DIGEST_H1.search(body):
+        raise NotADigest(
+            f"no H1 title in {len(body)} chars of model output — this is the shape of a "
+            "reasoning transcript, not a digest")
+    # Sections count whether they are headings or standalone bold labels: 2026-06-04 and
+    # 2026-06-11 are legitimate quiet-window digests that label sections in bold, and
+    # refusing those would trade three bad digests for two good ones. `grader/
+    # deterministic.py` accepts the same two forms; `tests/test_synthesize_output.py`
+    # asserts the pair does not drift, which is the same pairing discipline the duplicated
+    # DEGRADED_MARKER already has.
+    if not (re.search(r"^#{2,3}\s+\S", body, re.M)
+            or re.search(r"^\*\*[^*\[\]]{1,40}\*\*\s*$", body, re.M)):
+        raise NotADigest(
+            f"title but no sections in {len(body)} chars — the response was cut off "
+            "before the digest was written")
+    return body
+
+
 def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: int) -> str:
     """Call the configured backend; degrade to the template digest on a permanent failure.
 
@@ -574,7 +647,19 @@ def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: 
             system, user, n_cand = build_prompt(items, **kw)
         _log_prompt_stats(system, user, len(items), n_cand, n)
         try:
-            return caller(system, user)
+            raw = caller(system, user)
+        except llm.Truncated as ex:
+            # The budget ran out. Whatever arrived may still contain a complete digest
+            # ahead of the cut, so it is worth looking before discarding — but it is never
+            # published unread, which is exactly how the three transcripts shipped.
+            print(f"[distill] synthesis truncated: {ex}", file=sys.stderr)
+            try:
+                return usable_digest(ex.partial)
+            except NotADigest as why:
+                print(f"[distill] truncated output is not a digest ({why}); "
+                      "degrading to the template digest", file=sys.stderr)
+                return degraded_banner(BACKEND, f"response truncated — {why}") + \
+                    call_template(system, user)
         except urllib.error.HTTPError as ex:
             if ex.code == 413:
                 last_413 = ex
@@ -591,6 +676,16 @@ def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: 
             print(f"[distill] {BACKEND} backend unreachable ({ex.reason}); "
                   "degrading to the template digest", file=sys.stderr)
             return degraded_banner(BACKEND, str(ex.reason)) + call_template(system, user)
+
+        # A 200 is not yet a digest. Everything above this line asks whether the *request*
+        # succeeded; this asks whether the *answer* did, which is the question nobody was
+        # asking when three planning transcripts went out as the newsletter.
+        try:
+            return usable_digest(raw)
+        except NotADigest as why:
+            print(f"[distill] model returned 200 but not a digest ({why}); "
+                  "degrading to the template digest", file=sys.stderr)
+            return degraded_banner(BACKEND, str(why)) + call_template(system, user)
 
     print("[distill] still 413 after shrinking to the floor; degrading to template",
           file=sys.stderr)
