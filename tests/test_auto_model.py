@@ -236,3 +236,120 @@ def test_the_fence_still_refuses_a_colliding_resolution(provider, monkeypatch):
 
     with pytest.raises(SeparationViolation, match="nvidia"):
         judge.judge("# AI Radar — 2026-09-19\n\nbody", "rubric", 12.0, [])
+
+
+# --- surviving a free tier --------------------------------------------------
+# The defining property of OpenRouter's free tier is that individual models are
+# frequently upstream-429. PR #35 recorded gemma, gpt-oss and cohere all throttled at
+# once. Resolving to a single id means one rate limit costs the day's judged eval, so
+# plurality is what makes a free tier usable rather than merely available.
+
+def test_candidates_are_one_per_family(served):
+    """A provider throttling `vendor/model-a:free` is likely throttling
+    `vendor/model-b:free` too. Different families are different upstreams."""
+    cands = llm.auto_candidates(llm.GRADER, ENV)
+    families = [llm.family(c) for c in cands]
+    assert len(families) == len(set(families))
+    assert "nvidia" in families and "deepseek" in families
+
+
+def test_candidates_respect_the_pinned_synthesis_family(served):
+    env = {**ENV, "RADAR_SYNTHESIS_MODEL": "nvidia/nemotron-3-ultra:free"}
+    assert all(llm.family(c) != "nvidia" for c in llm.auto_candidates(llm.GRADER, env))
+
+
+def test_auto_model_is_the_head_of_the_candidate_list(served):
+    """One resolution rule, not two that can disagree."""
+    assert real_auto_model(llm.GRADER, ENV) == llm.auto_candidates(llm.GRADER, ENV)[0]
+
+
+def test_a_pinned_model_is_the_only_candidate(served):
+    """Silently grading on something else because the chosen model was busy would make
+    `grader_model` a record of what was available, not of what was configured."""
+    from grader import judge
+    env = {**ENV, "RADAR_GRADER_MODEL": "openai/gpt-4.1"}
+    assert judge.candidate_models(env) == ["openai/gpt-4.1"]
+
+
+class _ThrottledProvider(_Provider):
+    """Rate-limits the first family, the way a free tier does."""
+
+    throttled = "nvidia"
+
+    def do_POST(self):
+        length = int(self.headers.get("Content-Length", 0))
+        body = json.loads(self.rfile.read(length) or "{}")
+        if llm.family(body.get("model", "")) == self.throttled:
+            self.send_error(429, "rate limited upstream")
+            return
+        self._send({"choices": [{"message": {"content": self.verdict}}]})
+
+
+@pytest.fixture
+def throttled_provider():
+    server = HTTPServer(("127.0.0.1", 0), _ThrottledProvider)
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    yield f"http://127.0.0.1:{server.server_port}"
+    server.shutdown()
+    server.server_close()
+
+
+def test_a_throttled_family_fails_over_to_the_next(throttled_provider, monkeypatch):
+    """End to end against a server that 429s the first pick. Without failover this is the
+    day's judged eval lost to a rate limit a different family would have sailed through."""
+    from grader import judge
+
+    monkeypatch.setenv("RADAR_LLM_BASE_URL", throttled_provider)
+    monkeypatch.setenv("RADAR_LLM_API_KEY", "sk-test")
+    monkeypatch.delenv("RADAR_SYNTHESIS_MODEL", raising=False)
+    monkeypatch.delenv("RADAR_GRADER_MODEL", raising=False)
+    monkeypatch.setattr(llm, "auto_model", real_auto_model)
+    llm._AUTO_CACHE.clear()
+
+    verdict, model = judge.judge("# AI Radar — 2026-09-19\n\nbody", "rubric", 12.0, [])
+    assert llm.family(model) == "deepseek"        # nvidia was throttled; it moved on
+    assert verdict["A1"]["score"] == 4
+
+
+def test_a_pinned_model_that_is_throttled_does_not_silently_substitute(
+        throttled_provider, monkeypatch):
+    """A pin is a decision. Failing over from it would make the eval's `grader_model`
+    unreliable exactly when the trend depends on it."""
+    from grader import judge
+
+    monkeypatch.setenv("RADAR_LLM_BASE_URL", throttled_provider)
+    monkeypatch.setenv("RADAR_LLM_API_KEY", "sk-test")
+    monkeypatch.setenv("RADAR_GRADER_MODEL", "nvidia/nemotron-3-ultra:free")
+    monkeypatch.delenv("RADAR_SYNTHESIS_MODEL", raising=False)
+
+    with pytest.raises(judge.JudgeError, match="429"):
+        judge.judge("# AI Radar — 2026-09-19\n\nbody", "rubric", 12.0, [])
+
+
+def test_a_configuration_fault_is_not_retried_across_models(monkeypatch):
+    """401 means the key is wrong; the next model would fail identically. Failing over
+    would be four ways to lose and four times the latency."""
+    assert 401 not in llm.RETRYABLE_STATUS
+    assert 404 not in llm.RETRYABLE_STATUS
+    assert 429 in llm.RETRYABLE_STATUS and 402 in llm.RETRYABLE_STATUS
+
+
+# --- one variable is the whole setup ----------------------------------------
+
+def test_an_openrouter_key_implies_its_endpoint():
+    """Two-variable setups are how a key ends up pointed at the wrong endpoint. The key
+    prefix is documented and distinctive, so it is enough."""
+    assert llm.base_url({"RADAR_LLM_API_KEY": "sk-or-v1-abc"}) == \
+        "https://openrouter.ai/api/v1"
+
+
+def test_an_explicit_base_url_always_wins():
+    assert llm.base_url({"RADAR_LLM_API_KEY": "sk-or-v1-abc",
+                         "RADAR_LLM_BASE_URL": "https://example.test/v1"}) == \
+        "https://example.test/v1"
+
+
+def test_an_unrecognised_key_infers_nothing():
+    """Guessing an endpoint from an unknown key would send the key somewhere it was not
+    issued for."""
+    assert llm.base_url({"RADAR_LLM_API_KEY": "sk-something-else"}) == ""

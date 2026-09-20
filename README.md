@@ -131,9 +131,10 @@ Backends: `auto` (default in CI — `anthropic` if `ANTHROPIC_API_KEY`, else `op
 **One provider, both stages.** Synthesis and the grader share a single key and endpoint ([`llm.py`](llm.py)) — providers are not divided by responsibility. What has to differ is the model *family*, not the account: a model grading its own family self-enhances by ~10–25%, so [`grader/separation.py`](grader/separation.py) checks the model id and refuses if the two match. A gateway serving many families through one OpenAI-compatible URL therefore satisfies the fence on one free key:
 
 ```bash
-RADAR_LLM_BASE_URL=https://openrouter.ai/api/v1   # one endpoint, 400+ models, ~200 free req/day
-RADAR_LLM_API_KEY=sk-or-...                       # one key
+RADAR_LLM_API_KEY=sk-or-...    # that is the entire setup
 ```
+
+The endpoint is inferred from the key prefix, so OpenRouter costs one variable rather than two — two-variable setups are how a key ends up pointed at the wrong endpoint. Set `RADAR_LLM_BASE_URL` explicitly for any other provider; it always wins.
 
 **You don't have to pick models at all.** A role with no pinned id resolves itself from the provider's live catalogue at run time: free models only (both prompt and completion priced at zero — absent pricing counts as *not* free), skipping any family the other role is pinned to, deterministic so a stable catalogue gives a stable choice. The id is recorded on every eval, so drift stays auditable.
 
@@ -147,6 +148,8 @@ python3 -m llm --catalog          # everything served, with families and free/pa
 ```
 
 Pin `RADAR_SYNTHESIS_MODEL` / `RADAR_GRADER_MODEL` as repository variables if you want a fixed pair — a pinned id is never overridden. `RADAR_AUTO_MODEL=0` disables resolution; `RADAR_ALLOW_METERED=1` lets it consider paid models when no free second family exists.
+
+**Surviving the free tier.** Free models are routinely rate-limited upstream, often several at once. So resolution returns a *list* — one model per family, best first — and the grader fails over on `429`, `402` and `5xx` until one answers. A configuration fault (`401`, `404`) is never retried, since the next model would fail identically. A *pinned* model is never failed over from either: a pin is a decision, and substituting for it would make each eval's `grader_model` a record of what happened to be free rather than of what was chosen.
 
 No OpenRouter model ids are hardcoded, deliberately: its free variants carry a `:free` suffix while the bare id is metered, so a plausible-looking default is a 402 that degrades to the template digest and reads exactly like the pipeline is still broken.
 

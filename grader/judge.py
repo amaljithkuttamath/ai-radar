@@ -16,12 +16,13 @@ from __future__ import annotations
 import json
 import os
 import re
+import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
 
 import llm
-from grader.separation import assert_separated
+from grader.separation import SeparationViolation, assert_separated
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -160,10 +161,34 @@ def _validate_verdict(v: dict) -> dict:
     return out
 
 
+def candidate_models(env: dict | None = None) -> list[str]:
+    """Models to try, best first.
+
+    A pinned id is a decision, so it is the only candidate — silently grading on something
+    else because the chosen model was busy would make `grader_model` a record of what
+    happened to be available rather than of what was configured.
+
+    Unpinned, the list comes from the live catalogue. On a free tier that plurality is the
+    difference between usable and nominal: PR #35 recorded gemma, gpt-oss and cohere all
+    upstream-429 simultaneously, and a single resolved id would have cost the day's judged
+    eval to a rate limit that a different family would have sailed through.
+    """
+    if pinned := llm.pinned_model(llm.GRADER, env):
+        return [pinned]
+    return llm.auto_candidates(llm.GRADER, env)
+
+
 def judge(digest: str, rubric: str, age_h: float, broken: list[dict],
           prev_digest: str | None = None, env: dict | None = None) -> tuple[dict, str]:
-    """(verdict, model_id). Enforces model separation before spending a token on the call."""
-    model = resolve_model()
+    """(verdict, model_id). Enforces model separation before spending a token on the call.
+
+    Tries each candidate in turn, moving on only for reasons a *different model* could
+    survive: a separation refusal, or one of `llm.RETRYABLE_STATUS`. A malformed verdict
+    is not retried — that is the truncated-emit failure `grader.md#score-in-one-pass`
+    warns about, and quietly asking a second model would turn a bug into a coin flip.
+    """
+    candidates = candidate_models(env)
+    model = candidates[0] if candidates else ""
     if not model:
         # Reached only after auto-resolution has also come up empty (llm.auto_model), so
         # the remedy is never "pin something" alone — the catalogue was unreachable, or it
@@ -174,13 +199,40 @@ def judge(digest: str, rubric: str, age_h: float, broken: list[dict],
             "model of a DIFFERENT FAMILY from synthesis, not a different provider. Check "
             "`python3 -m llm --catalog`; pin RADAR_GRADER_MODEL to override, or set "
             "RADAR_ALLOW_METERED=1 if only paid models remain.")
-    assert_separated(model, env)          # raises SeparationViolation
-
     system, user = build_prompt(digest, rubric, age_h, broken, prev_digest)
-    try:
-        raw = llm.chat(system, user, model)
-    except llm.LLMError as ex:
-        raise JudgeError(str(ex)) from ex
-    except (urllib.error.URLError, OSError) as ex:
-        raise JudgeError(f"grader model call failed: {ex}") from ex
-    return parse_verdict(raw), model
+    only_candidate = len(candidates) == 1
+    refusals: list[str] = []
+
+    for attempt, model in enumerate(candidates):
+        try:
+            assert_separated(model, env)          # raises SeparationViolation
+        except SeparationViolation:
+            if only_candidate:
+                # A pinned model that collides is a configuration error and must be loud.
+                # I-08: the fence is never worked around, only reported.
+                raise
+            # An auto-resolved candidate should already differ from synthesis; if the
+            # fence disagrees it wins, and the next family is tried.
+            refusals.append(f"{model}: separation refused")
+            continue
+
+        try:
+            raw = llm.chat(system, user, model)
+        except urllib.error.HTTPError as ex:
+            if ex.code in llm.RETRYABLE_STATUS and attempt < len(candidates) - 1:
+                print(f"[grader] {model} unavailable ({ex.code}); trying the next family",
+                      file=sys.stderr)
+                refusals.append(f"{model}: HTTP {ex.code}")
+                continue
+            raise JudgeError(f"grader model call failed on {model}: HTTP {ex.code}") from ex
+        except llm.LLMError as ex:
+            raise JudgeError(str(ex)) from ex
+        except (urllib.error.URLError, OSError) as ex:
+            raise JudgeError(f"grader model call failed: {ex}") from ex
+
+        return parse_verdict(raw), model
+
+    raise JudgeError(
+        f"every candidate grader model was unusable ({'; '.join(refusals)}). On a free "
+        "tier this is normally upstream rate limiting and clears on its own; the run "
+        "degrades to a tier-0 eval meanwhile.")

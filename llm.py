@@ -124,9 +124,24 @@ _PROFILES = {
 }
 
 
+# OpenRouter mints keys with a fixed prefix, so a key is enough to identify the provider.
+# Inferring the URL from it means the free tier costs the operator exactly one variable
+# instead of two, and two-variable setups are how you end up with a key pointed at the
+# wrong endpoint. Only this one provider is inferred: it is the only one whose key format
+# is both documented and distinctive.
+_KEY_PREFIXES = {"sk-or-": "https://openrouter.ai/api/v1"}
+
+
 def base_url(env: dict | None = None) -> str:
     env = os.environ if env is None else env
-    return env.get("RADAR_LLM_BASE_URL", "").rstrip("/")
+    explicit = env.get("RADAR_LLM_BASE_URL", "").rstrip("/")
+    if explicit:
+        return explicit
+    key = api_key(env)
+    for prefix, url in _KEY_PREFIXES.items():
+        if key.startswith(prefix):
+            return url
+    return ""
 
 
 def api_key(env: dict | None = None) -> str:
@@ -169,42 +184,30 @@ def pinned_model(role: str, env: dict | None = None) -> str:
 _AUTO_CACHE: dict[tuple, str] = {}
 
 
-def auto_model(role: str, env: dict | None = None, timeout: int = 15) -> str:
-    """Resolve `role` from the provider's live catalogue, avoiding the other role's family.
+# How many usable models to return. On a free tier the first pick is often throttled —
+# PR #35 recorded gemma, gpt-oss and cohere all upstream-429 at once — so resolving to a
+# single id means one provider-side rate limit costs the day's judged eval. Candidates are
+# what make a free tier actually usable rather than nominally available.
+AUTO_CANDIDATES = 4
 
-    This exists because the operator should not have to know model ids — the same reason
-    the providers were unified behind one key and URL. Every `_PROFILES` entry above ships
-    `GRADER: ""`, because no provider can promise a second family will still be free and
-    un-throttled tomorrow. The result was that the grader had *no* model unless somebody
-    pinned one by hand, and for 69 days nobody did.
+# HTTP statuses where a DIFFERENT model may still work. 429 is the free tier's normal
+# weather; 402 means the model was not actually free despite its pricing; 5xx is the
+# provider's upstream. Everything else (400, 401, 403, 404) is a configuration fault that
+# the next model would hit identically, so failing over would just be four ways to lose.
+RETRYABLE_STATUS = {402, 408, 429, 500, 502, 503, 504}
 
-    Three properties make this safe rather than a guess:
 
-      * **Free only by default.** OpenRouter's free variants carry a `:free` suffix while
-        the bare id is metered, so an id that merely looks plausible is a 402. Absent
-        pricing counts as not free (`is_free`).
-      * **Family-aware.** It excludes whatever family the other role is *pinned* to, so a
-        resolved grader cannot collide with the digest's actual author. Where the other
-        role is itself unpinned there is nothing to collide with yet, and
-        `separation.assert_separated` still has the final say — this never replaces the
-        fence, it just stops handing the fence an empty string.
-      * **Never fatal.** Any failure returns "", which since ADR-0009 degrades to a
-        tier-0 eval rather than halting the run. That composition is the point: automatic
-        resolution is only responsible enough to attempt because the failure mode beneath
-        it is now graceful.
+def auto_candidates(role: str, env: dict | None = None, timeout: int = 15,
+                    limit: int = AUTO_CANDIDATES) -> list[str]:
+    """Usable models for `role`, best first, at most one per family.
 
-    Deterministic given a catalogue, so a stable provider yields a stable model, and the
-    id is recorded on every eval (`grader_model`) so drift stays auditable.
+    One per family is not an arbitrary cap: the point of the list is surviving a throttle,
+    and a provider rate-limiting `vendor/model-a:free` is likely to be rate-limiting
+    `vendor/model-b:free` too. Different families are also different upstreams.
     """
     env = os.environ if env is None else env
-    if env.get("RADAR_AUTO_MODEL", "1") == "0":
-        return ""
-    if not (base_url(env) and (env.get("RADAR_LLM_API_KEY") or env.get("OPENAI_API_KEY"))):
-        return ""
-
-    key = (role, base_url(env))
-    if key in _AUTO_CACHE:
-        return _AUTO_CACHE[key]
+    if env.get("RADAR_AUTO_MODEL", "1") == "0" or not configured(env):
+        return []
 
     avoid = {family(pinned_model(other, env)) for other in ROLES if other != role}
     avoid.discard(None)
@@ -213,29 +216,52 @@ def auto_model(role: str, env: dict | None = None, timeout: int = 15) -> str:
         models = catalog(env, timeout=timeout)
     except LLMError as ex:
         print(f"[llm] auto-resolution for {role} unavailable: {ex}", file=sys.stderr)
-        _AUTO_CACHE[key] = ""
-        return ""
+        return []
 
     allow_metered = env.get("RADAR_ALLOW_METERED", "0") == "1"
     ranked = sorted((m for m in models if allow_metered or is_free(m)),
                     key=lambda m: (-(m.get("context_length") or 0), m.get("id", "")))
+
+    out: list[str] = []
+    seen: set[str] = set()
     for m in ranked:
         mid = m.get("id", "")
         fam = family(mid)
         # An unrecognised family is skipped, not chosen. The fence would refuse it anyway
-        # (ADR-0007), and picking one here would produce a confusing refusal about a model
+        # (ADR-0007), and picking one would produce a confusing refusal about a model
         # nobody selected.
-        if fam and fam not in avoid:
-            _AUTO_CACHE[key] = mid
-            print(f"[llm] auto-resolved {role}={mid} (family: {fam}"
-                  f"{', avoiding ' + ', '.join(sorted(avoid)) if avoid else ''})",
-                  file=sys.stderr)
-            return mid
+        if not fam or fam in avoid or fam in seen:
+            continue
+        out.append(mid)
+        seen.add(fam)
+        if len(out) >= limit:
+            break
+    return out
 
-    print(f"[llm] no {'' if allow_metered else 'free '}model on {base_url(env)} outside "
-          f"{sorted(avoid) or 'any'} family — the fence needs two families", file=sys.stderr)
-    _AUTO_CACHE[key] = ""
-    return ""
+
+def auto_model(role: str, env: dict | None = None, timeout: int = 15) -> str:
+    """The single best model for `role`, or "".
+
+    A thin front on `auto_candidates` so there is exactly one resolution rule rather than
+    two that can disagree. Callers that can retry should use the list; `model_for` cannot,
+    so it takes the head.
+    """
+    env = os.environ if env is None else env
+    key = (role, base_url(env))
+    if key in _AUTO_CACHE:
+        return _AUTO_CACHE[key]
+
+    candidates = auto_candidates(role, env, timeout=timeout)
+    chosen = candidates[0] if candidates else ""
+    if chosen:
+        print(f"[llm] auto-resolved {role}={chosen} (family: {family(chosen)}"
+              f"{f'; {len(candidates) - 1} fallback(s)' if len(candidates) > 1 else ''})",
+              file=sys.stderr)
+    elif configured(env) and env.get("RADAR_AUTO_MODEL", "1") != "0":
+        print(f"[llm] no usable {role} model on {base_url(env)} — the fence needs a family "
+              "different from synthesis", file=sys.stderr)
+    _AUTO_CACHE[key] = chosen
+    return chosen
 
 
 def model_for(role: str, env: dict | None = None) -> str:
