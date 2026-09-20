@@ -11,3 +11,6 @@ Load-bearing decisions. Michael Nygard format. Immutable once accepted; a change
 | 0005 | [Artifact freshness monitoring](0005-artifact-freshness-monitoring.md) | Accepted |
 | 0006 | [Model backend after GitHub Models](0006-model-backend-after-github-models.md) | Accepted |
 | 0007 | [Grader implementation in-repo, execution external](0007-grader-implementation-in-repo.md) | Accepted |
+| 0009 | [Self-evolution: degrading evaluator, deferred ground truth, bounded autonomy](0009-self-evolving-loop.md) | Proposed |
+
+0008 is reserved by the open draft [#35](https://github.com/amaljithkuttamath/ai-radar/pull/35).
