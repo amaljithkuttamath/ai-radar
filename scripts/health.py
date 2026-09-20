@@ -498,7 +498,16 @@ def update_readme(health: dict) -> bool:
     return True
 
 
-def reason_lines(health: dict) -> list[str]:
+# The loop signal measures how long an alarm has gone unanswered, so it is *about* the
+# watchdog's own issues rather than about a pipeline artifact. It must stay out of the
+# file/close decision or it deadlocks: the signal reads `down` because an issue is open,
+# which keeps the watchdog red, which stops the close step from ever running, which keeps
+# the signal `down`. Its escalation is the red run and the status page — filing an issue
+# about an unanswered issue would be the loop reporting on its own paperwork.
+ESCALATION_EXCLUDED = ("loop",)
+
+
+def reason_lines(health: dict, exclude: tuple[str, ...] = ()) -> list[str]:
     """`<status>\\t<label>: <detail>` for every signal that is not OK, worst first.
 
     UNKNOWN is omitted wherever it appears, workflow or signal: "the API told us
@@ -508,6 +517,8 @@ def reason_lines(health: dict) -> list[str]:
     """
     rows: list[tuple[str, str]] = []
     for s in health["signals"]:
+        if s["key"] in exclude:
+            continue
         if s["status"] not in (OK, UNKNOWN):
             rows.append((s["status"], f"{s['label']}: {s['detail']}"))
     for w in health["workflows"]:
@@ -525,6 +536,10 @@ def main() -> None:
     ap.add_argument("--readme", action="store_true", help="refresh the README status block")
     ap.add_argument("--print", dest="to_stdout", action="store_true",
                     help="print JSON to stdout and write nothing")
+    ap.add_argument("--include-loop", action="store_true",
+                    help="include the self-healing-loop signal in --reasons. Off by "
+                         "default: see ESCALATION_EXCLUDED for why including it in the "
+                         "watchdog's file/close decision deadlocks.")
     ap.add_argument("--reasons", action="store_true",
                     help="print one line per non-OK signal and write nothing")
     args = ap.parse_args()
@@ -532,7 +547,8 @@ def main() -> None:
     health = build_health()
 
     if args.reasons:
-        for line in reason_lines(health):
+        for line in reason_lines(health, exclude=() if args.include_loop
+                                 else ESCALATION_EXCLUDED):
             print(line)
         return
 

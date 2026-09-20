@@ -74,14 +74,38 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
+          # Two readings, deliberately. The default excludes the self-healing-loop
+          # signal, which measures how long an alarm has gone UNANSWERED and is therefore
+          # about this workflow's own issues rather than about a pipeline artifact.
+          # Feeding it into the file/close decision deadlocks: the signal reads `down`
+          # because an issue is open, which keeps this run red, which stops the close step
+          # from ever running, which keeps the signal `down`. It would also file issues
+          # about issues.
           python3 scripts/health.py --reasons > /tmp/reasons.tsv || true
-          cat /tmp/reasons.tsv
+          python3 scripts/health.py --reasons --include-loop > /tmp/all-reasons.tsv || true
+          cat /tmp/all-reasons.tsv
 
           # Only `down` escalates. `warn` is a signal drifting toward its
           # threshold — worth seeing on the status page, not worth an issue and
           # a red run. A watchdog that fires on drift trains you to ignore it,
           # which reproduces the original failure by a different route.
           DOWN=$(grep '^down' /tmp/reasons.tsv | cut -f2- || true)
+
+          # The loop signal cannot open or close an issue, but it MUST still turn this run
+          # red — an alarm nobody has answered for six weeks is the loudest thing the repo
+          # has to say, and the status page alone is not loud enough. That was the whole
+          # finding of the second stall.
+          ALL_DOWN=$(grep '^down' /tmp/all-reasons.tsv | cut -f2- || true)
+          if [ -n "$ALL_DOWN" ]; then
+            echo "red=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "all_reason<<ALL_EOF"
+              echo "$ALL_DOWN"
+              echo "ALL_EOF"
+            } >> "$GITHUB_OUTPUT"
+          else
+            echo "red=false" >> "$GITHUB_OUTPUT"
+          fi
 
           if [ -z "$DOWN" ]; then
             echo "stale=false" >> "$GITHUB_OUTPUT"
@@ -184,11 +208,14 @@ jobs:
       # issue step above can no longer swallow the alarm: previously the aborted
       # `gh issue create` exited the job before this step, so the run went red
       # for the wrong reason and the actual staleness was never stated.
+      # Red on ANY `down`, including the loop signal the steps above deliberately ignore.
+      # Filing and closing are decisions about pipeline artifacts; going red is the alarm
+      # itself, and the alarm has to cover "nobody has answered the last one".
       - name: Fail on staleness
-        if: always() && steps.check.outputs.stale == 'true'
+        if: always() && steps.check.outputs.red == 'true'
         run: |
-          echo "::error::Pipeline artifact stale:"
-          echo "${{ steps.check.outputs.reason }}" | while read -r line; do
+          echo "::error::Pipeline health is degraded:"
+          echo "${{ steps.check.outputs.all_reason }}" | while read -r line; do
             echo "::error::  ${line}"
           done
           exit 1

@@ -550,3 +550,56 @@ def test_a_stale_unjudged_eval_stays_down_rather_than_softening_to_warn(monkeypa
 
     evals = [s for s in h.build_health()["signals"] if s["key"] == "evals"][0]
     assert evals["status"] == DOWN
+
+
+# --- the loop signal must not gate its own resolution ------------------------
+
+def test_the_loop_signal_is_excluded_from_escalation_by_default():
+    """Otherwise it deadlocks: the signal reads `down` because an alarm is open, which
+    keeps the watchdog red, which stops the close step running, which keeps it `down`.
+    Filing would also mean opening an issue about an unanswered issue."""
+    import health as h
+    health = {
+        "generated": "2026-09-20T12:00:00+00:00",
+        "signals": [
+            {"key": "loop", "label": "Self-healing loop", "status": DOWN,
+             "detail": "alarm #34 unanswered for 40d", "url": "#",
+             "age_h": 981.0, "threshold_h": 72},
+            {"key": "evals", "label": "Eval loop", "status": OK, "detail": "fresh",
+             "url": "#", "age_h": 1, "threshold_h": 48},
+        ],
+        "workflows": [],
+    }
+    assert reason_lines(health, exclude=h.ESCALATION_EXCLUDED) == []
+    # ...but it is still reportable, which is what keeps the run red and the page honest
+    assert any("Self-healing loop" in line for line in reason_lines(health))
+
+
+def test_the_loop_signal_still_renders_on_the_page():
+    """Excluding it from escalation must not hide it. The status page and README read the
+    signals directly, so the exclusion is scoped to the watchdog's decision alone."""
+    health = {
+        "generated": "2026-09-20T12:00:00+00:00",
+        "signals": [{"key": "loop", "label": "Self-healing loop", "status": DOWN,
+                     "detail": "alarm #34 unanswered for 40d", "url": "#",
+                     "age_h": 981.0, "threshold_h": 72}],
+        "workflows": [],
+    }
+    assert "Self-healing loop" in render_markdown(health)
+
+
+def test_excluding_one_signal_does_not_hide_the_others():
+    import health as h
+    health = {
+        "generated": "2026-09-20T12:00:00+00:00",
+        "signals": [
+            {"key": "loop", "label": "Self-healing loop", "status": DOWN,
+             "detail": "x", "url": "#", "age_h": 1, "threshold_h": 72},
+            {"key": "evals", "label": "Eval loop", "status": DOWN,
+             "detail": "grader last committed 68d ago", "url": "#",
+             "age_h": 1600, "threshold_h": 48},
+        ],
+        "workflows": [],
+    }
+    lines = reason_lines(health, exclude=h.ESCALATION_EXCLUDED)
+    assert len(lines) == 1 and "Eval loop" in lines[0]
