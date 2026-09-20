@@ -74,6 +74,46 @@ def test_sections_and_items_are_parsed():
     assert items[0]["title"] == "First item"
 
 
+def test_sections_are_the_primary_level_not_every_heading():
+    """Item headings are `###` under `## Main list`; counting them as sections would
+    inflate the metric and make "how organised is this" meaningless."""
+    assert "First item" not in deterministic.sections(DIGEST)
+
+
+def test_a_digest_that_uses_h3_for_sections_is_still_parsed():
+    """2026-09-02 uses `###` for every section including Main list. Hardcoding `##` read
+    that whole digest as structureless."""
+    h3 = DIGEST.replace("## What changed", "### What changed") \
+               .replace("## Main list", "### Main list") \
+               .replace("## Insights", "### Insights") \
+               .replace("### 1. First item", "#### 1. First item") \
+               .replace("### 2. Second item", "#### 2. Second item")
+    assert "Main list" in deterministic.sections(h3)
+
+
+@pytest.mark.parametrize("line,title,score", [
+    ("### 1. Numbered with score · 4/5", "Numbered with score", 4),
+    ("### Unnumbered with score · 3/5", "Unnumbered with score", 3),
+    ("### Plain heading", "Plain heading", None),
+    ("**Bold with long score · score 3/5**", "Bold with long score", 3),
+    ("1. **Numbered bold · score 2/5**", "Numbered bold", 2),
+])
+def test_every_main_list_shape_that_occurs_in_practice_is_recognised(line, title, score):
+    """Measured across all 89 committed digests. The first version of this parser knew one
+    of these five and reported the other four as an empty main list."""
+    digest = f"# T\n\n## Main list\n\n{line}\nbody\n"
+    items = deterministic.main_items(digest)
+    assert items == [{"title": title, "score": score}]
+
+
+def test_main_items_are_scoped_to_the_main_list():
+    """`###` headings appear under Story arcs too. Counting those would make an empty main
+    list undetectable — the check would pass on exactly the digests it exists to catch."""
+    digest = ("# T\n\n## Main list\n\n(nothing here)\n\n"
+              "## Story arcs\n\n### An arc · 4/5\n")
+    assert deterministic.main_items(digest) == []
+
+
 def test_degraded_marker_matches_what_synthesize_actually_writes():
     """Same pairing `tests/test_health.py` enforces: this module duplicates the banner as a
     literal so it need not import distill, and the duplicate must not drift."""
@@ -121,15 +161,66 @@ def test_a_healthy_digest_fails_nothing():
     assert _evaluate()["failed"] == []
 
 
-def test_missing_required_section_is_a_structural_failure():
-    stripped = DIGEST.replace("## Main list", "## Something else")
-    assert "structure" in _evaluate(stripped)["failed"]
+def test_a_differently_organised_digest_is_not_a_structural_failure():
+    """2026-09-16 grouped items thematically (`Benchmark`, `Cost`, `Dataset`) instead of
+    under `Main list`. That is a fine digest, and requiring section names by spelling would
+    have made it a daily false alarm — the prompt producing those names is coder-editable."""
+    renamed = DIGEST.replace("## Main list", "## Benchmark")
+    assert "structure" not in _evaluate(renamed)["failed"]
 
 
-def test_empty_main_list_fails():
-    stripped = DIGEST.replace("### 1. First item · 4/5", "").replace(
-        "### 2. Second item · 2/5", "")
-    assert "main_list_nonempty" in _evaluate(stripped)["failed"]
+def test_a_reasoning_transcript_is_a_structural_failure():
+    """The one real structural defect in 89 days, three times over: the model's working
+    shipped as the newsletter. 13KB opening "Let me analyze the task carefully", no title,
+    no headings, published."""
+    leaked = ("Let me analyze this task carefully. I need to produce a digest report.\n"
+              "Key parameters:\n- TODAY = 2026-09-18\n- WINDOW = 48h\n" * 20)
+    result = _evaluate(leaked)
+    assert "structure" in result["failed"]
+    detail = [c for c in result["checks"] if c["key"] == "structure"][0]["detail"]
+    assert "reasoning" in detail
+
+
+def test_a_truncated_digest_is_a_structural_failure():
+    """2026-09-14 shipped six lines: a title and one paragraph."""
+    assert "structure" in _evaluate("# AI Radar — 2026-09-14\n\n**Top-line.** One para.\n"
+                                    )["failed"]
+
+
+def test_bold_section_labels_count_as_structure():
+    """Some digests label sections in bold rather than with a heading."""
+    bold = "# AI Radar\n\n**Main list**\n\n- [A thing](https://example.com/a)\n"
+    assert "structure" not in _evaluate(bold)["failed"]
+
+
+def test_a_genuinely_empty_main_list_fails():
+    """The defect worth catching: the README records that ~30% of digests once shipped with
+    nothing in the main list."""
+    empty = "# T\n\n## What changed\n\nnone\n\n## Main list\n\n_Nothing today._\n"
+    assert "main_list_nonempty" in _evaluate(empty)["failed"]
+
+
+def test_an_unparsable_main_list_is_unknown_not_empty():
+    """The parser reads a prompt the coder may rewrite, so it will eventually meet a shape
+    it does not know. Calling that "empty" is how a monitor earns being ignored — which is
+    exactly what happened on this checker's first autonomous run, against issue #36."""
+    odd = ("# T\n\n## Main list\n\n"
+           "~ Some Item ~ [source](https://example.com/a)\n"
+           "~ Another ~ [source](https://example.com/b)\n")
+    result = _evaluate(odd)
+    check = [c for c in result["checks"] if c["key"] == "main_list_nonempty"][0]
+    assert check["ok"] is None
+    assert "main_list_nonempty" not in result["failed"]
+    assert "does not recognise" in check["detail"]
+
+
+def test_a_missing_main_list_section_is_not_reported_twice():
+    """`structure` already speaks for it; counting one fault twice inflates the failure
+    count and, through backlog_items, the queue."""
+    no_section = "# T\n\n## What changed\n\n- [A](https://example.com/a)\n"
+    check = [c for c in _evaluate(no_section)["checks"]
+             if c["key"] == "main_list_nonempty"][0]
+    assert check["ok"] is None
 
 
 def test_broken_links_fail_but_unreachable_ones_do_not():
@@ -365,3 +456,56 @@ def test_an_unreadable_existing_eval_does_not_block_the_write(tmp_path):
     (tmp_path / "2026-09-19.json").write_text("{ not json")
     artifacts.write_eval(_deterministic_eval(), tmp_path)
     assert json.loads((tmp_path / "2026-09-19.json").read_text())["mode"] == "deterministic"
+
+
+# --- the guard that would have prevented all of the above --------------------
+
+def _committed_digests() -> list[Path]:
+    return sorted((ROOT / "reports").glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-digest.md"))
+
+
+def test_the_checker_raises_no_false_alarms_on_any_committed_digest():
+    """Run tier 0 over every digest the repo has ever published.
+
+    This is the test that was missing. The first version of this checker was written
+    against one day's formatting, matched 34 of 176 real main-list headings, and on its
+    first autonomous run filed issue #36 claiming a perfectly good digest had "nothing to
+    say". Unit tests over a synthetic fixture cannot catch that — only the corpus can.
+
+    A digest is allowed to fail `structure` (four genuinely are: three shipped the model's
+    reasoning transcript, one shipped six lines). Nothing else may fail, because nothing
+    else is actually wrong with the other 85.
+    """
+    digests = _committed_digests()
+    assert len(digests) > 50, "corpus too small for this test to mean anything"
+
+    unexpected = []
+    for path in digests:
+        result = deterministic.evaluate(path.read_text(), age_h=1.0, broken=[],
+                                        link_count=5, tracked={})
+        for key in result["failed"]:
+            if key != "structure":
+                unexpected.append(f"{path.name}: {key}")
+    assert unexpected == []
+
+
+def test_structure_flags_only_the_genuinely_broken_digests():
+    """Pinned by name. If a future parser change flags a fifth, it is a false alarm until
+    someone opens that file and disagrees in writing."""
+    broken = {p.name for p in _committed_digests()
+              if "structure" in deterministic.evaluate(
+                  p.read_text(), age_h=1.0, broken=[], link_count=5,
+                  tracked={})["failed"]}
+    assert broken == {
+        "2026-08-14-digest.md",     # reasoning transcript shipped as the digest
+        "2026-08-25-digest.md",     # reasoning transcript shipped as the digest
+        "2026-09-18-digest.md",     # reasoning transcript shipped as the digest
+        "2026-09-14-digest.md",     # truncated: a title and one paragraph
+    }
+
+
+def test_most_committed_digests_parse_a_main_list():
+    """A coverage floor, so a regression that quietly stops recognising items shows up as
+    a number rather than as silence. `unknown` is acceptable; a collapse is not."""
+    parsed = sum(1 for p in _committed_digests() if deterministic.main_items(p.read_text()))
+    assert parsed >= 55
