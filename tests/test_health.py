@@ -12,7 +12,9 @@ Run: uv run --with pytest pytest tests/ -q
 
 from __future__ import annotations
 
+import json
 import sys
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -22,9 +24,27 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from health import (  # noqa: E402
     DOWN, OK, UNKNOWN, WARN,
-    classify_age, classify_workflow, fail_streak, git_age_hours,
-    humanise_age, reason_lines, render_markdown, worst,
+    classify_age, classify_loop, classify_workflow, fail_streak, git_age_hours,
+    humanise_age, humanise_duration, reason_lines, render_markdown, worst,
 )
+# Bound before the autouse fixture can replace the module attribute, so the two tests
+# that exercise the real Issues read get the real function rather than the stub.
+from health import fetch_open_alarms as real_fetch_open_alarms  # noqa: E402
+
+NOW = datetime(2026, 9, 20, 12, 0, tzinfo=timezone.utc)
+
+
+@pytest.fixture(autouse=True)
+def _no_network_and_full_history(monkeypatch):
+    """`build_health` has two IO edges beyond the Actions API: the Issues read behind
+    the loop signal, and the shallow-clone probe. Both are neutralised by default so
+    every pre-existing test keeps measuring what it was written to measure — and so
+    the suite's no-network rule survives the new signal. Tests that care about either
+    edge patch it back explicitly."""
+    import health as h
+
+    monkeypatch.setattr(h, "fetch_open_alarms", lambda *a, **kw: [])
+    monkeypatch.setattr(h, "is_shallow_clone", lambda: False)
 
 
 # --- age classification ----------------------------------------------------
@@ -268,3 +288,186 @@ def test_degraded_digest_warns_without_escalating(monkeypatch):
     synth = [s for s in built["signals"] if s["key"] == "synthesis"][0]
     assert synth["status"] == WARN
     assert built["status"] == WARN
+
+
+# --- the self-healing loop signal ------------------------------------------
+# Detecting a fault and closing one fail independently. Between 2026-08-10 and
+# 2026-09-19 detection worked every single day — the eval signal read DOWN, the
+# watchdog filed issue #34, the watchdog went red fifteen days running — and the
+# alarm was never answered. These tests pin the signal that would have said so.
+
+def _alarm(number: int, hours_ago: float) -> dict:
+    return {"number": number, "opened": NOW - timedelta(hours=hours_ago)}
+
+
+def test_no_open_alarms_is_ok():
+    status, detail = classify_loop([], NOW)
+    assert status == OK
+    assert detail == "no unanswered alarms"
+
+
+def test_fresh_alarm_warns_rather_than_escalating():
+    """A filed alarm is the loop working. It only becomes a fault once it outlives
+    the coder's own cadence."""
+    status, detail = classify_loop([_alarm(34, 5)], NOW)
+    assert status == WARN
+    assert "#34" in detail
+
+
+@pytest.mark.parametrize("hours,expected", [
+    (71, WARN),      # inside the 72h file cooldown: a fix may still be in flight
+    (72, WARN),      # exactly at the threshold is not yet a breach
+    (73, DOWN),
+    (24 * 40, DOWN),  # issue #34, the real one
+])
+def test_alarm_becomes_down_once_it_outlives_the_cooldown(hours, expected):
+    status, _ = classify_loop([_alarm(34, hours)], NOW)
+    assert status == expected
+
+
+def test_status_is_driven_by_the_oldest_alarm_not_the_count():
+    """Three alarms filed this morning is a busy day. One filed six weeks ago is a
+    loop that stopped turning, and only the second means the repo is not healing."""
+    busy = classify_loop([_alarm(1, 2), _alarm(2, 3), _alarm(3, 4)], NOW)
+    stalled = classify_loop([_alarm(34, 24 * 40)], NOW)
+    assert busy[0] == WARN
+    assert stalled[0] == DOWN
+
+
+def test_detail_names_the_oldest_alarm_and_the_backlog_size():
+    _, detail = classify_loop([_alarm(34, 24 * 40), _alarm(50, 1)], NOW)
+    assert "#34" in detail and "40d" in detail and "(2 open)" in detail
+
+
+def test_unreadable_issues_api_is_unknown_never_ok():
+    """`None` and `[]` mean opposite things: "we could not look" must not render as
+    "nothing is outstanding". This is the same rule the workflow signals follow."""
+    status, detail = classify_loop(None, NOW)
+    assert status == UNKNOWN
+    assert status != OK
+    assert "could not read" in detail
+
+
+def test_fetch_open_alarms_returns_none_on_network_error(monkeypatch):
+    import health as h
+
+    def boom(*a, **kw):
+        raise OSError("no network")
+
+    monkeypatch.setattr(h.urllib.request, "urlopen", boom)
+    assert real_fetch_open_alarms() is None
+
+
+class _FakeResponse:
+    """Minimal stand-in for what `urlopen` yields as a context manager."""
+
+    def __init__(self, payload):
+        self._body = json.dumps(payload).encode()
+
+    def read(self):
+        return self._body
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+
+def test_pull_requests_are_not_counted_as_unanswered_alarms(monkeypatch):
+    """The Issues API returns PRs as issues. A PR is an *answer* to an alarm, so
+    counting one would make the loop look most broken exactly when it was working.
+    Both rows below are real: issue #34 and the draft PR #35 opened in reply to it."""
+    import health as h
+
+    payload = [
+        {"number": 34, "created_at": "2026-08-10T15:56:19Z"},
+        {"number": 35, "created_at": "2026-08-11T03:42:15Z", "pull_request": {"url": "#"}},
+    ]
+    monkeypatch.setattr(h.urllib.request, "urlopen",
+                        lambda *a, **kw: _FakeResponse(payload))
+    alarms = real_fetch_open_alarms()
+    assert [a["number"] for a in alarms] == [34]
+
+
+def test_undateable_alarm_does_not_blind_the_whole_read(monkeypatch):
+    """Dropping every alarm over one malformed row would turn a parse bug into a
+    blind spot, which is the failure this signal exists to prevent."""
+    import health as h
+
+    payload = [
+        {"number": 34, "created_at": "not-a-date"},
+        {"number": 36, "created_at": "2026-09-01T00:00:00Z"},
+    ]
+    monkeypatch.setattr(h.urllib.request, "urlopen",
+                        lambda *a, **kw: _FakeResponse(payload))
+    assert [a["number"] for a in real_fetch_open_alarms()] == [36]
+
+
+def test_loop_signal_is_reported_and_escalates(monkeypatch):
+    import health as h
+
+    monkeypatch.setattr(h, "fetch_runs", lambda *a, **kw: [])
+    monkeypatch.setattr(h, "git_age_hours", lambda *a, **kw: 1.0)
+    monkeypatch.setattr(h, "fetch_open_alarms",
+                        lambda *a, **kw: [{"number": 34,
+                                           "opened": datetime.now(timezone.utc)
+                                           - timedelta(days=40)}])
+    built = h.build_health()
+    loop = [s for s in built["signals"] if s["key"] == "loop"][0]
+    assert loop["status"] == DOWN
+    assert loop["open_alarms"] == 1
+    assert built["status"] == DOWN
+    # and it reaches the watchdog, which is what makes it act rather than merely render
+    assert any("Self-healing loop" in line for line in reason_lines(built))
+
+
+# --- measured-wrong is worse than not measured -----------------------------
+
+def test_shallow_checkout_reports_unknown_not_a_wrong_age(monkeypatch):
+    """On a shallow clone every artifact older than the truncation point reports the
+    boundary commit's age, so a 69-day-dead stage reads as fresh. `fetch-depth: 0` is
+    documented in both workflows and was enforced by nothing until this check."""
+    import health as h
+
+    monkeypatch.setattr(h, "fetch_runs", lambda *a, **kw: [])
+    monkeypatch.setattr(h, "is_shallow_clone", lambda: True)
+    monkeypatch.setattr(h, "git_age_hours", lambda *a, **kw: 1.0)   # a lie the clone tells
+
+    built = h.build_health()
+    ages = {s["key"]: s for s in built["signals"] if s["key"] in ("digest", "evals")}
+    assert {s["status"] for s in ages.values()} == {UNKNOWN}
+    # the wrong number must not survive into the artifact either
+    assert all(s["age_h"] is None for s in ages.values())
+    assert all("fetch-depth" in s["detail"] for s in ages.values())
+
+
+def test_unknown_signals_do_not_fire_the_watchdog(monkeypatch):
+    """A watchdog that fires on its own blindness is a watchdog you learn to ignore.
+    Nothing is lost: every artifact that can read UNKNOWN is also measured from disk."""
+    import health as h
+
+    monkeypatch.setattr(h, "fetch_runs", lambda *a, **kw: [])
+    monkeypatch.setattr(h, "is_shallow_clone", lambda: True)
+    monkeypatch.setattr(h, "fetch_open_alarms", lambda *a, **kw: None)
+
+    built = h.build_health()
+    assert reason_lines(built) == []
+
+
+def test_unknown_signal_renders_without_crashing_the_report():
+    """UNKNOWN reaching the renderer must produce a row, not a KeyError that takes out
+    the whole report over a blind spot in one line."""
+    health = {
+        "generated": "2026-09-20T12:00:00+00:00",
+        "signals": [{"key": "loop", "label": "Self-healing loop", "status": UNKNOWN,
+                     "detail": "could not read open alarms", "url": "#",
+                     "age_h": None, "threshold_h": 72}],
+        "workflows": [],
+    }
+    assert "Self-healing loop" in render_markdown(health)
+
+
+def test_humanise_duration_has_no_ago_suffix():
+    assert humanise_duration(40 * 24) == "40d"
+    assert humanise_age(40 * 24) == "40d ago"

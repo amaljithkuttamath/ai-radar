@@ -21,6 +21,17 @@ Two rules follow from the incidents above:
     "healthy" from "this monitor stopped running". A monitor that cannot report
     its own absence manufactures confidence, which is worse than no monitor.
 
+A third rule was added on 2026-09-20, after the same outage recurred. Between
+2026-08-10 and 2026-09-19 every surface above worked perfectly: the eval signal
+read DOWN, the watchdog filed issue #34, and the watchdog went red on fifteen
+consecutive days refusing to file a duplicate. Nothing changed for forty-one
+days, because nothing measured whether the alarm was ever *answered*:
+
+  * An unanswered alarm is its own signal. Detecting a fault and filing it is
+    only half the loop; the repo is self-healing when filed faults get closed,
+    not when they get filed. So the age of the oldest open `watchdog` issue is
+    reported as a signal in its own right — see `classify_loop`.
+
 Deliberately stdlib-only, like the collectors: this runs on a schedule whose
 whole job is to still work when something else is broken, so it must not depend
 on `uv sync` resolving.
@@ -76,6 +87,17 @@ _RANK = {UNKNOWN: 0, OK: 0, WARN: 1, DOWN: 2}
 # the two surfaces can never disagree about what "stale" means.
 DIGEST_MAX_AGE_H = int(os.environ.get("DIGEST_MAX_AGE_HOURS", "48"))
 EVAL_MAX_AGE_H = int(os.environ.get("EVAL_MAX_AGE_HOURS", "48"))
+
+# How long a filed alarm may sit unanswered before the loop itself counts as broken.
+# 72h is the coder's own file cooldown (docs/self-healing.md, fence 6): an alarm that
+# has outlived it has survived at least three coder runs without producing a PR or a
+# close, which is no longer explicable as "the fix is in flight".
+LOOP_MAX_UNANSWERED_H = int(os.environ.get("LOOP_MAX_UNANSWERED_HOURS", "72"))
+
+# The label `watchdog.yml` files under. Only that workflow applies it, so an open issue
+# carrying it is unambiguously an unresolved alarm — unlike `eval`, which the grader
+# also applies to routine daily scores that are not faults.
+ALARM_LABEL = "watchdog"
 
 # Marker `distill/synthesize.py:degraded_banner` writes into a digest produced without model
 # synthesis. Duplicated as a literal rather than imported: this script is stdlib-only so it
@@ -139,29 +161,72 @@ def classify_workflow(conclusions: list[str], fatal: bool) -> tuple[str, int]:
     return (DOWN if streak > 1 else WARN), streak
 
 
+def classify_loop(alarms: list[dict] | None, now: datetime) -> tuple[str, str]:
+    """(status, detail) for the self-healing loop, from the open alarms.
+
+    `alarms` is a list of `{"number": int, "opened": datetime}`; `None` means the read
+    failed, which is UNKNOWN and never OK — the same rule the workflow signals follow.
+    An empty list is genuinely OK: the loop has nothing outstanding.
+
+    The measurement is deliberately the *oldest* alarm, not the count. Three alarms
+    filed this morning is a busy day; one alarm filed six weeks ago is a loop that has
+    stopped closing, and only the second of those means the repo cannot be called
+    self-healing.
+    """
+    if alarms is None:
+        return UNKNOWN, "could not read open alarms"
+    if not alarms:
+        return OK, "no unanswered alarms"
+
+    oldest = min(alarms, key=lambda a: a["opened"])
+    age_h = (now - oldest["opened"]).total_seconds() / 3600.0
+    suffix = "" if len(alarms) == 1 else f" ({len(alarms)} open)"
+    if age_h > LOOP_MAX_UNANSWERED_H:
+        return DOWN, f"alarm #{oldest['number']} unanswered for {humanise_duration(age_h)}{suffix}"
+    return WARN, f"alarm #{oldest['number']} open {humanise_duration(age_h)}{suffix}"
+
+
 def worst(statuses: list[str]) -> str:
     return max(statuses, key=lambda s: _RANK.get(s, 0), default=OK)
+
+
+def humanise_duration(age_h: float) -> str:
+    if age_h < 1:
+        return "<1h"
+    if age_h < 48:
+        return f"{int(age_h)}h"
+    return f"{int(age_h // 24)}d"
 
 
 def humanise_age(age_h: float | None) -> str:
     if age_h is None:
         return "never"
-    if age_h < 1:
-        return "<1h ago"
-    if age_h < 48:
-        return f"{int(age_h)}h ago"
-    return f"{int(age_h // 24)}d ago"
+    return f"{humanise_duration(age_h)} ago"
 
 
 # ---------------------------------------------------------------------------
 # IO edges
 # ---------------------------------------------------------------------------
 
+def is_shallow_clone() -> bool:
+    """True if this checkout has truncated history.
+
+    Both `health.yml` and `watchdog.yml` set `fetch-depth: 0` and say why in a comment,
+    but a comment is not a check. On a shallow clone every artifact older than the
+    truncation point reports the age of the *boundary commit*, so a 69-day-dead stage
+    reads as fresh — silently, and in the one artifact people trust to tell them
+    otherwise. Measured wrong is worse than not measured, so the callers turn this into
+    UNKNOWN rather than publishing the number.
+    """
+    return (ROOT / ".git" / "shallow").exists()
+
+
 def git_age_hours(pathspec: str, now: datetime | None = None) -> float | None:
     """Hours since the newest commit touching `pathspec`, or None if never committed.
 
     Needs full history: a shallow checkout reports the clone time instead of the
-    commit time, which would read as permanently healthy.
+    commit time, which would read as permanently healthy. `is_shallow_clone` is the
+    guard; this function assumes it has already been consulted.
     """
     try:
         out = subprocess.run(
@@ -211,22 +276,75 @@ def fetch_runs(workflow_file: str, limit: int = 15) -> list[dict]:
         return []
 
 
+def fetch_open_alarms(limit: int = 50) -> list[dict] | None:
+    """Open issues carrying `ALARM_LABEL`, as `{"number", "opened"}`, or None if the read
+    failed. `None` and `[]` mean opposite things here — "we could not look" versus "there
+    is nothing outstanding" — so they are kept distinct all the way to the status.
+
+    The Issues API returns pull requests as issues. They are filtered out: a PR is an
+    *answer* to an alarm, and counting one as an unanswered alarm would make the loop
+    look most broken exactly when it was working.
+    """
+    url = (f"{API}/repos/{REPO}/issues?state=open&labels={ALARM_LABEL}"
+           f"&per_page={limit}")
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        "User-Agent": "ai-radar-health",
+    }
+    token = os.environ.get("GITHUB_TOKEN", "")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    req = urllib.request.Request(url, headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            issues = json.loads(r.read())
+    except (urllib.error.URLError, OSError, ValueError) as ex:
+        print(f"[health] could not read open alarms: {ex}", file=sys.stderr)
+        return None
+
+    out: list[dict] = []
+    for issue in issues:
+        if not isinstance(issue, dict) or "pull_request" in issue:
+            continue
+        try:
+            opened = datetime.fromisoformat(issue["created_at"].replace("Z", "+00:00"))
+        except (KeyError, AttributeError, ValueError):
+            # An alarm we cannot date is not measurable, but dropping the whole read
+            # over one malformed row would turn a parse bug into a blind spot.
+            continue
+        out.append({"number": issue.get("number"), "opened": opened})
+    return out
+
+
 # ---------------------------------------------------------------------------
 # Assembly
 # ---------------------------------------------------------------------------
 
+def age_signal_status(age_h: float | None, threshold_h: float, shallow: bool) -> str:
+    """Age classification, or UNKNOWN when the clock it depends on is untrustworthy."""
+    return UNKNOWN if shallow else classify_age(age_h, threshold_h)
+
+
+def _age_detail(template: str, age_h: float | None, shallow: bool) -> str:
+    if shallow:
+        return "shallow checkout — commit age not measurable (needs fetch-depth: 0)"
+    return template.format(age=humanise_age(age_h))
+
+
 def build_health(now: datetime | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
     signals: list[dict] = []
+    shallow = is_shallow_clone()
 
     digest_age = git_age_hours("reports/*-digest.md", now)
     signals.append({
         "key": "digest",
         "label": "Daily digest",
-        "status": classify_age(digest_age, DIGEST_MAX_AGE_H),
-        "age_h": None if digest_age is None else round(digest_age, 1),
+        "status": age_signal_status(digest_age, DIGEST_MAX_AGE_H, shallow),
+        "age_h": None if digest_age is None or shallow else round(digest_age, 1),
         "threshold_h": DIGEST_MAX_AGE_H,
-        "detail": f"last digest committed {humanise_age(digest_age)}",
+        "detail": _age_detail("last digest committed {age}", digest_age, shallow),
         "url": f"https://github.com/{REPO}/blob/main/reports/latest.md",
     })
 
@@ -253,13 +371,36 @@ def build_health(now: datetime | None = None) -> dict:
     signals.append({
         "key": "evals",
         "label": "Eval loop",
-        "status": classify_age(eval_age, EVAL_MAX_AGE_H),
-        "age_h": None if eval_age is None else round(eval_age, 1),
+        "status": age_signal_status(eval_age, EVAL_MAX_AGE_H, shallow),
+        "age_h": None if eval_age is None or shallow else round(eval_age, 1),
         "threshold_h": EVAL_MAX_AGE_H,
         # The grader is an external scheduled task (ADR-0003) and appears in no
         # workflow run list, so artifact age is the only signal that exists here.
-        "detail": f"grader last committed {humanise_age(eval_age)}",
+        "detail": _age_detail("grader last committed {age}", eval_age, shallow),
         "url": f"https://github.com/{REPO}/blob/main/evals/latest.json",
+    })
+
+    # The loop's second half. Everything above measures whether a fault is *detected*;
+    # this measures whether a detected fault is ever *closed*. They fail independently:
+    # through August and September 2026 detection worked every single day and closure
+    # never happened once, and with only the signals above that reads as one stale
+    # artifact rather than as a loop that has stopped turning.
+    alarms = fetch_open_alarms()
+    loop_status, loop_detail = classify_loop(alarms, now)
+    # The age of the oldest open alarm, which is what the threshold is measured
+    # against. None while nothing is outstanding — a loop with no alarms has no
+    # latency, and reporting 0 would render as a signal about to breach.
+    oldest_h = (min((now - a["opened"]).total_seconds() for a in alarms) / 3600.0
+                if alarms else None)
+    signals.append({
+        "key": "loop",
+        "label": "Self-healing loop",
+        "status": loop_status,
+        "age_h": None if oldest_h is None else round(oldest_h, 1),
+        "threshold_h": LOOP_MAX_UNANSWERED_H,
+        "open_alarms": None if alarms is None else len(alarms),
+        "detail": loop_detail,
+        "url": f"https://github.com/{REPO}/issues?q=is%3Aissue+is%3Aopen+label%3A{ALARM_LABEL}",
     })
 
     workflows: list[dict] = []
@@ -296,7 +437,10 @@ def build_health(now: datetime | None = None) -> dict:
 
 
 def render_markdown(health: dict) -> str:
-    icon = {OK: "🟢", WARN: "🟡", DOWN: "🔴"}
+    # UNKNOWN is in the map deliberately. Any signal can be unreadable — `synthesis`
+    # when there is no digest, `loop` when the Issues API refuses — and a KeyError in
+    # the renderer would take out the whole report over a blind spot in one row.
+    icon = {OK: "🟢", WARN: "🟡", DOWN: "🔴", UNKNOWN: "⚪"}
     rows = [f"| signal | status | detail |", "|---|---|---|"]
     for s in health["signals"]:
         rows.append(f"| [{s['label']}]({s['url']}) | {icon[s['status']]} {s['status']} "
@@ -329,13 +473,14 @@ def update_readme(health: dict) -> bool:
 def reason_lines(health: dict) -> list[str]:
     """`<status>\\t<label>: <detail>` for every signal that is not OK, worst first.
 
-    Workflows that were never observed are omitted: "the API told us nothing" is
-    not a fault, and a watchdog that fires on it would be firing on its own
-    blindness.
+    UNKNOWN is omitted wherever it appears, workflow or signal: "the API told us
+    nothing" is not a fault, and a watchdog that fires on it would be firing on its
+    own blindness. Nothing is lost by the omission — every artifact whose reading can
+    come back UNKNOWN is also covered by a signal that measures it from disk.
     """
     rows: list[tuple[str, str]] = []
     for s in health["signals"]:
-        if s["status"] != OK:
+        if s["status"] not in (OK, UNKNOWN):
             rows.append((s["status"], f"{s['label']}: {s['detail']}"))
     for w in health["workflows"]:
         if not w["observed"] or w["status"] == OK:

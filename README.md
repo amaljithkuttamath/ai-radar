@@ -47,6 +47,8 @@ Four stages, one repo, one writer per state.
 
 Watching all four: `health.py` writes one reading to `data/health.json` daily at 16:00 UTC, after every other stage has had its slot. The status page renders it; `watchdog.yml` escalates on it. The reporter never repairs and the escalator never measures — [ADR-0005](docs/architecture/adr/0005-artifact-freshness-monitoring.md).
 
+Watching the watcher: one of those signals is the loop itself. Detecting a fault and closing one are different events, and measuring only the first is how an alarm rang unanswered for 41 days with every component reporting itself correctly. `Self-healing loop` reads the age of the oldest open `watchdog` issue — green when nothing is outstanding, red once an alarm outlives the coder's own 72h cooldown. [docs/self-healing.md](docs/self-healing.md#is-the-loop-closing) has the post-mortem.
+
 Details in [docs/architecture.md](docs/architecture.md). Decisions in [docs/architecture/adr/](docs/architecture/adr/).
 
 ## Invariants

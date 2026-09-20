@@ -198,14 +198,22 @@ function renderSignals(signals) {
   document.getElementById("signals").innerHTML = signals.map(s => {
     // Fraction of the allowed age already spent — the meter reads as "how much
     // budget is left before this breaches", not as an abstract score.
-    const pct = (s.age_h == null || !s.threshold_h)
-      ? 100 : Math.max(2, Math.min(100, (s.age_h / s.threshold_h) * 100));
+    //
+    // Not every signal has an age. `Model synthesis` is a property of the latest
+    // digest, and `Self-healing loop` has no age while nothing is outstanding. Those
+    // used to render a full bar under "threshold nullh", which reads as *breached* —
+    // the one thing a monitor must never say about a healthy signal. No age, no meter.
+    const measurable = s.age_h != null && s.threshold_h;
+    const pct = measurable
+      ? Math.max(2, Math.min(100, (s.age_h / s.threshold_h) * 100)) : 0;
+    const gauge = measurable
+      ? `<div class="detail">threshold ${esc(s.threshold_h)}h</div>
+         <div class="meter"><i style="width:${pct}%"></i></div>` : "";
     return `<div class="card card-${esc(s.status)}">
       <div class="top"><span class="dot"></span>
         <span class="name"><a href="${esc(s.url)}">${esc(s.label)}</a></span></div>
       <div class="detail">${esc(s.detail)}</div>
-      <div class="detail">threshold ${esc(s.threshold_h)}h</div>
-      <div class="meter"><i style="width:${pct}%"></i></div>
+      ${gauge}
     </div>`;
   }).join("");
 }

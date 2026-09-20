@@ -111,5 +111,59 @@ Delete the `AI Radar. Self-healing improvement loop` scheduled task (id `7c87ed6
 **Sanity check keeps failing.** Draft PR sits, no notification. Fix the coder's edit rule or close the PR.
 
 **Grader stops filing issues.** Coder finds an empty queue, exits silently. No side effects.
+This is the mode that actually happened, twice, and it is the quietest one on this list —
+see *Is the loop closing?* below for what now measures it.
 
 **Coder tries to touch a non-whitelisted path.** Aborts before git. Comments on the issue with the attempted path and files a `[manual]` backlog item.
+
+## Is the loop closing?
+
+Everything above describes a loop that turns. Nothing above can tell you whether it
+*is* turning, and between 2026-07-13 and 2026-09-20 it was not — twice, for 28 days
+and then for 41 more, while every individual component reported itself correctly.
+
+The second stall is the instructive one, because nothing was broken:
+
+| date | what happened |
+|---|---|
+| 2026-07-13 | grader writes its last `evals/latest.json`, then stops |
+| 2026-08-10 | watchdog files issue [#34](https://github.com/amaljithkuttamath/ai-radar/issues/34), *Eval loop: grader last committed 28d ago* |
+| 2026-08-11 | coder answers it with draft PR [#35](https://github.com/amaljithkuttamath/ai-radar/pull/35) |
+| 2026-08-11 → 2026-09-19 | watchdog runs 15 more times, finds #34 already open, correctly declines to file a duplicate, exits 1 |
+| 2026-09-19 | health reads `Eval loop 🔴 down · grader last committed 68d ago` |
+
+Every one of those steps is the designed behaviour. The fault is what the table does
+not contain: **no step measures the distance between rows two and five.** A detected
+fault and a closed fault are different events, and the repo only ever measured the
+first. An alarm ringing into an empty room for 41 days is indistinguishable, from
+inside the system, from an alarm that was answered.
+
+So `scripts/health.py` reports a fourth signal, `Self-healing loop`, measured from the
+age of the oldest open `watchdog` issue:
+
+- **ok** — no unanswered alarms.
+- **warn** — an alarm is open but younger than 72h. A filed alarm is the loop
+  *working*; it is not a fault while a fix may still be in flight. 72h is the coder's
+  own file cooldown (fence 6), so this is the same clock the coder reasons with.
+- **down** — an alarm has outlived that, meaning it survived at least three coder
+  runs without producing a PR or a close.
+- **unknown** — the Issues API could not be read. Never `ok`; also never escalated,
+  because a watchdog that fires on its own blindness is one you learn to ignore.
+
+Two deliberate properties:
+
+**It measures the oldest alarm, not the count.** Three alarms filed this morning is a
+busy day. One alarm filed six weeks ago is a loop that has stopped turning, and only
+the second means the repo cannot be called self-healing.
+
+**It does not try to fix anything.** The reporter/escalator split (ADR-0005) holds: the
+signal flows into `--reasons`, the watchdog escalates on it, and no code closes an
+alarm on the loop's behalf. A loop that could mark its own alarms answered would be
+measuring its own homework.
+
+### What it cannot see
+
+The grader and coder are external scheduled tasks (ADR-0003). Nothing in this repo can
+confirm those tasks still exist — only that their artifacts stopped arriving, which is
+what the `Eval loop` signal says. If both signals are red, check the two `cron_id`s in
+*Roles* before changing any code here.
