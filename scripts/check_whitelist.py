@@ -39,7 +39,29 @@ FENCE_PATHS = [
     ".github/AGENTS.md",
     "docs/operating/*",
     "scripts/check_whitelist.py",
+    # ADR-0009. The evaluator and the rubric it scores against. Before this they were
+    # merely out-of-scope, which is the weaker of the two violation classes — an agent
+    # editing the thing that grades it tripped the same check as an agent editing an
+    # unrelated file. The Darwin Godel Machine (Zhang et al. 2025) had a variant delete
+    # the marker tokens its hallucination detector searched for, scoring a perfect 2.0
+    # while solving nothing, and reported objective hacking was *more* frequent when the
+    # checking functions were visible to the agent. Visibility cannot be removed here;
+    # the edit can.
+    "grader/*",
+    "evals/rubric.md",
 ]
+
+# Invariant I-10 (ADR-0009): a metric is TRUSTED iff it is computed solely from code and
+# state outside the coder's whitelist. The Goodhart brake reads these, so if the coder can
+# move one, the brake is measuring the thing it is supposed to be independent of.
+#
+# Duplicated from `grader/trusted.py:SOURCES` rather than imported, for the same reason
+# `parse_whitelist` is hand-rolled: this script runs before any dependency install and must
+# not import the package it is policing. `test_whitelist_check.py` asserts the two agree.
+TRUSTED_SOURCES = {
+    "reobservation_rate": ["distill/track.py", "collectors/"],
+    "forecast_accuracy": ["grader/forecast.py", "distill/track.py"],
+}
 
 
 def parse_whitelist(text: str) -> dict[str, list[str]]:
@@ -80,6 +102,32 @@ def is_fence(path: str) -> bool:
     return any(fnmatch.fnmatch(path, pat) for pat in FENCE_PATHS)
 
 
+def trusted_disjointness(allowed: list[str],
+                         sources: dict[str, list[str]] | None = None) -> list[str]:
+    """Invariant I-10: no trusted metric may be derived from a path the coder can edit.
+
+    Returns one violation string per offending (metric, path) pair, empty when the rule
+    holds. This is the check that keeps the Goodhart brake honest — Gao et al. (2023) show
+    a proxy and its ground truth diverge under optimisation pressure, which is only
+    detectable while the ground truth is genuinely out of reach.
+
+    A prefix like `collectors/` is treated as a directory: it conflicts with a whitelist
+    entry if either one covers the other, because "the coder may edit `collectors/x.py`"
+    and "a trusted metric reads `collectors/`" are the same problem.
+    """
+    out = []
+    for metric, paths in (sources or TRUSTED_SOURCES).items():
+        for src in paths:
+            for pat in allowed:
+                if (fnmatch.fnmatch(src, pat) or src.startswith(pat.rstrip("*"))
+                        or pat.startswith(src)):
+                    out.append(
+                        f"I-10: trusted metric `{metric}` is derived from `{src}`, which "
+                        f"the coder whitelist permits via `{pat}`. A metric the planner "
+                        "can move is not a referee.")
+    return out
+
+
 def check(paths: list[str], allowed: list[str]) -> tuple[list[str], list[str]]:
     """Split paths into (fence violations, out-of-scope violations)."""
     fence, outside = [], []
@@ -111,6 +159,18 @@ def main() -> int:
         return 1
 
     allowed = roles[args.role]
+
+    # I-10 is a property of the whitelist itself, not of this diff, so it is checked on
+    # every invocation regardless of what changed. A whitelist that has grown to cover a
+    # trusted metric's source has silently disarmed the Goodhart brake, and the diff that
+    # did it would look perfectly in-scope.
+    if drift := trusted_disjointness(allowed):
+        print("[whitelist] FAIL  the trusted set is no longer out of reach.\n",
+              file=sys.stderr)
+        for line in drift:
+            print(f"  {line}", file=sys.stderr)
+        return 1
+
     fence, outside = check(paths, allowed)
 
     if not fence and not outside:

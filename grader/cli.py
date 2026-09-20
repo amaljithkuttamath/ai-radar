@@ -32,7 +32,8 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from grader import artifacts, attempts, deterministic, freshness, judge, links, provenance
+from grader import (artifacts, attempts, deterministic, forecast, freshness, judge,
+                    links, provenance, trusted)
 from grader.separation import SeparationViolation
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -137,6 +138,24 @@ def run(argv: list[str] | None = None) -> int:
     date = (freshness.h1_date(digest) or published).strftime("%Y-%m-%d")
     revs = provenance.revs()
 
+    # --- the deferred check ------------------------------------------------
+    # Settle the claims earlier digests made, then record today's. Runs before tier 1 and
+    # independently of it: the one ground truth here must not depend on a model being
+    # reachable, or it would go missing in exactly the weeks it is most needed.
+    tracked = deterministic.load_tracked()
+    if args.dry_run:
+        fc = {"claims_recorded": len(forecast.open_claims(digest, tracked, date)),
+              "claims_pending": None, "claims_settled": None,
+              "forecast_accuracy": forecast.accuracy(
+                  [c for c in forecast.load() if c.get("verdict")])}
+    else:
+        fc = forecast.update(digest, tracked, date)
+    tier0["metrics"]["forecast_accuracy"] = fc["forecast_accuracy"]
+    tier0["metrics"]["claims_open"] = fc["claims_recorded"]
+    print(f"[grader] forecasts: {fc['claims_recorded']} recorded · accuracy "
+          f"{'n/a' if fc['forecast_accuracy'] is None else format(fc['forecast_accuracy'], '.0%')}"
+          f" over {fc['claims_settled'] or 0} settled claims")
+
     # --- tier 1: the one model call ----------------------------------------
     # Every failure here degrades to a deterministic eval instead of halting. The three
     # causes are not equivalent to a human — no model configured, a fence refusal, a
@@ -168,16 +187,18 @@ def run(argv: list[str] | None = None) -> int:
                   file=sys.stderr)
 
     # --- assemble + validate ----------------------------------------------
+    trusted_reading = trusted.reading(tier0, fc)
     if verdict is None:
         ev = artifacts.assemble_deterministic(
             date=date, mode=artifacts.DETERMINISTIC, digest_commit_time=published,
-            age_h=age_h, broken=broken, tier0=tier0, revs=revs, reason=degraded_reason)
+            age_h=age_h, broken=broken, tier0=tier0, revs=revs,
+            reason=degraded_reason, trusted=trusted_reading)
     else:
         ev = artifacts.assemble(
             date=date, mode=args.mode, grader_model=model,
             digest_commit_time=published, age_h=age_h, verdict=verdict,
             x3=freshness.x3_score(age_h), a2_ceiling=ceiling, broken=broken,
-            tier0=tier0, revs=revs)
+            tier0=tier0, revs=revs, trusted=trusted_reading)
 
     try:
         artifacts.validate(ev)

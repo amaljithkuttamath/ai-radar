@@ -41,7 +41,8 @@ def mean1(values: list[int]) -> float:
 
 
 def _envelope(*, date: str, mode: str, grader_model: str, digest_commit_time: datetime,
-              age_h: float, broken: list[dict], tier0: dict, revs: dict | None) -> dict:
+              age_h: float, broken: list[dict], tier0: dict, revs: dict | None,
+              trusted: dict | None) -> dict:
     """The fields every eval carries regardless of whether a model was involved.
 
     `prompt_rev`/`config_rev` (ADR-0009 §2) are the git revisions of the whitelisted files
@@ -58,13 +59,18 @@ def _envelope(*, date: str, mode: str, grader_model: str, digest_commit_time: da
         "age_hours_at_eval": round(age_h, 2),
         "tier0": tier0,
         "revs": revs or {},
+        # The held-out signal the Goodhart brake reads (ADR-0009 §3). Stored per eval
+        # so the comparison is against what was true that day, not a value recomputed
+        # later from state that has since moved.
+        "trusted": trusted or {},
         "broken_urls": broken,
     }
 
 
 def assemble_deterministic(*, date: str, mode: str, digest_commit_time: datetime,
                            age_h: float, broken: list[dict], tier0: dict,
-                           revs: dict | None = None, reason: str = "") -> dict:
+                           revs: dict | None = None, reason: str = "",
+                           trusted: dict | None = None) -> dict:
     """An eval with tier 0 only — no model was available, or the fence refused it.
 
     Deliberately omits `quality`, `experience` and `overall` rather than defaulting them
@@ -74,7 +80,7 @@ def assemble_deterministic(*, date: str, mode: str, digest_commit_time: datetime
     """
     ev = _envelope(date=date, mode=mode, grader_model="", age_h=age_h,
                    digest_commit_time=digest_commit_time, broken=broken,
-                   tier0=tier0, revs=revs)
+                   tier0=tier0, revs=revs, trusted=trusted)
     ev["missed_stories"] = []
     ev["degraded_reason"] = reason
     return ev
@@ -89,7 +95,7 @@ def is_judged(ev: dict) -> bool:
 def assemble(*, date: str, mode: str, grader_model: str, digest_commit_time: datetime,
              age_h: float, verdict: dict, x3: int, a2_ceiling: int,
              broken: list[dict], tier0: dict | None = None,
-             revs: dict | None = None) -> dict:
+             revs: dict | None = None, trusted: dict | None = None) -> dict:
     """Build the eval object. Aggregates are always recomputed from the dim scores — the
     schema says they are never edited by hand, and a model asked to sum its own scores
     gets it wrong often enough to matter."""
@@ -118,7 +124,7 @@ def assemble(*, date: str, mode: str, grader_model: str, digest_commit_time: dat
 
     ev = _envelope(date=date, mode=mode, grader_model=grader_model, age_h=age_h,
                    digest_commit_time=digest_commit_time, broken=broken,
-                   tier0=tier0 or {}, revs=revs)
+                   tier0=tier0 or {}, revs=revs, trusted=trusted)
     ev.update({
         "overall": round((q_overall + x_overall) / 2, 1),
         "quality": {"overall": q_overall, **quality},
