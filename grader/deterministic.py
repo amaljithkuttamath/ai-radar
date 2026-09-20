@@ -32,6 +32,11 @@ import json
 import re
 from pathlib import Path
 
+# A sibling, and stdlib-only like this module. ADR-0007's rule is that `grader/` never
+# imports `distill/`; within the package, sharing the dead-vs-declined status table beats
+# keeping two copies of it that can disagree about what "broken" means.
+from grader.links import dead as links_dead, inconclusive as links_inconclusive
+
 ROOT = Path(__file__).resolve().parent.parent
 
 # Sections the prompt asks for. Reported as a metric, NOT required: `distill/digest.md` is
@@ -249,6 +254,42 @@ def _mean_score(items: list[dict]) -> float | None:
     return round(sum(scored) / len(scored), 2) if scored else None
 
 
+# Above this share of unverifiable links, the run has measured its own network rather than
+# the digest. Half is generous: a healthy run against a live corpus sees a handful of
+# anti-bot 403s at worst, while a blocked runner sees nearly all of them.
+BLIND_RUNNER_SHARE = 0.5
+
+
+def _links_check(broken: list[dict], link_count: int) -> Check:
+    """Did the digest cite anything that is not there?
+
+    Three states, for the same reason the main-list check has three. A dead link is the
+    digest's fault and is reported. A 403 from an anti-bot host or a blocking proxy is not
+    evidence of anything, and a run where most links come back that way has measured the
+    runner, not the digest.
+
+    This is not hypothetical. The 2026-09-19 eval in this repo was produced from a sandbox
+    whose egress proxy refuses CONNECT: six links returned 0, two returned proxy 403s, and
+    the eval recorded "2 broken links" as fact. The same digest scored zero broken links
+    from CI the next day. Measured wrong is worse than not measured.
+    """
+    gone = links_dead(broken)
+    if gone:
+        return Check("links_resolve", False,
+                     f"{len(gone)} dead link(s) ({', '.join(str(b['status']) for b in gone[:3])}), "
+                     f"first {gone[0].get('url')}")
+
+    unverified = links_inconclusive(broken)
+    if link_count and len(unverified) / link_count >= BLIND_RUNNER_SHARE:
+        return Check("links_resolve", None,
+                     f"{len(unverified)}/{link_count} links unverifiable from this runner "
+                     "(proxy, anti-bot or rate limit) — not read as broken")
+    if unverified:
+        return Check("links_resolve", True,
+                     f"no dead links; {len(unverified)}/{link_count} declined to answer")
+    return Check("links_resolve", True, "every link answered 2xx")
+
+
 def _main_list_check(digest: str, items: list[dict]) -> Check:
     """Is the main list empty — as opposed to merely unparsable?
 
@@ -302,16 +343,19 @@ def evaluate(digest: str, *, age_h: float, broken: list[dict], link_count: int,
     present = {s.casefold() for s in section_labels(digest)}
     expected_seen = [s for s in EXPECTED_SECTIONS if s.casefold() in present]
     has_title = bool(_H1.search(digest))
-    real_broken = [b for b in broken if b.get("status") != 0]
-    unreachable = [b for b in broken if b.get("status") == 0]
+    gone = links_dead(broken)
+    unverified = links_inconclusive(broken)
     reobs = reobservation_rate(tracked)
     degraded = is_degraded(digest)
 
     metrics = {
         "age_h": round(age_h, 2),
         "links_total": link_count,
-        "links_broken": len(real_broken),
-        "links_unreachable": len(unreachable),
+        # `broken` means dead, not "did not answer 2xx". The distinction is the whole of
+        # the fix: an anti-bot 403 is not a broken link, and counting it as one wrote a
+        # fabricated integrity failure into the 2026-09-19 eval.
+        "links_broken": len(gone),
+        "links_unverified": len(unverified),
         "main_items": len(items),
         # Only over items that carry a score. Most historical digests do not print one,
         # and a mean over a mix of scored and unscored items would be arithmetic on an
@@ -335,9 +379,7 @@ def evaluate(digest: str, *, age_h: float, broken: list[dict], link_count: int,
                   + ([] if len(present) >= MIN_SECTIONS else ["no section headings"]))
               + " — check whether the model's reasoning shipped instead of its output"),
         _main_list_check(digest, items),
-        Check("links_resolve", not real_broken,
-              "every link answered 2xx" if not real_broken
-              else f"{len(real_broken)} broken link(s), first {real_broken[0].get('url')}"),
+        _links_check(broken, link_count),
         Check("synthesis_present", not degraded,
               "digest carries model synthesis" if not degraded
               else "degraded run — assembled without a model"),

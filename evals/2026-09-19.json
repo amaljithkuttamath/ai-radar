@@ -6,27 +6,26 @@
   "digest_commit_time_utc": "2026-09-19T14:09:51Z",
   "age_hours_at_eval": 23.94,
   "tier0": {
-    "module_hash": "d377ff8ff237",
+    "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 23.94,
       "links_total": 8,
-      "links_broken": 2,
-      "links_unreachable": 6,
+      "links_broken": 0,
+      "links_unverified": 8,
       "main_items": 3,
       "main_score_mean": 3.0,
-      "sections_present": 7,
-      "tracked_items": 61,
-      "reobservation_rate": 0.885,
-      "traction_observations": 40,
-      "degraded_synthesis": false,
-      "forecast_accuracy": null,
-      "claims_open": 0
+      "sections_present": 10,
+      "expected_sections": 7,
+      "tracked_items": 63,
+      "reobservation_rate": 0.698,
+      "traction_observations": 39,
+      "degraded_synthesis": false
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "all required sections present"
+        "detail": "title and 10 section(s); 7/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
@@ -35,8 +34,8 @@
       },
       {
         "key": "links_resolve",
-        "ok": false,
-        "detail": "2 broken link(s), first http://arxiv.org/abs/2609.19916v1"
+        "ok": null,
+        "detail": "8/8 links unverifiable from this runner (proxy, anti-bot or rate limit) — not read as broken"
       },
       {
         "key": "synthesis_present",
@@ -46,12 +45,10 @@
       {
         "key": "traction_observed",
         "ok": true,
-        "detail": "re-observed 88% of 61 tracked items"
+        "detail": "re-observed 70% of 63 tracked items"
       }
     ],
-    "failed": [
-      "links_resolve"
-    ]
+    "failed": []
   },
   "revs": {
     "prompt_rev": null,

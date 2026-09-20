@@ -509,3 +509,74 @@ def test_most_committed_digests_parse_a_main_list():
     a number rather than as silence. `unknown` is acceptable; a collapse is not."""
     parsed = sum(1 for p in _committed_digests() if deterministic.main_items(p.read_text()))
     assert parsed >= 55
+
+
+# --- a blocked runner is not a broken digest --------------------------------
+# The 2026-09-19 eval in this repo was produced from a sandbox whose egress proxy refuses
+# CONNECT. Six links came back 0 and two came back as proxy 403s, and the eval recorded
+# "2 broken links" as fact. CI graded the same digest the next day and found zero. A false
+# integrity failure caps A2 at 2, files an issue, and lands in a permanent trend.
+
+def _links(dead=0, declined=0, unreachable=0):
+    out = [{"url": f"https://x/{i}", "status": 404} for i in range(dead)]
+    out += [{"url": f"https://y/{i}", "status": 403} for i in range(declined)]
+    out += [{"url": f"https://z/{i}", "status": 0} for i in range(unreachable)]
+    return out
+
+
+@pytest.mark.parametrize("status", [404, 410, 451])
+def test_only_gone_statuses_count_as_dead(status):
+    from grader import links
+    assert links.dead([{"url": "u", "status": status}])
+
+
+@pytest.mark.parametrize("status", [0, 401, 403, 405, 429, 500, 502, 503])
+def test_a_declined_answer_is_not_a_dead_link(status):
+    """401/403 is "we will not tell you" — anti-bot rules, a datacentre IP block, an egress
+    proxy refusing CONNECT. A proxy 403 and an origin 403 are byte-identical."""
+    from grader import links
+    assert links.dead([{"url": "u", "status": status}]) == []
+    assert links.inconclusive([{"url": "u", "status": status}])
+
+
+def test_the_a2_ceiling_caps_only_on_a_dead_link():
+    from grader import links
+    assert links.a2_ceiling(_links(dead=1)) == 2
+    assert links.a2_ceiling(_links(declined=3, unreachable=5)) == 5
+    assert links.a2_ceiling([]) == 5
+
+
+def test_a_dead_link_fails_the_check():
+    result = _evaluate(broken=_links(dead=1, declined=1), links=8)
+    assert "links_resolve" in result["failed"]
+
+
+def test_a_blocked_runner_reports_unknown_not_broken():
+    """The exact 2026-09-19 reading: six unreachable, two proxy 403s, out of eight."""
+    result = _evaluate(broken=_links(declined=2, unreachable=6), links=8)
+    check = [c for c in result["checks"] if c["key"] == "links_resolve"][0]
+    assert check["ok"] is None
+    assert "links_resolve" not in result["failed"]
+    assert "unverifiable" in check["detail"]
+
+
+def test_a_few_anti_bot_refusals_still_pass():
+    """A healthy run against a live corpus sees a handful of 403s. Failing on those would
+    make the check fire most days and teach everyone to ignore it."""
+    result = _evaluate(broken=_links(declined=1), links=8)
+    check = [c for c in result["checks"] if c["key"] == "links_resolve"][0]
+    assert check["ok"] is True
+    assert "no dead links" in check["detail"]
+
+
+def test_a_dead_link_is_reported_even_when_the_runner_is_blocked():
+    """Blindness excuses an absence of evidence, not evidence. A 404 that did arrive is
+    still a 404."""
+    result = _evaluate(broken=_links(dead=1, unreachable=7), links=8)
+    assert "links_resolve" in result["failed"]
+
+
+def test_links_broken_counts_dead_links_only():
+    metrics = _evaluate(broken=_links(dead=1, declined=2, unreachable=4), links=8)["metrics"]
+    assert metrics["links_broken"] == 1
+    assert metrics["links_unverified"] == 6

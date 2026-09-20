@@ -28,6 +28,44 @@ MAX_PARALLEL = 8
 # — a false negative that looks exactly like a real integrity failure.
 _HEAD_HOSTILE = ("arxiv.org", "huggingface.co")
 
+# Statuses that actually mean "the thing the digest cited is not there".
+#
+# This list is short on purpose, and the host table above is why: it was the first attempt
+# at the same problem, and it does not generalise — every anti-bot host would need adding,
+# forever. Classifying by *status* does generalise, because the question A2 asks is not
+# "did we get a 2xx" but "did the digest cite something that does not exist".
+#
+#   404 / 410  the resource is gone. Unambiguous, and the digest's fault.
+#   451        removed for legal reasons; the link no longer serves the content.
+#
+# Everything else non-2xx is the server declining to answer, not an answer:
+#
+#   401 / 403  "we will not tell you" — anti-bot rules, datacentre IP blocks, an egress
+#              proxy refusing CONNECT. A 403 from a blocking proxy and a 403 from an
+#              origin are byte-identical, and neither is evidence the page is gone.
+#   405        the host dislikes HEAD.
+#   429        rate limited.
+#   5xx        the origin is having a bad day, which is not the author's doing.
+#
+# Getting this wrong is expensive in a specific way: a false "broken link" caps A2 at 2,
+# files an `[eval]` issue, and puts a fabricated integrity failure into a permanent trend.
+DEAD_STATUS = frozenset({404, 410, 451})
+
+
+def dead(broken: list[dict]) -> list[dict]:
+    """The subset of `check()`'s output that is genuinely a dead link."""
+    return [b for b in broken if b.get("status") in DEAD_STATUS]
+
+
+def inconclusive(broken: list[dict]) -> list[dict]:
+    """Non-2xx answers that say nothing about whether the link is alive, status 0 included.
+
+    Reported rather than ignored: a run where most links are inconclusive has measured the
+    runner's connectivity, not the digest, and a caller that cannot tell those apart will
+    read its own network policy as an editorial failure.
+    """
+    return [b for b in broken if b.get("status") not in DEAD_STATUS]
+
 
 def extract(body: str) -> list[str]:
     """Ordered, de-duplicated markdown link targets."""
@@ -75,8 +113,11 @@ def a2_ceiling(broken: list[dict]) -> int:
     """The cap the rubric puts on A2. Applied to whatever the judge returns, so a generous
     model cannot score around a dead link.
 
-    Unreachable (status 0) does not cap. It means the runner could not get out — a network
-    policy, a proxy, an outage on this machine — and punishing the digest's author for the
-    grader's own connectivity would put noise straight into the trend line.
+    Only `DEAD_STATUS` caps. This used to cap on any non-zero status, which meant an
+    anti-bot 403, a rate limit or a blocking proxy read as an integrity failure — and on
+    2026-09-19 exactly that happened: a run from a sandboxed network recorded two proxy
+    403s as broken links and wrote them into the permanent trend. Punishing the digest's
+    author for the runner's connectivity puts noise straight into the one quality
+    dimension that is supposed to be falsifiable.
     """
-    return 2 if any(b["status"] != 0 for b in broken) else 5
+    return 2 if dead(broken) else 5
