@@ -29,12 +29,14 @@ import llm
     ("qwen3:4b", "alibaba"),
     ("sonar-pro", "perplexity"),
     ("deepseek-v3", "deepseek"),
+    ("nemotron-3-ultra-550b", "nvidia"),
     # gateway `vendor/model` form — the shape one common provider actually serves
     ("anthropic/claude-sonnet-5", "anthropic"),
     ("meta-llama/llama-3.3-70b-instruct", "meta"),
     ("google/gemini-2.5-pro", "google"),
     ("x-ai/grok-3", "xai"),
     ("mistralai/mistral-large", "mistral"),
+    ("nvidia/nemotron-3-ultra-550b-a55b:free", "nvidia"),
 ])
 def test_family_detection(model, expected):
     assert llm.family(model) == expected

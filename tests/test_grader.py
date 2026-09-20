@@ -118,6 +118,7 @@ def test_a2_ceiling_clean_when_nothing_broken():
     ("llama-3.1-70b", "meta"),
     ("qwen3:4b", "alibaba"),
     ("sonar-pro", "perplexity"),
+    ("nvidia/nemotron-3-ultra-550b-a55b:free", "nvidia"),
 ])
 def test_family_detection(model, expected):
     assert family(model) == expected
@@ -138,6 +139,22 @@ def test_same_family_is_refused():
 def test_different_family_passes():
     env = {"RADAR_MODEL_BACKEND": "anthropic", "ANTHROPIC_API_KEY": "sk-x"}
     assert assert_separated("openai/gpt-4.1", env) == "openai"
+
+
+def test_nvidia_is_a_recognised_family_on_both_sides_of_the_fence():
+    """`nvidia` now resolves like any other family, so the fence can reason about a
+    Nemotron model instead of refusing it as unrecognised. Shown here as a `nvidia`
+    grader against a `google` synthesis model; the symmetric case matters more in
+    practice, because the pipeline currently *synthesizes* on Nemotron and the fence
+    would otherwise choke on the digest's own model with 'unrecognised synthesis model'.
+
+    This does not by itself yield a runnable all-free grader: that still needs a second
+    un-throttled free family to pair against, which the provider's free tier does not
+    currently offer (see ADR-0008)."""
+    env = {"RADAR_LLM_BASE_URL": "https://openrouter.ai/api/v1",
+           "RADAR_LLM_API_KEY": "sk-x",
+           "RADAR_SYNTHESIS_MODEL": "google/gemma-4-31b-it:free"}
+    assert assert_separated("nvidia/nemotron-3-ultra-550b-a55b:free", env) == "nvidia"
 
 
 def test_unrecognised_grader_model_is_refused_not_assumed_safe():
