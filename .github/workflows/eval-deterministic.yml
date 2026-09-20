@@ -1,0 +1,126 @@
+name: eval-deterministic
+
+# Tier 0 of the eval cascade, in CI — ADR-0009 §1.
+#
+# Why this does not contradict ADR-0003. That ADR keeps the eval loop's execution outside
+# this repo so a bug in the pipeline cannot suppress its own criticism, and that reasoning
+# is exactly preserved here, because it applies to *judgement*. What runs in this job is
+# arithmetic over committed artifacts: link statuses, section structure, item counts, the
+# re-observation rate read from `data/tracked.json`. `grader/deterministic.py` imports
+# nothing from `distill` (ADR-0007's rule, tested), so a distill bug cannot reach into it
+# and soften a number. The part that genuinely needs to be independent — a model of a
+# different family reading the prose — stays outside, on its own credential and its own
+# clock, unchanged.
+#
+# What this buys. The external scheduled task stopped twice and nobody could see it: a
+# deleted task and a blocked task produce the identical observable. A workflow cannot
+# silently cease to exist. Its absence is a missing run in a list, its failure is a red
+# badge, and `health.py` already watches both. The loop's deterministic half now has a
+# producer that is *visible by construction*.
+#
+# Two writers, one path, no lock: `artifacts.write_eval` refuses to replace a judged eval
+# with a deterministic one, so this job and the external grader cannot race destructively
+# whatever order they land in. Information only increases.
+
+on:
+  # Reactive rather than scheduled, per ADR-0002: grade the digest that was just published,
+  # not whatever exists at a fixed hour. A digest and its eval stay adjacent in history.
+  workflow_run:
+    workflows: ["distill"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write        # commits evals/ only; see `paths` discipline in ADR-0001
+  issues: write          # files the [eval] issue when a tier-0 check fails
+
+concurrency:
+  group: eval-deterministic
+  cancel-in-progress: false
+
+jobs:
+  tier0:
+    runs-on: ubuntu-latest
+    # A failed distill publishes no digest, and grading an absent digest is the grader's
+    # opinion of a gap — which `grader.md` forbids and `watchdog.yml` already detects.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Freshness is measured from commit times (ADR-0005), and `provenance.py` reads
+          # the revisions of the tunable files. Both need real history; on a shallow clone
+          # every artifact reports the age of the truncation point.
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # No `uv sync`. Tier 0 is stdlib-only on purpose: this job's whole value is still
+      # working when the pipeline's dependencies are the thing that is broken.
+      - name: Run tier 0
+        id: grade
+        run: python -m grader --tier0-only --mode deterministic
+
+      - name: Commit eval
+        run: |
+          set -euo pipefail
+          git config user.name  "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          # Disjoint paths, per ADR-0001 / invariant I-01: this job writes evals/ and
+          # nothing else, so it can never collide with collect or distill.
+          git add evals/
+          if git diff --cached --quiet; then
+            echo "No eval change to commit."
+            exit 0
+          fi
+          git commit -m "evals: deterministic tier-0 reading $(date -u +%Y-%m-%dT%H:%M)"
+          # The digest commit may have landed between checkout and now.
+          for attempt in 1 2 3 4; do
+            if git push; then exit 0; fi
+            git pull --rebase --autostash origin main || true
+            sleep $((attempt * 2))
+          done
+          echo "::error::could not push the eval after 4 attempts"
+          exit 1
+
+      - name: File issue on a tier-0 failure
+        if: steps.grade.outputs.issue_reason != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REASON: ${{ steps.grade.outputs.issue_reason }}
+        run: |
+          set -euo pipefail
+          # Created before use, idempotently. `gh issue create --label` hard-fails on an
+          # unknown label, which is how watchdog.yml filed nothing for a month.
+          gh label create eval \
+            --description "Filed by the eval loop" --color 0E8A16 --force
+
+          # One open issue at a time, matching grader.md's 72h throttle in spirit: the
+          # coder reads a queue, and a queue of duplicates is not more information.
+          EXISTING=$(gh issue list --label eval --state open \
+                       --search "in:title tier-0" --json number --jq '.[0].number // empty')
+          if [ -n "$EXISTING" ]; then
+            echo "Issue #${EXISTING} already open; not filing a duplicate."
+            exit 0
+          fi
+
+          gh issue create \
+            --title "[eval] tier-0 check failed — ${REASON}" \
+            --label eval \
+            --body "$(printf '%s\n' \
+              "A deterministic check failed on the latest digest." \
+              "" \
+              "**Reason.** ${REASON}" \
+              "" \
+              "This was found without a model: the finding is an observation, not a" \
+              "judgement, so it is not a matter of opinion and does not need one." \
+              "" \
+              "Full reading: [\`evals/latest.json\`](../blob/main/evals/latest.json) →" \
+              "\`tier0.checks\`. Run history: [\`evals/attempts.jsonl\`](../blob/main/evals/attempts.jsonl)." \
+              "" \
+              "---" \
+              "_Generated by [Claude Code](https://claude.ai/code)_")"

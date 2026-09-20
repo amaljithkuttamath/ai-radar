@@ -272,7 +272,10 @@ def _assembled(**over):
     kw = dict(
         date="2026-08-09", mode="normal", grader_model="openai/gpt-4.1",
         digest_commit_time=datetime(2026, 8, 9, 11, 30, tzinfo=UTC),
-        age_h=2.5, verdict=_verdict(), x3=5, a2_ceiling=5, broken=[])
+        age_h=2.5, verdict=_verdict(), x3=5, a2_ceiling=5, broken=[],
+        # I-11 (ADR-0009): every eval records which version of the deterministic checker
+        # produced it, judged evals included — tier 0 runs on every path.
+        tier0={"module_hash": "abc123abc123", "metrics": {}, "checks": [], "failed": []})
     kw.update(over)
     return artifacts.assemble(**kw)
 

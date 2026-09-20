@@ -11,10 +11,16 @@ prose each morning. What moved in-repo is the implementation, which was the part
 not be versioned, tested, or reviewed — and which nobody noticed had stopped running for
 26 days.
 
+Since ADR-0009 the scoring runs as a cascade. Tier 0 is deterministic, model-free and always
+runs; tier 1 is the single model call. **Losing tier 1 degrades the eval's resolution, never
+its existence.** Before that change, an unset `RADAR_GRADER_MODEL` produced no eval at all,
+and so no issue, and so an empty coder queue — for 69 days, twice.
+
 Exit codes:
-  0  eval written, or the digest was stale and the run ended silently as specified
-  1  escalation: a CORE input missing, an unbelievable age, a separation violation,
-     a malformed verdict, or a schema failure
+  0  eval written (judged or deterministic), or the digest was stale and the run ended
+     silently as specified
+  1  escalation: a CORE input missing, an unbelievable age, or a schema failure. A missing
+     model is NOT an escalation any more — it is a deterministic eval.
 """
 
 from __future__ import annotations
@@ -26,7 +32,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from grader import artifacts, freshness, judge, links
+from grader import artifacts, attempts, deterministic, freshness, judge, links, provenance
 from grader.separation import SeparationViolation
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -57,7 +63,24 @@ def run(argv: list[str] | None = None) -> int:
                          "eval-schema.md bounds age_hours_at_eval to [-12, 72], so no "
                          "valid eval exists for a digest older than that and the run "
                          "escalates instead. Use --mode recovery with this.")
+    ap.add_argument("--tier0-only", action="store_true",
+                    help="skip the model call entirely and write a deterministic eval. "
+                         "What `eval-deterministic.yml` runs in CI, and what a pre-merge "
+                         "shadow eval uses.")
     args = ap.parse_args(argv)
+
+    def _log_attempt(**kw) -> None:
+        """Record the attempt before returning, on every path except --dry-run.
+
+        Wrapped so no early return can forget it: an attempt log with holes in it is worse
+        than none, because the holes look like downtime.
+        """
+        if args.dry_run:
+            return
+        try:
+            attempts.append(attempts.record(mode=args.mode, **kw))
+        except (OSError, ValueError) as ex:      # never fail a run over its own logging
+            print(f"[grader] could not record attempt: {ex}", file=sys.stderr)
 
     reports = ROOT / "reports"
     digest_path = reports / "latest.md"
@@ -68,6 +91,7 @@ def run(argv: list[str] | None = None) -> int:
         dated = sorted(reports.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-digest.md"))
         if not dated:
             print("[grader] ESCALATE: no digest found in reports/", file=sys.stderr)
+            _log_attempt(outcome="escalated", reason="no digest found in reports/")
             return 1
         digest_path = dated[-1]
         digest = _read(digest_path) or ""
@@ -75,6 +99,7 @@ def run(argv: list[str] | None = None) -> int:
 
     if not (ROOT / "data" / "state.json").exists():
         print("[grader] ESCALATE: data/state.json is missing (CORE input)", file=sys.stderr)
+        _log_attempt(outcome="escalated", reason="data/state.json missing (CORE input)")
         return 1
 
     # --- freshness ---------------------------------------------------------
@@ -82,6 +107,7 @@ def run(argv: list[str] | None = None) -> int:
         published, age_h = freshness.resolve(digest, root=ROOT)
     except freshness.Escalate as ex:
         print(f"[grader] ESCALATE: {ex}", file=sys.stderr)
+        _log_attempt(outcome="escalated", reason=str(ex))
         return 1
 
     print(f"[grader] digest published {published:%Y-%m-%d %H:%M}Z, age {age_h}h")
@@ -92,6 +118,8 @@ def run(argv: list[str] | None = None) -> int:
         # opinion of an absence into the trend. Detecting the absence is watchdog.yml's job.
         print(f"[grader] digest is stale ({age_h}h > {freshness.STALE_AFTER_H}h); "
               "ending silently without writing an eval.")
+        _log_attempt(outcome="stale", reason=f"digest age {age_h}h exceeds "
+                                             f"{freshness.STALE_AFTER_H}h")
         return 0
 
     # --- enrich: observed link statuses before any model sees anything ------
@@ -102,53 +130,93 @@ def run(argv: list[str] | None = None) -> int:
     print(f"[grader] {len(urls)} links checked · {len(broken) - unreachable} broken · "
           f"{unreachable} unreachable from this runner · A2 ceiling {ceiling}")
 
-    # --- score -------------------------------------------------------------
-    rubric = _read(ROOT / "evals" / "rubric.md")
-    if rubric is None:
-        # OPTIONAL per grader.md: the contract embeds fallback anchors precisely so a
-        # missing rubric degrades instead of halting.
-        rubric = "(rubric.md unavailable — use the anchors embedded in the instructions)"
-        print("[grader] rubric.md missing; using embedded anchors", file=sys.stderr)
+    # --- tier 0: deterministic, model-free, always runs ---------------------
+    tier0 = deterministic.evaluate(digest, age_h=age_h, broken=broken, link_count=len(urls))
+    print(deterministic.summary_line(tier0))
 
-    try:
-        verdict, model = judge.judge(
-            digest, rubric, age_h, broken,
-            previous_digest(reports, digest_path))
-    except SeparationViolation as ex:
-        print(f"[grader] ESCALATE: model separation violated.\n  {ex}", file=sys.stderr)
-        return 1
-    except judge.JudgeError as ex:
-        print(f"[grader] ESCALATE: {ex}", file=sys.stderr)
-        return 1
+    date = (freshness.h1_date(digest) or published).strftime("%Y-%m-%d")
+    revs = provenance.revs()
+
+    # --- tier 1: the one model call ----------------------------------------
+    # Every failure here degrades to a deterministic eval instead of halting. The three
+    # causes are not equivalent to a human — no model configured, a fence refusal, a
+    # malformed verdict — so the reason is carried into the eval and the attempt log
+    # rather than collapsed into "the grader didn't run".
+    verdict, model, degraded_reason = None, "", ""
+    if args.tier0_only:
+        degraded_reason = "--tier0-only: model call skipped by request"
+    else:
+        rubric = _read(ROOT / "evals" / "rubric.md")
+        if rubric is None:
+            # OPTIONAL per grader.md: the contract embeds fallback anchors precisely so a
+            # missing rubric degrades instead of halting.
+            rubric = "(rubric.md unavailable — use the anchors embedded in the instructions)"
+            print("[grader] rubric.md missing; using embedded anchors", file=sys.stderr)
+        try:
+            verdict, model = judge.judge(
+                digest, rubric, age_h, broken,
+                previous_digest(reports, digest_path))
+        except SeparationViolation as ex:
+            # Still not an escalation, and emphatically not a reason to grade anyway: the
+            # fence refusing is the fence working (I-08). Panickssery et al. (2024) measured
+            # what a same-family judge does to its own family's output.
+            degraded_reason = f"separation fence refused: {ex}"
+            print(f"[grader] DEGRADED: {degraded_reason}", file=sys.stderr)
+        except judge.JudgeError as ex:
+            degraded_reason = str(ex)
+            print(f"[grader] DEGRADED: tier 1 unavailable — {degraded_reason}",
+                  file=sys.stderr)
 
     # --- assemble + validate ----------------------------------------------
-    date = (freshness.h1_date(digest) or published).strftime("%Y-%m-%d")
-    ev = artifacts.assemble(
-        date=date, mode=args.mode, grader_model=model,
-        digest_commit_time=published, age_h=age_h, verdict=verdict,
-        x3=freshness.x3_score(age_h), a2_ceiling=ceiling, broken=broken)
+    if verdict is None:
+        ev = artifacts.assemble_deterministic(
+            date=date, mode=artifacts.DETERMINISTIC, digest_commit_time=published,
+            age_h=age_h, broken=broken, tier0=tier0, revs=revs, reason=degraded_reason)
+    else:
+        ev = artifacts.assemble(
+            date=date, mode=args.mode, grader_model=model,
+            digest_commit_time=published, age_h=age_h, verdict=verdict,
+            x3=freshness.x3_score(age_h), a2_ceiling=ceiling, broken=broken,
+            tier0=tier0, revs=revs)
 
     try:
         artifacts.validate(ev)
     except artifacts.SchemaError as ex:
         print(f"[grader] ESCALATE: assembled eval fails the schema: {ex}", file=sys.stderr)
+        _log_attempt(outcome="escalated", reason=f"schema: {ex}", tier0=tier0)
         return 1
 
-    print(f"[grader] quality={ev['quality']['overall']} "
-          f"experience={ev['experience']['overall']} overall={ev['overall']} "
-          f"(grader_model={model})")
+    if artifacts.is_judged(ev):
+        print(f"[grader] quality={ev['quality']['overall']} "
+              f"experience={ev['experience']['overall']} overall={ev['overall']} "
+              f"(grader_model={model})")
+    else:
+        print(f"[grader] deterministic eval (no model judgement): {degraded_reason}")
 
     if args.dry_run:
         print(json.dumps(ev, indent=2, ensure_ascii=False))
         return 0
 
     # --- write -------------------------------------------------------------
-    written = artifacts.write_eval(ev)
+    try:
+        written = artifacts.write_eval(ev)
+    except artifacts.Downgrade as ex:
+        # Not an error: the judged runner already landed today. Exit 0 having logged the
+        # attempt, so the CI tier-0 job stays green and the trend keeps the better eval.
+        print(f"[grader] {ex}")
+        _log_attempt(outcome="deterministic", reason=f"ratchet: {ex}", tier0=tier0)
+        return 0
     history = artifacts.load_history()
     (ROOT / "evals" / "README.md").write_text(artifacts.render_readme(history))
     appended = artifacts.append_backlog(artifacts.backlog_items(ev, date))
     print(f"[grader] wrote {', '.join(p.name for p in written)}, README.md"
           f"{', backlog.md' if appended else ''}")
+
+    _log_attempt(outcome="judged" if artifacts.is_judged(ev) else "deterministic",
+                 reason=degraded_reason, grader_model=model, tier0=tier0)
+    prior = attempts.load()
+    if prior:
+        print(f"[grader] {attempts.summary(prior)}")
 
     reason = artifacts.should_file_issue(ev, history)
     if reason:
