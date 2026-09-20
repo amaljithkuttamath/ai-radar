@@ -300,7 +300,17 @@ def test_revs_name_the_tunable_files_only():
     assert "reports/latest.md" not in revs["files"]
 
 
-def test_revs_survive_an_untracked_path():
+def test_a_shallow_clone_reports_no_revisions_rather_than_identical_ones(monkeypatch):
+    """On a shallow clone every path resolves to the boundary commit, so no transition is
+    ever visible and the archive would be permanently empty while looking like a quiet
+    period — this ADR's own failure mode, inside the machinery built to prevent it."""
+    monkeypatch.setattr(provenance, "is_shallow", lambda: True)
+    got = provenance.revs()
+    assert got["files"] == {} and got["shallow"] is True
+
+
+def test_revs_survive_an_untracked_path(monkeypatch):
+    monkeypatch.setattr(provenance, "is_shallow", lambda: False)
     revs = provenance.revs(paths=("no/such/file.yaml",))
     assert revs == {"prompt_rev": None, "config_rev": None, "files": {}}
 

@@ -49,6 +49,21 @@ def file_rev(path: str) -> str | None:
     return _git("log", "-1", "--format=%h", "--", path)
 
 
+def is_shallow() -> bool:
+    """True if this checkout has truncated history.
+
+    On a shallow clone `git log -1 -- <path>` returns the *boundary* commit for every path
+    older than the truncation, so every tunable file reports the same revision and no
+    transition is ever visible. The archive would then be permanently empty and would look
+    exactly like a period with no changes — which is the failure mode this ADR exists to
+    remove, reappearing inside the machinery meant to prevent it.
+
+    `scripts/health.py` carries the same guard for the same reason. Both workflows set
+    `fetch-depth: 0`; neither of them can be trusted to keep doing so.
+    """
+    return (ROOT / ".git" / "shallow").exists()
+
+
 def revs(paths: tuple[str, ...] = TUNABLE) -> dict:
     """`{"prompt_rev", "config_rev", "files": {path: sha}}`.
 
@@ -56,6 +71,10 @@ def revs(paths: tuple[str, ...] = TUNABLE) -> dict:
     a config change have different mechanisms and are worth separating. `files` keeps the
     per-path detail so an attribution can be narrowed after the fact.
     """
+    if is_shallow():
+        # Measured wrong is worse than not measured: an empty `files` map yields no change
+        # events, which is the honest answer, rather than one bogus transition per file.
+        return {"prompt_rev": None, "config_rev": None, "files": {}, "shallow": True}
     files = {p: file_rev(p) for p in paths}
     prompt = [v for k, v in files.items() if k.startswith("distill/") and v]
     config = [v for k, v in files.items() if k.startswith("config/") and v]

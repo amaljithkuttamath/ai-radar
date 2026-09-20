@@ -29,7 +29,10 @@ from health import (  # noqa: E402
 )
 # Bound before the autouse fixture can replace the module attribute, so the two tests
 # that exercise the real Issues read get the real function rather than the stub.
-from health import fetch_open_alarms as real_fetch_open_alarms  # noqa: E402
+from health import (  # noqa: E402
+    fetch_open_alarms as real_fetch_open_alarms,
+    latest_eval_is_unjudged as real_latest_eval_is_unjudged,
+)
 
 NOW = datetime(2026, 9, 20, 12, 0, tzinfo=timezone.utc)
 
@@ -45,6 +48,10 @@ def _no_network_and_full_history(monkeypatch):
 
     monkeypatch.setattr(h, "fetch_open_alarms", lambda *a, **kw: [])
     monkeypatch.setattr(h, "is_shallow_clone", lambda: False)
+    # Reads the repo's real `evals/latest.json`, so without this the suite's result
+    # depends on whether a grader run happened to leave a deterministic eval there —
+    # which is exactly what it did, once. Tests must not read live pipeline state.
+    monkeypatch.setattr(h, "latest_eval_is_unjudged", lambda *a, **kw: False)
 
 
 # --- age classification ----------------------------------------------------
@@ -482,21 +489,21 @@ def test_a_deterministic_latest_eval_is_detected(tmp_path):
     import health as h
     p = tmp_path / "latest.json"
     p.write_text('{"mode": "deterministic", "date": "2026-09-19"}')
-    assert h.latest_eval_is_unjudged(p) is True
+    assert real_latest_eval_is_unjudged(p) is True
 
 
 def test_a_judged_latest_eval_is_not_flagged(tmp_path):
     import health as h
     p = tmp_path / "latest.json"
     p.write_text('{"mode": "normal", "overall": 4.0}')
-    assert h.latest_eval_is_unjudged(p) is False
+    assert real_latest_eval_is_unjudged(p) is False
 
 
 def test_a_missing_eval_is_the_freshness_signals_finding_not_this_one(tmp_path):
     """Reporting it here as well would double-count one fault."""
     import health as h
-    assert h.latest_eval_is_unjudged(tmp_path / "nope.json") is False
-    assert h.latest_eval_is_unjudged(tmp_path) is False
+    assert real_latest_eval_is_unjudged(tmp_path / "nope.json") is False
+    assert real_latest_eval_is_unjudged(tmp_path) is False
 
 
 def test_the_mode_string_matches_what_the_grader_actually_writes():
