@@ -1,171 +1,35 @@
 {
-"arxiv:2609.08084": {
-"first_seen": "2026-09-09",
-"mag": 7.5964,
-"mag_history": [
-7.5176,
-7.5571,
-7.5394,
-7.5453,
-7.5479,
-7.5877,
-7.5964
-],
-"score": 3,
-"streak": 11,
-"title": "Marigold V2: Revisiting Diffusion Transformers for Monocular Depth Estimation",
-"url": "https://arxiv.org/abs/2609.08084"
-},
-"arxiv:2609.08183": {
-"first_seen": "2026-09-09",
-"mag": 8.4873,
-"mag_history": [
-9.0177,
-9.0971,
-8.3047,
-8.3565,
-8.4012,
-8.4474,
-8.4873
-],
-"score": 3,
-"streak": 11,
-"title": "NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness",
-"url": "https://arxiv.org/abs/2609.08183"
-},
-"arxiv:2609.08345": {
-"first_seen": "2026-09-09",
-"mag": 4.377,
-"mag_history": [
-4.4094,
-4.4094,
-4.3293,
-4.3293,
-4.3293,
-4.377,
-4.377
-],
-"score": 2,
-"streak": 11,
-"title": "CoVeR: Coverage-Based Token Pruning for Multi-View 3D Reasoning in VLMs",
-"url": "https://arxiv.org/abs/2609.08345"
-},
-"arxiv:2609.08368": {
-"first_seen": "2026-09-09",
-"mag": 8.0586,
-"mag_history": [
-8.0436,
-8.0467,
-8.0358,
-8.0372,
-8.0382,
-8.0571,
-8.0586
-],
-"score": 3,
-"streak": 11,
-"title": "Miles v0.1: Production-Level Post-Training",
-"url": "https://arxiv.org/abs/2609.08368"
-},
-"arxiv:2609.08798": {
-"first_seen": "2026-09-09",
-"mag": 5.4342,
-"mag_history": [
-5.4498,
-5.4498,
-5.3297,
-5.3297,
-5.3964,
-5.4342,
-5.4342
-],
-"score": 3,
-"streak": 11,
-"title": "Eliciting Weak-to-Strong Generalization with On-Policy Reverse Distillation",
-"url": "https://arxiv.org/abs/2609.08798"
-},
-"arxiv:2609.08936": {
-"first_seen": "2026-09-09",
-"mag": 8.6515,
-"mag_history": [
-8.8152,
-8.8577,
-8.5909,
-8.6013,
-8.6135,
-8.6403,
-8.6515
-],
-"score": 3,
-"streak": 11,
-"title": "AuK Technical Report: An Open-Source Foundational Model for Speech Generation and Editing",
-"url": "https://arxiv.org/abs/2609.08936"
-},
-"arxiv:2609.08977": {
-"first_seen": "2026-09-09",
-"mag": 7.3905,
-"mag_history": [
-7.6319,
-7.6759,
-7.3499,
-7.3535,
-7.3678,
-7.3836,
-7.3905
-],
-"score": 3,
-"streak": 11,
-"title": "Omni Interaction Agent Technical Report",
-"url": "https://arxiv.org/abs/2609.08977"
-},
-"arxiv:2609.09123": {
-"first_seen": "2026-09-09",
-"mag": 6.1316,
-"mag_history": [
-6.1277,
-6.1528,
-6.0873,
-6.0873,
-6.0945,
-6.1316,
-6.1316
-],
-"score": 3,
-"streak": 11,
-"title": "Mask Forcing: Improving Autoregressive Video Diffusion Distillation via Dual-Noise Masking Rollout",
-"url": "https://arxiv.org/abs/2609.09123"
-},
 "arxiv:2609.14858": {
 "first_seen": "2026-09-15",
-"mag": 8.9831,
+"mag": 9.0304,
 "mag_history": [
-5.5334,
 8.1905,
 8.6798,
 8.798,
 8.8884,
 8.9515,
-8.9831
+8.9831,
+9.0304
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "Dream-RSI: Recursive Self-Improvement through Evolving Worlds",
 "url": "https://arxiv.org/abs/2609.14858"
 },
 "arxiv:2609.14973": {
 "first_seen": "2026-09-15",
-"mag": 7.0508,
+"mag": 7.0566,
 "mag_history": [
-5.1299,
 7.0101,
 7.0213,
 7.0213,
 7.045,
 7.045,
-7.0508
+7.0508,
+7.0566
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "PhysBrain 1.5: From Vision-Language Models to Physical Foundation Models",
 "url": "https://arxiv.org/abs/2609.14973"
 },
@@ -175,141 +39,145 @@
 "mag_history": [
 2.8332,
 2.8332,
-2.8332,
 3.0445,
+3.1355,
 3.1355,
 3.1355,
 3.1355
 ],
 "score": 2,
-"streak": 7,
+"streak": 8,
 "title": "Omni-Streaming Thinking",
 "url": "https://arxiv.org/abs/2609.15128"
 },
 "arxiv:2609.15364": {
 "first_seen": "2026-09-15",
-"mag": 7.3877,
+"mag": 7.4592,
 "mag_history": [
-3.1781,
 6.9825,
 7.2185,
 7.2393,
 7.3166,
 7.3435,
-7.3877
+7.3877,
+7.4592
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments",
 "url": "https://arxiv.org/abs/2609.15364"
 },
 "arxiv:2609.15478": {
 "first_seen": "2026-09-15",
-"mag": 5.6269,
+"mag": 5.6796,
 "mag_history": [
-3.091,
 4.9557,
 5.1439,
 5.2141,
 5.4525,
 5.5818,
-5.6269
+5.6269,
+5.6796
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "BVB: Benchmarking Agentic Video Understanding via Programmatic Reconstruction in Blender",
 "url": "https://arxiv.org/abs/2609.15478"
 },
 "arxiv:2609.15779": {
 "first_seen": "2026-09-21",
-"mag": 4.852,
+"mag": 5.0106,
 "mag_history": [
 4.1897,
-4.852
+4.852,
+5.0106
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "EvoOntology: A Self-Evolving Ontology Layer for Data Agents",
 "url": "http://arxiv.org/abs/2609.15779v1"
 },
 "arxiv:2609.15818": {
 "first_seen": "2026-09-15",
-"mag": 9.1893,
+"mag": 9.2112,
 "mag_history": [
-5.8972,
 9.0504,
 9.0935,
 9.125,
 9.1571,
 9.181,
-9.1893
+9.1893,
+9.2112
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "Atria Dawn: The Dawn of Agentic Superintelligence",
 "url": "https://arxiv.org/abs/2609.15818"
 },
 "arxiv:2609.15863": {
 "first_seen": "2026-09-15",
-"mag": 6.7107,
+"mag": 6.7466,
 "mag_history": [
-3.7842,
 6.3316,
 6.5606,
 6.5877,
 6.6505,
 6.7013,
-6.7107
+6.7107,
+6.7466
 ],
 "score": 4,
-"streak": 7,
+"streak": 8,
 "title": "LynnReal-Omni: Native multi-modal Video Generation for Agentic Visual Workflows",
 "url": "https://arxiv.org/abs/2609.15863"
 },
 "arxiv:2609.16679": {
 "first_seen": "2026-09-16",
-"mag": 7.707,
+"mag": 7.7581,
 "mag_history": [
 4.6444,
 7.324,
 7.4694,
 7.627,
 7.6872,
-7.707
+7.707,
+7.7581
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "AI for Games in the Foundation Model Era",
 "url": "https://arxiv.org/abs/2609.16679"
 },
 "arxiv:2609.17523": {
 "first_seen": "2026-09-16",
-"mag": 5.6434,
+"mag": 5.9653,
 "mag_history": [
 2.8904,
 2.8904,
 5.383,
 5.4774,
 5.6373,
-5.6434
+5.6434,
+5.9653
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "ScienceBuddy: Recursive-in-Recursive Self-Improvement for Interactive Scientific Agents",
 "url": "https://arxiv.org/abs/2609.17523"
 },
 "arxiv:2609.19745": {
 "first_seen": "2026-09-18",
-"mag": 4.5068,
+"mag": 4.7106,
 "mag_history": [
 1.3863,
 3.5773,
 4.1369,
 4.2281,
-4.5068
+4.5068,
+4.7106
 ],
-"score": 2,
-"streak": 5,
+"score": 3,
+"streak": 6,
 "title": "Region-Level Policy Optimization for Fine-grained MLLM Perception",
 "url": "https://arxiv.org/abs/2609.19745"
 },
@@ -321,659 +189,770 @@
 0.0,
 0.0,
 0.0,
+0.0,
 0.0
 ],
 "score": 2,
-"streak": 5,
+"streak": 6,
 "title": "KoNeoBench: A Curated Evaluation Dataset for LLM Understanding of Korean Neologisms",
 "url": "http://arxiv.org/abs/2609.19916v1"
 },
 "arxiv:2609.19969": {
 "first_seen": "2026-09-18",
-"mag": 5.0876,
+"mag": 5.1818,
 "mag_history": [
 3.9318,
 4.4659,
 4.852,
 4.9836,
-5.0876
+5.0876,
+5.1818
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
 "url": "https://arxiv.org/abs/2609.19969"
 },
 "arxiv:2609.20612": {
 "first_seen": "2026-09-18",
-"mag": 4.4222,
+"mag": 4.5068,
 "mag_history": [
 1.3863,
 3.6951,
 4.2059,
 4.3299,
-4.4222
+4.4222,
+4.5068
 ],
 "score": 2,
-"streak": 5,
+"streak": 6,
 "title": "What Does Privileged Information Add to On-Policy Self-Distillation?",
 "url": "https://arxiv.org/abs/2609.20612"
 },
-"arxiv:2609.23986": {
-"first_seen": "2026-09-22",
-"mag": 2.3026,
-"mag_history": [
-2.3026
-],
-"score": 1,
-"streak": 1,
-"title": "Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents",
-"url": "https://arxiv.org/abs/2609.23986"
-},
-"arxiv:2609.24115": {
-"first_seen": "2026-09-22",
-"mag": 0.6931,
-"mag_history": [
-0.6931
-],
-"score": 1,
-"streak": 1,
-"title": "EDGEGEN: Improving Tool-Calling Agents Beyond Happy Paths with Synthetic Edge Case Generation",
-"url": "https://arxiv.org/abs/2609.24115"
-},
-"arxiv:2609.24118": {
-"first_seen": "2026-09-22",
-"mag": 2.3979,
-"mag_history": [
-2.3979
-],
-"score": 2,
-"streak": 1,
-"title": "CARE: Experience-Guided Atomic Corrective Execution for Vision-Language-Action Policies",
-"url": "https://arxiv.org/abs/2609.24118"
-},
 "arxiv:2609.24220": {
 "first_seen": "2026-09-22",
-"mag": 3.8067,
+"mag": 4.1271,
 "mag_history": [
-3.8067
+3.8067,
+4.1271
 ],
-"score": 3,
-"streak": 1,
+"score": 2,
+"streak": 2,
 "title": "Document Retrieval-Aware Chunking (D-RAC): Universal Retrieval-Aware Ingestion of Enterprise Documents via PDF Normalization and Multimodal Markdown Conversion",
 "url": "https://arxiv.org/abs/2609.24220"
 },
-"arxiv:2609.24432": {
-"first_seen": "2026-09-22",
-"mag": 1.7918,
+"arxiv:2609.24815": {
+"first_seen": "2026-09-24",
+"mag": 0.0,
 "mag_history": [
-1.7918
+0.0
 ],
 "score": 1,
 "streak": 1,
-"title": "1% of Tokens Can Be Enough: On Gradient Estimation in On-Policy Distillation",
-"url": "https://arxiv.org/abs/2609.24432"
+"title": "Uranus: Building the Next-Generation Simulation Infrastructure for Embodied AI",
+"url": "https://arxiv.org/abs/2609.24815"
 },
-"arxiv:2609.24682": {
+"arxiv:2609.24972": {
 "first_seen": "2026-09-22",
-"mag": 1.3863,
+"mag": 8.1104,
 "mag_history": [
-1.3863
+4.8752,
+8.1104
 ],
-"score": 1,
-"streak": 1,
-"title": "Think Like a World Model, Act Like a VLA: Distilling World-Model Representations into Compact Robot Policies",
-"url": "https://arxiv.org/abs/2609.24682"
+"score": 3,
+"streak": 2,
+"title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
+"url": "https://arxiv.org/abs/2609.24972"
 },
-"arxiv:2609.24788": {
+"arxiv:2609.24974": {
 "first_seen": "2026-09-22",
-"mag": 0.6931,
+"mag": 4.7552,
 "mag_history": [
-0.6931
+2.5649,
+4.7552
 ],
-"score": 1,
-"streak": 1,
-"title": "Streaming Video Editing with Easy Adaptation",
-"url": "https://arxiv.org/abs/2609.24788"
+"score": 2,
+"streak": 2,
+"title": "Harness-Zero: Harness Distillation via Agent-as-Harness",
+"url": "https://arxiv.org/abs/2609.24974"
 },
-"arxiv:2609.24797": {
+"arxiv:2609.24983": {
 "first_seen": "2026-09-22",
+"mag": 5.6731,
+"mag_history": [
+3.1355,
+5.6731
+],
+"score": 3,
+"streak": 2,
+"title": "onPanda: Efficient Annotation of On-Policy Alignment Data for LLMs and Agents via Token-Level Correction",
+"url": "https://arxiv.org/abs/2609.24983"
+},
+"arxiv:2609.24984": {
+"first_seen": "2026-09-22",
+"mag": 7.8813,
+"mag_history": [
+4.6052,
+7.8813
+],
+"score": 3,
+"streak": 2,
+"title": "WorldCrafter: Consistent Video World Model with Implicit 3D-aware Memory",
+"url": "https://arxiv.org/abs/2609.24984"
+},
+"arxiv:2609.24997": {
+"first_seen": "2026-09-22",
+"mag": 4.0604,
+"mag_history": [
+3.3673,
+4.0604
+],
+"score": 4,
+"streak": 2,
+"title": "VideoGen-Agent: Reinforcing Video Generation Agents",
+"url": "https://arxiv.org/abs/2609.24997"
+},
+"arxiv:2609.25001": {
+"first_seen": "2026-09-22",
+"mag": 7.5545,
+"mag_history": [
+4.5747,
+7.5545
+],
+"score": 4,
+"streak": 2,
+"title": "GameHorizon Suite: Multi-Horizon Data and Evaluation in Gameplay",
+"url": "https://arxiv.org/abs/2609.25001"
+},
+"arxiv:2609.27284": {
+"first_seen": "2026-09-24",
+"mag": 1.9459,
+"mag_history": [
+1.9459
+],
+"score": 0,
+"streak": 1,
+"title": "Hunyuan-A13B Technical Report",
+"url": "https://arxiv.org/abs/2609.27284"
+},
+"arxiv:2609.27308": {
+"first_seen": "2026-09-24",
 "mag": 1.0986,
 "mag_history": [
 1.0986
 ],
 "score": 2,
 "streak": 1,
-"title": "Complex KDA: Understanding and Enhancing the Expressivity of Kimi Delta Attention",
-"url": "https://arxiv.org/abs/2609.24797"
+"title": "EmbodiedSWE: Coding Agents for Long Horizon Dexterous Robotics",
+"url": "https://arxiv.org/abs/2609.27308"
 },
-"arxiv:2609.24972": {
-"first_seen": "2026-09-22",
-"mag": 4.8752,
+"arxiv:2609.27321": {
+"first_seen": "2026-09-24",
+"mag": 1.7918,
 "mag_history": [
-4.8752
+1.7918
 ],
-"score": 4,
+"score": 2,
 "streak": 1,
-"title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
-"url": "https://arxiv.org/abs/2609.24972"
+"title": "Verifiable Hidden Dynamics Play: Generating Agentic RL Environments from Solved Mechanisms",
+"url": "https://arxiv.org/abs/2609.27321"
 },
-"arxiv:2609.24974": {
-"first_seen": "2026-09-22",
-"mag": 2.5649,
+"arxiv:2609.27334": {
+"first_seen": "2026-09-24",
+"mag": 3.0445,
 "mag_history": [
-2.5649
+3.0445
+],
+"score": 2,
+"streak": 1,
+"title": "Just-in-Time Memory: Learning to Curate Task-Adaptive Memory for LLM Agents",
+"url": "https://arxiv.org/abs/2609.27334"
+},
+"arxiv:2609.27490": {
+"first_seen": "2026-09-24",
+"mag": 2.1972,
+"mag_history": [
+2.1972
+],
+"score": 2,
+"streak": 1,
+"title": "WhatWorkedBench: Benchmarking Experimental Understanding in AI Agents",
+"url": "https://arxiv.org/abs/2609.27490"
+},
+"arxiv:2609.27656": {
+"first_seen": "2026-09-24",
+"mag": 1.6094,
+"mag_history": [
+1.6094
 ],
 "score": 3,
 "streak": 1,
-"title": "Harness-Zero: Harness Distillation via Agent-as-Harness",
-"url": "https://arxiv.org/abs/2609.24974"
+"title": "InternW0: A Foundational Physical World Model for Efficient Real-World Interactions",
+"url": "https://arxiv.org/abs/2609.27656"
 },
-"arxiv:2609.24983": {
-"first_seen": "2026-09-22",
-"mag": 3.1355,
+"arxiv:2609.27657": {
+"first_seen": "2026-09-24",
+"mag": 0.6931,
 "mag_history": [
-3.1355
+0.6931
+],
+"score": 2,
+"streak": 1,
+"title": "FLEET: From Logits Entropy to Enhanced Trajectories in Text Generation",
+"url": "https://arxiv.org/abs/2609.27657"
+},
+"arxiv:2609.27901": {
+"first_seen": "2026-09-24",
+"mag": 1.7918,
+"mag_history": [
+1.7918
+],
+"score": 1,
+"streak": 1,
+"title": "All modalities are equal, but video is more equal: Closing the Cross-Attention Gap in Joint Video Generation",
+"url": "https://arxiv.org/abs/2609.27901"
+},
+"arxiv:2609.27980": {
+"first_seen": "2026-09-24",
+"mag": 0.6931,
+"mag_history": [
+0.6931
+],
+"score": 2,
+"streak": 1,
+"title": "Six Layers Less: Encoder Pruning for Whisper with Label-Free Recovery",
+"url": "https://arxiv.org/abs/2609.27980"
+},
+"arxiv:2609.28256": {
+"first_seen": "2026-09-24",
+"mag": 2.1972,
+"mag_history": [
+2.1972
+],
+"score": 2,
+"streak": 1,
+"title": "MemBodied: Recurrent Associative Memory for Vision-Language-Action Models",
+"url": "https://arxiv.org/abs/2609.28256"
+},
+"arxiv:2609.28466": {
+"first_seen": "2026-09-24",
+"mag": 3.5553,
+"mag_history": [
+3.5553
 ],
 "score": 3,
 "streak": 1,
-"title": "onPanda: Efficient Annotation of On-Policy Alignment Data for LLMs and Agents via Token-Level Correction",
-"url": "https://arxiv.org/abs/2609.24983"
+"title": "The Past Frames the Future: Memory for Autoregressive Video Generation",
+"url": "https://arxiv.org/abs/2609.28466"
 },
-"arxiv:2609.24984": {
-"first_seen": "2026-09-22",
-"mag": 4.6052,
+"arxiv:2609.28470": {
+"first_seen": "2026-09-24",
+"mag": 0.6931,
 "mag_history": [
-4.6052
+0.6931
+],
+"score": 1,
+"streak": 1,
+"title": "StudentBench: AI and human tutoring yield equivalent GRE learning gains",
+"url": "https://arxiv.org/abs/2609.28470"
+},
+"arxiv:2609.28473": {
+"first_seen": "2026-09-24",
+"mag": 1.3863,
+"mag_history": [
+1.3863
+],
+"score": 1,
+"streak": 1,
+"title": "On the Diffusibility of High-Dimensional Latents",
+"url": "https://arxiv.org/abs/2609.28473"
+},
+"blog:https://blogs.nvidia.com/?p=98480": {
+"first_seen": "2026-09-24",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Contain the Chaos: \u2018CONTROL Resonant\u2019 Launches on GeForce NOW",
+"url": "https://blogs.nvidia.com/blog/geforce-now-thursday-control-resonant/"
+},
+"blog:https://blogs.nvidia.com/?p=98486": {
+"first_seen": "2026-09-24",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "How Open Science Can Help Researchers Prepare for the Next Pandemic",
+"url": "https://blogs.nvidia.com/blog/open-protein-dataset/"
+},
+"blog:https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/": {
+"first_seen": "2026-09-24",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Advancing Private AI Compute with secure, server-side memory",
+"url": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/"
+},
+"blog:https://deepmind.google/blog/say-hello-to-gemini-38-text-to-speech/": {
+"first_seen": "2026-09-24",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Gemini 3.8 text-to-speech says hello",
+"url": "https://deepmind.google/blog/say-hello-to-gemini-38-text-to-speech/"
+},
+"blog:https://openai.com/index/airbnb-gpt-6-astra": {
+"first_seen": "2026-09-24",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Airbnb widens access to GPT-6 Astra and OpenAI frontier models",
+"url": "https://openai.com/index/airbnb-gpt-6-astra"
+},
+"blog:https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan": {
+"first_seen": "2026-09-24",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "ChatGPT Ads expands to Southeast Asia and Taiwan",
+"url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan"
+},
+"blog:https://openai.com/index/harvey-from-context-to-confidence-with-astra": {
+"first_seen": "2026-09-24",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Harvey turns legal context into stronger drafts with GPT-6 Astra",
+"url": "https://openai.com/index/harvey-from-context-to-confidence-with-astra"
+},
+"blog:https://openai.com/index/introducing-mentalhealthbench": {
+"first_seen": "2026-09-24",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 2,
+"streak": 1,
+"title": "Introducing MentalHealthBench",
+"url": "https://openai.com/index/introducing-mentalhealthbench"
+},
+"blog:https://openai.com/index/invideo-builds-with-gpt-6-astra": {
+"first_seen": "2026-09-24",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "How invideo improves color grading 3x with GPT\u20116 Astra",
+"url": "https://openai.com/index/invideo-builds-with-gpt-6-astra"
+},
+"blog:https://openai.com/index/ringg": {
+"first_seen": "2026-09-24",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Ringg\u2019s AI agents resolve up to 65% of customer calls with OpenAI",
+"url": "https://openai.com/index/ringg"
+},
+"blog:https://openai.com/index/sam-altman-un-security-council-remarks": {
+"first_seen": "2026-09-24",
+"mag": 0.0,
+"mag_history": [
+0.0
+],
+"score": 1,
+"streak": 1,
+"title": "Sam Altman\u2019s remarks at the United Nations Security Council",
+"url": "https://openai.com/index/sam-altman-un-security-council-remarks"
+},
+"ghrepo:AlonzoLeeeooo/awesome-text-to-image-studies": {
+"first_seen": "2026-09-24",
+"mag": 3.3186,
+"mag_history": [
+3.3186
 ],
 "score": 3,
 "streak": 1,
-"title": "WorldCrafter: Consistent Video World Model with Implicit 3D-aware Memory",
-"url": "https://arxiv.org/abs/2609.24984"
+"title": "AlonzoLeeeooo/awesome-text-to-image-studies \u2014 A collection of awesome text-to-image generation studies.",
+"url": "https://github.com/AlonzoLeeeooo/awesome-text-to-image-studies"
 },
-"arxiv:2609.24997": {
-"first_seen": "2026-09-22",
-"mag": 3.3673,
+"ghrepo:AlonzoLeeeooo/awesome-video-generation": {
+"first_seen": "2026-09-24",
+"mag": 3.3335,
 "mag_history": [
-3.3673
+3.3335
 ],
-"score": 4,
+"score": 3,
 "streak": 1,
-"title": "VideoGen-Agent: Reinforcing Video Generation Agents",
-"url": "https://arxiv.org/abs/2609.24997"
-},
-"arxiv:2609.25001": {
-"first_seen": "2026-09-22",
-"mag": 4.5747,
-"mag_history": [
-4.5747
-],
-"score": 4,
-"streak": 1,
-"title": "GameHorizon Suite: Multi-Horizon Data and Evaluation in Gameplay",
-"url": "https://arxiv.org/abs/2609.25001"
-},
-"blog:https://blogs.nvidia.com/?p=98370": {
-"first_seen": "2026-09-22",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "NVIDIA Isaac ROS 5.0 Advances Agentic, Open Source Robotics Development",
-"url": "https://blogs.nvidia.com/blog/isaac-ros-5-0-agentic-open-source-robotics/"
-},
-"blog:https://blogs.nvidia.com/?p=98386": {
-"first_seen": "2026-09-22",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "NVIDIA Launches DSX Ready to Qualify Power and Cooling Products for AI Factories",
-"url": "https://blogs.nvidia.com/blog/dsx-ready-ai-factories-power-cooling/"
-},
-"blog:https://openai.com/index/advisory-group-on-mathematics-and-ai": {
-"first_seen": "2026-09-22",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Advisory Group on Mathematics and Artificial Intelligence",
-"url": "https://openai.com/index/advisory-group-on-mathematics-and-ai"
-},
-"blog:https://openai.com/index/building-standards-next-phase-ai": {
-"first_seen": "2026-09-22",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Building standards for the next phase of AI",
-"url": "https://openai.com/index/building-standards-next-phase-ai"
-},
-"blog:https://openai.com/index/expanding-openai-academy-with-new-learning-paths": {
-"first_seen": "2026-09-22",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Expanding OpenAI Academy with new learning paths",
-"url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths"
-},
-"blog:https://openai.com/index/higgsfield-from-prompt-to-production-with-astra": {
-"first_seen": "2026-09-22",
-"mag": 0.0,
-"mag_history": [
-0.0
-],
-"score": 1,
-"streak": 1,
-"title": "Higgsfield AI ships new video features in a day with GPT-6 Astra",
-"url": "https://openai.com/index/higgsfield-from-prompt-to-production-with-astra"
+"title": "AlonzoLeeeooo/awesome-video-generation \u2014 A collection of awesome video generation studies.",
+"url": "https://github.com/AlonzoLeeeooo/awesome-video-generation"
 },
 "ghrepo:camel-ai/oasis": {
 "first_seen": "2026-09-20",
-"mag": 4.2759,
+"mag": 4.2766,
 "mag_history": [
 4.2755,
 4.2758,
-4.2759
+4.2759,
+4.2766
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "camel-ai/oasis \u2014 \ud83c\udfdd\ufe0f OASIS: Open Agent Social Interaction Simulations with One Million Agents.",
 "url": "https://github.com/camel-ai/oasis"
-},
-"ghrepo:huggingface/finetrainers": {
-"first_seen": "2026-09-18",
-"mag": 3.6076,
-"mag_history": [
-3.6076,
-3.6076,
-3.6076,
-3.6076,
-3.6076
-],
-"score": 3,
-"streak": 5,
-"title": "huggingface/finetrainers \u2014 Scalable and memory-optimized training of diffusion models",
-"url": "https://github.com/huggingface/finetrainers"
 },
 "ghrepo:mbreuss/diffusion-literature-for-robotics": {
 "first_seen": "2026-09-22",
 "mag": 3.4127,
 "mag_history": [
+3.4127,
 3.4127
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "mbreuss/diffusion-literature-for-robotics \u2014 Summary of key papers and blogs about diffusion models to learn about the topic. Detailed list of all published diffusion robotics papers.",
 "url": "https://github.com/mbreuss/diffusion-literature-for-robotics"
 },
-"ghrepo:microsoft/foldingdiff": {
-"first_seen": "2026-09-09",
-"mag": 3.1719,
-"mag_history": [
-3.1711,
-3.1711,
-3.1719,
-3.1719,
-3.1719,
-3.1719,
-3.1719
-],
-"score": 4,
-"streak": 11,
-"title": "microsoft/foldingdiff \u2014 Diffusion models of protein structure; trigonometry and attention are all you need!",
-"url": "https://github.com/microsoft/foldingdiff"
-},
 "ghrepo:modelscope/ms-cookbook": {
 "first_seen": "2026-09-16",
-"mag": 2.9779,
+"mag": 2.9894,
 "mag_history": [
 2.4299,
 2.4299,
 2.9011,
 2.9431,
 2.9688,
-2.9779
+2.9779,
+2.9894
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "modelscope/ms-cookbook \u2014 \u9b54\u642d\u7d2b\u76ae\u4e66\uff5cModelScope Cookbook\uff1a\u9762\u5411\u5f00\u53d1\u8005\u7684\u5f00\u6e90\u6a21\u578b\u5e94\u7528\u5b9e\u6218\u6307\u5357\uff0c\u8986\u76d6\u6a21\u578b\u9009\u578b\u3001\u63a8\u7406\u3001\u5fae\u8c03\u3001\u8bc4\u6d4b\u3001RAG\u3001Agent \u4e0e AIGC\uff0c\u4ece\u8dd1\u901a\u7b2c\u4e00\u4e2a\u6a21\u578b\u5230\u6784\u5efa\u5b9e\u9645\u5e94\u7528\u3002",
 "url": "https://github.com/modelscope/ms-cookbook"
 },
 "ghrepo:omnichar/OmniChar": {
 "first_seen": "2026-09-18",
-"mag": 2.9417,
+"mag": 2.9844,
 "mag_history": [
 2.8585,
 2.8585,
 2.8618,
 2.8618,
-2.9417
+2.9417,
+2.9844
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "omnichar/OmniChar \u2014 AI character studio for portable identity. Build multi model consistent characters, train LoRAs, and generate on your own GPU.",
 "url": "https://github.com/omnichar/OmniChar"
 },
+"ghrepo:rasbt/reasoning-from-scratch": {
+"first_seen": "2026-09-24",
+"mag": 4.2858,
+"mag_history": [
+4.2858
+],
+"score": 3,
+"streak": 1,
+"title": "rasbt/reasoning-from-scratch \u2014 Implement a reasoning LLM in PyTorch from scratch, step by step",
+"url": "https://github.com/rasbt/reasoning-from-scratch"
+},
 "ghrepo:virgiliojr94/book-to-skill": {
 "first_seen": "2026-09-13",
-"mag": 5.1862,
+"mag": 5.1907,
 "mag_history": [
-5.1669,
 5.169,
 5.1726,
 5.1745,
 5.18,
 5.1836,
-5.1862
+5.1862,
+5.1907
 ],
 "score": 3,
-"streak": 9,
+"streak": 10,
 "title": "virgiliojr94/book-to-skill \u2014 Turn any technical book PDF into a Claude Code skill \u2014 ready to study, reference, and use while you work.",
 "url": "https://github.com/virgiliojr94/book-to-skill"
 },
-"hfdataset:DeepMostInnovations/saas-sales-conversations": {
-"first_seen": "2026-09-22",
-"mag": 2.68,
+"hfdataset:Harland/OmniVChat": {
+"first_seen": "2026-09-24",
+"mag": 2.5463,
 "mag_history": [
-2.68
+2.5463
 ],
 "score": 1,
 "streak": 1,
-"title": "DeepMostInnovations/saas-sales-conversations (HF Dataset)",
-"url": "https://huggingface.co/datasets/DeepMostInnovations/saas-sales-conversations"
+"title": "Harland/OmniVChat (HF Dataset)",
+"url": "https://huggingface.co/datasets/Harland/OmniVChat"
 },
 "hfdataset:ILSVRC/imagenet-1k": {
 "first_seen": "2026-09-15",
-"mag": 4.8155,
+"mag": 4.8199,
 "mag_history": [
-4.7891,
 4.7951,
 4.7995,
 4.801,
 4.8054,
 4.8112,
-4.8155
+4.8155,
+4.8199
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "ILSVRC/imagenet-1k (HF Dataset)",
 "url": "https://huggingface.co/datasets/ILSVRC/imagenet-1k"
 },
-"hfdataset:eidon-ai/tracker-pov": {
-"first_seen": "2026-09-22",
-"mag": 2.3325,
+"hfdataset:LocalLLaMA/typed-decisions": {
+"first_seen": "2026-09-24",
+"mag": 2.4038,
 "mag_history": [
-2.3325
+2.4038
 ],
 "score": 1,
 "streak": 1,
-"title": "eidon-ai/tracker-pov (HF Dataset)",
-"url": "https://huggingface.co/datasets/eidon-ai/tracker-pov"
+"title": "LocalLLaMA/typed-decisions (HF Dataset)",
+"url": "https://huggingface.co/datasets/LocalLLaMA/typed-decisions"
 },
-"hfdataset:gaia-benchmark/GAIA": {
-"first_seen": "2026-09-09",
-"mag": 4.7167,
+"hfdataset:MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x": {
+"first_seen": "2026-09-24",
+"mag": 3.498,
 "mag_history": [
-4.6991,
-4.7025,
-4.7092,
-4.7109,
-4.7117,
-4.7142,
-4.7167
+3.498
 ],
-"score": 4,
-"streak": 11,
-"title": "gaia-benchmark/GAIA (HF Dataset)",
-"url": "https://huggingface.co/datasets/gaia-benchmark/GAIA"
+"score": 3,
+"streak": 1,
+"title": "MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x (HF Dataset)",
+"url": "https://huggingface.co/datasets/MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x"
 },
 "hfdataset:nvidia/PhysicalAI-Autonomous-Vehicles": {
 "first_seen": "2026-09-14",
-"mag": 4.8834,
+"mag": 4.8887,
 "mag_history": [
-4.8642,
 4.8682,
 4.8722,
 4.8742,
 4.8749,
 4.8815,
-4.8834
+4.8834,
+4.8887
 ],
 "score": 4,
-"streak": 8,
+"streak": 9,
 "title": "nvidia/PhysicalAI-Autonomous-Vehicles (HF Dataset)",
 "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles"
 },
 "hfdataset:secemp9/arxiv-complete": {
 "first_seen": "2026-09-20",
-"mag": 4.1581,
+"mag": 4.243,
 "mag_history": [
 3.658,
 4.04,
-4.1581
+4.1581,
+4.243
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "secemp9/arxiv-complete (HF Dataset)",
 "url": "https://huggingface.co/datasets/secemp9/arxiv-complete"
 },
-"hfdataset:venvoo/china-a-share-l2-level2-limit-order-book-tick-data": {
-"first_seen": "2026-09-22",
-"mag": 3.1728,
-"mag_history": [
-3.1728
-],
-"score": 2,
-"streak": 1,
-"title": "venvoo/china-a-share-l2-level2-limit-order-book-tick-data (HF Dataset)",
-"url": "https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data"
-},
 "hfmodel:AlexWortega/openjev": {
 "first_seen": "2026-09-20",
-"mag": 4.2994,
+"mag": 4.4182,
 "mag_history": [
 3.9032,
 4.1799,
-4.2994
+4.2994,
+4.4182
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "AlexWortega/openjev (HF Model)",
 "url": "https://huggingface.co/AlexWortega/openjev"
 },
 "hfmodel:Altworld/Hemmingway-1": {
 "first_seen": "2026-09-21",
-"mag": 4.2994,
+"mag": 4.4985,
 "mag_history": [
 3.9996,
-4.2994
+4.2994,
+4.4985
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "Altworld/Hemmingway-1 (HF Model)",
 "url": "https://huggingface.co/Altworld/Hemmingway-1"
 },
 "hfmodel:Comfy-Org/Qwen-Image-2.1": {
 "first_seen": "2026-09-21",
-"mag": 4.3923,
+"mag": 4.5424,
 "mag_history": [
 4.2096,
-4.3923
+4.3923,
+4.5424
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "Comfy-Org/Qwen-Image-2.1 (HF Model)",
 "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1"
 },
 "hfmodel:Edge0/Edge0-35B-A3B-preview": {
 "first_seen": "2026-09-12",
-"mag": 5.7233,
+"mag": 5.7241,
 "mag_history": [
-5.4678,
 5.6096,
 5.6869,
 5.7057,
 5.7217,
 5.7229,
-5.7233
+5.7233,
+5.7241
 ],
 "score": 3,
-"streak": 10,
+"streak": 11,
 "title": "Edge0/Edge0-35B-A3B-preview (HF Model)",
 "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview"
 },
 "hfmodel:Qwen/Qwen-Image-2.1": {
 "first_seen": "2026-09-20",
-"mag": 5.2027,
+"mag": 5.3716,
 "mag_history": [
 3.7819,
 5.0185,
-5.2027
+5.2027,
+5.3716
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "Qwen/Qwen-Image-2.1 (HF Model)",
 "url": "https://huggingface.co/Qwen/Qwen-Image-2.1"
 },
 "hfmodel:TokenRhythm/NeoHorse-1-4B": {
 "first_seen": "2026-09-15",
-"mag": 5.4868,
+"mag": 5.4879,
 "mag_history": [
-5.3033,
 5.3545,
 5.4368,
 5.4774,
 5.4852,
 5.4866,
-5.4868
+5.4868,
+5.4879
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "TokenRhythm/NeoHorse-1-4B (HF Model)",
 "url": "https://huggingface.co/TokenRhythm/NeoHorse-1-4B"
 },
-"hfmodel:XiaomiMiMo/MiMo-V2.6-Flash-RL": {
-"first_seen": "2026-09-22",
-"mag": 4.0782,
-"mag_history": [
-4.0782
-],
-"score": 2,
-"streak": 1,
-"title": "XiaomiMiMo/MiMo-V2.6-Flash-RL (HF Model)",
-"url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL"
-},
-"hfmodel:XiaomiMiMo/MiMo-V2.6-Pro-RL": {
-"first_seen": "2026-09-22",
-"mag": 4.0986,
-"mag_history": [
-4.0986
-],
-"score": 2,
-"streak": 1,
-"title": "XiaomiMiMo/MiMo-V2.6-Pro-RL (HF Model)",
-"url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL"
-},
 "hfmodel:abenzerps/Qwen-Image-2.1-GGUF": {
 "first_seen": "2026-09-21",
-"mag": 4.8017,
+"mag": 5.1539,
 "mag_history": [
 4.2857,
-4.8017
+4.8017,
+5.1539
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "abenzerps/Qwen-Image-2.1-GGUF (HF Model)",
 "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-GGUF"
 },
 "hfmodel:meta-llama/Llama-3.1-8B-Instruct": {
 "first_seen": "2026-09-16",
-"mag": 6.2745,
+"mag": 6.2801,
 "mag_history": [
 6.2601,
 6.2655,
 6.2676,
 6.2702,
 6.2725,
-6.2745
+6.2745,
+6.2801
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "meta-llama/Llama-3.1-8B-Instruct (HF Model)",
 "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct"
 },
-"hfmodel:openai/clip-vit-base-patch32": {
-"first_seen": "2026-09-09",
-"mag": 5.1498,
-"mag_history": [
-5.1345,
-5.1409,
-5.1472,
-5.1481,
-5.1489,
-5.1489,
-5.1498
-],
-"score": 3,
-"streak": 11,
-"title": "openai/clip-vit-base-patch32 (HF Model)",
-"url": "https://huggingface.co/openai/clip-vit-base-patch32"
-},
 "hfmodel:prism-ml/Ternary-Bonsai-2-27B-mlx-2bit": {
 "first_seen": "2026-09-19",
-"mag": 4.0551,
+"mag": 4.1357,
 "mag_history": [
 3.785,
 3.9241,
 4.0088,
-4.0551
+4.0551,
+4.1357
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "prism-ml/Ternary-Bonsai-2-27B-mlx-2bit (HF Model)",
 "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-mlx-2bit"
 },
 "hfmodel:ukisai/Swift-Qwen3.8-27B-GGUF": {
 "first_seen": "2026-09-18",
-"mag": 4.1105,
+"mag": 4.1799,
 "mag_history": [
 3.9137,
 3.9833,
 4.0422,
 4.0823,
-4.1105
+4.1105,
+4.1799
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "ukisai/Swift-Qwen3.8-27B-GGUF (HF Model)",
 "url": "https://huggingface.co/ukisai/Swift-Qwen3.8-27B-GGUF"
 },
 "hfmodel:ukisai/Swift-Qwen3.8-27b": {
 "first_seen": "2026-09-15",
-"mag": 4.408,
+"mag": 4.4444,
 "mag_history": [
-3.7724,
 4.0065,
 4.2381,
 4.3024,
 4.3516,
 4.3857,
-4.408
+4.408,
+4.4444
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "ukisai/Swift-Qwen3.8-27b (HF Model)",
 "url": "https://huggingface.co/ukisai/Swift-Qwen3.8-27b"
+},
+"hfmodel:yandex/AliceAI-Foundation-80B-A3B-Base": {
+"first_seen": "2026-09-24",
+"mag": 4.0268,
+"mag_history": [
+4.0268
+],
+"score": 2,
+"streak": 1,
+"title": "yandex/AliceAI-Foundation-80B-A3B-Base (HF Model)",
+"url": "https://huggingface.co/yandex/AliceAI-Foundation-80B-A3B-Base"
 }
 }
