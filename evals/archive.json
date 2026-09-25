@@ -20,16 +20,16 @@
         }
       },
       "after": {
-        "n": 3,
+        "n": 4,
         "n_judged": 0,
         "rubric": null,
         "trusted": {
-          "reobservation_rate": 0.905,
+          "reobservation_rate": 0.9287,
           "forecast_accuracy": 1.0
         }
       },
       "verdict": "helped",
-      "why": "reobservation_rate rose 14%"
+      "why": "reobservation_rate rose 17%"
     }
   ]
 }
