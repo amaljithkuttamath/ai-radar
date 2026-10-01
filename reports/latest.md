@@ -4,96 +4,101 @@
 
 # AI Radar — 2026-10-01
 
-The 48-hour window centers on rigorous agent evaluation: GameHorizon and EngiWorld deliver the first reproducible benchmarks for gameplay and professional engineering agents, while self-improving agent frameworks (OPSRD, OpenJev-RLCD) and a massive open data platform (OpenBB) signal a shift from demos to deployable infrastructure. Quiet on hardware — NVIDIA blog posts only.
+Agent benchmarks and quantization tooling dominate the 48-hour window. GameHorizon and EngiWorld continue climbing as practical evaluation suites for game-playing and engineering agents, while Intel's neural-compressor and a new quantized Qwen coder model push low-bit inference forward.
 
 ## What changed
 
-**New today**  
-- [False Frontiers: Diagnosing and Mitigating Co-Cheating in Self-Evolving Search Agents](https://arxiv.org/abs/2609.39102) — co-cheating diagnosis  
-- [Mid-Harness: Scaling Actions Between Model and Harness for Terminal Agents](https://arxiv.org/abs/2609.39982) — terminal agent scaling  
-- [EvoDuet: Bilevel Co-Evolution of Web Searching and Task Solving](https://arxiv.org/abs/2609.40340) — bilevel co-evolution  
-- [WorldAuditBench: Interactive 3D World Auditing with Multimodal Agents](https://arxiv.org/abs/2609.40325) — 3D world auditing  
-- [openbq-org/OpenBB](https://github.com/openbq-org/OpenBB) — open data platform  
+**New today**
+- [Context Language Models](https://arxiv.org/abs/2609.37725) — new architecture
+- [Cloudflare/clef](https://huggingface.co/Cloudflare/clef) — model release
+- [ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF) — quantized coder
+- [PatchHolmes: Agentic Patch Retrieval via Listwise Selection](https://arxiv.org/abs/2609.38807) — agent tooling
+- [AIMS: An Agentic AI Framework for Sim-to-Real Multi-Modal ISAC](http://arxiv.org/abs/2609.39964v1) — agentic framework
 
-**Climbing**  
-- [EngiWorld: What Can Frontier Agents Deliver in Professional Engineering Environments?](https://arxiv.org/abs/2609.37686) — engineering agent benchmark  
-- [What Makes World Action Models Generalize?](https://arxiv.org/abs/2609.34981) — test-time future modeling  
+**Climbing**
+- [EVO-WAM: Evolving World Action Models through Video-Action Verification](https://arxiv.org/abs/2609.38057) — traction +178%
 
-**Cooled**  
-- [SoL-Refiner: Speed-of-Light One-Step Refinement for High-Resolution Video](https://arxiv.org/abs/2609.37969) — video refinement  
+**Cooled**
+- [Mid-Harness: Scaling Actions Between Model and Harness for Terminal Agents](https://arxiv.org/abs/2609.39982) — score −1
+- [EvoDuet: Bilevel Co-Evolution of Web Searching and Task Solving](https://arxiv.org/abs/2609.40340) — score −1
+- [WorldAuditBench: Interactive 3D World Auditing](https://arxiv.org/abs/2609.40325) — score −1
+- [UniEvo-VL: On-policy Self-Distillation for Multimodal Self-improvement](https://arxiv.org/abs/2609.38721) — score −1
+- [False Frontiers: Diagnosing Co-Cheating in Self-Evolving Search Agents](https://arxiv.org/abs/2609.39102) — score −2
 
 ## Main list
 
-**1. GameHorizon Suite: Multi-Horizon Data and Evaluation in Gameplay** · 4/5  
+### Planning
+
+**GameHorizon Suite: Multi-Horizon Data and Evaluation in Gameplay** · 4/5  
 [Paper](https://arxiv.org/abs/2609.25001) · [Code](https://github.com/TencentARC/GameHorizon) · [Project](https://gamehorizon-suite.github.io/)  
-Continuing story (9th run, 434 ★, 130 HF ↑). The first benchmark spanning 1,000+ hours across 20 games with language instructions, multi-horizon tasks, and low-variance offline evaluation. Tencent ARC release — if you build game-playing agents, this is your new testbed.
+Continuing story (9th run, +334% traction since 2026-09-22). Tencent's benchmark suite spans 1,301 expert-annotated tasks across 20 games, covering visual understanding, instruction decomposition, and multi-horizon planning. 434 GitHub stars and 130 HF upvotes signal strong community adoption — the most concrete agent-eval infrastructure this window.
 
-**2. EngiWorld: What Can Frontier Agents Deliver in Professional Engineering Environments?** · 4/5  
+**AIMS: An Agentic AI Framework for Sim-to-Real Multi-Modal ISAC** · 3/5  
+[Paper](http://arxiv.org/abs/2609.39964v1)  
+New framework for integrated sensing and communication (ISAC) that tackles sim-to-real transfer by jointly configuring scene, sensing, wireless, and learning components. Targets wireless-network perception where labeled real data is scarce; code and simulation pipeline released.
+
+**On the Relaxation of Conditional Independence Assumption for Image Segmentation** · 2/5  
+[Paper](http://arxiv.org/abs/2609.38930v1)  
+Replaces the restrictive Conditional Independence Assumption in RankSEG with a Spatially Local Dependency model, cutting inference complexity from O(d³) to near-linear while recovering label correlations that matter in ambiguous regions. Code available; practical for deployment-time metric alignment.
+
+### Quantization
+
+**intel/neural-compressor — SOTA low-bit LLM quantization** · 4/5  
+[Repo](https://github.com/intel/neural-compressor)  
+Stable (5th run, 2,710 stars, traction flat). Production-grade compression library supporting INT8/FP8/MXFP8/INT4/MXFP4/NVFP4 and sparsity across PyTorch, TensorFlow, and ONNX Runtime. The de facto standard for CPU/GPU inference optimization; actively maintained with hardware-vendor backing.
+
+**ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF** · 3/5  
+[Model](https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF)  
+New quantized coder model applying GSQ (Grouped Spectral Quantization), RCO (Rotation-based Compression Optimization), and expert pruning to Qwen 3.8B. GGUF-ready for llama.cpp; targets coding workloads with aggressive bit-width reduction. No benchmarks in the card yet — treat as experimental.
+
+### Other
+
+**EngiWorld: What Can Frontier Agents Deliver in Professional Engineering Environments?** · 4/5  
 [Paper](https://arxiv.org/abs/2609.37686) · [Code](https://github.com/Hongcheng-Gao/EngiWorld) · [Project](https://engiworld.github.io/)  
-Climbing (2nd run, score 3→4, 33 ★, 53 HF ↑). 1,301 expert tasks from real CAD/CAE/PLM workflows — geometric reasoning, constraint propagation, cross-stage dependencies. The first benchmark where "it works on my laptop" doesn't count; agents must navigate Siemens NX, ANSYS, Teamcenter. Civil, mechanical, aerospace teams: this measures what you actually ship.
+Continuing story (2nd run, +220% traction since 2026-09-30). First benchmark built around the full engineering design loop: 1,301 tasks requiring geometric reasoning, physical constraints, and cross-stage dependencies in CAD/CAE tools. 33 stars / 53 HF upvotes early but highly targeted — the only eval that looks like real mechanical-engineering work.
 
-**3. openbq-org/OpenBB — Open Data Platform for analysts, quants and AI agents** · 3/5  
-[Repo](https://github.com/openbq-org/OpenBB)  
-73.7k ★. Unified Python SDK for 100+ data sources (Bloomberg, Yahoo, SEC, crypto, alternative data) with a plug-in architecture agents can call directly. Not a demo — production grade, used by quant funds. If your agents need live financial data, this replaces five brittle wrappers.
+**Learning Skills from Historical Action Trajectories: Action Experience Dictionary for World Action Models** · 3/5  
+[Paper](http://arxiv.org/abs/2609.40219v1)  
+Introduces an Action Experience Dictionary (AED) that encodes historical manipulation trajectories into shared embeddings for skill reuse across tasks. Addresses a core WAM limitation: background clutter drowning task-relevant visual features. Code released; evaluates on multi-task manipulation benchmarks.
 
-**4. OPSRD: On-Policy Self-Role Distillation** · 3/5  
-[Paper](http://arxiv.org/abs/2609.39884v1)  
-Distills role-prompted expert behavior into a role-free student via on-policy RL — no reference solutions needed. Beats supervised distillation on coding and math when the expert is imperfect but provides useful next-token preferences. Practical for teams who can't afford gold annotations but have a strong prompt library.
+**Mitigating Representation Gaps in Amortized Bayesian Inference with Auxiliary Supervision** · 2/5  
+[Paper](http://arxiv.org/abs/2609.39525v1)  
+Adds auxiliary supervision to close the gap between amortized posteriors and true posteriors under finite compute. Strong-group authorship (UCL/Oxford); code released. Relevant if you're doing simulation-based inference (SBI) or neural posterior estimation at scale.
 
-**5. RainAtlas: A Multi-Continental Dataset for Precipitation Downscaling** · 3/5  
-[Paper](http://arxiv.org/abs/2609.39833v1)  
-10 km → 1 km precipitation across 4 continents, 20 years, with gauge/radar/satellite fusion. Built for ML downscaling generalization to unseen geographies. Climate/weather teams: the first dataset where "works in Europe" doesn't imply "works in Brazil."
-
-**6. OpenJev-RLCD: A Working RLCD Implementation** · 3/5  
-[Paper](http://arxiv.org/abs/2609.38850v1)  
-First open reproduction of Reinforcement Learning for Calibrated Decisions on reasoning models. Samples rationales, scores answer distributions with strictly proper scoring rules, uses a variance identity to reduce reward noise. Calibration matters for high-stakes decisions (medical, legal, finance) — this makes RLVR usable there.
-
-**7. BARRAC: Adaptation of English Aspect-Based Sentiment Analysis for Arabic Dialects** · 3/5  
-[Paper](http://arxiv.org/abs/2609.38820v1)  
-Replaces English consumer-review attributes with Arabic linguistic devices (dialectal sentiment, sarcasm markers, dialect ID). Shows cross-lingual transfer fails without cultural adaptation — a pattern likely generalizing to other low-resource languages. NLP teams serving MENA: read the adaptation playbook.
-
-**8. Alissonerdx/BFS-Best-Face-Swap** · 3/5  
-[Model](https://huggingface.co/Alissonerdx/BFS-Best-Face-Swap)  
-Qwen-Image/LoRA face-swap, trending on HF. Quality leap over prior open face-swaps — handles extreme angles, occlusion, lighting mismatch. Creative/video teams: drop-in for character consistency workflows; verify licensing for commercial use.
-
-**9. orcarouter/OrcaSAQ-2-Cyber-27B-Uncensored-GGUF** · 3/5  
-[Model](https://huggingface.co/orcarouter/OrcaSAQ-2-Cyber-27B-Uncensored-GGUF)  
-Qwen-3.5-based, 27B, GGUF quantized, uncensored, cybersecurity-focused. Strong on vulnerability analysis, exploit dev, reverse engineering. Security researchers: run locally, audit the training data before trusting outputs in production.
-
----
+**Cloudflare/clef** · 3/5  
+[Model](https://huggingface.co/Cloudflare/clef)  
+New image-text-to-text model from Cloudflare (Qwen3.5-based, safetensors). No benchmarks or paper linked — appears to be a deployment-oriented VLM for edge/workers inference. Track for Cloudflare Workers AI integration signals.
 
 ## Story arcs
 
-- **GameHorizon Suite** — seen 9 runs, traction +73.0% since first seen on 2026-09-22.  
-- **Region-Level Policy Optimization for Fine-grained MLLM Perception** — seen 13 runs, traction +244.6% since 2026-09-18.  
-- **Harness-Zero: Harness Distillation via Agent-as-Harness** — seen 9 runs, traction +124.9% since 2026-09-22.  
-- **onPanda: Efficient Annotation of On-Policy Alignment Data** — seen 9 runs, traction +91.7% since 2026-09-22.  
-- **RRSI: Regularized Recursive Self-Improvement of Agent Harnesses** — seen 9 runs, traction +82.6% since 2026-09-22.  
-- **The Past Frames the Future: Memory for Autoregressive Video Generation** — seen 8 runs, traction +78.1% since 2026-09-24.  
-- **WorldCrafter: Consistent Video World Model with Implicit 3D-aware Memory** — seen 9 runs, traction +75.4% since 2026-09-22.  
-- **GameHorizon Suite: Multi-Horizon Data and Evaluation in Gameplay** — seen 9 runs, traction +73.0% since 2026-09-22.  
-- **InternW0: A Foundational Physical World Model for Efficient Real-World Interactions** — seen 7 runs, traction +68.3% since 2026-09-24.  
-- **Improving Test-Time Scaling with Adaptive Looped Transformers** — seen 3 runs, traction +66.8% since 2026-09-29.  
+- [AV-GRPO: Modality-Anchored Decoupling Diffusion Reinforcement Learning for Joint Audio-Video Generation](https://arxiv.org/abs/2609.29816) — seen 7 runs, traction +507.8% since first seen on 2026-09-25.
+- [Region-Level Policy Optimization for Fine-grained MLLM Perception](https://arxiv.org/abs/2609.19745) — seen 13 runs, traction +244.6% since first seen on 2026-09-18.
+- [Harness-Zero: Harness Distillation via Agent-as-Harness](https://arxiv.org/abs/2609.24974) — seen 9 runs, traction +124.9% since first seen on 2026-09-22.
+- [onPanda: Efficient Annotation of On-Policy Alignment Data for LLMs and Agents via Token-Level Correction](https://arxiv.org/abs/2609.24983) — seen 9 runs, traction +91.7% since first seen on 2026-09-22.
+- [RRSI: Regularized Recursive Self-Improvement of Agent Harnesses](https://arxiv.org/abs/2609.24972) — seen 9 runs, traction +82.6% since first seen on 2026-09-22.
+- [The Past Frames the Future: Memory for Autoregressive Video Generation](https://arxiv.org/abs/2609.28466) — seen 8 runs, traction +78.1% since first seen on 2026-09-24.
+- [WorldCrafter: Consistent Video World Model with Implicit 3D-aware Memory](https://arxiv.org/abs/2609.24984) — seen 9 runs, traction +75.4% since first seen on 2026-09-22.
+- [GameHorizon Suite: Multi-Horizon Data and Evaluation in Gameplay](https://arxiv.org/abs/2609.25001) — seen 9 runs, traction +73.0% since first seen on 2026-09-22.
+- [Improving Test-Time Scaling with Adaptive Looped Transformers](https://arxiv.org/abs/2609.35748) — seen 3 runs, traction +66.8% since first seen on 2026-09-29.
+- [Just MLPs: Efficient Visual State Reconstruction for Multimodal Language Models](https://arxiv.org/abs/2609.34972) — seen 3 runs, traction +54.0% since first seen on 2026-09-29.
 
 ## Watch-list
 
-- **NVIDIA Graduate Fellowship Program 2027–2028** — [Blog](https://blogs.nvidia.com/blog/applications-open-graduate-fellowship-awards-2026/) — $60k awards, 26th year; talent pipeline signal.  
-- **Productive, Durable, Fungible: How NVIDIA AI Factories Maximize ROI** — [Blog](https://blogs.nvidia.com/blog/productive-durable-fungible-ai-factories/) — $60M/megawatt factory economics; capex framing for AI infra buyers.  
+- [The Den frees up 10-15 hours a week to grow with ChatGPT Work](https://openai.com/index/the-den-family-social) — OpenAI case study; no technical artifact.
+- [The eternal complement](https://openai.com/index/the-eternal-complement) — OpenAI essay on execution vs. ideation; no technical artifact.
 
 ## Still developing
 
-- **intel/neural-compressor** — 5th run, 2,710 ★ (flat). SOTA low-bit quantization (INT8/FP8/MXFP8/INT4/MXFP4/NVFP4) + sparsity across PyTorch, TF, ONNX Runtime. The default compression stack for Intel hardware; AMD/NVIDIA paths improving.  
+- **intel/neural-compressor** — 5th run, 2,710 stars, traction flat since 2026-09-27. The quantization workhorse; stable adoption.
 
 ## Insights
 
-- **Agent evaluation has left the chat phase.** GameHorizon (gameplay) and EngiWorld (engineering) both provide offline, low-variance, multi-horizon benchmarks with real toolchains. The field now measures *reliability across a design loop*, not single-turn accuracy.  
-- **Self-improving agent loops are compounding.** OPSRD, Harness-Zero, RRSI, onPanda — four distinct papers in the last two weeks on agents improving their own harnesses or distillation policies. The STORY ARCS show 75–245% traction growth on this cluster.  
-- **OpenBB's 73k stars isn't hype — it's infrastructure.** A unified data layer agents can actually call removes the "build a connector for every API" tax. Expect more agent frameworks to depend on it.  
-- **Quantization is solved for Intel; the frontier moved to MXFP4/NVFP4.** Neural Compressor's 2.7k stars and flat traction mean adoption is broad but the novel research edge is now microscaling formats (MXFP4, NVFP4) and cross-vendor portability.  
+- **Agent evaluation is bifurcating**: GameHorizon (games) and EngiWorld (engineering) both treat the environment as a first-class citizen, not a sandbox. Expect more domain-specific benches replacing generic "computer use" suites.
+- **Quantization is commoditizing at the library level** (neural-compressor) while model-level releases (ISTA-DASLab Qwen) experiment with compound techniques — GSQ + RCO + expert pruning — that libraries haven't standardized yet.
+- **Sim-to-real frameworks (AIMS) and skill dictionaries (AED)** share a pattern: factor the transfer problem into configurable components rather than end-to-end fine-tuning. This modular approach is winning in robotics and wireless.
 
 ## Action items
 
-- **Read** GameHorizon and EngiWorld papers — they define the new evaluation bar for any agent product claim.  
-- **Try** Intel Neural Compressor if you deploy on Xeon/Gaudi; benchmark MXFP4 paths against your current INT4 baseline.  
-- **Track** OpenBB plug-in ecosystem — if a data source you need isn't covered, contribute a connector; it becomes the standard interface.  
-- **Test** OPSRD on a coding task where you have strong role prompts but noisy gold labels — it's the lowest-effort path to distilling prompt engineering into weights.
+- **Try**: Clone GameHorizon or EngiWorld if you're building agents that need measurable, reproducible eval — both have Docker/conda setups and run locally.
+- **Read**: The RankSEG relaxation paper (On the Relaxation...) if you ship segmentation models — the O(d³)→linear trick is deployable today.
+- **Track**: ISTA-DASLab's quantized coder series; if they publish eval numbers showing <5% pass@1 drop at 4-bit, it becomes a default for local coding assistants.

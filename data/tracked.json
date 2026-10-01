@@ -311,37 +311,6 @@
 "title": "GameHorizon Suite: Multi-Horizon Data and Evaluation in Gameplay",
 "url": "https://arxiv.org/abs/2609.25001"
 },
-"arxiv:2609.27656": {
-"category": "research",
-"first_seen": "2026-09-24",
-"flat_runs": 1,
-"id": "arxiv:2609.27656",
-"keywords": [],
-"last_seen": "2026-09-30",
-"links": {
-"project": "https://internrobotics.github.io/internw0/"
-},
-"mag_history": [
-1.6094,
-1.7918,
-1.9459,
-1.9459,
-2.5649,
-2.7081,
-2.7081
-],
-"misses": 0,
-"peak_mag": 2.7081,
-"signals": {
-"hf_comments": 0,
-"hf_upvotes": 14
-},
-"source": "HF Daily Papers",
-"streak": 7,
-"summary": "Physical intelligence requires more than predicting how the world may evolve: predictions must remain actionable as the world continues to change. We introduce InternW0, the first instantiation of the InternW physical world model series from Shanghai AI Laboratory, built around omnimodal interfaces, asynchronous multi-frequency processing, and local physical modeling under partial observations and",
-"title": "InternW0: A Foundational Physical World Model for Efficient Real-World Interactions",
-"url": "https://arxiv.org/abs/2609.27656"
-},
 "arxiv:2609.28466": {
 "category": "research",
 "first_seen": "2026-09-24",
@@ -406,37 +375,6 @@
 "summary": "Recent years have witnessed major progress in joint audio-video generation. Existing models still suffer from limited per-modality fidelity, insufficient text-modality alignment and weak cross-modal synchronization. While reinforcement-learning post-training offers a promising remedy, directly adapting it to joint audio-video generation is challenging. Heterogeneous multimodal rewards entangle lea",
 "title": "AV-GRPO: Modality-Anchored Decoupling Diffusion Reinforcement Learning for Joint Audio-Video Generation",
 "url": "https://arxiv.org/abs/2609.29816"
-},
-"arxiv:2609.29892": {
-"category": "research",
-"first_seen": "2026-09-25",
-"flat_runs": 1,
-"id": "arxiv:2609.29892",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {
-"project": "https://tongyi-mai.github.io/Qwen-Planner-Agent/"
-},
-"mag_history": [
-2.1972,
-2.3979,
-2.4849,
-2.7081,
-3.2958,
-3.4965,
-3.4965
-],
-"misses": 0,
-"peak_mag": 3.4965,
-"signals": {
-"hf_comments": 0,
-"hf_upvotes": 32
-},
-"source": "HF Daily Papers",
-"streak": 7,
-"summary": "The rapid progression of large language models is extending AI from passive content generation into the active workflows of engineering and scientific discovery. This shift raises a compelling question: can AI be both the object of development and an active participant in building next-generation AI systems? We explore this question by building Qwen-Planner-Agent within a closed-loop AI-for-AI fra",
-"title": "Qwen-Planner-Agent: A Closed-Loop AI-for-AI Framework for Real-World Mobile Planner Agents",
-"url": "https://arxiv.org/abs/2609.29892"
 },
 "arxiv:2609.30221": {
 "category": "research",
@@ -611,35 +549,6 @@
 "title": "Self-Evolving Coding Agents: From Digital Programs to Physical-World Intelligence",
 "url": "https://arxiv.org/abs/2609.35432"
 },
-"arxiv:2609.35551": {
-"category": "research",
-"first_seen": "2026-09-29",
-"flat_runs": 1,
-"id": "arxiv:2609.35551",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {
-"github": "https://github.com/declare-lab/BaRe-Mem",
-"project": "https://huggingface.co/spaces/Sssunset/BaRe-Mem"
-},
-"mag_history": [
-2.1972,
-3.1702,
-3.1702
-],
-"misses": 0,
-"peak_mag": 3.1702,
-"signals": {
-"gh_stars": 6,
-"hf_comments": 0,
-"hf_upvotes": 8
-},
-"source": "HF Daily Papers",
-"streak": 3,
-"summary": "In multi-agent systems, reliable consultation is challenging because advisor capabilities vary across tasks, and misleading information can make consultation worse than autonomous reasoning. We introduce BaRe-Mem, an online Bayesian reliability memory for multi-agent consultation. It estimates advisor reliability based on the central model's internal belief representations and updates these estima",
-"title": "BaRe-Mem: Bayesian Reliability Memory for Robust and Adaptive Agent Consultation",
-"url": "https://arxiv.org/abs/2609.35551"
-},
 "arxiv:2609.35748": {
 "category": "research",
 "first_seen": "2026-09-29",
@@ -782,21 +691,23 @@
 "flat_runs": 0,
 "id": "arxiv:2609.37402",
 "keywords": [],
-"last_seen": "2026-09-30",
+"last_seen": "2026-10-01",
 "links": {
 "github": "https://github.com/LAMDA-Model-Reuse/SaveRouter"
 },
 "mag_history": [
-2.0794
+2.0794,
+4.2281
 ],
 "misses": 0,
-"peak_mag": 2.0794,
+"peak_mag": 4.2281,
 "signals": {
-"hf_comments": 1,
-"hf_upvotes": 7
+"gh_stars": 23,
+"hf_comments": 0,
+"hf_upvotes": 13
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "Large language model (LLM) routing reduces serving cost by assigning each query to an appropriate model while preserving response quality. Learning such a router, however, often requires executing multiple candidate models on historical queries to collect query--model quality feedback, creating a nontrivial supervision cost before deployment. Existing work largely focuses on serving-time efficienc",
 "title": "Routing Should Pay for Itself: Sparse Supervision for Economical LLM Routing",
 "url": "https://arxiv.org/abs/2609.37402"
@@ -863,51 +774,27 @@
 "flat_runs": 0,
 "id": "arxiv:2609.37725",
 "keywords": [],
-"last_seen": "2026-09-30",
+"last_seen": "2026-10-01",
 "links": {
 "github": "https://github.com/facebookresearch/context-language-models",
 "project": "https://github.com/facebookresearch/context-language-models"
 },
 "mag_history": [
-2.4849
+2.4849,
+6.2467
 ],
 "misses": 0,
-"peak_mag": 2.4849,
+"peak_mag": 6.2467,
 "signals": {
-"hf_comments": 1,
-"hf_upvotes": 11
-},
-"source": "HF Daily Papers",
-"streak": 1,
-"summary": "We introduce Context Language Models (CLMs), language models that natively manage their own context. We implement this by treating the context as a file and allowing the model to make unrestricted updates to this file. This allows the model to learn what is most important to maintain in context, and naturally extends to multi-agent systems where multiple agent contexts coexist as files. Building C",
-"title": "Context Language Models",
-"url": "https://arxiv.org/abs/2609.37725"
-},
-"arxiv:2609.37969": {
-"category": "research",
-"first_seen": "2026-09-30",
-"flat_runs": 0,
-"id": "arxiv:2609.37969",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {
-"project": "https://nvlabs.github.io/Sana/Sol-Refiner/"
-},
-"mag_history": [
-2.9444,
-3.4012
-],
-"misses": 0,
-"peak_mag": 3.4012,
-"signals": {
+"gh_stars": 339,
 "hf_comments": 0,
-"hf_upvotes": 29
+"hf_upvotes": 27
 },
 "source": "HF Daily Papers",
 "streak": 2,
-"summary": "High-resolution video generation is expensive, as its cost grows rapidly with the number of spatiotemporal tokens. A practical alternative first generates a lower-resolution video and then applies a refiner, but conventional multi-step refinement introduces a second sampling bottleneck. We present SoL-Refiner, a one-step video refiner that transforms low-resolution model outputs into 4K videos wit",
-"title": "SoL-Refiner: Speed-of-Light One-Step Refinement for High-Resolution Video",
-"url": "https://arxiv.org/abs/2609.37969"
+"summary": "We introduce Context Language Models (CLMs), language models that natively manage their own context. We implement this by treating the context as a file and allowing the model to make unrestricted updates to this file. This allows the model to learn what is most important to maintain in context, and naturally extends to multi-agent systems where multiple agent contexts coexist as files. Building C",
+"title": "Context Language Models",
+"url": "https://arxiv.org/abs/2609.37725"
 },
 "arxiv:2609.38008": {
 "category": "research",
@@ -943,22 +830,24 @@
 "flat_runs": 0,
 "id": "arxiv:2609.38057",
 "keywords": [],
-"last_seen": "2026-09-30",
+"last_seen": "2026-10-01",
 "links": {
 "github": "https://github.com/Clausy9/EVO-WAM",
 "project": "https://evo-wam.github.io/"
 },
 "mag_history": [
-2.7726
+2.7726,
+4.5525
 ],
 "misses": 0,
-"peak_mag": 2.7726,
+"peak_mag": 4.5525,
 "signals": {
-"hf_comments": 1,
-"hf_upvotes": 15
+"gh_stars": 9,
+"hf_comments": 0,
+"hf_upvotes": 29
 },
 "source": "HF Daily Papers",
-"streak": 1,
+"streak": 2,
 "summary": "Improving robot policies on new tasks without collecting additional expert demonstrations remains a central challenge in robot learning. World action models (WAMs) use broad video priors to jointly predict future videos and actions, offering a potential source of supervision for adapting to new tasks. However, generated videos may fail to depict task completion, and even visually successful videos",
 "title": "EVO-WAM: Evolving World Action Models through Video-Action Verification",
 "url": "https://arxiv.org/abs/2609.38057"
@@ -1014,71 +903,30 @@
 "title": "UniEvo-VL: An On-policy Self-Distillation Training Recipe for Multimodal Model Self-improvement",
 "url": "https://arxiv.org/abs/2609.38721"
 },
-"arxiv:2609.38820": {
+"arxiv:2609.38807": {
 "category": "research",
 "first_seen": "2026-10-01",
 "flat_runs": 0,
-"id": "arxiv:2609.38820",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.CL",
-"streak": 1,
-"summary": "With the rapid growth of Arabic NLP, several models, datasets and benchmarks have been reported. This paper asks whether approaches developed for majority languages like English can be adapted to Arabic tasks. We adapt an English aspect-based sentiment analysis framework to Arabic classification tasks and present the adaptation as BARRAC: Brainstorming Alignment and Replaced Representation learnin",
-"title": "BARRAC: Adaptation of an English Aspect-based Sentiment Analysis Approach for Classification Tasks in Arabic Dialects",
-"url": "http://arxiv.org/abs/2609.38820v1"
-},
-"arxiv:2609.38850": {
-"category": "research",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "arxiv:2609.38850",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.CL",
-"streak": 1,
-"summary": "Decision models such as Jev answer questions with probabilities, which are only useful if they are calibrated. Open-source reproductions rely on supervised fine-tuning plus temperature scaling, while reinforcement learning from verifiable rewards (RLVR) makes reasoning models overconfident. We present a working implementation of reinforcement learning for calibrated decisions (RLCD) for reasoning ",
-"title": "OpenJev-RLCD: A Working RLCD Implementation",
-"url": "http://arxiv.org/abs/2609.38850v1"
-},
-"arxiv:2609.39045": {
-"category": "research",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "arxiv:2609.39045",
+"id": "arxiv:2609.38807",
 "keywords": [],
 "last_seen": "2026-10-01",
 "links": {
-"github": "https://github.com/WenyiWU0111/RSIGame",
-"project": "https://huggingface.co/spaces/RSIGame/rsigame-page"
+"github": "https://github.com/Aizhouym/PatchHolmes"
 },
 "mag_history": [
-3.4965
+2.0794
 ],
 "misses": 0,
-"peak_mag": 3.4965,
+"peak_mag": 2.0794,
 "signals": {
 "hf_comments": 1,
-"hf_upvotes": 32
+"hf_upvotes": 7
 },
 "source": "HF Daily Papers",
 "streak": 1,
-"summary": "Recent advances in large language models have made automatic game generation increasingly feasible, yet reliably improving generated games beyond a playable version remains challenging. Naive iterative refinement can easily overfit a small set of test cases, producing fragile games with unresolved bugs, missing behaviors, and poor generalization to broader player interactions. We introduce RSIGame",
-"title": "RSIGame: Autonomous Agentic Game Development with Recursive Self-improvement",
-"url": "https://arxiv.org/abs/2609.39045"
+"summary": "Patch retrieval, the task of finding the commit that fixes a known vulnerability, is the foundation of vulnerability management workflows, yet 60% to 63% of CVEs in the major advisory databases lack a patch link. We present PatchHolmes, a two-phase patch retrieval system that pairs a hybrid first-stage retriever with an agentic second-stage inspection loop. Unlike pointwise prior work that scores ",
+"title": "PatchHolmes: Agentic Patch Retrieval via Listwise Selection",
+"url": "https://arxiv.org/abs/2609.38807"
 },
 "arxiv:2609.39102": {
 "category": "research",
@@ -1103,11 +951,11 @@
 "title": "False Frontiers: Diagnosing and Mitigating Co-Cheating in Self-Evolving Search Agents",
 "url": "https://arxiv.org/abs/2609.39102"
 },
-"arxiv:2609.39773": {
+"arxiv:2609.39964": {
 "category": "research",
 "first_seen": "2026-10-01",
 "flat_runs": 0,
-"id": "arxiv:2609.39773",
+"id": "arxiv:2609.39964",
 "keywords": [],
 "last_seen": "2026-10-01",
 "links": {},
@@ -1117,137 +965,11 @@
 "misses": 0,
 "peak_mag": 0.0,
 "signals": {},
-"source": "arXiv cs.LG",
+"source": "arXiv cs.AI",
 "streak": 1,
-"summary": "Crystal structure governs material properties, making crystal structure prediction (CSP) a fundamental problem in materials science. Generative models are a promising approach for solving this problem, but the prevalence of polymorphism, coupled with large unit cells and complex packing geometry, makes the molecular CSP task challenging for existing models. To address this, we introduce Coarse-Gra",
-"title": "Riemannian Flow Models with Reinforcement Learning for Molecular Crystal Structure Prediction",
-"url": "http://arxiv.org/abs/2609.39773v1"
-},
-"arxiv:2609.39810": {
-"category": "research",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "arxiv:2609.39810",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Source-Free Universal Domain Adaptation (SF-UniDA) extends Universal Domain Adaptation by removing access to source data at adaptation time while still handling label-set mismatches between domains. Despite growing interest in this setting for image data, no benchmark exists for time series, which are more challenging. We present the first SF-UniDA benchmark on time series. In addition, we provide",
-"title": "A Comprehensive Benchmark of Source-Free Universal Domain Adaptation on Time Series Representations",
-"url": "http://arxiv.org/abs/2609.39810v1"
-},
-"arxiv:2609.39833": {
-"category": "research",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "arxiv:2609.39833",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Extreme rainfall events are increasing in intensity and frequency as climate change accelerates. While kilometer-scale precipitation forecasts are critical for supporting local decision-making, the limited availability of high-resolution precipitation observations hinders their accuracy, especially in under-resourced regions. Machine learning models are widely used to downscale precipitation data ",
-"title": "RainAtlas: A Multi-Continental Dataset for Precipitation Downscaling",
-"url": "http://arxiv.org/abs/2609.39833v1"
-},
-"arxiv:2609.39836": {
-"category": "research",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "arxiv:2609.39836",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Contrastive vision-language models map visual and textual representations into a shared normalized embedding space, making cosine similarity the natural metric for cross-modal retrieval. A practical challenge arises during model upgrades: independently trained models generally produce incompatible representation spaces, so replacing a deployed model typically requires recomputing embeddings for th",
-"title": "Spherical Interpolation for Backward-Compatible Multimodal Representations",
-"url": "http://arxiv.org/abs/2609.39836v1"
-},
-"arxiv:2609.39884": {
-"category": "research",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "arxiv:2609.39884",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Role prompting elicits specialized behavior from large language models through an expert identity, offering a lightweight way to guide reasoning on demanding tasks. However, evaluating or distilling complete role-prompted answers can miss useful next-token preferences when the sampled solution remains incorrect. Transferring these preferences also requires an objective that reaches alternatives th",
-"title": "OPSRD: On-Policy Self-Role Distillation",
-"url": "http://arxiv.org/abs/2609.39884v1"
-},
-"arxiv:2609.39903": {
-"category": "research",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "arxiv:2609.39903",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {
-"github": "https://github.com/DiscoAILab/OSWorld-Science",
-"project": "https://discoailab.github.io/osworld-science-page/"
-},
-"mag_history": [
-2.1972
-],
-"misses": 0,
-"peak_mag": 2.1972,
-"signals": {
-"hf_comments": 1,
-"hf_upvotes": 8
-},
-"source": "HF Daily Papers",
-"streak": 1,
-"summary": "Scientific software presents a demanding test for computer-using agents based on visual language models (VLMs): completing a research workflow requires interpreting specialized interfaces, manipulating scientific objects, and producing verifiable results. We thus introduce OSWorld-Science, a benchmark and evaluation environment that combines scientifically meaningful tasks, artifact-based evaluati",
-"title": "OSWorld-Science: A Benchmark of Computer Use Agents for Learning and Using Scientific Software",
-"url": "https://arxiv.org/abs/2609.39903"
-},
-"arxiv:2609.39912": {
-"category": "research",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "arxiv:2609.39912",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Parallel search may generate a correct answer that final-answer voting fails to select. We formulate this consolidation stage as trajectory selection and introduce TRACE (Trajectory Ranking with Aggregated Cross-Rollout Evidence), a lightweight learned selector that ranks completed trajectories using the search evidence behind their answers. TRACE preserves individual query and evidence occurrence",
-"title": "TRACE: Trajectory Selection for Parallel Scaling of Search Agents",
-"url": "http://arxiv.org/abs/2609.39912v1"
+"summary": "Multi-modal integrated sensing and communication (ISAC) enables environmental perception and reliable connectivity for intelligent wireless networks. Data-driven multi-modal ISAC models depend heavily on annotated real-world data to learn relationships across sensing and wireless observations, thereby constraining scalable deployment. Although synthetic data generation reduces the burden, adapting",
+"title": "AIMS: An Agentic AI Framework for Sim-to-Real Multi-Modal ISAC",
+"url": "http://arxiv.org/abs/2609.39964v1"
 },
 "arxiv:2609.39982": {
 "category": "research",
@@ -1274,36 +996,11 @@
 "title": "Mid-Harness: Scaling Actions Between Model and Harness for Terminal Agents",
 "url": "https://arxiv.org/abs/2609.39982"
 },
-"arxiv:2609.40111": {
+"arxiv:2609.40219": {
 "category": "research",
 "first_seen": "2026-10-01",
 "flat_runs": 0,
-"id": "arxiv:2609.40111",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {
-"project": "https://agenterrordata.apodex.com"
-},
-"mag_history": [
-3.1355
-],
-"misses": 0,
-"peak_mag": 3.1355,
-"signals": {
-"hf_comments": 1,
-"hf_upvotes": 22
-},
-"source": "HF Daily Papers",
-"streak": 1,
-"summary": "An unsuccessful LLM agent rollout contains more information than its final reward: the observations available to the agent, the actions it chose, and the environment's responses. Reusing this experience for learning requires identifying a decision to revise and testing a concrete alternative. We introduce the Agent Error Dataset (AED), comprising 50,228 error-diagnosis pairs from 9,961 source task",
-"title": "Agent Error Dataset: Scaling 50,000 Error--Diagnosis Pairs for Failure Analysis and Error-Aware Post-Training",
-"url": "https://arxiv.org/abs/2609.40111"
-},
-"arxiv:2609.40127": {
-"category": "research",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "arxiv:2609.40127",
+"id": "arxiv:2609.40219",
 "keywords": [],
 "last_seen": "2026-10-01",
 "links": {},
@@ -1313,31 +1010,11 @@
 "misses": 0,
 "peak_mag": 0.0,
 "signals": {},
-"source": "arXiv cs.LG",
+"source": "arXiv cs.AI",
 "streak": 1,
-"summary": "Modern transformers pair impressive capabilities with substantial memory and compute demands. Low-rank weight factorization reduces both while keeping the matrices dense, and thus efficient on standard hardware. Existing methods, however, choose the subspace to remove from each weight matrix with local closed-form criteria: activation energy, layer-wise reconstruction error, or a quadratic approxi",
-"title": "Learning Functional Subspaces for Neural Network Compression",
-"url": "http://arxiv.org/abs/2609.40127v1"
-},
-"arxiv:2609.40265": {
-"category": "research",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "arxiv:2609.40265",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Real-world time-series applications increasingly require models that can handle time series forecasting, context-conditioned prediction, and language-based temporal reasoning. Yet current time-series foundation models remain fragmented across these capabilities: numerical specialists often provide the strongest forecasts, while language-based models offer broader contextual understanding and analy",
-"title": "OpenTSLM TeeMoE: A Unified Time-Series Language Model for Forecasting, Contextual Prediction, and Reasoning",
-"url": "http://arxiv.org/abs/2609.40265v1"
+"summary": "World Action Models (WAMs) couple visual dynamics prediction with action generation, yet they do not explicitly support the reuse of action experience across manipulation tasks. Furthermore, existing WAMs struggle to capture underlying cross-task semantic relationships that could guide target action prediction, as redundant background elements interfere with the extraction of key visual informatio",
+"title": "Learning Skills from Historical Action Trajectories: Action Experience Dictionary for World Action Models",
+"url": "http://arxiv.org/abs/2609.40219v1"
 },
 "arxiv:2609.40325": {
 "category": "research",
@@ -1365,31 +1042,6 @@
 "title": "WorldAuditBench: Interactive 3D World Auditing with Multimodal Agents",
 "url": "https://arxiv.org/abs/2609.40325"
 },
-"arxiv:2609.40333": {
-"category": "research",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "arxiv:2609.40333",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {
-"project": "https://martinovicivan.github.io/StreamMAE/"
-},
-"mag_history": [
-1.9459
-],
-"misses": 0,
-"peak_mag": 1.9459,
-"signals": {
-"hf_comments": 1,
-"hf_upvotes": 6
-},
-"source": "HF Daily Papers",
-"streak": 1,
-"summary": "Self-supervised learning draws inspiration from infant visual development, yet standard training pipelines bear little resemblance to it: images are independently sampled and globally shuffled across epochs. We study self-supervised learning from continuous video streams, where frames are consumed in temporal order using strict sliding-window batches, without global reshuffling or multi-epoch repl",
-"title": "I Have a Stream: Making Self-Supervised Learning Work on Continuous Video",
-"url": "https://arxiv.org/abs/2609.40333"
-},
 "arxiv:2609.40340": {
 "category": "research",
 "first_seen": "2026-10-01",
@@ -1415,82 +1067,6 @@
 "summary": "Evolutionary search with large language models (LLMs) can stall when progress requires external knowledge the model lacks. Supplying relevant documents helps, but simply adding web search tool can keep returning the same pages as solutions change. We introduce EvoDuet, a bi-level optimization method that co-evolves solutions and search queries with fixed model parameters. At each iteration, a retr",
 "title": "EvoDuet: Bilevel Co-Evolution of Web Searching and Task Solving for Scientific Discovery",
 "url": "https://arxiv.org/abs/2609.40340"
-},
-"arxiv:2609.40360": {
-"category": "research",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "arxiv:2609.40360",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {},
-"mag_history": [
-0.0
-],
-"misses": 0,
-"peak_mag": 0.0,
-"signals": {},
-"source": "arXiv cs.LG",
-"streak": 1,
-"summary": "Reinforcement learning with verifiable rewards (RLVR) has improved the reasoning capabilities of large language models (LLMs), yet their predictions remain sensitive to task-irrelevant prompt features. We investigate this sensitivity through semifactual prompt interventions that preserve the underlying problem and its answer. Our analysis reveals substantial variation in token-level sensitivity an",
-"title": "Semifactual Credit-Augmented Policy Optimization",
-"url": "http://arxiv.org/abs/2609.40360v1"
-},
-"ghrepo:AlonzoLeeeooo/awesome-video-generation": {
-"category": "releases",
-"first_seen": "2026-09-24",
-"flat_runs": 2,
-"id": "ghrepo:AlonzoLeeeooo/awesome-video-generation",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {},
-"mag_history": [
-3.3335,
-3.3335,
-3.3335,
-3.3335,
-3.3335,
-3.3341,
-3.3341,
-3.3341
-],
-"misses": 0,
-"peak_mag": 3.3341,
-"signals": {
-"gh_forks": 45,
-"gh_stars": 786
-},
-"source": "GitHub Trending (TeX)",
-"streak": 8,
-"summary": "A collection of awesome video generation studies.",
-"title": "AlonzoLeeeooo/awesome-video-generation \u2014 A collection of awesome video generation studies.",
-"url": "https://github.com/AlonzoLeeeooo/awesome-video-generation"
-},
-"ghrepo:BreCaspian/Deep_Learning_Foundation_and_Concepts-Springer": {
-"category": "releases",
-"first_seen": "2026-09-27",
-"flat_runs": 2,
-"id": "ghrepo:BreCaspian/Deep_Learning_Foundation_and_Concepts-Springer",
-"keywords": [],
-"last_seen": "2026-09-30",
-"links": {},
-"mag_history": [
-2.3592,
-2.3681,
-2.3681,
-2.3681
-],
-"misses": 0,
-"peak_mag": 2.3681,
-"signals": {
-"gh_forks": 19,
-"gh_stars": 113
-},
-"source": "GitHub Trending (Jupyter Notebook)",
-"streak": 4,
-"summary": "\ud83c\udf1fThe complete open-source release of the book \u300a Deep Learning: Foundations and Concepts \u300b and its related supporting resources",
-"title": "BreCaspian/Deep_Learning_Foundation_and_Concepts-Springer \u2014 \ud83c\udf1fThe complete open-source release of the book \u300a Deep Learning: Foundations and Concepts \u300b and its related supporting resources",
-"url": "https://github.com/BreCaspian/Deep_Learning_Foundation_and_Concepts-Springer"
 },
 "ghrepo:camel-ai/oasis": {
 "category": "releases",
@@ -1607,41 +1183,6 @@
 "summary": "SOTA low-bit LLM quantization (INT8/FP8/MXFP8/INT4/MXFP4/NVFP4) & sparsity; leading model compression techniques on PyTorch, TensorFlow, and ONNX Runtime",
 "title": "intel/neural-compressor \u2014 SOTA low-bit LLM quantization (INT8/FP8/MXFP8/INT4/MXFP4/NVFP4) & sparsity; leading model compression techniques on PyTorch, TensorFlow, and ONNX Runtime",
 "url": "https://github.com/intel/neural-compressor"
-},
-"ghrepo:omnichar/OmniChar": {
-"category": "releases",
-"first_seen": "2026-09-18",
-"flat_runs": 0,
-"id": "ghrepo:omnichar/OmniChar",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {},
-"mag_history": [
-2.8585,
-2.8585,
-2.8618,
-2.8618,
-2.9417,
-2.9844,
-2.997,
-3.0019,
-3.0069,
-3.0502,
-3.0634,
-3.0645,
-3.071
-],
-"misses": 0,
-"peak_mag": 3.071,
-"signals": {
-"gh_forks": 68,
-"gh_stars": 464
-},
-"source": "GitHub Trending (Python)",
-"streak": 13,
-"summary": "AI character studio for portable identity. Build multi model consistent characters, train LoRAs, and generate on your own GPU.",
-"title": "omnichar/OmniChar \u2014 AI character studio for portable identity. Build multi model consistent characters, train LoRAs, and generate on your own GPU.",
-"url": "https://github.com/omnichar/OmniChar"
 },
 "ghrepo:openbq-org/OpenBB": {
 "category": "releases",
@@ -1937,6 +1478,30 @@
 "title": "Altworld/Hemmingway-1 (HF Model)",
 "url": "https://huggingface.co/Altworld/Hemmingway-1"
 },
+"hfmodel:Cloudflare/clef": {
+"category": "releases",
+"first_seen": "2026-10-01",
+"flat_runs": 0,
+"id": "hfmodel:Cloudflare/clef",
+"keywords": [],
+"last_seen": "2026-10-01",
+"links": {},
+"mag_history": [
+3.9493
+],
+"misses": 0,
+"peak_mag": 3.9493,
+"signals": {
+"hf_downloads": 18,
+"hf_likes": 281,
+"hf_trending": 278
+},
+"source": "HF Trending Models",
+"streak": 1,
+"summary": "image-text-to-text \u00b7 tags: transformers, safetensors, qwen3_5, image-text-to-text, clef, cloudflare",
+"title": "Cloudflare/clef (HF Model)",
+"url": "https://huggingface.co/Cloudflare/clef"
+},
 "hfmodel:Comfy-Org/Qwen-Image-2.1": {
 "category": "releases",
 "first_seen": "2026-09-21",
@@ -1969,6 +1534,30 @@
 "summary": "\u00b7 tags: diffusion-single-file, comfyui, base_model:Qwen/Qwen-Image-2.1, base_model:finetune:Qwen/Qwen-Image-2.1, license:other, region:us",
 "title": "Comfy-Org/Qwen-Image-2.1 (HF Model)",
 "url": "https://huggingface.co/Comfy-Org/Qwen-Image-2.1"
+},
+"hfmodel:ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF": {
+"category": "releases",
+"first_seen": "2026-10-01",
+"flat_runs": 0,
+"id": "hfmodel:ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF",
+"keywords": [],
+"last_seen": "2026-10-01",
+"links": {},
+"mag_history": [
+3.6272
+],
+"misses": 0,
+"peak_mag": 3.6272,
+"signals": {
+"hf_downloads": 148142,
+"hf_likes": 177,
+"hf_trending": 169
+},
+"source": "HF Trending Models",
+"streak": 1,
+"summary": "image-text-to-text \u00b7 tags: gguf, gsq, rco, quantization, pruning, expert-pruning",
+"title": "ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF (HF Model)",
+"url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-Flash-Next-GSQ-RCO-Coder-GGUF"
 },
 "hfmodel:Qwen/Qwen-Image-2.1": {
 "category": "releases",
@@ -2201,30 +1790,6 @@
 "summary": "text-generation \u00b7 tags: vllm, safetensors, qwen3_5, qwen, qwen3.8, orcasaq2",
 "title": "orcarouter/OrcaSAQ-2-27B (HF Model)",
 "url": "https://huggingface.co/orcarouter/OrcaSAQ-2-27B"
-},
-"hfmodel:orcarouter/OrcaSAQ-2-Cyber-27B-Uncensored-GGUF": {
-"category": "releases",
-"first_seen": "2026-10-01",
-"flat_runs": 0,
-"id": "hfmodel:orcarouter/OrcaSAQ-2-Cyber-27B-Uncensored-GGUF",
-"keywords": [],
-"last_seen": "2026-10-01",
-"links": {},
-"mag_history": [
-3.7819
-],
-"misses": 0,
-"peak_mag": 3.7819,
-"signals": {
-"hf_downloads": 8412,
-"hf_likes": 221,
-"hf_trending": 191
-},
-"source": "HF Trending Models",
-"streak": 1,
-"summary": "text-generation \u00b7 tags: llama.cpp, gguf, qwen, qwen3.8, qwen3_5, orcasaq2",
-"title": "orcarouter/OrcaSAQ-2-Cyber-27B-Uncensored-GGUF (HF Model)",
-"url": "https://huggingface.co/orcarouter/OrcaSAQ-2-Cyber-27B-Uncensored-GGUF"
 },
 "hfmodel:prism-ml/Ternary-Bonsai-2-27B-mlx-2bit": {
 "category": "releases",
