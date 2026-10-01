@@ -3,6 +3,36 @@
   "retired_edit_classes": {},
   "changes": [
     {
+      "at": "2026-10-01",
+      "files": [
+        "distill/brief_spec.md",
+        "distill/digest.md"
+      ],
+      "from_rev": "103f89a",
+      "to_rev": "3ed73c5",
+      "edit_class": "multi:distill/brief_spec.md,distill/digest.md",
+      "before": {
+        "n": 5,
+        "n_judged": 0,
+        "rubric": null,
+        "trusted": {
+          "reobservation_rate": 0.9686,
+          "forecast_accuracy": 0.9156
+        }
+      },
+      "after": {
+        "n": 1,
+        "n_judged": 0,
+        "rubric": null,
+        "trusted": {
+          "reobservation_rate": 1.0,
+          "forecast_accuracy": 0.8
+        }
+      },
+      "verdict": "inconclusive",
+      "why": "fewer than 2 evals on one side"
+    },
+    {
       "at": "2026-09-21",
       "files": [
         "distill/digest.md"

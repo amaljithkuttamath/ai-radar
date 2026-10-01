@@ -3,25 +3,25 @@
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-10-01T17:19:36Z",
+  "digest_commit_time_utc": "2026-10-01T23:08:39Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 21,
+      "links_total": 32,
       "links_broken": 0,
-      "links_unverified": 0,
-      "main_items": 9,
-      "main_score_mean": 3.22,
+      "links_unverified": 2,
+      "main_items": 12,
+      "main_score_mean": 3.11,
       "sections_present": 10,
       "expected_sections": 7,
-      "tracked_items": 83,
+      "tracked_items": 65,
       "reobservation_rate": 1.0,
-      "traction_observations": 57,
+      "traction_observations": 53,
       "degraded_synthesis": false,
       "forecast_accuracy": 0.8,
-      "claims_open": 11
+      "claims_open": 9
     },
     "checks": [
       {
@@ -32,12 +32,12 @@
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "9 main-list item(s)"
+        "detail": "12 main-list item(s)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "every link answered 2xx"
+        "detail": "no dead links; 2/32 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -47,17 +47,17 @@
       {
         "key": "traction_observed",
         "ok": true,
-        "detail": "re-observed 100% of 83 tracked items"
+        "detail": "re-observed 100% of 65 tracked items"
       }
     ],
     "failed": []
   },
   "revs": {
-    "prompt_rev": "a3fe528",
+    "prompt_rev": "3ed73c5",
     "config_rev": "ce62c6d",
     "files": {
-      "distill/digest.md": "a3fe528",
-      "distill/brief_spec.md": "103f89a",
+      "distill/digest.md": "3ed73c5",
+      "distill/brief_spec.md": "3ed73c5",
       "config/profile.yaml": "48361eb",
       "config/sources.yaml": "48361eb",
       "config/routines.yaml": "ce62c6d"
@@ -67,7 +67,16 @@
     "reobservation_rate": 1.0,
     "forecast_accuracy": 0.8
   },
-  "broken_urls": [],
+  "broken_urls": [
+    {
+      "url": "https://openai.com/index/the-den-family-social",
+      "status": 403
+    },
+    {
+      "url": "https://openai.com/index/the-eternal-complement",
+      "status": 403
+    }
+  ],
   "missed_stories": [],
   "degraded_reason": "--tier0-only: model call skipped by request"
 }
