@@ -35,7 +35,7 @@ Two things changed as a result, and both matter more than the endpoint swap:
 Run: python -m distill.synthesize
 """
 from __future__ import annotations
-import os, re, sys, json, urllib.request, urllib.error
+import os, re, sys, json, urllib.request, urllib.error, urllib.parse
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -259,6 +259,8 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
             "reasons": i.get("score_reasons", []),
             "focus_match": i.get("focus_match", False),
             "summary": (i.get("raw_summary") or "")[:summary_chars],
+            "published": i.get("published"),
+            "fetched": i.get("fetched"),
             # Promote traction to explicit named fields so the spec can REQUIRE citing them
             # (buried inside `signals` the model flattens them into "growing interest").
             "hf_upvotes": sig.get("hf_upvotes") or 0,
@@ -281,7 +283,7 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
         if not _strip_briefs:
             e = enriched.get(i["id"])
             if e and e.get("brief"):
-                del row["summary"]
+                # A generated brief is interpretation, not replacement source evidence.
                 row["brief"] = e["brief"][:summary_chars]
         compact.append(row)
     system = SPEC
@@ -621,6 +623,58 @@ def usable_digest(raw: str) -> str:
     return body
 
 
+_ARC_SECTION = re.compile(
+    r"^(?:#{2,3}[ \t]+Story arcs|\*\*Story arcs\*\*)[ \t]*\n"
+    r".*?(?=^#{1,6}[ \t]+|^\*\*[^*\[\]\n]{1,40}\*\*[ \t]*$|\Z)",
+    re.M | re.S | re.I,
+)
+
+
+def ground_story_arcs(report: str, user: str) -> str:
+    """Replace model-written arc sections with the exact records sent in this request.
+
+    The 2026-10-01 model repeated GameHorizon under a shortened title even though
+    the source list contained it once. Rendering the optional section from its data
+    avoids fuzzy title matching and also preserves its measured numbers and links.
+    An omitted section stays omitted; an invented section without evidence is removed.
+    Use this request's prompt, not a second ledger read, including after a 413 shrink.
+    """
+    if not _ARC_SECTION.search(report):
+        return report
+    arcs = []
+    if marker := re.search(r"^STORY ARCS[^\n]*:\n", user, re.M):
+        try:
+            value, _ = _DECODER.raw_decode(user[marker.end():].lstrip())
+            if isinstance(value, list):
+                arcs = value
+        except ValueError:
+            pass
+    lines = []
+    seen = set()
+    for arc in arcs:
+        url = arc["url"]
+        if not url or url in seen:
+            continue
+        seen.add(url)
+        title = " ".join(arc["title"].split())
+        title = re.sub(r"([\\\[\]*_`])", r"\\\1", title)
+        # Parentheses in a source URL must not terminate the Markdown destination.
+        link = urllib.parse.quote(url, safe=":/?#=&%+@~,-._")
+        lines.append(f"- [{title}]({link}) — seen {arc['streak']} runs, "
+                     f"traction +{arc['mag_pct_change']}% since first seen on "
+                     f"{arc['first_seen']}.")
+    replacement = "## Story arcs\n\n" + "\n".join(lines) + "\n\n" if lines else ""
+
+    def replace(match):
+        nonlocal replacement
+        section, replacement = replacement, ""
+        return section
+
+    # Removing an invented section must not turn an otherwise empty response into a
+    # published title with no digest. Reuse the existing honest-template fallback.
+    return usable_digest(_ARC_SECTION.sub(replace, report))
+
+
 def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: int) -> str:
     """Call the configured backend; degrade to the template digest on a permanent failure.
 
@@ -654,7 +708,7 @@ def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: 
             # published unread, which is exactly how the three transcripts shipped.
             print(f"[distill] synthesis truncated: {ex}", file=sys.stderr)
             try:
-                return usable_digest(ex.partial)
+                return ground_story_arcs(usable_digest(ex.partial), user)
             except NotADigest as why:
                 print(f"[distill] truncated output is not a digest ({why}); "
                       "degrading to the template digest", file=sys.stderr)
@@ -681,7 +735,7 @@ def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: 
         # succeeded; this asks whether the *answer* did, which is the question nobody was
         # asking when three planning transcripts went out as the newsletter.
         try:
-            return usable_digest(raw)
+            return ground_story_arcs(usable_digest(raw), user)
         except NotADigest as why:
             print(f"[distill] model returned 200 but not a digest ({why}); "
                   "degrading to the template digest", file=sys.stderr)

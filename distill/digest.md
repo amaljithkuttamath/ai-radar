@@ -4,7 +4,8 @@ Input: scored items in `data/scored/` within {WINDOW}. Output: a dated report in
 This is the prompt `synthesize.py` sends to the model, with the scored items appended.
 
 ## Output contract — read this first
-Your entire response is published verbatim as the newsletter. Nobody edits it.
+Your prose is published as the newsletter. Nobody edits its factual claims. The optional
+Story arcs section is rendered from the supplied records after synthesis.
 
 - Begin with the `# AI Radar — <date>` heading. No preamble, no restatement of the task,
   no "Let me analyze" — the first character of your reply is the `#`.
@@ -27,8 +28,9 @@ WINDOW · MAX_ITEMS · FOCUS (re-rank boost) · MARKET (off/on) · INCLUDE_THRES
 
 ## Steps
 1. Load scored items in WINDOW. Drop score ≤0.
-2. **If the window is quiet, widen it** (48h → 72h → 7d) until there's real signal, and say
-   you did. A rigid window that returns nothing is the failure mode this avoids.
+2. If the window is quiet, use the supplied carryovers or publish a shorter digest. You
+   cannot fetch or widen the window yourself; never claim a search or widening occurred
+   unless the supplied evidence records it.
 3. Items carried over from prior runs arrive pre-marked (`carryover: true`) with re-observed
    traction → "Still developing", one line. Do not re-introduce them as new.
 4. Apply FOCUS as a re-rank boost (ordering + relevance), then write the report.
@@ -54,7 +56,7 @@ Routing: **score ≥2 → main list · 1 → watch-list · ≤0 → drop.**
 Never infer the date from the items or your training data.
 
 **Top-line** (2–3 sentences) — the single most important development + the window's theme.
-If quiet, say so plainly (and note that you widened the window).
+If quiet, say so plainly and use only the supplied evidence.
 
 **What changed** (skip entirely if the MOVERS block has first_run=true) — a short "since last
 run" delta from the MOVERS block in the user message. Three one-line groups, omit any that are
@@ -95,6 +97,23 @@ Two hard rules (everything else is your call):
    don't write boilerplate like "no tracked traction signal". Skip the per-item "why surfaced"
    provenance line entirely; it reads as machine exhaust. Let relevance show through the writing.
 
+   `summary` is the supplied source excerpt; `brief`, when present, is a generated
+   interpretation, not independent corroboration. Use the summary and observed fields to
+   check it. A title, score, star count, or brief alone cannot establish benchmark superiority,
+   production readiness, customer adoption, licensing, or supported integrations. If the
+   source only states a claim, attribute it ("the authors report...") and retain its scope.
+   If evidence is absent, omit the claim; adding "likely" does not supply evidence.
+
+   Apply this to the top-line, Insights, and Action items too. Avoid unqualified "first",
+   "best", "solved", "default", and "production-grade" claims. A source claiming a first
+   supports "the authors describe it as the first...", not an independently established
+   first. Stars measure attention, not deployment, correctness, or technical superiority.
+   Recommendations may propose a test, but must not promise an unobserved result.
+
+   `fetched` records collection, not release. `published` can be a repository's last push,
+   not a release date. "New today" means new to the radar; call something newly released
+   only when the source excerpt explicitly establishes that event.
+
 Cover, in whatever form fits: what it is, what's genuinely new about it, and who should care.
 Keep the score visible somewhere lightweight (e.g. a trailing `· 3/5`) so ranking is legible,
 but don't make it the headline.
@@ -118,8 +137,10 @@ not drop them just for scoring lower than research.
 
 **Story arcs** (optional subsection; skip entirely when the STORY ARCS block is absent or
 empty) — items whose traction has risen across ≥3 consecutive runs. One line each:
-"*Title* — seen {streak} runs, traction +{mag_pct_change}% since first seen on {first_seen}."
-Do not embellish; ground every claim in the provided arc fields.
+"[Title](url) — seen {streak} runs, traction +{mag_pct_change}% since first seen on {first_seen}."
+Include each source URL once. Do not add shortened-title copies or recompute the numbers.
+The publisher replaces this section with the supplied records, preserving exact titles,
+links, and figures; it removes the section when there are no source arcs.
 
 **Watch-list** (1 line each) — promising but unverified / not-yet-trending. Park here anything
 whose recency you can't confirm, rather than risk surfacing stale items as new.

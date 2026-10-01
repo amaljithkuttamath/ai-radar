@@ -16,6 +16,11 @@ to check before trusting it.
 
 ## Rules
 - Use ONLY the provided evidence and abstract. Never fabricate a number, repo, or link.
+- Attribute research results to the source ("the authors report...") and retain the stated
+  benchmark and limitations. Do not promote a source's "first" claim into verified priority.
+- Stars, likes, and upvotes show attention; they do not establish production readiness,
+  customer adoption, correctness, licensing, or technical superiority. Omit unsupported
+  claims instead of softening them with "likely". A suggested experiment is not a result.
 - The Evidence line MUST print the actual figures: star count, HN points, and any benchmark
   number from the abstract. Write "8,911 stars," not "strong GitHub traction." A brief that
   cites no concrete number from the evidence has failed its purpose.
