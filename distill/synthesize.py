@@ -670,7 +670,9 @@ def ground_story_arcs(report: str, user: str) -> str:
         section, replacement = replacement, ""
         return section
 
-    return _ARC_SECTION.sub(replace, report).strip()
+    # Removing an invented section must not turn an otherwise empty response into a
+    # published title with no digest. Reuse the existing honest-template fallback.
+    return usable_digest(_ARC_SECTION.sub(replace, report))
 
 
 def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: int) -> str:

@@ -80,6 +80,15 @@ def test_no_source_arcs_removes_invented_arc_section(monkeypatch):
                    "## Insights\n\nKeep this too.")
 
 
+def test_removing_the_only_unsupported_section_falls_back(monkeypatch):
+    prompt = _prompt(monkeypatch, [])
+    raw = "# AI Radar\n\n## Story arcs\n\n- Invented growth."
+    out = _synthesize(monkeypatch, raw, prompt)
+    assert "Degraded run — no model synthesis" in out
+    assert "**Main list**" in out
+    assert "Invented growth" not in out
+
+
 def test_omitted_optional_arcs_leave_the_digest_unchanged(monkeypatch):
     prompt = _prompt(monkeypatch, [ARC])
     raw = "# AI Radar\n\n## Main list\n\nA concise digest."
