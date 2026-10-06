@@ -10,15 +10,15 @@ Today's: [reports/latest.md](reports/latest.md) · Board: [amaljithkuttamath.git
 
 | signal | status | detail |
 |---|---|---|
-| [Daily digest](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟢 ok | last digest committed 2h ago |
+| [Daily digest](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟡 warn | last digest committed 25h ago |
 | [Model synthesis](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟢 ok | latest digest carries model synthesis |
-| [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🟡 warn | grader last committed 30h ago · tier 0 only, no model judgement |
-| [Self-healing loop](https://github.com/amaljithkuttamath/ai-radar/issues?q=is%3Aissue+is%3Aopen+label%3Awatchdog) | 🟢 ok | no unanswered alarms |
-| [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/37363463849) | 🟢 ok | last run success |
-| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/37363573012) | 🟢 ok | last run success |
-| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/37378154040) | 🟢 ok | last run success |
+| [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🔴 down | grader last committed 2d ago · tier 0 only, no model judgement |
+| [Self-healing loop](https://github.com/amaljithkuttamath/ai-radar/issues?q=is%3Aissue+is%3Aopen+label%3Awatchdog) | 🟡 warn | alarm #38 open <1h |
+| [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/37500122034) | 🟢 ok | last run success |
+| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/37500180765) | 🟡 warn | 1 consecutive failures |
+| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/37522708055) | 🟡 warn | 1 consecutive failures |
 
-Generated 2026-10-05 22:13 UTC by `scripts/health.py`.
+Generated 2026-10-06 20:36 UTC by `scripts/health.py`.
 
 <!-- health:end -->
 
