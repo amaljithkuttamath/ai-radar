@@ -8,6 +8,8 @@ Item format:
 
 ## Open — pipeline (ai-radar)
 
+- [ ] 2026-10-07 · Fix tier-0 `links_resolve` · `distill/digest.md` — 6 dead link(s) (404, 404, 404), first https://github.com/vetta-agents/vetta — triggered by deterministic check links_resolve
+
 - [x] ~~2026-09-20 · Fix tier-0 `main_list_nonempty`~~ — WITHDRAWN: false alarm. The digest had four items; the checker recognised one of the four main-list formats in use (fixed in 62e03a4, issue #36).
 
 - [x] ~~2026-09-19 · Fix tier-0 `links_resolve`~~ — WITHDRAWN: false alarm. That eval was produced from a sandboxed runner whose egress proxy refuses CONNECT; the two "broken" links were proxy 403s. CI graded the same digest with zero broken links.
