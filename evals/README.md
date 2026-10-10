@@ -6,6 +6,7 @@ Daily grader output. Every entry scores today's digest against the 10-dimension 
 
 | Date | Quality | Experience | Overall | Note |
 |------|--------:|-----------:|--------:|------|
+| 2026-10-10 | — | — | — | deterministic |
 | 2026-10-08 | — | — | — | deterministic |
 | 2026-10-07 | — | — | — | deterministic · tier-0 failed: links_resolve |
 | 2026-10-04 | — | — | — | deterministic |
