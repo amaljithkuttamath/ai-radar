@@ -1,43 +1,43 @@
 {
-  "date": "2026-10-10",
+  "date": "2026-10-11",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-10-10T16:07:23Z",
+  "digest_commit_time_utc": "2026-10-11T16:31:37Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 25,
+      "links_total": 16,
       "links_broken": 0,
-      "links_unverified": 1,
-      "main_items": 5,
+      "links_unverified": 0,
+      "main_items": 3,
       "main_score_mean": 3.0,
-      "sections_present": 6,
+      "sections_present": 8,
       "expected_sections": 6,
       "tracked_items": 61,
       "reobservation_rate": 1.0,
-      "traction_observations": 57,
+      "traction_observations": 58,
       "degraded_synthesis": false,
-      "forecast_accuracy": 0.562,
-      "claims_open": 17
+      "forecast_accuracy": 0.588,
+      "claims_open": 12
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 6 section(s); 6/7 of the prompt's sections present"
+        "detail": "title and 8 section(s); 6/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "5 main-list item(s)"
+        "detail": "3 main-list item(s)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 1/25 declined to answer"
+        "detail": "every link answered 2xx"
       },
       {
         "key": "synthesis_present",
@@ -65,14 +65,9 @@
   },
   "trusted": {
     "reobservation_rate": 1.0,
-    "forecast_accuracy": 0.562
+    "forecast_accuracy": 0.588
   },
-  "broken_urls": [
-    {
-      "url": "https://openai.com/index/asana-browser-agent",
-      "status": 403
-    }
-  ],
+  "broken_urls": [],
   "missed_stories": [],
   "degraded_reason": "--tier0-only: model call skipped by request"
 }
