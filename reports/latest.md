@@ -1,70 +1,61 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-10-08](2026-10-08-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-10-10](2026-10-10-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-10-10
+# AI Radar — 2026-10-11
 
-The evaluation landscape is hardening: UltraText Bench sets a new bar for dense visual-text rendering, while RobotWorld, Tetris3D, and GRACE extend benchmark coverage to robotics, 3D scene coherence, and efficient video generation. In parallel, streaming video agents (OneStreamer) and long-context world-action models (Long-WAM, SGF+) are converging on memory-aware, proactive architectures.
+Three notable new releases lead the window: an agent-powered reverse engineering toolkit (rea) that surged to 93k GitHub stars on launch, an uncensored Qwen-Image 2.1 Turbo GGUF model, and a universal LoRA trainer supporting 10+ image architectures on 4–8 GB VRAM. Two carryovers — OneStreamer for streaming video interaction and UltraText Bench for dense visual text evaluation — continue steady traction growth.
 
 ## What changed
 
-### New today
-- [nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2](https://huggingface.co/nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2) — kitchen-sink merge
-- [ConwayResearch/Underdog-Saluki-27B-1.0](https://huggingface.co/ConwayResearch/Underdog-Saluki-27B-1.0) — 2-bit tool-calling model
-- [FineEnvs/openai-math](https://huggingface.co/datasets/FineEnvs/openai-math) — Apache-2.0 math dataset
-- [Asana cuts model costs 76x in browser tests with GPT-6.1 Sol](https://openai.com/index/asana-browser-agent) — Codex cost reduction case study
+**New today**
+- [morluto/rea — Reverse engineer anything with agents, from app behavior down to native binaries](https://github.com/morluto/rea) — agent reverse engineering
+- [AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF](https://huggingface.co/AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF) — uncensored image model
+- [AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio — Train LoRAs for Qwen-Image 2.1, FLUX.2 Klein 9B, Krea 2, Z-Image, Ideogram 4, Anima, SDXL, LTX 2.3 and MiniMax-H3 on NVIDIA GPUs from 4–8 GB VRAM](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio) — universal LoRA trainer
+- [DAEDALUS: Bootstrapping Agent Memory from Self-Generated Tasks](https://arxiv.org/abs/2610.08048) — agent memory paper
 
-### Climbing
-- [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) — +306% traction
-- [RobotWorld: Benchmarking Multimodal Agents for Robot Use Across Diverse Tasks and Embodiments](https://arxiv.org/abs/2610.10409) — +193% traction
-- [Tetris3D: 3D Scene Generation With Objects That Fit Together](https://arxiv.org/abs/2610.10539) — +192% traction
-- [GRACE: Generation-aware latent compression for efficient video generation](https://arxiv.org/abs/2610.10524) — +185% traction
-- [Long-WAM: Scaling the Context of World-Action Models](https://arxiv.org/abs/2610.10528) — +413% traction
-- [SGF+: Decoupling Gradient Flows for Autoregressive Video Generation](https://arxiv.org/abs/2610.10429) — +237% traction
+**Climbing**
+- [RLHND: Video Foundation Models as Physically Grounded Hand Trackers for Robot Learning](https://arxiv.org/abs/2610.09455) — up
+- [ALIVE: Interaction-Aligned Object Insertion for First-Frame-Guided Video Editing](https://arxiv.org/abs/2610.08779) — up
+- [From Pareto to Preference: Personalized Test-Time Scaling via Amortized Agentic Policy Discovery](https://arxiv.org/abs/2610.09684) — up
 
-### Cooled
-- [From Pareto to Preference: Personalized Test-Time Scaling via Amortized Agentic Policy Discovery](https://arxiv.org/abs/2610.09684) — score dropped 1
+**Cooled** — none
 
 ## Main list
 
-### [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) · [code](https://github.com/LINs-lab/UltraText_Bench) · 4/5
-A bilingual benchmark for dense visual-text rendering — 432 prompts across 24 real-world scene categories testing sustained legibility in long-string generation. The authors provide evaluation scripts and a leaderboard; 152 HF upvotes and 30 stars in two days signal rapid adoption. **Who cares:** teams shipping text-to-image products, anyone building eval pipelines for multimodal generators. Continuing story (2nd run, traction ×3).
+### [morluto/rea](https://github.com/morluto/rea) · 3/5
+An agent-driven reverse engineering framework that works from application behavior down to native binaries. The repo exploded to 93,748 stars on launch day — an unusually sharp signal for a developer tool. It packages LLM agents to automate the RE loop: observe, hypothesize, test, document. Early users report it handles obfuscated binaries and proprietary protocols with minimal guidance. The star count reflects intense curiosity; actual workflow integration remains to be validated. [GitHub](https://github.com/morluto/rea)
 
-### [OneStreamer: Unifying Perception, Memory, and Proactive Response in Streaming Video Interaction](https://arxiv.org/abs/2610.01762) · [code](https://github.com/MCG-NJU/OneStreamer) · [project](https://mcg-nju.github.io/OneStreamer) · 4/5
-Streaming video LLM that jointly learns query-independent evidence recording and task response through a shared proactive generation head. 193 GitHub stars and 235 HF upvotes over six runs show sustained community interest. **Who cares:** builders of real-time video assistants, surveillance analytics, or any system that must act on partial evidence. Continuing story (6th run, traction ×3).
+### [AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF](https://huggingface.co/AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF) · 3/5
+Uncensored GGUF quant of Qwen-Image 2.1 Turbo, the latest fast text-to-image model from Alibaba's Qwen team. The "turbo" variant targets ~4–6 step inference; GGUF makes it runnable on consumer CPUs and Apple Silicon without a discrete GPU. No benchmark deltas published yet — the artifact is a community repackage, not a vendor release. Useful if you need local, unrestricted image generation today; quality parity with the upstream model is assumed but unverified. [Hugging Face](https://huggingface.co/AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF)
 
-### [nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2](https://huggingface.co/nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2) · 3/5
-Massive community merge stacking Qwen3.8 with efficient-thinking, reasoning, and coding adapters; distributed as safetensors and GGUF. Trending on HF with strong Tier-2 signals but no public benchmark yet. **Who cares:** local-LLM enthusiasts wanting a single 27B artifact for coding and reasoning; treat as experimental until independent evals appear.
-
-### [ConwayResearch/Underdog-Saluki-27B-1.0](https://huggingface.co/ConwayResearch/Underdog-Saluki-27B-1.0) · 2/5
-2-bit quantized Llama-family model tagged for tool-calling and function-calling agents; GGUF + llama.cpp ready. Trending on HF with Tier-2 traction. **Who cares:** developers needing a tiny, agent-capable model for on-device or edge deployment; verify function-calling reliability against your schema before committing.
-
-### [FineEnvs/openai-math](https://huggingface.co/datasets/FineEnvs/openai-math) · 2/5
-Apache-2.0 math dataset (under 1K examples) from a frontier group; text modality, `datasets`/`harbor` compatible. **Who cares:** researchers needing a permissive, small-scale math benchmark for rapid iteration; not a replacement for GSM8K/MATH at scale.
+### [AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio) · 3/5
+One installer, one launcher, NF4-quantized base models — trains LoRAs for Qwen-Image 2.1, FLUX.2 Klein 9B, Krea 2, Z-Image, Ideogram 4, Anima, SDXL (Pony/Illustrious/NoobAI), LTX 2.3, and MiniMax-H3 on 4–8 GB VRAM. Windows, Linux, and RunPod supported. 73 stars in ~24 hours. The breadth of supported architectures is the differentiator; most trainers target one or two families. If you fine-tune image models across multiple bases, this consolidates the stack. [GitHub](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio)
 
 ## Story arcs
 
-- [Context Language Models](https://arxiv.org/abs/2609.37725) — seen 8 runs, traction +185.8% since first seen on 2026-09-30.
-- [DAEDALUS: Bootstrapping Agent Memory from Self-Generated Tasks](https://arxiv.org/abs/2610.08048) — seen 3 runs, traction +132.9% since first seen on 2026-10-07.
-- [Routing Should Pay for Itself: Sparse Supervision for Economical LLM Routing](https://arxiv.org/abs/2609.37402) — seen 8 runs, traction +120.9% since first seen on 2026-09-30.
-- [HybridCUA: Learning to Orchestrate GUI and CLI for Computer-Use Agents](https://arxiv.org/abs/2609.38008) — seen 8 runs, traction +88.0% since first seen on 2026-09-30.
-- [EVO-WAM: Evolving World Action Models through Video-Action Verification](https://arxiv.org/abs/2609.38057) — seen 8 runs, traction +85.9% since first seen on 2026-09-30.
-- [Beyond the Timeline: Augmenting Long-Video Memory with Grounded Entity Biographies](https://arxiv.org/abs/2609.38155) — seen 8 runs, traction +77.6% since first seen on 2026-09-30.
-- [Asking for What Was Never Requested: Horizontal and Vertical Proactivity in Agents](https://arxiv.org/abs/2609.37236) — seen 8 runs, traction +77.2% since first seen on 2026-09-30.
-- [What Makes World Action Models Generalize? An Empirical Study of Test-Time Future Modeling](https://arxiv.org/abs/2609.34981) — seen 8 runs, traction +73.3% since first seen on 2026-09-30.
-- [EngiWorld: What Can Frontier Agents Deliver in Professional Engineering Environments?](https://arxiv.org/abs/2609.37686) — seen 8 runs, traction +72.6% since first seen on 2026-09-30.
-- [Improving Test-Time Scaling with Adaptive Looped Transformers](https://arxiv.org/abs/2609.35748) — seen 9 runs, traction +70.8% since first seen on 2026-09-29.
+- [Context Language Models](https://arxiv.org/abs/2609.37725) — seen 9 runs, traction +187.0% since first seen on 2026-09-30.
+- [DAEDALUS: Bootstrapping Agent Memory from Self-Generated Tasks](https://arxiv.org/abs/2610.08048) — seen 4 runs, traction +136.9% since first seen on 2026-10-07.
+- [Routing Should Pay for Itself: Sparse Supervision for Economical LLM Routing](https://arxiv.org/abs/2609.37402) — seen 9 runs, traction +120.9% since first seen on 2026-09-30.
+- [ALIVE: Interaction-Aligned Object Insertion for First-Frame-Guided Video Editing](https://arxiv.org/abs/2610.08779) — seen 3 runs, traction +97.5% since first seen on 2026-10-07.
+- [Long-WAM: Scaling the Context of World-Action Models](https://arxiv.org/abs/2610.10528) — seen 3 runs, traction +92.9% since first seen on 2026-10-08.
+- [HybridCUA: Learning to Orchestrate GUI and CLI for Computer-Use Agents](https://arxiv.org/abs/2609.38008) — seen 9 runs, traction +88.0% since first seen on 2026-09-30.
+- [EVO-WAM: Evolving World Action Models through Video-Action Verification](https://arxiv.org/abs/2609.38057) — seen 9 runs, traction +85.9% since first seen on 2026-09-30.
+- [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) — seen 3 runs, traction +84.7% since first seen on 2026-10-08.
+- [Beyond the Timeline: Augmenting Long-Video Memory with Grounded Entity Biographies](https://arxiv.org/abs/2609.38155) — seen 9 runs, traction +77.6% since first seen on 2026-09-30.
+- [Asking for What Was Never Requested: Horizontal and Vertical Proactivity in Agents](https://arxiv.org/abs/2609.37236) — seen 9 runs, traction +77.2% since first seen on 2026-09-30.
 
-## Watch-list
-- [Asana cuts model costs 76x in browser tests with GPT-6.1 Sol](https://openai.com/index/asana-browser-agent) — vendor case study; no independent replication or artifact.
+## Still developing
+- [OneStreamer: Unifying Perception, Memory, and Proactive Response in Streaming Video Interaction](https://arxiv.org/abs/2610.01762) — 7th run, 202 GitHub stars (3.2× since first seen 2026-10-02), 235 HF upvotes. Streaming video LLM that jointly learns evidence recording and proactive response; project page and code live.
+- [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) — 3rd run, 34 GitHub stars (3.1× since first seen 2026-10-08), 153 HF upvotes. Dense visual text benchmark (432 prompts, 24 scene categories) with evaluation code.
 
 ## Insights
-- **Benchmark velocity is accelerating:** six new evals (UltraText, RobotWorld, Tetris3D, GRACE, Long-WAM, SGF+) entered the radar in 48h and all are climbing fast — the field is moving from "does it work?" to "how well does it work on this specific capability?"
-- **Memory and proactivity are merging:** OneStreamer, Long-WAM, SGF+, and the Story Arc cluster (Context LMs, DAEDALUS, HybridCUA, EVO-WAM) all tackle the same problem — retaining and acting on evidence across long horizons — from different angles (streaming video, world-action models, video generation, agent orchestration).
-- **Quantization + agent tooling is a packaging trend:** Underdog-Saluki (2-bit, function-calling) and the nerkyor merge (reasoning + coding + efficient-thinking) show the community converging on "small, capable, agent-ready" as a deployable artifact class.
+- **Agent tooling is hitting mainstream velocity.** rea’s 93k-star debut and DAEDALUS’s 4-run story arc both point to agent-driven software analysis moving from demo to adopted workflow.
+- **Local-first image generation is fragmenting by quantization format.** GGUF, NF4, and vendor-specific quant stacks now coexist; the AcademiaSD trainer’s breadth reflects practitioners needing one workflow across all of them.
+- **Video-world-model papers cluster around memory and grounding.** RLHND, ALIVE, Long-WAM, EVO-WAM, and OneStreamer share a theme: persistent, physically grounded representations for long-horizon tasks — a convergent research direction.
 
 ## Action items
-- **Read:** UltraText Bench paper and leaderboard — adopt its dense-text prompts as a regression suite if you ship text-to-image.  
-- **Try:** OneStreamer’s GitHub repo for streaming video memory patterns; the proactive head design is transferable to non-video sequential tasks.  
-- **Track:** RobotWorld and Tetris3D — both release environments + baselines; they’ll become standard citations for embodied and 3D generation within weeks.  
-- **Test:** Underdog-Saluki-27B-1.0 against your function-calling eval set; 2-bit agent models are finally usable enough for edge pilots.
+- **Try:** rea on a small binary you understand — measure time-to-useful-output vs. manual RE.
+- **Track:** DAEDALUS and the agent-memory story arc; if the self-generated task bootstrap holds, it changes the data flywheel for agent training.
+- **Test:** AcademiaSD trainer on a 6 GB GPU with a niche base model (e.g., MiniMax-H3) — the NF4 path is the real compatibility claim.
+- **Read:** UltraText Bench paper and evaluation code — dense text rendering is the next quality frontier for image models, and this benchmark defines the measurement.
