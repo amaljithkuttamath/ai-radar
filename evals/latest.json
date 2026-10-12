@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-11",
+  "date": "2026-10-12",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-10-11T16:31:37Z",
+  "digest_commit_time_utc": "2026-10-12T20:07:15Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 16,
+      "links_total": 21,
       "links_broken": 0,
       "links_unverified": 0,
-      "main_items": 3,
-      "main_score_mean": 3.0,
+      "main_items": 0,
+      "main_score_mean": null,
       "sections_present": 8,
-      "expected_sections": 6,
-      "tracked_items": 61,
+      "expected_sections": 7,
+      "tracked_items": 62,
       "reobservation_rate": 1.0,
-      "traction_observations": 58,
+      "traction_observations": 57,
       "degraded_synthesis": false,
-      "forecast_accuracy": 0.588,
-      "claims_open": 12
+      "forecast_accuracy": 0.6,
+      "claims_open": 10
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 8 section(s); 6/7 of the prompt's sections present"
+        "detail": "title and 8 section(s); 7/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
-        "ok": true,
-        "detail": "3 main-list item(s)"
+        "ok": null,
+        "detail": "main list has content (8 link(s), 1889 chars) in a shape this checker does not recognise — not read as empty"
       },
       {
         "key": "links_resolve",
@@ -47,7 +47,7 @@
       {
         "key": "traction_observed",
         "ok": true,
-        "detail": "re-observed 100% of 61 tracked items"
+        "detail": "re-observed 100% of 62 tracked items"
       }
     ],
     "failed": []
@@ -65,7 +65,7 @@
   },
   "trusted": {
     "reobservation_rate": 1.0,
-    "forecast_accuracy": 0.588
+    "forecast_accuracy": 0.6
   },
   "broken_urls": [],
   "missed_stories": [],
