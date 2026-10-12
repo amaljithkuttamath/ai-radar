@@ -1,61 +1,65 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-10-10](2026-10-10-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-10-11](2026-10-11-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-10-11
+# AI Radar — 2026-10-12
 
-Three notable new releases lead the window: an agent-powered reverse engineering toolkit (rea) that surged to 93k GitHub stars on launch, an uncensored Qwen-Image 2.1 Turbo GGUF model, and a universal LoRA trainer supporting 10+ image architectures on 4–8 GB VRAM. Two carryovers — OneStreamer for streaming video interaction and UltraText Bench for dense visual text evaluation — continue steady traction growth.
+An open-source agent workspace hit 100k GitHub stars overnight, while diffusion self-distillation and quantized Qwen-Image releases signal rapid commoditization of generative tooling. The window's theme: infrastructure for agent workflows and diffusion efficiency gains moving from papers to production-ready repos.
 
 ## What changed
 
 **New today**
-- [morluto/rea — Reverse engineer anything with agents, from app behavior down to native binaries](https://github.com/morluto/rea) — agent reverse engineering
-- [AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF](https://huggingface.co/AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF) — uncensored image model
-- [AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio — Train LoRAs for Qwen-Image 2.1, FLUX.2 Klein 9B, Krea 2, Z-Image, Ideogram 4, Anima, SDXL, LTX 2.3 and MiniMax-H3 on NVIDIA GPUs from 4–8 GB VRAM](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio) — universal LoRA trainer
-- [DAEDALUS: Bootstrapping Agent Memory from Self-Generated Tasks](https://arxiv.org/abs/2610.08048) — agent memory paper
-
-**Climbing**
-- [RLHND: Video Foundation Models as Physically Grounded Hand Trackers for Robot Learning](https://arxiv.org/abs/2610.09455) — up
-- [ALIVE: Interaction-Aligned Object Insertion for First-Frame-Guided Video Editing](https://arxiv.org/abs/2610.08779) — up
-- [From Pareto to Preference: Personalized Test-Time Scaling via Amortized Agentic Policy Discovery](https://arxiv.org/abs/2610.09684) — up
-
-**Cooled** — none
+- [paperclipai/paperclip](https://github.com/paperclipai/paperclip) — agent workspace, 100k stars
+- [worldbench/DiffusionOPSD](https://github.com/worldbench/DiffusionOPSD) — diffusion self-distillation
+- [aimagelab/multimodal-garment-designer](https://github.com/aimagelab/multimodal-garment-designer) — fashion latent diffusion (ICCV 2023)
+- [abenzerps/Qwen-Image-2.1-Uncensored-Quantized](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) — quantized image model
+- [m-a-p/FineFineWeb](https://huggingface.co/datasets/m-a-p/FineFineWeb) — 1B–10B text dataset
 
 ## Main list
 
-### [morluto/rea](https://github.com/morluto/rea) · 3/5
-An agent-driven reverse engineering framework that works from application behavior down to native binaries. The repo exploded to 93,748 stars on launch day — an unusually sharp signal for a developer tool. It packages LLM agents to automate the RE loop: observe, hypothesize, test, document. Early users report it handles obfuscated binaries and proprietary protocols with minimal guidance. The star count reflects intense curiosity; actual workflow integration remains to be validated. [GitHub](https://github.com/morluto/rea)
+**[paperclip](https://github.com/paperclipai/paperclip) · [code](https://github.com/paperclipai/paperclip) · 3/5** — A TypeScript desktop app for orchestrating coding agents across repositories. 100,868 stars in days suggests it fills a real gap: developers want a unified interface to spawn, monitor, and coordinate multiple agents without stitching together CLI tools. The repo is active (pushed today) and MIT-licensed.
 
-### [AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF](https://huggingface.co/AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF) · 3/5
-Uncensored GGUF quant of Qwen-Image 2.1 Turbo, the latest fast text-to-image model from Alibaba's Qwen team. The "turbo" variant targets ~4–6 step inference; GGUF makes it runnable on consumer CPUs and Apple Silicon without a discrete GPU. No benchmark deltas published yet — the artifact is a community repackage, not a vendor release. Useful if you need local, unrestricted image generation today; quality parity with the upstream model is assumed but unverified. [Hugging Face](https://huggingface.co/AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF)
+**[DiffusionOPSD](https://github.com/worldbench/DiffusionOPSD) · [code](https://github.com/worldbench/DiffusionOPSD) · 3/5** — On-policy self-distillation for diffusion models: the student learns from its own generated trajectories rather than a fixed teacher. 740 stars since yesterday's push. The method targets faster sampling with less quality drop — relevant if you're optimizing diffusion latency for production.
 
-### [AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio) · 3/5
-One installer, one launcher, NF4-quantized base models — trains LoRAs for Qwen-Image 2.1, FLUX.2 Klein 9B, Krea 2, Z-Image, Ideogram 4, Anima, SDXL (Pony/Illustrious/NoobAI), LTX 2.3, and MiniMax-H3 on 4–8 GB VRAM. Windows, Linux, and RunPod supported. 73 stars in ~24 hours. The breadth of supported architectures is the differentiator; most trainers target one or two families. If you fine-tune image models across multiple bases, this consolidates the stack. [GitHub](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio)
+**[Multimodal Garment Designer](https://github.com/aimagelab/multimodal-garment-designer) · [code](https://github.com/aimagelab/multimodal-garment-designer) · 3/5** — ICCV 2023 latent diffusion approach for human-centric fashion editing (text + mask + reference image). 445 stars on a fresh push; the codebase includes training scripts and a Gradio demo. Useful reference for conditional diffusion with pose/garment control.
+
+**[Qwen-Image-2.1-Uncensored-Quantized](https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized) · 3/5** — GGUF/MLX quantizations of Qwen-Image 2.1 with ComfyUI integration tags. No star count on HF but trending placement indicates practitioner pull. Drop-in for local image pipelines needing smaller VRAM footprints.
+
+**[FineFineWeb](https://huggingface.co/datasets/m-a-p/FineFineWeb) · 3/5** — 1B–10B token English web dataset (Apache-2.0) tagged for text classification and generation. Published Dec 2024 but surging on HF trending now — likely picked up for continued pre-training or distillation runs.
 
 ## Story arcs
 
-- [Context Language Models](https://arxiv.org/abs/2609.37725) — seen 9 runs, traction +187.0% since first seen on 2026-09-30.
-- [DAEDALUS: Bootstrapping Agent Memory from Self-Generated Tasks](https://arxiv.org/abs/2610.08048) — seen 4 runs, traction +136.9% since first seen on 2026-10-07.
-- [Routing Should Pay for Itself: Sparse Supervision for Economical LLM Routing](https://arxiv.org/abs/2609.37402) — seen 9 runs, traction +120.9% since first seen on 2026-09-30.
-- [ALIVE: Interaction-Aligned Object Insertion for First-Frame-Guided Video Editing](https://arxiv.org/abs/2610.08779) — seen 3 runs, traction +97.5% since first seen on 2026-10-07.
-- [Long-WAM: Scaling the Context of World-Action Models](https://arxiv.org/abs/2610.10528) — seen 3 runs, traction +92.9% since first seen on 2026-10-08.
-- [HybridCUA: Learning to Orchestrate GUI and CLI for Computer-Use Agents](https://arxiv.org/abs/2609.38008) — seen 9 runs, traction +88.0% since first seen on 2026-09-30.
-- [EVO-WAM: Evolving World Action Models through Video-Action Verification](https://arxiv.org/abs/2609.38057) — seen 9 runs, traction +85.9% since first seen on 2026-09-30.
-- [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) — seen 3 runs, traction +84.7% since first seen on 2026-10-08.
-- [Beyond the Timeline: Augmenting Long-Video Memory with Grounded Entity Biographies](https://arxiv.org/abs/2609.38155) — seen 9 runs, traction +77.6% since first seen on 2026-09-30.
-- [Asking for What Was Never Requested: Horizontal and Vertical Proactivity in Agents](https://arxiv.org/abs/2609.37236) — seen 9 runs, traction +77.2% since first seen on 2026-09-30.
+- [Context Language Models](https://arxiv.org/abs/2609.37725) — seen 10 runs, traction +187.3% since first seen on 2026-09-30.
+- [DAEDALUS: Bootstrapping Agent Memory from Self-Generated Tasks](https://arxiv.org/abs/2610.08048) — seen 5 runs, traction +147.9% since first seen on 2026-10-07.
+- [Routing Should Pay for Itself: Sparse Supervision for Economical LLM Routing](https://arxiv.org/abs/2609.37402) — seen 10 runs, traction +120.9% since first seen on 2026-09-30.
+- [ALIVE: Interaction-Aligned Object Insertion for First-Frame-Guided Video Editing](https://arxiv.org/abs/2610.08779) — seen 4 runs, traction +102.4% since first seen on 2026-10-07.
+- [Long-WAM: Scaling the Context of World-Action Models](https://arxiv.org/abs/2610.10528) — seen 4 runs, traction +93.8% since first seen on 2026-10-08.
+- [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) — seen 4 runs, traction +93.3% since first seen on 2026-10-08.
+- [HybridCUA: Learning to Orchestrate GUI and CLI for Computer-Use Agents](https://arxiv.org/abs/2609.38008) — seen 10 runs, traction +88.0% since first seen on 2026-09-30.
+- [EVO-WAM: Evolving World Action Models through Video-Action Verification](https://arxiv.org/abs/2609.38057) — seen 10 runs, traction +87.4% since first seen on 2026-09-30.
+- [Beyond the Timeline: Augmenting Long-Video Memory with Grounded Entity Biographies](https://arxiv.org/abs/2609.38155) — seen 10 runs, traction +77.6% since first seen on 2026-09-30.
+- [Asking for What Was Never Requested: Horizontal and Vertical Proactivity in Agents](https://arxiv.org/abs/2609.37236) — seen 10 runs, traction +77.2% since first seen on 2026-09-30.
 
 ## Still developing
-- [OneStreamer: Unifying Perception, Memory, and Proactive Response in Streaming Video Interaction](https://arxiv.org/abs/2610.01762) — 7th run, 202 GitHub stars (3.2× since first seen 2026-10-02), 235 HF upvotes. Streaming video LLM that jointly learns evidence recording and proactive response; project page and code live.
-- [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) — 3rd run, 34 GitHub stars (3.1× since first seen 2026-10-08), 153 HF upvotes. Dense visual text benchmark (432 prompts, 24 scene categories) with evaluation code.
+
+- [OneStreamer](https://arxiv.org/abs/2610.01762) · [code](https://github.com/MCG-NJU/OneStreamer) · [project](https://mcg-nju.github.io/OneStreamer) — 8th run, 210 → 217 stars, 237 HF upvotes. Streaming video LLM that builds reusable memory while perceiving; proactive generation unifies evidence recording and task response.
+- [UltraText Bench](https://arxiv.org/abs/2610.09823) · [code](https://github.com/LINs-lab/UltraText_Bench) — 4th run, 44 → 46 stars, 185 HF upvotes. Bilingual benchmark for dense visual text rendering (432 prompts, 24 scene categories); fills the evaluation gap as short-string generation saturates.
+
+## Watch-list
+
+- [AMD Helion](https://ir.amd.com/news-events/press-releases/detail/1301/introducing-amd-helion-agentic-ai-compute-at-rack-scale) — Rack-scale agentic compute announcement; no benchmarks or ship dates yet.
+- [NVIDIA Vera Rubin at OCP](https://blogs.nvidia.com/blog/ocp-global-summit-vera-rubin-scale-ai-factories/) — Architecture opened for AI factory scaling; ecosystem partnerships, no silicon specs.
 
 ## Insights
-- **Agent tooling is hitting mainstream velocity.** rea’s 93k-star debut and DAEDALUS’s 4-run story arc both point to agent-driven software analysis moving from demo to adopted workflow.
-- **Local-first image generation is fragmenting by quantization format.** GGUF, NF4, and vendor-specific quant stacks now coexist; the AcademiaSD trainer’s breadth reflects practitioners needing one workflow across all of them.
-- **Video-world-model papers cluster around memory and grounding.** RLHND, ALIVE, Long-WAM, EVO-WAM, and OneStreamer share a theme: persistent, physically grounded representations for long-horizon tasks — a convergent research direction.
+
+- **Agent UX is consolidating around "workspace" metaphors** — paperclip's star velocity suggests the market is picking a winner for multi-agent orchestration UI, similar to how VS Code won for editors.
+- **Diffusion distillation is shifting to self-supervision** — DiffusionOPSD and concurrent papers drop the teacher model, cutting compute for deployment-grade speedups.
+- **Quantization + ComfyUI/MLX packaging is the new release standard** — Qwen-Image-2.1-Quantized shows open models now ship with inference-ready artifacts, not just weights.
+- **Evaluation benchmarks are specializing fast** — UltraText Bench targets a narrow capability (dense multilingual text rendering) that general benchmarks miss; expect more micro-benchmarks.
 
 ## Action items
-- **Try:** rea on a small binary you understand — measure time-to-useful-output vs. manual RE.
-- **Track:** DAEDALUS and the agent-memory story arc; if the self-generated task bootstrap holds, it changes the data flywheel for agent training.
-- **Test:** AcademiaSD trainer on a 6 GB GPU with a niche base model (e.g., MiniMax-H3) — the NF4 path is the real compatibility claim.
-- **Read:** UltraText Bench paper and evaluation code — dense text rendering is the next quality frontier for image models, and this benchmark defines the measurement.
+
+- **Try** paperclip if you run multiple coding agents daily — it may replace ad-hoc tmux/terminal workflows.
+- **Read** DiffusionOPSD's method section if you serve diffusion models; self-distillation could halve sampling steps.
+- **Track** UltraText Bench and OneStreamer — both are in the "rising traction over multiple runs" tier, signaling community adoption beyond initial buzz.
+- **Benchmark** Qwen-Image-2.1-Quantized against your current local image pipeline; the GGUF/MLX variants target consumer GPUs directly.
