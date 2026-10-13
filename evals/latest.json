@@ -1,26 +1,26 @@
 {
-  "date": "2026-10-12",
+  "date": "2026-10-13",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-10-12T20:07:15Z",
+  "digest_commit_time_utc": "2026-10-13T17:55:32Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 21,
+      "links_total": 20,
       "links_broken": 0,
       "links_unverified": 0,
-      "main_items": 0,
+      "main_items": 3,
       "main_score_mean": null,
       "sections_present": 8,
       "expected_sections": 7,
-      "tracked_items": 62,
+      "tracked_items": 61,
       "reobservation_rate": 1.0,
-      "traction_observations": 57,
+      "traction_observations": 58,
       "degraded_synthesis": false,
-      "forecast_accuracy": 0.6,
+      "forecast_accuracy": 0.625,
       "claims_open": 10
     },
     "checks": [
@@ -31,8 +31,8 @@
       },
       {
         "key": "main_list_nonempty",
-        "ok": null,
-        "detail": "main list has content (8 link(s), 1889 chars) in a shape this checker does not recognise — not read as empty"
+        "ok": true,
+        "detail": "3 main-list item(s)"
       },
       {
         "key": "links_resolve",
@@ -47,7 +47,7 @@
       {
         "key": "traction_observed",
         "ok": true,
-        "detail": "re-observed 100% of 62 tracked items"
+        "detail": "re-observed 100% of 61 tracked items"
       }
     ],
     "failed": []
@@ -65,7 +65,7 @@
   },
   "trusted": {
     "reobservation_rate": 1.0,
-    "forecast_accuracy": 0.6
+    "forecast_accuracy": 0.625
   },
   "broken_urls": [],
   "missed_stories": [],
