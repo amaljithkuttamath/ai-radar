@@ -1,43 +1,43 @@
 {
-  "date": "2026-10-13",
+  "date": "2026-10-14",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-10-13T17:55:32Z",
+  "digest_commit_time_utc": "2026-10-14T15:41:47Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 20,
-      "links_broken": 0,
-      "links_unverified": 0,
-      "main_items": 3,
+      "links_total": 40,
+      "links_broken": 8,
+      "links_unverified": 1,
+      "main_items": 0,
       "main_score_mean": null,
-      "sections_present": 8,
-      "expected_sections": 7,
-      "tracked_items": 61,
+      "sections_present": 6,
+      "expected_sections": 6,
+      "tracked_items": 84,
       "reobservation_rate": 1.0,
-      "traction_observations": 58,
+      "traction_observations": 55,
       "degraded_synthesis": false,
-      "forecast_accuracy": 0.625,
+      "forecast_accuracy": 0.846,
       "claims_open": 10
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 8 section(s); 7/7 of the prompt's sections present"
+        "detail": "title and 6 section(s); 6/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
-        "ok": true,
-        "detail": "3 main-list item(s)"
+        "ok": null,
+        "detail": "no main-list section (reported by `structure`)"
       },
       {
         "key": "links_resolve",
-        "ok": true,
-        "detail": "every link answered 2xx"
+        "ok": false,
+        "detail": "8 dead link(s) (404, 404, 404), first https://github.com/ProAS/ProAS"
       },
       {
         "key": "synthesis_present",
@@ -47,10 +47,12 @@
       {
         "key": "traction_observed",
         "ok": true,
-        "detail": "re-observed 100% of 61 tracked items"
+        "detail": "re-observed 100% of 84 tracked items"
       }
     ],
-    "failed": []
+    "failed": [
+      "links_resolve"
+    ]
   },
   "revs": {
     "prompt_rev": "3ed73c5",
@@ -65,9 +67,46 @@
   },
   "trusted": {
     "reobservation_rate": 1.0,
-    "forecast_accuracy": 0.625
+    "forecast_accuracy": 0.846
   },
-  "broken_urls": [],
+  "broken_urls": [
+    {
+      "url": "https://github.com/ProAS/ProAS",
+      "status": 404
+    },
+    {
+      "url": "https://github.com/BRIDGE/BRIDGE",
+      "status": 404
+    },
+    {
+      "url": "https://github.com/radar-cl/radar-cl",
+      "status": 404
+    },
+    {
+      "url": "https://github.com/asr-equity/asr-equity",
+      "status": 404
+    },
+    {
+      "url": "https://shoefit.github.io",
+      "status": 404
+    },
+    {
+      "url": "https://github.com/shoefit/shoefit",
+      "status": 404
+    },
+    {
+      "url": "https://github.com/ProbabilityBench/ProbabilityBench",
+      "status": 404
+    },
+    {
+      "url": "https://github.com/impact-echo/FA-PI",
+      "status": 404
+    },
+    {
+      "url": "https://openai.com/index/third-moment-research",
+      "status": 403
+    }
+  ],
   "missed_stories": [],
   "degraded_reason": "--tier0-only: model call skipped by request"
 }
