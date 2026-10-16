@@ -10,15 +10,15 @@ Today's: [reports/latest.md](reports/latest.md) · Board: [amaljithkuttamath.git
 
 | signal | status | detail |
 |---|---|---|
-| [Daily digest](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟡 warn | last digest committed 27h ago |
+| [Daily digest](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🔴 down | last digest committed 2d ago |
 | [Model synthesis](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟢 ok | latest digest carries model synthesis |
-| [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🟡 warn | grader last committed 27h ago · tier 0 only, no model judgement |
-| [Self-healing loop](https://github.com/amaljithkuttamath/ai-radar/issues?q=is%3Aissue+is%3Aopen+label%3Awatchdog) | 🟢 ok | no unanswered alarms |
-| [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/38760106524) | 🟢 ok | last run success |
-| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/38760180557) | 🟡 warn | 1 consecutive failures |
-| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/38788956880) | 🟢 ok | last run success |
+| [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🔴 down | grader last committed 2d ago · tier 0 only, no model judgement |
+| [Self-healing loop](https://github.com/amaljithkuttamath/ai-radar/issues?q=is%3Aissue+is%3Aopen+label%3Awatchdog) | 🟡 warn | alarm #40 open <1h |
+| [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/38920989780) | 🟢 ok | last run success |
+| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/38921043111) | 🔴 down | 2 consecutive failures |
+| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/38948438075) | 🟡 warn | 1 consecutive failures |
 
-Generated 2026-10-15 19:29 UTC by `scripts/health.py`.
+Generated 2026-10-16 19:04 UTC by `scripts/health.py`.
 
 <!-- health:end -->
 
