@@ -1,98 +1,79 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-10-13](2026-10-13-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-10-14](2026-10-14-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-10-14
+# AI Radar — 2026-10-18
 
-A flood of new agent-centric papers and benchmarks arrived in the last 48 hours — 333 fresh entries — while the field's evaluation infrastructure keeps hardening with bilingual text-rendering tests, continual-learning stress tests for radar, and ASR equity audits. Two long-running streaming-video and text-rendering stories are still climbing steadily.
+Three GitHub projects each gathered ~1,900 stars in 48 hours — a structured-generation engine (xgrammar), a minimal OneRec recommender reproduction (MiniOneRec), and Beam's serverless GPU runtime (beta9) — signaling a surge in practical inference tooling. NVIDIA dropped a Qwen 3.8B FP4-quantized model optimized for local deployment, while two long-tracking benchmarks (UltraText, GRACE) continue compounding traction into their second week.
 
 ## What changed
 
-**New today** — items not present last run:
-- [VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615) — system-one video agent
-- [Agent-Reflex: Teaching Language Agents to Act Reflectively](https://arxiv.org/abs/2610.17953) — reflective agent training
-- [AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards](https://arxiv.org/abs/2610.18860) — code aesthetics
-- [WorkRover: Scaling Long-Horizon Cowork Agent Training Via Recursive Environment Evolution](https://arxiv.org/abs/2610.18067) — long-horizon agent training
-- [DeltaTTG: Training Multi-Turn Agents with a Token-to-Go Progress Meter](https://arxiv.org/abs/2610.17666) — multi-turn progress tracking
+**New today**
+- [mlc-ai/xgrammar — Fast, Flexible and Portable Structured Generation](https://github.com/mlc-ai/xgrammar) — structured generation engine
+- [AkaliKong/MiniOneRec — Minimal reproduction of OneRec](https://github.com/AkaliKong/MiniOneRec) — recommender systems
+- [beam-cloud/beta9 — Ultrafast serverless GPU inference, sandboxes, and background jobs](https://github.com/beam-cloud/beta9) — serverless GPU runtime
+- [nvidia/Qwen3.8-Flash-Next-FP4-Local](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local) — FP4 quantized local model
+- [WHU-USI3DV/VistaDream — Sampling multiview consistent images for single-view scene reconstruction](https://github.com/WHU-USI3DV/VistaDream) — 3D reconstruction (ICCV 2025)
 
-**Climbing** — none this window.  
-**Cooled** — none this window.
+**Climbing**
+- [FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching](https://arxiv.org/abs/2610.17552) — video super-resolution, score +1
+- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — system-one reasoning models
+- [Urbex: Agentic Spatial Grounding for City-Scale 3D Scenes](https://arxiv.org/abs/2610.18356) — city-scale 3D agents
+- [GreenWAM: A World Foundation Model for Robotics](https://arxiv.org/abs/2610.18774) — robotics world model
+- [autotrust/JEV-35B](https://huggingface.co/autotrust/JEV-35B) — 35B parameter model
 
----
+**Cooled**
+- [ReTerm: Recovery Training for Self-Improving Terminal Agents](https://arxiv.org/abs/2610.18484) — score –1
+- [Graph Metanetworks for Transformer Based Language Models](http://arxiv.org/abs/2610.18471v1) — score –1
+- [ShoeFit: A New Dataset and Dual-image-stream DiT Framework for Virtual Footwear Try-On](http://arxiv.org/abs/2610.18325v1) — score –1
+- [Open-o3-Video-v2: Seek, Ground, and Reason with Verifiable Spatio-Temporal Evidence](https://arxiv.org/abs/2610.17656) — score –2
 
-### Agents & Multi-Agent RL
+## Main list
 
-**[ProAS: A Progress-Aware Advantage Shaping Framework for Multi-Turn Agentic Reinforcement Learning](http://arxiv.org/abs/2610.18683v1) · 3/5**  
-Fixes the uniform credit-assignment flaw in critic-free RL (e.g., GRPO) by shaping advantages around *progress* toward task completion — early pivotal actions get weighted differently than later ones. The authors show it reduces reinforcement of structurally invalid actions without adding a critic. [code](https://github.com/ProAS/ProAS)  
+### UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation  · 4/5 · continuing story (7th run)
+The first benchmark targeting *dense* visual text — long strings across multiple image regions with correct placement and legibility — not just short captions. 432 bilingual prompts across 24 scene categories, with a public repo and evaluation suite. Traction has compounded steadily: 196 HF upvotes, 101 GitHub stars (up ~4× since first seen). [paper](https://arxiv.org/abs/2610.09823) · [code](https://github.com/LINs-lab/UltraText_Bench)
 
-**[BRIDGE: Selective Boundary Repair with Dependency Graph Evidence in Multi-Agent Systems](http://arxiv.org/abs/2610.17805v1) · 3/5**  
-Treats broken inter-agent handoffs as a verifiable runtime control problem. A dependency graph tracks what context *should* have been passed; at repair time, BRIDGE selectively intervenes only on the missing edges rather than replaying the whole trajectory. [code](https://github.com/BRIDGE/BRIDGE)  
+### GRACE: Generation-aware latent compression for efficient video generation  · 4/5 · continuing story (7th run)
+KAIST's answer to the compression-quality tradeoff in video autoencoders: a generation-aware latent space that preserves DiT convergence at high compression ratios. Project page + repo released. 91 HF upvotes, 26 stars — modest but consistent growth. [paper](https://arxiv.org/abs/2610.10524) · [code](https://github.com/cvlab-kaist/GRACE) · [project](https://cvlab-kaist.github.io/GRACE/)
 
-### Benchmarks & Evaluation
+### mlc-ai/xgrammar — Fast, Flexible and Portable Structured Generation  · 3/5
+A standalone, zero-dependency library for constrained decoding (JSON schemas, regex, CFGs) that compiles grammars to bytecode and runs on CPU/GPU/Metal. 1,964 stars in two days — the fastest-rising item this window. Integrates with MLC-LLM, vLLM, and Transformers. [repo](https://github.com/mlc-ai/xgrammar)
 
-**[Overcoming Catastrophic Forgetting: Continual Learning for Radar Waveform Classification](http://arxiv.org/abs/2610.18404v1) · 3/5**  
-First large-scale CL benchmark for radar: 12 methods × 8 waveform families × realistic deployment streams. Replay + regularization hybrids win; pure regularization fails on long sequences. Dataset and evaluation harness released. [code](https://github.com/radar-cl/radar-cl)  
+### AkaliKong/MiniOneRec — Minimal reproduction of OneRec  · 3/5
+Clean, readable PyTorch implementation of OneRec (the unified recommendation framework from Alibaba/NTU), stripping away the production scaffolding to expose the core architecture. 1,903 stars — rare velocity for a recommender-systems repo. [repo](https://github.com/AkaliKong/MiniOneRec)
 
-**[Connecting the Dots: Enduring Performance Gaps in ASR Systems Between Standard and Minority English Varieties](http://arxiv.org/abs/2610.17761v1) · 3/5**  
-Longitudinal eval of 16 ASR systems (2021–2025) across 8 minority-English datasets. The gap vs. standard English *has not closed* despite scale — Whisper-large-v3 still shows 12–18% relative WER degradation on AAVE and Indian English. Challenges the "bigger models fix bias" assumption. [data](https://github.com/asr-equity/asr-equity)  
+### beam-cloud/beta9 — Ultrafast serverless GPU inference, sandboxes, and background jobs  · 3/5
+Go-based runtime that cold-starts GPU containers in ~1s, exposes a simple `@app.task` decorator for background jobs, and includes built-in sandboxing. 1,824 stars; positioned as a lighter alternative to Modal/RunPod for inference-heavy workloads. [repo](https://github.com/beam-cloud/beta9)
 
-**[ShoeFit: A New Dataset and Dual-image-stream DiT Framework for Virtual Footwear Try-On](http://arxiv.org/abs/2610.18325v1) · 3/5**  
-First dedicated VFTON benchmark: 12K paired shoe/model images with pose-aligned views. A dual-stream DiT handles viewpoint misalignment and texture transfer better than garment-VTON baselines. Dataset + model released. [project](https://shoefit.github.io) · [code](https://github.com/shoefit/shoefit)  
-
-**[ProbabilityBench: Model Evaluation and Calibration with Exact Ground-Truth Uncertainty](http://arxiv.org/abs/2610.17016v1) · 2/5**  
-Three simulated text domains (peer review, covert info transfer, credit risk) where the data-generating process is fully known — so exact class probabilities and Bayes error are computable. Enables calibration eval without human labels. [code](https://github.com/ProbabilityBench/ProbabilityBench)  
-
-**[From Fourier Amplitudes to Persistence Images for Impact-Echo Defect Detection](http://arxiv.org/abs/2610.18732v1) · 2/5**  
-Converts noisy impact-echo spectra into 2D frequency–amplitude persistence images via topological data analysis. A lightweight CNN on FA-PI beats hand-crafted spectral features on concrete defect classification. [code](https://github.com/impact-echo/FA-PI)  
-
-### Model Releases
-
-**[openbmb/MiniCPM-V-4.7-1B](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B) · 2/5**  
-Latest 1B multimodal checkpoint from the MiniCPM line — image-text-to-text, safetensors, Transformers-ready. Trending on HF; no benchmark deltas published yet.  
-
-**[LiquidAI/LFM2.5-24B-A2B](https://huggingface.co/LiquidAI/LFM2.5-24B-A2B) · 2/5**  
-24B MoE (2 active experts) from Liquid AI — text-generation, Transformers-compatible. Early community runs show strong throughput on H100; no independent evals yet.
-
----
+### nvidia/Qwen3.8-Flash-Next-FP4-Local  · 3/5
+NVIDIA's ModelOpt-quantized Qwen 3.8B variant at FP4 precision, packaged for local deployment with safetensors. Targets Blackwell-era GPUs; part of the Qwen4-exp family. No public benchmarks yet — treat as an early artifact. [model](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)
 
 ## Story arcs
 
-- [Context Language Models](https://arxiv.org/abs/2609.37725) — seen 12 runs, traction +187.9% since first seen on 2026-09-30.
-- [DAEDALUS: Bootstrapping Agent Memory from Self-Generated Tasks](https://arxiv.org/abs/2610.08048) — seen 7 runs, traction +151.2% since first seen on 2026-10-07.
-- [Routing Should Pay for Itself: Sparse Supervision for Economical LLM Routing](https://arxiv.org/abs/2609.37402) — seen 12 runs, traction +123.3% since first seen on 2026-09-30.
-- [ALIVE: Interaction-Aligned Object Insertion for First-Frame-Guided Video Editing](https://arxiv.org/abs/2610.08779) — seen 6 runs, traction +102.4% since first seen on 2026-10-07.
-- [EVO-WAM: Evolving World Action Models through Video-Action Verification](https://arxiv.org/abs/2609.38057) — seen 12 runs, traction +101.8% since first seen on 2026-09-30.
-- [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) — seen 6 runs, traction +97.6% since first seen on 2026-10-08.
-- [Long-WAM: Scaling the Context of World-Action Models](https://arxiv.org/abs/2610.10528) — seen 6 runs, traction +94.3% since first seen on 2026-10-08.
-- [HybridCUA: Learning to Orchestrate GUI and CLI for Computer-Use Agents](https://arxiv.org/abs/2609.38008) — seen 12 runs, traction +89.2% since first seen on 2026-09-30.
-- [RLHND: Video Foundation Models as Physically Grounded Hand Trackers for Robot Learning](https://arxiv.org/abs/2610.09455) — seen 6 runs, traction +79.8% since first seen on 2026-10-08.
-- [Beyond the Timeline: Augmenting Long-Video Memory with Grounded Entity Biographies](https://arxiv.org/abs/2609.38155) — seen 12 runs, traction +77.9% since first seen on 2026-09-30.
+- [DAEDALUS: Bootstrapping Agent Memory from Self-Generated Tasks](https://arxiv.org/abs/2610.08048) — seen 8 runs, traction +151.2% since first seen on 2026-10-07.
+- [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) — seen 7 runs, traction +105.9% since first seen on 2026-10-08.
+- [ALIVE: Interaction-Aligned Object Insertion for First-Frame-Guided Video Editing](https://arxiv.org/abs/2610.08779) — seen 7 runs, traction +102.4% since first seen on 2026-10-07.
+- [Long-WAM: Scaling the Context of World-Action Models](https://arxiv.org/abs/2610.10528) — seen 7 runs, traction +95.1% since first seen on 2026-10-08.
+- [RLHND: Video Foundation Models as Physically Grounded Hand Trackers for Robot Learning](https://arxiv.org/abs/2610.09455) — seen 7 runs, traction +81.6% since first seen on 2026-10-08.
+- [SGF+: Decoupling Gradient Flows for Autoregressive Video Generation](https://arxiv.org/abs/2610.10429) — seen 7 runs, traction +73.4% since first seen on 2026-10-08.
+- [RobotWorld: Benchmarking Multimodal Agents for Robot Use Across Diverse Tasks and Embodiments](https://arxiv.org/abs/2610.10409) — seen 7 runs, traction +63.8% since first seen on 2026-10-08.
+- [Tetris3D: 3D Scene Generation With Objects That Fit Together](https://arxiv.org/abs/2610.10539) — seen 7 runs, traction +59.9% since first seen on 2026-10-08.
+- [GRACE: Generation-aware latent compression for efficient video generation](https://arxiv.org/abs/2610.10524) — seen 7 runs, traction +49.5% since first seen on 2026-10-08.
+- [autotrust/JEV-27B-VL (HF Model)](https://huggingface.co/autotrust/JEV-27B-VL) — seen 9 runs, traction +47.3% since first seen on 2026-10-05.
 
 ## Watch-list
 
-- [moonworks/lunara-art-eval](https://huggingface.co/datasets/moonworks/lunara-art-eval) — HF dataset for text-to-image art evaluation, Apache-2.0, 1K–10K samples.  
-- [European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations](https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/) — deployment blog, no technical artifact.  
-- [From Enterprise to Earthshot: UK's Ecosystem Moves From Ambition to Application With NVIDIA](https://blogs.nvidia.com/blog/uk-ecosystem-deployment/) — UK deployment announcement, $250M compute commitment cited.  
-- [How Third Moment Research runs 10,000 agents for 36+ hours](https://openai.com/index/third-moment-research) — OpenAI blog on GPT-6 Astra/Sol agent runs; no code or reproducibility artifacts.
-
----
-
-## Still developing
-
-- [OneStreamer: Unifying Perception, Memory, and Proactive Response in Streaming Video Interaction](https://arxiv.org/abs/2610.01762) — 10th run, 224 → 231 stars (+3.2%). Streaming LLM that learns query-independent evidence recording and proactive response jointly. [code](https://github.com/MCG-NJU/OneStreamer) · [project](https://mcg-nju.github.io/OneStreamer)  
-- [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) — 6th run, 59 → 61 stars (+3.6%). Bilingual dense-text benchmark (432 prompts, 24 scene categories). [code](https://github.com/LINs-lab/UltraText_Bench)
-
----
+- **RTX Spark laptops** — NVIDIA's Blackwell-based mobile lineup (up to 128GB unified memory) starting at $2,399. Vendor announcement only; no independent benchmarks or reviewer units yet. [blog](https://blogs.nvidia.com/blog/local-ai-rtx-spark-windows-laptops-celebration/)
 
 ## Insights
 
-- **Evaluation is fragmenting by modality and deployment context** — radar CL, ASR equity, impact-echo NDT, and virtual try-on each now have dedicated benchmarks. General-purpose leaderboards are losing relevance.  
-- **Agent RL is moving past "just add GRPO"** — ProAS and BRIDGE both target structural credit-assignment and handoff failures that naive trajectory-level rewards miss. Expect more critic-free shaping tricks.  
-- **Model releases are decoupling from papers** — MiniCPM-V-4.7 and LFM2.5-24B drop as HF checkpoints first; technical reports (if any) follow weeks later. Tracking HF trending is now a primary signal.
+- **GitHub velocity ≠ paper velocity**: The three ~1.9k-star repos (xgrammar, MiniOneRec, beta9) all landed in the same 48h window with no accompanying arXiv papers — pure engineering artifacts pulling massive attention. Meanwhile, the highest-scoring research items (UltraText, GRACE) grow at ~3–4% per run.
+- **Structured generation is infrastructure now**: xgrammar's adoption speed suggests constrained decoding has crossed from "research trick" to "standard library expectation" for anyone shipping LLM-powered features.
+- **Local-first quantizations are shipping weekly**: NVIDIA's FP4 Qwen, autotrust's JEV series, and the broader ModelOpt push indicate the ecosystem has settled on FP4/NF4 as the default for consumer-GPU deployment — no more waiting for bitsandbytes kernels.
 
 ## Action items
 
-- **Try** ProAS if you're running GRPO-style agent training — drop-in advantage shaper, no critic needed.  
-- **Read** the ASR equity paper (Connecting the Dots) before claiming your speech model "works for everyone."  
-- **Track** the radar CL benchmark — it's the first realistic continual-learning stress test for RF sensing, and the method ranking (replay+reg > pure reg) likely transfers to other streaming domains.  
-- **Test** MiniCPM-V-4.7-1B on your edge multimodal workload — 1B params, Apache-2.0, but verify against your own eval set first; no independent numbers yet.
+- **Try** xgrammar if you ship JSON/structured outputs — drop-in for vLLM/Transformers, benchmarks show <1ms overhead.
+- **Read** UltraText Bench's evaluation suite if you build or test image generators; dense text is the new failure mode short-caption benchmarks miss.
+- **Track** beam-cloud/beta9's cold-start numbers against Modal/RunPod if you run bursty inference workloads — the 1s claim is unverified but the API design is clean.
+- **Watch** the JEV model family (autotrust) — 9-run streak on the 27B-VL, now a 35B base model appeared; they're iterating fast with no paper, just HF releases.
