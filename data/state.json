@@ -4,15 +4,15 @@
 "mag": 3.0445,
 "mag_history": [
 2.8332,
-2.8332,
 2.8904,
 2.9957,
+3.0445,
 3.0445,
 3.0445,
 3.0445
 ],
 "score": 4,
-"streak": 7,
+"streak": 8,
 "title": "WebFovea: When the Model Is Right but the Click Is Wrong -- Reliable Round Trips for Vision-Based Web Agents on Live Websites",
 "url": "https://arxiv.org/abs/2610.03036"
 },
@@ -24,27 +24,28 @@
 3.989,
 3.989,
 4.0431,
+4.0431,
 4.0431
 ],
 "score": 2,
-"streak": 5,
+"streak": 6,
 "title": "DAEDALUS: Bootstrapping Agent Memory from Self-Generated Tasks",
 "url": "https://arxiv.org/abs/2610.08048"
 },
 "arxiv:2610.08448": {
 "first_seen": "2026-10-07",
-"mag": 5.366,
+"mag": 4.382,
 "mag_history": [
-5.0999,
 5.2679,
 5.3375,
 5.3566,
 5.366,
 5.366,
-5.366
+5.366,
+4.382
 ],
 "score": 2,
-"streak": 8,
+"streak": 9,
 "title": "Rethinking Cross-Tokenizer On-Policy Distillation: From Alignment Coverage to Supervision Reliability",
 "url": "https://arxiv.org/abs/2610.08448"
 },
@@ -53,15 +54,15 @@
 "mag": 3.2581,
 "mag_history": [
 2.4849,
-2.4849,
 3.1781,
+3.2581,
 3.2581,
 3.2581,
 3.2581,
 3.2581
 ],
 "score": 2,
-"streak": 8,
+"streak": 9,
 "title": "ALIVE: Interaction-Aligned Object Insertion for First-Frame-Guided Video Editing",
 "url": "https://arxiv.org/abs/2610.08779"
 },
@@ -69,16 +70,16 @@
 "first_seen": "2026-10-08",
 "mag": 5.348,
 "mag_history": [
-2.9444,
 4.7033,
 4.9601,
 5.0491,
 5.2042,
 5.2953,
+5.348,
 5.348
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "RLHND: Video Foundation Models as Physically Grounded Hand Trackers for Robot Learning",
 "url": "https://arxiv.org/abs/2610.09455"
 },
@@ -87,32 +88,32 @@
 "mag": 3.4937,
 "mag_history": [
 2.8332,
-2.8332,
 3.3825,
+3.4937,
 3.4937,
 3.4937,
 3.4937,
 3.4937
 ],
 "score": 2,
-"streak": 7,
+"streak": 8,
 "title": "From Pareto to Preference: Personalized Test-Time Scaling via Amortized Agentic Policy Discovery",
 "url": "https://arxiv.org/abs/2610.09684"
 },
 "arxiv:2610.09823": {
 "first_seen": "2026-10-08",
-"mag": 7.5957,
+"mag": 7.6469,
 "mag_history": [
-3.6889,
 6.7474,
 6.8146,
 7.1291,
 7.2121,
 7.2889,
-7.5957
+7.5957,
+7.6469
 ],
 "score": 4,
-"streak": 7,
+"streak": 8,
 "title": "UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation",
 "url": "https://arxiv.org/abs/2610.09823"
 },
@@ -121,124 +122,126 @@
 "mag": 3.091,
 "mag_history": [
 2.8332,
-2.8332,
 2.8904,
+3.091,
 3.091,
 3.091,
 3.091,
 3.091
 ],
 "score": 4,
-"streak": 7,
+"streak": 8,
 "title": "AdSpark: A Large-Scale Dataset and Benchmark for Product-Centric Advertisement Video Generation",
 "url": "https://arxiv.org/abs/2610.10047"
 },
 "arxiv:2610.10409": {
 "first_seen": "2026-10-08",
-"mag": 5.5704,
+"mag": 5.5824,
 "mag_history": [
-3.4012,
 5.3283,
 5.3708,
 5.428,
 5.5333,
 5.5457,
-5.5704
+5.5704,
+5.5824
 ],
 "score": 4,
-"streak": 7,
+"streak": 8,
 "title": "RobotWorld: Benchmarking Multimodal Agents for Robot Use Across Diverse Tasks and Embodiments",
 "url": "https://arxiv.org/abs/2610.10409"
 },
 "arxiv:2610.10429": {
 "first_seen": "2026-10-08",
-"mag": 6.7847,
+"mag": 6.7699,
 "mag_history": [
-3.912,
 6.2808,
 6.3475,
 6.4996,
 6.5997,
 6.6875,
-6.7847
+6.7847,
+6.7699
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "SGF+: Decoupling Gradient Flows for Autoregressive Video Generation",
 "url": "https://arxiv.org/abs/2610.10429"
 },
 "arxiv:2610.10524": {
 "first_seen": "2026-10-08",
-"mag": 6.1697,
+"mag": 6.1588,
 "mag_history": [
-4.1271,
 5.9729,
 5.9729,
 6.0834,
 6.1177,
 6.1366,
-6.1697
+6.1697,
+6.1588
 ],
 "score": 4,
-"streak": 7,
+"streak": 8,
 "title": "GRACE: Generation-aware latent compression for efficient video generation",
 "url": "https://arxiv.org/abs/2610.10524"
 },
 "arxiv:2610.10528": {
 "first_seen": "2026-10-08",
-"mag": 8.7138,
+"mag": 8.7063,
 "mag_history": [
-4.4659,
 8.5928,
 8.6144,
 8.6543,
 8.6652,
 8.6754,
-8.7138
+8.7138,
+8.7063
 ],
 "score": 3,
-"streak": 7,
+"streak": 8,
 "title": "Long-WAM: Scaling the Context of World-Action Models",
 "url": "https://arxiv.org/abs/2610.10528"
 },
 "arxiv:2610.10539": {
 "first_seen": "2026-10-08",
-"mag": 5.7308,
+"mag": 5.7688,
 "mag_history": [
-3.5835,
 5.5073,
 5.5292,
 5.6088,
 5.6247,
 5.655,
-5.7308
+5.7308,
+5.7688
 ],
 "score": 4,
-"streak": 7,
+"streak": 8,
 "title": "Tetris3D: 3D Scene Generation With Objects That Fit Together",
 "url": "https://arxiv.org/abs/2610.10539"
 },
 "arxiv:2610.17552": {
 "first_seen": "2026-10-14",
-"mag": 6.124,
+"mag": 6.2224,
 "mag_history": [
 3.3322,
-6.124
+6.124,
+6.2224
 ],
 "score": 4,
-"streak": 2,
+"streak": 3,
 "title": "FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching",
 "url": "https://arxiv.org/abs/2610.17552"
 },
 "arxiv:2610.17656": {
 "first_seen": "2026-10-14",
-"mag": 2.8904,
+"mag": 4.8991,
 "mag_history": [
 2.8904,
-2.8904
+2.8904,
+4.8991
 ],
 "score": 2,
-"streak": 2,
+"streak": 3,
 "title": "Open-o3-Video-v2: Seek, Ground, and Reason with Verifiable Spatio-Temporal Evidence",
 "url": "https://arxiv.org/abs/2610.17656"
 },
@@ -247,10 +250,11 @@
 "mag": 4.1047,
 "mag_history": [
 3.2958,
+4.1047,
 4.1047
 ],
 "score": 2,
-"streak": 2,
+"streak": 3,
 "title": "DeltaTTG: Training Multi-Turn Agents with a Token-to-Go Progress Meter",
 "url": "https://arxiv.org/abs/2610.17666"
 },
@@ -259,46 +263,50 @@
 "mag": 4.4205,
 "mag_history": [
 3.6889,
+4.4205,
 4.4205
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "Learning How to Remember: Memory Modality Selection for GUI Agents",
 "url": "https://arxiv.org/abs/2610.17928"
 },
 "arxiv:2610.17953": {
 "first_seen": "2026-10-14",
-"mag": 8.0778,
+"mag": 8.0936,
 "mag_history": [
 4.9628,
-8.0778
+8.0778,
+8.0936
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "Agent-Reflex: Teaching Language Agents to Act Reflectively",
 "url": "https://arxiv.org/abs/2610.17953"
 },
 "arxiv:2610.18067": {
 "first_seen": "2026-10-14",
-"mag": 5.0037,
+"mag": 4.992,
 "mag_history": [
 3.9512,
-5.0037
+5.0037,
+4.992
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "WorkRover: Scaling Long-Horizon Cowork Agent Training Via Recursive Environment Evolution",
 "url": "https://arxiv.org/abs/2610.18067"
 },
 "arxiv:2610.18272": {
 "first_seen": "2026-10-14",
-"mag": 2.8332,
+"mag": 4.9366,
 "mag_history": [
 2.8332,
-2.8332
+2.8332,
+4.9366
 ],
-"score": 3,
-"streak": 2,
+"score": 4,
+"streak": 3,
 "title": "JevGPT: Thinking Fast and Slow in Autonomous Research",
 "url": "https://arxiv.org/abs/2610.18272"
 },
@@ -307,22 +315,24 @@
 "mag": 0.0,
 "mag_history": [
 0.0,
+0.0,
 0.0
 ],
 "score": 2,
-"streak": 2,
+"streak": 3,
 "title": "ShoeFit: A New Dataset and Dual-image-stream DiT Framework for Virtual Footwear Try-On",
 "url": "http://arxiv.org/abs/2610.18325v1"
 },
 "arxiv:2610.18356": {
 "first_seen": "2026-10-14",
-"mag": 7.1877,
+"mag": 7.2323,
 "mag_history": [
 4.7005,
-7.1877
+7.1877,
+7.2323
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "Urbex: Agentic Spatial Grounding for City-Scale 3D Scenes",
 "url": "https://arxiv.org/abs/2610.18356"
 },
@@ -331,107 +341,115 @@
 "mag": 0.0,
 "mag_history": [
 0.0,
+0.0,
 0.0
 ],
 "score": 2,
-"streak": 2,
+"streak": 3,
 "title": "Graph Metanetworks for Transformer Based Language Models",
 "url": "http://arxiv.org/abs/2610.18471v1"
 },
 "arxiv:2610.18484": {
 "first_seen": "2026-10-14",
-"mag": 2.8904,
+"mag": 4.9687,
 "mag_history": [
 2.8904,
-2.8904
+2.8904,
+4.9687
 ],
 "score": 2,
-"streak": 2,
+"streak": 3,
 "title": "ReTerm: Recovery Training for Self-Improving Terminal Agents",
 "url": "https://arxiv.org/abs/2610.18484"
 },
 "arxiv:2610.18615": {
 "first_seen": "2026-10-14",
-"mag": 8.4586,
+"mag": 8.5019,
 "mag_history": [
 5.2364,
-8.4586
+8.4586,
+8.5019
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "VideoJev: System One Model for Video Understanding and Interaction",
 "url": "https://arxiv.org/abs/2610.18615"
 },
 "arxiv:2610.18773": {
 "first_seen": "2026-10-14",
-"mag": 8.348,
+"mag": 8.3902,
 "mag_history": [
 5.0173,
-8.348
+8.348,
+8.3902
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "Jeva: System One Models from First Principles",
 "url": "https://arxiv.org/abs/2610.18773"
 },
 "arxiv:2610.18774": {
 "first_seen": "2026-10-14",
-"mag": 5.6269,
+"mag": 5.6825,
 "mag_history": [
 4.3438,
-5.6269
+5.6269,
+5.6825
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "GreenWAM: A World Foundation Model for Robotics",
 "url": "https://arxiv.org/abs/2610.18774"
 },
 "arxiv:2610.18860": {
 "first_seen": "2026-10-14",
-"mag": 7.18,
+"mag": 7.2397,
 "mag_history": [
 4.3438,
-7.18
+7.18,
+7.2397
 ],
 "score": 3,
-"streak": 2,
+"streak": 3,
 "title": "AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards",
 "url": "https://arxiv.org/abs/2610.18860"
 },
-"blog:https://blogs.nvidia.com/?p=99053": {
-"first_seen": "2026-10-18",
+"blog:https://blogs.nvidia.com/?p=99038": {
+"first_seen": "2026-10-19",
 "mag": 0.0,
 "mag_history": [
 0.0
 ],
 "score": 1,
 "streak": 1,
-"title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive",
-"url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-windows-laptops-celebration/"
+"title": "NVIDIA Advances Agentic Security for Media, From European Public Service Broadcasting to Global Content Production",
+"url": "https://blogs.nvidia.com/blog/media-agentic-security-european-public-service-broadcasting-global-content-production/"
 },
 "ghrepo:AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio": {
 "first_seen": "2026-10-11",
-"mag": 2.1587,
+"mag": 2.2976,
 "mag_history": [
 2.152,
 2.152,
 2.152,
 2.1587,
-2.1587
+2.1587,
+2.2976
 ],
-"score": 3,
-"streak": 5,
+"score": 4,
+"streak": 6,
 "title": "AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio \u2014 Train LoRAs for Qwen-Image 2.1, FLUX.2 Klein 9B, Krea 2, Z-Image, Ideogram 4, Anima, SDXL (Pony, Illustrious, NoobAI), LTX 2.3 and MiniMax-H3 on NVIDIA GPUs from 4\u20138 GB VRAM. One install, one launcher, NF4 models. Windows, Linux and RunPod.",
 "url": "https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio"
 },
 "ghrepo:AkaliKong/MiniOneRec": {
 "first_seen": "2026-10-18",
-"mag": 3.7759,
+"mag": 3.7764,
 "mag_history": [
-3.7759
+3.7759,
+3.7764
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "AkaliKong/MiniOneRec \u2014 Minimal reproduction of OneRec",
 "url": "https://github.com/AkaliKong/MiniOneRec"
 },
@@ -439,10 +457,11 @@
 "first_seen": "2026-10-18",
 "mag": 3.0117,
 "mag_history": [
+3.0117,
 3.0117
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "OSU-NLP-Group/MagicBrush \u2014 [NeurIPS'23] \"MagicBrush: A Manually Annotated Dataset for Instruction-Guided Image Editing\".",
 "url": "https://github.com/OSU-NLP-Group/MagicBrush"
 },
@@ -451,28 +470,29 @@
 "mag": 5.2933,
 "mag_history": [
 5.293,
-5.293,
 5.2931,
 5.2931,
 5.2931,
 5.2931,
+5.2933,
 5.2933
 ],
 "score": 3,
-"streak": 9,
+"streak": 10,
 "title": "The-Vibe-Company/quivr \u2014 An open-source engine that turns continuous content streams into search and monitoring. Durable ingestion, hybrid search, alerts, and plugins for formats, models and business rules.",
 "url": "https://github.com/The-Vibe-Company/quivr"
 },
 "ghrepo:Visionary-Laboratory/visionary": {
 "first_seen": "2026-10-13",
-"mag": 3.1364,
+"mag": 3.1374,
 "mag_history": [
 3.1355,
 3.1355,
-3.1364
+3.1364,
+3.1374
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "Visionary-Laboratory/visionary \u2014 Visionary: The World Model Carrier Built on WebGPU-Powered Gaussian Splatting Platform",
 "url": "https://github.com/Visionary-Laboratory/visionary"
 },
@@ -480,10 +500,11 @@
 "first_seen": "2026-10-18",
 "mag": 3.1476,
 "mag_history": [
+3.1476,
 3.1476
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "WHU-USI3DV/VistaDream \u2014 [ICCV 2025 & TPAMI] VistaDream: Sampling multiview consistent images for single-view scene reconstruction",
 "url": "https://github.com/WHU-USI3DV/VistaDream"
 },
@@ -494,105 +515,106 @@
 3.0502,
 3.0502,
 3.0502,
+3.0502,
 3.0502
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "aimagelab/multimodal-garment-designer \u2014 [ICCV 2023] This is the official repository for the paper \"Multimodal Garment Designer: Human-Centric Latent Diffusion Models for Fashion Image Editing\"",
 "url": "https://github.com/aimagelab/multimodal-garment-designer"
 },
 "ghrepo:beam-cloud/beta9": {
 "first_seen": "2026-10-18",
-"mag": 3.7547,
+"mag": 3.7555,
 "mag_history": [
-3.7547
+3.7547,
+3.7555
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "beam-cloud/beta9 \u2014 Ultrafast serverless GPU inference, sandboxes, and background jobs",
 "url": "https://github.com/beam-cloud/beta9"
 },
 "ghrepo:mlc-ai/xgrammar": {
 "first_seen": "2026-10-18",
-"mag": 3.7916,
+"mag": 3.7919,
 "mag_history": [
-3.7916
+3.7916,
+3.7919
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "mlc-ai/xgrammar \u2014 Fast, Flexible and Portable Structured Generation",
 "url": "https://github.com/mlc-ai/xgrammar"
 },
 "ghrepo:morluto/rea": {
 "first_seen": "2026-10-11",
-"mag": 6.3328,
+"mag": 6.3593,
 "mag_history": [
 5.7242,
 5.9564,
 6.1009,
 6.1781,
-6.3328
+6.3328,
+6.3593
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "morluto/rea \u2014 Reverse engineer anything with agents, from app behavior down to native binaries.",
 "url": "https://github.com/morluto/rea"
 },
 "ghrepo:paperclipai/paperclip": {
 "first_seen": "2026-10-12",
-"mag": 5.7757,
+"mag": 5.7789,
 "mag_history": [
 5.7608,
 5.7636,
 5.7662,
-5.7757
+5.7757,
+5.7789
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "paperclipai/paperclip \u2014 The open-source app everyone uses to manage agents at work",
 "url": "https://github.com/paperclipai/paperclip"
 },
-"ghrepo:utensils/mold": {
-"first_seen": "2026-10-04",
-"mag": 1.9851,
-"mag_history": [
-1.9851,
-1.9851,
-1.9851,
-1.9851,
-1.9851,
-1.9851,
-1.9851
-],
-"score": 3,
-"streak": 10,
-"title": "utensils/mold \u2014 CLI-native local AI image and video generation for people, scripts, and agents \u2014 CUDA on Linux, Metal on macOS, plus desktop, web, iPhone, REST/SSE, and MCP.",
-"url": "https://github.com/utensils/mold"
-},
 "ghrepo:worldbench/DiffusionOPSD": {
 "first_seen": "2026-10-12",
-"mag": 3.3738,
+"mag": 3.3779,
 "mag_history": [
 3.304,
 3.312,
 3.3238,
-3.3738
+3.3738,
+3.3779
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "worldbench/DiffusionOPSD \u2014 \ud83d\udd25 On-Policy Self-Distillation in Diffusion Models",
 "url": "https://github.com/worldbench/DiffusionOPSD"
 },
+"hfdataset:MaziyarPanahi/Jev-RAG-Claim-Verification-130K": {
+"first_seen": "2026-10-19",
+"mag": 2.2532,
+"mag_history": [
+2.2532
+],
+"score": 1,
+"streak": 1,
+"title": "MaziyarPanahi/Jev-RAG-Claim-Verification-130K (HF Dataset)",
+"url": "https://huggingface.co/datasets/MaziyarPanahi/Jev-RAG-Claim-Verification-130K"
+},
 "hfdataset:TIGER-Lab/MMLU-Pro": {
 "first_seen": "2026-10-13",
-"mag": 4.4481,
+"mag": 4.4553,
 "mag_history": [
 4.4358,
 4.4395,
-4.4481
+4.4481,
+4.4553
 ],
 "score": 4,
-"streak": 3,
+"streak": 4,
 "title": "TIGER-Lab/MMLU-Pro (HF Dataset)",
 "url": "https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro"
 },
@@ -603,135 +625,141 @@
 3.7944,
 3.8247,
 3.8276,
+3.8364,
 3.8364
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "m-a-p/FineFineWeb (HF Dataset)",
 "url": "https://huggingface.co/datasets/m-a-p/FineFineWeb"
 },
 "hfmodel:AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF": {
 "first_seen": "2026-10-11",
-"mag": 4.4118,
+"mag": 4.437,
 "mag_history": [
 4.0065,
 4.1413,
 4.194,
 4.2623,
-4.4118
+4.4118,
+4.437
 ],
 "score": 3,
-"streak": 5,
+"streak": 6,
 "title": "AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF (HF Model)",
 "url": "https://huggingface.co/AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF"
 },
-"hfmodel:OpenMOSS-Team/MOSS-Image-Base": {
-"first_seen": "2026-10-18",
-"mag": 3.9189,
+"hfmodel:Comfy-Org/MOSS-Image": {
+"first_seen": "2026-10-19",
+"mag": 3.7975,
 "mag_history": [
-3.9189
+3.7975
 ],
 "score": 2,
 "streak": 1,
-"title": "OpenMOSS-Team/MOSS-Image-Base (HF Model)",
-"url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base"
-},
-"hfmodel:OpenMOSS-Team/MOSS-Image-SFT": {
-"first_seen": "2026-10-18",
-"mag": 3.9996,
-"mag_history": [
-3.9996
-],
-"score": 2,
-"streak": 1,
-"title": "OpenMOSS-Team/MOSS-Image-SFT (HF Model)",
-"url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
+"title": "Comfy-Org/MOSS-Image (HF Model)",
+"url": "https://huggingface.co/Comfy-Org/MOSS-Image"
 },
 "hfmodel:abenzerps/Qwen-Image-2.1-Uncensored-Quantized": {
 "first_seen": "2026-10-12",
-"mag": 5.8917,
+"mag": 5.9072,
 "mag_history": [
 5.8197,
 5.8378,
 5.8524,
-5.8917
+5.8917,
+5.9072
 ],
 "score": 3,
-"streak": 4,
+"streak": 5,
 "title": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized (HF Model)",
 "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
 },
 "hfmodel:autotrust/JEV-27B-VL": {
 "first_seen": "2026-10-05",
-"mag": 6.2201,
+"mag": 6.2844,
 "mag_history": [
-5.5466,
 5.7564,
 5.7655,
 5.7743,
 5.8065,
 5.8864,
-6.2201
+6.2201,
+6.2844
 ],
 "score": 3,
-"streak": 9,
+"streak": 10,
 "title": "autotrust/JEV-27B-VL (HF Model)",
 "url": "https://huggingface.co/autotrust/JEV-27B-VL"
 },
 "hfmodel:autotrust/JEV-35B": {
 "first_seen": "2026-10-13",
-"mag": 5.4108,
+"mag": 5.5742,
 "mag_history": [
 4.1526,
 4.6006,
-5.4108
+5.4108,
+5.5742
 ],
 "score": 3,
-"streak": 3,
+"streak": 4,
 "title": "autotrust/JEV-35B (HF Model)",
 "url": "https://huggingface.co/autotrust/JEV-35B"
 },
+"hfmodel:datalab-to/indra-ocr": {
+"first_seen": "2026-10-19",
+"mag": 3.7882,
+"mag_history": [
+3.7882
+],
+"score": 2,
+"streak": 1,
+"title": "datalab-to/indra-ocr (HF Model)",
+"url": "https://huggingface.co/datalab-to/indra-ocr"
+},
 "hfmodel:google/embeddinggemma-2": {
 "first_seen": "2026-10-07",
-"mag": 5.5134,
+"mag": 5.5333,
 "mag_history": [
-4.9314,
 5.097,
 5.1804,
 5.2899,
 5.3451,
 5.3896,
-5.5134
+5.5134,
+5.5333
 ],
 "score": 3,
-"streak": 8,
+"streak": 9,
 "title": "google/embeddinggemma-2 (HF Model)",
 "url": "https://huggingface.co/google/embeddinggemma-2"
 },
 "hfmodel:nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2": {
 "first_seen": "2026-10-10",
-"mag": 4.2315,
+"mag": 4.2702,
 "mag_history": [
 3.5951,
 3.7819,
 3.9418,
 3.9996,
 4.0422,
-4.2315
+4.2315,
+4.2702
 ],
 "score": 3,
-"streak": 6,
+"streak": 7,
 "title": "nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2 (HF Model)",
 "url": "https://huggingface.co/nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2"
 },
 "hfmodel:nvidia/Qwen3.8-Flash-Next-FP4-Local": {
 "first_seen": "2026-10-18",
-"mag": 3.7295,
+"mag": 3.8157,
 "mag_history": [
-3.7295
+3.7295,
+3.8157
 ],
 "score": 3,
-"streak": 1,
+"streak": 2,
 "title": "nvidia/Qwen3.8-Flash-Next-FP4-Local (HF Model)",
 "url": "https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local"
 }
