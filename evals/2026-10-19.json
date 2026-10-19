@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-19",
+  "mode": "deterministic",
+  "grader_model": "",
+  "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
+  "digest_commit_time_utc": "2026-10-19T17:18:24Z",
+  "age_hours_at_eval": 0.0,
+  "tier0": {
+    "module_hash": "b9d5d0f52167",
+    "metrics": {
+      "age_h": 0.0,
+      "links_total": 22,
+      "links_broken": 0,
+      "links_unverified": 0,
+      "main_items": 4,
+      "main_score_mean": 3.0,
+      "sections_present": 9,
+      "expected_sections": 6,
+      "tracked_items": 60,
+      "reobservation_rate": 0.833,
+      "traction_observations": 49,
+      "degraded_synthesis": false,
+      "forecast_accuracy": 0.846,
+      "claims_open": 15
+    },
+    "checks": [
+      {
+        "key": "structure",
+        "ok": true,
+        "detail": "title and 9 section(s); 6/7 of the prompt's sections present"
+      },
+      {
+        "key": "main_list_nonempty",
+        "ok": true,
+        "detail": "4 main-list item(s)"
+      },
+      {
+        "key": "links_resolve",
+        "ok": true,
+        "detail": "every link answered 2xx"
+      },
+      {
+        "key": "synthesis_present",
+        "ok": true,
+        "detail": "digest carries model synthesis"
+      },
+      {
+        "key": "traction_observed",
+        "ok": true,
+        "detail": "re-observed 83% of 60 tracked items"
+      }
+    ],
+    "failed": []
+  },
+  "revs": {
+    "prompt_rev": "3ed73c5",
+    "config_rev": "ce62c6d",
+    "files": {
+      "distill/digest.md": "3ed73c5",
+      "distill/brief_spec.md": "3ed73c5",
+      "config/profile.yaml": "48361eb",
+      "config/sources.yaml": "48361eb",
+      "config/routines.yaml": "ce62c6d"
+    }
+  },
+  "trusted": {
+    "reobservation_rate": 0.833,
+    "forecast_accuracy": 0.846
+  },
+  "broken_urls": [],
+  "missed_stories": [],
+  "degraded_reason": "--tier0-only: model call skipped by request"
+}
