@@ -1,78 +1,107 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-10-18](2026-10-18-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-10-19](2026-10-19-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-10-19
+# AI Radar — 2026-10-21
 
-Two evaluation benchmarks keep climbing — UltraText Bench for dense visual text rendering and FlashVSR+ for efficient video super-resolution — while a pair of fresh Hugging Face model drops (MOSS-Image and Indra-OCR) land on the radar. The window's theme: better ways to measure what generative models actually produce, plus accessible checkpoints for diffusion and OCR.
+A wave of new benchmarks and evaluation frameworks dominates the 48-hour window, signaling a field increasingly focused on measuring agent reliability, temporal reasoning, and visual-text fidelity over raw model releases. Mistral's lightweight time-series foundation model and two specialized datasets from NVIDIA and Anthropic round out the practical releases.
 
 ## What changed
 
-**New today**
-- [Comfy-Org/MOSS-Image](https://huggingface.co/Comfy-Org/MOSS-Image) — diffusion single-file for ComfyUI
-- [datalab-to/indra-ocr](https://huggingface.co/datalab-to/indra-ocr) — ONNX OCR model, CPU-friendly
-- [MaziyarPanahi/Jev-RAG-Claim-Verification-130K](https://huggingface.co/datasets/MaziyarPanahi/Jev-RAG-Claim-Verification-130K) — claim-verification dataset
-- [NVIDIA Advances Agentic Security for Media](https://blogs.nvidia.com/blog/media-agentic-security-european-public-service-broadcasting-global-content-production/) — EBU sovereign AI framework
+**New today**  
+- [Matrix-Game 4.0: Harnessing Video Models for Real-Time Playable Game Worlds](https://arxiv.org/abs/2610.27999) — video world model  
+- [S-Agent 2.0: Spatial Reasoning with a General Coding Agent](https://arxiv.org/abs/2610.28354) — spatial agent  
+- [Learning the 4D World through Point Trajectory Forecasting](https://arxiv.org/abs/2610.28594) — 4D forecasting  
+- [SolarRenderer: Few-Step Generative Reference Rendering](https://arxiv.org/abs/2610.28630) — rendering  
+- [MMEnterprise-Bench: Evaluating Enterprise Agents over Evolving Multimodal Records](https://arxiv.org/abs/2610.27911) — enterprise agent eval  
 
-**Climbing**
-- [JevGPT: Thinking Fast and Slow in Autonomous Research](https://arxiv.org/abs/2610.18272) — score +1
-- [AcademiaSD LoRAlab TrainerStudio](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio) — score +1
-- [ReTerm: Recovery Training for Self-Improving Terminal Agents](https://arxiv.org/abs/2610.18484) — traction +208%
-- [Open-o3-Video-v2: Seek, Ground, and Reason](https://arxiv.org/abs/2610.17656) — traction +201%
+**Climbing**  
+*(none this window)*
 
-**Cooled**
-- [Rethinking Cross-Tokenizer On-Policy Distillation](https://arxiv.org/abs/2610.08448) — traction −98%
+**Cooled**  
+- [autotrust/JEV-35B (HF Model)](https://huggingface.co/autotrust/JEV-35B) — traction dropped 1.69%
 
 ---
 
 ## Main list
 
-### UltraText Bench — bilingual benchmark for dense visual text rendering · 4/5
-[Paper](https://arxiv.org/abs/2610.09823) · [Code](https://github.com/LINs-lab/UltraText_Bench)  
-Continuing story (8th run, traction +396% since 2026-10-08). 432 prompts across 24 real-world scenes test sustained multi-region text legibility — the logical next step after short-string benchmarks saturate. 196 HF upvotes, 112 GitHub stars. Anyone shipping image generation that needs readable posters, UI mockups, or multilingual signage should run this.
+### Benchmark
 
-### FlashVSR+ — efficient video super-resolution via hybrid attention · 4/5
-[Paper](https://arxiv.org/abs/2610.17552) · [Code](https://github.com/OpenImagingLab/FlashVSR_Plus) · [Project](https://www.flashvsr.tech)  
-Continuing story (3rd run, traction +289% since 2026-10-14). One-step diffusion distillation for VSR, now with a hybrid attention block that cuts high-res inference cost and a reward-yield distribution matching loss for human-aligned quality. 119 stars, 45 HF upvotes. Relevant if you're upscaling long-form video or building real-time enhancement pipelines.
+**[CUA-Recovery: Benchmarking Error Recovery in Long-Horizon Computer-Use Agents](http://arxiv.org/abs/2610.27645v1) · 3/5**  
+A dedicated benchmark for detecting and recovering from errors in computer-use agents running multi-app workflows. Existing benchmarks only measure end-to-end success; this introduces injected and natural error scenarios with fine-grained recovery metrics. Code and evaluation harness are linked. Relevant for anyone shipping agents that must survive partial failures.
 
-### Comfy-Org/MOSS-Image — single-file diffusion model for ComfyUI · 2/5
-[Model](https://huggingface.co/Comfy-Org/MOSS-Image)  
-Fresh drop (2026-10-18), Apache-2.0, finetuned from OpenMOSS-Team/MOSS-Image-Base. Packaged as a single `.safetensors` for drag-and-drop ComfyUI use. No benchmark claims in the card; treat as a convenient checkpoint to try, not a SOTA announcement.
+**[Model- and Layer-Level Closed-Loop Forecasting with SSM-Based Spiking Neural Networks](http://arxiv.org/abs/2610.28495v1) · 3/5**  
+Explores forecasting with spiking neural networks framed as deep state-space models, comparing layer-wise and model-level closed-loop strategies. Artifact available. Useful for time-series teams evaluating SNNs as an alternative to transformer-based forecasters.
 
-### datalab-to/indra-ocr — ONNX OCR model, CPU-optimized · 2/5
-[Model](https://huggingface.co/datalab-to/indra-ocr)  
-Published today. Safetensors + ONNX export, tagged for CPU inference and PDF processing. No accuracy numbers or comparison data in the card — worth a quick test if you need a lightweight, license-permissive OCR backbone, but verify on your document distribution first.
+**[SliMOO: Interpretable Multi-Objective Evolutionary Search for LLM Depth Pruning](http://arxiv.org/abs/2610.27812v1) · 3/5**  
+Frames depth pruning as multi-objective optimization across heterogeneous layer contributions, using evolutionary search to find Pareto-optimal subnetworks. Artifact linked. Practical for inference-optimization teams needing to preserve broad capability while cutting depth.
+
+**[GALA: Geometry-Aware Language Model for Controllable Object Arrangement](http://arxiv.org/abs/2610.28280v1) · 3/5**  
+A language model that consumes point clouds to predict 6D object poses under fine-grained placement constraints (support, containment). Moves beyond bounding-box abstractions. Code linked. Relevant for 3D scene generation and robotic manipulation pipelines.
+
+**[Beyond Trajectory Statistics: Community-Consistent Human Mobility Generation via Evolving User-Location Graphs](http://arxiv.org/abs/2610.28467v1) · 3/5**  
+Generates synthetic mobility trajectories that preserve evolving community structure in user-location graphs, not just individual statistics. Artifact available. Applies to urban modeling and location-based service simulation.
+
+### Mistral AI / Tencent Models
+
+**[mistralai/Timestral-209M](https://huggingface.co/mistralai/Timestral-209M) · 3/5**  
+Mistral's 209M-parameter time-series forecasting foundation model, released on Hugging Face with safetensors weights. No benchmarks published yet; the artifact itself is the signal. Teams needing a small, permissively-licensed forecasting backbone should test it against their domain data.
+
+**[tencent/Hy-Memory-30B-A3B](https://huggingface.co/tencent/Hy-Memory-30B-A3B) · 2/5**  
+Tencent's 30B MoE (3B active) conversational model, tagged for transformers and text generation. Limited public evaluation so far; treat as an early-access artifact.
+
+### Dataset
+
+**[nvidia/Nemotron-Personas-Germany](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Germany) · 2/5**  
+1M–10M German-language persona records (CC-BY-4.0, Parquet). Useful for German-language alignment and synthetic data generation; no model accompany the release.
+
+**[Anthropic/scorpion-toxin-binder-design](https://huggingface.co/datasets/Anthropic/scorpion-toxin-binder-design) · 2/5**  
+Multimodal dataset (images, tabular, text) for protein binder design against scorpion toxin, 10K–100K samples (CC-BY-4.0). Niche but high-quality for computational biology teams.
+
+### Other
+
+**[Temporal Evidence-Parameter Co-Alignment for LLM Reasoning over Temporal Knowledge Graphs](http://arxiv.org/abs/2610.28176v1) · 3/5**  
+Addresses the mismatch between static parametric memory and evolving knowledge in temporal KG reasoning. Proposes co-aligning retrieved evidence with parameter updates via PEFT. Artifact linked. Relevant for RAG systems operating over time-varying knowledge bases.
 
 ---
 
 ## Story arcs
 
-- [DAEDALUS: Bootstrapping Agent Memory from Self-Generated Tasks](https://arxiv.org/abs/2610.08048) — seen 9 runs, traction +151.2% since first seen on 2026-10-07.
-- [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) — seen 8 runs, traction +107.3% since first seen on 2026-10-08.
-- [ALIVE: Interaction-Aligned Object Insertion for First-Frame-Guided Video Editing](https://arxiv.org/abs/2610.08779) — seen 8 runs, traction +102.4% since first seen on 2026-10-07.
-- [Long-WAM: Scaling the Context of World-Action Models](https://arxiv.org/abs/2610.10528) — seen 8 runs, traction +95.0% since first seen on 2026-10-08.
-- [FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching](https://arxiv.org/abs/2610.17552) — seen 3 runs, traction +86.7% since first seen on 2026-10-14.
-- [RLHND: Video Foundation Models as Physically Grounded Hand Trackers for Robot Learning](https://arxiv.org/abs/2610.09455) — seen 8 runs, traction +81.6% since first seen on 2026-10-08.
-- [SGF+: Decoupling Gradient Flows for Autoregressive Video Generation](https://arxiv.org/abs/2610.10429) — seen 8 runs, traction +73.1% since first seen on 2026-10-08.
-- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — seen 3 runs, traction +67.2% since first seen on 2026-10-14.
-- [AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards](https://arxiv.org/abs/2610.18860) — seen 3 runs, traction +66.7% since first seen on 2026-10-14.
-- [RobotWorld: Benchmarking Multimodal Agents for Robot Use Across Diverse Tasks and Embodiments](https://arxiv.org/abs/2610.10409) — seen 8 runs, traction +64.1% since first seen on 2026-10-08.
+- [DAEDALUS: Bootstrapping Agent Memory from Self-Generated Tasks](https://arxiv.org/abs/2610.08048) — seen 10 runs, traction +151.2% since first seen on 2026-10-07.
+- [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) — seen 9 runs, traction +108.7% since first seen on 2026-10-08.
+- [Long-WAM: Scaling the Context of World-Action Models](https://arxiv.org/abs/2610.10528) — seen 9 runs, traction +95.0% since first seen on 2026-10-08.
+- [FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching](https://arxiv.org/abs/2610.17552) — seen 4 runs, traction +88.5% since first seen on 2026-10-14.
+- [RLHND: Video Foundation Models as Physically Grounded Hand Trackers for Robot Learning](https://arxiv.org/abs/2610.09455) — seen 9 runs, traction +81.6% since first seen on 2026-10-08.
+- [WorldRecon: Generative Multi-View Mesh Reconstruction for Large-Scale 3D World](https://arxiv.org/abs/2610.18846) — seen 3 runs, traction +80.3% since first seen on 2026-10-14.
+- [JevGPT: Thinking Fast and Slow in Autonomous Research](https://arxiv.org/abs/2610.18272) — seen 3 runs, traction +75.8% since first seen on 2026-10-14.
+- [SGF+: Decoupling Gradient Flows for Autoregressive Video Generation](https://arxiv.org/abs/2610.10429) — seen 9 runs, traction +73.7% since first seen on 2026-10-08.
+- [Open-o3-Video-v2: Seek, Ground, and Reason with Verifiable Spatio-Temporal Evidence](https://arxiv.org/abs/2610.17656) — seen 3 runs, traction +73.4% since first seen on 2026-10-14.
+- [ReTerm: Recovery Training for Self-Improving Terminal Agents](https://arxiv.org/abs/2610.18484) — seen 3 runs, traction +72.8% since first seen on 2026-10-14.
+
+## Still developing
+
+- [UltraText Bench](https://arxiv.org/abs/2610.09823) — 9th run, 197 HF upvotes → 123 GitHub stars (traction +4.01% since 2026-10-08).
+- [FlashVSR+](https://arxiv.org/abs/2610.17552) — 4th run, 45 HF upvotes → 134 GitHub stars (traction +2.95% since 2026-10-14).
+
+---
 
 ## Watch-list
-- [MaziyarPanahi/Jev-RAG-Claim-Verification-130K](https://huggingface.co/datasets/MaziyarPanahi/Jev-RAG-Claim-Verification-130K) — 130K claim-verification pairs for RAG; no traction signals yet, but fills a niche for grounded generation eval.
-- [NVIDIA Advances Agentic Security for Media](https://blogs.nvidia.com/blog/media-agentic-security-european-public-service-broadcasting-global-content-production/) — EBU/NVIDIA sovereign AI framework announcement; light on technical detail, track for deployment signals.
+
+- [GTC Berlin 2026: Live Updates From NVIDIA CEO Jensen Huang's Keynote](https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/) — keynote coverage, no concrete artifacts.
+- [NVIDIA Agent Toolkit Expands, Grounding Enterprise Agents in Company Data](https://blogs.nvidia.com/blog/enterprise-platforms-agent-toolkit/) — toolkit announcement, light on technical detail.
 
 ---
 
 ## Insights
-- **Evaluation is outpacing model releases.** Two of the four main-list items are benchmarks (UltraText, FlashVSR+'s reward-yield metric) — a sign the field's bottleneck has shifted from "can we generate?" to "can we measure what we generated?"
-- **Single-file ComfyUI checkpoints are becoming a distribution standard.** MOSS-Image follows the pattern: one `.safetensors`, Apache-2.0, immediate composer compatibility. Expect more base-model finetunes to ship this way.
-- **CPU-first ONNX models (Indra-OCR) signal edge deployment pressure.** When vendors lead with ONNX + CPU tags, they're targeting air-gapped or cost-constrained inference — a different optimization axis than GPU throughput.
 
----
+- **Evaluation is eating research**: 5 of the top 10 new items are benchmarks or evaluation frameworks (CUA-Recovery, UltraText, GALA's placement benchmark, MMEnterprise-Bench, SliMOO's pruning benchmark). The field is shifting from "does it work?" to "where exactly does it fail?"
+- **Time-series gets foundation-model treatment**: Mistral's Timestral and the SSM/SNN forecasting paper both frame forecasting as a pre-train-then-adapt problem, mirroring the LLM playbook. Expect more small, specialized forecasting backbones.
+- **Geometry and physics grounding persist**: GALA (point-cloud-conditioned placement), FlashVSR+ (video SR with reward alignment), and RLHND (video models as hand trackers) all push generative models toward physical consistency — not just pixel plausibility.
+- **Agent reliability tooling matures**: CUA-Recovery, Cache Engineering for Agents (new today), and ReTerm (story arc) form a cluster around making long-horizon agents survivable in production.
 
 ## Action items
-- **Run** UltraText Bench on your image generator this week — 432 prompts is a weekend job and exposes failure modes short-string benchmarks miss.
-- **Try** FlashVSR+ on a 4K→8K upscale clip; the hybrid attention block should show measurable VRAM savings over vanilla distilled VSR.
-- **Test** Indra-OCR on a sample of your PDF corpus (scanned, born-digital, mixed) before committing — the card gives no accuracy floor.
-- **Track** the JevGPT and AcademiaSD climbers — both gained a score point this window, suggesting community validation is accelerating.
+
+- **Try**: Timestral-209M on your time-series forecasting tasks — 209M params is small enough for rapid experimentation; compare against your current baseline.
+- **Read**: CUA-Recovery paper and benchmark suite if you're building computer-use agents; the error taxonomy and recovery metrics are directly applicable to production hardening.
+- **Track**: UltraText Bench and FlashVSR+ — both are compounding traction (9 and 4 runs respectively) with artifacts; they're becoming de-facto references for visual-text eval and efficient video SR.
+- **Test**: SliMOO's evolutionary pruning on a model you serve — the multi-objective framing preserves cross-task capability better than single-metric pruning.
