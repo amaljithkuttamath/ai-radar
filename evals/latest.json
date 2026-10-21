@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-19",
+  "date": "2026-10-21",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-10-19T17:18:24Z",
+  "digest_commit_time_utc": "2026-10-21T15:49:00Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 22,
+      "links_total": 28,
       "links_broken": 0,
       "links_unverified": 0,
-      "main_items": 4,
-      "main_score_mean": 3.0,
-      "sections_present": 9,
-      "expected_sections": 6,
-      "tracked_items": 60,
-      "reobservation_rate": 0.833,
-      "traction_observations": 49,
+      "main_items": 14,
+      "main_score_mean": 2.7,
+      "sections_present": 10,
+      "expected_sections": 7,
+      "tracked_items": 85,
+      "reobservation_rate": 0.871,
+      "traction_observations": 45,
       "degraded_synthesis": false,
-      "forecast_accuracy": 0.846,
-      "claims_open": 15
+      "forecast_accuracy": 0.857,
+      "claims_open": 11
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 9 section(s); 6/7 of the prompt's sections present"
+        "detail": "title and 10 section(s); 7/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "4 main-list item(s)"
+        "detail": "14 main-list item(s)"
       },
       {
         "key": "links_resolve",
@@ -47,7 +47,7 @@
       {
         "key": "traction_observed",
         "ok": true,
-        "detail": "re-observed 83% of 60 tracked items"
+        "detail": "re-observed 87% of 85 tracked items"
       }
     ],
     "failed": []
@@ -64,8 +64,8 @@
     }
   },
   "trusted": {
-    "reobservation_rate": 0.833,
-    "forecast_accuracy": 0.846
+    "reobservation_rate": 0.871,
+    "forecast_accuracy": 0.857
   },
   "broken_urls": [],
   "missed_stories": [],
