@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-22",
+  "mode": "deterministic",
+  "grader_model": "",
+  "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
+  "digest_commit_time_utc": "2026-10-22T15:49:55Z",
+  "age_hours_at_eval": 0.0,
+  "tier0": {
+    "module_hash": "b9d5d0f52167",
+    "metrics": {
+      "age_h": 0.0,
+      "links_total": 37,
+      "links_broken": 0,
+      "links_unverified": 2,
+      "main_items": 10,
+      "main_score_mean": 2.88,
+      "sections_present": 10,
+      "expected_sections": 7,
+      "tracked_items": 86,
+      "reobservation_rate": 0.919,
+      "traction_observations": 52,
+      "degraded_synthesis": false,
+      "forecast_accuracy": 0.647,
+      "claims_open": 17
+    },
+    "checks": [
+      {
+        "key": "structure",
+        "ok": true,
+        "detail": "title and 10 section(s); 7/7 of the prompt's sections present"
+      },
+      {
+        "key": "main_list_nonempty",
+        "ok": true,
+        "detail": "10 main-list item(s)"
+      },
+      {
+        "key": "links_resolve",
+        "ok": true,
+        "detail": "no dead links; 2/37 declined to answer"
+      },
+      {
+        "key": "synthesis_present",
+        "ok": true,
+        "detail": "digest carries model synthesis"
+      },
+      {
+        "key": "traction_observed",
+        "ok": true,
+        "detail": "re-observed 92% of 86 tracked items"
+      }
+    ],
+    "failed": []
+  },
+  "revs": {
+    "prompt_rev": "3ed73c5",
+    "config_rev": "ce62c6d",
+    "files": {
+      "distill/digest.md": "3ed73c5",
+      "distill/brief_spec.md": "3ed73c5",
+      "config/profile.yaml": "48361eb",
+      "config/sources.yaml": "48361eb",
+      "config/routines.yaml": "ce62c6d"
+    }
+  },
+  "trusted": {
+    "reobservation_rate": 0.919,
+    "forecast_accuracy": 0.647
+  },
+  "broken_urls": [
+    {
+      "url": "https://openai.com/index/cloudflare-cyber",
+      "status": 403
+    },
+    {
+      "url": "https://openai.com/index/empowering-cyber-defenders",
+      "status": 403
+    }
+  ],
+  "missed_stories": [],
+  "degraded_reason": "--tier0-only: model call skipped by request"
+}
