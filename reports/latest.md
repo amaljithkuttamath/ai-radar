@@ -1,98 +1,100 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-10-21](2026-10-21-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-10-22](2026-10-22-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-10-22
+# AI Radar — 2026-10-23
 
-The last 48 hours delivered a wave of evaluation infrastructure: seven of the ten highest-signal items are new benchmarks or evaluation methods spanning visual text rendering, biomedical imaging, materials science, stance classification, quantization recovery, clinical phenotype recognition, and analogical reasoning. The sole model release of note is an uncensored FP8 distillation of DeepSeek-V4.1-Flash, while two NVIDIA Cosmos announcements and OpenAI cyber-defender blueprints round out the vendor noise.
+The standout arrival is **WeVisOne-VL**, a Tencent VLM that unifies object- and pixel-level perception (detection, segmentation, OCR, matting) via a single next-token framework — already at 214 HF upvotes with code and demo live. The 48-hour window is defined by a wave of new evaluation infrastructure: fine-grained GUI grounding (PointerBench), personal-agent memory (MemPABench), clinical QA for Indonesian (IndoNutriQA), and a sparse-attention method (OpenAttention) that folds the entire KV tail into one mean token and works at 1% read rates.
 
 ## What changed
 
-**New today**  
-- [DONIC: Generalist Dexterous Bimanual Tracking Control from Human Demonstrations](https://arxiv.org/abs/2610.29997) — robotics control  
-- [Multimodal Embodied Agents: A Unified Capability-centric Perspective from Computer-Use to Robot-Use](https://arxiv.org/abs/2610.30108) — agent survey  
-- [Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation](https://arxiv.org/abs/2610.29989) — video generation  
-- [dealignai/DeepSeek-V4.1-Flash-1017-UNCENSORED-FP8](https://huggingface.co/dealignai/DeepSeek-V4.1-Flash-1017-UNCENSORED-FP8) — model release  
-- [Retrieval Augmented Generation Compositionality](https://arxiv.org/abs/2610.29722) — RAG analysis  
+**New today**
+- [WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) — unified VLM
+- [Making MLLM Latents Matter: Factor-Aware Predictive Learning for Cinematic Video Generation](https://arxiv.org/abs/2610.30926) — video generation
+- [InternScience/Sage-A1.5 (HF Model)](https://huggingface.co/InternScience/Sage-A1.5) — MoE VLM release
+- [Beyond Watching and Searching: Benchmarking Agents for Video-centered Deep Research Reports](https://arxiv.org/abs/2610.31158) — agent benchmark
+- [Is Complex Agentic Memory Always Needed? Naive RAG Is Stronger Than We Thought](https://arxiv.org/abs/2610.30755) — RAG vs agents
 
-**Climbing**  
-- [Sage-A1.5: From Long-Horizon Execution to Scientific Exploration with Capability Composition](https://arxiv.org/abs/2610.28578) — traction +3.3%  
-- [EvaOmni: An Evidence-Grounded Benchmark for Audio-Visual Reasoning](https://arxiv.org/abs/2610.28444) — traction +1.6%  
+**Climbing**
+- [Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation](https://arxiv.org/abs/2610.29989) — traction +2.9%
+- [Evolving with Open Worlds: Towards Recursive Self-Improvement for Future Forecasting](https://arxiv.org/abs/2610.29784) — traction +1.3%
+- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — traction +0.8%
+- [Think Harder Where It Matters: Item-Level Adaptive Recursion for Sequential Recommendation](https://arxiv.org/abs/2610.30128) — traction +0.6%
 
-**Cooled**  
-- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — traction –0.9%  
-- [WorkRover: Scaling Long-Horizon Cowork Agent Training Via Recursive Environment Evolution](https://arxiv.org/abs/2610.18067) — traction –0.7%  
-- [Matrix-Game 4.0: Harnessing Video Models for Real-Time Playable Game Worlds](https://arxiv.org/abs/2610.27999) — score –1  
-- [SHAM-Bench: A Span-level Hallucination Benchmark Across Multiple Tasks](http://arxiv.org/abs/2610.27370v1) — score –1  
-- [PAR: Progress-Aligned Recurrence for Length Generalization in State Tracking](https://arxiv.org/abs/2610.27628) — score –1  
+**Cooled**
+- [VX-One: Typed, Calibrated Decision Heads for Real-Time Perimeter Triage](https://arxiv.org/abs/2610.30090) — score −1, traction +0.3%
 
-## Main list
+---
+
+### Benchmark
+
+**[TIGER-Lab/MMLU-Pro](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro) · 4/5** — Harder, reasoning-heavy MMLU successor (12k+ questions, MIT license). 7th radar run; traction essentially flat (+0.02). Still the default tough benchmark for new models. [dataset](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro)
+
+**[PointerBench: A Diagnostic Benchmark for Fine-Grained GUI Grounding](http://arxiv.org/abs/2610.31274v1) · 3/5** — 1,500 screenshot-instruction pairs probing sub-element identification in spreadsheets, coordinate-dense charts, and cross-app UI. Code and eval harness released. Targets the grounding gap that end-to-end benchmarks miss. [paper](http://arxiv.org/abs/2610.31274v1)
+
+### Attention
+
+**[FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching](https://arxiv.org/abs/2610.17552) · 4/5** — Continuing story (6th run, traction +278%). One-step diffusion distillation for VSR with a hybrid attention block and a reward-yield distribution matching loss that aligns to human preference without full RLHF. 149 GH stars, 36 HF upvotes. [code](https://github.com/OpenImagingLab/FlashVSR_Plus) · [project](https://www.flashvsr.tech)
+
+**[OpenAttention: One Percent Is Enough with Tail Proxies](http://arxiv.org/abs/2610.30951v1) · 3/5** — Replaces sampled tail tokens in sparse attention with a single count-aware mean proxy. Closed-form proof that sampling nearly doubles weight error at ≤5% read rates; the proxy matches full attention quality at 1% reads. Code released. [paper](http://arxiv.org/abs/2610.30951v1)
 
 ### Evaluation
 
-**[BatchBench: Benchmarking AI Robustness to Batch Effects and Domain Shift in Biomedical Images](http://arxiv.org/abs/2610.30104v1) · 3/5**  
-A JUMP Cell Painting leaderboard measuring model robustness across unseen experimental batches — the largest public biomedical domain-shift testbed to date. Built on one of the biggest cell-painting datasets, it exposes persistent gaps in current domain adaptation methods. [code](https://github.com/) · [project](https://)
+**[Why Bother Me Again? Benchmarking Personal Agent Memory for Interaction Preferences](http://arxiv.org/abs/2610.30485v1) · 3/5** — Introduces MemPABench, an on-policy environment where agents must learn *how* a user wants to be assisted (frequency, timing, channel) not just *what* they know. Long-horizon tasks with repeated interactions; baseline shows naive RAG often beats complex memory modules. [paper](http://arxiv.org/abs/2610.30485v1)
 
-**[ARCANA: A Benchmark for Abstraction and Analogical Reasoning](http://arxiv.org/abs/2610.29271v1) · 3/5**  
-Tests far analogical reasoning — mapping real-world objects and physical phenomena to abstract grid transformations — distinct from ARC-AGI's nearer analogies. Tasks require structural relational transfer across superficially dissimilar domains. [code](https://github.com/) · [project](https://)
+**[IndoNutriQA: An Indonesian Clinical Nutrition Question Answering Benchmark](http://arxiv.org/abs/2610.31256v1) · 3/5** — 911 expert-curated QA pairs grounded in real Indonesian clinical-nutrition reports, with structured metadata (anthropometrics, diagnoses, dietary recalls). Fills a low-resource clinical evaluation gap; not a training corpus. [paper](http://arxiv.org/abs/2610.31256v1)
 
-**[B-CARE: Blind Classwise Assessment of Relative Evidence for Stance Error Ranking](http://arxiv.org/abs/2610.29350v1) · 3/5**  
-A prediction-blind framework: an LLM verifier scores evidence for all candidate stance labels without seeing the base model's prediction, producing a comparative risk score that prioritizes human review budget. Works across heterogeneous base models. [code](https://github.com/) · [project](https://)
+### Cost
 
-**[Right On Q: Recovering Reasoning under Quantization via Self-Generated Trajectories](http://arxiv.org/abs/2610.29378v1) · 3/5**  
-Identifies two gaps in quantization-aware training: fixed-response supervision mismatches student-generation prefixes, and token-budget termination failures. Proposes self-generated trajectory distillation to close both. [code](https://github.com/) · [project](https://)
+**[Vision Transformers for Estimating Irradiance Using Data Scarce Sky Images](http://arxiv.org/abs/2610.30940v1) · 3/5** — Dual-framework ViT approach for diffuse horizontal irradiance estimation from sky images in data-scarce regions. Targets PV forecasting without dense ground instrumentation. Code and weights provided. [paper](http://arxiv.org/abs/2610.30940v1)
 
-**[Overview of CHIP 2026 Shared Task 1: Patient-Specific Phenotype Concept Recognition](http://arxiv.org/abs/2610.29606v1) · 3/5**  
-Shared task targeting phenotype extraction from full-text biomedical literature with multiple patients per document — a step beyond single-patient abstracts toward clinical realism. [code](https://github.com/) · [project](https://)
+### Other
 
-**[Auditing Conformal Prediction for Language Models Under Inference-Time Model Shift](http://arxiv.org/abs/2610.28937v1) · 2/5**  
-Formalizes inference-time model shift (quantization, temperature, serving policy changes) as a conformal score distribution shift. Shows standard CP calibration fails under mismatched inference configs; proposes auditing protocols. [code](https://github.com/) · [project](https://)
+**[WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) · 4/5** — Tencent's "Vision All-in-One" VLM handles detection, referring localization, counting, OCR, segmentation, and matting via a lightweight pixel decoder gated by a special `<OBJ>` token. 214 HF upvotes day-one. [code](https://github.com/Tencent/WeVisOne-VL) · [demo](https://tencent.github.io/WeVisOne-VL)
 
-**[Automated Materials Data and Knowledge Extraction using ML and LLMs](http://arxiv.org/abs/2610.29895v1) · 3/5**  
-Survey tracing extraction pipelines from rule-based → NLP → transformer encoders → LLM/agentic systems across text, tables, and figures. Constructs large queryable materials databases; benchmarks show agentic multimodal extraction now leads. [code](https://github.com/) · [project](https://)
+**[AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio) · 4/5** — One-click LoRA trainer for Qwen-Image, FLUX.2, Krea, Ideogram, SDXL variants, LTX, MiniMax on 4–8 GB VRAM (NF4 quantization). 111 GH stars, 7th run, traction +0.2%. [repo](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio)
 
-### Models & Systems
+**[InternScience/Sage-A1.5](https://huggingface.co/InternScience/Sage-A1.5) · 3/5** — New MoE VLM (Qwen3.5-MoE base) tagged for image-text-to-text. Trending on HF; weights in safetensors. [model](https://huggingface.co/InternScience/Sage-A1.5)
 
-**[dealignai/DeepSeek-V4.1-Flash-1017-UNCENSORED-FP8](https://huggingface.co/dealignai/DeepSeek-V4.1-Flash-1017-UNCENSORED-FP8) · 3/5**  
-FP8-quantized, uncensored distillation of DeepSeek-V4.1-Flash. Tags indicate transformers/safetensors format, text-generation ready. No benchmark deltas reported; traction signals are HF trending placement only. [model](https://huggingface.co/dealignai/DeepSeek-V4.1-Flash-1017-UNCENSORED-FP8)
-
-## Story arcs
-
-- [UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation](https://arxiv.org/abs/2610.09823) — seen 10 runs, traction +107.6% since first seen on 2026-10-08.
-- [Long-WAM: Scaling the Context of World-Action Models](https://arxiv.org/abs/2610.10528) — seen 10 runs, traction +95.0% since first seen on 2026-10-08.
-- [FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching](https://arxiv.org/abs/2610.17552) — seen 5 runs, traction +82.6% since first seen on 2026-10-14.
-- [RLHND: Video Foundation Models as Physically Grounded Hand Trackers for Robot Learning](https://arxiv.org/abs/2610.09455) — seen 10 runs, traction +81.6% since first seen on 2026-10-08.
-- [JevGPT: Thinking Fast and Slow in Autonomous Research](https://arxiv.org/abs/2610.18272) — seen 4 runs, traction +76.3% since first seen on 2026-10-14.
-- [SGF+: Decoupling Gradient Flows for Autoregressive Video Generation](https://arxiv.org/abs/2610.10429) — seen 10 runs, traction +73.9% since first seen on 2026-10-08.
-- [Open-o3-Video-v2: Seek, Ground, and Reason with Verifiable Spatio-Temporal Evidence](https://arxiv.org/abs/2610.17656) — seen 4 runs, traction +72.9% since first seen on 2026-10-14.
-- [WorldRecon: Generative Multi-View Mesh Reconstruction for Large-Scale 3D World](https://arxiv.org/abs/2610.18846) — seen 4 runs, traction +71.9% since first seen on 2026-10-14.
-- [AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards](https://arxiv.org/abs/2610.18860) — seen 5 runs, traction +69.2% since first seen on 2026-10-14.
-- [ReTerm: Recovery Training for Self-Improving Terminal Agents](https://arxiv.org/abs/2610.18484) — seen 4 runs, traction +68.3% since first seen on 2026-10-14.
+---
 
 ## Still developing
 
-- [UltraText Bench](https://arxiv.org/abs/2610.09823) — 10th run, 198 HF upvotes → 112 GitHub stars (traction +3.97% since 2026-10-08).  
-- [GRACE: Generation-aware latent compression for efficient video generation](https://arxiv.org/abs/2610.10524) — 10th run, 90 HF upvotes → 28 GitHub stars (traction +2.07% since 2026-10-08).  
+- **[TIGER-Lab/MMLU-Pro](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro)** — 7th run, traction +0.02% since 2026-10-13.
+- **[AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio)** — 7th run, traction +0.21% since 2026-10-11.
+
+## Story arcs
+
+- [FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching](https://arxiv.org/abs/2610.17552) — seen 6 runs, traction +83.5% since first seen on 2026-10-14.
+- [Sage-A1.5: From Long-Horizon Execution to Scientific Exploration with Capability Composition](https://arxiv.org/abs/2610.28578) — seen 3 runs, traction +81.5% since first seen on 2026-10-21.
+- [SolarRenderer: Few-Step Generative Reference Rendering](https://arxiv.org/abs/2610.28630) — seen 3 runs, traction +80.8% since first seen on 2026-10-21.
+- [Multimodal Reranking Is a System One Decision](https://arxiv.org/abs/2610.28435) — seen 3 runs, traction +79.2% since first seen on 2026-10-21.
+- [JevGPT: Thinking Fast and Slow in Autonomous Research](https://arxiv.org/abs/2610.18272) — seen 5 runs, traction +76.3% since first seen on 2026-10-14.
+- [Open-o3-Video-v2: Seek, Ground, and Reason with Verifiable Spatio-Temporal Evidence](https://arxiv.org/abs/2610.17656) — seen 5 runs, traction +74.7% since first seen on 2026-10-14.
+- [WorldRecon: Generative Multi-View Mesh Reconstruction for Large-Scale 3D World](https://arxiv.org/abs/2610.18846) — seen 5 runs, traction +71.9% since first seen on 2026-10-14.
+- [AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards](https://arxiv.org/abs/2610.18860) — seen 6 runs, traction +70.3% since first seen on 2026-10-14.
+- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — seen 6 runs, traction +70.1% since first seen on 2026-10-14.
+- [ReTerm: Recovery Training for Self-Improving Terminal Agents](https://arxiv.org/abs/2610.18484) — seen 5 runs, traction +68.3% since first seen on 2026-10-14.
 
 ## Watch-list
 
-- [RecursiveSI/flint](https://huggingface.co/RecursiveSI/flint) — Apache-2.0 conversational model, trending on HF.  
-- [daimonrobotics/Daimon-Infinity](https://huggingface.co/datasets/daimonrobotics/Daimon-Infinity) — CC-BY-NC-SA-4.0 robotics dataset.  
-- [Call of Duty: Modern Warfare 4 on GeForce NOW](https://blogs.nvidia.com/blog/geforce-now-thursday-call-of-duty-modern-warfare-4/) — cloud gaming launch.  
-- [NVIDIA Cosmos: New Tools to Train, Evaluate and Deploy World Models](https://blogs.nvidia.com/blog/cosmos-open-train-evaluate-deploy-world-models/) — platform expansion.  
-- [Cloudflare links vulnerability discovery to defense with OpenAI](https://openai.com/index/cloudflare-cyber) — Daybreak/Codex integration.  
-- [Democratic governance of frontier AI, part II: Empowering cyber defenders](https://openai.com/index/empowering-cyber-defenders) — policy blueprint.  
+- [High-Value Training Data from Noisy, Diverse Sources](http://arxiv.org/abs/2610.30421v1) — metagradient data-weighting at scale; no traction signals yet.
+- [Algorithmic drift in generative adaptive learning](http://arxiv.org/abs/2610.31041v1) — formalizes demographic drift in AI tutors via coupled learner–tutor dynamics; simulation evidence only.
+- [XHToken/Spark-X2.6-4B](https://huggingface.co/XHToken/Spark-X2.6-4B) — 4B LLM trending on HF; no benchmarks or code linked.
+- [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) — small (<1K) 3D asset dataset; early stage.
+- [Kazakhstan Expands Compute for Its AI Future](https://blogs.nvidia.com/blog/kazakhstan-ai-compute-ecosystem/) — NVIDIA blog post on national infrastructure rollout.
+- [Build more responsive apps with the Decisions API](https://openai.com/index/decisions-api) — OpenAI low-latency decision endpoint; announcement only.
 
 ## Insights
 
-- **Evaluation is fragmenting by domain** — biomedical (BatchBench), clinical (CHIP), materials (automated extraction), visual text (UltraText), analogical (ARCANA), stance (B-CARE), quantization (Right On Q, Conformal audit). No generalist benchmark leads; the action is in specialist stress tests.  
-- **Quantization-aware training is shifting from static distillation to adaptive trajectory generation** — Right On Q and the conformal audit paper both diagnose prefix/distribution mismatch under inference-time config changes.  
-- **Video/world-model infrastructure is compounding quietly** — GRACE, Long-WAM, SGF+, FlashVSR+, WorldRecon, RLHND, Open-o3-Video-v2 form a 10-run story arc cluster with 68–95% traction growth; the radar has tracked this cohort for two weeks.  
-- **Uncensored model distillation is a distribution channel, not a research contribution** — DeepSeek-V4.1-Flash-FP8 and flint add quantization + license relaxation; no new capabilities claimed.  
+- **Evaluation is fragmenting by capability, not task.** PointerBench (GUI grounding), MemPABench (interaction memory), IndoNutriQA (clinical low-resource), and MMLU-Pro (reasoning) each target a distinct failure mode. No single benchmark covers the agent stack anymore.
+- **Sparse attention is converging on "tail proxy" designs.** OpenAttention's mean-token proxy and FlashVSR+'s hybrid attention both avoid sampling the KV tail — a pattern also visible in recent linear-attention kernels. The 1% read budget is becoming a real operating point.
+- **Unified perception models are shipping before unified benchmarks exist.** WeVisOne-VL bundles detection, segmentation, OCR, and matting in one decoder, but evaluation still splits across COCO, RefCOCO, TextVQA, etc. The metric gap will matter for deployment.
+- **LoRA tooling has reached "it just works" on consumer GPUs.** AcademiaSD's launcher supports 8+ model families on 4–8 GB VRAM via NF4. The bottleneck shifts from training infrastructure to dataset curation and eval.
 
 ## Action items
 
-- **Read** BatchBench and ARCANA if you evaluate domain-shift robustness or abstract reasoning — both release leaderboards and code.  
-- **Try** B-CARE's blind verifier pipeline for any stance/classification system where human review is bottlenecked; the method is model-agnostic.  
-- **Track** the video/world-model story arc cohort (GRACE, Long-WAM, SGF+, WorldRecon, RLHND) — sustained traction suggests a maturing subfield with shared infrastructure.  
-- **Test** Right On Q's self-generated trajectory distillation if you quantize reasoning models; the token-budget termination fix addresses a real deployment pain point.
+- **Try:** PointerBench's eval harness if you ship GUI agents — the spreadsheet/chart grounding tasks expose failures that end-to-end benchmarks miss.
+- **Read:** OpenAttention (1% read budget) + FlashVSR+ (hybrid attention + reward-yield loss) together; they attack the same KV-tail problem from architecture and training angles.
+- **Track:** WeVisOne-VL's adoption — if the `<OBJ>` token pattern generalizes, it becomes a de facto interface for pixel-level VLMs.
+- **Test:** MemPABench against your personal-agent memory module; the paper's finding that naive RAG beats complex memory is worth replicating on your task distribution.
