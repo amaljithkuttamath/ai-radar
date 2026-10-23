@@ -1,43 +1,43 @@
 {
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-10-22T15:49:55Z",
+  "digest_commit_time_utc": "2026-10-23T15:38:22Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 37,
+      "links_total": 36,
       "links_broken": 0,
-      "links_unverified": 2,
-      "main_items": 10,
-      "main_score_mean": 2.88,
-      "sections_present": 10,
-      "expected_sections": 7,
-      "tracked_items": 86,
-      "reobservation_rate": 0.919,
-      "traction_observations": 52,
+      "links_unverified": 1,
+      "main_items": 0,
+      "main_score_mean": null,
+      "sections_present": 9,
+      "expected_sections": 6,
+      "tracked_items": 83,
+      "reobservation_rate": 0.916,
+      "traction_observations": 53,
       "degraded_synthesis": false,
-      "forecast_accuracy": 0.647,
-      "claims_open": 17
+      "forecast_accuracy": 0.667,
+      "claims_open": 14
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 10 section(s); 7/7 of the prompt's sections present"
+        "detail": "title and 9 section(s); 6/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
-        "ok": true,
-        "detail": "10 main-list item(s)"
+        "ok": null,
+        "detail": "no main-list section (reported by `structure`)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 2/37 declined to answer"
+        "detail": "no dead links; 1/36 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -47,7 +47,7 @@
       {
         "key": "traction_observed",
         "ok": true,
-        "detail": "re-observed 92% of 86 tracked items"
+        "detail": "re-observed 92% of 83 tracked items"
       }
     ],
     "failed": []
@@ -64,16 +64,12 @@
     }
   },
   "trusted": {
-    "reobservation_rate": 0.919,
-    "forecast_accuracy": 0.647
+    "reobservation_rate": 0.916,
+    "forecast_accuracy": 0.667
   },
   "broken_urls": [
     {
-      "url": "https://openai.com/index/cloudflare-cyber",
-      "status": 403
-    },
-    {
-      "url": "https://openai.com/index/empowering-cyber-defenders",
+      "url": "https://openai.com/index/decisions-api",
       "status": 403
     }
   ],

@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-23",
+  "mode": "deterministic",
+  "grader_model": "",
+  "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
+  "digest_commit_time_utc": "2026-10-23T15:38:22Z",
+  "age_hours_at_eval": 0.0,
+  "tier0": {
+    "module_hash": "b9d5d0f52167",
+    "metrics": {
+      "age_h": 0.0,
+      "links_total": 36,
+      "links_broken": 0,
+      "links_unverified": 1,
+      "main_items": 0,
+      "main_score_mean": null,
+      "sections_present": 9,
+      "expected_sections": 6,
+      "tracked_items": 83,
+      "reobservation_rate": 0.916,
+      "traction_observations": 53,
+      "degraded_synthesis": false,
+      "forecast_accuracy": 0.667,
+      "claims_open": 14
+    },
+    "checks": [
+      {
+        "key": "structure",
+        "ok": true,
+        "detail": "title and 9 section(s); 6/7 of the prompt's sections present"
+      },
+      {
+        "key": "main_list_nonempty",
+        "ok": null,
+        "detail": "no main-list section (reported by `structure`)"
+      },
+      {
+        "key": "links_resolve",
+        "ok": true,
+        "detail": "no dead links; 1/36 declined to answer"
+      },
+      {
+        "key": "synthesis_present",
+        "ok": true,
+        "detail": "digest carries model synthesis"
+      },
+      {
+        "key": "traction_observed",
+        "ok": true,
+        "detail": "re-observed 92% of 83 tracked items"
+      }
+    ],
+    "failed": []
+  },
+  "revs": {
+    "prompt_rev": "3ed73c5",
+    "config_rev": "ce62c6d",
+    "files": {
+      "distill/digest.md": "3ed73c5",
+      "distill/brief_spec.md": "3ed73c5",
+      "config/profile.yaml": "48361eb",
+      "config/sources.yaml": "48361eb",
+      "config/routines.yaml": "ce62c6d"
+    }
+  },
+  "trusted": {
+    "reobservation_rate": 0.916,
+    "forecast_accuracy": 0.667
+  },
+  "broken_urls": [
+    {
+      "url": "https://openai.com/index/decisions-api",
+      "status": 403
+    }
+  ],
+  "missed_stories": [],
+  "degraded_reason": "--tier0-only: model call skipped by request"
+}
