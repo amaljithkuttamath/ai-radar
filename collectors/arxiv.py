@@ -59,7 +59,7 @@ def parse(xml_bytes: bytes, category: str, cutoff: datetime) -> list[dict]:
                 id=f"arxiv:{short}",
                 category="research",
                 title=(e.findtext(f"{ATOM}title") or "").replace("\n", " "),
-                url=arxiv_url,
+                url=f"https://arxiv.org/abs/{short}",
                 source=f"arXiv {category}",
                 authors=[a.findtext(f"{ATOM}name") for a in e.findall(f"{ATOM}author")],
                 published=published,

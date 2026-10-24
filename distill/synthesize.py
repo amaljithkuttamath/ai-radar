@@ -53,7 +53,7 @@ from distill.delta import compute_delta, save_state, story_arcs  # noqa: E402
 from distill.focus import active_terms as _focus_active_terms, _term_hit, _blob as _focus_blob  # noqa: E402
 from distill.cluster import cluster_items  # noqa: E402
 from distill.diversity import diversify  # noqa: E402
-from radar.storage import atomic_text
+from radar.storage import atomic_text, atomic_json
 import llm  # noqa: E402  (leaf: provider config shared with grader/)
 
 WINDOW = os.environ.get("WINDOW", "48h")
@@ -837,6 +837,19 @@ def markdown_text(value: str) -> str:
     return re.sub(r"([\\`*{}\[\]<>])", r"\\\1", " ".join(value.split()))
 
 
+def reference_key(url: str) -> str:
+    """Match arXiv's canonical paper URL to the API's versioned HTTP spelling.
+
+    Limit equivalence to this known host and identifier grammar; arbitrary hosts,
+    paths, query strings, and paper IDs still must match the supplied URL exactly.
+    """
+    url = url.rstrip(".,;:!?)")
+    match = re.fullmatch(
+        r"https?://arxiv\.org/abs/(\d{4}\.\d{4,5}|[a-z-]+(?:\.[A-Z]{2})?/\d{7})(?:v\d+)?", url
+    )
+    return "https://arxiv.org/abs/" + match[1] if match else url
+
+
 def validate_report(report: str, user: str, candidates: int) -> None:
     """Reject empty, misdated, unsafe, or ungrounded-link output before publication.
 
@@ -855,11 +868,11 @@ def validate_report(report: str, user: str, candidates: int) -> None:
     if re.search(r"<\s*/?\s*[a-zA-Z][^>]*>", report):
         raise ValueError("report contains raw HTML")
     links = re.findall(r"\]\(([^\s)]+)\)", report)
-    allowed = {url.rstrip(".,;:!?)") for url in re.findall(r'https?://[^\s<>"\\\[\]]+', user)}
+    allowed = {reference_key(url) for url in re.findall(r'https?://[^\s<>"\\\[\]]+', user)}
     links += re.findall(r"^\s*\[[^\]]+\]:\s*<?([^\s>]+)", report, re.MULTILINE)
     links += re.findall(r'https?://[^\s<>"\\\[\]]+', report)
     for url in links:
-        if url.rstrip(".,;:!?)") not in allowed:
+        if reference_key(url) not in allowed:
             raise ValueError(f"report contains an unsupported URL: {url}")
     if candidates and not links:
         raise ValueError("report has candidates but no source links")
@@ -893,7 +906,17 @@ def main() -> Path:
         out = ROOT / "data" / "previews" / f"{datetime.now(timezone.utc):%Y-%m-%d}-{BACKEND}.md"
         atomic_text(out, report)
     else:
-        validate_report(report, user, n_cand)
+        try:
+            validate_report(report, user, n_cand)
+        except ValueError as exc:
+            try:
+                atomic_json(
+                    ROOT / "data/previews" / f"rejected-{datetime.now(timezone.utc):%Y%m%dT%H%M%S%f}.json",
+                    {"system": system, "user": user, "report": report, "backend": BACKEND, "error": str(exc)},
+                )
+            except OSError as diagnostic_error:
+                print(f"[distill] could not retain rejected output: {diagnostic_error}", file=sys.stderr)
+            raise
         out = ROOT / "reports" / f"{datetime.now(timezone.utc):%Y-%m-%d}-digest.md"
         previous = out.read_text(encoding="utf-8") if out.exists() else None
         atomic_text(out, report)

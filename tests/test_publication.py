@@ -210,3 +210,33 @@ def test_hashed_fresh_observation_wins_over_tracking_copy(monkeypatch):
     assert track.write_carryovers([{**fresh, "title": "Stale", "carryover": True}]) == 0
     records = [json.loads(p.read_text()) for p in score.SCORED.glob("*.json")]
     assert len(records) == 1 and records[0]["title"] == "Fresh observation"
+
+
+def test_canonical_arxiv_reference_matches_versioned_input():
+    user = 'TODAY=2026-10-24\n[{"url":"http://arxiv.org/abs/2610.31574v1"}]'
+    synthesize.validate_report("# AI Radar — 2026-10-24\n[Paper](https://arxiv.org/abs/2610.31574)", user, 1)
+    with pytest.raises(ValueError, match="unsupported URL"):
+        synthesize.validate_report(
+            "# AI Radar — 2026-10-24\n[Fake](https://arxiv.org/abs/2610.99999)", user, 1
+        )
+    with pytest.raises(ValueError, match="unsupported URL"):
+        synthesize.validate_report(
+            "# AI Radar — 2026-10-24\n[Fake](https://arxiv.org.evil.example/abs/2610.31574)", user, 1
+        )
+
+
+def test_rejected_output_is_retained_without_publication(tmp_path, monkeypatch):
+    seed()
+    model(monkeypatch)
+    monkeypatch.setattr(
+        synthesize,
+        "call_openai_compat",
+        lambda *a: "# AI Radar — 1900-01-01\n\n## Main list\n[Tool](https://example.org/tool)",
+    )
+    with pytest.raises(ValueError, match="date"):
+        pipeline.distill(settings("openai"))
+    artifacts = list((tmp_path / "data/previews").glob("rejected-*.json"))
+    assert len(artifacts) == 1
+    evidence = json.loads(artifacts[0].read_text())
+    assert "1900-01-01" in evidence["report"] and "CANDIDATES_JSON" in evidence["user"]
+    assert not (tmp_path / "reports/latest.md").exists()
