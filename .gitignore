@@ -33,3 +33,6 @@ data/.pipeline.lock
 .ruff_cache/
 .coverage
 htmlcov/
+
+# Browser reader development dependencies.
+site/node_modules/
