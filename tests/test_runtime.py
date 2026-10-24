@@ -93,3 +93,10 @@ def test_default_clustering_does_not_call_embedding_backend(monkeypatch):
     monkeypatch.delenv("CLUSTER_BACKEND", raising=False)
     monkeypatch.setattr(cluster, "_semantic_clusters", lambda _: pytest.fail("unexpected model call"))
     cluster.cluster_items([{"id": str(i), "title": f"Agent benchmark {i}"} for i in range(6)])
+
+
+@pytest.mark.parametrize("backend", ["auto", "openai"])
+def test_cli_accepts_current_provider_backends(tmp_path, backend):
+    result = cli(tmp_path, "doctor", "--backend", backend, "--json")
+    assert result.returncode == 1, result.stderr
+    assert json.loads(result.stdout)["checks"]["backend"]["name"] == backend

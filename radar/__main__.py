@@ -27,7 +27,9 @@ def parser() -> argparse.ArgumentParser:
     ):
         command = commands.add_parser(name, help=help_text)
         command.add_argument("--window", help="positive lookback, e.g. 48h or 7d")
-        command.add_argument("--backend", choices=("dryrun", "template", "github", "anthropic", "ollama"))
+        command.add_argument(
+            "--backend", choices=("dryrun", "template", "auto", "openai", "github", "anthropic", "ollama")
+        )
         command.add_argument("--max-items", type=int)
         command.add_argument("--include-threshold", type=int)
         command.add_argument("--focus", help="comma-separated interests; empty disables focus")
