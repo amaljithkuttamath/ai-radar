@@ -4,63 +4,51 @@
 
 # AI Radar — 2026-10-24
 
-The strongest signals today are practical tooling for model compression and new evaluation benchmarks. Intel’s neural-compressor adds MXFP4/NVFP4 quantization paths with PyTorch, TensorFlow, and ONNX Runtime support, while the LocalLLaMA/typed-decisions dataset introduces a structured benchmark for decision-making tasks. Coverage is limited to the past 48 hours; no major model releases appeared in this window.
+The radar picks up a wave of new agent frameworks (OpenBB, atomic-agents, FinRobot) and a benchmark dataset for typed decisions, while core libraries (Transformers, Qwen, Gemma) and two System One model lines (Jeva, VideoJev) continue climbing. Together they signal a shift toward structured decision-making agents, open financial tooling, and evaluation infrastructure.
 
 ## What changed
-No new, climbing, or cooled items detected since the previous run.
+
+### New to radar
+- [openbq-org/OpenBB](https://github.com/openbq-org/OpenBB) — Open Data Platform for analysts, quants and AI agents. · 3/5
+- [Eigenwise/atomic-agents](https://github.com/Eigenwise/atomic-agents) — Building AI agents, atomically · 3/5
+- [Developer-Y/cs-video-courses](https://github.com/Developer-Y/cs-video-courses) — List of Computer Science courses with video lectures. · 3/5
+- [AI4Finance-Foundation/FinRobot](https://github.com/AI4Finance-Foundation/FinRobot) — FinRobot: An Open-Source AI Agent Platform for Financial Applications using Large Language Models · 3/5
+- [bones-studio/seed](https://huggingface.co/datasets/bones-studio/seed) — HF Dataset · 3/5
+
+### Climbing
+- [scenario-labs/3d-collection](https://huggingface.co/datasets/scenario-labs/3d-collection) — HF Dataset, score increased to 3 (Δ+1)
 
 ## Main list
 
 ### Benchmark
-**[LocalLLaMA/typed-decisions (HF Dataset)](https://huggingface.co/datasets/LocalLLaMA/typed-decisions)** — A decision-focused benchmark with 1K–10K English samples, tagged for text-classification and official eval YAML. Useful for teams building or evaluating agents that must choose among structured options. · 4/5
+- [LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions) — Benchmark dataset for text-classification evaluation with official YAML specs; 245 likes, 45k downloads observed. · 4/5
 
-**[AgentPhishing: A Benchmark of LLM Email Agents Under Adaptive Attack](https://arxiv.org/abs/2610.31404)** — Evaluates computer-use agents against persuasive phishing requests in email workflows. Targets a gap left by conventional phishing datasets. Relevant for security teams hardening agent deployments. · 2/5
+### Hugging Face Transformers
+- [huggingface/transformers](https://github.com/huggingface/transformers) — Core model-definition framework for text, vision, audio, and multimodal models; 168k stars observed. · 4/5
+- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — System One models for low-latency, structured decision-making; repo and project page linked. Observed 7 consecutive runs with rising traction. · 3/5
 
-**[Parameter-Efficient Adaptation of LLMs to a Low-Resource Agglutinative Language: Bashkir Benchmark](https://arxiv.org/abs/2610.31397)** — Corpus (46.9M tokens), three classification datasets, and a reproducible benchmark across eight architectures (82M–8B) testing full FT, QLoRA, and in-context learning. Useful for multilingual adaptation research. · 2/5
+### Qwen & Gemma
+- [Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) — Image-text-to-text model (Qwen3.5 series); 18k likes, 7.85M downloads observed. · 3/5
+- [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) — Feature-extraction embedding model (sentence-transformers compatible); 2.9k likes, 207k downloads observed. · 3/5
 
-**[RIDAR: Safeguarding Research Integrity in Autonomous Research Agents](https://arxiv.org/abs/2610.31372)** — Taxonomy of 14 research integrity violation types and a runtime detection framework claiming 85.2% F1 on a new benchmark. For teams building autonomous research pipelines. · 2/5
+### Agent & Video
+- [VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615) — System One model family casting video understanding as structured decisions; repo and project page linked. Observed 7 consecutive runs with rising traction. · 3/5
 
-**[SurveyGraph: Generating Academic Surveys via Methods-Entity Knowledge Graphs](https://arxiv.org/abs/2610.31317)** — Uses a method-level knowledge graph (follow-on, competition, shared-resource edges) to structure survey generation. Evaluated on a seven-method equal-budget benchmark. Relevant for literature-review automation. · 2/5
+### Methods
+- [Rethinking Sequence Compression with Test-time Regression](https://arxiv.org/abs/2610.31574) — TTR-Compressor learns sequence compression via test-time regression; GitHub and project page available. · 2/5
+- [When to Follow the Teacher: Advantage-Based On-Policy Distillation](https://arxiv.org/abs/2610.31563) — AOPD weights teacher actions by counterfactual advantage under the student policy. · 2/5
 
-### Compression & Quantization
-**[intel/neural-compressor](https://github.com/intel/neural-compressor)** — SOTA low-bit quantization (INT8/FP8/MXFP8/INT4/MXFP4/NVFP4) and sparsity across PyTorch, TensorFlow, and ONNX Runtime. 2.7k stars observed. Engineers deploying LLMs on CPU/GPU/XPU can test the latest quantization recipes here. · 4/5
-
-**[Rethinking Sequence Compression with Test-time Regression](https://arxiv.org/abs/2610.31574)** — Replaces pooling/learned projections with a learned regression problem whose closed-form coefficients become the compressed representation. Code at `github.com/Sphere-AI-Lab/ttr-compressor`. For researchers exploring efficient attention alternatives. · 2/5
-
-### Models
-**[Qwen/Qwen3.8-27B (HF Model)](https://huggingface.co/Qwen/Qwen3.8-27B)** — Multimodal image-text-to-text model (Apache-2.0) with 7.7M downloads and 18k likes observed. Teams needing a recent open-weight vision-language model can evaluate this directly. · 3/5
-
-**[google/embeddinggemma-2 (HF Model)](https://huggingface.co/google/embeddinggemma-2)** — Sentence-transformers compatible embedding model (feature-extraction) with 193k downloads and 2.9k likes observed. Drop-in for retrieval/RAG pipelines seeking newer embedding bases. · 3/5
-
-### Distillation
-**[When to Follow the Teacher: Advantage-Based On-Policy Distillation](https://arxiv.org/abs/2610.31563)** — Weights teacher actions by counterfactual advantage under the student policy rather than imitating at every step. Targets online policy distillation for RLHF/agent training. · 2/5
-
-### Agents & Video
-**[VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615)** — Adapts MLLMs by replacing autoregressive answer decoding with a shared head for structured video decisions. GitHub: `MCG-NJU/VideoJev`. Carryover tracked 7 runs; traction rising. For teams building low-latency video agents. · 3/5
+### Data & Education
+- [microsoft/AI-For-Beginners](https://github.com/microsoft/AI-For-Beginners) — 12-week, 24-lesson AI curriculum; 70k stars observed. · 4/5
+- [nvidia/Nemotron-Personas-Vietnam](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam) — Vietnamese persona dataset with image modality; 217 likes, 19k downloads observed. · 4/5
 
 ## Watch-list / Still developing
-**[Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773)** — Carryover (7 runs, traction Δ +3.6). Argues for null-aware, permutation-invariant decision heads. GitHub: `LiQiiiii/Jeva`. · 3/5
-
-**[hfdataset:nvidia/Nemotron-Personas-Vietnam](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam)** — Vietnamese persona dataset (1M–10M samples, CC-BY-4.0, image+text). 17k downloads observed. · 4/5
-
-**[ghrepo:huggingface/transformers](https://github.com/huggingface/transformers)** — Core framework repo (168k stars observed). No new release in window; tracked for ecosystem updates. · 4/5
-
-**[nvidia/Nemotron-Personas-Vietnam](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam)** — Duplicate entry; same as above.
-
-## Story arcs
-
-- [Multimodal Embodied Agents: A Unified Capability-centric Perspective from Computer-Use to Robot-Use](https://arxiv.org/abs/2610.30108) — seen 3 runs, traction +94.2% since first seen on 2026-10-22.
-- [FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching](https://arxiv.org/abs/2610.17552) — seen 7 runs, traction +83.7% since first seen on 2026-10-14.
-- [Sage-A1.5: From Long-Horizon Execution to Scientific Exploration with Capability Composition](https://arxiv.org/abs/2610.28578) — seen 4 runs, traction +81.8% since first seen on 2026-10-21.
-- [SolarRenderer: Few-Step Generative Reference Rendering](https://arxiv.org/abs/2610.28630) — seen 4 runs, traction +81.5% since first seen on 2026-10-21.
-- [Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation](https://arxiv.org/abs/2610.29989) — seen 3 runs, traction +71.7% since first seen on 2026-10-22.
-- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — seen 7 runs, traction +71.6% since first seen on 2026-10-14.
-- [AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards](https://arxiv.org/abs/2610.18860) — seen 7 runs, traction +70.9% since first seen on 2026-10-14.
-- [VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615) — seen 7 runs, traction +63.7% since first seen on 2026-10-14.
-- [Agent-Reflex: Teaching Language Agents to Act Reflectively](https://arxiv.org/abs/2610.17953) — seen 7 runs, traction +63.4% since first seen on 2026-10-14.
-- [Urbex: Agentic Spatial Grounding for City-Scale 3D Scenes](https://arxiv.org/abs/2610.18356) — seen 7 runs, traction +54.3% since first seen on 2026-10-14.
+- [AgentPhishing: A Benchmark of LLM Email Agents Under Adaptive Attack](https://arxiv.org/abs/2610.31404) — Benchmark for agent susceptibility to persuasive phishing. · 2/5
+- [Parameter-Efficient Adaptation of Large Language Models to a Low-Resource Agglutinative Language](https://arxiv.org/abs/2610.31397) — Bashkir language corpus, datasets, and reproducible benchmark across eight architectures. · 2/5
+- [RIDAR: Safeguarding Research Integrity in Autonomous Research Agents](https://arxiv.org/abs/2610.31372) — Automated detection and runtime intervention for research integrity violations (85.2% F1 claimed). · 2/5
+- [CrisiLangs: A Multilingual Resource for Crisis Warning Generation](https://arxiv.org/abs/2610.31356) — Multilingual extension of CrisiText to Italian, Bulgarian, German, Greek. · 2/5
 
 ## Action items
-1. **Try** the [intel/neural-compressor MXFP4/NVFP4 paths](https://github.com/intel/neural-compressor) on a PyTorch LLM — the repo includes ready-to-run quantization scripts for ONNX Runtime and TensorFlow as well.
-2. **Read** the [AgentPhishing benchmark](https://arxiv.org/abs/2610.31404) if you maintain email-enabled agents; it defines a concrete threat model missing from standard phishing corpora.
-3. **Track** the [TTR-Compressor repo](https://github.com/Sphere-AI-Lab/ttr-compressor) — test-time regression compression is a distinct architectural bet that could simplify sequence-length bottlenecks.
+- **Read** [Rethinking Sequence Compression with Test-time Regression](https://arxiv.org/abs/2610.31574) — introduces TTR-Compressor, a test-time regression approach to sequence compression with a GitHub implementation.
+- **Try** [LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions) — benchmark dataset for text classification with official eval YAML; useful for evaluating small-model decision making.
+- **Track** [Jeva](https://arxiv.org/abs/2610.18773) and [VideoJev](https://arxiv.org/abs/2610.18615) — System One model family climbing for 7 consecutive runs with rising traction; repos available for experimentation.
