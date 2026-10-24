@@ -19,8 +19,14 @@ pipeline just because delivery isn't set up).
 
 Run: python -m distill.deliver
 """
+
 from __future__ import annotations
-import os, sys, ssl, smtplib, html, re
+import os
+import sys
+import ssl
+import smtplib
+import html
+import re
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
@@ -37,8 +43,16 @@ def latest_report() -> Path | None:
         return Path(p)
     if not REPORTS.exists():
         return None
-    md = sorted(REPORTS.glob("*.md"))
-    return md[-1] if md else None
+    latest = REPORTS / "latest.md"
+    if latest.exists() and "# AI Radar — " in latest.read_text(encoding="utf-8"):
+        return latest
+    dated = sorted(
+        p
+        for p in REPORTS.glob("*-digest.md")
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}-digest\.md", p.name)
+        and p.read_text(encoding="utf-8").lstrip().startswith("# AI Radar — ")
+    )
+    return dated[-1] if dated else None
 
 
 def md_to_html(md: str) -> str:
@@ -49,8 +63,7 @@ def md_to_html(md: str) -> str:
 
     def inline(t: str) -> str:
         t = html.escape(t)
-        t = re.sub(r"\[([^\]]+)\]\((https?://[^\s)]+)\)",
-                   r'<a href="\2">\1</a>', t)
+        t = re.sub(r"\[([^\]]+)\]\((https?://[^\s)]+)\)", r'<a href="\2">\1</a>', t)
         t = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", t)
         return t
 
@@ -58,25 +71,33 @@ def md_to_html(md: str) -> str:
         line = raw.rstrip()
         if not line:
             if in_list:
-                out_lines.append("</ul>"); in_list = False
+                out_lines.append("</ul>")
+                in_list = False
             continue
         if re.match(r"^---+$", line):
             if in_list:
-                out_lines.append("</ul>"); in_list = False
-            out_lines.append("<hr>"); continue
+                out_lines.append("</ul>")
+                in_list = False
+            out_lines.append("<hr>")
+            continue
         m = re.match(r"^(#{1,6})\s+(.*)$", line)
         if m:
             if in_list:
-                out_lines.append("</ul>"); in_list = False
+                out_lines.append("</ul>")
+                in_list = False
             lvl = len(m.group(1))
-            out_lines.append(f"<h{lvl}>{inline(m.group(2))}</h{lvl}>"); continue
+            out_lines.append(f"<h{lvl}>{inline(m.group(2))}</h{lvl}>")
+            continue
         m = re.match(r"^[-*]\s+(.*)$", line)
         if m:
             if not in_list:
-                out_lines.append("<ul>"); in_list = True
-            out_lines.append(f"<li>{inline(m.group(1))}</li>"); continue
+                out_lines.append("<ul>")
+                in_list = True
+            out_lines.append(f"<li>{inline(m.group(1))}</li>")
+            continue
         if in_list:
-            out_lines.append("</ul>"); in_list = False
+            out_lines.append("</ul>")
+            in_list = False
         out_lines.append(f"<p>{inline(line)}</p>")
     if in_list:
         out_lines.append("</ul>")
@@ -141,6 +162,7 @@ def main() -> None:
     # markdown at the top of the email. Reuse reindex's stripper to keep the markers in sync.
     try:
         from distill.reindex import _strip_nav
+
         md = _strip_nav(md)
     except Exception:
         pass  # if reindex import ever changes, still send the (un-stripped) digest

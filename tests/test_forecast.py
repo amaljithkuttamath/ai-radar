@@ -17,11 +17,9 @@ Run: uv run --group dev pytest tests/test_forecast.py -q
 
 from __future__ import annotations
 
-import json
 import sys
 from pathlib import Path
 
-import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -59,13 +57,21 @@ DIGEST = """\
 
 
 def _ledger(**series) -> dict:
-    return {k: {"id": k, "mag_history": list(v), "misses": 0,
-                "title": {"arxiv:2609.33333": "An Arc With No Link",
-                          "arxiv:2609.44444": "A Flat Item"}.get(k, f"Title {k}")}
-            for k, v in series.items()}
+    return {
+        k: {
+            "id": k,
+            "mag_history": list(v),
+            "misses": 0,
+            "title": {"arxiv:2609.33333": "An Arc With No Link", "arxiv:2609.44444": "A Flat Item"}.get(
+                k, f"Title {k}"
+            ),
+        }
+        for k, v in series.items()
+    }
 
 
 # --- what counts as a claim -------------------------------------------------
+
 
 def test_urls_map_onto_the_collectors_id_scheme():
     assert forecast.item_key("https://arxiv.org/abs/2609.17523") == "arxiv:2609.17523"
@@ -82,7 +88,7 @@ def test_climbing_and_cooled_are_claims_with_opposite_directions():
 
 
 def test_new_today_is_not_a_claim():
-    """"New today" asserts nothing about the future. Scoring it would invent a prediction
+    """ "New today" asserts nothing about the future. Scoring it would invent a prediction
     the digest never made."""
     assert "arxiv:2609.00001" not in {c["key"] for c in forecast.extract_claims(DIGEST)}
 
@@ -94,7 +100,8 @@ def test_still_developing_is_not_a_claim():
     assert "Still developing" not in forecast.CLAIM_SECTIONS
     ledger = _ledger(**{"arxiv:2609.44444": [1.0, 1.0]})
     assert forecast.extract_claims(DIGEST, ledger) == [
-        c for c in forecast.extract_claims(DIGEST, ledger) if c["section"] != "Still developing"]
+        c for c in forecast.extract_claims(DIGEST, ledger) if c["section"] != "Still developing"
+    ]
 
 
 def test_bold_entries_without_links_are_resolved_by_title():
@@ -109,8 +116,10 @@ def test_bold_entries_without_links_are_resolved_by_title():
 def test_an_ambiguous_title_is_dropped_rather_than_guessed():
     """Resolving to the wrong series would put a fabricated verdict into the one metric
     here that is meant to be incorruptible."""
-    ledger = {"a": {"title": "Same Name", "mag_history": [1.0]},
-              "b": {"title": "same   name!", "mag_history": [1.0]}}
+    ledger = {
+        "a": {"title": "Same Name", "mag_history": [1.0]},
+        "b": {"title": "same   name!", "mag_history": [1.0]},
+    }
     assert forecast.title_index(ledger) == {}
 
 
@@ -131,10 +140,18 @@ def test_claims_record_the_series_length_they_were_made_at():
 
 # --- settling ---------------------------------------------------------------
 
+
 def _claim(direction="up", mag=10.0, at=2):
-    return {"key": "arxiv:2609.11111", "direction": direction, "section": "Climbing",
-            "title": "t", "url": "", "date": "2026-09-19",
-            "mag_at_claim": mag, "history_len": at}
+    return {
+        "key": "arxiv:2609.11111",
+        "direction": direction,
+        "section": "Climbing",
+        "title": "t",
+        "url": "",
+        "date": "2026-09-19",
+        "mag_at_claim": mag,
+        "history_len": at,
+    }
 
 
 def test_a_claim_is_unsettled_until_the_horizon_has_passed():
@@ -170,10 +187,9 @@ def test_a_zero_baseline_does_not_divide_by_zero():
 
 
 def test_accuracy_excludes_flat_claims_from_the_denominator():
-    """"Traction did not move much" says nothing about whether the digest read the item
+    """ "Traction did not move much" says nothing about whether the digest read the item
     correctly, so it is not a failure."""
-    settled = [{"verdict": "correct"}, {"verdict": "wrong"},
-               {"verdict": "flat"}, {"verdict": "flat"}]
+    settled = [{"verdict": "correct"}, {"verdict": "wrong"}, {"verdict": "flat"}, {"verdict": "flat"}]
     assert forecast.accuracy(settled) == 0.5
 
 
@@ -185,10 +201,10 @@ def test_accuracy_is_unknown_rather_than_zero_without_evidence():
 
 # --- the ledger -------------------------------------------------------------
 
+
 def test_update_settles_records_and_does_not_duplicate(tmp_path):
     p = tmp_path / "forecasts.jsonl"
-    ledger = _ledger(**{"arxiv:2609.11111": [1.0, 10.0],
-                        "arxiv:2609.22222": [1.0, 10.0]})
+    ledger = _ledger(**{"arxiv:2609.11111": [1.0, 10.0], "arxiv:2609.22222": [1.0, 10.0]})
     first = forecast.update(DIGEST, ledger, "2026-09-19", p)
     assert first["claims_recorded"] == 2
 
@@ -203,8 +219,12 @@ def test_update_resolves_once_the_series_grows(tmp_path):
     ledger = _ledger(**{"arxiv:2609.11111": [1.0, 10.0], "arxiv:2609.22222": [1.0, 10.0]})
     forecast.update(DIGEST, ledger, "2026-09-19", p)
 
-    grown = _ledger(**{"arxiv:2609.11111": [1.0, 10.0, 12.0, 14.0, 20.0],
-                       "arxiv:2609.22222": [1.0, 10.0, 12.0, 14.0, 20.0]})
+    grown = _ledger(
+        **{
+            "arxiv:2609.11111": [1.0, 10.0, 12.0, 14.0, 20.0],
+            "arxiv:2609.22222": [1.0, 10.0, 12.0, 14.0, 20.0],
+        }
+    )
     stats = forecast.update(DIGEST, grown, "2026-09-23", p)
     assert stats["claims_settled"] == 2
     # the "Climbing" claim rose (correct); the "Cooled" claim also rose (wrong)
@@ -230,9 +250,17 @@ def test_a_malformed_line_does_not_take_out_the_ledger(tmp_path):
 
 # --- the Goodhart brake -----------------------------------------------------
 
+
 def _history(n, overall, reobs, start=0):
-    return [{"date": f"2026-09-{start + i:02d}", "mode": "normal", "overall": overall,
-             "trusted": {"reobservation_rate": reobs}} for i in range(n)]
+    return [
+        {
+            "date": f"2026-09-{start + i:02d}",
+            "mode": "normal",
+            "overall": overall,
+            "trusted": {"reobservation_rate": reobs},
+        }
+        for i in range(n)
+    ]
 
 
 def test_no_divergence_when_the_proxy_is_not_rising():
@@ -268,19 +296,22 @@ def test_the_brake_will_not_fire_on_a_thin_sample():
 def test_deterministic_evals_cannot_trigger_the_brake():
     """A model's absence is not a falling score. Otherwise the brake would revert changes
     every time the provider was down — precisely when nothing was being optimised."""
-    blank = [{"date": "d", "mode": "deterministic", "trusted": {"reobservation_rate": 0.1}}
-             for _ in range(30)]
+    blank = [
+        {"date": "d", "mode": "deterministic", "trusted": {"reobservation_rate": 0.1}} for _ in range(30)
+    ]
     assert trusted.divergence(blank) is None
 
 
 def test_reading_omits_metrics_it_could_not_compute():
     """A metric that could not be computed is not a metric that read zero."""
     assert trusted.reading({"metrics": {}}, {}) == {}
-    assert trusted.reading({"metrics": {"reobservation_rate": 0.9}},
-                           {"forecast_accuracy": None}) == {"reobservation_rate": 0.9}
+    assert trusted.reading({"metrics": {"reobservation_rate": 0.9}}, {"forecast_accuracy": None}) == {
+        "reobservation_rate": 0.9
+    }
 
 
 # --- invariant I-10 ---------------------------------------------------------
+
 
 def test_the_trusted_set_is_out_of_the_coders_reach():
     """I-10, checked against the real whitelist. If this fails, the Goodhart brake is
@@ -291,14 +322,14 @@ def test_the_trusted_set_is_out_of_the_coders_reach():
 
 def test_i10_fires_when_a_trusted_source_becomes_writable():
     violations = check_whitelist.trusted_disjointness(
-        ["distill/track.py"], {"reobservation_rate": ["distill/track.py"]})
+        ["distill/track.py"], {"reobservation_rate": ["distill/track.py"]}
+    )
     assert violations and "I-10" in violations[0]
 
 
 def test_i10_catches_a_directory_level_widening():
     """`collectors/` and `collectors/*.py` are the same problem stated two ways."""
-    assert check_whitelist.trusted_disjointness(
-        ["collectors/*.py"], {"m": ["collectors/"]})
+    assert check_whitelist.trusted_disjointness(["collectors/*.py"], {"m": ["collectors/"]})
 
 
 def test_the_duplicated_trusted_sources_agree_with_the_package():

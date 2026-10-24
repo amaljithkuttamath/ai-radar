@@ -5,6 +5,7 @@ most of this repo's life they never did — see tests/test_track.py — so these
 the classification logic directly, and test_carryovers_make_movers_reachable pins the
 end-to-end property that fix depends on.
 """
+
 from __future__ import annotations
 import json
 
@@ -30,8 +31,9 @@ def test_first_run_marks_everything_new(state_path):
 
 def test_an_unseen_item_is_new(state_path):
     delta.save_state([make_item(id="a", signals={"gh_stars": 10})])
-    d = delta.compute_delta([make_item(id="a", signals={"gh_stars": 10}),
-                             make_item(id="b", signals={"gh_stars": 10})])
+    d = delta.compute_delta(
+        [make_item(id="a", signals={"gh_stars": 10}), make_item(id="b", signals={"gh_stars": 10})]
+    )
     assert d["first_run"] is False
     assert [x["title"] for x in d["new"]] == ["acme/widget — a widget"]
     assert len(d["new"]) == 1

@@ -18,12 +18,15 @@ similarity instead of keywords. That path requires an embedder and is intentiona
 unless requested, so the default install stays dependency-free. Implement embed_match() against
 whatever backend you prefer (local sentence-transformers, an API, etc.).
 """
-from __future__ import annotations
-import os, re, functools
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-PROFILE = ROOT / "config" / "profile.yaml"
+from __future__ import annotations
+import os
+import re
+import functools
+
+from collectors.common import CONFIG
+
+PROFILE = CONFIG / "profile.yaml"
 
 
 def _env_focus() -> list[str]:
@@ -37,6 +40,7 @@ def _profile_terms() -> tuple[tuple[str, ...], tuple[str, ...]]:
         return ((), ())
     try:
         import yaml
+
         cfg = yaml.safe_load(PROFILE.read_text()) or {}
     except Exception:
         return ((), ())
@@ -55,8 +59,7 @@ def _profile_terms() -> tuple[tuple[str, ...], tuple[str, ...]]:
 
 
 def _blob(item: dict) -> str:
-    return " ".join([item.get("title", ""), item.get("raw_summary", ""),
-                     item.get("source", "")]).lower()
+    return " ".join([item.get("title", ""), item.get("raw_summary", ""), item.get("source", "")]).lower()
 
 
 def _term_hit(term: str, blob: str) -> bool:
@@ -70,7 +73,7 @@ def _term_hit(term: str, blob: str) -> bool:
 def active_terms() -> list[str]:
     """The effective focus vocabulary for this run (for logging / digest transparency)."""
     env = _env_focus()
-    if env:
+    if "FOCUS" in os.environ:
         return env
     return list(_profile_terms()[0])
 
@@ -80,7 +83,7 @@ def focus_match(item: dict) -> bool:
     Muted terms suppress a match even if a boost term also hit (explicit opt-out wins)."""
     blob = _blob(item)
     env = _env_focus()
-    if env:
+    if "FOCUS" in os.environ:
         return any(_term_hit(t, blob) for t in env)
 
     boost, mute = _profile_terms()
@@ -98,6 +101,7 @@ def embed_match(item: dict, terms: tuple[str, ...]) -> bool:  # pragma: no cover
     error, import failure) so a misconfigured or offline backend never crashes a run."""
     try:
         from distill.embed import embed_match as _semantic_match  # lazy import
+
         return _semantic_match(item, terms)
     except Exception:
         blob = _blob(item)

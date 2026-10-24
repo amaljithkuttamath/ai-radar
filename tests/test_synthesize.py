@@ -1,7 +1,6 @@
 """Prompt assembly: which candidates actually reach the model, and how they are labelled."""
+
 from __future__ import annotations
-import json
-import re
 
 import pytest
 
@@ -35,27 +34,84 @@ def _candidates(user: str) -> list[dict]:
 # Distinct subject words per item. The diversity pass collapses near-duplicate titles, so a
 # fixture of "Item 1 / Item 2 / Item 3" would legitimately arrive as a single candidate and
 # these tests would be measuring the wrong thing.
-_WORDS = ["interpretability", "quantization", "retrieval", "planning", "diffusion", "kernels",
-          "tokenizers", "distillation", "routing", "scheduling", "caching", "alignment",
-          "sparsity", "decoding", "attention", "benchmarking", "serving", "compilation",
-          "clustering", "provenance", "batching", "pruning", "embeddings", "guardrails",
-          "telemetry", "sharding", "annotation", "curricula", "checkpoints", "watermarking",
-          "orchestration", "federation", "calibration", "augmentation", "verification",
-          "summarization", "grounding", "steering", "profiling", "replication", "sampling",
-          "regularization", "normalization", "memoization", "prefetching"]
+_WORDS = [
+    "interpretability",
+    "quantization",
+    "retrieval",
+    "planning",
+    "diffusion",
+    "kernels",
+    "tokenizers",
+    "distillation",
+    "routing",
+    "scheduling",
+    "caching",
+    "alignment",
+    "sparsity",
+    "decoding",
+    "attention",
+    "benchmarking",
+    "serving",
+    "compilation",
+    "clustering",
+    "provenance",
+    "batching",
+    "pruning",
+    "embeddings",
+    "guardrails",
+    "telemetry",
+    "sharding",
+    "annotation",
+    "curricula",
+    "checkpoints",
+    "watermarking",
+    "orchestration",
+    "federation",
+    "calibration",
+    "augmentation",
+    "verification",
+    "summarization",
+    "grounding",
+    "steering",
+    "profiling",
+    "replication",
+    "sampling",
+    "regularization",
+    "normalization",
+    "memoization",
+    "prefetching",
+]
 
 
 def _fresh(n, score=3):
-    return [make_item(id=f"fresh-{i}", title=f"A study of {_WORDS[i]}", category="research",
-                      source=f"arXiv feed {i}", score=score,
-                      signals={"hf_upvotes": 30 + i}) for i in range(n)]
+    return [
+        make_item(
+            id=f"fresh-{i}",
+            title=f"A study of {_WORDS[i]}",
+            category="research",
+            source=f"arXiv feed {i}",
+            score=score,
+            signals={"hf_upvotes": 30 + i},
+        )
+        for i in range(n)
+    ]
 
 
 def _carried(n, score=3, delta_=1.5):
-    return [make_item(id=f"ghrepo:acme/carry-{i}", title=f"acme/{_WORDS[-1 - i]}-toolkit",
-                      source=f"GitHub Trending {i}", score=score, carryover=True, streak=3,
-                      first_seen="2026-07-01", traction_delta=delta_,
-                      signals={"gh_stars": 500 + i}) for i in range(n)]
+    return [
+        make_item(
+            id=f"ghrepo:acme/carry-{i}",
+            title=f"acme/{_WORDS[-1 - i]}-toolkit",
+            source=f"GitHub Trending {i}",
+            score=score,
+            carryover=True,
+            streak=3,
+            first_seen="2026-07-01",
+            traction_delta=delta_,
+            signals={"gh_stars": 500 + i},
+        )
+        for i in range(n)
+    ]
 
 
 def test_carryovers_are_capped_on_a_busy_day():
@@ -109,9 +165,12 @@ def test_traction_figures_are_promoted_to_named_fields():
 def test_compact_delta_keeps_counts_exact_while_truncating_rows():
     """The prompt gets a sample of movers, but the counts it reports must be the real ones —
     a busy window marks 300+ items new and dumping them all overflows the input limit."""
-    big = {"first_run": False,
-           "new": [{"title": f"t{n}", "url": "u", "score": 3} for n in range(300)],
-           "climbing": [], "cooled": []}
+    big = {
+        "first_run": False,
+        "new": [{"title": f"t{n}", "url": "u", "score": 3} for n in range(300)],
+        "climbing": [],
+        "cooled": [],
+    }
     out = synthesize._compact_delta(big, top=5)
     assert out["new"]["count"] == 300
     assert len(out["new"]["top"]) == 5
@@ -120,10 +179,17 @@ def test_compact_delta_keeps_counts_exact_while_truncating_rows():
 def test_category_quotas_reserve_room_for_non_research():
     """Hardware and releases score lower than papers structurally; without a floor they are
     crowded out entirely."""
-    items = (_fresh(40)
-             + [make_item(id=f"hw-{i}", title=f"NVIDIA ships {_WORDS[i]} hardware",
-                          category="hardware",
-                          source=f"NVIDIA Blog {i}", score=1, signals={}) for i in range(4)])
+    items = _fresh(40) + [
+        make_item(
+            id=f"hw-{i}",
+            title=f"NVIDIA ships {_WORDS[i]} hardware",
+            category="hardware",
+            source=f"NVIDIA Blog {i}",
+            score=1,
+            signals={},
+        )
+        for i in range(4)
+    ]
     _, user, _ = synthesize.build_prompt(items, max_candidates=20)
     rows = _candidates(user)
     assert 0 < sum(1 for r in rows if r["category"] == "hardware") <= synthesize.HARDWARE_SLOTS

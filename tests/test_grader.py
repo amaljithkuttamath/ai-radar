@@ -12,7 +12,7 @@ Run: uv run --group dev pytest tests/ -q
 from __future__ import annotations
 
 import json
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 import pytest
 
@@ -25,10 +25,22 @@ UTC = timezone.utc
 
 # --- freshness -------------------------------------------------------------
 
-@pytest.mark.parametrize("age_h,expected", [
-    (0.1, 5), (5.9, 5), (6.0, 4), (11.9, 4), (12.0, 3),
-    (23.9, 3), (24.0, 2), (36.0, 2), (36.1, 1), (700, 1),
-])
+
+@pytest.mark.parametrize(
+    "age_h,expected",
+    [
+        (0.1, 5),
+        (5.9, 5),
+        (6.0, 4),
+        (11.9, 4),
+        (12.0, 3),
+        (23.9, 3),
+        (24.0, 2),
+        (36.0, 2),
+        (36.1, 1),
+        (700, 1),
+    ],
+)
 def test_x3_anchors(age_h, expected):
     assert freshness.x3_score(age_h) == expected
 
@@ -50,10 +62,12 @@ def test_h1_date_anchors_at_noon_not_midnight():
 def test_h1_date_ignores_the_nav_block():
     """The nav link at the top of latest.md points at the PREVIOUS digest and is always
     the wrong date. grader.md says never to parse it; the regex anchors on the heading."""
-    body = ("<!-- radar:nav -->\n"
-            "`radar`  ·  [← 2026-07-29](2026-07-29-digest.md)  ·  [index](README.md)\n"
-            "<!-- /radar:nav -->\n\n"
-            "# AI Radar — 2026-07-30\n\nbody")
+    body = (
+        "<!-- radar:nav -->\n"
+        "`radar`  ·  [← 2026-07-29](2026-07-29-digest.md)  ·  [index](README.md)\n"
+        "<!-- /radar:nav -->\n\n"
+        "# AI Radar — 2026-07-30\n\nbody"
+    )
     assert freshness.h1_date(body).strftime("%Y-%m-%d") == "2026-07-30"
 
 
@@ -77,9 +91,9 @@ def test_sane_boundaries_are_inclusive():
 
 # --- links -----------------------------------------------------------------
 
+
 def test_extract_finds_markdown_links_only():
-    body = ("[A](https://example.com/a) and bare https://example.com/bare and "
-            "[B](https://example.com/b)")
+    body = "[A](https://example.com/a) and bare https://example.com/bare and [B](https://example.com/b)"
     assert links.extract(body) == ["https://example.com/a", "https://example.com/b"]
 
 
@@ -109,17 +123,21 @@ def test_a2_ceiling_clean_when_nothing_broken():
 
 # --- the separation fence --------------------------------------------------
 
-@pytest.mark.parametrize("model,expected", [
-    ("claude-opus-4-8", "anthropic"),
-    ("anthropic/claude-sonnet-5", "anthropic"),
-    ("openai/gpt-4.1", "openai"),
-    ("gpt-4.1-mini", "openai"),
-    ("gemini-2.5-pro", "google"),
-    ("llama-3.1-70b", "meta"),
-    ("qwen3:4b", "alibaba"),
-    ("sonar-pro", "perplexity"),
-    ("nvidia/nemotron-3-ultra-550b-a55b:free", "nvidia"),
-])
+
+@pytest.mark.parametrize(
+    "model,expected",
+    [
+        ("claude-opus-4-8", "anthropic"),
+        ("anthropic/claude-sonnet-5", "anthropic"),
+        ("openai/gpt-4.1", "openai"),
+        ("gpt-4.1-mini", "openai"),
+        ("gemini-2.5-pro", "google"),
+        ("llama-3.1-70b", "meta"),
+        ("qwen3:4b", "alibaba"),
+        ("sonar-pro", "perplexity"),
+        ("nvidia/nemotron-3-ultra-550b-a55b:free", "nvidia"),
+    ],
+)
 def test_family_detection(model, expected):
     assert family(model) == expected
 
@@ -151,9 +169,11 @@ def test_nvidia_is_a_recognised_family_on_both_sides_of_the_fence():
     This does not by itself yield a runnable all-free grader: that still needs a second
     un-throttled free family to pair against, which the provider's free tier does not
     currently offer (see ADR-0008)."""
-    env = {"RADAR_LLM_BASE_URL": "https://openrouter.ai/api/v1",
-           "RADAR_LLM_API_KEY": "sk-x",
-           "RADAR_SYNTHESIS_MODEL": "google/gemma-4-31b-it:free"}
+    env = {
+        "RADAR_LLM_BASE_URL": "https://openrouter.ai/api/v1",
+        "RADAR_LLM_API_KEY": "sk-x",
+        "RADAR_SYNTHESIS_MODEL": "google/gemma-4-31b-it:free",
+    }
     assert assert_separated("nvidia/nemotron-3-ultra-550b-a55b:free", env) == "nvidia"
 
 
@@ -170,15 +190,18 @@ def test_template_pipeline_has_nothing_to_be_separate_from():
     assert assert_separated("claude-opus-4-8", {"RADAR_MODEL_BACKEND": "template"}) == "anthropic"
 
 
-@pytest.mark.parametrize("env,expected", [
-    ({"RADAR_MODEL_BACKEND": "auto", "ANTHROPIC_API_KEY": "k"}, "claude-opus-4-8"),
-    ({"RADAR_MODEL_BACKEND": "auto"}, None),
-    ({"RADAR_MODEL_BACKEND": "github", "ANTHROPIC_API_KEY": "k"}, "claude-opus-4-8"),
-    ({"RADAR_MODEL_BACKEND": "github"}, None),
-    ({"RADAR_MODEL_BACKEND": "template"}, None),
-    ({"RADAR_MODEL_BACKEND": "dryrun"}, None),
-    ({"RADAR_MODEL_BACKEND": "ollama"}, "qwen3:4b"),
-])
+@pytest.mark.parametrize(
+    "env,expected",
+    [
+        ({"RADAR_MODEL_BACKEND": "auto", "ANTHROPIC_API_KEY": "k"}, "claude-opus-4-8"),
+        ({"RADAR_MODEL_BACKEND": "auto"}, None),
+        ({"RADAR_MODEL_BACKEND": "github", "ANTHROPIC_API_KEY": "k"}, "claude-opus-4-8"),
+        ({"RADAR_MODEL_BACKEND": "github"}, None),
+        ({"RADAR_MODEL_BACKEND": "template"}, None),
+        ({"RADAR_MODEL_BACKEND": "dryrun"}, None),
+        ({"RADAR_MODEL_BACKEND": "ollama"}, "qwen3:4b"),
+    ],
+)
 def test_synthesis_model_mirrors_the_pipeline(env, expected):
     assert synthesis_model(env) == expected
 
@@ -211,15 +234,18 @@ def test_one_provider_two_families_passes_the_fence():
 def test_same_model_for_both_roles_is_refused():
     """The failure the fence exists for, now reachable through one provider: pointing
     both roles at the same model must not become easier just because it is one key."""
-    env = {"RADAR_LLM_BASE_URL": "https://openrouter.ai/api/v1",
-           "RADAR_LLM_API_KEY": "k",
-           "RADAR_SYNTHESIS_MODEL": "anthropic/claude-sonnet-5",
-           "RADAR_GRADER_MODEL": "anthropic/claude-opus-5"}
+    env = {
+        "RADAR_LLM_BASE_URL": "https://openrouter.ai/api/v1",
+        "RADAR_LLM_API_KEY": "k",
+        "RADAR_SYNTHESIS_MODEL": "anthropic/claude-sonnet-5",
+        "RADAR_GRADER_MODEL": "anthropic/claude-opus-5",
+    }
     with pytest.raises(SeparationViolation, match="anthropic"):
         assert_separated("anthropic/claude-opus-5", env)
 
 
 # --- verdict parsing -------------------------------------------------------
+
 
 def _verdict(**over) -> dict:
     v = {d: {"score": 4, "why": f"{d} evidence cited"} for d in judge.JUDGED_DIMS}
@@ -268,14 +294,22 @@ def test_no_json_at_all_escalates():
 
 # --- assembly + schema -----------------------------------------------------
 
+
 def _assembled(**over):
     kw = dict(
-        date="2026-08-09", mode="normal", grader_model="openai/gpt-4.1",
+        date="2026-08-09",
+        mode="normal",
+        grader_model="openai/gpt-4.1",
         digest_commit_time=datetime(2026, 8, 9, 11, 30, tzinfo=UTC),
-        age_h=2.5, verdict=_verdict(), x3=5, a2_ceiling=5, broken=[],
+        age_h=2.5,
+        verdict=_verdict(),
+        x3=5,
+        a2_ceiling=5,
+        broken=[],
         # I-11 (ADR-0009): every eval records which version of the deterministic checker
         # produced it, judged evals included — tier 0 runs on every path.
-        tier0={"module_hash": "abc123abc123", "metrics": {}, "checks": [], "failed": []})
+        tier0={"module_hash": "abc123abc123", "metrics": {}, "checks": [], "failed": []},
+    )
     kw.update(over)
     return artifacts.assemble(**kw)
 
@@ -283,7 +317,7 @@ def _assembled(**over):
 def test_assemble_computes_aggregates_from_the_dims():
     ev = _assembled()
     assert ev["quality"]["overall"] == 4.0
-    assert ev["experience"]["overall"] == 4.2      # X3=5 lifts the four 4s
+    assert ev["experience"]["overall"] == 4.2  # X3=5 lifts the four 4s
     assert ev["overall"] == 4.1
 
 
@@ -296,8 +330,11 @@ def test_x3_comes_from_age_not_from_the_model():
 def test_a2_ceiling_overrides_a_generous_judge():
     """A model cannot see an HTTP status. Letting its read of source integrity survive a
     measured 404 would make the one checkable dimension unfalsifiable."""
-    ev = _assembled(verdict=_verdict(A2={"score": 5, "why": "all primary sources"}),
-                    a2_ceiling=2, broken=[{"url": "https://x.test", "status": 404}])
+    ev = _assembled(
+        verdict=_verdict(A2={"score": 5, "why": "all primary sources"}),
+        a2_ceiling=2,
+        broken=[{"url": "https://x.test", "status": 404}],
+    )
     assert ev["quality"]["A2"]["score"] == 2
 
 
@@ -335,6 +372,7 @@ def test_schema_rejects_an_impossible_age():
 
 # --- writes ----------------------------------------------------------------
 
+
 def test_write_puts_the_same_object_in_both_files(tmp_path):
     ev = _assembled()
     written = artifacts.write_eval(ev, tmp_path)
@@ -352,9 +390,16 @@ def test_readme_renders_an_empty_history_without_failing(tmp_path):
 
 
 def test_readme_is_capped_at_thirty_rows():
-    history = [{"date": f"2026-01-{d:02d}", "mode": "normal", "overall": 4.0,
-                "quality": {"overall": 4.0}, "experience": {"overall": 4.0}}
-               for d in range(1, 32)]
+    history = [
+        {
+            "date": f"2026-01-{d:02d}",
+            "mode": "normal",
+            "overall": 4.0,
+            "quality": {"overall": 4.0},
+            "experience": {"overall": 4.0},
+        }
+        for d in range(1, 32)
+    ]
     assert artifacts.render_readme(history).count("| 2026-01-") == 30
 
 
@@ -370,8 +415,10 @@ def test_backlog_items_are_causal_and_tied_to_the_worst_dim():
 
 def test_backlog_append_is_additive(tmp_path):
     p = tmp_path / "backlog.md"
-    p.write_text("# Improvement backlog\n\n## Open — pipeline (ai-radar)\n\n"
-                 "- [ ] 2026-07-27 · An existing item\n\n## Done\n")
+    p.write_text(
+        "# Improvement backlog\n\n## Open — pipeline (ai-radar)\n\n"
+        "- [ ] 2026-07-27 · An existing item\n\n## Done\n"
+    )
     assert artifacts.append_backlog(["- [ ] 2026-08-09 · A new item"], p) is True
     out = p.read_text()
     assert "An existing item" in out and "A new item" in out
@@ -386,6 +433,7 @@ def test_backlog_append_refuses_when_the_section_is_missing(tmp_path):
 
 
 # --- issue conditions ------------------------------------------------------
+
 
 def test_issue_on_a_dimension_at_or_below_two():
     ev = _assembled(verdict=_verdict(X4={"score": 2, "why": "one feed failure cascaded"}))
@@ -426,6 +474,8 @@ def test_persistent_regression_is_skipped_without_enough_history():
 
 def test_persistent_regression_fires_on_the_third_day():
     ev = _assembled(verdict=_verdict(A1={"score": 3, "why": "mixed"}))
-    prior = [{"date": "2026-08-08", "quality": {"A1": {"score": 3}}, "experience": {}},
-             {"date": "2026-08-07", "quality": {"A1": {"score": 2}}, "experience": {}}]
+    prior = [
+        {"date": "2026-08-08", "quality": {"A1": {"score": 3}}, "experience": {}},
+        {"date": "2026-08-07", "quality": {"A1": {"score": 2}}, "experience": {}},
+    ]
     assert "3 consecutive days" in artifacts.should_file_issue(ev, prior)

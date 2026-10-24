@@ -11,6 +11,7 @@ streaks stuck at 1, no movers, no story arcs, and an empty digest whenever the d
 Here, day two and day three collect *nothing at all*, which is the worst case, and the digest
 still has candidates, movers, and eventually an arc.
 """
+
 from __future__ import annotations
 import json
 from datetime import datetime, timezone
@@ -45,17 +46,25 @@ def _collect_day_one(raw_dir):
     """One trackable repo and one HF-featured paper — a modest but normal day."""
     now = datetime.now(timezone.utc).isoformat()
     items = [
-        raw_item(id="ghrepo:getzep/graphiti", category="releases",
-                 title="getzep/graphiti — real-time knowledge graphs for agents",
-                 url="https://github.com/getzep/graphiti", source="GitHub Trending",
-                 raw_summary="Temporal knowledge graphs for agent memory.",
-                 signals={"gh_stars": 900}),
-        raw_item(id="arxiv:2501.01234", category="research",
-                 title="Sparse autoencoders for circuit discovery",
-                 url="https://arxiv.org/abs/2501.01234", source="HF Daily Papers",
-                 raw_summary="We train SAEs to recover interpretable circuits.",
-                 links={"github": "https://github.com/acme/sae-circuits"},
-                 signals={"hf_upvotes": 40}),
+        raw_item(
+            id="ghrepo:getzep/graphiti",
+            category="releases",
+            title="getzep/graphiti — real-time knowledge graphs for agents",
+            url="https://github.com/getzep/graphiti",
+            source="GitHub Trending",
+            raw_summary="Temporal knowledge graphs for agent memory.",
+            signals={"gh_stars": 900},
+        ),
+        raw_item(
+            id="arxiv:2501.01234",
+            category="research",
+            title="Sparse autoencoders for circuit discovery",
+            url="https://arxiv.org/abs/2501.01234",
+            source="HF Daily Papers",
+            raw_summary="We train SAEs to recover interpretable circuits.",
+            links={"github": "https://github.com/acme/sae-circuits"},
+            signals={"hf_upvotes": 40},
+        ),
     ]
     for it in items:
         it["fetched"] = now
@@ -138,8 +147,7 @@ def test_a_freshly_collected_item_beats_its_carryover_copy(pipeline):
     otherwise a stale ledger row would shadow a live observation."""
     raw = pipeline / "raw"
     _collect_day_one(raw)
-    fetchers = {"github": lambda o, r: {"stars": 900, "forks": 5},
-                "hf_paper": lambda key: {"hf_upvotes": 40}}
+    fetchers = {"github": lambda o, r: {"stars": 900, "forks": 5}, "hf_paper": lambda key: {"hf_upvotes": 40}}
     _run_day("2026-07-01", fetchers)
 
     # Day 2 re-collects graphiti with a much higher star count.
@@ -152,7 +160,7 @@ def test_a_freshly_collected_item_beats_its_carryover_copy(pipeline):
     it["fetched"] = datetime.now(timezone.utc).isoformat()
     p.write_text(json.dumps(it))
 
-    fetchers["github"] = lambda o, r: {"stars": 950, "forks": 5}   # stale ledger observation
+    fetchers["github"] = lambda o, r: {"stars": 950, "forks": 5}  # stale ledger observation
     day2 = _run_day("2026-07-02", fetchers)
 
     graphiti = next(i for i in day2["items"] if i["id"] == "ghrepo:getzep/graphiti")
@@ -164,13 +172,12 @@ def test_an_item_that_stops_moving_leaves_the_radar(pipeline):
     """The ledger is committed to git daily; it must not accumulate dead weight."""
     raw = pipeline / "raw"
     _collect_day_one(raw)
-    fetchers = {"github": lambda o, r: {"stars": 900, "forks": 5},
-                "hf_paper": lambda key: {"hf_upvotes": 40}}
+    fetchers = {"github": lambda o, r: {"stars": 900, "forks": 5}, "hf_paper": lambda key: {"hf_upvotes": 40}}
     _run_day("2026-07-01", fetchers)
     for p in raw.rglob("*.json"):
         p.unlink()
 
     for day in range(2, 10):
-        _run_day(f"2026-07-{day:02d}", fetchers)      # flat traction, every run
+        _run_day(f"2026-07-{day:02d}", fetchers)  # flat traction, every run
 
     assert track.load_ledger() == {}

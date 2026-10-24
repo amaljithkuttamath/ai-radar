@@ -23,10 +23,22 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from health import (  # noqa: E402
-    DOWN, OK, UNKNOWN, WARN,
-    classify_age, classify_loop, classify_workflow, fail_streak, git_age_hours,
-    humanise_age, humanise_duration, reason_lines, render_markdown, worst,
+    DOWN,
+    OK,
+    UNKNOWN,
+    WARN,
+    classify_age,
+    classify_loop,
+    classify_workflow,
+    fail_streak,
+    git_age_hours,
+    humanise_age,
+    humanise_duration,
+    reason_lines,
+    render_markdown,
+    worst,
 )
+
 # Bound before the autouse fixture can replace the module attribute, so the two tests
 # that exercise the real Issues read get the real function rather than the stub.
 from health import (  # noqa: E402
@@ -56,15 +68,19 @@ def _no_network_and_full_history(monkeypatch):
 
 # --- age classification ----------------------------------------------------
 
-@pytest.mark.parametrize("age_h,expected", [
-    (0, OK),
-    (12, OK),       # inside half the threshold
-    (24, OK),       # exactly half is still fine
-    (25, WARN),     # past one cadence: the next run decides
-    (48, WARN),     # exactly at the threshold is not yet a breach
-    (49, DOWN),
-    (626, DOWN),    # the real 2026-07 eval outage
-])
+
+@pytest.mark.parametrize(
+    "age_h,expected",
+    [
+        (0, OK),
+        (12, OK),  # inside half the threshold
+        (24, OK),  # exactly half is still fine
+        (25, WARN),  # past one cadence: the next run decides
+        (48, WARN),  # exactly at the threshold is not yet a breach
+        (49, DOWN),
+        (626, DOWN),  # the real 2026-07 eval outage
+    ],
+)
 def test_classify_age(age_h, expected):
     assert classify_age(age_h, 48) == expected
 
@@ -76,6 +92,7 @@ def test_missing_artifact_skips_warn():
 
 
 # --- failure streaks -------------------------------------------------------
+
 
 def test_streak_counts_only_leading_failures():
     assert fail_streak(["failure", "failure", "success", "failure"]) == 2
@@ -96,6 +113,7 @@ def test_streak_on_empty_history():
 
 
 # --- workflow classification ----------------------------------------------
+
 
 def test_single_failure_of_fatal_workflow_is_warn_not_down():
     """One red run is a blip. Escalating on it is how a monitor trains you to
@@ -123,6 +141,7 @@ def test_green_workflow_is_ok():
 
 # --- aggregation -----------------------------------------------------------
 
+
 def test_worst_picks_the_most_severe():
     assert worst([OK, WARN, DOWN]) == DOWN
     assert worst([OK, WARN]) == WARN
@@ -134,6 +153,7 @@ def test_worst_of_nothing_is_ok():
 
 
 # --- IO failure behaviour --------------------------------------------------
+
 
 def test_git_age_of_untracked_path_is_none(tmp_path, monkeypatch):
     """A path git knows nothing about must read as None (-> DOWN via
@@ -157,11 +177,29 @@ def test_unobserved_workflow_is_excluded_from_overall_status():
     """No runs is unknown, not healthy — and unknown must not be laundered into
     the overall reading in either direction."""
     health = {
-        "signals": [{"key": "digest", "label": "Daily digest", "status": OK,
-                     "detail": "fine", "url": "#", "age_h": 1, "threshold_h": 48}],
-        "workflows": [{"key": "distill", "label": "Distill digest", "status": UNKNOWN,
-                       "conclusion": None, "fail_streak": 0, "last_run_at": None,
-                       "url": "#", "observed": False}],
+        "signals": [
+            {
+                "key": "digest",
+                "label": "Daily digest",
+                "status": OK,
+                "detail": "fine",
+                "url": "#",
+                "age_h": 1,
+                "threshold_h": 48,
+            }
+        ],
+        "workflows": [
+            {
+                "key": "distill",
+                "label": "Distill digest",
+                "status": UNKNOWN,
+                "conclusion": None,
+                "fail_streak": 0,
+                "last_run_at": None,
+                "url": "#",
+                "observed": False,
+            }
+        ],
         "generated": "2026-08-09T16:00:00+00:00",
     }
     assert reason_lines(health) == []
@@ -192,16 +230,33 @@ def test_unknown_workflow_cannot_raise_overall_status(monkeypatch):
 
 # --- reason lines (the watchdog's input) -----------------------------------
 
+
 def _health(signal_status: str, wf_status: str = OK, streak: int = 0) -> dict:
     return {
         "generated": "2026-08-09T16:00:00+00:00",
-        "signals": [{"key": "evals", "label": "Eval loop", "status": signal_status,
-                     "detail": "grader last committed 27d ago", "url": "#",
-                     "age_h": 626, "threshold_h": 48}],
-        "workflows": [{"key": "distill", "label": "Distill digest", "status": wf_status,
-                       "conclusion": "failure" if streak else "success",
-                       "fail_streak": streak, "last_run_at": "2026-08-09T11:22:00Z",
-                       "url": "#", "observed": True}],
+        "signals": [
+            {
+                "key": "evals",
+                "label": "Eval loop",
+                "status": signal_status,
+                "detail": "grader last committed 27d ago",
+                "url": "#",
+                "age_h": 626,
+                "threshold_h": 48,
+            }
+        ],
+        "workflows": [
+            {
+                "key": "distill",
+                "label": "Distill digest",
+                "status": wf_status,
+                "conclusion": "failure" if streak else "success",
+                "fail_streak": streak,
+                "last_run_at": "2026-08-09T11:22:00Z",
+                "url": "#",
+                "observed": True,
+            }
+        ],
     }
 
 
@@ -234,6 +289,7 @@ def test_reason_lines_are_tab_delimited():
 
 # --- presentation ----------------------------------------------------------
 
+
 def test_humanise_age_rolls_up_to_days():
     assert humanise_age(None) == "never"
     assert humanise_age(0.5) == "<1h ago"
@@ -248,6 +304,7 @@ def test_render_markdown_includes_every_row():
 
 
 # --- degraded-synthesis signal --------------------------------------------
+
 
 def test_degraded_marker_matches_the_string_synthesize_actually_writes():
     """health.py duplicates the marker as a literal so it can stay stdlib-only. That is a
@@ -279,6 +336,7 @@ def test_synthesized_digest_is_not_flagged(tmp_path):
 
 def test_missing_digest_is_unknown_not_healthy(tmp_path):
     import health as h
+
     assert h.digest_is_degraded(tmp_path / "nope.md") is None
 
 
@@ -303,6 +361,7 @@ def test_degraded_digest_warns_without_escalating(monkeypatch):
 # watchdog filed issue #34, the watchdog went red fifteen days running — and the
 # alarm was never answered. These tests pin the signal that would have said so.
 
+
 def _alarm(number: int, hours_ago: float) -> dict:
     return {"number": number, "opened": NOW - timedelta(hours=hours_ago)}
 
@@ -321,12 +380,15 @@ def test_fresh_alarm_warns_rather_than_escalating():
     assert "#34" in detail
 
 
-@pytest.mark.parametrize("hours,expected", [
-    (71, WARN),      # inside the 72h file cooldown: a fix may still be in flight
-    (72, WARN),      # exactly at the threshold is not yet a breach
-    (73, DOWN),
-    (24 * 40, DOWN),  # issue #34, the real one
-])
+@pytest.mark.parametrize(
+    "hours,expected",
+    [
+        (71, WARN),  # inside the 72h file cooldown: a fix may still be in flight
+        (72, WARN),  # exactly at the threshold is not yet a breach
+        (73, DOWN),
+        (24 * 40, DOWN),  # issue #34, the real one
+    ],
+)
 def test_alarm_becomes_down_once_it_outlives_the_cooldown(hours, expected):
     status, _ = classify_loop([_alarm(34, hours)], NOW)
     assert status == expected
@@ -391,8 +453,7 @@ def test_pull_requests_are_not_counted_as_unanswered_alarms(monkeypatch):
         {"number": 34, "created_at": "2026-08-10T15:56:19Z"},
         {"number": 35, "created_at": "2026-08-11T03:42:15Z", "pull_request": {"url": "#"}},
     ]
-    monkeypatch.setattr(h.urllib.request, "urlopen",
-                        lambda *a, **kw: _FakeResponse(payload))
+    monkeypatch.setattr(h.urllib.request, "urlopen", lambda *a, **kw: _FakeResponse(payload))
     alarms = real_fetch_open_alarms()
     assert [a["number"] for a in alarms] == [34]
 
@@ -406,8 +467,7 @@ def test_undateable_alarm_does_not_blind_the_whole_read(monkeypatch):
         {"number": 34, "created_at": "not-a-date"},
         {"number": 36, "created_at": "2026-09-01T00:00:00Z"},
     ]
-    monkeypatch.setattr(h.urllib.request, "urlopen",
-                        lambda *a, **kw: _FakeResponse(payload))
+    monkeypatch.setattr(h.urllib.request, "urlopen", lambda *a, **kw: _FakeResponse(payload))
     assert [a["number"] for a in real_fetch_open_alarms()] == [36]
 
 
@@ -416,10 +476,11 @@ def test_loop_signal_is_reported_and_escalates(monkeypatch):
 
     monkeypatch.setattr(h, "fetch_runs", lambda *a, **kw: [])
     monkeypatch.setattr(h, "git_age_hours", lambda *a, **kw: 1.0)
-    monkeypatch.setattr(h, "fetch_open_alarms",
-                        lambda *a, **kw: [{"number": 34,
-                                           "opened": datetime.now(timezone.utc)
-                                           - timedelta(days=40)}])
+    monkeypatch.setattr(
+        h,
+        "fetch_open_alarms",
+        lambda *a, **kw: [{"number": 34, "opened": datetime.now(timezone.utc) - timedelta(days=40)}],
+    )
     built = h.build_health()
     loop = [s for s in built["signals"] if s["key"] == "loop"][0]
     assert loop["status"] == DOWN
@@ -431,6 +492,7 @@ def test_loop_signal_is_reported_and_escalates(monkeypatch):
 
 # --- measured-wrong is worse than not measured -----------------------------
 
+
 def test_shallow_checkout_reports_unknown_not_a_wrong_age(monkeypatch):
     """On a shallow clone every artifact older than the truncation point reports the
     boundary commit's age, so a 69-day-dead stage reads as fresh. `fetch-depth: 0` is
@@ -439,7 +501,7 @@ def test_shallow_checkout_reports_unknown_not_a_wrong_age(monkeypatch):
 
     monkeypatch.setattr(h, "fetch_runs", lambda *a, **kw: [])
     monkeypatch.setattr(h, "is_shallow_clone", lambda: True)
-    monkeypatch.setattr(h, "git_age_hours", lambda *a, **kw: 1.0)   # a lie the clone tells
+    monkeypatch.setattr(h, "git_age_hours", lambda *a, **kw: 1.0)  # a lie the clone tells
 
     built = h.build_health()
     ages = {s["key"]: s for s in built["signals"] if s["key"] in ("digest", "evals")}
@@ -467,9 +529,17 @@ def test_unknown_signal_renders_without_crashing_the_report():
     the whole report over a blind spot in one line."""
     health = {
         "generated": "2026-09-20T12:00:00+00:00",
-        "signals": [{"key": "loop", "label": "Self-healing loop", "status": UNKNOWN,
-                     "detail": "could not read open alarms", "url": "#",
-                     "age_h": None, "threshold_h": 72}],
+        "signals": [
+            {
+                "key": "loop",
+                "label": "Self-healing loop",
+                "status": UNKNOWN,
+                "detail": "could not read open alarms",
+                "url": "#",
+                "age_h": None,
+                "threshold_h": 72,
+            }
+        ],
         "workflows": [],
     }
     assert "Self-healing loop" in render_markdown(health)
@@ -485,15 +555,14 @@ def test_humanise_duration_has_no_ago_suffix():
 # longer tell "the grader ran" from "a model judged it". Reporting the first as the second
 # would put a green light on the exact outage this file exists to catch.
 
+
 def test_a_deterministic_latest_eval_is_detected(tmp_path):
-    import health as h
     p = tmp_path / "latest.json"
     p.write_text('{"mode": "deterministic", "date": "2026-09-19"}')
     assert real_latest_eval_is_unjudged(p) is True
 
 
 def test_a_judged_latest_eval_is_not_flagged(tmp_path):
-    import health as h
     p = tmp_path / "latest.json"
     p.write_text('{"mode": "normal", "overall": 4.0}')
     assert real_latest_eval_is_unjudged(p) is False
@@ -501,7 +570,6 @@ def test_a_judged_latest_eval_is_not_flagged(tmp_path):
 
 def test_a_missing_eval_is_the_freshness_signals_finding_not_this_one(tmp_path):
     """Reporting it here as well would double-count one fault."""
-    import health as h
     assert real_latest_eval_is_unjudged(tmp_path / "nope.json") is False
     assert real_latest_eval_is_unjudged(tmp_path) is False
 
@@ -510,6 +578,7 @@ def test_the_mode_string_matches_what_the_grader_actually_writes():
     """Duplicated rather than imported, so health.py stays stdlib-only. The duplicate must
     not drift."""
     from grader import artifacts
+
     assert artifacts.DETERMINISTIC == "deterministic"
 
 
@@ -554,19 +623,34 @@ def test_a_stale_unjudged_eval_stays_down_rather_than_softening_to_warn(monkeypa
 
 # --- the loop signal must not gate its own resolution ------------------------
 
+
 def test_the_loop_signal_is_excluded_from_escalation_by_default():
     """Otherwise it deadlocks: the signal reads `down` because an alarm is open, which
     keeps the watchdog red, which stops the close step running, which keeps it `down`.
     Filing would also mean opening an issue about an unanswered issue."""
     import health as h
+
     health = {
         "generated": "2026-09-20T12:00:00+00:00",
         "signals": [
-            {"key": "loop", "label": "Self-healing loop", "status": DOWN,
-             "detail": "alarm #34 unanswered for 40d", "url": "#",
-             "age_h": 981.0, "threshold_h": 72},
-            {"key": "evals", "label": "Eval loop", "status": OK, "detail": "fresh",
-             "url": "#", "age_h": 1, "threshold_h": 48},
+            {
+                "key": "loop",
+                "label": "Self-healing loop",
+                "status": DOWN,
+                "detail": "alarm #34 unanswered for 40d",
+                "url": "#",
+                "age_h": 981.0,
+                "threshold_h": 72,
+            },
+            {
+                "key": "evals",
+                "label": "Eval loop",
+                "status": OK,
+                "detail": "fresh",
+                "url": "#",
+                "age_h": 1,
+                "threshold_h": 48,
+            },
         ],
         "workflows": [],
     }
@@ -580,9 +664,17 @@ def test_the_loop_signal_still_renders_on_the_page():
     signals directly, so the exclusion is scoped to the watchdog's decision alone."""
     health = {
         "generated": "2026-09-20T12:00:00+00:00",
-        "signals": [{"key": "loop", "label": "Self-healing loop", "status": DOWN,
-                     "detail": "alarm #34 unanswered for 40d", "url": "#",
-                     "age_h": 981.0, "threshold_h": 72}],
+        "signals": [
+            {
+                "key": "loop",
+                "label": "Self-healing loop",
+                "status": DOWN,
+                "detail": "alarm #34 unanswered for 40d",
+                "url": "#",
+                "age_h": 981.0,
+                "threshold_h": 72,
+            }
+        ],
         "workflows": [],
     }
     assert "Self-healing loop" in render_markdown(health)
@@ -590,14 +682,28 @@ def test_the_loop_signal_still_renders_on_the_page():
 
 def test_excluding_one_signal_does_not_hide_the_others():
     import health as h
+
     health = {
         "generated": "2026-09-20T12:00:00+00:00",
         "signals": [
-            {"key": "loop", "label": "Self-healing loop", "status": DOWN,
-             "detail": "x", "url": "#", "age_h": 1, "threshold_h": 72},
-            {"key": "evals", "label": "Eval loop", "status": DOWN,
-             "detail": "grader last committed 68d ago", "url": "#",
-             "age_h": 1600, "threshold_h": 48},
+            {
+                "key": "loop",
+                "label": "Self-healing loop",
+                "status": DOWN,
+                "detail": "x",
+                "url": "#",
+                "age_h": 1,
+                "threshold_h": 72,
+            },
+            {
+                "key": "evals",
+                "label": "Eval loop",
+                "status": DOWN,
+                "detail": "grader last committed 68d ago",
+                "url": "#",
+                "age_h": 1600,
+                "threshold_h": 48,
+            },
         ],
         "workflows": [],
     }

@@ -1,4 +1,5 @@
 """Regressions from the 2026-10-01 digest: duplicated arcs and lost source evidence."""
+
 from __future__ import annotations
 
 import pytest
@@ -62,8 +63,10 @@ def test_published_arcs_use_source_records_once(monkeypatch, heading, truncated)
 
 def test_repeated_arc_sections_and_source_urls_are_collapsed(monkeypatch):
     prompt = _prompt(monkeypatch, [ARC, {**ARC, "title": "GameHorizon Suite"}])
-    raw = ("# AI Radar\n\n## Story arcs\n\n- First copy\n\n"
-           "**Insights**\n\nKeep this.\n\n**Story arcs**\n\n- Second copy")
+    raw = (
+        "# AI Radar\n\n## Story arcs\n\n- First copy\n\n"
+        "**Insights**\n\nKeep this.\n\n**Story arcs**\n\n- Second copy"
+    )
     out = _synthesize(monkeypatch, raw, prompt)
     assert out.count("## Story arcs") == 1
     assert out.count("https://arxiv.org/abs/2609.25001") == 1
@@ -73,11 +76,12 @@ def test_repeated_arc_sections_and_source_urls_are_collapsed(monkeypatch):
 
 def test_no_source_arcs_removes_invented_arc_section(monkeypatch):
     prompt = _prompt(monkeypatch, [])
-    raw = ("# AI Radar\n\n## Main list\n\nKeep this.\n\n"
-           "## Story arcs\n\n- Invented growth.\n\n## Insights\n\nKeep this too.")
+    raw = (
+        "# AI Radar\n\n## Main list\n\nKeep this.\n\n"
+        "## Story arcs\n\n- Invented growth.\n\n## Insights\n\nKeep this too."
+    )
     out = _synthesize(monkeypatch, raw, prompt)
-    assert out == ("# AI Radar\n\n## Main list\n\nKeep this.\n\n"
-                   "## Insights\n\nKeep this too.")
+    assert out == ("# AI Radar\n\n## Main list\n\nKeep this.\n\n## Insights\n\nKeep this too.")
 
 
 def test_removing_the_only_unsupported_section_falls_back(monkeypatch):
@@ -116,8 +120,7 @@ def test_shrunk_request_uses_its_own_arc_evidence(monkeypatch):
 
 
 def test_arc_titles_and_urls_remain_valid_markdown(monkeypatch):
-    arc = {**ARC, "title": "Tool [preview]\nwith *notes*",
-           "url": "https://example.test/paper_(preview)"}
+    arc = {**ARC, "title": "Tool [preview]\nwith *notes*", "url": "https://example.test/paper_(preview)"}
     prompt = _prompt(monkeypatch, [arc])
     out = _synthesize(monkeypatch, "# AI Radar\n\n## Story arcs\n\n- Tool", prompt)
     assert "[Tool \\[preview\\] with \\*notes\\*](https://example.test/paper_%28preview%29)" in out
@@ -128,9 +131,13 @@ def test_enrichment_preserves_source_evidence_and_dates(monkeypatch):
     item = make_item(raw_summary="Authors report a 12% gain on their benchmark.")
     monkeypatch.setattr(synthesize, "story_arcs", lambda: [])
     monkeypatch.setattr(synthesize, "cluster_items", lambda items: [])
-    monkeypatch.setattr(synthesize, "load_enriched", lambda: {
-        item["id"]: {"brief": "The first production-ready solution."},
-    })
+    monkeypatch.setattr(
+        synthesize,
+        "load_enriched",
+        lambda: {
+            item["id"]: {"brief": "The first production-ready solution.", "observed_at": item["fetched"]},
+        },
+    )
     _, user, _ = synthesize.build_prompt([item])
     row = synthesize.extract_candidates(user)[0]
     assert row.get("summary") == "Authors report a 12% gain on their benchmark."

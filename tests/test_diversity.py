@@ -1,4 +1,5 @@
 """Diversity filters — what stops one lab's release sweep from becoming the whole digest."""
+
 from __future__ import annotations
 
 from distill.diversity import dedup_near_titles, cap_per_source, diversify, _tokens
@@ -6,13 +7,15 @@ from tests.conftest import make_item
 
 
 def _variant(name, stars, source="HF Trending Models"):
-    return make_item(id=f"hfmodel:{name}", title=name, source=source, score=3,
-                     signals={"gh_stars": stars})
+    return make_item(id=f"hfmodel:{name}", title=name, source=source, score=3, signals={"gh_stars": stars})
 
 
 def test_a_release_sweep_collapses_to_its_strongest_variant():
-    items = [_variant("Ornith-1.0-9B", 20), _variant("Ornith-1.0-35B", 900),
-             _variant("Ornith-1.0-9B-GGUF", 5)]
+    items = [
+        _variant("Ornith-1.0-9B", 20),
+        _variant("Ornith-1.0-35B", 900),
+        _variant("Ornith-1.0-9B-GGUF", 5),
+    ]
     kept = dedup_near_titles(items)
     assert len(kept) == 1
     assert kept[0]["title"] == "Ornith-1.0-35B", "the highest-ranked variant survives"
@@ -43,8 +46,12 @@ def test_per_source_cap_keeps_the_first_n():
 
 
 def test_cap_is_per_source_not_global():
-    items = [_variant("A", 1, "src-a"), _variant("B", 2, "src-a"),
-             _variant("C", 3, "src-b"), _variant("D", 4, "src-b")]
+    items = [
+        _variant("A", 1, "src-a"),
+        _variant("B", 2, "src-a"),
+        _variant("C", 3, "src-b"),
+        _variant("D", 4, "src-b"),
+    ]
     assert len(cap_per_source(items, cap=1)) == 2
 
 
@@ -55,8 +62,9 @@ def test_both_filters_disable_cleanly():
 
 
 def test_diversify_applies_both():
-    items = ([_variant(f"Ornith-1.0-{n}B", n) for n in (9, 35, 70)]
-             + [_variant(f"Distinct thing {n}", n, source="arXiv cs.LG") for n in range(4)])
+    items = [_variant(f"Ornith-1.0-{n}B", n) for n in (9, 35, 70)] + [
+        _variant(f"Distinct thing {n}", n, source="arXiv cs.LG") for n in range(4)
+    ]
     kept = diversify(items)
     assert len(kept) < len(items)
     assert sum(1 for i in kept if i["source"] == "arXiv cs.LG") <= 2

@@ -26,11 +26,14 @@ from check_whitelist import check, is_fence, parse_whitelist  # noqa: E402
 def run(paths: list[str], role: str) -> subprocess.CompletedProcess:
     return subprocess.run(
         [sys.executable, str(SCRIPT), "--role", role],
-        input="\n".join(paths), capture_output=True, text=True,
+        input="\n".join(paths),
+        capture_output=True,
+        text=True,
     )
 
 
 # ── parsing the real whitelist ────────────────────────────────────────────────
+
 
 def test_parses_real_whitelist():
     roles = parse_whitelist((ROOT / "docs" / "operating" / "whitelist.md").read_text())
@@ -45,8 +48,12 @@ def test_coder_scope_matches_documented_six_paths():
     """
     roles = parse_whitelist((ROOT / "docs" / "operating" / "whitelist.md").read_text())
     assert set(roles["coder"]) == {
-        "config/sources.yaml", "config/profile.yaml", "config/routines.yaml",
-        "config/broken_sources.yaml", "distill/digest.md", "distill/brief_spec.md",
+        "config/sources.yaml",
+        "config/profile.yaml",
+        "config/routines.yaml",
+        "config/broken_sources.yaml",
+        "distill/digest.md",
+        "distill/brief_spec.md",
         "evals/backlog.md",
     }
 
@@ -59,15 +66,19 @@ def test_malformed_whitelist_raises_rather_than_failing_open():
 
 # ── the fence: paths no role may ever touch ───────────────────────────────────
 
-@pytest.mark.parametrize("path", [
-    ".github/workflows/distill.yml",
-    ".github/workflows/whitelist.yml",
-    ".github/CODEOWNERS",
-    ".github/AGENTS.md",
-    "docs/operating/whitelist.md",
-    "docs/operating/coder.md",
-    "scripts/check_whitelist.py",
-])
+
+@pytest.mark.parametrize(
+    "path",
+    [
+        ".github/workflows/distill.yml",
+        ".github/workflows/whitelist.yml",
+        ".github/CODEOWNERS",
+        ".github/AGENTS.md",
+        "docs/operating/whitelist.md",
+        "docs/operating/coder.md",
+        "scripts/check_whitelist.py",
+    ],
+)
 def test_fence_paths_are_denied(path):
     """Self-modification is the one failure with no recovery: an agent that can
     edit the allowlist has no allowlist. Denied regardless of role."""
@@ -81,6 +92,7 @@ def test_enforcer_cannot_be_disabled_by_the_role_it_governs():
 
 
 # ── role scope ────────────────────────────────────────────────────────────────
+
 
 def test_coder_allowed_paths_pass():
     r = run(["config/sources.yaml", "distill/digest.md"], "coder")

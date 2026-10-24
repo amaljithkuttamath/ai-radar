@@ -1,5 +1,6 @@
 """Scoring, ranking and FOCUS matching — the deterministic core that decides what a reader
 ever gets shown. All stdlib-only paths, so these run anywhere."""
+
 from __future__ import annotations
 
 import pytest
@@ -14,8 +15,9 @@ from tests.conftest import make_item
 # heuristic_score
 # ---------------------------------------------------------------------------
 
-def test_score_leaves_the_novelty_point_to_the_model():
-    """The heuristic covers 0–4; +1 for novelty is the model's to give (see digest.md)."""
+
+def test_score_uses_observed_authorship_not_brands_in_titles():
+    """A brand in a title does not establish authorship; four other criteria apply."""
     loud = make_item(
         title="DeepMind: state-of-the-art results, outperforms prior work",
         raw_summary="code at github.com/acme/widget",
@@ -26,22 +28,32 @@ def test_score_leaves_the_novelty_point_to_the_model():
 
 
 def test_score_floor_is_zero_for_an_unremarkable_item(no_profile):
-    score, why = heuristic_score(make_item(
-        title="Some notes on a thing", url="https://example.com/x",
-        raw_summary="", source="Example Blog", signals={}))
+    score, why = heuristic_score(
+        make_item(
+            title="Some notes on a thing",
+            url="https://example.com/x",
+            raw_summary="",
+            source="Example Blog",
+            signals={},
+        )
+    )
     assert score == 0 and why == []
 
 
-@pytest.mark.parametrize("signals,expected_tiers", [
-    ({"gh_stars": 10}, 0),      # below the trending floor
-    ({"gh_stars": 50}, 1),      # trending
-    ({"gh_stars": 80}, 2),      # trending + strong traction
-])
+@pytest.mark.parametrize(
+    "signals,expected_tiers",
+    [
+        ({"gh_stars": 10}, 0),  # below the trending floor
+        ({"gh_stars": 50}, 1),  # trending
+        ({"gh_stars": 80}, 2),  # trending + strong traction
+    ],
+)
 def test_traction_tiers(signals, expected_tiers):
-    item = make_item(title="acme/widget", url="https://example.com/x",
-                     raw_summary="", source="s", signals=signals)
+    item = make_item(
+        title="acme/widget", url="https://example.com/x", raw_summary="", source="s", signals=signals
+    )
     _, why = heuristic_score(item)
-    assert sum("Tier-2" in w for w in why) == expected_tiers
+    assert sum("observed community traction" in w for w in why) == expected_tiers
 
 
 def test_a_linked_repo_is_reported_as_such():
@@ -53,11 +65,13 @@ def test_a_linked_repo_is_reported_as_such():
 # rank_key / magnitude
 # ---------------------------------------------------------------------------
 
+
 def test_rank_tiebreak_never_crosses_a_score_boundary():
     """The tiebreak orders within a tier; it must never promote a 3 above a 4, or routing
     (main / watch / drop) would silently depend on star counts."""
-    huge = make_item(score=3, signals={"gh_stars": 10 ** 6, "hf_upvotes": 10 ** 6,
-                                       "hn_points": 10 ** 6, "hf_likes": 10 ** 6})
+    huge = make_item(
+        score=3, signals={"gh_stars": 10**6, "hf_upvotes": 10**6, "hn_points": 10**6, "hf_likes": 10**6}
+    )
     bare = make_item(score=4, signals={})
     assert rank_key(huge) < rank_key(bare)
     assert 3 <= rank_key(huge) < 4
@@ -79,6 +93,7 @@ def test_magnitude_is_unsaturated_and_monotonic():
 # ---------------------------------------------------------------------------
 # FOCUS
 # ---------------------------------------------------------------------------
+
 
 def test_focus_env_overrides_the_profile(monkeypatch):
     monkeypatch.setenv("FOCUS", "agents,evals")

@@ -1,155 +1,140 @@
 name: distill
 
-# Score + (optional enrich) + synthesize + reindex + (optional deliver). Reads whatever
-# collectors and any deep-dive runs have written to data/raw/ + data/dives/ — never fetches.
-#
-# Commits ONLY reports/*.md and data/state_corpus.json (the movers snapshot). Never touches
-# data/raw/ or data/seen_*.json, which belong to the collector workflows. This narrow write
-# scope is what makes concurrent runs safe.
-#
-# Reactive: fires on workflow_run when collect-corpus.yml completes successfully. This lets
-# distill grab the fresh corpus artifact directly from the triggering run (via run-id) with
-# no third-party action and no scheduled-cron guessing about how long collect will take. A
-# manual workflow_dispatch is also supported for re-distilling without re-collecting; the
-# concurrency group prevents overlap either way.
-
 on:
-  # Reactive: run as soon as collect-corpus finishes successfully. This removes the arbitrary
-  # 2h gap the old schedule had and lets distill pull the fresh artifact directly.
   workflow_run:
-    workflows: ["collect-corpus"]
+    workflows: [collect-corpus]
+    branches: [main]
     types: [completed]
   workflow_dispatch:
     inputs:
+      corpus_run_id:
+        description: "Successful collect run ID (blank = latest successful main run)"
+        type: string
       window:
-        description: "Lookback window (e.g. 24h, 48h, 7d)"
+        description: "Lookback window"
         default: "48h"
+        type: string
       backend:
-        description: "Model backend: auto | anthropic | template | ollama | dryrun"
-        default: "auto"
+        description: "Model synthesis or unpublished preview"
+        type: choice
+        default: auto
+        options: [auto, openai, anthropic, dryrun, template]
       radar_agent:
-        description: "Enrichment pass (per-item briefs over GitHub/HN signals): on | off"
+        description: "Optional per-item model enrichment"
+        type: choice
         default: "off"
-      deliver_email:
-        description: "Email the digest after distill (needs SMTP secrets): on | off"
-        default: "on"
+        options: ["off", "on"]
       focus_backend:
-        description: "FOCUS matching backend: lexical (default) | embed (unavailable, see ADR-0006)"
-        default: "lexical"
+        description: "Interest matching"
+        type: choice
+        default: lexical
+        options: [lexical, embed]
+      deliver_email:
+        description: "Send after publication (requires SMTP secrets)"
+        type: choice
+        default: "off"
+        options: ["off", "on"]
 
 permissions:
   contents: write
+  actions: read
 
 concurrency:
-  group: distill            # only one distill at a time
+  group: distill
   cancel-in-progress: false
 
 jobs:
-  run:
-    runs-on: ubuntu-latest
-    # workflow_run fires on both success AND failure. Only run distill when the triggering
-    # collect actually succeeded. Manual workflow_dispatch always runs regardless.
+  distill:
     if: >-
-      github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
     env:
-      WINDOW: ${{ github.event.inputs.window || '48h' }}
-      RADAR_MODEL_BACKEND: ${{ github.event.inputs.backend || 'auto' }}
-      RADAR_AGENT: ${{ github.event.inputs.radar_agent || 'off' }}
-      FOCUS_BACKEND: ${{ github.event.inputs.focus_backend == 'embed' && 'embed' || '' }}
+      WINDOW: ${{ inputs.window || '48h' }}
+      RADAR_MODEL_BACKEND: ${{ inputs.backend || 'auto' }}
+      RADAR_AGENT: ${{ inputs.radar_agent || 'off' }}
+      FOCUS_BACKEND: ${{ inputs.focus_backend || 'lexical' }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # Synthesis backend. `auto` picks anthropic when this key exists and the template
-      # digest when it doesn't, so the workflow publishes either way and lights up the
-      # moment the secret is added. Clean no-op until then.
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      # One provider for every stage — synthesis here, the grader out-of-repo, same key
-      # and same endpoint (see llm.py). Providers are not divided by responsibility;
-      # what has to differ between the two is the model FAMILY, which the grader's
-      # separation fence enforces on the model id, not the account.
-      #
-      # A gateway (e.g. OpenRouter) serves many families through one OpenAI-compatible
-      # URL, so a single free key satisfies the fence. Leave the model vars unset and
-      # llm.py picks a separated default pair; `python3 -m llm --catalog` lists what the
-      # provider actually serves. Clean no-op until the secret exists.
       RADAR_LLM_API_KEY: ${{ secrets.RADAR_LLM_API_KEY }}
       RADAR_LLM_BASE_URL: ${{ vars.RADAR_LLM_BASE_URL }}
       RADAR_SYNTHESIS_MODEL: ${{ vars.RADAR_SYNTHESIS_MODEL }}
-      # Email delivery (optional). Scheduled runs email automatically; a manual run emails
-      # unless deliver_email=off. Clean no-op until secrets exist.
-      RADAR_EMAIL_TO: ${{ (github.event_name == 'schedule' || github.event.inputs.deliver_email != 'off') && secrets.RADAR_EMAIL_TO || '' }}
-      RADAR_EMAIL_FROM: ${{ secrets.RADAR_EMAIL_FROM }}
-      RADAR_SMTP_HOST: ${{ secrets.RADAR_SMTP_HOST }}
-      RADAR_SMTP_PORT: ${{ secrets.RADAR_SMTP_PORT }}
-      RADAR_SMTP_USER: ${{ secrets.RADAR_SMTP_USER }}
-      RADAR_SMTP_PASS: ${{ secrets.RADAR_SMTP_PASS }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
       - uses: actions/checkout@v6
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v7
-
-      # data/raw/ is gitignored and lives in the collect-corpus artifact. Because this
-      # workflow is triggered by workflow_run on collect-corpus completion, we can grab the
-      # artifact from that specific run via run-id — no third-party action needed, no
-      # "which artifact is latest" ambiguity. For workflow_dispatch runs (manual re-distill
-      # without recollecting) this step is skipped and score.py runs against whatever raw
-      # items already exist locally (which will be empty in a fresh checkout; that yields a
-      # "quiet window" digest, which is the correct signal for a manual run with no data).
-      - name: Download raw corpus from triggering run
-        if: github.event_name == 'workflow_run'
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v7
+      - name: Install locked runtime
+        run: uv sync --locked --no-dev
+      - name: Resolve a successful collection run
+        id: corpus
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REQUESTED_RUN: ${{ inputs.corpus_run_id }}
+          TRIGGER_RUN: ${{ github.event.workflow_run.id }}
+        run: |
+          set -euo pipefail
+          run_id="${TRIGGER_RUN:-${REQUESTED_RUN:-}}"
+          if [ -z "$run_id" ]; then
+            run_id=$(gh run list --workflow collect-corpus.yml --branch main --status success --limit 1 --json databaseId --jq '.[0].databaseId // empty')
+          fi
+          if [[ ! "$run_id" =~ ^[0-9]+$ ]]; then
+            echo "No valid corpus run ID. Run collect-corpus first." >&2
+            exit 1
+          fi
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$run_id" > /tmp/radar-corpus-run.json
+          python - <<'PY'
+          import json
+          run = json.load(open('/tmp/radar-corpus-run.json'))
+          if (run['conclusion'] != 'success' or run['head_branch'] != 'main'
+                  or run['path'] != '.github/workflows/collect-corpus.yml'
+                  or run['head_repository']['full_name'] != run['repository']['full_name']):
+              raise SystemExit('Requested run is not a trusted successful main collection')
+          PY
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+      - name: Download corpus and manifest
         uses: actions/download-artifact@v4
         with:
           name: corpus-raw
-          path: data/raw/
+          path: data/
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          run-id: ${{ github.event.workflow_run.id }}
-
-      - name: Distill (score → synthesize → reindex → deliver)
-        run: uv run bash scripts/distill.sh
-
-      - name: Commit digest + movers snapshot
-        run: |
-          git config user.name  "radar-bot"
-          git config user.email "radar-bot@users.noreply.github.com"
-          git pull --rebase origin main || true
-          # Only paths this workflow owns. seen_corpus.json / data/raw/ belong to
-          # collect-corpus.yml; seen_social.json / raw/social/ belong to collect-social.yml.
-          # NOTE: until the state-split PR lands, distill still writes the legacy
-          # data/state.json. Once state_corpus.json replaces it, update this path.
-          # data/tracked.json is the carryover ledger (distill/track.py). Like state.json it
-          # must survive between runs — it is the radar's memory, and an item's streak is
-          # only meaningful if the ledger it lives in is the same one the next run reads.
-          git add -f reports/*.md data/state.json data/tracked.json 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "No new digest to commit."
-          else
-            git commit -m "radar: digest for $(date -u +%Y-%m-%d) (window=$WINDOW)"
-            git push
-          fi
-
-      # Dead-man's switch. On 2026-07-13 the eval loop stopped and nobody noticed
-      # for six days: a scheduled job that silently stops running produces no
-      # error, no log, and no signal — "ran fine" and "never ran" look identical
-      # from outside. Absence-of-ping is the only thing that distinguishes them.
-      #
-      # `if: success()` is load-bearing. A failed run must NOT ping, or this
-      # becomes a monitor that always reports healthy, which is strictly worse
-      # than no monitor because it manufactures confidence.
-      #
-      # Scope: this proves the pipeline RAN. It cannot prove the digest is any
-      # good — a run that succeeds while producing garbage still pings. Output
-      # quality is the grader's job, which is why the grader must not share a
-      # model family with the coder (see docs/operating/grader.md).
-      #
-      # No-ops cleanly if RADAR_HC_PING_URL is unset, so forks and PRs don't
-      # fail on a missing secret.
-      - name: Heartbeat (success only)
-        if: success()
+          run-id: ${{ steps.corpus.outputs.run_id }}
+      - name: Require collection manifest
+        run: test -s data/collection.json
+      - name: Distill and validate
+        run: uv run --no-sync python -m radar distill
+      - name: Retain previews and replay cases
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: digest-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            data/previews/
+            data/evolution/cases/
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Commit validated publication
+        if: env.RADAR_MODEL_BACKEND != 'dryrun' && env.RADAR_MODEL_BACKEND != 'template'
+        run: bash scripts/publish.sh distill
+      - name: Deliver explicitly requested email
+        if: inputs.deliver_email == 'on' && env.RADAR_MODEL_BACKEND != 'dryrun' && env.RADAR_MODEL_BACKEND != 'template'
+        env:
+          RADAR_EMAIL_TO: ${{ secrets.RADAR_EMAIL_TO }}
+          RADAR_EMAIL_FROM: ${{ secrets.RADAR_EMAIL_FROM }}
+          RADAR_SMTP_HOST: ${{ secrets.RADAR_SMTP_HOST }}
+          RADAR_SMTP_PORT: ${{ secrets.RADAR_SMTP_PORT }}
+          RADAR_SMTP_USER: ${{ secrets.RADAR_SMTP_USER }}
+          RADAR_SMTP_PASS: ${{ secrets.RADAR_SMTP_PASS }}
+        run: uv run --no-sync python -m distill.deliver
+      - name: Heartbeat after successful publication
+        if: success() && env.RADAR_MODEL_BACKEND != 'dryrun' && env.RADAR_MODEL_BACKEND != 'template'
         env:
           PING_URL: ${{ secrets.RADAR_HC_PING_URL }}
         run: |
-          if [ -z "$PING_URL" ]; then
-            echo "RADAR_HC_PING_URL unset; heartbeat skipped."
-            exit 0
+          if [ -n "$PING_URL" ]; then
+            curl -fsS -m 10 --retry 3 "$PING_URL"
           fi
-          curl -fsS -m 10 --retry 3 "$PING_URL" && echo "Heartbeat sent."

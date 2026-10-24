@@ -1,0 +1,26 @@
+# Blocked-domain ledger.
+#
+# Read by collectors/blocklist.py, applied in collectors/common.py:write_items,
+# so every collector inherits it. Items whose URL host matches an entry (or is a
+# subdomain of one) are dropped before they reach data/raw/.
+#
+# This is the coder's remediation path for a failing `A2 source_integrity` dim
+# (see docs/operating/coder.md "Dim -> edit mapping"). It is whitelisted for
+# agent writes; the enforcer allows it, CODEOWNERS still routes it to review.
+#
+# Format. Either form works:
+#
+#   blocked_domains:
+#     - example.com                          # bare domain
+#     - domain: dead-blog.example            # with metadata, preferred for agents
+#       reason: "404 on all digest URLs"
+#       blocked: 2026-07-20
+#       evidence: https://github.com/.../issues/NN
+#
+# Per invariant I-04, an agent adding an entry must cite the artifact that
+# justified it — the eval id, issue URL, or the specific failing URL.
+#
+# Removing an entry is a normal PR. Domains recover; this ledger should shrink
+# as well as grow, and nothing prunes it automatically.
+
+blocked_domains: []

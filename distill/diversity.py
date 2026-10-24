@@ -14,8 +14,10 @@ order among survivors) and **rank-key aware** (higher-ranked variant wins any ti
 Both filters degrade cleanly: MAX_PER_SOURCE=0 or JACCARD_THRESHOLD=1.0 disables the
 corresponding pass. Stdlib only.
 """
+
 from __future__ import annotations
-import os, re
+import os
+import re
 from distill.rank import rank_key
 
 
@@ -24,11 +26,41 @@ from distill.rank import rank_key
 MAX_PER_SOURCE = int(os.environ.get("MAX_PER_SOURCE", "2"))
 JACCARD_THRESHOLD = float(os.environ.get("DIVERSITY_JACCARD", "0.6"))
 
-_STOP = frozenset({
-    "a", "an", "the", "of", "and", "for", "in", "on", "with", "to", "via", "from",
-    "is", "are", "by", "new", "using", "based", "toward", "towards", "model", "models",
-    "language", "large", "gguf", "fp8", "int4", "int8", "awq", "hf", "quant",
-})
+_STOP = frozenset(
+    {
+        "a",
+        "an",
+        "the",
+        "of",
+        "and",
+        "for",
+        "in",
+        "on",
+        "with",
+        "to",
+        "via",
+        "from",
+        "is",
+        "are",
+        "by",
+        "new",
+        "using",
+        "based",
+        "toward",
+        "towards",
+        "model",
+        "models",
+        "language",
+        "large",
+        "gguf",
+        "fp8",
+        "int4",
+        "int8",
+        "awq",
+        "hf",
+        "quant",
+    }
+)
 # Version/size tokens that shouldn't distinguish variants: `9b`, `35b`, `v2`, `2.5x`, etc.
 _VARIANT_RE = re.compile(r"^(v?\d+(\.\d+)?[a-z]{0,3}|\d+[km]?b|\d+x)$")
 

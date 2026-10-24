@@ -67,6 +67,7 @@ def _tracked(n: int, missed: int = 0, history: int = 3) -> dict:
 
 # --- parsing ---------------------------------------------------------------
 
+
 def test_sections_and_items_are_parsed():
     assert deterministic.sections(DIGEST) == ["What changed", "Main list", "Insights"]
     items = deterministic.main_items(DIGEST)
@@ -83,21 +84,26 @@ def test_sections_are_the_primary_level_not_every_heading():
 def test_a_digest_that_uses_h3_for_sections_is_still_parsed():
     """2026-09-02 uses `###` for every section including Main list. Hardcoding `##` read
     that whole digest as structureless."""
-    h3 = DIGEST.replace("## What changed", "### What changed") \
-               .replace("## Main list", "### Main list") \
-               .replace("## Insights", "### Insights") \
-               .replace("### 1. First item", "#### 1. First item") \
-               .replace("### 2. Second item", "#### 2. Second item")
+    h3 = (
+        DIGEST.replace("## What changed", "### What changed")
+        .replace("## Main list", "### Main list")
+        .replace("## Insights", "### Insights")
+        .replace("### 1. First item", "#### 1. First item")
+        .replace("### 2. Second item", "#### 2. Second item")
+    )
     assert "Main list" in deterministic.sections(h3)
 
 
-@pytest.mark.parametrize("line,title,score", [
-    ("### 1. Numbered with score · 4/5", "Numbered with score", 4),
-    ("### Unnumbered with score · 3/5", "Unnumbered with score", 3),
-    ("### Plain heading", "Plain heading", None),
-    ("**Bold with long score · score 3/5**", "Bold with long score", 3),
-    ("1. **Numbered bold · score 2/5**", "Numbered bold", 2),
-])
+@pytest.mark.parametrize(
+    "line,title,score",
+    [
+        ("### 1. Numbered with score · 4/5", "Numbered with score", 4),
+        ("### Unnumbered with score · 3/5", "Unnumbered with score", 3),
+        ("### Plain heading", "Plain heading", None),
+        ("**Bold with long score · score 3/5**", "Bold with long score", 3),
+        ("1. **Numbered bold · score 2/5**", "Numbered bold", 2),
+    ],
+)
 def test_every_main_list_shape_that_occurs_in_practice_is_recognised(line, title, score):
     """Measured across all 89 committed digests. The first version of this parser knew one
     of these five and reported the other four as an empty main list."""
@@ -109,8 +115,7 @@ def test_every_main_list_shape_that_occurs_in_practice_is_recognised(line, title
 def test_main_items_are_scoped_to_the_main_list():
     """`###` headings appear under Story arcs too. Counting those would make an empty main
     list undetectable — the check would pass on exactly the digests it exists to catch."""
-    digest = ("# T\n\n## Main list\n\n(nothing here)\n\n"
-              "## Story arcs\n\n### An arc · 4/5\n")
+    digest = "# T\n\n## Main list\n\n(nothing here)\n\n## Story arcs\n\n### An arc · 4/5\n"
     assert deterministic.main_items(digest) == []
 
 
@@ -128,6 +133,7 @@ def test_a_degraded_digest_is_detected():
 
 # --- trusted metrics -------------------------------------------------------
 
+
 def test_reobservation_rate_counts_items_seen_this_run():
     assert deterministic.reobservation_rate(_tracked(10, missed=2)) == 0.8
 
@@ -141,20 +147,23 @@ def test_empty_ledger_has_no_reobservation_rate_rather_than_zero():
 def test_traction_observations_require_two_readings():
     """The repo's headline claim is that "Climbing" means two observations of the same
     counter, not two guesses. This counts the evidence behind it."""
-    mixed = {**_tracked(3, history=1), **{f"x{i}": {"mag_history": [1.0, 2.0]}
-                                          for i in range(4)}}
+    mixed = {**_tracked(3, history=1), **{f"x{i}": {"mag_history": [1.0, 2.0]} for i in range(4)}}
     assert deterministic.traction_observations(mixed) == 4
 
 
 # --- checks ----------------------------------------------------------------
 
-_DEFAULT = object()     # `{}` is a meaningful ledger here, so `or` would swallow it
+_DEFAULT = object()  # `{}` is a meaningful ledger here, so `or` would swallow it
 
 
 def _evaluate(digest=DIGEST, *, broken=None, links=8, tracked=_DEFAULT):
-    return deterministic.evaluate(digest, age_h=12.0, broken=broken or [],
-                                  link_count=links,
-                                  tracked=_tracked(10) if tracked is _DEFAULT else tracked)
+    return deterministic.evaluate(
+        digest,
+        age_h=12.0,
+        broken=broken or [],
+        link_count=links,
+        tracked=_tracked(10) if tracked is _DEFAULT else tracked,
+    )
 
 
 def test_a_healthy_digest_fails_nothing():
@@ -173,8 +182,10 @@ def test_a_reasoning_transcript_is_a_structural_failure():
     """The one real structural defect in 89 days, three times over: the model's working
     shipped as the newsletter. 13KB opening "Let me analyze the task carefully", no title,
     no headings, published."""
-    leaked = ("Let me analyze this task carefully. I need to produce a digest report.\n"
-              "Key parameters:\n- TODAY = 2026-09-18\n- WINDOW = 48h\n" * 20)
+    leaked = (
+        "Let me analyze this task carefully. I need to produce a digest report.\n"
+        "Key parameters:\n- TODAY = 2026-09-18\n- WINDOW = 48h\n" * 20
+    )
     result = _evaluate(leaked)
     assert "structure" in result["failed"]
     detail = [c for c in result["checks"] if c["key"] == "structure"][0]["detail"]
@@ -183,8 +194,7 @@ def test_a_reasoning_transcript_is_a_structural_failure():
 
 def test_a_truncated_digest_is_a_structural_failure():
     """2026-09-14 shipped six lines: a title and one paragraph."""
-    assert "structure" in _evaluate("# AI Radar — 2026-09-14\n\n**Top-line.** One para.\n"
-                                    )["failed"]
+    assert "structure" in _evaluate("# AI Radar — 2026-09-14\n\n**Top-line.** One para.\n")["failed"]
 
 
 def test_bold_section_labels_count_as_structure():
@@ -204,9 +214,11 @@ def test_an_unparsable_main_list_is_unknown_not_empty():
     """The parser reads a prompt the coder may rewrite, so it will eventually meet a shape
     it does not know. Calling that "empty" is how a monitor earns being ignored — which is
     exactly what happened on this checker's first autonomous run, against issue #36."""
-    odd = ("# T\n\n## Main list\n\n"
-           "~ Some Item ~ [source](https://example.com/a)\n"
-           "~ Another ~ [source](https://example.com/b)\n")
+    odd = (
+        "# T\n\n## Main list\n\n"
+        "~ Some Item ~ [source](https://example.com/a)\n"
+        "~ Another ~ [source](https://example.com/b)\n"
+    )
     result = _evaluate(odd)
     check = [c for c in result["checks"] if c["key"] == "main_list_nonempty"][0]
     assert check["ok"] is None
@@ -218,23 +230,19 @@ def test_a_missing_main_list_section_is_not_reported_twice():
     """`structure` already speaks for it; counting one fault twice inflates the failure
     count and, through backlog_items, the queue."""
     no_section = "# T\n\n## What changed\n\n- [A](https://example.com/a)\n"
-    check = [c for c in _evaluate(no_section)["checks"]
-             if c["key"] == "main_list_nonempty"][0]
+    check = [c for c in _evaluate(no_section)["checks"] if c["key"] == "main_list_nonempty"][0]
     assert check["ok"] is None
 
 
 def test_broken_links_fail_but_unreachable_ones_do_not():
     """Status 0 means the runner could not reach it, which is not the digest's fault —
     the same distinction `grader/links.py` already makes for the A2 ceiling."""
-    assert "links_resolve" in _evaluate(
-        broken=[{"url": "https://example.com/1", "status": 404}])["failed"]
-    assert "links_resolve" not in _evaluate(
-        broken=[{"url": "https://example.com/1", "status": 0}])["failed"]
+    assert "links_resolve" in _evaluate(broken=[{"url": "https://example.com/1", "status": 404}])["failed"]
+    assert "links_resolve" not in _evaluate(broken=[{"url": "https://example.com/1", "status": 0}])["failed"]
 
 
 def test_a_degraded_digest_fails_the_synthesis_check():
-    assert "synthesis_present" in _evaluate(
-        DIGEST + "\n" + deterministic.DEGRADED_MARKER)["failed"]
+    assert "synthesis_present" in _evaluate(DIGEST + "\n" + deterministic.DEGRADED_MARKER)["failed"]
 
 
 def test_low_reobservation_fails_because_traction_claims_rest_on_it():
@@ -260,10 +268,17 @@ def test_module_hash_changes_when_the_checker_changes(tmp_path, monkeypatch):
 
 # --- the eval that results --------------------------------------------------
 
+
 def _deterministic_eval(tier0=None):
     return artifacts.assemble_deterministic(
-        date="2026-09-19", mode=artifacts.DETERMINISTIC, digest_commit_time=NOW,
-        age_h=12.0, broken=[], tier0=tier0 or _evaluate(), reason="no model configured")
+        date="2026-09-19",
+        mode=artifacts.DETERMINISTIC,
+        digest_commit_time=NOW,
+        age_h=12.0,
+        broken=[],
+        tier0=tier0 or _evaluate(),
+        reason="no model configured",
+    )
 
 
 def test_a_deterministic_eval_validates():
@@ -328,14 +343,18 @@ def test_deterministic_evals_do_not_enter_the_quality_trend():
 
 def test_deterministic_history_is_not_read_as_a_persistent_regression():
     """A model's absence is not evidence of a low score on either side."""
-    judged = {"date": "2026-09-18", "mode": "normal",
-              "quality": {"A1": {"score": 2, "why": "x"}},
-              "experience": {}}
+    judged = {
+        "date": "2026-09-18",
+        "mode": "normal",
+        "quality": {"A1": {"score": 2, "why": "x"}},
+        "experience": {},
+    }
     assert artifacts.is_judged(judged) is True
     assert artifacts.is_judged(_deterministic_eval()) is False
 
 
 # --- attempt records --------------------------------------------------------
+
 
 def test_attempt_records_reject_an_unknown_outcome():
     """The outcome set is closed so a new branch in cli.py cannot invent a state no
@@ -346,10 +365,8 @@ def test_attempt_records_reject_an_unknown_outcome():
 
 def test_attempt_records_round_trip(tmp_path):
     p = tmp_path / "attempts.jsonl"
-    attempts.append(attempts.record(outcome="deterministic", mode="normal",
-                                    reason="no model", at=NOW), p)
-    attempts.append(attempts.record(outcome="judged", mode="normal",
-                                    grader_model="m", at=NOW), p)
+    attempts.append(attempts.record(outcome="deterministic", mode="normal", reason="no model", at=NOW), p)
+    attempts.append(attempts.record(outcome="judged", mode="normal", grader_model="m", at=NOW), p)
     loaded = attempts.load(p)
     assert [r["outcome"] for r in loaded] == ["deterministic", "judged"]
 
@@ -357,8 +374,7 @@ def test_attempt_records_round_trip(tmp_path):
 def test_attempt_log_is_capped(tmp_path):
     p = tmp_path / "attempts.jsonl"
     for _ in range(10):
-        attempts.append(attempts.record(outcome="judged", mode="normal", at=NOW), p,
-                        max_records=4)
+        attempts.append(attempts.record(outcome="judged", mode="normal", at=NOW), p, max_records=4)
     assert len(attempts.load(p)) == 4
 
 
@@ -382,6 +398,7 @@ def test_summary_survives_an_empty_log():
 
 
 # --- provenance -------------------------------------------------------------
+
 
 def test_revs_name_the_tunable_files_only():
     """A whole-repo revision would be useless for attribution: every daily corpus commit
@@ -416,14 +433,20 @@ def test_changed_since_is_empty_without_a_baseline():
 # I-01 forbids two writers, and the resolution is monotonicity rather than coordination —
 # which matters, because one of the two is a task this repo cannot see.
 
+
 def _judged_eval(date="2026-09-19"):
     return artifacts.assemble(
-        date=date, mode="normal", grader_model="deepseek/x",
-        digest_commit_time=NOW, age_h=2.0,
-        verdict={d: {"score": 4, "why": "w"} for d in
-                 artifacts.QUALITY_DIMS + artifacts.EXPERIENCE_DIMS},
-        x3=5, a2_ceiling=5, broken=[],
-        tier0={"module_hash": "abc123abc123", "metrics": {}, "checks": [], "failed": []})
+        date=date,
+        mode="normal",
+        grader_model="deepseek/x",
+        digest_commit_time=NOW,
+        age_h=2.0,
+        verdict={d: {"score": 4, "why": "w"} for d in artifacts.QUALITY_DIMS + artifacts.EXPERIENCE_DIMS},
+        x3=5,
+        a2_ceiling=5,
+        broken=[],
+        tier0={"module_hash": "abc123abc123", "metrics": {}, "checks": [], "failed": []},
+    )
 
 
 def test_a_judged_eval_may_replace_a_deterministic_one(tmp_path):
@@ -460,6 +483,7 @@ def test_an_unreadable_existing_eval_does_not_block_the_write(tmp_path):
 
 # --- the guard that would have prevented all of the above --------------------
 
+
 def _committed_digests() -> list[Path]:
     return sorted((ROOT / "reports").glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-digest.md"))
 
@@ -481,8 +505,7 @@ def test_the_checker_raises_no_false_alarms_on_any_committed_digest():
 
     unexpected = []
     for path in digests:
-        result = deterministic.evaluate(path.read_text(), age_h=1.0, broken=[],
-                                        link_count=5, tracked={})
+        result = deterministic.evaluate(path.read_text(), age_h=1.0, broken=[], link_count=5, tracked={})
         for key in result["failed"]:
             if key != "structure":
                 unexpected.append(f"{path.name}: {key}")
@@ -492,15 +515,17 @@ def test_the_checker_raises_no_false_alarms_on_any_committed_digest():
 def test_structure_flags_only_the_genuinely_broken_digests():
     """Pinned by name. If a future parser change flags a fifth, it is a false alarm until
     someone opens that file and disagrees in writing."""
-    broken = {p.name for p in _committed_digests()
-              if "structure" in deterministic.evaluate(
-                  p.read_text(), age_h=1.0, broken=[], link_count=5,
-                  tracked={})["failed"]}
+    broken = {
+        p.name
+        for p in _committed_digests()
+        if "structure"
+        in deterministic.evaluate(p.read_text(), age_h=1.0, broken=[], link_count=5, tracked={})["failed"]
+    }
     assert broken == {
-        "2026-08-14-digest.md",     # reasoning transcript shipped as the digest
-        "2026-08-25-digest.md",     # reasoning transcript shipped as the digest
-        "2026-09-18-digest.md",     # reasoning transcript shipped as the digest
-        "2026-09-14-digest.md",     # truncated: a title and one paragraph
+        "2026-08-14-digest.md",  # reasoning transcript shipped as the digest
+        "2026-08-25-digest.md",  # reasoning transcript shipped as the digest
+        "2026-09-18-digest.md",  # reasoning transcript shipped as the digest
+        "2026-09-14-digest.md",  # truncated: a title and one paragraph
     }
 
 
@@ -517,6 +542,7 @@ def test_most_committed_digests_parse_a_main_list():
 # "2 broken links" as fact. CI graded the same digest the next day and found zero. A false
 # integrity failure caps A2 at 2, files an issue, and lands in a permanent trend.
 
+
 def _links(dead=0, declined=0, unreachable=0):
     out = [{"url": f"https://x/{i}", "status": 404} for i in range(dead)]
     out += [{"url": f"https://y/{i}", "status": 403} for i in range(declined)]
@@ -527,6 +553,7 @@ def _links(dead=0, declined=0, unreachable=0):
 @pytest.mark.parametrize("status", [404, 410, 451])
 def test_only_gone_statuses_count_as_dead(status):
     from grader import links
+
     assert links.dead([{"url": "u", "status": status}])
 
 
@@ -535,12 +562,14 @@ def test_a_declined_answer_is_not_a_dead_link(status):
     """401/403 is "we will not tell you" — anti-bot rules, a datacentre IP block, an egress
     proxy refusing CONNECT. A proxy 403 and an origin 403 are byte-identical."""
     from grader import links
+
     assert links.dead([{"url": "u", "status": status}]) == []
     assert links.inconclusive([{"url": "u", "status": status}])
 
 
 def test_the_a2_ceiling_caps_only_on_a_dead_link():
     from grader import links
+
     assert links.a2_ceiling(_links(dead=1)) == 2
     assert links.a2_ceiling(_links(declined=3, unreachable=5)) == 5
     assert links.a2_ceiling([]) == 5
