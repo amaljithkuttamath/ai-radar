@@ -1,43 +1,43 @@
 {
-  "date": "2026-10-23",
+  "date": "2026-10-24",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-10-23T15:38:22Z",
+  "digest_commit_time_utc": "2026-10-24T05:14:33Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 36,
+      "links_total": 25,
       "links_broken": 0,
-      "links_unverified": 1,
-      "main_items": 0,
+      "links_unverified": 0,
+      "main_items": 6,
       "main_score_mean": null,
-      "sections_present": 9,
-      "expected_sections": 6,
-      "tracked_items": 83,
-      "reobservation_rate": 0.916,
-      "traction_observations": 53,
+      "sections_present": 7,
+      "expected_sections": 3,
+      "tracked_items": 151,
+      "reobservation_rate": 1.0,
+      "traction_observations": 59,
       "degraded_synthesis": false,
-      "forecast_accuracy": 0.667,
-      "claims_open": 14
+      "forecast_accuracy": 0.571,
+      "claims_open": 5
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 9 section(s); 6/7 of the prompt's sections present"
+        "detail": "title and 7 section(s); 3/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
-        "ok": null,
-        "detail": "no main-list section (reported by `structure`)"
+        "ok": true,
+        "detail": "6 main-list item(s)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 1/36 declined to answer"
+        "detail": "every link answered 2xx"
       },
       {
         "key": "synthesis_present",
@@ -47,32 +47,28 @@
       {
         "key": "traction_observed",
         "ok": true,
-        "detail": "re-observed 92% of 83 tracked items"
+        "detail": "re-observed 100% of 151 tracked items"
       }
     ],
     "failed": []
   },
   "revs": {
-    "prompt_rev": "3ed73c5",
-    "config_rev": "ce62c6d",
+    "prompt_rev": "ca1958e",
+    "config_rev": "ca1958e",
     "files": {
-      "distill/digest.md": "3ed73c5",
+      "distill/digest.md": "ca1958e",
       "distill/brief_spec.md": "3ed73c5",
       "config/profile.yaml": "48361eb",
       "config/sources.yaml": "48361eb",
-      "config/routines.yaml": "ce62c6d"
+      "config/routines.yaml": "ca1958e",
+      "config/broken_sources.yaml": "ca1958e"
     }
   },
   "trusted": {
-    "reobservation_rate": 0.916,
-    "forecast_accuracy": 0.667
+    "reobservation_rate": 1.0,
+    "forecast_accuracy": 0.571
   },
-  "broken_urls": [
-    {
-      "url": "https://openai.com/index/decisions-api",
-      "status": 403
-    }
-  ],
+  "broken_urls": [],
   "missed_stories": [],
   "degraded_reason": "--tier0-only: model call skipped by request"
 }
