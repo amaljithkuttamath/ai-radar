@@ -1,100 +1,67 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-10-22](2026-10-22-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-10-23](2026-10-23-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-10-23
+# AI Radar — 2026-10-24
 
-The standout arrival is **WeVisOne-VL**, a Tencent VLM that unifies object- and pixel-level perception (detection, segmentation, OCR, matting) via a single next-token framework — already at 214 HF upvotes with code and demo live. The 48-hour window is defined by a wave of new evaluation infrastructure: fine-grained GUI grounding (PointerBench), personal-agent memory (MemPABench), clinical QA for Indonesian (IndoNutriQA), and a sparse-attention method (OpenAttention) that folds the entire KV tail into one mean token and works at 1% read rates.
+Intel’s Neural Compressor now supports INT8/FP8/MXFP8/INT4/MXFP4/NVFP4 quantization across PyTorch, TensorFlow, and ONNX Runtime, making it the broadest low-bit LLM compression toolkit observed. Two new benchmark datasets — MMLU-Pro (259k downloads) and LocalLLaMA/typed-decisions — extend evaluation coverage for reasoning and structured decision tasks. The Transformers library remains the most-starred artifact in this window (168k stars), though its current push is a routine version bump rather than a feature release.
 
 ## What changed
 
-**New today**
-- [WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) — unified VLM
-- [Making MLLM Latents Matter: Factor-Aware Predictive Learning for Cinematic Video Generation](https://arxiv.org/abs/2610.30926) — video generation
-- [InternScience/Sage-A1.5 (HF Model)](https://huggingface.co/InternScience/Sage-A1.5) — MoE VLM release
-- [Beyond Watching and Searching: Benchmarking Agents for Video-centered Deep Research Reports](https://arxiv.org/abs/2610.31158) — agent benchmark
-- [Is Complex Agentic Memory Always Needed? Naive RAG Is Stronger Than We Thought](https://arxiv.org/abs/2610.30755) — RAG vs agents
+**New to radar**
+- [intel/neural-compressor](https://github.com/intel/neural-compressor) — SOTA low-bit LLM quantization (INT8/FP8/MXFP8/INT4/MXFP4/NVFP4) & sparsity · 4/5
+- [LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions) — benchmark dataset for text-classification decisions · 4/5
+- [huggingface/transformers](https://github.com/huggingface/transformers) — model-definition framework for text, vision, audio, multimodal · 4/5
+- [microsoft/AI-For-Beginners](https://github.com/microsoft/AI-For-Beginners) — 12-week, 24-lesson AI curriculum · 4/5
+- [NVIDIA/Megatron-LM](https://github.com/NVIDIA/Megatron-LM) — ongoing research training transformer models at scale · 4/5
 
 **Climbing**
-- [Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation](https://arxiv.org/abs/2610.29989) — traction +2.9%
-- [Evolving with Open Worlds: Towards Recursive Self-Improvement for Future Forecasting](https://arxiv.org/abs/2610.29784) — traction +1.3%
-- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — traction +0.8%
-- [Think Harder Where It Matters: Item-Level Adaptive Recursion for Sequential Recommendation](https://arxiv.org/abs/2610.30128) — traction +0.6%
+- [Retrieval Augmented Generation Compositionality](https://arxiv.org/abs/2610.29722) — compositionality analysis for RAG systems · 3/5 (+1)
+- [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) — simulation-ready 3D asset dataset · 3/5 (+1)
 
 **Cooled**
-- [VX-One: Typed, Calibrated Decision Heads for Real-Time Perimeter Triage](https://arxiv.org/abs/2610.30090) — score −1, traction +0.3%
+- [RIDAR: Safeguarding Research Integrity in Autonomous Research Agents](https://arxiv.org/abs/2610.31372) — automated detection/runtime intervention for research integrity violations · 2/5
+- [What Makes a Good Unmasking Policy?](https://arxiv.org/abs/2610.31576) — controlled study of learned unmasking in diffusion language models · 0/5
+- [FlashVSR+: Efficient Video Super-Resolution](https://arxiv.org/abs/2610.17552) — hybrid attention and reward-yield distribution matching · 3/5 (−1)
+- [JevGPT: Thinking Fast and Slow in Autonomous Research](https://arxiv.org/abs/2610.18272) — dual-system agent for research tasks · 3/5 (−1)
+- [Beyond Watching and Searching: Benchmarking Agents for Video-centered Deep Research](https://arxiv.org/abs/2610.31158) — video-agent benchmark · 2/5 (−1)
 
----
+## Main list
 
-### Benchmark
+### Quantization & compression
+- [intel/neural-compressor](https://github.com/intel/neural-compressor) — Unified API for INT8/FP8/MXFP8/INT4/MXFP4/NVFP4 quantization and sparsity on PyTorch, TensorFlow, ONNX Runtime. Engineers deploying LLMs on Intel CPUs/GPUs or exporting to ONNX can drop this in for post-training quantization and quantization-aware training. · 4/5
 
-**[TIGER-Lab/MMLU-Pro](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro) · 4/5** — Harder, reasoning-heavy MMLU successor (12k+ questions, MIT license). 7th radar run; traction essentially flat (+0.02). Still the default tough benchmark for new models. [dataset](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro)
+### Benchmarks & evaluation
+- [LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions) — Small (46k downloads) Apache-2.0 dataset for structured decision classification; useful for evaluating agent routing or function-calling accuracy. · 4/5
+- [TIGER-Lab/MMLU-Pro](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro) — Expanded MMLU benchmark (259k downloads, MIT) with harder reasoning tasks; standard for comparing foundation-model reasoning. Carryover (8 runs, slight traction rise). · 4/5
+- [AgentPhishing: A Benchmark of LLM Email Agents Under Adaptive Attack](https://arxiv.org/abs/2610.31404) — Evaluates computer-use agents against persuasive phishing emails; includes adaptive attack trajectories. Relevant for security hardening of email/automation agents. · 2/5
 
-**[PointerBench: A Diagnostic Benchmark for Fine-Grained GUI Grounding](http://arxiv.org/abs/2610.31274v1) · 3/5** — 1,500 screenshot-instruction pairs probing sub-element identification in spreadsheets, coordinate-dense charts, and cross-app UI. Code and eval harness released. Targets the grounding gap that end-to-end benchmarks miss. [paper](http://arxiv.org/abs/2610.31274v1)
+### Frameworks & libraries
+- [huggingface/transformers](https://github.com/huggingface/transformers) — Core model-definition library (168k stars). Current push updates version tags and model cards; no new architecture. Use for loading any HF-hosted model. · 4/5
 
-### Attention
+### System One / fast decision models
+- [VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615) — Adapts MLLMs to structured video decisions via a shared head, replacing autoregressive decoding. Repo and demo linked. Carryover (7 runs, strong traction rise). · 3/5
+- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — Formalizes null-aware, permutation-invariant decision heads; GitHub + project page. Carryover (7 runs, strong traction rise). · 3/5
 
-**[FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching](https://arxiv.org/abs/2610.17552) · 4/5** — Continuing story (6th run, traction +278%). One-step diffusion distillation for VSR with a hybrid attention block and a reward-yield distribution matching loss that aligns to human preference without full RLHF. 149 GH stars, 36 HF upvotes. [code](https://github.com/OpenImagingLab/FlashVSR_Plus) · [project](https://www.flashvsr.tech)
+### Models
+- [Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) — 27B image-text-to-text model (Apache-2.0, 7.7M downloads). Suitable for multimodal chat and visual reasoning; runs on 2×A100 or quantized on consumer GPUs. · 3/5
+- [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) — Lightweight embedding model (193k downloads) for sentence-transformers pipelines; drop-in for retrieval or clustering. · 3/5
 
-**[OpenAttention: One Percent Is Enough with Tail Proxies](http://arxiv.org/abs/2610.30951v1) · 3/5** — Replaces sampled tail tokens in sparse attention with a single count-aware mean proxy. Closed-form proof that sampling nearly doubles weight error at ≤5% read rates; the proxy matches full attention quality at 1% reads. Code released. [paper](http://arxiv.org/abs/2610.30951v1)
+### Attention & sequence compression
+- [Rethinking Sequence Compression with Test-time Regression](https://arxiv.org/abs/2610.31574) — TTR-Compressor learns a regression head whose closed-form coefficients compress token sequences end-to-end. Repo + project page. Could replace pooling in long-context or RAG pipelines. · 2/5
 
-### Evaluation
+## Watch-list / Still developing
 
-**[Why Bother Me Again? Benchmarking Personal Agent Memory for Interaction Preferences](http://arxiv.org/abs/2610.30485v1) · 3/5** — Introduces MemPABench, an on-policy environment where agents must learn *how* a user wants to be assisted (frequency, timing, channel) not just *what* they know. Long-horizon tasks with repeated interactions; baseline shows naive RAG often beats complex memory modules. [paper](http://arxiv.org/abs/2610.30485v1)
-
-**[IndoNutriQA: An Indonesian Clinical Nutrition Question Answering Benchmark](http://arxiv.org/abs/2610.31256v1) · 3/5** — 911 expert-curated QA pairs grounded in real Indonesian clinical-nutrition reports, with structured metadata (anthropometrics, diagnoses, dietary recalls). Fills a low-resource clinical evaluation gap; not a training corpus. [paper](http://arxiv.org/abs/2610.31256v1)
-
-### Cost
-
-**[Vision Transformers for Estimating Irradiance Using Data Scarce Sky Images](http://arxiv.org/abs/2610.30940v1) · 3/5** — Dual-framework ViT approach for diffuse horizontal irradiance estimation from sky images in data-scarce regions. Targets PV forecasting without dense ground instrumentation. Code and weights provided. [paper](http://arxiv.org/abs/2610.30940v1)
-
-### Other
-
-**[WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) · 4/5** — Tencent's "Vision All-in-One" VLM handles detection, referring localization, counting, OCR, segmentation, and matting via a lightweight pixel decoder gated by a special `<OBJ>` token. 214 HF upvotes day-one. [code](https://github.com/Tencent/WeVisOne-VL) · [demo](https://tencent.github.io/WeVisOne-VL)
-
-**[AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio) · 4/5** — One-click LoRA trainer for Qwen-Image, FLUX.2, Krea, Ideogram, SDXL variants, LTX, MiniMax on 4–8 GB VRAM (NF4 quantization). 111 GH stars, 7th run, traction +0.2%. [repo](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio)
-
-**[InternScience/Sage-A1.5](https://huggingface.co/InternScience/Sage-A1.5) · 3/5** — New MoE VLM (Qwen3.5-MoE base) tagged for image-text-to-text. Trending on HF; weights in safetensors. [model](https://huggingface.co/InternScience/Sage-A1.5)
-
----
-
-## Still developing
-
-- **[TIGER-Lab/MMLU-Pro](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro)** — 7th run, traction +0.02% since 2026-10-13.
-- **[AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio](https://github.com/AcademiaSD/AcademiaSD_LoRAlab-TrainerStudio)** — 7th run, traction +0.21% since 2026-10-11.
-
-## Story arcs
-
-- [FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching](https://arxiv.org/abs/2610.17552) — seen 6 runs, traction +83.5% since first seen on 2026-10-14.
-- [Sage-A1.5: From Long-Horizon Execution to Scientific Exploration with Capability Composition](https://arxiv.org/abs/2610.28578) — seen 3 runs, traction +81.5% since first seen on 2026-10-21.
-- [SolarRenderer: Few-Step Generative Reference Rendering](https://arxiv.org/abs/2610.28630) — seen 3 runs, traction +80.8% since first seen on 2026-10-21.
-- [Multimodal Reranking Is a System One Decision](https://arxiv.org/abs/2610.28435) — seen 3 runs, traction +79.2% since first seen on 2026-10-21.
-- [JevGPT: Thinking Fast and Slow in Autonomous Research](https://arxiv.org/abs/2610.18272) — seen 5 runs, traction +76.3% since first seen on 2026-10-14.
-- [Open-o3-Video-v2: Seek, Ground, and Reason with Verifiable Spatio-Temporal Evidence](https://arxiv.org/abs/2610.17656) — seen 5 runs, traction +74.7% since first seen on 2026-10-14.
-- [WorldRecon: Generative Multi-View Mesh Reconstruction for Large-Scale 3D World](https://arxiv.org/abs/2610.18846) — seen 5 runs, traction +71.9% since first seen on 2026-10-14.
-- [AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards](https://arxiv.org/abs/2610.18860) — seen 6 runs, traction +70.3% since first seen on 2026-10-14.
-- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — seen 6 runs, traction +70.1% since first seen on 2026-10-14.
-- [ReTerm: Recovery Training for Self-Improving Terminal Agents](https://arxiv.org/abs/2610.18484) — seen 5 runs, traction +68.3% since first seen on 2026-10-14.
-
-## Watch-list
-
-- [High-Value Training Data from Noisy, Diverse Sources](http://arxiv.org/abs/2610.30421v1) — metagradient data-weighting at scale; no traction signals yet.
-- [Algorithmic drift in generative adaptive learning](http://arxiv.org/abs/2610.31041v1) — formalizes demographic drift in AI tutors via coupled learner–tutor dynamics; simulation evidence only.
-- [XHToken/Spark-X2.6-4B](https://huggingface.co/XHToken/Spark-X2.6-4B) — 4B LLM trending on HF; no benchmarks or code linked.
-- [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) — small (<1K) 3D asset dataset; early stage.
-- [Kazakhstan Expands Compute for Its AI Future](https://blogs.nvidia.com/blog/kazakhstan-ai-compute-ecosystem/) — NVIDIA blog post on national infrastructure rollout.
-- [Build more responsive apps with the Decisions API](https://openai.com/index/decisions-api) — OpenAI low-latency decision endpoint; announcement only.
-
-## Insights
-
-- **Evaluation is fragmenting by capability, not task.** PointerBench (GUI grounding), MemPABench (interaction memory), IndoNutriQA (clinical low-resource), and MMLU-Pro (reasoning) each target a distinct failure mode. No single benchmark covers the agent stack anymore.
-- **Sparse attention is converging on "tail proxy" designs.** OpenAttention's mean-token proxy and FlashVSR+'s hybrid attention both avoid sampling the KV tail — a pattern also visible in recent linear-attention kernels. The 1% read budget is becoming a real operating point.
-- **Unified perception models are shipping before unified benchmarks exist.** WeVisOne-VL bundles detection, segmentation, OCR, and matting in one decoder, but evaluation still splits across COCO, RefCOCO, TextVQA, etc. The metric gap will matter for deployment.
-- **LoRA tooling has reached "it just works" on consumer GPUs.** AcademiaSD's launcher supports 8+ model families on 4–8 GB VRAM via NF4. The bottleneck shifts from training infrastructure to dataset curation and eval.
+- [When to Follow the Teacher: Advantage-Based On-Policy Distillation](https://arxiv.org/abs/2610.31563) — AOPD weights teacher actions by counterfactual student advantage; code linked. · 2/5
+- [Parameter-Efficient Adaptation … for the Bashkir Language](https://arxiv.org/abs/2610.31397) — Corpus (46.9M tokens), datasets, and benchmark across 8 architectures (82M–8B) with QLoRA/ICL. · 2/5
+- [RIDAR: Safeguarding Research Integrity in Autonomous Research Agents](https://arxiv.org/abs/2610.31372) — Taxonomy of 14 research integrity violations + runtime detector (85.2% F1). Cooled this run. · 2/5
+- [SurveyGraph: Generating Academic Surveys via Methods-Entity Knowledge Graphs](https://arxiv.org/abs/2610.31317) — MEKG for structured survey generation; retrieval/outlining/generation components. · 2/5
+- [Jeva / VideoJev](https://github.com/LiQiiiii/Jeva) — Carryovers with 7-run streaks and rising traction (Δ≈3.5); track if System One paradigm gains adoption. · 3/5
+- [Multimodal Embodied Agents: A Unified Capability-centric Perspective](https://arxiv.org/abs/2610.30108) — 3-run streak, 94% magnitude rise; survey linking computer-use to robot-use. · (story arc)
+- [Multimodal Reranking Is a System One Decision](https://arxiv.org/abs/2610.28435) — 4-run streak, 87% magnitude rise; argues reranking is fast heuristic, not slow reasoning. · (story arc)
 
 ## Action items
 
-- **Try:** PointerBench's eval harness if you ship GUI agents — the spreadsheet/chart grounding tasks expose failures that end-to-end benchmarks miss.
-- **Read:** OpenAttention (1% read budget) + FlashVSR+ (hybrid attention + reward-yield loss) together; they attack the same KV-tail problem from architecture and training angles.
-- **Track:** WeVisOne-VL's adoption — if the `<OBJ>` token pattern generalizes, it becomes a de facto interface for pixel-level VLMs.
-- **Test:** MemPABench against your personal-agent memory module; the paper's finding that naive RAG beats complex memory is worth replicating on your task distribution.
+1. **Try** [intel/neural-compressor](https://github.com/intel/neural-compressor) — quantize a 7B–70B model to INT4/MXFP4 on your target hardware (CPU, GPU, or ONNX Runtime) and measure latency/accuracy trade-off against your current pipeline.
+2. **Read** [Rethinking Sequence Compression with Test-time Regression](https://arxiv.org/abs/2610.31574) — if you hit context-window or RAG-token budgets, the TTR-Compressor repo offers a drop-in alternative to mean/max pooling with learned compression.
+3. **Track** [LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions) and [AgentPhishing](https://arxiv.org/abs/2610.31404) — both expand evaluation for agent routing and security; add to your CI benchmark suite when they stabilize.
