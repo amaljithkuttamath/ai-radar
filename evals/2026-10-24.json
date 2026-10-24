@@ -3,36 +3,36 @@
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-10-24T05:14:33Z",
+  "digest_commit_time_utc": "2026-10-24T05:23:17Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 25,
+      "links_total": 23,
       "links_broken": 0,
       "links_unverified": 0,
-      "main_items": 6,
+      "main_items": 5,
       "main_score_mean": null,
-      "sections_present": 7,
-      "expected_sections": 3,
-      "tracked_items": 151,
+      "sections_present": 5,
+      "expected_sections": 4,
+      "tracked_items": 60,
       "reobservation_rate": 1.0,
-      "traction_observations": 59,
+      "traction_observations": 21,
       "degraded_synthesis": false,
       "forecast_accuracy": 0.571,
-      "claims_open": 5
+      "claims_open": 10
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 7 section(s); 3/7 of the prompt's sections present"
+        "detail": "title and 5 section(s); 4/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "6 main-list item(s)"
+        "detail": "5 main-list item(s)"
       },
       {
         "key": "links_resolve",
@@ -47,7 +47,7 @@
       {
         "key": "traction_observed",
         "ok": true,
-        "detail": "re-observed 100% of 151 tracked items"
+        "detail": "re-observed 100% of 60 tracked items"
       }
     ],
     "failed": []
