@@ -10,6 +10,23 @@ news; keep the useful evidence; publish a short, linked digest.
 The board lives in a separate repository. This repository owns collection,
 ranking, synthesis, publication artifacts, and prompt experiments.
 
+## Pipeline health
+
+<!-- health:start -->
+
+| signal | status | detail |
+|---|---|---|
+| [Daily digest](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟢 ok | last digest committed <1h ago |
+| [Model synthesis](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟢 ok | latest digest carries model synthesis |
+| [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🟡 warn | grader last committed <1h ago · tier 0 only, no model judgement |
+| [Self-healing loop](https://github.com/amaljithkuttamath/ai-radar/issues?q=is%3Aissue+is%3Aopen+label%3Awatchdog) | 🟢 ok | no unanswered alarms |
+| [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40065340490) | 🟢 ok | last run success |
+| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40065359516) | 🟢 ok | last run success |
+| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40006632483) | 🟢 ok | last run success |
+
+Generated 2026-10-24 05:15 UTC by `scripts/health.py`.
+<!-- health:end -->
+
 ## Start in one minute
 
 Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/), on macOS or Linux.
