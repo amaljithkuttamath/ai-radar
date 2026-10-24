@@ -19,3 +19,17 @@ reports/*
 
 # local harness artifact
 .claude/scheduled_tasks.lock
+
+# Replay inputs and experiment evidence are local; CI retains cases as artifacts.
+data/evolution/
+
+# Runtime health, previews, and offline examples.
+data/collection.json
+data/previews/
+data/demo/
+data/embed_cache/
+data/.pipeline.lock
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/

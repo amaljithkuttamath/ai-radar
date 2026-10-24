@@ -44,8 +44,11 @@ network blip costs a data point and never a digest.
 
 Run: python -m distill.track
 """
+
 from __future__ import annotations
-import os, sys, json
+import os
+import sys
+import json
 from datetime import datetime, timezone, date
 from pathlib import Path
 
@@ -59,10 +62,10 @@ SCORED = ROOT / "data" / "scored"
 
 # Tuning knobs. Defaults are deliberately conservative: a small ledger of things that are
 # genuinely moving beats a long tail of stale rows committed to git every day.
-TTL_DAYS = int(os.environ.get("TRACK_TTL_DAYS", "14"))        # max age since first_seen
-MAX_TRACKED = int(os.environ.get("TRACK_MAX", "60"))          # hard ledger size cap
-MIN_SCORE = int(os.environ.get("TRACK_MIN_SCORE", "3"))       # promote at/above this score
-MAX_MISSES = int(os.environ.get("TRACK_MAX_MISSES", "3"))     # consecutive failed re-fetches
+TTL_DAYS = int(os.environ.get("TRACK_TTL_DAYS", "14"))  # max age since first_seen
+MAX_TRACKED = int(os.environ.get("TRACK_MAX", "60"))  # hard ledger size cap
+MIN_SCORE = int(os.environ.get("TRACK_MIN_SCORE", "3"))  # promote at/above this score
+MAX_MISSES = int(os.environ.get("TRACK_MAX_MISSES", "3"))  # consecutive failed re-fetches
 MAX_FLAT_RUNS = int(os.environ.get("TRACK_MAX_FLAT_RUNS", "5"))  # runs with no traction gain
 REFRESH_BUDGET = int(os.environ.get("TRACK_REFRESH_BUDGET", "60"))  # HTTP calls per run
 # A carryover has to still clear the routing floor to be worth re-publishing.
@@ -73,6 +76,7 @@ GH_TOKEN = os.environ.get("GITHUB_TOKEN")
 # ---------------------------------------------------------------------------
 # Ledger IO
 # ---------------------------------------------------------------------------
+
 
 def load_ledger(path: Path | None = None) -> dict[str, dict]:
     """Read the tracked-item ledger. Missing or corrupt => empty, never an exception: a
@@ -101,8 +105,10 @@ def save_ledger(ledger: dict[str, dict], path: Path | None = None) -> None:
     somewhere disposable.
     """
     if path is None and os.environ.get("RADAR_NO_STATE", "") == "1":
-        print(f"[track] RADAR_NO_STATE=1; not writing {LEDGER.name} "
-              f"({len(ledger)} items held in memory only)", file=sys.stderr)
+        print(
+            f"[track] RADAR_NO_STATE=1; not writing {LEDGER.name} ({len(ledger)} items held in memory only)",
+            file=sys.stderr,
+        )
         return
     p = path or LEDGER
     p.parent.mkdir(parents=True, exist_ok=True)
@@ -112,6 +118,7 @@ def save_ledger(ledger: dict[str, dict], path: Path | None = None) -> None:
 # ---------------------------------------------------------------------------
 # Re-observation
 # ---------------------------------------------------------------------------
+
 
 def signal_source(entry: dict) -> tuple[str, str] | None:
     """What can be re-fetched for this item, as (kind, key). None => nothing to observe, so
@@ -173,7 +180,7 @@ def observe(entry: dict, fetchers: dict | None = None) -> dict | None:
                 if info:
                     return {**(paper or {}), "gh_stars": info.get("stars") or 0}
             return paper
-    except Exception as ex:                       # belt and braces: tools already swallow
+    except Exception as ex:  # belt and braces: tools already swallow
         print(f"[track] observe failed for {entry.get('id')}: {ex}", file=sys.stderr)
         return None
     return None
@@ -182,6 +189,7 @@ def observe(entry: dict, fetchers: dict | None = None) -> dict | None:
 # ---------------------------------------------------------------------------
 # Ledger maintenance
 # ---------------------------------------------------------------------------
+
 
 def _today() -> str:
     return datetime.now(timezone.utc).date().isoformat()
@@ -229,8 +237,9 @@ def _drop_reason(entry: dict, today: str) -> str | None:
     return None
 
 
-def refresh(ledger: dict[str, dict], fetchers: dict | None = None,
-            budget: int | None = None) -> tuple[dict[str, dict], dict[str, int]]:
+def refresh(
+    ledger: dict[str, dict], fetchers: dict | None = None, budget: int | None = None
+) -> tuple[dict[str, dict], dict[str, int]]:
     """Re-observe every tracked entry, then prune. Returns (new_ledger, stats).
 
     Entries are refreshed highest-peak-first so that when the budget runs out it is the
@@ -239,8 +248,7 @@ def refresh(ledger: dict[str, dict], fetchers: dict | None = None,
     today = _today()
     budget = REFRESH_BUDGET if budget is None else budget
     stats = {"observed": 0, "missed": 0, "skipped": 0, "dropped": 0}
-    order = sorted(ledger.values(),
-                   key=lambda e: float(e.get("peak_mag") or 0), reverse=True)
+    order = sorted(ledger.values(), key=lambda e: float(e.get("peak_mag") or 0), reverse=True)
     out: dict[str, dict] = {}
     for entry in order:
         iid = entry.get("id")
@@ -269,8 +277,7 @@ def refresh(ledger: dict[str, dict], fetchers: dict | None = None,
     # Size cap: keep the biggest peaks. Runs after pruning so a cap never evicts an item
     # that pruning would have kept over one it dropped.
     if len(out) > MAX_TRACKED:
-        keep = sorted(out.values(), key=lambda e: float(e.get("peak_mag") or 0),
-                      reverse=True)[:MAX_TRACKED]
+        keep = sorted(out.values(), key=lambda e: float(e.get("peak_mag") or 0), reverse=True)[:MAX_TRACKED]
         stats["dropped"] += len(out) - len(keep)
         out = {e["id"]: e for e in keep}
     return out, stats
@@ -316,6 +323,7 @@ def promote(items: list[dict], ledger: dict[str, dict] | None = None) -> dict[st
 # Carryover candidates
 # ---------------------------------------------------------------------------
 
+
 def _traction_delta(entry: dict) -> float:
     """Magnitude change over the tracked window. Positive => still climbing."""
     h = entry.get("mag_history") or []
@@ -331,7 +339,7 @@ def carryover_items(ledger: dict[str, dict]) -> list[dict]:
     was first published, and one that stalled falls out on its own. `fetched` is stamped now
     because the observation *is* from now — that is what keeps them inside synthesize's
     window check without weakening it."""
-    from distill.score import heuristic_score          # local: avoids an import cycle
+    from distill.score import heuristic_score  # local: avoids an import cycle
     from distill.focus import focus_match
 
     now = datetime.now(timezone.utc).isoformat()
@@ -367,8 +375,7 @@ def carryover_items(ledger: dict[str, dict]) -> list[dict]:
     return out
 
 
-def story_arcs(ledger: dict[str, dict] | None = None, min_streak: int = 3,
-               cap: int = 10) -> list[dict]:
+def story_arcs(ledger: dict[str, dict] | None = None, min_streak: int = 3, cap: int = 10) -> list[dict]:
     """Tracked items observed across >= `min_streak` consecutive runs with rising traction.
     This is the query `delta.story_arcs` always wanted to answer and never could, because
     nothing accumulated a streak. Degrades to [] on any error."""
@@ -383,13 +390,15 @@ def story_arcs(ledger: dict[str, dict] | None = None, min_streak: int = 3,
             first, last = history[0], history[-1]
             if last <= first:
                 continue
-            arcs.append({
-                "title": entry.get("title", ""),
-                "url": entry.get("url", ""),
-                "streak": streak,
-                "first_seen": entry.get("first_seen", ""),
-                "mag_pct_change": round((last - first) / max(first, 0.01) * 100, 1),
-            })
+            arcs.append(
+                {
+                    "title": entry.get("title", ""),
+                    "url": entry.get("url", ""),
+                    "streak": streak,
+                    "first_seen": entry.get("first_seen", ""),
+                    "mag_pct_change": round((last - first) / max(first, 0.01) * 100, 1),
+                }
+            )
         arcs.sort(key=lambda a: (a["mag_pct_change"], a["streak"]), reverse=True)
         return arcs[:cap]
     except Exception:
@@ -400,15 +409,27 @@ def story_arcs(ledger: dict[str, dict] | None = None, min_streak: int = 3,
 # Stage entrypoint
 # ---------------------------------------------------------------------------
 
+
 def write_carryovers(items: list[dict]) -> int:
     """Drop carryover candidates into data/scored/ so score.py's consumers pick them up with
     no special-casing. Runs AFTER score.py, which clears the directory each run. Never
     overwrites a file score.py just wrote: a fresh observation of an item beats a stale one."""
     SCORED.mkdir(parents=True, exist_ok=True)
+    existing = set()
+    for path in SCORED.glob("*.json"):
+        try:
+            existing.add(json.loads(path.read_text())["id"])
+        except (OSError, ValueError, KeyError):
+            continue
+    from collectors.blocklist import is_blocked, load_blocked_domains
+
+    blocked = load_blocked_domains()
     written = 0
     for it in items:
+        if it["id"] in existing or is_blocked(it.get("url", ""), blocked):
+            continue
         out = SCORED / f"{it['id'].replace(':', '_').replace('/', '_')}.json"
-        if out.exists():                 # collected again today — the fresh copy wins
+        if out.exists():  # collected again today — the fresh copy wins
             continue
         out.write_text(json.dumps(it, indent=2))
         written += 1
@@ -418,16 +439,20 @@ def write_carryovers(items: list[dict]) -> int:
 def main() -> None:
     ledger = load_ledger()
     if not ledger:
-        print("[track] ledger empty — nothing to re-observe yet "
-              "(entries are added after the next successful digest)")
+        print(
+            "[track] ledger empty — nothing to re-observe yet "
+            "(entries are added after the next successful digest)"
+        )
         return
     ledger, stats = refresh(ledger)
     save_ledger(ledger)
     items = carryover_items(ledger)
     n = write_carryovers(items)
-    print(f"[track] {len(ledger)} tracked · observed={stats['observed']} "
-          f"missed={stats['missed']} skipped={stats['skipped']} dropped={stats['dropped']} "
-          f"· {n} carryover candidates")
+    print(
+        f"[track] {len(ledger)} tracked · observed={stats['observed']} "
+        f"missed={stats['missed']} skipped={stats['skipped']} dropped={stats['dropped']} "
+        f"· {n} carryover candidates"
+    )
 
 
 if __name__ == "__main__":

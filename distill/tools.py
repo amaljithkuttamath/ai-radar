@@ -6,15 +6,32 @@ These are the "tools" the enrich stage uses. They are unconditional lookups (eve
 wants its GitHub stars + HN points), so there is nothing for a model to decide — hence plain
 Python, not an agent loop.
 """
+
 from __future__ import annotations
-import os, sys, re, json, urllib.parse, urllib.request
+import sys
+import re
+import json
+import urllib.parse
+import urllib.request
 
 UA = {"User-Agent": "ai-radar/0.1"}
 
 # github.com/{owner}/{repo} — but skip non-repo paths (gists, org pages, settings, etc.).
 _REPO_RE = re.compile(r"github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)")
-_NON_REPO_OWNERS = {"orgs", "settings", "about", "features", "sponsors", "marketplace",
-                    "topics", "collections", "apps", "login", "join", "notifications"}
+_NON_REPO_OWNERS = {
+    "orgs",
+    "settings",
+    "about",
+    "features",
+    "sponsors",
+    "marketplace",
+    "topics",
+    "collections",
+    "apps",
+    "login",
+    "join",
+    "notifications",
+}
 
 
 def _get_json(url: str, headers: dict | None = None, timeout: int = 20):
@@ -51,7 +68,8 @@ def fetch_github_repo(owner: str, repo: str, token: str | None = None) -> dict |
         print(f"[tools] github repo {owner}/{repo} failed: {ex}", file=sys.stderr)
         return None
     return {
-        "owner": owner, "repo": repo,
+        "owner": owner,
+        "repo": repo,
         "stars": d.get("stargazers_count", 0),
         "forks": d.get("forks_count", 0),
         "description": d.get("description") or "",
@@ -128,11 +146,13 @@ def best_repo(item: dict, token: str | None = None) -> dict | None:
     """Convenience: find the first resolvable GitHub repo referenced by an item and return
     its stats. Checks the collector-captured links.github first (e.g. HF's githubRepo, which
     is rarely in the abstract text), then falls back to scanning url + raw_summary."""
-    candidates = " ".join([
-        (item.get("links", {}) or {}).get("github", ""),
-        item.get("url", ""),
-        item.get("raw_summary", ""),
-    ])
+    candidates = " ".join(
+        [
+            (item.get("links", {}) or {}).get("github", ""),
+            item.get("url", ""),
+            item.get("raw_summary", ""),
+        ]
+    )
     for owner, repo in extract_github_repos(candidates):
         info = fetch_github_repo(owner, repo, token)
         if info:

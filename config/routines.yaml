@@ -1,9 +1,4 @@
 # Which collectors to run, and default distillation parameters.
-#
-# NOTE: nothing reads this file at runtime — the defaults live in the modules and are
-# overridden by env (scripts/distill.sh and the workflow inputs set them). This is the
-# human-readable record of what those defaults are; change a value here AND its env default,
-# or you have only changed the documentation.
 
 collectors:
   - arxiv
@@ -16,10 +11,18 @@ distill:
   window: 48h        # 24h daily / 48h default / 7d weekly
   max_items: 10       # main list cap
   focus: []
-  market: off        # on => append mechanism-mapping to score>=4 items (NOT advice)
+  market: false        # on => append mechanism-mapping to score>=4 items (NOT advice)
   include_threshold: 2   # score >= this -> main list; ==1 -> watch-list; <=0 drop
 
-track:               # carryover ledger — see distill/track.py and ADR-0004. Always on: it
+agent:               # optional enrichment pass (RADAR_AGENT=on). Deterministic fetches +
+  enabled: false     #   one model call per item. off => pipeline runs exactly as before.
+  top_n: 8           # enrich the top-N scored items (match distill.max_items: shown == enriched)
+  budget: 10         # hard ceiling on model calls per run (8 briefs + margin)
+  sleep_between: 5   # seconds between model calls (rate-limit breathing room)
+  # Models (GitHub Models, free): synthesis uses RADAR_GITHUB_MODEL (default gpt-4.1, strong);
+  # briefs use BRIEF_GITHUB_MODEL (default gpt-4.1-mini, cheaper daily quota).
+
+track:               # carryover ledger — see distill/track.py and ADR-0004. For publication runs: it
   ttl_days: 14       #   is what makes movers, story arcs and "Still developing" possible.
   max_tracked: 60    # hard ledger size cap (it is committed every run, so keep it small)
   min_score: 3       # promote items at/above this score after a successful digest
@@ -30,15 +33,3 @@ track:               # carryover ledger — see distill/track.py and ADR-0004. A
   quiet_floor: 6     #   ...widened to this many candidates when the fresh window is thin
   # Env overrides: TRACK_TTL_DAYS, TRACK_MAX, TRACK_MIN_SCORE, TRACK_MAX_MISSES,
   # TRACK_MAX_FLAT_RUNS, TRACK_REFRESH_BUDGET, CARRYOVER_SLOTS, QUIET_FLOOR.
-
-deliver:                 # optional email push of the digest (distill/deliver.py).
-  email: false           # true (or set RADAR_EMAIL_TO env) to send. Needs SMTP_* secrets.
-  # Env: RADAR_EMAIL_TO, RADAR_SMTP_HOST/USER/PASS (+ optional PORT/FROM). No-op if unset.
-
-agent:               # optional enrichment pass (RADAR_AGENT=on). Deterministic fetches +
-  enabled: false     #   one model call per item. off => pipeline runs exactly as before.
-  top_n: 8           # enrich the top-N scored items (match distill.max_items: shown == enriched)
-  budget: 10         # hard ceiling on model calls per run (8 briefs + margin)
-  sleep_between: 5   # seconds between model calls (rate-limit breathing room)
-  # Models (GitHub Models, free): synthesis uses RADAR_GITHUB_MODEL (default gpt-4.1, strong);
-  # briefs use BRIEF_GITHUB_MODEL (default gpt-4.1-mini, cheaper daily quota).

@@ -61,14 +61,15 @@ def _digests() -> list[Path]:
 # The four digests that actually shipped broken. Named, because a test that says "some
 # digests are bad" cannot tell you when a fix stops working.
 BROKEN = {
-    "2026-08-14-digest.md",     # reasoning transcript, truncated mid-sentence
-    "2026-08-25-digest.md",     # reasoning transcript, truncated mid-sentence
-    "2026-09-18-digest.md",     # reasoning transcript, truncated mid-sentence
-    "2026-09-14-digest.md",     # title and one paragraph, nothing else
+    "2026-08-14-digest.md",  # reasoning transcript, truncated mid-sentence
+    "2026-08-25-digest.md",  # reasoning transcript, truncated mid-sentence
+    "2026-09-18-digest.md",  # reasoning transcript, truncated mid-sentence
+    "2026-09-14-digest.md",  # title and one paragraph, nothing else
 }
 
 
 # --- refusing what actually shipped -----------------------------------------
+
 
 @pytest.mark.parametrize("name", sorted(BROKEN))
 def test_the_digests_that_shipped_broken_are_refused(name):
@@ -104,14 +105,14 @@ def test_the_validator_and_the_grader_agree_on_which_digests_are_broken():
             synthesize.usable_digest(text)
         except synthesize.NotADigest:
             by_validator.add(path.name)
-        result = deterministic.evaluate(text, age_h=1.0, broken=[], link_count=5,
-                                        tracked={})
+        result = deterministic.evaluate(text, age_h=1.0, broken=[], link_count=5, tracked={})
         if "structure" in result["failed"]:
             by_grader.add(path.name)
     assert by_validator == by_grader == BROKEN
 
 
 # --- recovering what can be recovered ---------------------------------------
+
 
 def test_a_reasoning_block_is_stripped():
     """Reasoning models tag their working. The digest after it is perfectly good, and
@@ -130,8 +131,10 @@ def test_every_reasoning_tag_spelling_is_stripped(tag):
 def test_prose_before_the_title_is_dropped():
     """The three that shipped had no digest at all, but models routinely narrate first and
     then answer. That case is recoverable and must be recovered."""
-    raw = ("Let me analyze this task carefully. I need to produce a digest.\n"
-           "Key parameters: WINDOW=48h.\n\n" + GOOD)
+    raw = (
+        "Let me analyze this task carefully. I need to produce a digest.\n"
+        "Key parameters: WINDOW=48h.\n\n" + GOOD
+    )
     out = synthesize.usable_digest(raw)
     assert out.startswith("# AI Radar")
     assert "Let me analyze" not in out
@@ -157,9 +160,12 @@ def test_bold_section_labels_are_accepted():
 
 # --- refusing the shapes that are not recoverable ---------------------------
 
+
 def test_a_transcript_with_no_title_is_refused():
-    raw = ("Let me analyze this task carefully. I need to produce a digest report.\n"
-           "Key parameters:\n- TODAY = 2026-09-18\n" * 30)
+    raw = (
+        "Let me analyze this task carefully. I need to produce a digest report.\n"
+        "Key parameters:\n- TODAY = 2026-09-18\n" * 30
+    )
     with pytest.raises(synthesize.NotADigest, match="reasoning transcript"):
         synthesize.usable_digest(raw)
 
@@ -183,6 +189,7 @@ def test_the_check_is_shape_based_not_phrase_based():
 
 # --- truncation is surfaced, not swallowed ----------------------------------
 
+
 def test_finish_reason_length_raises_truncated(monkeypatch):
     """`finish_reason: length` is the provider stating plainly that it stopped early. It
     used to be discarded, which is how a cut-off response passed for an answer."""
@@ -190,8 +197,9 @@ def test_finish_reason_length_raises_truncated(monkeypatch):
 
     class _Resp:
         def read(self):
-            return _json.dumps({"choices": [{"finish_reason": "length",
-                                             "message": {"content": "half a thoug"}}]}).encode()
+            return _json.dumps(
+                {"choices": [{"finish_reason": "length", "message": {"content": "half a thoug"}}]}
+            ).encode()
 
         def __enter__(self):
             return self
@@ -217,8 +225,9 @@ def test_a_complete_response_does_not_raise(monkeypatch):
 
     class _Resp:
         def read(self):
-            return _json.dumps({"choices": [{"finish_reason": "stop",
-                                             "message": {"content": GOOD}}]}).encode()
+            return _json.dumps(
+                {"choices": [{"finish_reason": "stop", "message": {"content": GOOD}}]}
+            ).encode()
 
         def __enter__(self):
             return self

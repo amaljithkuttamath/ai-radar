@@ -20,24 +20,28 @@ import llm
 
 # --- family detection ------------------------------------------------------
 
-@pytest.mark.parametrize("model,expected", [
-    # bare ids
-    ("claude-opus-5", "anthropic"),
-    ("gpt-4.1", "openai"),
-    ("gemini-2.5-pro", "google"),
-    ("llama-3.3-70b-versatile", "meta"),
-    ("qwen3:4b", "alibaba"),
-    ("sonar-pro", "perplexity"),
-    ("deepseek-v3", "deepseek"),
-    ("nemotron-3-ultra-550b", "nvidia"),
-    # gateway `vendor/model` form — the shape one common provider actually serves
-    ("anthropic/claude-sonnet-5", "anthropic"),
-    ("meta-llama/llama-3.3-70b-instruct", "meta"),
-    ("google/gemini-2.5-pro", "google"),
-    ("x-ai/grok-3", "xai"),
-    ("mistralai/mistral-large", "mistral"),
-    ("nvidia/nemotron-3-ultra-550b-a55b:free", "nvidia"),
-])
+
+@pytest.mark.parametrize(
+    "model,expected",
+    [
+        # bare ids
+        ("claude-opus-5", "anthropic"),
+        ("gpt-4.1", "openai"),
+        ("gemini-2.5-pro", "google"),
+        ("llama-3.3-70b-versatile", "meta"),
+        ("qwen3:4b", "alibaba"),
+        ("sonar-pro", "perplexity"),
+        ("deepseek-v3", "deepseek"),
+        ("nemotron-3-ultra-550b", "nvidia"),
+        # gateway `vendor/model` form — the shape one common provider actually serves
+        ("anthropic/claude-sonnet-5", "anthropic"),
+        ("meta-llama/llama-3.3-70b-instruct", "meta"),
+        ("google/gemini-2.5-pro", "google"),
+        ("x-ai/grok-3", "xai"),
+        ("mistralai/mistral-large", "mistral"),
+        ("nvidia/nemotron-3-ultra-550b-a55b:free", "nvidia"),
+    ],
+)
 def test_family_detection(model, expected):
     assert llm.family(model) == expected
 
@@ -57,23 +61,34 @@ def test_vendor_prefix_wins_over_substring():
 
 # --- role selection --------------------------------------------------------
 
+
 def _catalogue(*entries):
     """(id, context_length, free) -> catalogue rows in the provider's shape."""
-    return [{"id": i, "context_length": ctx,
-             "pricing": {"prompt": "0", "completion": "0"} if free
-             else {"prompt": "0.0000009", "completion": "0.000002"}}
-            for i, ctx, free in entries]
+    return [
+        {
+            "id": i,
+            "context_length": ctx,
+            "pricing": {"prompt": "0", "completion": "0"}
+            if free
+            else {"prompt": "0.0000009", "completion": "0.000002"},
+        }
+        for i, ctx, free in entries
+    ]
 
 
 def test_resolve_pair_picks_two_different_families(monkeypatch):
     """The property that makes a single account viable — now derived from the live
     catalogue rather than a hardcoded pair, because free variants carry provider-specific
     suffixes that cannot be guessed correctly ahead of time."""
-    monkeypatch.setattr(llm, "catalog", lambda: _catalogue(
-        ("meta-llama/llama-3.3-70b-instruct:free", 131072, True),
-        ("meta-llama/llama-3.1-8b-instruct:free", 131072, True),
-        ("deepseek/deepseek-v3:free", 64000, True),
-    ))
+    monkeypatch.setattr(
+        llm,
+        "catalog",
+        lambda: _catalogue(
+            ("meta-llama/llama-3.3-70b-instruct:free", 131072, True),
+            ("meta-llama/llama-3.1-8b-instruct:free", 131072, True),
+            ("deepseek/deepseek-v3:free", 64000, True),
+        ),
+    )
     pair = llm.resolve_pair()
     assert set(pair) == set(llm.ROLES)
     assert llm.family(pair[llm.SYNTHESIS]) != llm.family(pair[llm.GRADER])
@@ -82,11 +97,15 @@ def test_resolve_pair_picks_two_different_families(monkeypatch):
 def test_resolve_pair_excludes_paid_models_by_default(monkeypatch):
     """A "free tier" setup that quietly picks a metered model is worse than one that
     fails: the bill is the first thing that tells you."""
-    monkeypatch.setattr(llm, "catalog", lambda: _catalogue(
-        ("google/gemini-2.5-pro", 1000000, False),
-        ("meta-llama/llama-3.3-70b-instruct:free", 131072, True),
-        ("deepseek/deepseek-v3:free", 64000, True),
-    ))
+    monkeypatch.setattr(
+        llm,
+        "catalog",
+        lambda: _catalogue(
+            ("google/gemini-2.5-pro", 1000000, False),
+            ("meta-llama/llama-3.3-70b-instruct:free", 131072, True),
+            ("deepseek/deepseek-v3:free", 64000, True),
+        ),
+    )
     assert "google/gemini-2.5-pro" not in llm.resolve_pair().values()
     assert "google/gemini-2.5-pro" in llm.resolve_pair(free_only=False).values()
 
@@ -102,20 +121,27 @@ def test_resolve_pair_is_deterministic(monkeypatch):
 def test_resolve_pair_reports_a_single_family_catalogue(monkeypatch):
     """Returns fewer roles than exist rather than filling the grader with a sibling of
     the synthesis model — the CLI turns that into an error naming the real fix."""
-    monkeypatch.setattr(llm, "catalog", lambda: _catalogue(
-        ("meta-llama/llama-3.3-70b:free", 131072, True),
-        ("meta-llama/llama-3.1-8b:free", 131072, True),
-    ))
+    monkeypatch.setattr(
+        llm,
+        "catalog",
+        lambda: _catalogue(
+            ("meta-llama/llama-3.3-70b:free", 131072, True),
+            ("meta-llama/llama-3.1-8b:free", 131072, True),
+        ),
+    )
     assert len(llm.resolve_pair()) < len(llm.ROLES)
 
 
-@pytest.mark.parametrize("model,expected", [
-    ({"pricing": {"prompt": "0", "completion": "0"}}, True),
-    ({"pricing": {"prompt": "0.0000009", "completion": "0"}}, False),
-    ({"pricing": {}}, False),
-    ({}, False),
-    ({"pricing": {"prompt": "free", "completion": "free"}}, False),
-])
+@pytest.mark.parametrize(
+    "model,expected",
+    [
+        ({"pricing": {"prompt": "0", "completion": "0"}}, True),
+        ({"pricing": {"prompt": "0.0000009", "completion": "0"}}, False),
+        ({"pricing": {}}, False),
+        ({}, False),
+        ({"pricing": {"prompt": "free", "completion": "free"}}, False),
+    ],
+)
 def test_is_free(model, expected):
     """Absent or unparsable pricing reads as NOT free. Assuming free because a field is
     missing is how a free-tier configuration quietly starts billing."""
@@ -165,6 +191,7 @@ def test_shared_key_falls_back_to_the_legacy_variable(monkeypatch):
 
 
 # --- the call --------------------------------------------------------------
+
 
 def test_chat_refuses_without_a_model(monkeypatch):
     """The empty-model case is a real state (single-family provider, grader role), and

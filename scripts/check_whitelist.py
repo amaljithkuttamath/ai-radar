@@ -83,10 +83,10 @@ def parse_whitelist(text: str) -> dict[str, list[str]]:
         line = raw.split("#", 1)[0].rstrip()
         if not line.strip():
             continue
-        if not line.startswith((" ", "\t", "-")):           # `coder:` — new role
+        if not line.startswith((" ", "\t", "-")):  # `coder:` — new role
             role = line.rstrip(":").strip()
             roles.setdefault(role, [])
-        elif line.lstrip().startswith("- ") and role:        # `    - config/x.yaml`
+        elif line.lstrip().startswith("- ") and role:  # `    - config/x.yaml`
             roles[role].append(line.lstrip()[2:].strip())
         # Mid-level keys (`pr:`, `write:`, `direct:`) are intentionally flattened.
         # The distinction between "may PR this" and "may commit this directly" is
@@ -102,8 +102,7 @@ def is_fence(path: str) -> bool:
     return any(fnmatch.fnmatch(path, pat) for pat in FENCE_PATHS)
 
 
-def trusted_disjointness(allowed: list[str],
-                         sources: dict[str, list[str]] | None = None) -> list[str]:
+def trusted_disjointness(allowed: list[str], sources: dict[str, list[str]] | None = None) -> list[str]:
     """Invariant I-10: no trusted metric may be derived from a path the coder can edit.
 
     Returns one violation string per offending (metric, path) pair, empty when the rule
@@ -119,12 +118,12 @@ def trusted_disjointness(allowed: list[str],
     for metric, paths in (sources or TRUSTED_SOURCES).items():
         for src in paths:
             for pat in allowed:
-                if (fnmatch.fnmatch(src, pat) or src.startswith(pat.rstrip("*"))
-                        or pat.startswith(src)):
+                if fnmatch.fnmatch(src, pat) or src.startswith(pat.rstrip("*")) or pat.startswith(src):
                     out.append(
                         f"I-10: trusted metric `{metric}` is derived from `{src}`, which "
                         f"the coder whitelist permits via `{pat}`. A metric the planner "
-                        "can move is not a referee.")
+                        "can move is not a referee."
+                    )
     return out
 
 
@@ -154,8 +153,9 @@ def main() -> int:
 
     roles = parse_whitelist(WHITELIST.read_text())
     if args.role not in roles:
-        print(f"[whitelist] FAIL unknown role '{args.role}'. "
-              f"Known: {', '.join(sorted(roles))}", file=sys.stderr)
+        print(
+            f"[whitelist] FAIL unknown role '{args.role}'. Known: {', '.join(sorted(roles))}", file=sys.stderr
+        )
         return 1
 
     allowed = roles[args.role]
@@ -165,8 +165,7 @@ def main() -> int:
     # trusted metric's source has silently disarmed the Goodhart brake, and the diff that
     # did it would look perfectly in-scope.
     if drift := trusted_disjointness(allowed):
-        print("[whitelist] FAIL  the trusted set is no longer out of reach.\n",
-              file=sys.stderr)
+        print("[whitelist] FAIL  the trusted set is no longer out of reach.\n", file=sys.stderr)
         for line in drift:
             print(f"  {line}", file=sys.stderr)
         return 1
@@ -177,11 +176,9 @@ def main() -> int:
         print(f"[whitelist] OK  {len(paths)} path(s) within '{args.role}' scope.")
         return 0
 
-    print(f"[whitelist] FAIL  role '{args.role}' touched paths it does not own.\n",
-          file=sys.stderr)
+    print(f"[whitelist] FAIL  role '{args.role}' touched paths it does not own.\n", file=sys.stderr)
     if fence:
-        print("  Fence config (never writable by any agent — this would let the",
-              file=sys.stderr)
+        print("  Fence config (never writable by any agent — this would let the", file=sys.stderr)
         print("  agent widen its own permissions):", file=sys.stderr)
         for p in fence:
             print(f"    ✗ {p}", file=sys.stderr)
@@ -192,8 +189,11 @@ def main() -> int:
     print(f"\n  Allowed for '{args.role}':", file=sys.stderr)
     for pat in allowed:
         print(f"    · {pat}", file=sys.stderr)
-    print("\n  To widen: PR docs/operating/whitelist.md + .github/CODEOWNERS +"
-          " the role contract, per whitelist.md 'Adding a path'.", file=sys.stderr)
+    print(
+        "\n  To widen: PR docs/operating/whitelist.md + .github/CODEOWNERS +"
+        " the role contract, per whitelist.md 'Adding a path'.",
+        file=sys.stderr,
+    )
     return 1
 
 

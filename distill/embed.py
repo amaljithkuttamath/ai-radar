@@ -16,6 +16,7 @@ All external calls are wrapped in try/except so a token error, HTTP error, or an
 failure falls through gracefully — the caller receives a float('nan') sentinel or False,
 never an exception propagated upward.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -39,6 +40,7 @@ EMBED_THRESHOLD = float(os.environ.get("EMBED_THRESHOLD", "0.30"))
 # ---------------------------------------------------------------------------
 # Cache helpers
 # ---------------------------------------------------------------------------
+
 
 def _cache_key(text: str) -> str:
     return hashlib.sha256(text.encode()).hexdigest()
@@ -66,6 +68,7 @@ def _save_cached(key: str, vec: list[float]) -> None:
 # GitHub Models embeddings call
 # ---------------------------------------------------------------------------
 
+
 def _call_embeddings(texts: list[str]) -> list[list[float]]:
     """Call the GitHub Models embeddings endpoint. Returns one vector per input text.
     Raises on HTTP/network error — callers are responsible for handling.
@@ -83,7 +86,8 @@ def _call_embeddings(texts: list[str]) -> list[list[float]]:
     raise RuntimeError(
         "GitHub Models embeddings were retired 2026-07-30 (HTTP 410 Gone). "
         "FOCUS_BACKEND=embed is unavailable until _ENDPOINT is repointed; "
-        "falling back to lexical matching.")
+        "falling back to lexical matching."
+    )
 
 
 def _call_embeddings_http(texts: list[str]) -> list[list[float]]:
@@ -94,13 +98,15 @@ def _call_embeddings_http(texts: list[str]) -> list[list[float]]:
         raise RuntimeError("GITHUB_TOKEN not set — cannot call embeddings endpoint")
     body = json.dumps({"model": _MODEL, "input": texts}).encode()
     req = urllib.request.Request(
-        _ENDPOINT, data=body,
+        _ENDPOINT,
+        data=body,
         headers={
             "Authorization": f"Bearer {token}",
             "Content-Type": "application/json",
             "Accept": "application/vnd.github+json",
             "X-GitHub-Api-Version": "2026-03-10",
-        })
+        },
+    )
     with urllib.request.urlopen(req, timeout=30) as r:
         data = json.loads(r.read())
     # OpenAI-compatible response: {"data": [{"embedding": [...], "index": N}, ...]}
@@ -111,6 +117,7 @@ def _call_embeddings_http(texts: list[str]) -> list[list[float]]:
 # ---------------------------------------------------------------------------
 # Batch embedding with caching
 # ---------------------------------------------------------------------------
+
 
 def embed(texts: list[str]) -> list[list[float] | None]:
     """Return one embedding vector per input text.
@@ -156,6 +163,7 @@ def embed(texts: list[str]) -> list[list[float] | None]:
 # Math helpers
 # ---------------------------------------------------------------------------
 
+
 def cosine(a: list[float], b: list[float]) -> float:
     """Cosine similarity in [−1, 1]. Returns 0.0 on zero-length vectors."""
     dot = sum(x * y for x, y in zip(a, b))
@@ -184,6 +192,7 @@ def _mean_vec(vecs: list[list[float]]) -> list[float] | None:
 # Public semantic match
 # ---------------------------------------------------------------------------
 
+
 def embed_match(item: dict, terms: tuple[str, ...], threshold: float | None = None) -> bool:
     """True if the item blob embedding is within `threshold` cosine similarity of the
     mean topic-term embedding. Falls back to False (not lexical) on any error, so the
@@ -197,6 +206,7 @@ def embed_match(item: dict, terms: tuple[str, ...], threshold: float | None = No
         if not terms:
             return False
         from distill.focus import _blob  # local import to avoid circular at module level
+
         blob_text = _blob(item)
         all_texts = [blob_text] + list(terms)
         vecs = embed(all_texts)

@@ -15,25 +15,35 @@ each run, so re-running never stacks duplicate nav lines. Safe to run after ever
 
 Run: python -m distill.reindex
 """
+
 from __future__ import annotations
-import re, sys, shutil
+import re
+import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from collectors.common import ROOT  # noqa: E402
+from collectors.common import ROOT
+from radar.storage import atomic_text  # noqa: E402
 
 REPORTS = ROOT / "reports"
 NAV_START = "<!-- radar:nav -->"
 NAV_END = "<!-- /radar:nav -->"
 DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})-digest\.md$")
-NAV_BLOCK_RE = re.compile(
-    re.escape(NAV_START) + r".*?" + re.escape(NAV_END) + r"\n?", re.DOTALL)
+NAV_BLOCK_RE = re.compile(re.escape(NAV_START) + r".*?" + re.escape(NAV_END) + r"\n?", re.DOTALL)
 
 
 def digest_files() -> list[Path]:
     """All dated digests, OLDEST first. Excludes generated files (README/latest)."""
-    files = [p for p in REPORTS.glob("*.md")
-             if DATE_RE.search(p.name) and p.name not in ("README.md", "latest.md")]
+    files = [
+        p
+        for p in REPORTS.glob("*.md")
+        if DATE_RE.fullmatch(p.name)
+        and re.search(
+            r"^# AI Radar — " + re.escape(_date_of(p)) + r"$",
+            _strip_nav(p.read_text(encoding="utf-8")),
+            re.MULTILINE,
+        )
+    ]
     return sorted(files, key=lambda p: DATE_RE.search(p.name).group(1))
 
 
@@ -79,19 +89,20 @@ def _nav(prev: Path | None, cur: Path, nxt: Path | None) -> str:
 def write_nav(files: list[Path]) -> None:
     """Inject/refresh the prev/index/next nav at the top of each digest (oldest->newest order)."""
     for i, cur in enumerate(files):
-        prev = files[i - 1] if i > 0 else None              # older
+        prev = files[i - 1] if i > 0 else None  # older
         nxt = files[i + 1] if i < len(files) - 1 else None  # newer
         body = _strip_nav(cur.read_text())
-        cur.write_text(_nav(prev, cur, nxt) + body)
+        content = _nav(prev, cur, nxt) + body
+        if cur.read_text(encoding="utf-8") != content:
+            atomic_text(cur, content)
 
 
 def write_index(files: list[Path]) -> None:
     """Newest-first index table at reports/README.md."""
     rows = []
-    for p in reversed(files):                                # newest first
-        title = title_of(p)
+    for p in reversed(files):  # newest first
         # The H1 is usually 'AI Radar — DATE'; show the date column + a trimmed title teaser.
-        teaser = topline_of(p)
+        teaser = topline_of(p).replace("|", "\\|")
         rows.append(f"| [{_date_of(p)}]({p.name}) | {teaser} |")
     header = (
         "# AI Radar — report index\n\n"
@@ -99,7 +110,7 @@ def write_index(files: list[Path]) -> None:
         "The most recent digest is also always at [latest.md](latest.md).\n\n"
         "| Date | Top-line |\n|------|----------|\n"
     )
-    (REPORTS / "README.md").write_text(header + "\n".join(rows) + "\n")
+    atomic_text(REPORTS / "README.md", header + "\n".join(rows) + "\n")
 
 
 def write_latest(files: list[Path]) -> None:
@@ -108,7 +119,7 @@ def write_latest(files: list[Path]) -> None:
         return
     newest = files[-1]
     body = newest.read_text()  # includes its fresh nav
-    (REPORTS / "latest.md").write_text(body)
+    atomic_text(REPORTS / "latest.md", body)
 
 
 def main() -> None:
@@ -117,7 +128,7 @@ def main() -> None:
     if not files:
         print("[reindex] no digests found; nothing to do.")
         return
-    write_nav(files)        # nav first, so index/latest capture the navigated copies
+    write_nav(files)  # nav first, so index/latest capture the navigated copies
     write_index(files)
     write_latest(files)
     print(f"[reindex] indexed {len(files)} reports; wrote README.md, latest.md, and nav.")

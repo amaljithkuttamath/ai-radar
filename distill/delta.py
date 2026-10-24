@@ -17,14 +17,18 @@ run (everything is "new") and degrade to silence if state is missing/corrupt.
 Run as a library (synthesize imports compute_delta); also runnable for inspection:
   python -m distill.delta
 """
+
 from __future__ import annotations
-import os, sys, json
-from datetime import datetime, timezone
+import os
+import sys
+import json
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from collectors.common import ROOT  # noqa: E402
-from distill.rank import magnitude as _magnitude  # noqa: E402
+from collectors.common import ROOT
+from distill.rank import magnitude as _magnitude
+from radar.storage import atomic_json  # noqa: E402
 
 STATE_PATH = ROOT / "data" / "state.json"
 # "Climbing/cooled" must react to traction GROWTH, not just integer-score jumps. rank_key's
@@ -32,10 +36,7 @@ STATE_PATH = ROOT / "data" / "state.json"
 # it — diffing rank_key would make these sections almost never fire. Instead we diff a raw
 # (unsaturated) signal magnitude, where doubling traction is a clear, detectable move.
 # A score (integer tier) change is always a mover regardless of magnitude delta.
-# Threshold is on the WEIGHTED magnitude, so what it costs depends on the signal: hf_upvotes
-# carry weight 1.0 (~+65% registers), gh_stars weight 0.5 (~+170%, i.e. roughly a tripling).
-# Stars are the noisier, more inflated counter, so needing a bigger move there is the point.
-MAG_MOVE_EPS = float(os.environ.get("DELTA_MAG_EPS", "0.5"))
+MAG_MOVE_EPS = float(os.environ.get("DELTA_MAG_EPS", "0.5"))  # ~+65% traction to register
 _MAG_HISTORY_CAP = 7  # rolling mag history length per item
 _STORY_ARC_MIN_STREAK = 3  # minimum consecutive runs to qualify as a story arc
 _STORY_ARCS_CAP = 10  # max arcs emitted in the prompt
@@ -44,7 +45,10 @@ _STORY_ARCS_CAP = 10  # max arcs emitted in the prompt
 def _load_state() -> dict[str, dict]:
     if STATE_PATH.exists():
         try:
-            return json.loads(STATE_PATH.read_text()) or {}
+            value = json.loads(STATE_PATH.read_text())
+            if not isinstance(value, dict) or any(not isinstance(v, dict) for v in value.values()):
+                return {}
+            return value
         except Exception:
             return {}
     return {}
@@ -64,10 +68,15 @@ def _snapshot(items: list[dict], prev: dict[str, dict] | None = None) -> dict[st
         # first_seen: earliest date we observed this item
         first_seen = p.get("first_seen") or today
         # streak: consecutive runs seen (increment only if was in prev, else reset to 1)
-        streak = int(p.get("streak") or 0) + 1 if iid in prev else 1
+        same_day = p.get("last_seen") == today
+        yesterday = (datetime.now(timezone.utc).date() - timedelta(days=1)).isoformat()
+        consecutive = p.get("last_seen") == yesterday
+        streak = (
+            int(p.get("streak") or 1) if same_day else (int(p.get("streak") or 0) + 1 if consecutive else 1)
+        )
         # mag_history: rolling window of last N magnitudes (oldest first)
         old_history: list[float] = p.get("mag_history") or []
-        mag_history = (old_history + [cur_mag])[-_MAG_HISTORY_CAP:]
+        mag_history = ((old_history[:-1] if same_day else old_history) + [cur_mag])[-_MAG_HISTORY_CAP:]
         snap[iid] = {
             "score": it.get("score") or 0,
             "mag": cur_mag,
@@ -75,6 +84,7 @@ def _snapshot(items: list[dict], prev: dict[str, dict] | None = None) -> dict[st
             "url": it.get("url", ""),
             "streak": streak,
             "first_seen": first_seen,
+            "last_seen": today,
             "mag_history": mag_history,
         }
     return snap
@@ -89,15 +99,17 @@ def compute_delta(items: list[dict]) -> dict:
     if not prev:
         # First run (or wiped state): everything is "new", nothing has history to move against.
         for it in items:
-            new.append({"title": it.get("title", ""), "url": it.get("url", ""),
-                        "score": it.get("score") or 0})
+            new.append(
+                {"title": it.get("title", ""), "url": it.get("url", ""), "score": it.get("score") or 0}
+            )
         return {"first_run": True, "new": new, "climbing": [], "cooled": []}
 
     for it in items:
         iid = it["id"]
         if iid not in prev:
-            new.append({"title": it.get("title", ""), "url": it.get("url", ""),
-                        "score": it.get("score") or 0})
+            new.append(
+                {"title": it.get("title", ""), "url": it.get("url", ""), "score": it.get("score") or 0}
+            )
             continue
         p = prev[iid]
         cur_score = it.get("score") or 0
@@ -106,8 +118,13 @@ def compute_delta(items: list[dict]) -> dict:
         # A mover is either a score-tier change OR a meaningful traction-magnitude change.
         up = score_delta > 0 or mag_delta >= MAG_MOVE_EPS
         down = score_delta < 0 or mag_delta <= -MAG_MOVE_EPS
-        row = {"title": it.get("title", ""), "url": it.get("url", ""), "score": cur_score,
-               "score_delta": score_delta, "mag_delta": round(mag_delta, 2)}
+        row = {
+            "title": it.get("title", ""),
+            "url": it.get("url", ""),
+            "score": cur_score,
+            "score_delta": score_delta,
+            "mag_delta": round(mag_delta, 2),
+        }
         if up and not down:
             climbing.append(row)
         elif down and not up:
@@ -123,7 +140,7 @@ def save_state(items: list[dict]) -> None:
     Passes the previous state through so streak / first_seen / mag_history accumulate."""
     STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
     prev = _load_state()
-    STATE_PATH.write_text(json.dumps(_snapshot(items, prev), indent=0, sort_keys=True))
+    atomic_json(STATE_PATH, _snapshot(items, prev))
 
 
 def story_arcs(cap: int = _STORY_ARCS_CAP) -> list[dict]:
@@ -140,13 +157,15 @@ def story_arcs(cap: int = _STORY_ARCS_CAP) -> list[dict]:
 
     Returns an empty list when the ledger is absent or no arcs qualify. Degrades on any error.
     """
-    from distill.track import story_arcs as _ledger_arcs   # local: keeps import order simple
+    from distill.track import story_arcs as _ledger_arcs  # local: keeps import order simple
+
     return _ledger_arcs(min_streak=_STORY_ARC_MIN_STREAK, cap=cap)
 
 
 def main() -> None:
     # Inspection entrypoint: print the delta against current scored items, no state write.
     from distill.synthesize import load_scored
+
     d = compute_delta(load_scored())
     print(json.dumps(d, indent=2))
 

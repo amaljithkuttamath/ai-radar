@@ -1,8 +1,11 @@
 """Shared fixtures. Every test that touches persistent state redirects the module-level path
 constants at a tmp_path first — the pipeline modules resolve their paths from the repo root at
 import time, and a test that forgets to redirect would quietly rewrite the real ledger."""
+
 from __future__ import annotations
 import sys
+import socket
+import os
 from pathlib import Path
 
 import pytest
@@ -13,40 +16,39 @@ sys.path.insert(0, str(ROOT))
 
 @pytest.fixture(autouse=True)
 def _isolate_persistent_state(tmp_path, monkeypatch):
-    """Redirect every persistent path at a tmp dir, for every test, without being asked.
+    # Settings deliberately exports resolved values for legacy stage modules.
+    # Restore the environment after every test so those values cannot leak.
+    monkeypatch.setattr(os, "environ", os.environ.copy())
+    from collectors import common
+    from distill import delta, score, synthesize, reindex
+    from radar import pipeline
 
-    The docstring above has warned about this since the suite was written, and eleven tests
-    still forgot — `test_track.py` and `test_delta.py` called `promote`/`_run` without
-    taking `ledger_path`, so `track.LEDGER` stayed pointed at the committed
-    `data/tracked.json`. They passed while that file was small and drifted into failure as
-    daily runs grew it to 50 items: `assert stats["observed"] == 1` was reading 13 real
-    carryovers alongside the one the test created. Nothing was wrong with the code under
-    test, so the failures looked like flakes and the whole suite stayed red on every PR
-    (`guard.yml` runs it), which trains you to ignore a red check.
+    for module in (common, delta, score, synthesize, reindex, pipeline):
+        monkeypatch.setattr(module, "ROOT", tmp_path)
+    monkeypatch.setattr(common, "RAW", tmp_path / "data/raw")
+    monkeypatch.setattr(common, "SEEN_PATH", tmp_path / "data/seen.json")
+    monkeypatch.setattr(delta, "STATE_PATH", tmp_path / "data/state.json")
+    monkeypatch.setattr(score, "SCORED", tmp_path / "data/scored")
+    monkeypatch.setattr(synthesize, "SCORED", tmp_path / "data/scored")
+    monkeypatch.setattr(synthesize, "ENRICHED", tmp_path / "data/enriched")
+    monkeypatch.setattr(reindex, "REPORTS", tmp_path / "reports")
 
-    A convention that has to be remembered is not isolation. Autouse makes forgetting
-    impossible: the opt-in fixtures below still work and simply override this with their
-    own tmp path, and a test that wants the real files must now say so explicitly.
-    """
-    from distill import delta, track
-
-    scored = tmp_path / "_auto_scored"
-    scored.mkdir(exist_ok=True)
-    monkeypatch.setattr(track, "LEDGER", tmp_path / "_auto_tracked.json")
-    monkeypatch.setattr(track, "SCORED", scored)
-    monkeypatch.setattr(delta, "STATE_PATH", tmp_path / "_auto_state.json")
-
-    # Same argument, applied to the network. `llm.model_for` now falls back to reading the
-    # provider's live catalogue when a role has no pinned model, and the separation fence
-    # calls it for both sides of every check — so a test that sets a base URL and key but
-    # pins only one role would reach for the network and hang on the timeout. The suite's
-    # rule is no network, and a rule that has to be remembered is not a rule.
-    # Patched as a function rather than via `RADAR_AUTO_MODEL=0`: the fence is routinely
-    # called with an explicit env dict, which `setenv` would not reach. Tests that
-    # exercise auto-resolution bind the real function before this replaces it.
+    from distill import track
     import llm
+
+    monkeypatch.setattr(track, "LEDGER", tmp_path / "data/tracked.json")
+    monkeypatch.setattr(track, "SCORED", tmp_path / "data/scored")
     llm._AUTO_CACHE.clear()
     monkeypatch.setattr(llm, "auto_model", lambda *a, **kw: "")
+
+    connect = socket.create_connection
+
+    def offline(address, *args, **kwargs):
+        if address[0] in {"127.0.0.1", "::1", "localhost"}:
+            return connect(address, *args, **kwargs)
+        raise AssertionError("Tests must replace network access at the transport boundary")
+
+    monkeypatch.setattr(socket, "create_connection", offline)
 
 
 def make_item(**over) -> dict:
@@ -76,6 +78,7 @@ def make_item(**over) -> dict:
 def ledger_path(tmp_path, monkeypatch):
     """Point the tracked-item ledger at a tmp file for the duration of a test."""
     from distill import track
+
     p = tmp_path / "tracked.json"
     monkeypatch.setattr(track, "LEDGER", p)
     return p
@@ -85,6 +88,7 @@ def ledger_path(tmp_path, monkeypatch):
 def scored_dir(tmp_path, monkeypatch):
     """Point data/scored/ at a tmp dir."""
     from distill import track
+
     d = tmp_path / "scored"
     d.mkdir()
     monkeypatch.setattr(track, "SCORED", d)
@@ -95,6 +99,7 @@ def scored_dir(tmp_path, monkeypatch):
 def no_profile(monkeypatch):
     """Neutralize config/profile.yaml + the FOCUS env var so focus_match is deterministic."""
     from distill import focus
+
     focus._profile_terms.cache_clear()
     monkeypatch.setenv("FOCUS", "")
     monkeypatch.setattr(focus, "PROFILE", Path("/nonexistent/profile.yaml"))

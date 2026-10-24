@@ -12,6 +12,7 @@ Also the home of `magnitude()` — the UNSATURATED traction number. rank_key squ
 doubling traction is a detectable move rather than a rounding error. It lives here because
 this module imports nothing local, so both can use it without an import cycle.
 """
+
 from __future__ import annotations
 from math import log1p
 
@@ -21,17 +22,21 @@ def magnitude(item: dict) -> float:
     but NOT squashed into [0,1) the way rank_key's tiebreak is. Used for movers and for the
     tracked-item traction history."""
     sig = item.get("signals") or {}
-    return (log1p(sig.get("hf_upvotes") or 0)
-            + 0.7 * log1p(sig.get("hf_likes") or 0)
-            + 0.5 * log1p(sig.get("gh_stars") or 0)
-            + 0.3 * log1p(sig.get("hn_points") or 0))
+    return (
+        log1p(sig.get("hf_upvotes") or 0)
+        + 0.7 * log1p(sig.get("hf_likes") or 0)
+        + 0.5 * log1p(sig.get("gh_stars") or 0)
+        + 0.3 * log1p(sig.get("hn_points") or 0)
+    )
 
 
 def rank_key(item: dict) -> float:
     sig = item.get("signals") or {}
-    mag = (log1p(sig.get("hf_upvotes") or 0)
-           + 0.7 * log1p(sig.get("hf_likes") or 0)
-           + 0.5 * log1p(sig.get("gh_stars") or 0)
-           + 0.5 * log1p(sig.get("hn_points") or 0))
-    tiebreak = mag / (mag + 10.0)          # [0, inf) -> [0, 1)
+    mag = (
+        log1p(sig.get("hf_upvotes") or 0)
+        + 0.7 * log1p(sig.get("hf_likes") or 0)
+        + 0.5 * log1p(sig.get("gh_stars") or 0)
+        + 0.5 * log1p(sig.get("hn_points") or 0)
+    )
+    tiebreak = mag / (mag + 10.0)  # [0, inf) -> [0, 1)
     return (item.get("score") or 0) + tiebreak

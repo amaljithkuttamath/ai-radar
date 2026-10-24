@@ -34,18 +34,26 @@ Two things changed as a result, and both matter more than the endpoint swap:
 
 Run: python -m distill.synthesize
 """
+
 from __future__ import annotations
-import os, re, sys, json, urllib.request, urllib.error, urllib.parse
+import os
+import re
+import sys
+import json
+import urllib.request
+import urllib.error
+import urllib.parse
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from collectors.common import ROOT, parse_window  # noqa: E402
+from collectors.common import ROOT, PROJECT_ROOT, parse_window, timestamp, validate_item  # noqa: E402
 from distill.rank import rank_key  # noqa: E402
 from distill.delta import compute_delta, save_state, story_arcs  # noqa: E402
 from distill.focus import active_terms as _focus_active_terms, _term_hit, _blob as _focus_blob  # noqa: E402
 from distill.cluster import cluster_items  # noqa: E402
 from distill.diversity import diversify  # noqa: E402
+from radar.storage import atomic_text
 import llm  # noqa: E402  (leaf: provider config shared with grader/)
 
 WINDOW = os.environ.get("WINDOW", "48h")
@@ -74,14 +82,15 @@ def resolve_backend(requested: str, env: dict | None = None) -> tuple[str, str |
     env = os.environ if env is None else env
     if requested == "github":
         chosen, _ = resolve_backend("auto", env)
-        return chosen, ("RADAR_MODEL_BACKEND=github is retired (GitHub Models shut down "
-                        f"2026-07-30); using '{chosen}'. Set the variable explicitly to silence this.")
+        return chosen, (
+            "RADAR_MODEL_BACKEND=github is retired (GitHub Models shut down "
+            f"2026-07-30); using '{chosen}'. Set the variable explicitly to silence this."
+        )
     if requested != "auto":
         return requested, None
     # The shared provider comes first: one base URL + one key serves synthesis and the
     # grader alike, and it is the configuration the docs and `python3 -m llm` describe.
-    if env.get("RADAR_LLM_BASE_URL") and (env.get("RADAR_LLM_API_KEY")
-                                          or env.get("OPENAI_API_KEY")):
+    if env.get("RADAR_LLM_BASE_URL") and (env.get("RADAR_LLM_API_KEY") or env.get("OPENAI_API_KEY")):
         return "openai", None
     # Direct-vendor keys, still supported for anyone who had them before the unification.
     if env.get("ANTHROPIC_API_KEY"):
@@ -90,9 +99,11 @@ def resolve_backend(requested: str, env: dict | None = None) -> tuple[str, str |
         return "openai", None
     # Neither key. Still has to publish something: the template digest is a real digest —
     # scored items, observed signals, no invented prose — just not a synthesized one.
-    return "template", ("no model provider configured (set RADAR_LLM_BASE_URL + "
-                        "RADAR_LLM_API_KEY); falling back to the template backend "
-                        "(deterministic, no synthesis)")
+    return "template", (
+        "no model provider configured (set RADAR_LLM_BASE_URL + "
+        "RADAR_LLM_API_KEY); falling back to the template backend "
+        "(deterministic, no synthesis)"
+    )
 
 
 BACKEND, _BACKEND_NOTE = resolve_backend(_REQUESTED_BACKEND)
@@ -100,7 +111,7 @@ if _BACKEND_NOTE:
     print(f"[distill] {_BACKEND_NOTE}", file=sys.stderr)
 SCORED = ROOT / "data" / "scored"
 ENRICHED = ROOT / "data" / "enriched"
-SPEC = (ROOT / "distill" / "digest.md").read_text()
+SPEC = (PROJECT_ROOT / "distill" / "digest.md").read_text()
 
 # Payload caps. These were sized around GitHub Models' ~16k-token INPUT ceiling, which is
 # why the per-backend override table existed (github: 24 candidates / 360 summary chars).
@@ -143,7 +154,7 @@ def _build_provenance(i: dict) -> str:
     Omits any field that is missing or zero — never fabricates information."""
     parts: list[str] = []
     # Score reasons from heuristic (e.g. 'frontier/strong-group authorship')
-    for r in (i.get("score_reasons") or []):
+    for r in i.get("score_reasons") or []:
         if r:
             parts.append(r)
     # Traction figures — only emit non-zero values
@@ -180,18 +191,18 @@ def load_scored() -> list[dict]:
     if SCORED.exists():
         for p in SCORED.glob("*.json"):
             try:
-                it = json.loads(p.read_text())
-            except Exception:
+                it = validate_item(json.loads(p.read_text(encoding="utf-8")))
+                fetched = timestamp(it["fetched"])
+            except (OSError, ValueError) as exc:
+                print(f"[distill] skipped {p.name}: {exc}", file=sys.stderr)
                 continue
-            try:
-                fetched = datetime.fromisoformat(it.get("fetched", ""))
-            except ValueError:
-                continue
-            if fetched >= cutoff:
+            if cutoff <= fetched <= datetime.now(timezone.utc) + timedelta(minutes=5):
                 items.append(it)
     # rank_key (score + signal magnitude) is primary; focus_match only breaks exact ties,
     # staying a re-rank boost rather than overriding traction.
-    items.sort(key=lambda x: (rank_key(x), 1 if x.get("focus_match") else 0), reverse=True)
+    items.sort(
+        key=lambda x: (x.get("score") or 0, bool(x.get("focus_match")), rank_key(x), x["id"]), reverse=True
+    )
     return items
 
 
@@ -199,20 +210,32 @@ def load_enriched() -> dict[str, dict]:
     """Per-item enrichment briefs from the (optional) enrich stage, keyed by item id.
     Empty when RADAR_AGENT never ran — synthesis then behaves exactly as before."""
     out: dict[str, dict] = {}
+    if os.environ.get("RADAR_AGENT", "off").lower() != "on" or BACKEND in {"dryrun", "template"}:
+        return out
+    cutoff = datetime.now(timezone.utc) - parse_window(WINDOW)
     if ENRICHED.exists():
         for p in ENRICHED.glob("*.json"):
             try:
                 e = json.loads(p.read_text())
             except Exception:
                 continue
-            if e.get("item_id"):
+            if not isinstance(e, dict):
+                continue
+            try:
+                fresh = timestamp(e.get("enriched_at")) >= cutoff
+            except ValueError:
+                continue
+            if fresh and e.get("item_id"):
                 out[e["item_id"]] = e
     return out
 
 
-def build_prompt(items: list[dict], _strip_briefs: bool = False,
-                 max_candidates: int | None = None,
-                 summary_chars: int | None = None) -> tuple[str, str, int]:
+def build_prompt(
+    items: list[dict],
+    _strip_briefs: bool = False,
+    max_candidates: int | None = None,
+    summary_chars: int | None = None,
+) -> tuple[str, str, int]:
     # max_candidates / summary_chars let the 413 fallback shrink the request below the
     # backend's input ceiling. Default to the module caps when unset.
     max_candidates = MAX_CANDIDATES if max_candidates is None else max_candidates
@@ -223,24 +246,26 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
     # fresh items only; carryovers get their own budget afterwards.
     fresh = [i for i in items if not i.get("carryover")]
     carried = [i for i in items if i.get("carryover")]
-    keep = [i for i in fresh if (i.get("score") or 0) >= max(2, THRESHOLD - 1)]
+    # Reserve category coverage, then backfill every unused slot. Diversifying the
+    # whole ranked pool first avoids leaving holes after near-duplicate removal.
+    eligible = [i for i in fresh if (i.get("score") or 0) >= 1]
+    eligible.sort(
+        key=lambda i: (i.get("score") or 0, bool(i.get("focus_match")), rank_key(i), i["id"]), reverse=True
+    )
+    eligible = diversify(eligible)
+    reserved = []
+    for category, slots in (("hardware", HARDWARE_SLOTS), ("releases", RELEASE_SLOTS)):
+        reserved.extend([i for i in eligible if i["category"] == category][:slots])
+    chosen = reserved[:max_candidates]
+    selected_ids = {i["id"] for i in chosen}
+    chosen.extend(i for i in eligible if i["id"] not in selected_ids)
+    chosen = chosen[:max_candidates]
 
-    # Category quotas: guarantee non-research a few slots (they score lower than research
-    # papers structurally, e.g. a vendor blog has no HF/GitHub trending). Lower floor (>=1)
-    # lets them in; the model still sees their real score and routes them correctly.
-    research = [i for i in keep if i["category"] == "research"]
-    hardware = [i for i in fresh if i["category"] == "hardware" and (i.get("score") or 0) >= 1]
-    releases = [i for i in fresh if i["category"] == "releases" and (i.get("score") or 0) >= 1]
-    research_slots = max(0, max_candidates - HARDWARE_SLOTS - RELEASE_SLOTS)
-    chosen = (research[:research_slots]
-              + hardware[:HARDWARE_SLOTS]
-              + releases[:RELEASE_SLOTS])
     # Carryover slice, widened when today's collection was quiet (see CARRYOVER_SLOTS).
-    slots = (CARRYOVER_SLOTS if len(chosen) >= QUIET_FLOOR
-             else max(CARRYOVER_SLOTS, QUIET_FLOOR - len(chosen)))
+    slots = CARRYOVER_SLOTS if len(chosen) >= QUIET_FLOOR else max(CARRYOVER_SLOTS, QUIET_FLOOR - len(chosen))
     carried.sort(key=rank_key, reverse=True)
     chosen += carried[:slots]
-    chosen.sort(key=rank_key, reverse=True)   # model sees a single ranked list
+    chosen.sort(key=rank_key, reverse=True)  # model sees a single ranked list
     # Diversity pass: collapse near-duplicate titles (e.g. Foo-1.0-9B / -35B / -GGUF)
     # and cap items-per-source so one lab's release sweep can't dominate the digest.
     # Applied AFTER category quotas + ranking so higher-signal exemplars survive.
@@ -254,8 +279,13 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
         # REQUIRES surfacing these as visible links, so they must reach the model.
         links = {k: v for k, v in (i.get("links") or {}).items() if v}
         row = {
-            "title": i["title"], "url": i["url"], "source": i["source"],
-            "category": i["category"], "score": i["score"],
+            "id": i["id"],
+            "observed_at": i.get("fetched"),
+            "title": i["title"],
+            "url": i["url"],
+            "source": i["source"],
+            "category": i["category"],
+            "score": i["score"],
             "reasons": i.get("score_reasons", []),
             "focus_match": i.get("focus_match", False),
             "summary": (i.get("raw_summary") or "")[:summary_chars],
@@ -267,6 +297,8 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
             "gh_stars": sig.get("gh_stars") or 0,
             "hn_points": sig.get("hn_points") or 0,
             "reddit_score": sig.get("reddit_score") or 0,
+            "hf_likes": sig.get("hf_likes") or 0,
+            "hf_downloads": sig.get("hf_downloads") or 0,
         }
         if links:
             row["links"] = links
@@ -282,7 +314,7 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
             row["traction_delta"] = i.get("traction_delta", 0)
         if not _strip_briefs:
             e = enriched.get(i["id"])
-            if e and e.get("brief"):
+            if e and e.get("brief") and e.get("observed_at") == i.get("fetched"):
                 # A generated brief is interpretation, not replacement source evidence.
                 row["brief"] = e["brief"][:summary_chars]
         compact.append(row)
@@ -296,7 +328,8 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
         "\n\nMOVERS since the previous run (use these to write the 'What changed' section; "
         "if first_run is true, skip that section). Counts are exact; `top` lists the highest-"
         "ranked movers in each bucket (the long tail is summarized to counts):\n"
-        + json.dumps(_compact_delta(delta), indent=2) + "\n"
+        + json.dumps(_compact_delta(delta), indent=2)
+        + "\n"
     )
     # Story arcs: items with multi-run streak + rising traction. Cap at 10; skip when none.
     arcs = story_arcs()
@@ -305,7 +338,8 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
         arcs_note = (
             "\n\nSTORY ARCS (items with rising traction across >= 3 consecutive runs; "
             "use these for the optional 'Story arcs' subsection in the digest):\n"
-            + json.dumps(arcs, indent=2) + "\n"
+            + json.dumps(arcs, indent=2)
+            + "\n"
         )
     # Topic clusters: group candidates into emergent themes. Degrade to empty when
     # clustering yields nothing useful, which keeps the main list flat.
@@ -325,17 +359,20 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
             "\n\nTOPIC CLUSTERS (emergent themes for the main list; group items under these "
             "short headers in the output. Items not in a cluster go under their natural "
             "position. Degrade to the flat list if clusters don't add clarity):\n"
-            + json.dumps(clusters, indent=2) + "\n"
+            + json.dumps(clusters, indent=2)
+            + "\n"
         )
     user = (
         f"TODAY={today}  WINDOW={WINDOW}  MAX_ITEMS={MAX_ITEMS}  "
         f"MARKET={'on' if MARKET else 'off'}  INCLUDE_THRESHOLD={THRESHOLD}\n\n"
         f"Date the report {today}. Use ONLY that date in any header; do not infer a date from "
         "your training data or the items.\n\n"
-        + delta_note + arcs_note + clusters_note +
-        "\nHere are the scored candidate items (JSON). Produce the digest per the spec. "
-        "The heuristic traction score is 0–4 from observable signals; add up to +1 yourself "
-        "for genuine novelty / challenging a common assumption (max 5), and explain it. "
+        + delta_note
+        + arcs_note
+        + clusters_note
+        + "\nHere are the scored candidate items (JSON). Produce the digest per the spec. "
+        "The traction score is 0–5 from observable signals. Preserve the supplied score; "
+        "explain its evidence without adding model-awarded points. "
         "Items with focus_match=true are in a FOCUS area — use that ONLY as a re-rank boost "
         "for ordering and relevance, never added to the score. Skip low-signal items rather "
         "than padding.\n"
@@ -344,7 +381,7 @@ def build_prompt(items: list[dict], _strip_briefs: bool = False,
         "just now. Put them under 'Still developing' with their current numbers, unless "
         "traction_delta is strongly positive — a carryover that is still climbing hard has "
         "earned a main-list slot. Never describe a carryover as new.\n\n"
-        f"{json.dumps(compact, indent=2)}"
+        f"CANDIDATES_JSON\n{json.dumps(compact, indent=2)}"
     )
     return system, user, len(compact)
 
@@ -362,32 +399,39 @@ def _compact_delta(delta: dict, top: int = MOVERS_TOP) -> dict:
         # Sort by the strongest signal each bucket carries: score-tier change for
         # climbing/cooled, else raw score. (Delta rows don't carry traction signals, so
         # rank_key can't be used here.)
-        rows = sorted(rows, key=lambda r: (r.get("score_delta", 0), r.get("score", 0)),
-                      reverse=True)
+        rows = sorted(rows, key=lambda r: (r.get("score_delta", 0), r.get("score", 0)), reverse=True)
         out[bucket] = {"count": len(rows), "top": rows[:top]}
     return out
 
 
-def call_anthropic(system: str, user: str) -> str:
-    body = json.dumps({
-        "model": os.environ.get("RADAR_ANTHROPIC_MODEL", "claude-opus-4-8"),
-        # Matches llm.MAX_TOKENS. The native Anthropic path does not go through llm.chat,
-        # so the two ceilings are set separately and a test asserts they agree — a digest
-        # budget that depends on which caller you took is a bug waiting for a provider
-        # switch.
-        "max_tokens": llm.MAX_TOKENS, "system": system,
-        "messages": [{"role": "user", "content": user}],
-    }).encode()
+def call_anthropic(system: str, user: str, model: str | None = None) -> str:
+    body = json.dumps(
+        {
+            "model": model or os.environ.get("RADAR_ANTHROPIC_MODEL", "claude-opus-4-8"),
+            # Matches llm.MAX_TOKENS. The native Anthropic path does not go through llm.chat,
+            # so the two ceilings are set separately and a test asserts they agree — a digest
+            # budget that depends on which caller you took is a bug waiting for a provider
+            # switch.
+            "max_tokens": llm.MAX_TOKENS,
+            "system": system,
+            "messages": [{"role": "user", "content": user}],
+        }
+    ).encode()
     req = urllib.request.Request(
-        "https://api.anthropic.com/v1/messages", data=body,
-        headers={"x-api-key": os.environ["ANTHROPIC_API_KEY"],
-                 "anthropic-version": "2023-06-01", "content-type": "application/json"})
+        "https://api.anthropic.com/v1/messages",
+        data=body,
+        headers={
+            "x-api-key": os.environ["ANTHROPIC_API_KEY"],
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+        },
+    )
     with urllib.request.urlopen(req, timeout=120) as r:
         data = json.loads(r.read())
     return "".join(b.get("text", "") for b in data.get("content", []))
 
 
-def call_openai_compat(system: str, user: str) -> str:
+def call_openai_compat(system: str, user: str, model: str | None = None) -> str:
     """The shared provider path — see `llm.py`.
 
     This used to carry its own base-URL/key/model env vars, mirroring a near-identical
@@ -395,7 +439,7 @@ def call_openai_compat(system: str, user: str) -> str:
     read one `RADAR_LLM_BASE_URL` + `RADAR_LLM_API_KEY` and differ only in which model
     they name, which is the thing the separation fence actually cares about.
     """
-    return llm.chat(system, user, llm.model_for(llm.SYNTHESIS))
+    return llm.chat(system, user, model or llm.model_for(llm.SYNTHESIS))
 
 
 # `call_github` lived here until 2026-08. GitHub Models was retired on 2026-07-30 and
@@ -405,13 +449,18 @@ def call_openai_compat(system: str, user: str) -> str:
 # `call_openai_compat` above is its successor: same free-tier role, no vendor baked in.
 
 
-def call_ollama(system: str, user: str) -> str:
-    body = json.dumps({
-        "model": os.environ.get("RADAR_OLLAMA_MODEL", "qwen3:4b"),
-        "system": system, "prompt": user, "stream": False,
-    }).encode()
-    req = urllib.request.Request("http://localhost:11434/api/generate", data=body,
-                                 headers={"content-type": "application/json"})
+def call_ollama(system: str, user: str, model: str | None = None) -> str:
+    body = json.dumps(
+        {
+            "model": model or os.environ.get("RADAR_OLLAMA_MODEL", "qwen3:4b"),
+            "system": system,
+            "prompt": user,
+            "stream": False,
+        }
+    ).encode()
+    req = urllib.request.Request(
+        "http://localhost:11434/api/generate", data=body, headers={"content-type": "application/json"}
+    )
     with urllib.request.urlopen(req, timeout=300) as r:
         return json.loads(r.read()).get("response", "")
 
@@ -452,13 +501,18 @@ def call_template(system: str, user: str) -> str:
     items = extract_candidates(user)
     if items is None:
         # Loud, because this is the floor. Nothing catches a bad digest below this point.
-        print("[distill] template backend could not recover the candidate array from the "
-              "prompt; emitting an error digest", file=sys.stderr)
-        return ("# AI Radar — Template Error\n\n"
-                "Could not recover the candidate items from the assembled prompt. "
-                "This is a bug in `distill/synthesize.py:extract_candidates`, not a "
-                "collection failure — the corpus is intact and re-running distill after "
-                "a fix will produce the digest.\n")
+        print(
+            "[distill] template backend could not recover the candidate array from the "
+            "prompt; emitting an error digest",
+            file=sys.stderr,
+        )
+        return (
+            "# AI Radar — Template Error\n\n"
+            "Could not recover the candidate items from the assembled prompt. "
+            "This is a bug in `distill/synthesize.py:extract_candidates`, not a "
+            "collection failure — the corpus is intact and re-running distill after "
+            "a fix will produce the digest.\n"
+        )
 
     today = f"{datetime.now(timezone.utc):%Y-%m-%d}"
     lines = [
@@ -467,19 +521,31 @@ def call_template(system: str, user: str) -> str:
         f"**Top-line** — {len(items)} candidate items scored in the last {WINDOW}. "
         "Run with `RADAR_MODEL_BACKEND=anthropic` (or `auto` with ANTHROPIC_API_KEY set) "
         "for model synthesis and insights.",
-        ""
+        "",
     ]
 
     # Main list — respect THRESHOLD and MAX_ITEMS
     main = [i for i in items if (i.get("score") or 0) >= THRESHOLD]
     if main:
-        lines.append(f"**Main list** ({len(main)} scored ≥{THRESHOLD}, showing top {min(len(main), MAX_ITEMS)})")
+        lines.append(
+            f"**Main list** ({len(main)} scored ≥{THRESHOLD}, showing top {min(len(main), MAX_ITEMS)})"
+        )
         for i in main[:MAX_ITEMS]:
             sigs = []
-            if i.get("hf_upvotes"): sigs.append(f"{i['hf_upvotes']} HF upvotes")
-            if i.get("gh_stars"): sigs.append(f"{i['gh_stars']} GitHub stars")
-            if i.get("hn_points"): sigs.append(f"{i['hn_points']} HN points")
-            if i.get("reddit_score"): sigs.append(f"{i['reddit_score']} Reddit score")
+            if i.get("hf_upvotes"):
+                sigs.append(f"{i['hf_upvotes']} HF upvotes")
+            if i.get("gh_stars"):
+                sigs.append(f"{i['gh_stars']} GitHub stars")
+            if i.get("hn_points"):
+                sigs.append(f"{i['hn_points']} HN points")
+            if i.get("hf_likes"):
+                sigs.append(f"{i['hf_likes']} HF likes")
+            if i.get("hf_downloads"):
+                sigs.append(f"{i['hf_downloads']} HF downloads")
+            if i.get("observed_at"):
+                sigs.append(f"observed {i['observed_at']}")
+            if i.get("reddit_score"):
+                sigs.append(f"{i['reddit_score']} Reddit score")
             signal_str = " · ".join(sigs) if sigs else "no tracked traction signal"
             summary = (i.get("summary") or i.get("brief") or "")[:300]
             lines.append(f"- **{i['title']}** [{i['category']}] · score {i['score']}/5")
@@ -488,10 +554,10 @@ def call_template(system: str, user: str) -> str:
             if i.get("reasons"):
                 lines.append(f"  Reasons: {', '.join(i['reasons'])}")
             if summary:
-                lines.append(f"  New: {summary}")
+                lines.append(f"  Source summary: {summary}")
             lines.append("")
     else:
-        lines.append(f"**Main list**")
+        lines.append("**Main list**")
         lines.append(f"_No items scored ≥{THRESHOLD} in this window._")
         lines.append("")
 
@@ -501,17 +567,29 @@ def call_template(system: str, user: str) -> str:
         lines.append(f"**Watch-list** ({len(watch)} items)")
         for i in watch[:8]:
             sigs = []
-            if i.get("hf_upvotes"): sigs.append(f"{i['hf_upvotes']} HF upvotes")
-            if i.get("gh_stars"): sigs.append(f"{i['gh_stars']} GitHub stars")
-            if i.get("hn_points"): sigs.append(f"{i['hn_points']} HN points")
-            if i.get("reddit_score"): sigs.append(f"{i['reddit_score']} Reddit score")
+            if i.get("hf_upvotes"):
+                sigs.append(f"{i['hf_upvotes']} HF upvotes")
+            if i.get("gh_stars"):
+                sigs.append(f"{i['gh_stars']} GitHub stars")
+            if i.get("hn_points"):
+                sigs.append(f"{i['hn_points']} HN points")
+            if i.get("hf_likes"):
+                sigs.append(f"{i['hf_likes']} HF likes")
+            if i.get("hf_downloads"):
+                sigs.append(f"{i['hf_downloads']} HF downloads")
+            if i.get("observed_at"):
+                sigs.append(f"observed {i['observed_at']}")
+            if i.get("reddit_score"):
+                sigs.append(f"{i['reddit_score']} Reddit score")
             signal_str = " · ".join(sigs) if sigs else "no tracked traction signal"
             lines.append(f"- {i['title']} · {i['source']} · score {i['score']}/5 · {signal_str}")
         lines.append("")
 
     lines.append("**Insights**")
     lines.append("- Template backend shows raw scored items without model judgment.")
-    lines.append("- Set a model backend for synthesis: `export RADAR_MODEL_BACKEND=anthropic` + `export ANTHROPIC_API_KEY=...`")
+    lines.append(
+        "- Set a model backend for synthesis: `export RADAR_MODEL_BACKEND=anthropic` + `export ANTHROPIC_API_KEY=...`"
+    )
     lines.append("")
 
     lines.append("**Action items**")
@@ -522,17 +600,16 @@ def call_template(system: str, user: str) -> str:
     return "\n".join(lines)
 
 
-
-
-
-def _log_prompt_stats(system: str, user: str, n_items: int,
-                       candidates: int, shrink_level: int) -> None:
+def _log_prompt_stats(system: str, user: str, n_items: int, candidates: int, shrink_level: int) -> None:
     """Log approximate prompt token count and key sizing metrics to stderr.
     Token estimate: len // 4 (industry-standard rough conversion). No deps.
     Format: [distill] prompt ~NNNN tok | candidates=N | shrink_level=N | items=N"""
     tok = (len(system) + len(user)) // 4
-    print(f"[distill] prompt ~{tok} tok | candidates={candidates} "
-          f"| shrink_level={shrink_level} | items={n_items}", file=sys.stderr)
+    print(
+        f"[distill] prompt ~{tok} tok | candidates={candidates} "
+        f"| shrink_level={shrink_level} | items={n_items}",
+        file=sys.stderr,
+    )
 
 
 def degraded_banner(backend: str, reason: str) -> str:
@@ -557,9 +634,7 @@ def degraded_banner(backend: str, reason: str) -> str:
 # Reasoning models wrap their working in these before answering. Stripped rather than
 # trusted-absent, because the pipeline now runs on whatever free model the catalogue
 # offers (`llm.auto_model`) and half of those think out loud by default.
-_REASONING_BLOCK = re.compile(
-    r"<\s*(think|thinking|reasoning|scratchpad)\s*>.*?<\s*/\s*\1\s*>",
-    re.I | re.S)
+_REASONING_BLOCK = re.compile(r"<\s*(think|thinking|reasoning|scratchpad)\s*>.*?<\s*/\s*\1\s*>", re.I | re.S)
 # An unclosed opener means the response was cut off mid-thought — everything after it is
 # working, not output.
 _REASONING_OPEN = re.compile(r"<\s*(?:think|thinking|reasoning|scratchpad)\s*>", re.I)
@@ -597,10 +672,10 @@ def usable_digest(raw: str) -> str:
     """
     text = _REASONING_BLOCK.sub("", raw)
     if opener := _REASONING_OPEN.search(text):
-        text = text[:opener.start()]
+        text = text[: opener.start()]
 
     if h1 := _DIGEST_H1.search(text):
-        text = text[h1.start():]
+        text = text[h1.start() :]
 
     body = text.strip()
     if not body:
@@ -608,18 +683,19 @@ def usable_digest(raw: str) -> str:
     if not _DIGEST_H1.search(body):
         raise NotADigest(
             f"no H1 title in {len(body)} chars of model output — this is the shape of a "
-            "reasoning transcript, not a digest")
+            "reasoning transcript, not a digest"
+        )
     # Sections count whether they are headings or standalone bold labels: 2026-06-04 and
     # 2026-06-11 are legitimate quiet-window digests that label sections in bold, and
     # refusing those would trade three bad digests for two good ones. `grader/
     # deterministic.py` accepts the same two forms; `tests/test_synthesize_output.py`
     # asserts the pair does not drift, which is the same pairing discipline the duplicated
     # DEGRADED_MARKER already has.
-    if not (re.search(r"^#{2,3}\s+\S", body, re.M)
-            or re.search(r"^\*\*[^*\[\]]{1,40}\*\*\s*$", body, re.M)):
+    if not (re.search(r"^#{2,3}\s+\S", body, re.M) or re.search(r"^\*\*[^*\[\]]{1,40}\*\*\s*$", body, re.M)):
         raise NotADigest(
             f"title but no sections in {len(body)} chars — the response was cut off "
-            "before the digest was written")
+            "before the digest was written"
+        )
     return body
 
 
@@ -644,7 +720,7 @@ def ground_story_arcs(report: str, user: str) -> str:
     arcs = []
     if marker := re.search(r"^STORY ARCS[^\n]*:\n", user, re.M):
         try:
-            value, _ = _DECODER.raw_decode(user[marker.end():].lstrip())
+            value, _ = _DECODER.raw_decode(user[marker.end() :].lstrip())
             if isinstance(value, list):
                 arcs = value
         except ValueError:
@@ -660,9 +736,11 @@ def ground_story_arcs(report: str, user: str) -> str:
         title = re.sub(r"([\\\[\]*_`])", r"\\\1", title)
         # Parentheses in a source URL must not terminate the Markdown destination.
         link = urllib.parse.quote(url, safe=":/?#=&%+@~,-._")
-        lines.append(f"- [{title}]({link}) — seen {arc['streak']} runs, "
-                     f"traction +{arc['mag_pct_change']}% since first seen on "
-                     f"{arc['first_seen']}.")
+        lines.append(
+            f"- [{title}]({link}) — seen {arc['streak']} runs, "
+            f"traction +{arc['mag_pct_change']}% since first seen on "
+            f"{arc['first_seen']}."
+        )
     replacement = "## Story arcs\n\n" + "\n".join(lines) + "\n\n" if lines else ""
 
     def replace(match):
@@ -690,15 +768,17 @@ def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: 
         dict(_strip_briefs=True, max_candidates=12, summary_chars=180),
         dict(_strip_briefs=True, max_candidates=max(MAX_ITEMS, 8), summary_chars=120),
     ]
-    caller = {"anthropic": call_anthropic, "openai": call_openai_compat,
-              "ollama": call_ollama}[BACKEND]
+    global _LAST_REQUEST
+    caller = {"anthropic": call_anthropic, "openai": call_openai_compat, "ollama": call_ollama}[BACKEND]
 
-    last_413: urllib.error.HTTPError | None = None
     for n, kw in enumerate(attempts):
         if n:
-            print(f"[distill] 413 on synthesis; shrinking payload "
-                  f"(attempt {n}/{len(attempts)-1}: {kw})", file=sys.stderr)
+            print(
+                f"[distill] 413 on synthesis; shrinking payload (attempt {n}/{len(attempts) - 1}: {kw})",
+                file=sys.stderr,
+            )
             system, user, n_cand = build_prompt(items, **kw)
+        _LAST_REQUEST = (system, user, n_cand)
         _log_prompt_stats(system, user, len(items), n_cand, n)
         try:
             raw = caller(system, user)
@@ -710,25 +790,29 @@ def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: 
             try:
                 return ground_story_arcs(usable_digest(ex.partial), user)
             except NotADigest as why:
-                print(f"[distill] truncated output is not a digest ({why}); "
-                      "degrading to the template digest", file=sys.stderr)
-                return degraded_banner(BACKEND, f"response truncated — {why}") + \
-                    call_template(system, user)
+                print(
+                    f"[distill] truncated output is not a digest ({why}); degrading to the template digest",
+                    file=sys.stderr,
+                )
+                return degraded_banner(BACKEND, f"response truncated — {why}") + call_template(system, user)
         except urllib.error.HTTPError as ex:
             if ex.code == 413:
-                last_413 = ex
                 continue
             if ex.code in PERMANENT_HTTP:
-                print(f"[distill] {BACKEND} backend failed permanently (HTTP {ex.code} "
-                      f"{ex.reason}); degrading to the template digest", file=sys.stderr)
-                return degraded_banner(BACKEND, f"HTTP {ex.code} {ex.reason}") + \
-                    call_template(system, user)
+                print(
+                    f"[distill] {BACKEND} backend failed permanently (HTTP {ex.code} "
+                    f"{ex.reason}); degrading to the template digest",
+                    file=sys.stderr,
+                )
+                return degraded_banner(BACKEND, f"HTTP {ex.code} {ex.reason}") + call_template(system, user)
             raise
         except urllib.error.URLError as ex:
             # DNS failure / refused connection / TLS error. Indistinguishable from a
             # retired host at this layer, and equally not worth losing the digest over.
-            print(f"[distill] {BACKEND} backend unreachable ({ex.reason}); "
-                  "degrading to the template digest", file=sys.stderr)
+            print(
+                f"[distill] {BACKEND} backend unreachable ({ex.reason}); degrading to the template digest",
+                file=sys.stderr,
+            )
             return degraded_banner(BACKEND, str(ex.reason)) + call_template(system, user)
 
         # A 200 is not yet a digest. Everything above this line asks whether the *request*
@@ -737,62 +821,102 @@ def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: 
         try:
             return ground_story_arcs(usable_digest(raw), user)
         except NotADigest as why:
-            print(f"[distill] model returned 200 but not a digest ({why}); "
-                  "degrading to the template digest", file=sys.stderr)
+            print(
+                f"[distill] model returned 200 but not a digest ({why}); degrading to the template digest",
+                file=sys.stderr,
+            )
             return degraded_banner(BACKEND, str(why)) + call_template(system, user)
 
-    print("[distill] still 413 after shrinking to the floor; degrading to template",
-          file=sys.stderr)
-    return degraded_banner(BACKEND, f"HTTP 413 after {len(attempts)} shrink attempts") + \
-        call_template(system, user)
+    print("[distill] still 413 after shrinking to the floor; degrading to template", file=sys.stderr)
+    return degraded_banner(BACKEND, f"HTTP 413 after {len(attempts)} shrink attempts") + call_template(
+        system, user
+    )
 
 
-def main() -> None:
+def markdown_text(value: str) -> str:
+    return re.sub(r"([\\`*{}\[\]<>])", r"\\\1", " ".join(value.split()))
+
+
+def validate_report(report: str, user: str, candidates: int) -> None:
+    """Reject empty, misdated, unsafe, or ungrounded-link output before publication.
+
+    This checks structure and supplied URLs, not the truth of model-written prose;
+    editorial evaluation remains independent.
+    """
+    date_match = re.search(r"TODAY=(\d{4}-\d{2}-\d{2})", user)
+    if not isinstance(report, str) or not report.strip():
+        raise ValueError("model returned an empty report")
+    if (
+        not date_match
+        or next((line.strip() for line in report.splitlines() if line.startswith("# ")), "")
+        != f"# AI Radar — {date_match[1]}"
+    ):
+        raise ValueError("report header does not match the requested date")
+    if re.search(r"<\s*/?\s*[a-zA-Z][^>]*>", report):
+        raise ValueError("report contains raw HTML")
+    links = re.findall(r"\]\(([^\s)]+)\)", report)
+    allowed = {url.rstrip(".,;:!?)") for url in re.findall(r'https?://[^\s<>"\\\[\]]+', user)}
+    links += re.findall(r"^\s*\[[^\]]+\]:\s*<?([^\s>]+)", report, re.MULTILINE)
+    links += re.findall(r'https?://[^\s<>"\\\[\]]+', report)
+    for url in links:
+        if url.rstrip(".,;:!?)") not in allowed:
+            raise ValueError(f"report contains an unsupported URL: {url}")
+    if candidates and not links:
+        raise ValueError("report has candidates but no source links")
+
+
+def main() -> Path:
+    if BACKEND not in {"openai", "anthropic", "ollama", "template", "dryrun"}:
+        raise ValueError(f"unknown model backend: {BACKEND}")
+    if MAX_ITEMS <= 0 or MAX_CANDIDATES <= 0 or SUMMARY_CHARS <= 0 or not 1 <= THRESHOLD <= 5:
+        raise ValueError("invalid synthesis limits")
+    parse_window(WINDOW)
+    global _LAST_REQUEST
     items = load_scored()
     system, user, n_cand = build_prompt(items)
+    _LAST_REQUEST = (system, user, n_cand)
+    if not n_cand and BACKEND not in {"dryrun", "template"}:
+        raise ValueError("no usable candidates; refusing to replace the published digest")
     if BACKEND in _MODEL_BACKENDS:
         report = synthesize_with_fallback(items, system, user, n_cand)
+        system, user, n_cand = _LAST_REQUEST
     elif BACKEND == "template":
         report = call_template(system, user)
     else:
         _log_prompt_stats(system, user, len(items), n_cand, 0)
-        report = ("# DRYRUN — assembled prompt (no model called)\n\n"
-                  "Set RADAR_MODEL_BACKEND=auto, anthropic, ollama, or template to generate the digest.\n\n"
-                  "## SYSTEM\n" + system + "\n\n## USER\n" + user)
-    out = ROOT / "reports" / f"{datetime.now(timezone.utc):%Y-%m-%d}-digest.md"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(report)
-    # Advance state whenever a real digest was published.
-    #
-    # This used to exclude `template` alongside `dryrun`, on the reasoning that both were
-    # testing modes. That stopped being true when GitHub Models was retired: with no API
-    # key, `auto` resolves to `template` and it becomes the steady-state production
-    # backend. Leaving it excluded would publish a digest daily while never snapshotting
-    # state or promoting to the ledger — so every "what changed" diff would compare against
-    # a frozen yesterday and carryover would slowly empty out. A silently degrading radar
-    # is worse than a visibly broken one.
-    #
-    # `dryrun` still never advances: it writes no real digest, only the assembled prompt.
-    # `RADAR_NO_STATE=1` keeps the old safety valve for anyone running the pipeline locally
-    # against a real checkout who does not want to dirty state.json / tracked.json.
-    if BACKEND != "dryrun" and os.environ.get("RADAR_NO_STATE", "") != "1":
-        save_state(items)
-        # Put today's digest-worthy items on the radar so the next run can re-observe their
-        # traction. Promotion happens only after a digest is actually written — a run that
-        # failed to publish shouldn't leave the ledger claiming it saw these items.
+        report = (
+            "# DRYRUN — assembled prompt (no model called)\n\n"
+            "Set RADAR_MODEL_BACKEND=auto, anthropic, ollama, or template to generate the digest.\n\n"
+            "## SYSTEM\n" + system + "\n\n## USER\n" + user
+        )
+    if BACKEND == "dryrun" or (BACKEND == "template" and _REQUESTED_BACKEND not in {"auto", "github"}):
+        out = ROOT / "data" / "previews" / f"{datetime.now(timezone.utc):%Y-%m-%d}-{BACKEND}.md"
+        atomic_text(out, report)
+    else:
+        validate_report(report, user, n_cand)
+        out = ROOT / "reports" / f"{datetime.now(timezone.utc):%Y-%m-%d}-digest.md"
+        previous = out.read_text(encoding="utf-8") if out.exists() else None
+        atomic_text(out, report)
         try:
-            from distill.track import load_ledger, promote, save_ledger
-            before = load_ledger()
-            after = promote(items, before)
-            save_ledger(after)
-            if len(after) != len(before):
-                print(f"[distill] tracking +{len(after) - len(before)} new items "
-                      f"({len(after)} on the radar)")
-        except Exception as ex:
-            print(f"[distill] promotion skipped: {ex}", file=sys.stderr)
-    n_carry = sum(1 for i in items if i.get("carryover"))
-    print(f"[distill] wrote {out}  (backend={BACKEND}, {len(items)} scored items, "
-          f"{n_carry} carryover)")
+            if os.environ.get("RADAR_NO_STATE") != "1":
+                save_state(items)
+                from distill.track import load_ledger, promote, save_ledger
+
+                save_ledger(promote(items, load_ledger()))
+        except Exception:
+            if previous is None:
+                out.unlink(missing_ok=True)
+            else:
+                atomic_text(out, previous)
+            raise
+        try:
+            from distill.evolution import capture_case
+
+            capture_case(ROOT, system, user, report, BACKEND)
+        except Exception as exc:
+            print(f"[distill] replay capture skipped: {exc}", file=sys.stderr)
+    print(f"[distill] wrote {out}  (backend={BACKEND}, {len(items)} scored items)")
+    return out
 
 
 if __name__ == "__main__":

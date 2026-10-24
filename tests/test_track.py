@@ -5,6 +5,7 @@ existed, an item was collected once, scored once, and never seen again, so `stre
 every item in every committed snapshot and `story_arcs()` could not fire even in principle.
 These tests pin the behaviour that fixes it.
 """
+
 from __future__ import annotations
 import json
 
@@ -27,13 +28,17 @@ def fake_fetchers(*, stars=None, hf=None, paper=None):
 # What can be re-observed
 # ---------------------------------------------------------------------------
 
-@pytest.mark.parametrize("iid,expected", [
-    ("ghrepo:getzep/graphiti", ("github", "getzep/graphiti")),
-    ("hfmodel:owensong/Inflect-Micro-v2", ("hf_model", "owensong/Inflect-Micro-v2")),
-    ("hfdataset:acme/corpus", ("hf_dataset", "acme/corpus")),
-    ("arxiv:2501.01234", ("arxiv", "2501.01234")),
-    ("blog:deadbeef", None),
-])
+
+@pytest.mark.parametrize(
+    "iid,expected",
+    [
+        ("ghrepo:getzep/graphiti", ("github", "getzep/graphiti")),
+        ("hfmodel:owensong/Inflect-Micro-v2", ("hf_model", "owensong/Inflect-Micro-v2")),
+        ("hfdataset:acme/corpus", ("hf_dataset", "acme/corpus")),
+        ("arxiv:2501.01234", ("arxiv", "2501.01234")),
+        ("blog:deadbeef", None),
+    ],
+)
 def test_signal_source_covers_every_id_scheme(iid, expected):
     assert track.signal_source({"id": iid}) == expected
 
@@ -52,8 +57,10 @@ def test_observe_reads_the_source_of_record():
     assert track.observe(entry, fake_fetchers(stars=402)) == {"gh_stars": 402, "gh_forks": 1}
 
     paper = {"id": "arxiv:2501.01234", "links": {}}
-    assert track.observe(paper, fake_fetchers(paper={"hf_upvotes": 62, "hf_comments": 4})) == \
-        {"hf_upvotes": 62, "hf_comments": 4}
+    assert track.observe(paper, fake_fetchers(paper={"hf_upvotes": 62, "hf_comments": 4})) == {
+        "hf_upvotes": 62,
+        "hf_comments": 4,
+    }
 
 
 def test_observe_folds_a_papers_repo_stars_into_its_upvotes():
@@ -91,8 +98,7 @@ def test_streak_accumulates_across_runs():
     This is the assertion the old design could never satisfy: `data/seen.json` dedups an item
     forever, so it appeared in exactly one run's scored set and its streak was pinned at 1.
     """
-    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4,
-                                      signals={"gh_stars": 100})])
+    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4, signals={"gh_stars": 100})])
     assert ledger["ghrepo:acme/widget"]["streak"] == 1
 
     for day, stars in [("2026-07-02", 150), ("2026-07-03", 260), ("2026-07-04", 420)]:
@@ -110,8 +116,7 @@ def test_streak_accumulates_across_runs():
 
 def test_story_arcs_fire_once_streaks_are_real():
     """The feature that had never once produced output in production."""
-    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4,
-                                      signals={"gh_stars": 40})])
+    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4, signals={"gh_stars": 40})])
     assert track.story_arcs(ledger) == [], "one run is not an arc"
 
     for day, stars in [("2026-07-02", 120), ("2026-07-03", 380)]:
@@ -126,8 +131,7 @@ def test_story_arcs_fire_once_streaks_are_real():
 
 
 def test_a_falling_item_is_not_an_arc():
-    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4,
-                                      signals={"gh_stars": 500})])
+    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4, signals={"gh_stars": 500})])
     for day, stars in [("2026-07-02", 480), ("2026-07-03", 470)]:
         ledger, _ = _run(ledger, day, fetchers=fake_fetchers(stars=stars))
     assert track.story_arcs(ledger) == []
@@ -136,8 +140,7 @@ def test_a_falling_item_is_not_an_arc():
 def test_same_day_rerun_does_not_inflate_the_streak():
     """distill can be dispatched manually after a scheduled run. That must not look like an
     extra day of traction."""
-    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4,
-                                      signals={"gh_stars": 100})])
+    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4, signals={"gh_stars": 100})])
     day = ledger["ghrepo:acme/widget"]["last_seen"]
     ledger, stats = _run(ledger, day, fetchers=fake_fetchers(stars=999))
     assert stats["skipped"] == 1 and stats["observed"] == 0
@@ -148,10 +151,10 @@ def test_same_day_rerun_does_not_inflate_the_streak():
 # Pruning
 # ---------------------------------------------------------------------------
 
+
 def test_a_missed_observation_is_not_evidence_of_cooling():
     """A network blip must cost a data point, never a fabricated decline."""
-    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4,
-                                      signals={"gh_stars": 100})])
+    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4, signals={"gh_stars": 100})])
     before = list(ledger["ghrepo:acme/widget"]["mag_history"])
     ledger, stats = _run(ledger, "2026-07-02", fetchers=fake_fetchers(stars=None))
     entry = ledger["ghrepo:acme/widget"]
@@ -162,24 +165,21 @@ def test_a_missed_observation_is_not_evidence_of_cooling():
 
 
 def test_an_unreachable_item_is_dropped_after_max_misses():
-    ledger = track.promote([make_item(id="ghrepo:acme/gone", score=4,
-                                      signals={"gh_stars": 100})])
+    ledger = track.promote([make_item(id="ghrepo:acme/gone", score=4, signals={"gh_stars": 100})])
     for day in ["2026-07-02", "2026-07-03", "2026-07-04"]:
         ledger, _ = _run(ledger, day, fetchers=fake_fetchers(stars=None))
     assert ledger == {}, "a repo that 404s three runs running leaves the radar"
 
 
 def test_flat_traction_ages_an_item_out():
-    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4,
-                                      signals={"gh_stars": 100})])
+    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4, signals={"gh_stars": 100})])
     for day in ["2026-07-0%d" % d for d in range(2, 9)]:
         ledger, _ = _run(ledger, day, fetchers=fake_fetchers(stars=100))
     assert ledger == {}, "an item that stopped moving stops being a radar target"
 
 
 def test_ttl_expires_an_item_however_well_it_is_doing():
-    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4,
-                                      signals={"gh_stars": 100})])
+    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4, signals={"gh_stars": 100})])
     ledger["ghrepo:acme/widget"]["first_seen"] = "2026-01-01"
     ledger, _ = _run(ledger, "2026-07-02", fetchers=fake_fetchers(stars=100000))
     assert ledger == {}
@@ -187,8 +187,7 @@ def test_ttl_expires_an_item_however_well_it_is_doing():
 
 def test_size_cap_keeps_the_biggest_peaks(monkeypatch):
     monkeypatch.setattr(track, "MAX_TRACKED", 2)
-    items = [make_item(id=f"ghrepo:acme/w{n}", score=4, signals={"gh_stars": n * 100})
-             for n in (1, 2, 3, 4)]
+    items = [make_item(id=f"ghrepo:acme/w{n}", score=4, signals={"gh_stars": n * 100}) for n in (1, 2, 3, 4)]
     ledger = track.promote(items)
     ledger, _ = _run(ledger, "2026-07-02", fetchers=fake_fetchers(stars=None))
     assert len(ledger) == 2
@@ -197,8 +196,7 @@ def test_size_cap_keeps_the_biggest_peaks(monkeypatch):
 
 def test_refresh_budget_leaves_low_peaks_unobserved_rather_than_missed():
     """Running out of budget means we didn't look — not that the item was unreachable."""
-    items = [make_item(id=f"ghrepo:acme/w{n}", score=4, signals={"gh_stars": n * 100})
-             for n in (1, 2, 3)]
+    items = [make_item(id=f"ghrepo:acme/w{n}", score=4, signals={"gh_stars": n * 100}) for n in (1, 2, 3)]
     ledger = track.promote(items)
     ledger, stats = _run(ledger, "2026-07-02", fetchers=fake_fetchers(stars=500), budget=1)
     assert stats["observed"] == 1 and stats["skipped"] == 2
@@ -210,19 +208,19 @@ def test_refresh_budget_leaves_low_peaks_unobserved_rather_than_missed():
 # Promotion
 # ---------------------------------------------------------------------------
 
+
 def test_promote_is_selective():
     items = [
-        make_item(id="ghrepo:acme/big", score=4),          # tracked
-        make_item(id="ghrepo:acme/small", score=1),        # below MIN_SCORE
-        make_item(id="blog:xyz", score=5, links={}),       # nothing to re-observe
+        make_item(id="ghrepo:acme/big", score=4),  # tracked
+        make_item(id="ghrepo:acme/small", score=1),  # below MIN_SCORE
+        make_item(id="blog:xyz", score=5, links={}),  # nothing to re-observe
     ]
     ledger = track.promote(items)
     assert set(ledger) == {"ghrepo:acme/big"}
 
 
 def test_promote_never_resets_an_items_history():
-    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4,
-                                      signals={"gh_stars": 100})])
+    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4, signals={"gh_stars": 100})])
     ledger, _ = _run(ledger, "2026-07-02", fetchers=fake_fetchers(stars=300))
     assert ledger["ghrepo:acme/widget"]["streak"] == 2
 
@@ -235,10 +233,10 @@ def test_promote_never_resets_an_items_history():
 # Carryover candidates
 # ---------------------------------------------------------------------------
 
+
 def test_carryover_items_rescore_from_current_signals():
     """An item promoted while small can outrank its original self once it has grown."""
-    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=3,
-                                      signals={"gh_stars": 10})])
+    ledger = track.promote([make_item(id="ghrepo:acme/widget", score=3, signals={"gh_stars": 10})])
     ledger, _ = _run(ledger, "2026-07-02", fetchers=fake_fetchers(stars=9000))
 
     items = track.carryover_items(ledger)
@@ -248,18 +246,31 @@ def test_carryover_items_rescore_from_current_signals():
     assert it["streak"] == 2
     assert it["traction_delta"] > 0
     assert it["signals"]["gh_stars"] == 9000
-    assert "trending (Tier-2 signal)" in it["score_reasons"]
+    assert "observed community traction" in it["score_reasons"]
     assert it["score"] >= 2
 
 
 def test_carryover_items_drop_below_the_routing_floor():
-    ledger = {"ghrepo:acme/quiet": {
-        "id": "ghrepo:acme/quiet", "title": "acme/quiet", "url": "https://github.com/acme/quiet",
-        "source": "GitHub Trending", "category": "releases", "links": {}, "summary": "",
-        "keywords": [], "first_seen": "2026-07-01", "last_seen": "2026-07-02", "streak": 2,
-        "misses": 0, "flat_runs": 0, "signals": {"gh_stars": 3}, "mag_history": [1.0, 1.1],
-        "peak_mag": 1.1,
-    }}
+    ledger = {
+        "ghrepo:acme/quiet": {
+            "id": "ghrepo:acme/quiet",
+            "title": "acme/quiet",
+            "url": "https://github.com/acme/quiet",
+            "source": "GitHub Trending",
+            "category": "releases",
+            "links": {},
+            "summary": "",
+            "keywords": [],
+            "first_seen": "2026-07-01",
+            "last_seen": "2026-07-02",
+            "streak": 2,
+            "misses": 0,
+            "flat_runs": 0,
+            "signals": {"gh_stars": 3},
+            "mag_history": [1.0, 1.1],
+            "peak_mag": 1.1,
+        }
+    }
     assert track.carryover_items(ledger) == []
 
 
@@ -281,6 +292,7 @@ def test_write_carryovers_writes_new_ones(scored_dir):
 # ---------------------------------------------------------------------------
 # Ledger IO
 # ---------------------------------------------------------------------------
+
 
 def test_a_corrupt_ledger_costs_memory_not_the_digest(ledger_path):
     ledger_path.write_text("{ this is not json")

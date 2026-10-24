@@ -7,31 +7,44 @@ Carries signals.hf_likes and signals.hf_downloads so score.py's trending heurist
 Stdlib only.
 
 Trending is a "right now" signal with no reliable per-item timestamp, so unlike the dated
-collectors this one does not window-filter; dedup (seen.json) keeps it from repeating items.
+collectors this one does not filter by publication date. Each run refreshes current
+observations; movers state distinguishes returning artifacts from newly observed ones.
 
 Run: python -m collectors.hf_trending
 """
+
 from __future__ import annotations
-import os, sys, json, urllib.parse, urllib.request
+import os
+import sys
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from collectors.common import make_item, write_items  # noqa: E402
+from collectors.common import make_item, write_items
+from radar.collection import SourceBatch
+from radar.http import fetch_json  # noqa: E402
 
 API = "https://huggingface.co/api"
 LIMIT = int(os.environ.get("HF_TRENDING_LIMIT", "20"))
-MIN_LIKES = int(os.environ.get("HF_TRENDING_MIN_LIKES", "10"))   # noise floor
+MIN_LIKES = int(os.environ.get("HF_TRENDING_MIN_LIKES", "10"))  # noise floor
 
 
 def fetch(kind: str) -> list[dict]:
     """kind in {'models', 'datasets'}."""
-    q = urllib.parse.urlencode({
-        "sort": "trendingScore", "direction": -1, "limit": LIMIT, "full": "false",
-    })
+    q = urllib.parse.urlencode(
+        {
+            "sort": "trendingScore",
+            "direction": -1,
+            "limit": LIMIT,
+            "full": "false",
+        }
+    )
     req = urllib.request.Request(f"{API}/{kind}?{q}", headers={"User-Agent": "ai-radar/0.1"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        data = json.loads(r.read())
-    return data if isinstance(data, list) else []
+    data = fetch_json(req)
+    if not isinstance(data, list):
+        raise ValueError("HF trending response must be a list")
+    return data
 
 
 def to_item(entry: dict, kind: str) -> dict | None:
@@ -43,7 +56,7 @@ def to_item(entry: dict, kind: str) -> dict | None:
         return None
     noun = "Model" if kind == "models" else "Dataset"
     return make_item(
-        id=f"hf{kind[:-1]}:{hf_id}",                 # hfmodel: / hfdataset:
+        id=f"hf{kind[:-1]}:{hf_id}",  # hfmodel: / hfdataset:
         category="releases",
         title=f"{hf_id} (HF {noun})",
         url=f"https://huggingface.co/{'datasets/' if kind == 'datasets' else ''}{hf_id}",
@@ -51,8 +64,7 @@ def to_item(entry: dict, kind: str) -> dict | None:
         authors=[hf_id.split("/")[0]] if "/" in hf_id else [],
         published=entry.get("lastModified") or entry.get("createdAt"),
         raw_summary=(entry.get("pipeline_tag") or "")
-                    + ((" · tags: " + ", ".join((entry.get("tags") or [])[:6]))
-                       if entry.get("tags") else ""),
+        + ((" · tags: " + ", ".join((entry.get("tags") or [])[:6])) if entry.get("tags") else ""),
         signals={
             "hf_likes": likes,
             "hf_downloads": entry.get("downloads") or 0,
@@ -61,18 +73,21 @@ def to_item(entry: dict, kind: str) -> dict | None:
     )
 
 
-def main() -> None:
-    items, total = [], 0
+def main() -> dict:
+    batch = SourceBatch("hf_trending")
+    items = []
+
+    def fetch_items(kind):
+        for entry in fetch(kind):
+            item = to_item(entry, kind)
+            if item:
+                yield item
+
     for kind in ("models", "datasets"):
-        try:
-            for entry in fetch(kind):
-                it = to_item(entry, kind)
-                if it:
-                    items.append(it)
-        except Exception as ex:
-            print(f"[hf-trending] fetch failed for {kind}: {ex}", file=sys.stderr)
-    total = write_items("releases", items)
-    print(f"[hf-trending] {len(items)} trending artifacts, {total} new written")
+        items.extend(batch.fetch(kind, fetch_items, kind))
+    written = write_items("releases", items)
+    print(f"[hf_trending] {written} observations written")
+    return batch.finish(written)
 
 
 if __name__ == "__main__":

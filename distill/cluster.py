@@ -14,8 +14,10 @@ Public API:
     Each dict: {"label": str, "theme_summary": str, "item_ids": list[str]}
     Returns an empty list when clustering is unhelpful.
 """
+
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -33,6 +35,7 @@ _MIN_CLUSTER_SIZE = 2  # singleton clusters are not useful
 # Semantic clustering (embedding-based, optional)
 # ---------------------------------------------------------------------------
 
+
 def _semantic_clusters(items: list[dict]) -> list[dict] | None:
     """Try to cluster using embeddings. Returns None on any failure."""
     try:
@@ -40,10 +43,15 @@ def _semantic_clusters(items: list[dict]) -> list[dict] | None:
 
         texts = []
         for it in items:
-            blob = " ".join(filter(None, [
-                it.get("title", ""),
-                (it.get("raw_summary") or "")[:200],
-            ]))
+            blob = " ".join(
+                filter(
+                    None,
+                    [
+                        it.get("title", ""),
+                        (it.get("raw_summary") or "")[:200],
+                    ],
+                )
+            )
             texts.append(blob)
 
         vecs = embed(texts)
@@ -88,6 +96,7 @@ def _semantic_clusters(items: list[dict]) -> list[dict] | None:
 # Lexical clustering (stdlib fallback)
 # ---------------------------------------------------------------------------
 
+
 def _lexical_clusters(items: list[dict]) -> list[dict] | None:
     """Group items by shared focus-term / keyword overlap. Stdlib only."""
     try:
@@ -101,8 +110,23 @@ def _lexical_clusters(items: list[dict]) -> list[dict] | None:
 
         # Fall back to title-word overlap if no terms configured
         def _item_kw_set(it: dict) -> frozenset[str]:
-            stop = {"a", "an", "the", "of", "and", "for", "in", "on", "with",
-                    "to", "via", "from", "is", "are", "by"}
+            stop = {
+                "a",
+                "an",
+                "the",
+                "of",
+                "and",
+                "for",
+                "in",
+                "on",
+                "with",
+                "to",
+                "via",
+                "from",
+                "is",
+                "are",
+                "by",
+            }
             words = set(it.get("title", "").lower().split())
             return frozenset(w for w in words if len(w) > 3 and w not in stop)
 
@@ -138,6 +162,7 @@ def _lexical_clusters(items: list[dict]) -> list[dict] | None:
 # Shared output builder
 # ---------------------------------------------------------------------------
 
+
 def _build_cluster_output(items: list[dict], cluster_members: list[list[int]]) -> list[dict] | None:
     """Convert raw membership lists into the public cluster format.
     Returns None when clustering is unhelpful (< 2 non-singleton clusters)."""
@@ -158,20 +183,24 @@ def _build_cluster_output(items: list[dict], cluster_members: list[list[int]]) -
         # Label: most common focus term across members, or top title word
         label = _cluster_label(cluster_items)
         item_ids = [it["id"] for it in cluster_items]
-        out.append({
-            "label": label,
-            "item_ids": item_ids,
-            "size": len(item_ids),
-        })
+        out.append(
+            {
+                "label": label,
+                "item_ids": item_ids,
+                "size": len(item_ids),
+            }
+        )
 
     # Append a catch-all "Other" group for singletons if non-empty
     if singletons:
         other_ids = [items[i]["id"] for i in singletons]
-        out.append({
-            "label": "Other",
-            "item_ids": other_ids,
-            "size": len(other_ids),
-        })
+        out.append(
+            {
+                "label": "Other",
+                "item_ids": other_ids,
+                "size": len(other_ids),
+            }
+        )
 
     return out if len(out) >= _MIN_CLUSTERS else None
 
@@ -180,6 +209,7 @@ def _cluster_label(cluster_items: list[dict]) -> str:
     """Derive a short label for a cluster from shared terms or title words."""
     try:
         from distill.focus import active_terms, _term_hit, _blob
+
         terms = active_terms()
         if terms:
             counts: dict[str, int] = {}
@@ -197,9 +227,33 @@ def _cluster_label(cluster_items: list[dict]) -> str:
     # Fallback: most common meaningful title word (heuristic). Strip surrounding punctuation
     # first so a title like "...World Model)" yields "world", not "model)".
     import re
-    stop = {"a", "an", "the", "of", "and", "for", "in", "on", "with", "to", "via",
-            "from", "is", "are", "by", "new", "large", "model", "models", "language",
-            "using", "based", "toward", "towards"}
+
+    stop = {
+        "a",
+        "an",
+        "the",
+        "of",
+        "and",
+        "for",
+        "in",
+        "on",
+        "with",
+        "to",
+        "via",
+        "from",
+        "is",
+        "are",
+        "by",
+        "new",
+        "large",
+        "model",
+        "models",
+        "language",
+        "using",
+        "based",
+        "toward",
+        "towards",
+    }
     word_counts: dict[str, int] = {}
     for it in cluster_items:
         for raw in it.get("title", "").lower().split():
@@ -216,6 +270,7 @@ def _cluster_label(cluster_items: list[dict]) -> str:
 # Public entry point
 # ---------------------------------------------------------------------------
 
+
 def cluster_items(items: list[dict]) -> list[dict]:
     """Cluster items into emergent themes. Returns a list of cluster dicts or [] when
     clustering is unhelpful (all items in one group, or < 2 non-singleton clusters).
@@ -226,7 +281,7 @@ def cluster_items(items: list[dict]) -> list[dict]:
     if len(items) < _MIN_CLUSTER_SIZE * _MIN_CLUSTERS:
         return []  # Too few items to cluster meaningfully
 
-    result = _semantic_clusters(items)
+    result = _semantic_clusters(items) if os.environ.get("CLUSTER_BACKEND") == "embed" else None
     if result is not None:
         return result
 
