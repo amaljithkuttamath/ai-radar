@@ -316,6 +316,13 @@ def promote(items: list[dict], ledger: dict[str, dict] | None = None) -> dict[st
             "mag_history": [mag],
             "peak_mag": mag,
         }
+    # Promotion runs after refresh, so its additions must obey the same hard cap
+    # before the ledger is committed. Preserve history on retained entries.
+    if len(ledger) > MAX_TRACKED:
+        keep = sorted(ledger.values(), key=lambda e: float(e.get("peak_mag") or 0), reverse=True)[
+            :MAX_TRACKED
+        ]
+        ledger = {e["id"]: e for e in keep}
     return ledger
 
 

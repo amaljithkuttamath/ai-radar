@@ -303,3 +303,14 @@ def test_ledger_roundtrips(ledger_path):
     ledger = track.promote([make_item(id="ghrepo:acme/widget", score=4)])
     track.save_ledger(ledger)
     assert track.load_ledger() == ledger
+
+
+def test_promotion_enforces_cap_before_publication(monkeypatch):
+    monkeypatch.setattr(track, "MAX_TRACKED", 2)
+    old = track.promote([make_item(id="ghrepo:acme/old", signals={"gh_stars": 1000})])
+    old["ghrepo:acme/old"]["streak"] = 7
+    incoming = [make_item(id=f"ghrepo:acme/w{n}", signals={"gh_stars": n * 100}) for n in range(1, 5)]
+    promoted = track.promote(incoming, old)
+    assert set(promoted) == {"ghrepo:acme/old", "ghrepo:acme/w4"}
+    assert promoted["ghrepo:acme/old"]["streak"] == 7
+    assert len(old) == 1
