@@ -867,10 +867,14 @@ def validate_report(report: str, user: str, candidates: int) -> None:
         raise ValueError("report header does not match the requested date")
     if re.search(r"<\s*/?\s*[a-zA-Z][^>]*>", report):
         raise ValueError("report contains raw HTML")
-    links = re.findall(r"\]\(([^\s)]+)\)", report)
+    inline_link = re.compile(r"\]\(([^\s()]+(?:\([^\s()]*\)[^\s()]*)*)\)")
+    links = inline_link.findall(report)
+    # Scan bare URLs separately: Markdown emphasis after a destination is not
+    # part of that URL. Validate every extracted destination before removing it.
+    without_destinations = inline_link.sub("]", report)
     allowed = {reference_key(url) for url in re.findall(r'https?://[^\s<>"\\\[\]]+', user)}
     links += re.findall(r"^\s*\[[^\]]+\]:\s*<?([^\s>]+)", report, re.MULTILINE)
-    links += re.findall(r'https?://[^\s<>"\\\[\]]+', report)
+    links += re.findall(r'https?://[^\s<>"\\\[\]]+', without_destinations)
     for url in links:
         if reference_key(url) not in allowed:
             raise ValueError(f"report contains an unsupported URL: {url}")
