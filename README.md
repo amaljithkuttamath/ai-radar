@@ -22,9 +22,9 @@ ranking, synthesis, publication artifacts, the briefing reader, and prompt exper
 | [Self-healing loop](https://github.com/amaljithkuttamath/ai-radar/issues?q=is%3Aissue+is%3Aopen+label%3Awatchdog) | 🟢 ok | no unanswered alarms |
 | [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40065340490) | 🟢 ok | last run success |
 | [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40065974309) | 🟢 ok | last run success |
-| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40066091950) | 🟢 ok | last run None |
+| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40066091950) | 🟢 ok | last run success |
 
-Generated 2026-10-24 05:24 UTC by `scripts/health.py`.
+Generated 2026-10-24 05:40 UTC by `scripts/health.py`.
 
 <!-- health:end -->
 

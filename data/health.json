@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-24T05:24:01.803142+00:00",
+  "generated": "2026-10-24T05:40:18.598908+00:00",
   "repo": "amaljithkuttamath/ai-radar",
   "status": "warn",
   "signals": [
@@ -7,7 +7,7 @@
       "key": "digest",
       "label": "Daily digest",
       "status": "ok",
-      "age_h": 0.0,
+      "age_h": 0.3,
       "threshold_h": 48,
       "detail": "last digest committed <1h ago",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md"
@@ -25,7 +25,7 @@
       "key": "evals",
       "label": "Eval loop",
       "status": "warn",
-      "age_h": 0.0,
+      "age_h": 0.3,
       "threshold_h": 48,
       "detail": "grader last committed <1h ago \u00b7 tier 0 only, no model judgement",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json"
@@ -66,9 +66,9 @@
       "key": "watchdog",
       "label": "Watchdog",
       "status": "ok",
-      "conclusion": null,
+      "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": "2026-10-24T05:23:58Z",
+      "last_run_at": "2026-10-24T05:24:07Z",
       "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/40066091950",
       "observed": true
     }
