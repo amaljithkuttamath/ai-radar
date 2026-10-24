@@ -21,10 +21,11 @@ ranking, synthesis, publication artifacts, and prompt experiments.
 | [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🟡 warn | grader last committed <1h ago · tier 0 only, no model judgement |
 | [Self-healing loop](https://github.com/amaljithkuttamath/ai-radar/issues?q=is%3Aissue+is%3Aopen+label%3Awatchdog) | 🟢 ok | no unanswered alarms |
 | [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40065340490) | 🟢 ok | last run success |
-| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40065359516) | 🟢 ok | last run success |
-| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40006632483) | 🟢 ok | last run success |
+| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40065974309) | 🟢 ok | last run success |
+| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40066091950) | 🟢 ok | last run None |
 
-Generated 2026-10-24 05:15 UTC by `scripts/health.py`.
+Generated 2026-10-24 05:24 UTC by `scripts/health.py`.
+
 <!-- health:end -->
 
 ## Start in one minute
