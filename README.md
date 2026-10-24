@@ -4,11 +4,11 @@ A daily AI briefing built from source observations, explicit ranking, and a boun
 synthesis step. Collect research, model releases, engineering tools, and hardware
 news; keep the useful evidence; publish a short, linked digest.
 
-[Read the briefing](https://amaljithkuttamath.github.io/ai-radar/) · [Markdown digest](reports/latest.md) · [Report archive](reports/README.md) ·
-[Independent evaluation](evals/latest.json) · [Public board](https://amaljithkuttamath.github.io/radar)
+[Read the briefing](https://amaljithkuttamath.github.io/radar/) · [Markdown digest](reports/latest.md) · [Report archive](reports/README.md) ·
+[Independent evaluation](evals/latest.json)
 
 The board lives in a separate repository. This repository owns collection,
-ranking, synthesis, publication artifacts, the briefing reader, and prompt experiments.
+ranking, synthesis, publication artifacts, publication receipts, and prompt experiments.
 
 ## Pipeline health
 
@@ -170,16 +170,14 @@ Email is an explicit delivery step, separate from publication:
 
 ## Development
 
-The static reader in `site/` displays published Markdown with a searchable archive,
-section navigation, light/dark themes, and publication health. Preview it with
-`python3 -m http.server 8765 --directory site`. It reads current public reports
-from GitHub; no API keys or model calls run in the browser.
+The canonical reader lives at [amaljithkuttamath.github.io/radar/](https://amaljithkuttamath.github.io/radar/)
+in the [personal-site repository](https://github.com/amaljithkuttamath/amaljithkuttamath.github.io).
+It reads this repository's public reports, evidence, and publication receipts.
 
-With Node 24, run `npm ci --prefix site --ignore-scripts` and
-`npm test --prefix site`. When updating the pinned Markdown/sanitizer packages,
-run `npm run vendor --prefix site` and commit the generated bundles and licenses.
-The independent Pages workflow deploys only the reader assets on changes to `site/`.
-Publishing failures fail that workflow, while health reporting remains independent.
+`site/` keeps previous `/ai-radar/` links working with a small redirect, including
+archive and dated-edition links. Run `npm test --prefix site` with Node 24.
+The independent Pages workflow deploys only the redirect assets; publication
+failures remain separate from pipeline health reporting.
 
 ```bash
 uv sync --locked

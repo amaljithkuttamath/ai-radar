@@ -73,11 +73,4 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: "24"
-          cache: npm
-          cache-dependency-path: site/package-lock.json
-      - run: npm ci --prefix site --ignore-scripts
       - run: npm test --prefix site
-      - name: Verify vendored browser dependencies
-        run: |
-          npm run vendor --prefix site
-          git diff --exit-code -- site/vendor
