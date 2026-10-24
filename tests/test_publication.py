@@ -240,3 +240,15 @@ def test_rejected_output_is_retained_without_publication(tmp_path, monkeypatch):
     evidence = json.loads(artifacts[0].read_text())
     assert "1900-01-01" in evidence["report"] and "CANDIDATES_JSON" in evidence["user"]
     assert not (tmp_path / "reports/latest.md").exists()
+
+
+@pytest.mark.parametrize("wrapper", ["**", "*", "`", ""])
+def test_link_formatting_is_not_part_of_the_destination(wrapper):
+    user = 'TODAY=2026-10-24\n[{"url":"https://example.org/tool"}]'
+    synthesize.validate_report(
+        f"# AI Radar — 2026-10-24\n{wrapper}[Tool](https://example.org/tool){wrapper}", user, 1
+    )
+    with pytest.raises(ValueError, match="unsupported URL"):
+        synthesize.validate_report(
+            f"# AI Radar — 2026-10-24\n{wrapper}[Tool](https://evil.example/fake){wrapper}", user, 1
+        )
