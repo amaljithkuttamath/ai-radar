@@ -58,3 +58,27 @@ def test_large_response_is_rejected(monkeypatch):
     monkeypatch.setattr(http.urllib.request, "urlopen", lambda *args, **kwargs: io.BytesIO(b"123456"))
     with pytest.raises(ValueError, match="large"):
         http.fetch_bytes(Request("https://example.org"), max_bytes=5)
+
+
+def test_gzip_feed_is_decoded_before_parsing(monkeypatch):
+    import gzip
+    from collectors import lab_blogs
+    from radar import http
+
+    body = b'<rss version="2.0"><channel><title>News</title><item><title>New model</title><link>https://example.org/model</link></item></channel></rss>'
+    response = io.BytesIO(gzip.compress(body))
+    response.headers = {"Content-Encoding": "gzip"}
+    monkeypatch.setattr(http.urllib.request, "urlopen", lambda *a, **kw: response)
+    rows = list(lab_blogs.parse_feed("https://example.org/rss.xml"))
+    assert rows[0][1:3] == ("New model", "https://example.org/model")
+
+
+def test_expanded_gzip_response_obeys_size_limit(monkeypatch):
+    import gzip
+    from radar import http
+
+    response = io.BytesIO(gzip.compress(b"a" * 1000))
+    response.headers = {"Content-Encoding": "gzip"}
+    monkeypatch.setattr(http.urllib.request, "urlopen", lambda *a, **kw: response)
+    with pytest.raises(ValueError, match="large"):
+        http.fetch_bytes(Request("https://example.org"), max_bytes=100)
