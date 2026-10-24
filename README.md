@@ -16,15 +16,15 @@ ranking, synthesis, publication artifacts, publication receipts, and prompt expe
 
 | signal | status | detail |
 |---|---|---|
-| [Daily digest](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟢 ok | last digest committed <1h ago |
+| [Daily digest](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟢 ok | last digest committed 4h ago |
 | [Model synthesis](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟢 ok | latest digest carries model synthesis |
-| [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🟡 warn | grader last committed <1h ago · tier 0 only, no model judgement |
+| [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🟡 warn | grader last committed 4h ago · tier 0 only, no model judgement |
 | [Self-healing loop](https://github.com/amaljithkuttamath/ai-radar/issues?q=is%3Aissue+is%3Aopen+label%3Awatchdog) | 🟢 ok | no unanswered alarms |
-| [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40065340490) | 🟢 ok | last run success |
-| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40065974309) | 🟢 ok | last run success |
-| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40066091950) | 🟢 ok | last run success |
+| [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40101349464) | 🟢 ok | last run success |
+| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40101381731) | 🟢 ok | last run success |
+| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/40117682992) | 🟢 ok | last run success |
 
-Generated 2026-10-24 05:40 UTC by `scripts/health.py`.
+Generated 2026-10-24 18:23 UTC by `scripts/health.py`.
 
 <!-- health:end -->
 
