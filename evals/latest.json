@@ -1,43 +1,43 @@
 {
-  "date": "2026-10-24",
+  "date": "2026-10-25",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-10-24T14:14:35Z",
+  "digest_commit_time_utc": "2026-10-25T14:44:08Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 20,
+      "links_total": 21,
       "links_broken": 0,
-      "links_unverified": 0,
-      "main_items": 6,
+      "links_unverified": 1,
+      "main_items": 0,
       "main_score_mean": null,
-      "sections_present": 4,
-      "expected_sections": 3,
+      "sections_present": 9,
+      "expected_sections": 2,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
-      "traction_observations": 21,
+      "traction_observations": 58,
       "degraded_synthesis": false,
-      "forecast_accuracy": 0.571,
-      "claims_open": 0
+      "forecast_accuracy": 0.467,
+      "claims_open": 1
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 4 section(s); 3/7 of the prompt's sections present"
+        "detail": "title and 9 section(s); 2/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
-        "ok": true,
-        "detail": "6 main-list item(s)"
+        "ok": null,
+        "detail": "no main-list section (reported by `structure`)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "every link answered 2xx"
+        "detail": "no dead links; 1/21 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -66,9 +66,14 @@
   },
   "trusted": {
     "reobservation_rate": 1.0,
-    "forecast_accuracy": 0.571
+    "forecast_accuracy": 0.467
   },
-  "broken_urls": [],
+  "broken_urls": [
+    {
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+      "status": 403
+    }
+  ],
   "missed_stories": [],
   "degraded_reason": "--tier0-only: model call skipped by request"
 }

@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-25",
+  "mode": "deterministic",
+  "grader_model": "",
+  "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
+  "digest_commit_time_utc": "2026-10-25T14:44:08Z",
+  "age_hours_at_eval": 0.0,
+  "tier0": {
+    "module_hash": "b9d5d0f52167",
+    "metrics": {
+      "age_h": 0.0,
+      "links_total": 21,
+      "links_broken": 0,
+      "links_unverified": 1,
+      "main_items": 0,
+      "main_score_mean": null,
+      "sections_present": 9,
+      "expected_sections": 2,
+      "tracked_items": 60,
+      "reobservation_rate": 1.0,
+      "traction_observations": 58,
+      "degraded_synthesis": false,
+      "forecast_accuracy": 0.467,
+      "claims_open": 1
+    },
+    "checks": [
+      {
+        "key": "structure",
+        "ok": true,
+        "detail": "title and 9 section(s); 2/7 of the prompt's sections present"
+      },
+      {
+        "key": "main_list_nonempty",
+        "ok": null,
+        "detail": "no main-list section (reported by `structure`)"
+      },
+      {
+        "key": "links_resolve",
+        "ok": true,
+        "detail": "no dead links; 1/21 declined to answer"
+      },
+      {
+        "key": "synthesis_present",
+        "ok": true,
+        "detail": "digest carries model synthesis"
+      },
+      {
+        "key": "traction_observed",
+        "ok": true,
+        "detail": "re-observed 100% of 60 tracked items"
+      }
+    ],
+    "failed": []
+  },
+  "revs": {
+    "prompt_rev": "ca1958e",
+    "config_rev": "ca1958e",
+    "files": {
+      "distill/digest.md": "ca1958e",
+      "distill/brief_spec.md": "3ed73c5",
+      "config/profile.yaml": "48361eb",
+      "config/sources.yaml": "48361eb",
+      "config/routines.yaml": "ca1958e",
+      "config/broken_sources.yaml": "ca1958e"
+    }
+  },
+  "trusted": {
+    "reobservation_rate": 1.0,
+    "forecast_accuracy": 0.467
+  },
+  "broken_urls": [
+    {
+      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+      "status": 403
+    }
+  ],
+  "missed_stories": [],
+  "degraded_reason": "--tier0-only: model call skipped by request"
+}
