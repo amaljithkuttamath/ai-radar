@@ -1,75 +1,74 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-10-24](2026-10-24-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-10-25](2026-10-25-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-10-25
+# AI Radar — 2026-10-27
 
-The strongest signals today center on training infrastructure and agent-oriented model architectures: Hugging Face Transformers and NVIDIA Megatron-LM remain the most widely adopted frameworks, while the Jeva and VideoJev papers (both on 8-day streaks) advance “System One” models that replace autoregressive decoding with structured decision heads. A new benchmark dataset (LocalLLaMA/typed-decisions) and NVIDIA’s Vietnamese persona corpus round out the high-signal releases. Twenty-two projects entered the radar for the first time, including vLLM, CopilotKit, and Graphiti.
+Over the past 48 hours the radar captured a wave of new agent frameworks, quantization resources, and benchmark datasets, alongside climbing traction for NVIDIA’s simulation assets and sustained interest in System One models. Coverage is limited to the supplied sources and may miss developments outside this window.
 
 ## What changed
 
-**New to radar**
-- [vllm-project/vllm](https://github.com/vllm-project/vllm) — High-throughput, memory-efficient LLM inference and serving engine · 3/5
-- [labmlai/annotated_deep_learning_paper_implementations](https://github.com/labmlai/annotated_deep_learning_paper_implementations) — 60+ annotated paper implementations (transformers, optimizers, RL, GANs) · 3/5
-- [CopilotKit/CopilotKit](https://github.com/CopilotKit/CopilotKit) — Frontend stack for agents & generative UI (React, Angular, AG-UI protocol) · 3/5
-- [getzep/graphiti](https://github.com/getzep/graphiti) — Real-time knowledge graphs for AI agents · 3/5
-- [simstudioai/sim](https://github.com/simstudioai/sim) — Collaborative workspace to build, deploy, and monitor AI agents (100k+ builders) · 3/5
+### New to radar
+- [AI-Efficiency/Awesome-Model-Quantization](https://github.com/AI-Efficiency/Awesome-Model-Quantization) – curated quantization papers, benchmarks, and tools  
+- [TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents) – multi-agent LLM financial trading framework  
+- [unclecode/crawl4ai](https://github.com/unclecode/crawl4ai) – open-source web crawler for LLM-ready Markdown  
+- [StreamVibe: Proactive Video Agents for Evolving User Intent](https://arxiv.org/abs/2610.34662)  
+- [github/awesome-copilot](https://github.com/github/awesome-copilot) – community Copilot instructions and agents  
 
-**Climbing**
-- [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) (HF Dataset) — Simulation-ready 3D assets; traction rose to 4/5 (+1) · 4/5
+### Climbing
+- [nvidia/Nemotron-Personas-Germany (HF Dataset)](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Germany) – score +1, magnitude +0.12  
+- [hongzhuyi/VDEBench (HF Dataset)](https://huggingface.co/datasets/hongzhuyi/VDEBench) – score +1, magnitude +0.31  
+- [nvidia/simready-assets (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-assets) – magnitude +1.02  
 
-**Cooled**
-- [microsoft/AI-For-Beginners](https://github.com/microsoft/AI-For-Beginners) — 12-week curriculum; score slipped to 3/5 (−1) · 3/5
+### Cooled
+- [google/embeddinggemma-2 (HF Model)](https://huggingface.co/google/embeddinggemma-2) – score –1, magnitude +0.01  
 
----
+## Main list
 
-## Training
+### Benchmark
+- **[LocalLLaMA/typed-decisions (HF Dataset)](https://huggingface.co/datasets/LocalLLaMA/typed-decisions)** – official benchmark dataset for text classification with eval YAML; useful for engineers evaluating small-model decision making. · 4/5  
+- **[Do Similarity Measures Measure Similarity?](https://arxiv.org/abs/2610.35765)** – shows user-activity variance creates phantom item-item correlations in recommenders; relevant for anyone building or auditing similarity-based systems. · 2/5  
 
-**[huggingface/transformers](https://github.com/huggingface/transformers)** · 4/5  
-Model-definition framework for text, vision, audio, and multimodal models; 168k stars observed. Core dependency for most open-weight model work. Use when you need a unified API across architectures and hardware backends.
+### Agents
+- **[Work Agents: Systems, Capabilities, and Optimization](https://arxiv.org/abs/2610.35845)** – introduces a work-centric system view with persistence/openness dimensions and a repo of working-agent patterns; for engineers designing agents that execute multi-step digital work. · 3/5. [GitHub](https://github.com/EnjunDu/awesome-working-agent) [Project](https://enjundu.com/blog/working_agents)  
+- **[Free to Look, Free to Reason](https://arxiv.org/abs/2610.35767)** – simple LLM harnesses (single-call, SQL agent, Codex) outperform hand-crafted RCA agents on 90 validated microservice cases; useful for reliability engineers comparing agent architectures. · 2/5  
 
-**[NVIDIA/Megatron-LM](https://github.com/NVIDIA/Megatron-LM)** · 4/5  
-Ongoing research codebase for training transformer models at scale; 18k stars. Targets tensor/sequence/pipeline parallelism on GPU clusters. Relevant for teams building custom large-model training pipelines.
+### Models
+- **[Qwen/Qwen3.8-27B (HF Model)](https://huggingface.co/Qwen/Qwen3.8-27B)** – image-text-to-text model (Apache-2.0) with 7.5M downloads; candidates for multimodal applications needing a mid-size open model. · 3/5  
+- **[deepseek-ai/DeepSeek-V4.1-Flash-1017 (HF Model)](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** – image-text-to-text model (MIT) with 105k downloads; recent release for fast multimodal inference. · 3/5  
 
-**[Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773)** · 3/5  
-[GitHub](https://github.com/LiQiiiii/Jeva) · [Project](https://liqiiiii.github.io/Jeva/)  
-Proposes null-aware, permutation-invariant decision heads that replace answer decoding. 8-day streak, 177 stars, 436 HF upvotes. Read if you’re designing low-latency agents that must distinguish “no answer” from uncertainty.
+### Quantization
+- **[AI-Efficiency/Awesome-Model-Quantization](https://github.com/AI-Efficiency/Awesome-Model-Quantization)** – curated collection of papers, benchmarks, surveys, and tools covering low-bit LLMs, multimodal quantization, and deployment; essential reference for compression engineers. · 4/5  
 
----
+### Frameworks
+- **[huggingface/transformers](https://github.com/huggingface/transformers)** – the core model-definition framework for text, vision, audio, and multimodal models; 168k stars observed. · 4/5  
 
-## Qwen / Embedding Gemma
+### Other
+- **[nvidia/simready-assets (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-assets)** – CC-BY-4.0 simulation-ready 3D assets with 625k downloads; useful for robotics and synthetic data pipelines. · 4/5  
+- **[S3AC: Stabilized, Selective, and Scalable Actor-Critic for LLM Reasoning](https://arxiv.org/abs/2610.35518)** – stabilizes critic training for long CoT RL with token-level credit assignment; relevant for RLHF/RLVR practitioners. · 2/5. [GitHub](https://github.com/InternLM/xtuner)  
 
-**[Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B)** · 3/5  
-27B image-text-to-text model (Apache-2.0); 18k likes, 7.8M downloads observed. Strong multimodal candidate for vision-language tasks needing open weights.
+## Still developing
+- **[Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773)** – carryover, 9 runs tracked, traction delta +3.73, score 3/5. [GitHub](https://github.com/LiQiiiii/Jeva) [Project](https://liqiiiii.github.io/Jeva/)  
+- **[VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615)** – carryover, 9 runs tracked, traction delta +3.38, score 3/5. [GitHub](https://github.com/MCG-NJU/VideoJev) [Project](https://mcg-nju.github.io/VideoJev/)  
 
-**[google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2)** · 3/5  
-Sentence-transformers style embedding model; 2.9k likes, 213k downloads. Use for retrieval, clustering, or semantic search where a compact, high-quality embedder is needed.
+## Watch-list
+- **[SEMA-Auto: Sighted and Efficient Multi-Turn Attack with Autonomy](https://arxiv.org/abs/2610.35743)** – score 2/5  
+- **[ImgMT: Wikipedia-based Dataset For Evaluating Text-in-Image Translation](https://arxiv.org/abs/2610.35416)** – score 2/5  
 
----
+## Story arcs
 
-## Other
-
-**[LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions)** · 4/5  
-Benchmark dataset for text classification (1K–10K samples, Apache-2.0); 246 likes, 44k downloads. Focus-matched for evaluation work; try it when you need a fresh classification benchmark with typed labels.
-
-**[nvidia/Nemotron-Personas-Vietnam](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam)** · 4/5  
-Vietnamese text-generation persona dataset (1M–10M samples, CC-BY-4.0, parquet, includes images); 222 likes, 20k downloads. Useful for multilingual persona conditioning or synthetic data generation.
-
-**[VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615)** · 3/5  
-[GitHub](https://github.com/MCG-NJU/VideoJev) · [Project](https://mcg-nju.github.io/VideoJev/)  
-Extends Jea’s System One paradigm to video: shared decision head over MLLM features for timely interaction. 8-day streak, 248 stars, 341 HF upvotes. Track if you build video-grounded agents that must act on streaming observations.
-
----
-
-## Watch-list / Still developing
-
-- [Bringing foundational models to the front lines of TB screening](https://research.google/blog/bringing-foundational-models-to-the-front-lines-of-tb-screening/) — Google Research blog; application note, no code artifact · 1/5
-- [Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)](https://openai.com/index/scaling-storage-one-billion-users-part-two) — OpenAI engineering blog on Habitat/Cosmos DB scaling · 1/5
-
----
+- [Multimodal Embodied Agents: A Unified Capability-centric Perspective from Computer-Use to Robot-Use](https://arxiv.org/abs/2610.30108) — seen 5 runs, traction +102.3% since first seen on 2026-10-22.
+- [FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching](https://arxiv.org/abs/2610.17552) — seen 9 runs, traction +86.0% since first seen on 2026-10-14.
+- [SolarRenderer: Few-Step Generative Reference Rendering](https://arxiv.org/abs/2610.28630) — seen 6 runs, traction +84.0% since first seen on 2026-10-21.
+- [Sage-A1.5: From Long-Horizon Execution to Scientific Exploration with Capability Composition](https://arxiv.org/abs/2610.28578) — seen 6 runs, traction +82.6% since first seen on 2026-10-21.
+- [Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation](https://arxiv.org/abs/2610.29989) — seen 5 runs, traction +77.1% since first seen on 2026-10-22.
+- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — seen 9 runs, traction +74.4% since first seen on 2026-10-14.
+- [AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards](https://arxiv.org/abs/2610.18860) — seen 9 runs, traction +73.5% since first seen on 2026-10-14.
+- [VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615) — seen 9 runs, traction +64.6% since first seen on 2026-10-14.
+- [Agent-Reflex: Teaching Language Agents to Act Reflectively](https://arxiv.org/abs/2610.17953) — seen 9 runs, traction +63.7% since first seen on 2026-10-14.
+- [WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) — seen 4 runs, traction +56.7% since first seen on 2026-10-23.
 
 ## Action items
-
-1. **Try** [vllm-project/vllm](https://github.com/vllm-project/vllm) for high-throughput LLM serving — it entered radar today and is production-hardened.
-2. **Read** [Jeva](https://arxiv.org/abs/2610.18773) and [VideoJev](https://arxiv.org/abs/2610.18615) together — they define a coherent “System One” alternative to autoregressive agents.
-3. **Track** [LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions) as a new classification benchmark; its traction (44k downloads) suggests community adoption.
+- **Read** [AI-Efficiency/Awesome-Model-Quantization](https://github.com/AI-Efficiency/Awesome-Model-Quantization) for a structured overview of quantization techniques and deployment tools.  
+- **Try** [LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions) as a ready-made benchmark for evaluating small-model decision accuracy.  
+- **Track** [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) for simulation-ready 3D assets that can feed synthetic data pipelines.
