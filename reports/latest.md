@@ -1,74 +1,76 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-10-25](2026-10-25-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-10-27](2026-10-27-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-10-27
+# AI Radar — 2026-10-28
 
-Over the past 48 hours the radar captured a wave of new agent frameworks, quantization resources, and benchmark datasets, alongside climbing traction for NVIDIA’s simulation assets and sustained interest in System One models. Coverage is limited to the supplied sources and may miss developments outside this window.
+A wave of new benchmarks and agent frameworks signals that evaluation infrastructure for code-driven video generation and interactive world models is maturing rapidly. At the same time, major model releases from Qwen and DeepSeek, plus NVIDIA’s simulation-ready assets, give engineers concrete artifacts to build against.
 
 ## What changed
 
-### New to radar
-- [AI-Efficiency/Awesome-Model-Quantization](https://github.com/AI-Efficiency/Awesome-Model-Quantization) – curated quantization papers, benchmarks, and tools  
-- [TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents) – multi-agent LLM financial trading framework  
-- [unclecode/crawl4ai](https://github.com/unclecode/crawl4ai) – open-source web crawler for LLM-ready Markdown  
-- [StreamVibe: Proactive Video Agents for Evolving User Intent](https://arxiv.org/abs/2610.34662)  
-- [github/awesome-copilot](https://github.com/github/awesome-copilot) – community Copilot instructions and agents  
+**New to radar**
+- [microsoft/autogen — A programming framework for agentic AI](https://github.com/microsoft/autogen) · 4/5
+- [Hy-Nomas: Towards Free-form Interactive World Generation](https://arxiv.org/abs/2610.36729) · 4/5
+- [VibeVideoBench: Evaluating Multimodal Agents on Code-Driven Video Generation](https://arxiv.org/abs/2610.35864) · 4/5
+- [Can Discrete Tokens Serve as Semantically Lossless Representations of Visual Signals?](https://arxiv.org/abs/2610.37662) · 4/5
+- [google/langextract — A Python library for extracting structured information from unstructured text](https://github.com/google/langextract) · 4/5
 
-### Climbing
-- [nvidia/Nemotron-Personas-Germany (HF Dataset)](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Germany) – score +1, magnitude +0.12  
-- [hongzhuyi/VDEBench (HF Dataset)](https://huggingface.co/datasets/hongzhuyi/VDEBench) – score +1, magnitude +0.31  
-- [nvidia/simready-assets (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-assets) – magnitude +1.02  
-
-### Cooled
-- [google/embeddinggemma-2 (HF Model)](https://huggingface.co/google/embeddinggemma-2) – score –1, magnitude +0.01  
+**Climbing**
+- [nvidia/simready-central-library (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-central-library) — score +1 (mag +0.41)
+- [hongzhuyi/VDEBench (HF Dataset)](https://huggingface.co/datasets/hongzhuyi/VDEBench) — score +1 (mag +0.08)
 
 ## Main list
 
 ### Benchmark
-- **[LocalLLaMA/typed-decisions (HF Dataset)](https://huggingface.co/datasets/LocalLLaMA/typed-decisions)** – official benchmark dataset for text classification with eval YAML; useful for engineers evaluating small-model decision making. · 4/5  
-- **[Do Similarity Measures Measure Similarity?](https://arxiv.org/abs/2610.35765)** – shows user-activity variance creates phantom item-item correlations in recommenders; relevant for anyone building or auditing similarity-based systems. · 2/5  
+- [Hy-Nomas: Towards Free-form Interactive World Generation](https://arxiv.org/abs/2610.36729) · 4/5  
+  An 8B diffusion video world model that follows successive text instructions and continuous camera control across interaction turns, using action-aware causal attention to preserve history. Includes GitHub repo and project page. Relevant for teams building interactive video agents or evaluating long-horizon consistency.
 
-### Agents
-- **[Work Agents: Systems, Capabilities, and Optimization](https://arxiv.org/abs/2610.35845)** – introduces a work-centric system view with persistence/openness dimensions and a repo of working-agent patterns; for engineers designing agents that execute multi-step digital work. · 3/5. [GitHub](https://github.com/EnjunDu/awesome-working-agent) [Project](https://enjundu.com/blog/working_agents)  
-- **[Free to Look, Free to Reason](https://arxiv.org/abs/2610.35767)** – simple LLM harnesses (single-call, SQL agent, Codex) outperform hand-crafted RCA agents on 90 validated microservice cases; useful for reliability engineers comparing agent architectures. · 2/5  
+- [VibeVideoBench: Evaluating Multimodal Agents on Code-Driven Video Generation](https://arxiv.org/abs/2610.35864) · 4/5  
+  239 self-contained tasks across 12 categories (data stories, music-driven pieces, classroom lessons, paper explainers) testing agents that write rendering code instead of diffusing pixels. Project page with leaderboard. Use this to benchmark code-generation agents for precise video synthesis.
 
-### Models
-- **[Qwen/Qwen3.8-27B (HF Model)](https://huggingface.co/Qwen/Qwen3.8-27B)** – image-text-to-text model (Apache-2.0) with 7.5M downloads; candidates for multimodal applications needing a mid-size open model. · 3/5  
-- **[deepseek-ai/DeepSeek-V4.1-Flash-1017 (HF Model)](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** – image-text-to-text model (MIT) with 105k downloads; recent release for fast multimodal inference. · 3/5  
+- [LocalLLaMA/typed-decisions (HF Dataset)](https://huggingface.co/datasets/LocalLLaMA/typed-decisions) · 4/5  
+  Official benchmark dataset (1K–10K examples, Apache-2.0) for text-classification evaluation with YAML configs. Immediate drop-in for CI/CD evaluation pipelines.
 
-### Quantization
-- **[AI-Efficiency/Awesome-Model-Quantization](https://github.com/AI-Efficiency/Awesome-Model-Quantization)** – curated collection of papers, benchmarks, surveys, and tools covering low-bit LLMs, multimodal quantization, and deployment; essential reference for compression engineers. · 4/5  
+- [Zooming without Zooming v2: From Seeing Details to Connecting Evidence for Generalizable Multimodal Perception](https://arxiv.org/abs/2610.37037) · 3/5  
+  Frames spatial perception and long-context understanding as “connecting evidence” — identifying visual facts, binding entities, recovering relations. Provides GitHub repo with targeted training data synthesis. Useful for embodied AI and multimodal agent perception stacks.
 
-### Frameworks
-- **[huggingface/transformers](https://github.com/huggingface/transformers)** – the core model-definition framework for text, vision, audio, and multimodal models; 168k stars observed. · 4/5  
+### Framework
+- [huggingface/transformers — Transformers: the model-definition framework](https://github.com/huggingface/transformers) · 4/5  
+  The canonical library for loading, training, and deploying text, vision, audio, and multimodal models. 168k stars observed. Remains the primary integration point for new HF model releases.
+
+### Qwen / DeepSeek models
+- [Qwen/Qwen3.8-27B (HF Model)](https://huggingface.co/Qwen/Qwen3.8-27B) · 3/5  
+  27B image-text-to-text model (Apache-2.0) with 7.5M downloads observed. Ready for multimodal fine-tuning or inference via transformers.
+
+### World
+- [ThinkWorld: World Imagination Reinforces Chain-of-Dynamics Reasoning](https://arxiv.org/abs/2610.37666) · 3/5  
+  VLA framework that grounds action reasoning in learned world dynamics and reinforces it via RL with imagined rollouts. Project page available. Carryover observed on 7 consecutive runs with rising traction (mag +82.9%). Strong candidate for robotics teams needing generalization beyond demonstration data.
 
 ### Other
-- **[nvidia/simready-assets (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-assets)** – CC-BY-4.0 simulation-ready 3D assets with 625k downloads; useful for robotics and synthetic data pipelines. · 4/5  
-- **[S3AC: Stabilized, Selective, and Scalable Actor-Critic for LLM Reasoning](https://arxiv.org/abs/2610.35518)** – stabilizes critic training for long CoT RL with token-level credit assignment; relevant for RLHF/RLVR practitioners. · 2/5. [GitHub](https://github.com/InternLM/xtuner)  
+- [microsoft/autogen — A programming framework for agentic AI](https://github.com/microsoft/autogen) · 4/5  
+  Framework for building multi-agent workflows with tool use, code execution, and human-in-the-loop patterns. 61.6k stars observed. Matches focus on agentic systems; use as orchestration layer for LLM-driven automation.
 
-## Still developing
-- **[Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773)** – carryover, 9 runs tracked, traction delta +3.73, score 3/5. [GitHub](https://github.com/LiQiiiii/Jeva) [Project](https://liqiiiii.github.io/Jeva/)  
-- **[VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615)** – carryover, 9 runs tracked, traction delta +3.38, score 3/5. [GitHub](https://github.com/MCG-NJU/VideoJev) [Project](https://mcg-nju.github.io/VideoJev/)  
+- [nvidia/simready-assets (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-assets) · 4/5  
+  CC-BY-4.0 3D assets for simulation (779k downloads, 780 likes observed). Direct input for Omniverse, Isaac Sim, or custom sim-to-real pipelines.
 
-## Watch-list
-- **[SEMA-Auto: Sighted and Efficient Multi-Turn Attack with Autonomy](https://arxiv.org/abs/2610.35743)** – score 2/5  
-- **[ImgMT: Wikipedia-based Dataset For Evaluating Text-in-Image Translation](https://arxiv.org/abs/2610.35416)** – score 2/5  
+- [PDRVLA: A Vision-Language-Action Model with Physical Dynamics Representations](https://arxiv.org/abs/2610.37381) · 3/5  
+  Lightweight Physical Dynamics Module extracts physical tokens from vision-language features to condition actions without online video generation. 135 HF upvotes observed. Relevant for real-time robot control where latency budgets forbid full video prediction.
 
-## Story arcs
+## Watch-list / Still developing
 
-- [Multimodal Embodied Agents: A Unified Capability-centric Perspective from Computer-Use to Robot-Use](https://arxiv.org/abs/2610.30108) — seen 5 runs, traction +102.3% since first seen on 2026-10-22.
-- [FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention and Reward-Yield Distribution Matching](https://arxiv.org/abs/2610.17552) — seen 9 runs, traction +86.0% since first seen on 2026-10-14.
-- [SolarRenderer: Few-Step Generative Reference Rendering](https://arxiv.org/abs/2610.28630) — seen 6 runs, traction +84.0% since first seen on 2026-10-21.
-- [Sage-A1.5: From Long-Horizon Execution to Scientific Exploration with Capability Composition](https://arxiv.org/abs/2610.28578) — seen 6 runs, traction +82.6% since first seen on 2026-10-21.
-- [Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation](https://arxiv.org/abs/2610.29989) — seen 5 runs, traction +77.1% since first seen on 2026-10-22.
-- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — seen 9 runs, traction +74.4% since first seen on 2026-10-14.
-- [AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards](https://arxiv.org/abs/2610.18860) — seen 9 runs, traction +73.5% since first seen on 2026-10-14.
-- [VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615) — seen 9 runs, traction +64.6% since first seen on 2026-10-14.
-- [Agent-Reflex: Teaching Language Agents to Act Reflectively](https://arxiv.org/abs/2610.17953) — seen 9 runs, traction +63.7% since first seen on 2026-10-14.
-- [WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) — seen 4 runs, traction +56.7% since first seen on 2026-10-23.
+- [Multimodal Embodied Agents: A Unified Capability-centric Perspective](https://arxiv.org/abs/2610.30108) — streak 6, mag +103%
+- [FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention](https://arxiv.org/abs/2610.17552) — streak 10, mag +86.9%
+- [SolarRenderer: Few-Step Generative Reference Rendering](https://arxiv.org/abs/2610.28630) — streak 7, mag +84.5%
+- [Sage-A1.5: From Long-Horizon Execution to Scientific Exploration](https://arxiv.org/abs/2610.28578) — streak 7, mag +82.9%
+- [Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation](https://arxiv.org/abs/2610.29989) — streak 6, mag +78.2%
+- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — streak 10, mag +75.2%
+- [AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards](https://arxiv.org/abs/2610.18860) — streak 10, mag +74.2%
+- [VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615) — streak 10, mag +65.0%
+- [Agent-Reflex: Teaching Language Agents to Act Reflectively](https://arxiv.org/abs/2610.17953) — streak 10, mag +63.7%
+- [WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) — streak 5, mag +58.5%
 
 ## Action items
-- **Read** [AI-Efficiency/Awesome-Model-Quantization](https://github.com/AI-Efficiency/Awesome-Model-Quantization) for a structured overview of quantization techniques and deployment tools.  
-- **Try** [LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions) as a ready-made benchmark for evaluating small-model decision accuracy.  
-- **Track** [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) for simulation-ready 3D assets that can feed synthetic data pipelines.
+
+1. **Try** — Run [VibeVideoBench](https://arxiv.org/abs/2610.35864) tasks against your code-generation agent; the 239 tasks cover data visualization, education, and explanation formats that stress-test rendering accuracy.
+2. **Read** — [Hy-Nomas](https://arxiv.org/abs/2610.36729) for its action-aware causal attention design if you are building interactive video or world models that must preserve multi-turn context.
+3. **Track** — [ThinkWorld](https://arxiv.org/abs/2610.37666) (7-day streak, rising) — its RL-with-imagination loop for VLA generalization is a pattern likely to transfer to other embodied domains.
