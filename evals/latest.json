@@ -1,38 +1,38 @@
 {
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-10-27T16:11:24Z",
-  "age_hours_at_eval": 0.01,
+  "digest_commit_time_utc": "2026-10-28T16:58:38Z",
+  "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
-      "age_h": 0.01,
-      "links_total": 36,
+      "age_h": 0.0,
+      "links_total": 24,
       "links_broken": 0,
       "links_unverified": 0,
-      "main_items": 6,
+      "main_items": 5,
       "main_score_mean": null,
       "sections_present": 6,
-      "expected_sections": 6,
+      "expected_sections": 3,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
-      "traction_observations": 56,
+      "traction_observations": 59,
       "degraded_synthesis": false,
-      "forecast_accuracy": 0.462,
-      "claims_open": 11
+      "forecast_accuracy": 0.3,
+      "claims_open": 0
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 6 section(s); 6/7 of the prompt's sections present"
+        "detail": "title and 6 section(s); 3/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "6 main-list item(s)"
+        "detail": "5 main-list item(s)"
       },
       {
         "key": "links_resolve",
@@ -66,7 +66,7 @@
   },
   "trusted": {
     "reobservation_rate": 1.0,
-    "forecast_accuracy": 0.462
+    "forecast_accuracy": 0.3
   },
   "broken_urls": [],
   "missed_stories": [],
