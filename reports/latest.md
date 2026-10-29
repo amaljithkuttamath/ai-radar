@@ -1,76 +1,74 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-10-27](2026-10-27-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-10-28](2026-10-28-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-10-28
+# AI Radar — 2026-10-29
 
-A wave of new benchmarks and agent frameworks signals that evaluation infrastructure for code-driven video generation and interactive world models is maturing rapidly. At the same time, major model releases from Qwen and DeepSeek, plus NVIDIA’s simulation-ready assets, give engineers concrete artifacts to build against.
+Microsoft released two high-traction open-source frameworks: **autogen** for agentic programming and **graphrag** for modular graph-based RAG, both backed by strong community adoption. NVIDIA published a large SimReady asset dataset (839k downloads) and a new Nemotron transcription model, while the LocalLLaMA benchmark dataset *typed-decisions* arrived for structured evaluation. Several video-generation and vision papers (WeVisOne-VL, Looking Ahead) continue climbing in traction after a week of tracking.
 
 ## What changed
 
-**New to radar**
-- [microsoft/autogen — A programming framework for agentic AI](https://github.com/microsoft/autogen) · 4/5
-- [Hy-Nomas: Towards Free-form Interactive World Generation](https://arxiv.org/abs/2610.36729) · 4/5
-- [VibeVideoBench: Evaluating Multimodal Agents on Code-Driven Video Generation](https://arxiv.org/abs/2610.35864) · 4/5
-- [Can Discrete Tokens Serve as Semantically Lossless Representations of Visual Signals?](https://arxiv.org/abs/2610.37662) · 4/5
-- [google/langextract — A Python library for extracting structured information from unstructured text](https://github.com/google/langextract) · 4/5
+**New to radar** (top 5 of 23):  
+• [microsoft/graphrag](https://github.com/microsoft/graphrag) — modular graph-based RAG (score 4)  
+• [paperclipai/paperclip](https://github.com/paperclipai/paperclip) — open-source agent manager (score 3)  
+• [Manusagents/GPT-5.5…Distillation-Dataset](https://huggingface.co/datasets/Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset) — multi-model distillation dataset (score 3)  
+• [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) — “lazy senior dev” coding agent (score 3)  
+• [hiyouga/LlamaFactory](https://github.com/hiyouga/LlamaFactory) — unified fine-tuning for 100+ LLMs/VLMs (score 3)
 
-**Climbing**
-- [nvidia/simready-central-library (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-central-library) — score +1 (mag +0.41)
-- [hongzhuyi/VDEBench (HF Dataset)](https://huggingface.co/datasets/hongzhuyi/VDEBench) — score +1 (mag +0.08)
+**Cooled** (4 items):  
+• [Timestral](https://arxiv.org/abs/2610.37585) — time-series foundation models (score 2, mag −1.79)  
+• [Rare, Relevant, and Still Wrong…](https://arxiv.org/abs/2610.37624) — memory failures in LLM group decisions (score 1, mag −1.61)  
+• [Can LLMs Uncover Hidden Physical Laws…](https://arxiv.org/abs/2610.37649) — free exploration for physics discovery (score 0, mag −1.79)  
+• [ThinkWorld](https://arxiv.org/abs/2610.37666) — world imagination for chain-of-dynamics reasoning (score 0, mag −3.83)
+
+## Story arcs (7+ consecutive days, rising traction)
+
+[Multimodal Embodied Agents](https://arxiv.org/abs/2610.30108) (streak 7, +104%), [SolarRenderer](https://arxiv.org/abs/2610.28630) (8, +85%), [Sage-A1.5](https://arxiv.org/abs/2610.28578) (8, +83%), [Looking Ahead](https://arxiv.org/abs/2610.29989) (7, +80%), [WeVisOne-VL](https://arxiv.org/abs/2610.31329) (6, +60%), [Learning the 4D World](https://arxiv.org/abs/2610.28594) (8, +59%), [DONIC](https://arxiv.org/abs/2610.29997) (7, +53%), [S-Agent 2.0](https://arxiv.org/abs/2610.28354) (8, +47%), [Making MLLM Latents Matter](https://arxiv.org/abs/2610.30926) (6, +24%), [DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) (5, +5%).
 
 ## Main list
 
-### Benchmark
-- [Hy-Nomas: Towards Free-form Interactive World Generation](https://arxiv.org/abs/2610.36729) · 4/5  
-  An 8B diffusion video world model that follows successive text instructions and continuous camera control across interaction turns, using action-aware causal attention to preserve history. Includes GitHub repo and project page. Relevant for teams building interactive video agents or evaluating long-horizon consistency.
+### Agentic frameworks
+**[microsoft/autogen](https://github.com/microsoft/autogen)** · 4/5  
+Programming framework for building agentic AI systems; 61.6k GitHub stars. Use when you need orchestration, tool use, and multi-agent patterns in production code.
 
-- [VibeVideoBench: Evaluating Multimodal Agents on Code-Driven Video Generation](https://arxiv.org/abs/2610.35864) · 4/5  
-  239 self-contained tasks across 12 categories (data stories, music-driven pieces, classroom lessons, paper explainers) testing agents that write rendering code instead of diffusing pixels. Project page with leaderboard. Use this to benchmark code-generation agents for precise video synthesis.
+**[microsoft/graphrag](https://github.com/microsoft/graphrag)** · 4/5  
+Modular graph-based RAG system; 36.5k stars. Suitable for knowledge-intensive retrieval where entity relationships matter.
 
-- [LocalLLaMA/typed-decisions (HF Dataset)](https://huggingface.co/datasets/LocalLLaMA/typed-decisions) · 4/5  
-  Official benchmark dataset (1K–10K examples, Apache-2.0) for text-classification evaluation with YAML configs. Immediate drop-in for CI/CD evaluation pipelines.
+### Benchmark & evaluation
+**[LocalLLaMA/typed-decisions](https://huggingface.co/datasets/LocalLLaMA/typed-decisions)** · 4/5  
+Text-classification benchmark dataset (1K–10K samples, Apache-2.0) with eval YAML; 261 likes, 41.5k downloads. Use for structured decision-making evals.
 
-- [Zooming without Zooming v2: From Seeing Details to Connecting Evidence for Generalizable Multimodal Perception](https://arxiv.org/abs/2610.37037) · 3/5  
-  Frames spatial perception and long-context understanding as “connecting evidence” — identifying visual facts, binding entities, recovering relations. Provides GitHub repo with targeted training data synthesis. Useful for embodied AI and multimodal agent perception stacks.
+**[Timestral](https://arxiv.org/abs/2610.37585)** · 2/5  
+Family of time-series foundation models (5M–209M params) claiming SOTA on GIFT-Eval, TIME, fev-bench via Decoupled Horizon Forecasting. Repo linked; useful for probabilistic forecasting tasks.
 
-### Framework
-- [huggingface/transformers — Transformers: the model-definition framework](https://github.com/huggingface/transformers) · 4/5  
-  The canonical library for loading, training, and deploying text, vision, audio, and multimodal models. 168k stars observed. Remains the primary integration point for new HF model releases.
+### Vision & video generation
+**[WeVisOne-VL](https://arxiv.org/abs/2610.31329)** · 3/5  
+Unified VLM for object- and pixel-level perception (detection, segmentation, OCR, counting, matting). GitHub: 428★, HF: 259 upvotes. Carryover (6 runs, traction +3.2).
 
-### Qwen / DeepSeek models
-- [Qwen/Qwen3.8-27B (HF Model)](https://huggingface.co/Qwen/Qwen3.8-27B) · 3/5  
-  27B image-text-to-text model (Apache-2.0) with 7.5M downloads observed. Ready for multimodal fine-tuning or inference via transformers.
+**[Looking Ahead](https://arxiv.org/abs/2610.29989)** · 3/5  
+Future Chunk Prediction auxiliary task for autoregressive video diffusion; improves modeling of scene evolution. GitHub: 155★, HF: 174 upvotes. Carryover (7 runs, traction +3.4).
 
-### World
-- [ThinkWorld: World Imagination Reinforces Chain-of-Dynamics Reasoning](https://arxiv.org/abs/2610.37666) · 3/5  
-  VLA framework that grounds action reasoning in learned world dynamics and reinforces it via RL with imagined rollouts. Project page available. Carryover observed on 7 consecutive runs with rising traction (mag +82.9%). Strong candidate for robotics teams needing generalization beyond demonstration data.
+### Multimodal models
+**[Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B)** · 3/5  
+Image-text-to-text model (Apache-2.0); 18.7k likes, 7.5M downloads. Strong-group authorship, observed traction.
 
-### Other
-- [microsoft/autogen — A programming framework for agentic AI](https://github.com/microsoft/autogen) · 4/5  
-  Framework for building multi-agent workflows with tool use, code execution, and human-in-the-loop patterns. 61.6k stars observed. Matches focus on agentic systems; use as orchestration layer for LLM-driven automation.
+**[deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** · 3/5  
+Image-text-to-text (MIT); 3.7k likes, 131k downloads. Recent release (2026-10-17), climbing traction (streak 5).
 
-- [nvidia/simready-assets (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-assets) · 4/5  
-  CC-BY-4.0 3D assets for simulation (779k downloads, 780 likes observed). Direct input for Omniverse, Isaac Sim, or custom sim-to-real pipelines.
+### Simulation assets
+**[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)** · 4/5  
+CC-BY-4.0 3D assets for Omniverse/Isaac Sim; 912 likes, 839k downloads. Directly usable for robotics/physical AI sim pipelines.
 
-- [PDRVLA: A Vision-Language-Action Model with Physical Dynamics Representations](https://arxiv.org/abs/2610.37381) · 3/5  
-  Lightweight Physical Dynamics Module extracts physical tokens from vision-language features to condition actions without online video generation. 135 HF upvotes observed. Relevant for real-time robot control where latency budgets forbid full video prediction.
+### Cost-aware inference
+**[Zero-Shot Multimodal Event Spotting in Soccer Broadcasts](https://arxiv.org/abs/2610.37583)** · 2/5  
+Zero-shot event detection/classification/localization in full soccer matches using visual storyboards + commentary; no task-specific training. Demonstrates multimodal reasoning without fine-tuning.
 
-## Watch-list / Still developing
+## Still developing
 
-- [Multimodal Embodied Agents: A Unified Capability-centric Perspective](https://arxiv.org/abs/2610.30108) — streak 6, mag +103%
-- [FlashVSR+: Efficient Video Super-Resolution via Hybrid Attention](https://arxiv.org/abs/2610.17552) — streak 10, mag +86.9%
-- [SolarRenderer: Few-Step Generative Reference Rendering](https://arxiv.org/abs/2610.28630) — streak 7, mag +84.5%
-- [Sage-A1.5: From Long-Horizon Execution to Scientific Exploration](https://arxiv.org/abs/2610.28578) — streak 7, mag +82.9%
-- [Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation](https://arxiv.org/abs/2610.29989) — streak 6, mag +78.2%
-- [Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773) — streak 10, mag +75.2%
-- [AesCode: Aesthetic Code Generation with Decoupled Cross-Modal Rewards](https://arxiv.org/abs/2610.18860) — streak 10, mag +74.2%
-- [VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615) — streak 10, mag +65.0%
-- [Agent-Reflex: Teaching Language Agents to Act Reflectively](https://arxiv.org/abs/2610.17953) — streak 10, mag +63.7%
-- [WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) — streak 5, mag +58.5%
+Carryover items already in main list (WeVisOne-VL, Looking Ahead) show strongly positive traction deltas and retain their main-list slots. Other STORY ARCS entries (e.g., SolarRenderer, Sage-A1.5, DONIC) remain under observation; no new artifact links appeared in this window.
 
 ## Action items
 
-1. **Try** — Run [VibeVideoBench](https://arxiv.org/abs/2610.35864) tasks against your code-generation agent; the 239 tasks cover data visualization, education, and explanation formats that stress-test rendering accuracy.
-2. **Read** — [Hy-Nomas](https://arxiv.org/abs/2610.36729) for its action-aware causal attention design if you are building interactive video or world models that must preserve multi-turn context.
-3. **Track** — [ThinkWorld](https://arxiv.org/abs/2610.37666) (7-day streak, rising) — its RL-with-imagination loop for VLA generalization is a pattern likely to transfer to other embodied domains.
+1. **Try** — Clone **[microsoft/autogen](https://github.com/microsoft/autogen)** and run the quickstart to evaluate its agent orchestration API for your workflow automation.
+2. **Read** — **[Timestral](https://arxiv.org/abs/2610.37585)** paper (Sections 3–4) for the Decoupled Horizon Forecasting design; relevant if you build time-series forecasting services.
+3. **Track** — **[Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B)** and **[DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** on Hugging Face; both are multimodal, permissively licensed, and download counts are rising rapidly.
