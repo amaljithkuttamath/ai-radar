@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T20:41:41.132459+00:00",
+  "generated": "2026-10-30T20:12:24.202229+00:00",
   "repo": "amaljithkuttamath/ai-radar",
   "status": "warn",
   "signals": [
@@ -7,7 +7,7 @@
       "key": "digest",
       "label": "Daily digest",
       "status": "ok",
-      "age_h": 3.4,
+      "age_h": 3.3,
       "threshold_h": 48,
       "detail": "last digest committed 3h ago",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md"
@@ -25,7 +25,7 @@
       "key": "evals",
       "label": "Eval loop",
       "status": "warn",
-      "age_h": 3.4,
+      "age_h": 3.3,
       "threshold_h": 48,
       "detail": "grader last committed 3h ago \u00b7 tier 0 only, no model judgement",
       "url": "https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json"
@@ -48,8 +48,8 @@
       "status": "ok",
       "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": "2026-10-29T17:14:03Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/40919241769",
+      "last_run_at": "2026-10-30T16:54:43Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/41094056266",
       "observed": true
     },
     {
@@ -58,8 +58,8 @@
       "status": "ok",
       "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": "2026-10-29T17:16:33Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/40919346661",
+      "last_run_at": "2026-10-30T16:56:48Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/41094134518",
       "observed": true
     },
     {
@@ -68,8 +68,8 @@
       "status": "ok",
       "conclusion": "success",
       "fail_streak": 0,
-      "last_run_at": "2026-10-29T20:01:30Z",
-      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/40945257209",
+      "last_run_at": "2026-10-30T19:49:26Z",
+      "url": "https://github.com/amaljithkuttamath/ai-radar/actions/runs/41118334980",
       "observed": true
     }
   ]
