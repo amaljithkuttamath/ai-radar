@@ -1,530 +1,3638 @@
 {
   "arxiv:2610.28354": {
     "first_seen": "2026-10-21",
-    "last_seen": "2026-10-29",
-    "mag": 6.5693,
+    "last_seen": "2026-10-30",
+    "mag": 6.5811,
     "mag_history": [
-      6.2638,
       6.3471,
       6.3565,
       6.3898,
       6.5231,
       6.5693,
-      6.5693
+      6.5693,
+      6.5811
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "S-Agent 2.0: Spatial Reasoning with a General Coding Agent",
     "url": "https://arxiv.org/abs/2610.28354"
   },
   "arxiv:2610.28578": {
     "first_seen": "2026-10-21",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 7.5209,
     "mag_history": [
-      7.3993,
       7.4608,
       7.4754,
       7.4873,
       7.505,
       7.5201,
+      7.5209,
       7.5209
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "Sage-A1.5: From Long-Horizon Execution to Scientific Exploration with Capability Composition",
     "url": "https://arxiv.org/abs/2610.28578"
   },
   "arxiv:2610.28594": {
     "first_seen": "2026-10-21",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 5.9351,
     "mag_history": [
-      5.4546,
       5.6247,
       5.655,
       5.748,
       5.8078,
       5.8518,
+      5.9351,
       5.9351
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "Learning the 4D World through Point Trajectory Forecasting",
     "url": "https://arxiv.org/abs/2610.28594"
   },
   "arxiv:2610.28630": {
     "first_seen": "2026-10-21",
-    "last_seen": "2026-10-29",
-    "mag": 6.9005,
+    "last_seen": "2026-10-30",
+    "mag": 6.9136,
     "mag_history": [
-      6.6804,
       6.7564,
       6.7826,
       6.8274,
       6.8763,
       6.896,
-      6.9005
+      6.9005,
+      6.9136
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "SolarRenderer: Few-Step Generative Reference Rendering",
     "url": "https://arxiv.org/abs/2610.28630"
   },
   "arxiv:2610.29989": {
     "first_seen": "2026-10-22",
-    "last_seen": "2026-10-29",
-    "mag": 7.6897,
+    "last_seen": "2026-10-30",
+    "mag": 7.6372,
     "mag_history": [
-      4.2767,
       7.2206,
       7.3437,
       7.46,
       7.5754,
       7.6227,
-      7.6897
+      7.6897,
+      7.6372
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation",
     "url": "https://arxiv.org/abs/2610.29989"
   },
   "arxiv:2610.29997": {
     "first_seen": "2026-10-22",
-    "last_seen": "2026-10-29",
-    "mag": 7.0694,
+    "last_seen": "2026-10-30",
+    "mag": 7.0882,
     "mag_history": [
-      4.625,
       6.7544,
       6.8427,
       6.9847,
       7.0436,
       7.0694,
-      7.0694
+      7.0694,
+      7.0882
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "DONIC: Generalist Dexterous Bimanual Tracking Control from Human Demonstrations",
     "url": "https://arxiv.org/abs/2610.29997"
   },
   "arxiv:2610.30108": {
     "first_seen": "2026-10-22",
-    "last_seen": "2026-10-29",
-    "mag": 5.9019,
+    "last_seen": "2026-10-30",
+    "mag": 5.9269,
     "mag_history": [
-      2.8904,
       5.5997,
       5.6128,
       5.6915,
       5.8476,
       5.873,
-      5.9019
+      5.9019,
+      5.9269
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "Multimodal Embodied Agents: A Unified Capability-centric Perspective from Computer-Use to Robot-Use",
     "url": "https://arxiv.org/abs/2610.30108"
   },
   "arxiv:2610.30926": {
     "first_seen": "2026-10-23",
-    "last_seen": "2026-10-29",
-    "mag": 6.296,
+    "last_seen": "2026-10-30",
+    "mag": 5.8633,
     "mag_history": [
       5.0938,
       5.4586,
       5.8522,
       6.2189,
       6.296,
-      6.296
+      6.296,
+      5.8633
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "Making MLLM Latents Matter: Factor-Aware Predictive Learning for Cinematic Video Generation",
     "url": "https://arxiv.org/abs/2610.30926"
   },
   "arxiv:2610.31329": {
     "first_seen": "2026-10-23",
-    "last_seen": "2026-10-29",
-    "mag": 8.5914,
+    "last_seen": "2026-10-30",
+    "mag": 8.6285,
     "mag_history": [
       5.3706,
       7.6419,
       8.0991,
       8.4174,
       8.5136,
-      8.5914
+      8.5914,
+      8.6285
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "WeVisOne-VL: Unified Visual Perception from Objects to Pixels",
     "url": "https://arxiv.org/abs/2610.31329"
   },
-  "arxiv:2610.37570": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.38678": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      0.0,
-      0.0
-    ],
-    "score": 0,
-    "streak": 2,
-    "title": "LCM-Promo: An LLM-Based Uplift Model for Promotion Allocation",
-    "url": "https://arxiv.org/abs/2610.37570"
-  },
-  "arxiv:2610.37571": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0,
       0.0
     ],
     "score": 1,
-    "streak": 2,
-    "title": "TeamGym: A Gym for Team Decision-Making by AI Agents with Distributed Information",
-    "url": "https://arxiv.org/abs/2610.37571"
+    "streak": 1,
+    "title": "AskStream: When and What to Ask Proactively under Uncertainty in Streaming Video Understanding",
+    "url": "https://arxiv.org/abs/2610.38678"
   },
-  "arxiv:2610.37580": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.38681": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      0.0,
       0.0
     ],
-    "score": 0,
-    "streak": 2,
-    "title": "Spectral Braids: A Topological Descriptor for Dynamic Directed Networks",
-    "url": "https://arxiv.org/abs/2610.37580"
+    "score": 1,
+    "streak": 1,
+    "title": "Weaken to Strengthen: Weakening-Induced On-Policy Self-Distillation for Large Reasoning Models",
+    "url": "https://arxiv.org/abs/2610.38681"
   },
-  "arxiv:2610.37583": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.38683": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      0.0,
       0.0
     ],
     "score": 2,
-    "streak": 2,
-    "title": "Zero-Shot Multimodal Event Spotting in Soccer Broadcasts",
-    "url": "https://arxiv.org/abs/2610.37583"
+    "streak": 1,
+    "title": "Quantum-Inspired Pairwise Ranking Aggregation via Active LLM Feedback",
+    "url": "https://arxiv.org/abs/2610.38683"
   },
-  "arxiv:2610.37584": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.38691": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      0.0,
       0.0
     ],
     "score": 1,
-    "streak": 2,
-    "title": "REGER: Modeling inter-item Relations with Semantic IDs for Generative Recommendation",
-    "url": "https://arxiv.org/abs/2610.37584"
+    "streak": 1,
+    "title": "Beyond fabrication: Misattributed numbers in papers written by AI research agents",
+    "url": "https://arxiv.org/abs/2610.38691"
   },
-  "arxiv:2610.37585": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.38719": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      1.7918,
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Learning Scientific Trajectories to Predict Future Biomedical Discoveries",
+    "url": "https://arxiv.org/abs/2610.38719"
+  },
+  "arxiv:2610.38726": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "The Quine Test: How Much of a Model's Self Survives Its Own Description?",
+    "url": "https://arxiv.org/abs/2610.38726"
+  },
+  "arxiv:2610.38744": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "AtomTree: A Hierarchical Framework for State-Aware Embodied Instruction Following with LLMs",
+    "url": "https://arxiv.org/abs/2610.38744"
+  },
+  "arxiv:2610.38788": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Gold vs.~Translation: Are We Measuring Language, Knowledge, or Locality in Translated Benchmarks?",
+    "url": "https://arxiv.org/abs/2610.38788"
+  },
+  "arxiv:2610.38822": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "CopyLoop: Fast Looped Transformer Decoding via Context Copying and Shallow Screening",
+    "url": "https://arxiv.org/abs/2610.38822"
+  },
+  "arxiv:2610.38835": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "What to randomize matters: a controlled study of volume, axis and representation in low-data molecular generation",
+    "url": "https://arxiv.org/abs/2610.38835"
+  },
+  "arxiv:2610.38854": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Contextual Embeddings Beyond the Gold Chunk",
+    "url": "https://arxiv.org/abs/2610.38854"
+  },
+  "arxiv:2610.38902": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "HEDGE: Gated Hypergraph Memory for Scalable Multi-Agent Debate",
+    "url": "https://arxiv.org/abs/2610.38902"
+  },
+  "arxiv:2610.38911": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Interventional Training Reduces Causal Bypass in In-Context Introspection",
+    "url": "https://arxiv.org/abs/2610.38911"
+  },
+  "arxiv:2610.38960": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Efficient Agentic Audio-Visual Question Answering through Toolset Pruning and Modality Consolidation",
+    "url": "https://arxiv.org/abs/2610.38960"
+  },
+  "arxiv:2610.38977": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Beyond Passing Tests: A Systematic Review and Controlled Re-evaluation of Techniques for Improving the Quality of LLM-Generated Code",
+    "url": "https://arxiv.org/abs/2610.38977"
+  },
+  "arxiv:2610.39004": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "How Architecture, Typology, and Adaptation Strategies Shape ASR for Low-Resource African Languages: A Controlled Empirical Study",
+    "url": "https://arxiv.org/abs/2610.39004"
+  },
+  "arxiv:2610.39006": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Blind Spots: Where Small Language Models Fall Behind Frontier Models on Terminal Tasks",
+    "url": "https://arxiv.org/abs/2610.39006"
+  },
+  "arxiv:2610.39016": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Implicit Reasoning in Transformers: Bridging the Compositionality Gap in GPT-2-like Models",
+    "url": "https://arxiv.org/abs/2610.39016"
+  },
+  "arxiv:2610.39019": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Author-Informed Stance Detection: A Dataset and Findings",
+    "url": "https://arxiv.org/abs/2610.39019"
+  },
+  "arxiv:2610.39020": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
       0.0
     ],
     "score": 2,
-    "streak": 2,
-    "title": "Timestral",
-    "url": "https://arxiv.org/abs/2610.37585"
+    "streak": 1,
+    "title": "Distilling the Shape of Uncertainty: What On-Policy Distillation Learns and How to Predict It",
+    "url": "https://arxiv.org/abs/2610.39020"
   },
-  "arxiv:2610.37588": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.39060": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      0.0,
       0.0
     ],
-    "score": 1,
-    "streak": 2,
-    "title": "Understanding the limits of latent world models",
-    "url": "https://arxiv.org/abs/2610.37588"
+    "score": 0,
+    "streak": 1,
+    "title": "Tracing the Influence of Retrieved Literature on Scientific Ideation in LLMs",
+    "url": "https://arxiv.org/abs/2610.39060"
   },
-  "arxiv:2610.37598": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.39062": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      0.0,
       0.0
     ],
     "score": 2,
-    "streak": 2,
-    "title": "GAS-PFN: Graph-Aware Spatiotemporal Prior-Data Fitted Networks for Zero-Shot Traffic Forecasting",
-    "url": "https://arxiv.org/abs/2610.37598"
+    "streak": 1,
+    "title": "HEARSAYBENCH: Can AI Navigate from Abstract Human Rights to Lived Lives?",
+    "url": "https://arxiv.org/abs/2610.39062"
   },
-  "arxiv:2610.37599": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.39086": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      0.0,
       0.0
     ],
     "score": 1,
-    "streak": 2,
-    "title": "MoI-Bench: A Benchmark for Image Generation and Editing on Mobile Devices",
-    "url": "https://arxiv.org/abs/2610.37599"
+    "streak": 1,
+    "title": "HALO: Human-Grounded Granular Evaluation of Proactive Agents",
+    "url": "https://arxiv.org/abs/2610.39086"
   },
-  "arxiv:2610.37605": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.39162": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      0.0,
       0.0
     ],
     "score": 0,
-    "streak": 2,
-    "title": "Beyond Answer Changes: Matched Same-Class Controls for Local Audio Evidence",
-    "url": "https://arxiv.org/abs/2610.37605"
+    "streak": 1,
+    "title": "A Novel Approach to Evaluating Evaluation Metrics for Multi-Output Structured Prediction",
+    "url": "https://arxiv.org/abs/2610.39162"
   },
-  "arxiv:2610.37609": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.39168": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      0.0,
       0.0
     ],
     "score": 0,
-    "streak": 2,
-    "title": "EnvSched: Environment-Aware Scheduling for Rollout-Efficient Agent Reinforcement Learning",
-    "url": "https://arxiv.org/abs/2610.37609"
+    "streak": 1,
+    "title": "Reading-Level Verification of Kanji Words in Japanese Financial Speech Synthesis",
+    "url": "https://arxiv.org/abs/2610.39168"
   },
-  "arxiv:2610.37613": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.39182": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      0.0,
       0.0
     ],
     "score": 1,
-    "streak": 2,
-    "title": "VideoLVR: Latent Visual Reasoning over Grounded Video Evidence",
-    "url": "https://arxiv.org/abs/2610.37613"
+    "streak": 1,
+    "title": "Reasoning or Pattern Exploitation? Mechanistic Insights from RL-Trained Language Models",
+    "url": "https://arxiv.org/abs/2610.39182"
   },
-  "arxiv:2610.37624": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.39227": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      1.6094,
       0.0
     ],
     "score": 1,
-    "streak": 2,
-    "title": "Rare, Relevant, and Still Wrong: How Memory Fails LLM Group Decisions",
-    "url": "https://arxiv.org/abs/2610.37624"
+    "streak": 1,
+    "title": "XLaw-JP-27B: A Lightweight Open Model Specialized for Japanese Law",
+    "url": "https://arxiv.org/abs/2610.39227"
   },
-  "arxiv:2610.37631": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.39234": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      0.0,
       0.0
     ],
     "score": 1,
-    "streak": 2,
-    "title": "What Improves During Pretraining? Tracking Knowledge Acquisition with Point-in-Time Models",
-    "url": "https://arxiv.org/abs/2610.37631"
+    "streak": 1,
+    "title": "AgentHeal: Evaluating Goal-Preserving Resource Recovery of Web Agents under Access Barriers",
+    "url": "https://arxiv.org/abs/2610.39234"
   },
-  "arxiv:2610.37642": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "arxiv:2610.39237": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
-      0.0,
-      0.0
-    ],
-    "score": 1,
-    "streak": 2,
-    "title": "Metacognitive Decoding: Efficient Inference for Diffusion Language Agents",
-    "url": "https://arxiv.org/abs/2610.37642"
-  },
-  "arxiv:2610.37645": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0,
-      0.0
-    ],
-    "score": 1,
-    "streak": 2,
-    "title": "Multi-State Linear Attention with Generalized Second-Order Routing",
-    "url": "https://arxiv.org/abs/2610.37645"
-  },
-  "arxiv:2610.37647": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0,
-      0.0
-    ],
-    "score": 0,
-    "streak": 2,
-    "title": "MuonGS: Pretraining LLMs with Relaxed Weight-Norm Control",
-    "url": "https://arxiv.org/abs/2610.37647"
-  },
-  "arxiv:2610.37648": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0,
-      0.0
-    ],
-    "score": 1,
-    "streak": 2,
-    "title": "Scaling Laws for Tool-Use Agents via Controllable Environment Synthesis",
-    "url": "https://arxiv.org/abs/2610.37648"
-  },
-  "arxiv:2610.37649": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      1.7918,
-      0.0
-    ],
-    "score": 0,
-    "streak": 2,
-    "title": "Can LLMs Uncover Hidden Physical Laws through Free Exploration?",
-    "url": "https://arxiv.org/abs/2610.37649"
-  },
-  "arxiv:2610.37651": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0,
-      0.0
-    ],
-    "score": 0,
-    "streak": 2,
-    "title": "GEPA-Curator: Curated Learning for Self Improving Agents",
-    "url": "https://arxiv.org/abs/2610.37651"
-  },
-  "arxiv:2610.37652": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0,
-      0.0
-    ],
-    "score": 1,
-    "streak": 2,
-    "title": "Pushing Dexterity and Safety for In-Hand Object Pose Reaching That Works Remarkably Well",
-    "url": "https://arxiv.org/abs/2610.37652"
-  },
-  "arxiv:2610.37655": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0,
-      0.0
-    ],
-    "score": 1,
-    "streak": 2,
-    "title": "KPPax: preprocess differentiable kinetic ODE for machine learning in atmospheric chemistry",
-    "url": "https://arxiv.org/abs/2610.37655"
-  },
-  "arxiv:2610.37656": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0,
-      0.0
-    ],
-    "score": 0,
-    "streak": 2,
-    "title": "Attention as Lattice Gauge Theory: Relations Interact Only Through Wilson Loops",
-    "url": "https://arxiv.org/abs/2610.37656"
-  },
-  "arxiv:2610.37657": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0,
-      0.0
-    ],
-    "score": 1,
-    "streak": 2,
-    "title": "Heads of Security: Learned Attention Gates Improve Prompt Injection Robustness",
-    "url": "https://arxiv.org/abs/2610.37657"
-  },
-  "arxiv:2610.37658": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0,
-      0.0
-    ],
-    "score": 0,
-    "streak": 2,
-    "title": "When Should We Intervene at Test Time?",
-    "url": "https://arxiv.org/abs/2610.37658"
-  },
-  "arxiv:2610.37666": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      3.8286,
-      0.0
-    ],
-    "score": 0,
-    "streak": 2,
-    "title": "ThinkWorld: World Imagination Reinforces Chain-of-Dynamics Reasoning",
-    "url": "https://arxiv.org/abs/2610.37666"
-  },
-  "arxiv:2610.37668": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0,
       0.0
     ],
     "score": 2,
-    "streak": 2,
-    "title": "Honeycomb-Surfels: Compact Hexagonal Primitives for Efficient Scene Rendering and Reconstruction",
-    "url": "https://arxiv.org/abs/2610.37668"
+    "streak": 1,
+    "title": "Grounding Multimodal Reasoning with Evidence-Ablated Negatives",
+    "url": "https://arxiv.org/abs/2610.39237"
+  },
+  "arxiv:2610.39264": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 1.3863,
+    "mag_history": [
+      1.3863
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Online Dense Reinforcement Learning with Planning-Grounding Agent for UI Navigation on Live IOS Apps",
+    "url": "https://arxiv.org/abs/2610.39264"
+  },
+  "arxiv:2610.39287": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 1.3863,
+    "mag_history": [
+      1.3863
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "OpenFlyV2: An onboard vision-language-action model for aerial perception and navigation",
+    "url": "https://arxiv.org/abs/2610.39287"
+  },
+  "arxiv:2610.39301": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 3.2581,
+    "mag_history": [
+      3.2581
+    ],
+    "score": 3,
+    "streak": 1,
+    "title": "Youtu-Parsing-Omni: One Encoder, One Schema, All Modalities",
+    "url": "https://arxiv.org/abs/2610.39301"
+  },
+  "arxiv:2610.39302": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 1.7918,
+    "mag_history": [
+      1.7918
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Proving and Improving the Platonic Representation Hypothesis with JEPAs",
+    "url": "https://arxiv.org/abs/2610.39302"
+  },
+  "arxiv:2610.39308": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Unlimited OCR Works 2",
+    "url": "https://arxiv.org/abs/2610.39308"
+  },
+  "arxiv:2610.39339": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Does the Citation Matter? Quality, Grounding, and Physician-Rubric Accuracy of Google's AI Overviews for Medical Information",
+    "url": "https://arxiv.org/abs/2610.39339"
+  },
+  "arxiv:2610.39372": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Cord: Confidence-Anchored Order Residual Decoding for Masked Diffusion Language Models",
+    "url": "https://arxiv.org/abs/2610.39372"
+  },
+  "arxiv:2610.39373": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "What Makes Medical Examination Items Difficult? Using Large Language Models to Explore Patterns Associated With Empirical Item Difficulty",
+    "url": "https://arxiv.org/abs/2610.39373"
+  },
+  "arxiv:2610.39398": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Robustness of Chatbot LLM Judgments of Presidential Actions and Hypothetical Reforms",
+    "url": "https://arxiv.org/abs/2610.39398"
+  },
+  "arxiv:2610.39413": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "How Specific Do I Need to Be? Effects of User Query Underspecification on Deep Research Agents",
+    "url": "https://arxiv.org/abs/2610.39413"
+  },
+  "arxiv:2610.39417": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Well-Specified and Well-Tested? Assessing SWE-bench-Style Datasets with a Self-Evolving Agent",
+    "url": "https://arxiv.org/abs/2610.39417"
+  },
+  "arxiv:2610.39419": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Diagnosing the Reference Gap: What Visual Scaffolds Can and Cannot Fix in Multimodal Reasoning",
+    "url": "https://arxiv.org/abs/2610.39419"
+  },
+  "arxiv:2610.39423": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.6931,
+    "mag_history": [
+      0.6931
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "FDSML: Formula-Driven Supervised Metric Learning with Parameter-Aware Triplet Loss",
+    "url": "https://arxiv.org/abs/2610.39423"
+  },
+  "arxiv:2610.39433": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "ARBITRA: Robust Document-Level ATT&CK Extraction via Multi-Expert Argumentation",
+    "url": "https://arxiv.org/abs/2610.39433"
+  },
+  "arxiv:2610.39464": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Integrating Heterogeneous Echocardiography AI Outputs in Language Space: Learnable Late Fusion with a Supervised LLM",
+    "url": "https://arxiv.org/abs/2610.39464"
+  },
+  "arxiv:2610.39519": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Lost in the Latent Space: How Code Embeddings Represent Functional Intent and Implementation Fidelity",
+    "url": "https://arxiv.org/abs/2610.39519"
+  },
+  "arxiv:2610.39551": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Comprehensive empirical evaluation of feature extractors in computer vision",
+    "url": "https://arxiv.org/abs/2610.39551"
+  },
+  "arxiv:2610.39556": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Explainable and Adaptive Machine Learning for Fraud Risk Detection in Bangladesh's Digital Banking Ecosystem",
+    "url": "https://arxiv.org/abs/2610.39556"
+  },
+  "arxiv:2610.39557": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "LatentWeave: Test-Time Latent Optimization for Multimodal Reasoning",
+    "url": "https://arxiv.org/abs/2610.39557"
+  },
+  "arxiv:2610.39558": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "TabCUQ: Context-Uncertainty Quantification for Tabular Foundation Models",
+    "url": "https://arxiv.org/abs/2610.39558"
+  },
+  "arxiv:2610.39561": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Quantifying the Relay-Coverage Trade-off in Mobile Multihop Flooding",
+    "url": "https://arxiv.org/abs/2610.39561"
+  },
+  "arxiv:2610.39562": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Raincheck: Deferred Multimodal Prefill for Efficient Multi-Turn MLLM Inference",
+    "url": "https://arxiv.org/abs/2610.39562"
+  },
+  "arxiv:2610.39563": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Trajeform: Embedding Crowd Data",
+    "url": "https://arxiv.org/abs/2610.39563"
+  },
+  "arxiv:2610.39568": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Diffusion models for the $O(3)$ nonlinear sigma model",
+    "url": "https://arxiv.org/abs/2610.39568"
+  },
+  "arxiv:2610.39570": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "LLM Agent-Based Design of RISC-V CPUs with FPGA-in-the-Loop Evaluation",
+    "url": "https://arxiv.org/abs/2610.39570"
+  },
+  "arxiv:2610.39571": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Generative artificial intelligence prompting strategies among Chinese university students across academic tasks",
+    "url": "https://arxiv.org/abs/2610.39571"
+  },
+  "arxiv:2610.39575": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Hidden Phase Transition in Single-Polymer Stretching under Elongational Flow",
+    "url": "https://arxiv.org/abs/2610.39575"
+  },
+  "arxiv:2610.39580": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Learning Kolmogorov Backward Operators for Spectral Analysis and Forecasting: A Data-Driven Variational Galerkin Framework",
+    "url": "https://arxiv.org/abs/2610.39580"
+  },
+  "arxiv:2610.39590": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Red-Teaming Large Language Models in Low-Resource African Languages: A Case Study of Yoruba and Nigerian Pidgin",
+    "url": "https://arxiv.org/abs/2610.39590"
+  },
+  "arxiv:2610.39596": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Improving the Intrinsic Interpretability of Differentiable Decision Trees through Euclidean Feature-Concentration Regularisation",
+    "url": "https://arxiv.org/abs/2610.39596"
+  },
+  "arxiv:2610.39602": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Evaluating Cultural Knowledge Editing in Vision-Language Models",
+    "url": "https://arxiv.org/abs/2610.39602"
+  },
+  "arxiv:2610.39606": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Data Provenance and Ethics in the Curricula of U.S. Health AI Education Programs",
+    "url": "https://arxiv.org/abs/2610.39606"
+  },
+  "arxiv:2610.39608": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "From Intent to Improvement: Agentic Dataset Search for Better Model Training",
+    "url": "https://arxiv.org/abs/2610.39608"
+  },
+  "arxiv:2610.39614": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Emergence of the transformer architecture as the score of entropic laws of random measures",
+    "url": "https://arxiv.org/abs/2610.39614"
+  },
+  "arxiv:2610.39620": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Letting AI Formulate the Research Question: Autonomous Research Agents",
+    "url": "https://arxiv.org/abs/2610.39620"
+  },
+  "arxiv:2610.39621": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "The Real Cost of Context: Predicting Compute Time and Energy Consumption in LLM Prefill and Decode Phases",
+    "url": "https://arxiv.org/abs/2610.39621"
+  },
+  "arxiv:2610.39633": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 5.4553,
+    "mag_history": [
+      5.4553
+    ],
+    "score": 3,
+    "streak": 1,
+    "title": "Intrinsic Distribution Matching",
+    "url": "https://arxiv.org/abs/2610.39633"
+  },
+  "arxiv:2610.39639": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Where Do Vision Language Models Fail at 3D Reasoning?",
+    "url": "https://arxiv.org/abs/2610.39639"
+  },
+  "arxiv:2610.39641": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Rebuilding a Field's Open-Problem Catalog from the Literature: A Two-Layer Knowledge Graph, and Why Status Must Stay Proposed",
+    "url": "https://arxiv.org/abs/2610.39641"
+  },
+  "arxiv:2610.39645": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Carbon-Aware Electric Vehicle Routing Problem with Decision-Focused Learning",
+    "url": "https://arxiv.org/abs/2610.39645"
+  },
+  "arxiv:2610.39663": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 1.3863,
+    "mag_history": [
+      1.3863
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "AB-Attention: Accurate Block Attention for Accelerating Video Diffusion Transformers",
+    "url": "https://arxiv.org/abs/2610.39663"
+  },
+  "arxiv:2610.39664": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 2.0794,
+    "mag_history": [
+      2.0794
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "EditAgent: Rethinking Agentic Image Editing",
+    "url": "https://arxiv.org/abs/2610.39664"
+  },
+  "arxiv:2610.39665": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "A New AFIB Detection Method with Deep Neural Networks",
+    "url": "https://arxiv.org/abs/2610.39665"
+  },
+  "arxiv:2610.39671": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Incentivizing Self-Learning in Large Language Models via Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2610.39671"
+  },
+  "arxiv:2610.39674": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Formalizing the Intrinsic Dimension of Objective Landscapes by a Generalized Notion of Co-dimension",
+    "url": "https://arxiv.org/abs/2610.39674"
+  },
+  "arxiv:2610.39676": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Event-SAMA: Language-Grounded Video Object Segmentation on Neuromorphic Event Streams",
+    "url": "https://arxiv.org/abs/2610.39676"
+  },
+  "arxiv:2610.39681": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Can AI Agents Interface Clinicians and Complex Models?",
+    "url": "https://arxiv.org/abs/2610.39681"
+  },
+  "arxiv:2610.39682": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Heterogeneous Co-Evolution Learning for Tool-Efficient Search Agents with Zero Labels",
+    "url": "https://arxiv.org/abs/2610.39682"
+  },
+  "arxiv:2610.39685": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Practical Assessment of Agentic Systems in Acoustics",
+    "url": "https://arxiv.org/abs/2610.39685"
+  },
+  "arxiv:2610.39687": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Transformer-inspired architectures make machine-learned electron densities accurate and transferable enough to bypass self-consistency",
+    "url": "https://arxiv.org/abs/2610.39687"
+  },
+  "arxiv:2610.39691": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Smartphone Indoor Localization Enhanced by Hierarchical Multi-Sensor Context Recognition",
+    "url": "https://arxiv.org/abs/2610.39691"
+  },
+  "arxiv:2610.39709": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Bayes-Consistent Losses for Adaptive Inference in Classification",
+    "url": "https://arxiv.org/abs/2610.39709"
+  },
+  "arxiv:2610.39711": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Sandman: Building and Operating Sandboxes for Agentic Reinforcement Learning on Shared Kubernetes",
+    "url": "https://arxiv.org/abs/2610.39711"
+  },
+  "arxiv:2610.39714": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "MoLRSI: A Recursive Self-Improving AI agent for Molecular Discovery",
+    "url": "https://arxiv.org/abs/2610.39714"
+  },
+  "arxiv:2610.39716": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Adaptive Federated Optimization Across Smooth and Nonsmooth Regimes",
+    "url": "https://arxiv.org/abs/2610.39716"
+  },
+  "arxiv:2610.39717": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Implicit Bias of (Stochastic) Gradient Descent on Deep Linear Diagonal Networks",
+    "url": "https://arxiv.org/abs/2610.39717"
+  },
+  "arxiv:2610.39728": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Grounding Predictive Reliability through Masked Observability",
+    "url": "https://arxiv.org/abs/2610.39728"
+  },
+  "arxiv:2610.39731": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Going deep, reaching further: What can Boltzmann machines efficiently represent?",
+    "url": "https://arxiv.org/abs/2610.39731"
+  },
+  "arxiv:2610.39733": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Bank-World: A Benchmark for Evaluating Agents on Banking Workflows",
+    "url": "https://arxiv.org/abs/2610.39733"
+  },
+  "arxiv:2610.39735": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "From the Transformer to a Formal Semantics of Coordinated Transformations",
+    "url": "https://arxiv.org/abs/2610.39735"
+  },
+  "arxiv:2610.39742": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "The Importance of Speech Genre for End-of-Turn Detector Training",
+    "url": "https://arxiv.org/abs/2610.39742"
+  },
+  "arxiv:2610.39744": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "PAPERBENCHX: Can AI Reproduce Science Across Disciplines?",
+    "url": "https://arxiv.org/abs/2610.39744"
+  },
+  "arxiv:2610.39747": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "When the Top Answer Decides: Gender Bias in Decision Models",
+    "url": "https://arxiv.org/abs/2610.39747"
+  },
+  "arxiv:2610.39766": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Activation Probes Are Reliable With a Handful of Positive Examples",
+    "url": "https://arxiv.org/abs/2610.39766"
+  },
+  "arxiv:2610.39768": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Multi-output LSTM soft sensors for industrial anaerobic co-digestion using LSTM-beta-VAE generative data augmentation",
+    "url": "https://arxiv.org/abs/2610.39768"
+  },
+  "arxiv:2610.39773": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Quantum-Inspired Convolutional Networks for High-Resolution Pseudo-Label Generation from Multimodal Earth Observation Data",
+    "url": "https://arxiv.org/abs/2610.39773"
+  },
+  "arxiv:2610.39777": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Surface Conditioning for Zero-Shot Multivariate Correction in a Marine Biogeochemistry Emulator",
+    "url": "https://arxiv.org/abs/2610.39777"
+  },
+  "arxiv:2610.39779": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Diagnosing Optimizer-Landscape Interaction via Representation in Subset Selection Multitasking: Evidence from Piano Fingering",
+    "url": "https://arxiv.org/abs/2610.39779"
+  },
+  "arxiv:2610.39781": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Finding Is Not Returning, Returning Is Not Reconstructing: A Multi-Dimensional Evaluation of Agent Social Re-entry",
+    "url": "https://arxiv.org/abs/2610.39781"
+  },
+  "arxiv:2610.39790": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Long-Term Agent Memory through Complementary Curation and Consolidation",
+    "url": "https://arxiv.org/abs/2610.39790"
+  },
+  "arxiv:2610.39795": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "The Role of Self-Concept In Language Models",
+    "url": "https://arxiv.org/abs/2610.39795"
+  },
+  "arxiv:2610.39796": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "AI at a Turning Point: From ChatGPT through Neural Networks to Neuromorphic AI",
+    "url": "https://arxiv.org/abs/2610.39796"
+  },
+  "arxiv:2610.39800": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Grammar Control for Language Learning with Sequential Monte Carlo and Small Language Models",
+    "url": "https://arxiv.org/abs/2610.39800"
+  },
+  "arxiv:2610.39802": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Revisiting Over-refusal in Safety-aligned Large Language Models: A Representation and Optimization Perspective",
+    "url": "https://arxiv.org/abs/2610.39802"
+  },
+  "arxiv:2610.39803": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Optimal Contextual Pricing in Non-Stationary Environments",
+    "url": "https://arxiv.org/abs/2610.39803"
+  },
+  "arxiv:2610.39807": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "InferD: A Honeypot Framework for AI Inference Infrastructure",
+    "url": "https://arxiv.org/abs/2610.39807"
+  },
+  "arxiv:2610.39812": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "GROME: GROunding Factorized MEmory into Video World Models",
+    "url": "https://arxiv.org/abs/2610.39812"
+  },
+  "arxiv:2610.39813": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "EvoTeam: Multi-Agent Collaboration via Evolving Teams",
+    "url": "https://arxiv.org/abs/2610.39813"
+  },
+  "arxiv:2610.39821": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Possibility-based Inference: A Deterministic Framework for Robust and Reliable Uncertainty Quantification in Decision-Making",
+    "url": "https://arxiv.org/abs/2610.39821"
+  },
+  "arxiv:2610.39825": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "AegisFlow: Training-Free Non-Myopic Path-Safe Guided Flow Matching",
+    "url": "https://arxiv.org/abs/2610.39825"
+  },
+  "arxiv:2610.39835": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Aligning Medical Vision Language Models at the Capability Boundary with Entropy Adaptive Rubric Grounding",
+    "url": "https://arxiv.org/abs/2610.39835"
+  },
+  "arxiv:2610.39837": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "SHPRR: An Algorithm for Pure Exploration under Constrained Regret",
+    "url": "https://arxiv.org/abs/2610.39837"
+  },
+  "arxiv:2610.39839": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Exploring the Potential of Symbolic Regression in Precision Livestock Farming",
+    "url": "https://arxiv.org/abs/2610.39839"
+  },
+  "arxiv:2610.39840": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Surprise Alone Learns Lies: Evidence-Gated Continual Learning for LLMs from Streaming Claims",
+    "url": "https://arxiv.org/abs/2610.39840"
+  },
+  "arxiv:2610.39848": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "LiDAR-SHIELD: A Fully Dockerized Adversarial Robustness Assessment Framework for LiDAR-Based 3D Perception Models",
+    "url": "https://arxiv.org/abs/2610.39848"
+  },
+  "arxiv:2610.39852": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "DWISE: Denoising Workload-Informed Scheduling Engine",
+    "url": "https://arxiv.org/abs/2610.39852"
+  },
+  "arxiv:2610.39853": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "KV Cache Quantization for Diffusion Language Models",
+    "url": "https://arxiv.org/abs/2610.39853"
+  },
+  "arxiv:2610.39854": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Attention, Dynamic Wave and Hybrid Sequence Mixers in Language Models",
+    "url": "https://arxiv.org/abs/2610.39854"
+  },
+  "arxiv:2610.39855": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Probabilistic Meshless Methods on Manifolds",
+    "url": "https://arxiv.org/abs/2610.39855"
+  },
+  "arxiv:2610.39869": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Incorporating Machine-Others: An Enactive Exploration of Human-LLM Interactions",
+    "url": "https://arxiv.org/abs/2610.39869"
+  },
+  "arxiv:2610.39876": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Turing LLM Post-Training: Calibrated Distillation and Efficient Dynamic-MoE Execution",
+    "url": "https://arxiv.org/abs/2610.39876"
+  },
+  "arxiv:2610.39884": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "KARMA: Training-Free Knowledge-Atomic Harness Evolution for Industrial Advertising Agents",
+    "url": "https://arxiv.org/abs/2610.39884"
+  },
+  "arxiv:2610.39889": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "sDMD: Sinkhorn Distribution Matching Distillation",
+    "url": "https://arxiv.org/abs/2610.39889"
+  },
+  "arxiv:2610.39891": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "TACFormer: Transformer-Based Generative Model for Target-Conditioned De Novo PROTAC Design",
+    "url": "https://arxiv.org/abs/2610.39891"
+  },
+  "arxiv:2610.39897": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Data-driven Random-feature Approximation of Koopman Generators of Nonlinear Continuous-time Systems",
+    "url": "https://arxiv.org/abs/2610.39897"
+  },
+  "arxiv:2610.39902": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "CovFedAvg: Local Low-Loss Curves and Federated Model Selection",
+    "url": "https://arxiv.org/abs/2610.39902"
+  },
+  "arxiv:2610.39919": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Tokenizer Tokens Tell Training Tales",
+    "url": "https://arxiv.org/abs/2610.39919"
+  },
+  "arxiv:2610.39923": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Prompts and probabilities in the linguistic assessment of language models: Evidence from semantic focus-sensitivity",
+    "url": "https://arxiv.org/abs/2610.39923"
+  },
+  "arxiv:2610.39926": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Spectral Invariant Fusion and Refinement for Domain Generalized Semantic Segmentation",
+    "url": "https://arxiv.org/abs/2610.39926"
+  },
+  "arxiv:2610.39927": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Learning Calibrated Confidence for Multi-Agent Collaboration",
+    "url": "https://arxiv.org/abs/2610.39927"
+  },
+  "arxiv:2610.39931": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Low-Bit GDN Recurrent-State Quantization: Global Gradient-aware Allocation and Pure-Write Sliding Windows",
+    "url": "https://arxiv.org/abs/2610.39931"
+  },
+  "arxiv:2610.39934": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "H$^2$R: Hierarchical Hint-Based Reward for Mathematical Reasoning via Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2610.39934"
+  },
+  "arxiv:2610.39939": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Can LLMs Ignore What They Know? Measuring Knowledge Leakage in Persona-Based User Simulation",
+    "url": "https://arxiv.org/abs/2610.39939"
+  },
+  "arxiv:2610.39954": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "When to spend privacy: optimal allocation in private learning",
+    "url": "https://arxiv.org/abs/2610.39954"
+  },
+  "arxiv:2610.39955": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Mind The Gap (MTG-AD): Dataset and Fine-grained Evaluation for End-to-End Inline Audio Descriptions",
+    "url": "https://arxiv.org/abs/2610.39955"
+  },
+  "arxiv:2610.39958": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Observability-Aligned Evidential Masked Pretraining for Reliable VRU Motion Prediction",
+    "url": "https://arxiv.org/abs/2610.39958"
+  },
+  "arxiv:2610.39992": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Accumulating Pruning Constraints: New Exact Polynomial-Space Algorithms for Max 2-SAT",
+    "url": "https://arxiv.org/abs/2610.39992"
+  },
+  "arxiv:2610.39993": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "A physics-informed uncertainty-aware surrogate for $p$-$n$ junction diodes",
+    "url": "https://arxiv.org/abs/2610.39993"
+  },
+  "arxiv:2610.40001": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Enhancing Atrial Fibrillation Detection Through Hyperparameter Optimization",
+    "url": "https://arxiv.org/abs/2610.40001"
+  },
+  "arxiv:2610.40002": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "How Much Should a VLA Trust Its Reasoning? Step-Level Guidance as a Measured Action-Value Function",
+    "url": "https://arxiv.org/abs/2610.40002"
+  },
+  "arxiv:2610.40005": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Efficient Learning of Mechanism Designs and Compositionality",
+    "url": "https://arxiv.org/abs/2610.40005"
+  },
+  "arxiv:2610.40006": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Human--AI Interactions as First-Class Data: A Formal Interaction Model and Runtime for Explainable AI Collaboration",
+    "url": "https://arxiv.org/abs/2610.40006"
+  },
+  "arxiv:2610.40009": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "FIDE: Fiber-Informed Differentiable Experimental Design for Reference-Relative Law Dynamics",
+    "url": "https://arxiv.org/abs/2610.40009"
+  },
+  "arxiv:2610.40023": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "HEMO: Harness Self-Evolution for Multi-Objective Combinatorial Optimization",
+    "url": "https://arxiv.org/abs/2610.40023"
+  },
+  "arxiv:2610.40030": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Cheap Retrieval and Observation Credit Assignment from One Quantity: The Value of Information",
+    "url": "https://arxiv.org/abs/2610.40030"
+  },
+  "arxiv:2610.40031": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "AI Cosmos: An Agentic Infra for Situated Learning",
+    "url": "https://arxiv.org/abs/2610.40031"
+  },
+  "arxiv:2610.40036": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Hybrid AI Patterns: Thirteen Ways to Couple Language Models with Rules, and How to Choose Among Them",
+    "url": "https://arxiv.org/abs/2610.40036"
+  },
+  "arxiv:2610.40042": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "UPPAAi: Towards LLM-Assisted Modeling, Verification, Analysis and Synthesis",
+    "url": "https://arxiv.org/abs/2610.40042"
+  },
+  "arxiv:2610.40046": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "EPC-RawDC: Equivariant Physics Constrained 3D Diffusion with Raw Data Consistency for CBCT to CT Image Synthesis",
+    "url": "https://arxiv.org/abs/2610.40046"
+  },
+  "arxiv:2610.40051": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Rethinking Pre-pretraining",
+    "url": "https://arxiv.org/abs/2610.40051"
+  },
+  "arxiv:2610.40055": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "One Vector or Many? Clustered Optimal-Transport Steering under Quantization",
+    "url": "https://arxiv.org/abs/2610.40055"
+  },
+  "arxiv:2610.40056": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Reinforcement Learning Under Runtime Confounding: Policy Learning and Off-Policy Evaluation",
+    "url": "https://arxiv.org/abs/2610.40056"
+  },
+  "arxiv:2610.40061": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Localizing Concepts in Visual Autoregressive Models",
+    "url": "https://arxiv.org/abs/2610.40061"
+  },
+  "arxiv:2610.40071": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Agentic process evidence",
+    "url": "https://arxiv.org/abs/2610.40071"
+  },
+  "arxiv:2610.40075": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Learning Safe Flow Matching Robot Policies from Binary Feasibility Oracles",
+    "url": "https://arxiv.org/abs/2610.40075"
+  },
+  "arxiv:2610.40091": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Upcycling Language Models for Multiple Specialized Domains",
+    "url": "https://arxiv.org/abs/2610.40091"
+  },
+  "arxiv:2610.40096": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Reward-Adaptive Co-Evolution of Policy and Rubric",
+    "url": "https://arxiv.org/abs/2610.40096"
+  },
+  "arxiv:2610.40109": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Coupled Guidance for Flow Matching",
+    "url": "https://arxiv.org/abs/2610.40109"
+  },
+  "arxiv:2610.40110": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "D-MOD: Diffusion mode estimation for accelerated MRI",
+    "url": "https://arxiv.org/abs/2610.40110"
+  },
+  "arxiv:2610.40124": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "It Takes Two to Probe, Thousands to Retrieve: Putting Vision--Language Probes to the Retrieval Test",
+    "url": "https://arxiv.org/abs/2610.40124"
+  },
+  "arxiv:2610.40126": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Does System Size Matter in Uncertainty Quantification for Machine Learning Interatomic Potentials?",
+    "url": "https://arxiv.org/abs/2610.40126"
+  },
+  "arxiv:2610.40130": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Escaping Path Mirages in Offline Goal-Conditioned Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2610.40130"
+  },
+  "arxiv:2610.40133": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "DynaRev: Benchmarking Web Agents under Dynamic Goal Revision",
+    "url": "https://arxiv.org/abs/2610.40133"
+  },
+  "arxiv:2610.40138": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "A Deep Learning Framework for Quantile Demand Forecasting in E-commerce with Doubly Censored Data",
+    "url": "https://arxiv.org/abs/2610.40138"
+  },
+  "arxiv:2610.40143": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Mode Dynamics: A Framework for Neural Network Learning",
+    "url": "https://arxiv.org/abs/2610.40143"
+  },
+  "arxiv:2610.40151": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "The generative paradox: the Anti-Prompt paradigm for human capability",
+    "url": "https://arxiv.org/abs/2610.40151"
+  },
+  "arxiv:2610.40160": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "FARE: Factor-Aware Retrieval with Error-Guided Fusion for Retail Forecasting",
+    "url": "https://arxiv.org/abs/2610.40160"
+  },
+  "arxiv:2610.40161": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "A Negotiation-Aware Hybrid LLM Framework for Intent Interpretation and Service Discovery",
+    "url": "https://arxiv.org/abs/2610.40161"
+  },
+  "arxiv:2610.40162": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Fisher Contrastive Learning to Mitigate Feature Suppression: A Case Study in Acute Promyelocytic Leukemia Diagnosis",
+    "url": "https://arxiv.org/abs/2610.40162"
+  },
+  "arxiv:2610.40165": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Closing the Log Gap: Minimax-Optimal Regret for Episodic RL",
+    "url": "https://arxiv.org/abs/2610.40165"
+  },
+  "arxiv:2610.40166": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "EventSeeColor: Learning to Reconstruct Color from Monochrome Events",
+    "url": "https://arxiv.org/abs/2610.40166"
+  },
+  "arxiv:2610.40182": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Hidden Disparities in Ranking: Category-Aware Fairness via Distributional Stability",
+    "url": "https://arxiv.org/abs/2610.40182"
+  },
+  "arxiv:2610.40186": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Locating and Closing Information Gaps in Multi-Agent Systems",
+    "url": "https://arxiv.org/abs/2610.40186"
+  },
+  "arxiv:2610.40188": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Understanding axial attention in TSFMs through single location regression",
+    "url": "https://arxiv.org/abs/2610.40188"
+  },
+  "arxiv:2610.40192": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Bridging Semantics and Structure: A Theoretically Grounded Framework for Link Prediction on TAGs",
+    "url": "https://arxiv.org/abs/2610.40192"
+  },
+  "arxiv:2610.40196": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Towards Full-Text Scholarly Argument Mining using Entity-Anchored Claim Extraction",
+    "url": "https://arxiv.org/abs/2610.40196"
+  },
+  "arxiv:2610.40214": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "DYNAS: A Dynamic Network Penetration Testing Framework Using Deep Hierarchical Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2610.40214"
+  },
+  "arxiv:2610.40227": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "EpiAgent: Epistemic Self-Play for LLM Agents",
+    "url": "https://arxiv.org/abs/2610.40227"
+  },
+  "arxiv:2610.40233": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Mobilizing the Archive: Bitext Extraction at Scale from Archival Documents for Extremely Low-resource Languages",
+    "url": "https://arxiv.org/abs/2610.40233"
+  },
+  "arxiv:2610.40238": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "ScienceJudge: Pattern Perturbation Augmentation for Sentence-Level Scientific Claim Verification",
+    "url": "https://arxiv.org/abs/2610.40238"
+  },
+  "arxiv:2610.40241": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Judged in Company: In-Context Batching Makes LLM Verdicts Depend on Other Items",
+    "url": "https://arxiv.org/abs/2610.40241"
+  },
+  "arxiv:2610.40246": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "EnvOS: Auditing Computer-Use Agents When the World Moves On : Phenomenon-Based Task Construction, Certification, and Evidence-Based Evaluation",
+    "url": "https://arxiv.org/abs/2610.40246"
+  },
+  "arxiv:2610.40248": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "LLM-guided Planar Loco-Manipulation for Quadruped Robots",
+    "url": "https://arxiv.org/abs/2610.40248"
+  },
+  "arxiv:2610.40249": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Reaction precedents extend retrosynthetic prediction beyond training coverage",
+    "url": "https://arxiv.org/abs/2610.40249"
+  },
+  "arxiv:2610.40250": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Distributional Reward Calibration and Budget-Neutral Credit Assignment for Multimodal RLVR",
+    "url": "https://arxiv.org/abs/2610.40250"
+  },
+  "arxiv:2610.40252": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Conformal Annotation with Randomized Expert Review: Application to Online Cell-Type Labeling",
+    "url": "https://arxiv.org/abs/2610.40252"
+  },
+  "arxiv:2610.40253": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Confidence-Aware Speed-over-Ground Estimation from Doppler Spectra via Reconstruction-Based Representation Learning",
+    "url": "https://arxiv.org/abs/2610.40253"
+  },
+  "arxiv:2610.40254": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Statistical Analysis of Synthetic Data with Verification: A Linear Regression Framework",
+    "url": "https://arxiv.org/abs/2610.40254"
+  },
+  "arxiv:2610.40256": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "When Requirements Interact: Scaling Long-Horizon Coding via Interdependent Specifications",
+    "url": "https://arxiv.org/abs/2610.40256"
+  },
+  "arxiv:2610.40257": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Learned Terminal Costs for Short-Horizon Model Predictive Control of Autonomous Trucks in Interactive Highway Traffic",
+    "url": "https://arxiv.org/abs/2610.40257"
+  },
+  "arxiv:2610.40264": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "From MS/MS evidence to adaptive spectroscopic characterization: Reinforcement learning guided by candidate molecular structures",
+    "url": "https://arxiv.org/abs/2610.40264"
+  },
+  "arxiv:2610.40276": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "TaskFrame: Connecting Task-Level Planning with Frame-Level Control for Game Agents",
+    "url": "https://arxiv.org/abs/2610.40276"
+  },
+  "arxiv:2610.40278": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Neighborhood Elites: Quality-Diversity Search for Uncertainty Quantification in Question Answering",
+    "url": "https://arxiv.org/abs/2610.40278"
+  },
+  "arxiv:2610.40280": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Latent Prediction Yields Cross-Subject Alignable Representations in Sensory-Evoked fMRI",
+    "url": "https://arxiv.org/abs/2610.40280"
+  },
+  "arxiv:2610.40283": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Latent Path Exploration via Potential-Guided Subtrajectory Balance",
+    "url": "https://arxiv.org/abs/2610.40283"
+  },
+  "arxiv:2610.40287": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Only Accepted Tokens Count: An Energy Accounting of Speculative Decoding Under Latency Targets",
+    "url": "https://arxiv.org/abs/2610.40287"
+  },
+  "arxiv:2610.40290": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Leveraging Recourse and Size Bounds for OnlineKnapsack with Removable Items",
+    "url": "https://arxiv.org/abs/2610.40290"
+  },
+  "arxiv:2610.40292": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "DolphinRouting: Cluster-Level Binary Routing for Disaggregated LLM Inference Serving",
+    "url": "https://arxiv.org/abs/2610.40292"
+  },
+  "arxiv:2610.40302": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Self-training for cross-centre coronary vessel segmentation in X-ray angiography using pre-contrast frame subtraction",
+    "url": "https://arxiv.org/abs/2610.40302"
+  },
+  "arxiv:2610.40304": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Causal-prior-constrained deep learning for rapid-intensification warning of western North Pacific tropical cyclones",
+    "url": "https://arxiv.org/abs/2610.40304"
+  },
+  "arxiv:2610.40305": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Rimuru: Unified Memory Management for Modern LLM Serving via Elastic Expert Offloading",
+    "url": "https://arxiv.org/abs/2610.40305"
+  },
+  "arxiv:2610.40310": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Hammering with Vampire in Lean",
+    "url": "https://arxiv.org/abs/2610.40310"
+  },
+  "arxiv:2610.40318": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Decision and System One models in rheumatology: accuracy and calibration on specialty-training examination questions and diagnostic case vignettes",
+    "url": "https://arxiv.org/abs/2610.40318"
+  },
+  "arxiv:2610.40325": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "How to Loop Your Transformer: Loop Scaling, Specialization, and Parallel Inference",
+    "url": "https://arxiv.org/abs/2610.40325"
+  },
+  "arxiv:2610.40327": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Radiology Guideline-derived Decision Graph for Efficient Clinical Decision Support",
+    "url": "https://arxiv.org/abs/2610.40327"
+  },
+  "arxiv:2610.40328": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Factorized Representations of Concurrent Temporal Variables in Pretrained Language Models",
+    "url": "https://arxiv.org/abs/2610.40328"
+  },
+  "arxiv:2610.40330": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Multistep and Multivariate Time Series Explainability with GradientSHAP: A Wind Power Case Study",
+    "url": "https://arxiv.org/abs/2610.40330"
+  },
+  "arxiv:2610.40345": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "A Unified Hessian-Guided Framework for Post-Training Quantization",
+    "url": "https://arxiv.org/abs/2610.40345"
+  },
+  "arxiv:2610.40350": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Don't Lose the Thread: Empowering Long-Horizon LLM Agents with Cognitive Resource Self-Allocation",
+    "url": "https://arxiv.org/abs/2610.40350"
+  },
+  "arxiv:2610.40362": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 1.3863,
+    "mag_history": [
+      1.3863
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Your LR Schedule May Not Be Principled: Effective Learning Rate Scheduling in Weight-Normalized Training",
+    "url": "https://arxiv.org/abs/2610.40362"
+  },
+  "arxiv:2610.40364": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Is It the Curriculum or Just the Easy Start? Benchmarking Unsupervised Environment Design on Quadrupeds",
+    "url": "https://arxiv.org/abs/2610.40364"
+  },
+  "arxiv:2610.40370": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "The Athlete as a Scientist of One: Agentic Bayesian Experimental Design for Individualized Physiology from Consumer Wearables",
+    "url": "https://arxiv.org/abs/2610.40370"
+  },
+  "arxiv:2610.40379": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Agentic LLM reasoning in pediatric diabetes outcome prediction from multimodal medical records",
+    "url": "https://arxiv.org/abs/2610.40379"
+  },
+  "arxiv:2610.40382": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Beyond Selected Breakthroughs: Evaluating Language Models on Randomly Sampled Mathematical Conjectures",
+    "url": "https://arxiv.org/abs/2610.40382"
+  },
+  "arxiv:2610.40383": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Composing and Steering Diffusion Models with Generalized Feynman-Kac Correctors",
+    "url": "https://arxiv.org/abs/2610.40383"
+  },
+  "arxiv:2610.40394": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Scaling Mathematical Proof Supervision from Structured Textbooks",
+    "url": "https://arxiv.org/abs/2610.40394"
+  },
+  "arxiv:2610.40396": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Understanding and Mitigating Role Spoofing in LLMs",
+    "url": "https://arxiv.org/abs/2610.40396"
+  },
+  "arxiv:2610.40398": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Deep Learning Based Behavioral Drift Modeling for Continuous Biometric Authentication",
+    "url": "https://arxiv.org/abs/2610.40398"
+  },
+  "arxiv:2610.40401": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Continuous-Action World Models: Learning Cross-Embodiment Spatiotemporal Dynamics Priors",
+    "url": "https://arxiv.org/abs/2610.40401"
+  },
+  "arxiv:2610.40407": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "SCARL: Sequence Confidence-Aligned Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2610.40407"
+  },
+  "arxiv:2610.40409": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Retrieving from Your Own Mistakes: On-Policy Training of Embedding Models for Multi-Hop Retrieval-Augmented Generation",
+    "url": "https://arxiv.org/abs/2610.40409"
+  },
+  "arxiv:2610.40414": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Bridging Neural Representations and Symbolic Semantics in Audio Classification",
+    "url": "https://arxiv.org/abs/2610.40414"
+  },
+  "arxiv:2610.40415": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "OCCAMS: A Multi-Task Learning-Based Investigation of the CMB Power Spectra",
+    "url": "https://arxiv.org/abs/2610.40415"
+  },
+  "arxiv:2610.40418": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "IMPACT: Inverter-Informed Multimodal Learning for Photovoltaic Generation Forecasting",
+    "url": "https://arxiv.org/abs/2610.40418"
+  },
+  "arxiv:2610.40420": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "NECA: Neighbor Event Curve Augmentation for Multi-Horizon ICU Deterioration Prediction",
+    "url": "https://arxiv.org/abs/2610.40420"
+  },
+  "arxiv:2610.40421": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Uncertainty-aware Feedback Loop Diagnosis: integrating reinforcement learning and conformal prediction for reliable wafer defect classification",
+    "url": "https://arxiv.org/abs/2610.40421"
+  },
+  "arxiv:2610.40431": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Adaptive search with path-constrained mobile sensors using multi-arm bandits",
+    "url": "https://arxiv.org/abs/2610.40431"
+  },
+  "arxiv:2610.40432": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Soil Moisture Estimation in Precision Agriculture: A Knowledge Distillation Approach",
+    "url": "https://arxiv.org/abs/2610.40432"
+  },
+  "arxiv:2610.40437": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "A Pretrained Model for Bayesian Filtering in Heterogeneous Dynamical Systems",
+    "url": "https://arxiv.org/abs/2610.40437"
+  },
+  "arxiv:2610.40443": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Framework-Conditional Open Materials Generation",
+    "url": "https://arxiv.org/abs/2610.40443"
+  },
+  "arxiv:2610.40444": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Prefix Executability: Evaluating Tool-Using Agents Beyond Final Success",
+    "url": "https://arxiv.org/abs/2610.40444"
+  },
+  "arxiv:2610.40447": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Learning developmental dynamics from lineage context",
+    "url": "https://arxiv.org/abs/2610.40447"
+  },
+  "arxiv:2610.40449": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Reinforcement learning for control of partial differential equations",
+    "url": "https://arxiv.org/abs/2610.40449"
+  },
+  "arxiv:2610.40453": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 2.0794,
+    "mag_history": [
+      2.0794
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "PhysInsert: Physically Plausible Object Insertion with Geometric Priors and Bidirectional Object-Scene Interactions",
+    "url": "https://arxiv.org/abs/2610.40453"
+  },
+  "arxiv:2610.40454": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 2.3979,
+    "mag_history": [
+      2.3979
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Glance: The Generator Is Its Own Reranker",
+    "url": "https://arxiv.org/abs/2610.40454"
+  },
+  "arxiv:2610.40468": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Rural Readiness: Domain Generalization with Adversarially Chosen Domains",
+    "url": "https://arxiv.org/abs/2610.40468"
+  },
+  "arxiv:2610.40476": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Training language models in simulation for psychiatric intake",
+    "url": "https://arxiv.org/abs/2610.40476"
+  },
+  "arxiv:2610.40482": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "FIRME: Registry-Anchored Memory Graphs for Evolving, Heterogeneous Investor Knowledge",
+    "url": "https://arxiv.org/abs/2610.40482"
+  },
+  "arxiv:2610.40483": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Preserving Utility in Continual LLM Unlearning via Orthogonal Projections",
+    "url": "https://arxiv.org/abs/2610.40483"
+  },
+  "arxiv:2610.40485": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "The Precision Wall: An Optimizer-Dependent Boundary for Optimization under Power-Law Measurement Spectra",
+    "url": "https://arxiv.org/abs/2610.40485"
+  },
+  "arxiv:2610.40487": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "MetaRefine: Score Refinement with Multi-Level Features for Image Assessment",
+    "url": "https://arxiv.org/abs/2610.40487"
+  },
+  "arxiv:2610.40488": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "rTaste: Do Research Agents Have Taste? Evaluating Early Stage Research Judgment",
+    "url": "https://arxiv.org/abs/2610.40488"
+  },
+  "arxiv:2610.40490": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Fast and accurate neural triage decoding of ultra-high-rate quantum LDPC codes",
+    "url": "https://arxiv.org/abs/2610.40490"
+  },
+  "arxiv:2610.40492": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Agentic University: Collaborative Agents for Personalized Learning",
+    "url": "https://arxiv.org/abs/2610.40492"
+  },
+  "arxiv:2610.40494": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "AI in the EGI e-infrastructure -- Past experiences and future strategies",
+    "url": "https://arxiv.org/abs/2610.40494"
+  },
+  "arxiv:2610.40499": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Numerical Integration on Bounded Domains via Learned Reflected Diffusions",
+    "url": "https://arxiv.org/abs/2610.40499"
+  },
+  "arxiv:2610.40503": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Algebraic World Model: From Exploration to Proofs",
+    "url": "https://arxiv.org/abs/2610.40503"
+  },
+  "arxiv:2610.40505": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Discovering Interpretable Acoustic Features in Autoregressive Voice-Cloning TTS Models",
+    "url": "https://arxiv.org/abs/2610.40505"
+  },
+  "arxiv:2610.40511": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "A Low-Rank Space Captures Linear Alignment Between LLM and Human Neural Activity During Naturalistic Language Listening",
+    "url": "https://arxiv.org/abs/2610.40511"
+  },
+  "arxiv:2610.40516": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "How I Aligned Your Model: Scaling Up Multilingual Safety Training with Templates",
+    "url": "https://arxiv.org/abs/2610.40516"
+  },
+  "arxiv:2610.40518": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "IndicIPR-QA: A Benchmark for Extractive Question Answering on Indian IPR Laws",
+    "url": "https://arxiv.org/abs/2610.40518"
+  },
+  "arxiv:2610.40528": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "NEOPIC: A Neural Operator Framework for Particle-based Kinetic Plasma Simulations",
+    "url": "https://arxiv.org/abs/2610.40528"
+  },
+  "arxiv:2610.40532": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "BURGER: Benchmarking and Understanding Robotic Generalization via Embodied Drawing",
+    "url": "https://arxiv.org/abs/2610.40532"
+  },
+  "arxiv:2610.40533": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Homebrewed SLMs: Autoregressive and Masked Diffusion Language Models Built at Home for Portuguese",
+    "url": "https://arxiv.org/abs/2610.40533"
+  },
+  "arxiv:2610.40535": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Efficient Scalable Oversight via Rewinding",
+    "url": "https://arxiv.org/abs/2610.40535"
+  },
+  "arxiv:2610.40536": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "TRACER, a time-to-event EHR foundation model for disease detection across health systems",
+    "url": "https://arxiv.org/abs/2610.40536"
+  },
+  "arxiv:2610.40541": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "On the Fundamental Limits of Prefill-Based Decoding Length Prediction",
+    "url": "https://arxiv.org/abs/2610.40541"
+  },
+  "arxiv:2610.40544": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Machine Learning-Based Detection of Mobile Money Scan Messages in Ghana: A Comparative Evaluation of Naive Bayes, Support Vector Machine, and Randon Forest Classifiers",
+    "url": "https://arxiv.org/abs/2610.40544"
+  },
+  "arxiv:2610.40545": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Retrieval as Traversal: Value-Indexed Memory for Stateful Long-Context Agents",
+    "url": "https://arxiv.org/abs/2610.40545"
+  },
+  "arxiv:2610.40551": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Ramanujan Challenge Results: AI-Assisted Evaluation Pipeline for Multi-Format Proofs",
+    "url": "https://arxiv.org/abs/2610.40551"
+  },
+  "arxiv:2610.40556": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Advancing Clinical Genomic Analysis with a Skill-Centred Agent",
+    "url": "https://arxiv.org/abs/2610.40556"
+  },
+  "arxiv:2610.40560": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "FARMS: A Verifiable Foundation for Automated Computational Science",
+    "url": "https://arxiv.org/abs/2610.40560"
+  },
+  "arxiv:2610.40563": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Comparing Human Role-Players and LLM-Simulated Clients in Online Counselling Training: An Analysis of Counselling Patterns",
+    "url": "https://arxiv.org/abs/2610.40563"
+  },
+  "arxiv:2610.40564": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 1.0986,
+    "mag_history": [
+      1.0986
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Training Foundation Models with a Single Algorithm",
+    "url": "https://arxiv.org/abs/2610.40564"
+  },
+  "arxiv:2610.40565": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Gym-Anything for Robotics: Scaling physical simulations with digital agents",
+    "url": "https://arxiv.org/abs/2610.40565"
+  },
+  "arxiv:2610.40574": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Every Token Needs Its Own Teacher: Multi-teacher Adaptive On-policy Self-distillation",
+    "url": "https://arxiv.org/abs/2610.40574"
+  },
+  "arxiv:2610.40576": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "PIVOT: Progressive Intervention via Online Teacher Correction",
+    "url": "https://arxiv.org/abs/2610.40576"
+  },
+  "arxiv:2610.40577": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Multi-View MoE: Letting Every Router Shape Expert Computation",
+    "url": "https://arxiv.org/abs/2610.40577"
+  },
+  "arxiv:2610.40578": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "VeriCUA: Verification as Agentic Exploration for Computer-Using Agents",
+    "url": "https://arxiv.org/abs/2610.40578"
+  },
+  "arxiv:2610.40586": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Multistatic ISAC with Deep Learning-Based Clutter Suppression for 5G and Beyond",
+    "url": "https://arxiv.org/abs/2610.40586"
+  },
+  "arxiv:2610.40588": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Pre-Crime for Agents, at the Last Second: Probing When a Recruited Agent Gives In",
+    "url": "https://arxiv.org/abs/2610.40588"
+  },
+  "arxiv:2610.40589": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Collaborative AI agents for autonomous experimental research with solid-state quantum spins",
+    "url": "https://arxiv.org/abs/2610.40589"
+  },
+  "arxiv:2610.40599": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 2.8332,
+    "mag_history": [
+      2.8332
+    ],
+    "score": 3,
+    "streak": 1,
+    "title": "HairDeck: Animation-Ready Stylized Hair Cards from a Single Image",
+    "url": "https://arxiv.org/abs/2610.40599"
+  },
+  "arxiv:2610.40611": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "When to Assist and What to Suggest: Joint Gating and Memory-Grounded Hint Generation in One Compact Decoder",
+    "url": "https://arxiv.org/abs/2610.40611"
+  },
+  "arxiv:2610.40613": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "TextSeal2: Distortion-Free LLM Watermarking with Copula Mixing and Memoryless Races",
+    "url": "https://arxiv.org/abs/2610.40613"
+  },
+  "arxiv:2610.40614": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 3.5553,
+    "mag_history": [
+      3.5553
+    ],
+    "score": 3,
+    "streak": 1,
+    "title": "L3G-World: Real-Time Infinite World Generation with Latent 3D Gaussian Memory",
+    "url": "https://arxiv.org/abs/2610.40614"
+  },
+  "arxiv:2610.40616": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Difficulty Calibration Across Time for Membership Inference in Diffusion Models",
+    "url": "https://arxiv.org/abs/2610.40616"
+  },
+  "arxiv:2610.40618": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "An ODE-based Sampler for Discrete Diffusion Models",
+    "url": "https://arxiv.org/abs/2610.40618"
+  },
+  "arxiv:2610.40619": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Testimony from Timelines: Evidence-Grounded Significance Testing of Temporal Clinical Hypotheses",
+    "url": "https://arxiv.org/abs/2610.40619"
+  },
+  "arxiv:2610.40627": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "ShallowDefend: Harnessing Shallow Safety Alignment for Multi-Turn Defender",
+    "url": "https://arxiv.org/abs/2610.40627"
+  },
+  "arxiv:2610.40636": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Probing Spatial State Representations in Visual Foundation Models",
+    "url": "https://arxiv.org/abs/2610.40636"
+  },
+  "arxiv:2610.40637": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "world2vec: Mechanistic world models through latent dynamics learning",
+    "url": "https://arxiv.org/abs/2610.40637"
+  },
+  "arxiv:2610.40641": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "From extreme weather to agricultural consequences with agentic AI",
+    "url": "https://arxiv.org/abs/2610.40641"
+  },
+  "arxiv:2610.40643": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Luggage re-identification: A study of strategies towards a real-world application",
+    "url": "https://arxiv.org/abs/2610.40643"
+  },
+  "arxiv:2610.40644": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Adaptive Scenario Generation for KL-DRO Around a Learned Density Model",
+    "url": "https://arxiv.org/abs/2610.40644"
+  },
+  "arxiv:2610.40647": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 3.1355,
+    "mag_history": [
+      3.1355
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Read, Allocate, Route: Role-Coupled Tokenization for Pixel-Space Generative Transformers",
+    "url": "https://arxiv.org/abs/2610.40647"
+  },
+  "arxiv:2610.40649": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 0,
+    "streak": 1,
+    "title": "Rethinking Neural Thickets Without Weight Perturbations",
+    "url": "https://arxiv.org/abs/2610.40649"
+  },
+  "arxiv:2610.40654": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Propose-Filter-Release: Scaling Noise to Typical Sensitivity via Private Filtering",
+    "url": "https://arxiv.org/abs/2610.40654"
+  },
+  "arxiv:2610.40655": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "Elucidating the Design Space of LM Data Attribution",
+    "url": "https://arxiv.org/abs/2610.40655"
   },
   "blog:https://blogs.nvidia.com/?p=98677": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
+      0.0,
       0.0
     ],
     "score": 1,
-    "streak": 1,
+    "streak": 2,
     "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
     "url": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/"
   },
-  "blog:https://blogs.nvidia.com/?p=99523": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+  "blog:https://blogs.nvidia.com/?p=99565": {
+    "first_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
       0.0,
@@ -532,2027 +3640,2079 @@
     ],
     "score": 1,
     "streak": 2,
-    "title": "Thin, Light and Built for Everything: NVIDIA RTX Spark Windows Laptops Gain New Models, Agent Tools and Games",
-    "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-updates-models-agents-games/"
-  },
-  "blog:https://blogs.nvidia.com/?p=99565": {
-    "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0
-    ],
-    "score": 1,
-    "streak": 1,
     "title": "Slice Into GFN Thursday: ‘Phantom Blade Zero’ Launches on GeForce NOW",
     "url": "https://blogs.nvidia.com/blog/geforce-now-thursday-phantom-blade-zero/"
   },
-  "blog:https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model/": {
-    "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
+  "blog:https://blogs.nvidia.com/?p=99597": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
       0.0
     ],
     "score": 1,
     "streak": 1,
+    "title": "Things That Go Beep in the Night: Agentic AI Joins the Search for Extraterrestrial Signals",
+    "url": "https://blogs.nvidia.com/blog/ai-joins-the-search-for-extraterrestrial-signals/"
+  },
+  "blog:https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model/": {
+    "first_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0,
+      0.0
+    ],
+    "score": 1,
+    "streak": 2,
     "title": "Gemini 4 Carbon: Our next frontier model",
     "url": "https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model/"
   },
-  "blog:https://openai.com/index/how-we-detect-frontier-model-misalignment": {
-    "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
+  "blog:https://openai.com/index/community-safety-report-and-new-protections-for-teens": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
       0.0
     ],
     "score": 1,
     "streak": 1,
+    "title": "Community safety report and new protections for teens",
+    "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens"
+  },
+  "blog:https://openai.com/index/credit-saison": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Credit Saison achieves 954% ROI in a ChatGPT Enterprise pilot",
+    "url": "https://openai.com/index/credit-saison"
+  },
+  "blog:https://openai.com/index/how-we-detect-frontier-model-misalignment": {
+    "first_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
+    "mag": 0.0,
+    "mag_history": [
+      0.0,
+      0.0
+    ],
+    "score": 1,
+    "streak": 2,
     "title": "How we detect frontier model misalignment",
     "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment"
   },
-  "blog:https://openai.com/index/legora": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
-    "mag_history": [
-      0.0,
-      0.0
-    ],
-    "score": 1,
-    "streak": 2,
-    "title": "Legora is building the agentic operating system for legal work",
-    "url": "https://openai.com/index/legora"
-  },
-  "blog:https://openai.com/index/openai-servicenow-partnership-expansion": {
-    "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
+  "blog:https://openai.com/index/ropes-gray-ai-diligence": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
       0.0
     ],
     "score": 1,
     "streak": 1,
-    "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
-    "url": "https://openai.com/index/openai-servicenow-partnership-expansion"
+    "title": "How Ropes & Gray is developing AI for transactional diligence",
+    "url": "https://openai.com/index/ropes-gray-ai-diligence"
   },
-  "blog:https://openai.com/index/the-future-of-the-firm": {
-    "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
+  "blog:https://openai.com/index/updated-model-spec": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
     "mag": 0.0,
     "mag_history": [
       0.0
     ],
     "score": 1,
     "streak": 1,
-    "title": "The future of the firm",
-    "url": "https://openai.com/index/the-future-of-the-firm"
+    "title": "An updated Model Spec for more capable and beneficial AI",
+    "url": "https://openai.com/index/updated-model-spec"
   },
-  "blog:https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 0.0,
+  "ghrepo:AlonzoLeeeooo/awesome-text-to-image-studies": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 3.3193,
     "mag_history": [
-      0.0,
-      0.0
+      3.3193
     ],
-    "score": 1,
-    "streak": 2,
-    "title": "The sleep framework: A new way for LLMs to retain knowledge in continual learning",
-    "url": "https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/"
+    "score": 3,
+    "streak": 1,
+    "title": "AlonzoLeeeooo/awesome-text-to-image-studies — A collection of awesome text-to-image generation studies.",
+    "url": "https://github.com/AlonzoLeeeooo/awesome-text-to-image-studies"
+  },
+  "ghrepo:AlonzoLeeeooo/awesome-video-generation": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 3.3366,
+    "mag_history": [
+      3.3366
+    ],
+    "score": 3,
+    "streak": 1,
+    "title": "AlonzoLeeeooo/awesome-video-generation — A collection of awesome video generation studies.",
+    "url": "https://github.com/AlonzoLeeeooo/awesome-video-generation"
   },
   "ghrepo:BradyFU/Awesome-Multimodal-Large-Language-Models": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 4.901,
     "mag_history": [
+      4.901,
       4.901,
       4.901,
       4.901
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "BradyFU/Awesome-Multimodal-Large-Language-Models — :sparkles::sparkles:Latest Advances on Multimodal Large Language Models",
     "url": "https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models"
   },
   "ghrepo:Developer-Y/cs-video-courses": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.6707,
+    "last_seen": "2026-10-30",
+    "mag": 5.6712,
     "mag_history": [
       5.6678,
       5.6679,
       5.668,
       5.67,
-      5.6707
+      5.6707,
+      5.6712
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "Developer-Y/cs-video-courses — List of Computer Science courses with video lectures.",
     "url": "https://github.com/Developer-Y/cs-video-courses"
   },
   "ghrepo:DietrichGebert/ponytail": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 6.0501,
+    "last_seen": "2026-10-30",
+    "mag": 6.0526,
     "mag_history": [
-      6.0501
+      6.0501,
+      6.0526
     ],
     "score": 3,
-    "streak": 1,
+    "streak": 2,
     "title": "DietrichGebert/ponytail — Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
     "url": "https://github.com/DietrichGebert/ponytail"
   },
   "ghrepo:FlashML-org/FreeVideo": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 3.8995,
+    "last_seen": "2026-10-30",
+    "mag": 3.911,
     "mag_history": [
-      3.8995
+      3.8995,
+      3.911
     ],
     "score": 3,
-    "streak": 1,
+    "streak": 2,
     "title": "FlashML-org/FreeVideo — Make videos on the computer you already own. FreeVideo runs MiniMax H3 in as little as 8 GB of VRAM and 16 GB of RAM, and adapts its acceleration path to your hardware.",
     "url": "https://github.com/FlashML-org/FreeVideo"
   },
   "ghrepo:GoogleCloudPlatform/generative-ai": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 4.8942,
+    "last_seen": "2026-10-30",
+    "mag": 4.8943,
     "mag_history": [
       4.8938,
       4.8939,
       4.894,
       4.894,
-      4.8942
+      4.8942,
+      4.8943
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "GoogleCloudPlatform/generative-ai — Sample code and notebooks for Generative AI on Google Cloud, with Gemini Enterprise Agent Platform",
     "url": "https://github.com/GoogleCloudPlatform/generative-ai"
   },
   "ghrepo:Graphify-Labs/graphify": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.9191,
+    "last_seen": "2026-10-30",
+    "mag": 5.9221,
     "mag_history": [
       5.9036,
       5.9059,
       5.9129,
       5.916,
-      5.9191
+      5.9191,
+      5.9221
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "Graphify-Labs/graphify — Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.",
     "url": "https://github.com/Graphify-Labs/graphify"
   },
   "ghrepo:HKUDS/DeepTutor": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 5.4054,
+    "last_seen": "2026-10-30",
+    "mag": 5.425,
     "mag_history": [
       5.3613,
       5.3856,
-      5.4054
+      5.4054,
+      5.425
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "HKUDS/DeepTutor — DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.",
     "url": "https://github.com/HKUDS/DeepTutor"
   },
+  "ghrepo:HKUDS/LightRAG": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 5.3038,
+    "mag_history": [
+      5.3038
+    ],
+    "score": 3,
+    "streak": 1,
+    "title": "HKUDS/LightRAG — [EMNLP2025] LightRAG: Simple and Fast Retrieval-Augmented Generation",
+    "url": "https://github.com/HKUDS/LightRAG"
+  },
   "ghrepo:JuliaLang/julia": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.402,
+    "last_seen": "2026-10-30",
+    "mag": 5.4021,
     "mag_history": [
       5.4019,
       5.4019,
       5.402,
       5.402,
-      5.402
+      5.402,
+      5.4021
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "JuliaLang/julia — The Julia Programming Language",
     "url": "https://github.com/JuliaLang/julia"
   },
   "ghrepo:JuliusBrussee/caveman": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.8308,
+    "last_seen": "2026-10-30",
+    "mag": 5.8319,
     "mag_history": [
       5.8252,
       5.8261,
       5.8284,
       5.8295,
-      5.8308
+      5.8308,
+      5.8319
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "JuliusBrussee/caveman — 🪨 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman.",
     "url": "https://github.com/JuliusBrussee/caveman"
   },
   "ghrepo:Junchao-cs/SolarWM": {
     "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 3.346,
+    "last_seen": "2026-10-30",
+    "mag": 3.3485,
     "mag_history": [
       3.3442,
-      3.346
-    ],
-    "score": 3,
-    "streak": 2,
-    "title": "Junchao-cs/SolarWM — Open data and scalable training for long-horizon video world models.",
-    "url": "https://github.com/Junchao-cs/SolarWM"
-  },
-  "ghrepo:Lightning-AI/litgpt": {
-    "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 4.7639,
-    "mag_history": [
-      4.7638,
-      4.7639,
-      4.7639
+      3.346,
+      3.3485
     ],
     "score": 3,
     "streak": 3,
-    "title": "Lightning-AI/litgpt — 20+ high-performance LLMs with recipes to pretrain, finetune and deploy at scale.",
-    "url": "https://github.com/Lightning-AI/litgpt"
+    "title": "Junchao-cs/SolarWM — Open data and scalable training for long-horizon video world models.",
+    "url": "https://github.com/Junchao-cs/SolarWM"
   },
   "ghrepo:Mintplex-Labs/anything-llm": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.5615,
+    "last_seen": "2026-10-30",
+    "mag": 5.5618,
     "mag_history": [
       5.56,
       5.5602,
       5.5609,
       5.5613,
-      5.5615
+      5.5615,
+      5.5618
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "Mintplex-Labs/anything-llm — Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience",
     "url": "https://github.com/Mintplex-Labs/anything-llm"
   },
   "ghrepo:ModelTC/LightX2V": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 3.9983,
+    "last_seen": "2026-10-30",
+    "mag": 3.9992,
     "mag_history": [
       3.9966,
       3.9977,
-      3.9983
+      3.9983,
+      3.9992
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "ModelTC/LightX2V — Lightweight Image Video Action Generation Inference Framework",
     "url": "https://github.com/ModelTC/LightX2V"
   },
   "ghrepo:NVIDIA/Megatron-LM": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 4.9072,
+    "last_seen": "2026-10-30",
+    "mag": 4.9073,
     "mag_history": [
       4.9062,
       4.9064,
       4.9068,
       4.907,
-      4.9072
+      4.9072,
+      4.9073
     ],
     "score": 4,
-    "streak": 3,
+    "streak": 4,
     "title": "NVIDIA/Megatron-LM — Ongoing research training transformer models at scale",
     "url": "https://github.com/NVIDIA/Megatron-LM"
   },
-  "ghrepo:NVlabs/FastGen": {
-    "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 3.4937,
-    "mag_history": [
-      3.4937
-    ],
-    "score": 3,
-    "streak": 1,
-    "title": "NVlabs/FastGen — NVIDIA FastGen: Fast Generation from Diffusion Models",
-    "url": "https://github.com/NVlabs/FastGen"
-  },
   "ghrepo:NousResearch/hermes-agent": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 6.2312,
+    "last_seen": "2026-10-30",
+    "mag": 6.2319,
     "mag_history": [
       6.2278,
       6.2283,
       6.2297,
       6.2304,
-      6.2312
+      6.2312,
+      6.2319
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "NousResearch/hermes-agent — The agent that grows with you",
     "url": "https://github.com/NousResearch/hermes-agent"
   },
   "ghrepo:OpenDCAI/OpenWorldLib": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 3.395,
+    "last_seen": "2026-10-30",
+    "mag": 3.3956,
     "mag_history": [
-      3.395
+      3.395,
+      3.3956
     ],
     "score": 3,
-    "streak": 1,
+    "streak": 2,
     "title": "OpenDCAI/OpenWorldLib — Unified Codebase for Advanced World Models.",
     "url": "https://github.com/OpenDCAI/OpenWorldLib"
   },
   "ghrepo:OpenMOSS/MOVA": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 3.5172,
+    "last_seen": "2026-10-30",
+    "mag": 3.5176,
     "mag_history": [
       3.515,
       3.5154,
       3.5163,
       3.5172,
-      3.5172
+      3.5172,
+      3.5176
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "OpenMOSS/MOVA — A foundation model that generates synchronized video and audio in a single model",
     "url": "https://github.com/OpenMOSS/MOVA"
   },
   "ghrepo:PrunaAI/pruna": {
     "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 3.5976,
     "mag_history": [
+      3.5976,
       3.5976,
       3.5976
     ],
     "score": 3,
-    "streak": 2,
+    "streak": 3,
     "title": "PrunaAI/pruna — Pruna is a model optimization framework built for developers, enabling you to deliver faster, more efficient models with minimal overhead.",
     "url": "https://github.com/PrunaAI/pruna"
   },
   "ghrepo:RunanywhereAI/runanywhere-sdks": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 4.6217,
     "mag_history": [
       4.6216,
       4.6216,
+      4.6217,
       4.6217
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "RunanywhereAI/runanywhere-sdks — Production ready toolkit to run AI locally",
     "url": "https://github.com/RunanywhereAI/runanywhere-sdks"
   },
   "ghrepo:Significant-Gravitas/AutoGPT": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 6.0716,
+    "last_seen": "2026-10-30",
+    "mag": 6.0717,
     "mag_history": [
       6.0714,
       6.0714,
       6.0715,
       6.0716,
-      6.0716
+      6.0716,
+      6.0717
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "Significant-Gravitas/AutoGPT — AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
     "url": "https://github.com/Significant-Gravitas/AutoGPT"
   },
   "ghrepo:TauricResearch/TradingAgents": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 5.8401,
+    "last_seen": "2026-10-30",
+    "mag": 5.8418,
     "mag_history": [
       5.8355,
       5.8381,
-      5.8401
+      5.8401,
+      5.8418
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "TauricResearch/TradingAgents — TradingAgents: Multi-Agents LLM Financial Trading Framework",
     "url": "https://github.com/TauricResearch/TradingAgents"
   },
   "ghrepo:The-Vibe-Company/quivr": {
     "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 5.2935,
     "mag_history": [
       5.2934,
+      5.2935,
       5.2935
     ],
     "score": 3,
-    "streak": 2,
+    "streak": 3,
     "title": "The-Vibe-Company/quivr — An open-source engine that turns continuous content streams into search and monitoring. Durable ingestion, hybrid search, alerts, and plugins for formats, models and business rules.",
     "url": "https://github.com/The-Vibe-Company/quivr"
   },
   "ghrepo:TingsongYu/PyTorch-Tutorial-2nd": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 4.2203,
     "mag_history": [
+      4.2203,
       4.2203
     ],
     "score": 3,
-    "streak": 1,
+    "streak": 2,
     "title": "TingsongYu/PyTorch-Tutorial-2nd — 《Pytorch实用教程》（第二版）无论是零基础入门，还是CV、NLP、LLM项目应用，或是进阶工程化部署落地，在这里都有。相信在本书的帮助下，读者将能够轻松掌握 PyTorch 的使用，成为一名优秀的深度学习工程师。",
     "url": "https://github.com/TingsongYu/PyTorch-Tutorial-2nd"
   },
   "ghrepo:VectifyAI/PageIndex": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.2969,
+    "last_seen": "2026-10-30",
+    "mag": 5.2972,
     "mag_history": [
       5.2933,
       5.2941,
       5.2964,
       5.2967,
-      5.2969
+      5.2969,
+      5.2972
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "VectifyAI/PageIndex — 📑 PageIndex: Document Index for Vectorless, Reasoning-based RAG",
     "url": "https://github.com/VectifyAI/PageIndex"
   },
+  "ghrepo:X-GenGroup/Flow-Factory": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 3.3033,
+    "mag_history": [
+      3.3033
+    ],
+    "score": 3,
+    "streak": 1,
+    "title": "X-GenGroup/Flow-Factory — A unified framework for easy fine-tuning in Flow-Matching models",
+    "url": "https://github.com/X-GenGroup/Flow-Factory"
+  },
   "ghrepo:affaan-m/ECC": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 6.2931,
+    "last_seen": "2026-10-30",
+    "mag": 6.2943,
     "mag_history": [
       6.2897,
       6.2914,
-      6.2931
+      6.2931,
+      6.2943
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "affaan-m/ECC — The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
     "url": "https://github.com/affaan-m/ECC"
   },
   "ghrepo:agentscope-ai/agentscope": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 5.2286,
+    "last_seen": "2026-10-30",
+    "mag": 5.2309,
     "mag_history": [
       5.2232,
       5.2262,
-      5.2286
+      5.2286,
+      5.2309
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "agentscope-ai/agentscope — Build and run agents you can see, understand and trust.",
     "url": "https://github.com/agentscope-ai/agentscope"
   },
   "ghrepo:agno-agi/agno": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.3339,
+    "last_seen": "2026-10-30",
+    "mag": 5.3342,
     "mag_history": [
       5.333,
       5.3331,
       5.3335,
       5.3337,
-      5.3339
+      5.3339,
+      5.3342
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "agno-agi/agno — The self-driving agent platform",
     "url": "https://github.com/agno-agi/agno"
   },
-  "ghrepo:aishwaryanr/awesome-generative-ai-guide": {
-    "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 5.1547,
-    "mag_history": [
-      5.1547
-    ],
-    "score": 3,
-    "streak": 1,
-    "title": "aishwaryanr/awesome-generative-ai-guide — A one stop repository for generative AI research updates, interview resources, notebooks and much more!",
-    "url": "https://github.com/aishwaryanr/awesome-generative-ai-guide"
-  },
   "ghrepo:apache/airflow": {
     "first_seen": "2026-10-25",
-    "last_seen": "2026-10-29",
-    "mag": 5.3822,
+    "last_seen": "2026-10-30",
+    "mag": 5.3824,
     "mag_history": [
       5.3819,
       5.382,
       5.3821,
-      5.3822
+      5.3822,
+      5.3824
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "apache/airflow — Apache Airflow - A platform to programmatically author, schedule, and monitor workflows",
     "url": "https://github.com/apache/airflow"
   },
   "ghrepo:bghira/SimpleTuner": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 3.9948,
+    "last_seen": "2026-10-30",
+    "mag": 3.9949,
     "mag_history": [
       3.9943,
       3.9948,
-      3.9948
+      3.9948,
+      3.9949
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "bghira/SimpleTuner — A general fine-tuning kit geared toward image/video/audio diffusion models.",
     "url": "https://github.com/bghira/SimpleTuner"
   },
   "ghrepo:browser-use/browser-use": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.8454,
+    "last_seen": "2026-10-30",
+    "mag": 5.8459,
     "mag_history": [
       5.8435,
       5.8438,
       5.8447,
       5.845,
-      5.8454
+      5.8454,
+      5.8459
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "browser-use/browser-use — Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API.",
     "url": "https://github.com/browser-use/browser-use"
   },
   "ghrepo:crewAIInc/crewAI": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.5032,
+    "last_seen": "2026-10-30",
+    "mag": 5.5036,
     "mag_history": [
       5.5015,
       5.5018,
       5.5025,
       5.5028,
-      5.5032
+      5.5032,
+      5.5036
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "crewAIInc/crewAI — Framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks.",
     "url": "https://github.com/crewAIInc/crewAI"
   },
-  "ghrepo:datajuicer/data-juicer": {
-    "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 4.4408,
-    "mag_history": [
-      4.4402,
-      4.4405,
-      4.4408
-    ],
-    "score": 3,
-    "streak": 3,
-    "title": "datajuicer/data-juicer — Data processing for and with foundation models!  🍎 🍋 🌽 ➡️ ➡️🍸 🍹 🍷",
-    "url": "https://github.com/datajuicer/data-juicer"
-  },
-  "ghrepo:deepinv/deepinv": {
-    "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 3.3673,
-    "mag_history": [
-      3.3673,
-      3.3673,
-      3.3673
-    ],
-    "score": 3,
-    "streak": 3,
-    "title": "deepinv/deepinv — DeepInverse: a PyTorch library for solving imaging inverse problems using deep learning",
-    "url": "https://github.com/deepinv/deepinv"
-  },
   "ghrepo:deepset-ai/haystack": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.0995,
+    "last_seen": "2026-10-30",
+    "mag": 5.0997,
     "mag_history": [
       5.0985,
       5.0988,
       5.0992,
       5.0994,
-      5.0995
+      5.0995,
+      5.0997
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "deepset-ai/haystack — Open-source AI orchestration framework for building context-engineered, production-ready LLM applications. Design modular pipelines and agent workflows with explicit control over retrieval, routing, memory, and generation. Built for scalable agents, RAG, multimodal applications, semantic search, and conversational systems.",
     "url": "https://github.com/deepset-ai/haystack"
   },
   "ghrepo:f/prompts.chat": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 6.0364,
+    "last_seen": "2026-10-30",
+    "mag": 6.0369,
     "mag_history": [
       6.0344,
       6.0348,
       6.0356,
       6.0361,
-      6.0364
+      6.0364,
+      6.0369
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "f/prompts.chat — f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.",
     "url": "https://github.com/f/prompts.chat"
   },
   "ghrepo:firecrawl/firecrawl": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 6.0947,
+    "last_seen": "2026-10-30",
+    "mag": 6.0955,
     "mag_history": [
       6.09,
       6.0909,
       6.0929,
       6.0938,
-      6.0947
+      6.0947,
+      6.0955
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "firecrawl/firecrawl — Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥",
     "url": "https://github.com/firecrawl/firecrawl"
   },
   "ghrepo:github/awesome-copilot": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 5.3053,
+    "last_seen": "2026-10-30",
+    "mag": 5.3057,
     "mag_history": [
       5.3042,
       5.3045,
-      5.3053
+      5.3053,
+      5.3057
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "github/awesome-copilot — Community-contributed instructions, agents, skills, and configurations to help you make the most of GitHub Copilot.",
     "url": "https://github.com/github/awesome-copilot"
   },
   "ghrepo:google/langextract": {
     "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 5.2882,
+    "last_seen": "2026-10-30",
+    "mag": 5.2884,
     "mag_history": [
       5.2867,
-      5.2882
+      5.2882,
+      5.2884
     ],
     "score": 4,
-    "streak": 2,
+    "streak": 3,
     "title": "google/langextract — A Python library for extracting structured information from unstructured text using LLMs with precise source grounding and interactive visualization.",
     "url": "https://github.com/google/langextract"
   },
-  "ghrepo:haidog-yaqub/MeanFlow": {
-    "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 3.5508,
-    "mag_history": [
-      3.5508
-    ],
-    "score": 3,
-    "streak": 1,
-    "title": "haidog-yaqub/MeanFlow — PyTorch implementation of MeanFlow & iMF (one-step generative modeling).",
-    "url": "https://github.com/haidog-yaqub/MeanFlow"
-  },
   "ghrepo:hao-ai-lab/FastVideo": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 4.2339,
+    "last_seen": "2026-10-30",
+    "mag": 4.2344,
     "mag_history": [
       4.228,
       4.23,
       4.2331,
       4.2336,
-      4.2339
+      4.2339,
+      4.2344
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "hao-ai-lab/FastVideo — A unified inference and post-training framework for accelerated video generation.",
     "url": "https://github.com/hao-ai-lab/FastVideo"
   },
   "ghrepo:harry0703/MoneyPrinterTurbo": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.9112,
+    "last_seen": "2026-10-30",
+    "mag": 5.9121,
     "mag_history": [
       5.9056,
       5.9066,
       5.9092,
       5.9105,
-      5.9112
+      5.9112,
+      5.9121
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "harry0703/MoneyPrinterTurbo — 利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频。Generate HD short videos from a topic or keyword with an automated AI workflow.",
     "url": "https://github.com/harry0703/MoneyPrinterTurbo"
   },
   "ghrepo:headroomlabs-ai/headroom": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.6338,
+    "last_seen": "2026-10-30",
+    "mag": 5.6345,
     "mag_history": [
       5.6303,
       5.6309,
       5.6323,
       5.6331,
-      5.6338
+      5.6338,
+      5.6345
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "headroomlabs-ai/headroom — Compress tool outputs, logs, files, and RAG chunks before they reach the LLM. 20% fewer tokens for coding agents, 60-95% fewer tokens for JSON, same answers. Library, proxy, MCP server.",
     "url": "https://github.com/headroomlabs-ai/headroom"
   },
   "ghrepo:hiyouga/LlamaFactory": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 5.6178,
+    "last_seen": "2026-10-30",
+    "mag": 5.6179,
     "mag_history": [
-      5.6178
+      5.6178,
+      5.6179
     ],
     "score": 3,
-    "streak": 1,
+    "streak": 2,
     "title": "hiyouga/LlamaFactory — Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)",
     "url": "https://github.com/hiyouga/LlamaFactory"
   },
   "ghrepo:huggingface/transformers": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 6.0169,
     "mag_history": [
       6.0161,
       6.0163,
       6.0166,
       6.0167,
+      6.0169,
       6.0169
     ],
     "score": 4,
-    "streak": 3,
+    "streak": 4,
     "title": "huggingface/transformers — 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training.",
     "url": "https://github.com/huggingface/transformers"
   },
   "ghrepo:infiniflow/ragflow": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.7207,
+    "last_seen": "2026-10-30",
+    "mag": 5.7213,
     "mag_history": [
       5.7191,
       5.7193,
       5.72,
       5.7203,
-      5.7207
+      5.7207,
+      5.7213
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "infiniflow/ragflow — RAGFlow is a leading open-source Retrieval-Augmented Generation (RAG) engine that fuses cutting-edge RAG with Agent capabilities to create a superior context layer for LLMs",
     "url": "https://github.com/infiniflow/ragflow"
   },
-  "ghrepo:jeecgboot/JeecgBoot": {
-    "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.3929,
-    "mag_history": [
-      5.3923,
-      5.3924,
-      5.3925,
-      5.3927,
-      5.3929
-    ],
-    "score": 3,
-    "streak": 3,
-    "title": "jeecgboot/JeecgBoot — 【低代码v2.0，一句话即可生成整个系统】企业级AI低代码平台，一键生成前后端代码甚至整个系统。 AI Skills 一句话画流程、设计表单、生成报表、大屏。内置 AI应用平台涵盖：AI聊天、知识库、流程编排、MCP插件等，兼容主流大模型。引领AI低代码「Skills 生成 → 在线配置 → 代码生成 → 手工合并->AI修改」开发模式，解决 Java 项目 90% 重复工作，提高效率又不失灵活。",
-    "url": "https://github.com/jeecgboot/JeecgBoot"
-  },
   "ghrepo:keras-team/keras": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 5.5364,
     "mag_history": [
       5.5363,
       5.5363,
       5.5364,
       5.5364,
+      5.5364,
       5.5364
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "keras-team/keras — Deep Learning for humans",
     "url": "https://github.com/keras-team/keras"
   },
   "ghrepo:labmlai/annotated_deep_learning_paper_implementations": {
     "first_seen": "2026-10-25",
-    "last_seen": "2026-10-29",
-    "mag": 5.5607,
+    "last_seen": "2026-10-30",
+    "mag": 5.5608,
     "mag_history": [
       5.5607,
       5.5607,
       5.5607,
-      5.5607
+      5.5607,
+      5.5608
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "labmlai/annotated_deep_learning_paper_implementations — 🧑‍🏫 60+ Implementations/tutorials of deep learning papers with side-by-side notes 📝; including transformers (original, xl, switch, feedback, vit, ...), optimizers (adam, adabelief, sophia, ...), gans(cyclegan, stylegan2, ...), 🎮 reinforcement learning (ppo, dqn), capsnet, distillation, ... 🧠",
     "url": "https://github.com/labmlai/annotated_deep_learning_paper_implementations"
   },
   "ghrepo:langchain-ai/langchain": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.9548,
+    "last_seen": "2026-10-30",
+    "mag": 5.9549,
     "mag_history": [
       5.9537,
       5.9539,
       5.9544,
       5.9546,
-      5.9548
+      5.9548,
+      5.9549
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "langchain-ai/langchain — The agent engineering platform.",
     "url": "https://github.com/langchain-ai/langchain"
   },
   "ghrepo:langchain-ai/langgraph": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.3472,
+    "last_seen": "2026-10-30",
+    "mag": 5.3479,
     "mag_history": [
       5.344,
       5.3445,
       5.3459,
       5.3466,
-      5.3472
+      5.3472,
+      5.3479
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "langchain-ai/langgraph — Build resilient agents.",
     "url": "https://github.com/langchain-ai/langgraph"
   },
   "ghrepo:langflow-ai/langflow": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 5.9793,
     "mag_history": [
       5.9787,
       5.9788,
       5.979,
       5.9791,
+      5.9793,
       5.9793
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "langflow-ai/langflow — Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
     "url": "https://github.com/langflow-ai/langflow"
   },
   "ghrepo:langfuse/langfuse": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.2555,
+    "last_seen": "2026-10-30",
+    "mag": 5.2561,
     "mag_history": [
       5.25,
       5.2518,
       5.2539,
       5.2546,
-      5.2555
+      5.2555,
+      5.2561
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "langfuse/langfuse — 🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
     "url": "https://github.com/langfuse/langfuse"
   },
   "ghrepo:langgenius/dify": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.9912,
+    "last_seen": "2026-10-30",
+    "mag": 5.9915,
     "mag_history": [
       5.9896,
       5.9899,
       5.9905,
       5.9909,
-      5.9912
+      5.9912,
+      5.9915
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "langgenius/dify — Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
     "url": "https://github.com/langgenius/dify"
   },
   "ghrepo:mem0ai/mem0": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.5641,
+    "last_seen": "2026-10-30",
+    "mag": 5.5644,
     "mag_history": [
       5.5617,
       5.562,
       5.563,
       5.5636,
-      5.5641
+      5.5641,
+      5.5644
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "mem0ai/mem0 — The Memory Layer for AI Agents - Drop-in memory infrastructure for AI agents and apps. Context that persists. Built for production.",
     "url": "https://github.com/mem0ai/mem0"
   },
   "ghrepo:microsoft/AI-For-Beginners": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.5807,
+    "last_seen": "2026-10-30",
+    "mag": 5.5809,
     "mag_history": [
       5.5794,
       5.5798,
       5.5802,
       5.5805,
-      5.5807
+      5.5807,
+      5.5809
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "microsoft/AI-For-Beginners — 12 Weeks, 24 Lessons, AI for All!",
     "url": "https://github.com/microsoft/AI-For-Beginners"
   },
   "ghrepo:microsoft/autogen": {
     "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 5.5144,
+    "last_seen": "2026-10-30",
+    "mag": 5.5145,
     "mag_history": [
       5.5143,
-      5.5144
-    ],
-    "score": 4,
-    "streak": 2,
-    "title": "microsoft/autogen — A programming framework for agentic AI",
-    "url": "https://github.com/microsoft/autogen"
-  },
-  "ghrepo:microsoft/graphrag": {
-    "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 5.2524,
-    "mag_history": [
-      5.2524
-    ],
-    "score": 4,
-    "streak": 1,
-    "title": "microsoft/graphrag — A modular graph-based Retrieval-Augmented Generation (RAG) system",
-    "url": "https://github.com/microsoft/graphrag"
-  },
-  "ghrepo:milvus-io/milvus": {
-    "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 5.3739,
-    "mag_history": [
-      5.3736,
-      5.3737,
-      5.3739
+      5.5144,
+      5.5145
     ],
     "score": 3,
     "streak": 3,
+    "title": "microsoft/autogen — A programming framework for agentic AI",
+    "url": "https://github.com/microsoft/autogen"
+  },
+  "ghrepo:microsoft/qlib": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 5.4083,
+    "mag_history": [
+      5.4083
+    ],
+    "score": 4,
+    "streak": 1,
+    "title": "microsoft/qlib — Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process.",
+    "url": "https://github.com/microsoft/qlib"
+  },
+  "ghrepo:milvus-io/milvus": {
+    "first_seen": "2026-10-27",
+    "last_seen": "2026-10-30",
+    "mag": 5.374,
+    "mag_history": [
+      5.3736,
+      5.3737,
+      5.3739,
+      5.374
+    ],
+    "score": 3,
+    "streak": 4,
     "title": "milvus-io/milvus — Milvus is a high-performance, cloud-native vector database built for scalable vector ANN search",
     "url": "https://github.com/milvus-io/milvus"
   },
   "ghrepo:morluto/rea": {
     "first_seen": "2026-10-11",
-    "last_seen": "2026-10-29",
-    "mag": 6.4578,
+    "last_seen": "2026-10-30",
+    "mag": 6.4635,
     "mag_history": [
-      6.4022,
       6.4123,
       6.4191,
       6.427,
       6.4443,
       6.4512,
-      6.4578
+      6.4578,
+      6.4635
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "morluto/rea — Reverse engineer anything with agents, from app behavior down to native binaries.",
     "url": "https://github.com/morluto/rea"
   },
   "ghrepo:mudler/LocalAI": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.4104,
+    "last_seen": "2026-10-30",
+    "mag": 5.4107,
     "mag_history": [
       5.409,
       5.4093,
       5.4099,
       5.4102,
-      5.4104
+      5.4104,
+      5.4107
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "mudler/LocalAI — LocalAI is the open-source AI engine. Run any model - LLMs, vision, voice, image, video - on any hardware. No GPU required.",
     "url": "https://github.com/mudler/LocalAI"
   },
   "ghrepo:netdata/netdata": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.6524,
+    "last_seen": "2026-10-30",
+    "mag": 5.6525,
     "mag_history": [
       5.6518,
       5.6519,
       5.6522,
       5.6523,
-      5.6524
+      5.6524,
+      5.6525
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "netdata/netdata — The fastest path to AI-powered full stack observability, even for lean teams.",
     "url": "https://github.com/netdata/netdata"
   },
   "ghrepo:neuml/txtai": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 4.7381,
+    "last_seen": "2026-10-30",
+    "mag": 4.7383,
     "mag_history": [
       4.7379,
       4.738,
-      4.7381
+      4.7381,
+      4.7383
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "neuml/txtai — 💡 All-in-one AI framework for semantic search, LLM orchestration and language model workflows",
     "url": "https://github.com/neuml/txtai"
   },
   "ghrepo:novuhq/novu": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.3011,
+    "last_seen": "2026-10-30",
+    "mag": 5.3012,
     "mag_history": [
       5.3008,
       5.3008,
       5.301,
       5.301,
-      5.3011
+      5.3011,
+      5.3012
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "novuhq/novu — The open-source communication infrastructure for agents and products",
     "url": "https://github.com/novuhq/novu"
   },
   "ghrepo:ollama/ollama": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 6.0647,
+    "last_seen": "2026-10-30",
+    "mag": 6.065,
     "mag_history": [
       6.063,
       6.0633,
       6.064,
       6.0644,
-      6.0647
+      6.0647,
+      6.065
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "ollama/ollama — Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
     "url": "https://github.com/ollama/ollama"
   },
   "ghrepo:open-webui/open-webui": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.9825,
+    "last_seen": "2026-10-30",
+    "mag": 5.9828,
     "mag_history": [
       5.9808,
       5.9811,
       5.9818,
       5.9822,
-      5.9825
+      5.9825,
+      5.9828
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "open-webui/open-webui — User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
     "url": "https://github.com/open-webui/open-webui"
   },
   "ghrepo:openbq-org/OpenBB": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.6117,
+    "last_seen": "2026-10-30",
+    "mag": 5.612,
     "mag_history": [
       5.61,
       5.6105,
       5.6112,
       5.6115,
-      5.6117
+      5.6117,
+      5.612
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "openbq-org/OpenBB — Open Data Platform for analysts, quants and AI agents.",
     "url": "https://github.com/openbq-org/OpenBB"
   },
   "ghrepo:openvinotoolkit/openvino": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 4.6567,
+    "last_seen": "2026-10-30",
+    "mag": 4.6569,
     "mag_history": [
       4.6564,
       4.6565,
-      4.6567
+      4.6567,
+      4.6569
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "openvinotoolkit/openvino — OpenVINO™ is an open source toolkit for optimizing and deploying AI inference",
     "url": "https://github.com/openvinotoolkit/openvino"
   },
   "ghrepo:paperclipai/paperclip": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 5.7974,
+    "last_seen": "2026-10-30",
+    "mag": 5.7991,
     "mag_history": [
-      5.7974
+      5.7974,
+      5.7991
     ],
     "score": 3,
-    "streak": 1,
+    "streak": 2,
     "title": "paperclipai/paperclip — The open-source app everyone uses to manage agents at work",
     "url": "https://github.com/paperclipai/paperclip"
   },
   "ghrepo:paperless-ngx/paperless-ngx": {
     "first_seen": "2026-10-25",
-    "last_seen": "2026-10-29",
-    "mag": 5.3821,
+    "last_seen": "2026-10-30",
+    "mag": 5.383,
     "mag_history": [
       5.3798,
       5.3806,
       5.3811,
-      5.3821
+      5.3821,
+      5.383
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "paperless-ngx/paperless-ngx — A community-supported supercharged document management system: scan, index and archive all your documents",
     "url": "https://github.com/paperless-ngx/paperless-ngx"
   },
+  "ghrepo:patchy631/ai-engineering-hub": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 5.2788,
+    "mag_history": [
+      5.2788
+    ],
+    "score": 3,
+    "streak": 1,
+    "title": "patchy631/ai-engineering-hub — In-depth tutorials on LLMs, RAGs and real-world AI agent applications.",
+    "url": "https://github.com/patchy631/ai-engineering-hub"
+  },
   "ghrepo:pytorch/pytorch": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.7817,
+    "last_seen": "2026-10-30",
+    "mag": 5.781,
     "mag_history": [
       5.781,
       5.7811,
       5.7814,
       5.7815,
-      5.7817
+      5.7817,
+      5.781
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "pytorch/pytorch — Tensors and Dynamic neural networks in Python with strong GPU acceleration",
     "url": "https://github.com/pytorch/pytorch"
   },
+  "ghrepo:rasbt/LLMs-from-scratch": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 5.7929,
+    "mag_history": [
+      5.7929
+    ],
+    "score": 3,
+    "streak": 1,
+    "title": "rasbt/LLMs-from-scratch — Implement a ChatGPT-like LLM in PyTorch from scratch, step by step",
+    "url": "https://github.com/rasbt/LLMs-from-scratch"
+  },
   "ghrepo:ray-project/ray": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.3477,
+    "last_seen": "2026-10-30",
+    "mag": 5.3478,
     "mag_history": [
       5.3472,
       5.3473,
       5.3475,
       5.3476,
-      5.3477
+      5.3477,
+      5.3478
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "ray-project/ray — Ray is an AI compute engine. Ray consists of a core distributed runtime and a set of AI Libraries for accelerating ML workloads.",
     "url": "https://github.com/ray-project/ray"
   },
   "ghrepo:roboflow/supervision": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.4239,
+    "last_seen": "2026-10-30",
+    "mag": 5.4241,
     "mag_history": [
       5.4231,
       5.4232,
       5.4236,
       5.4238,
-      5.4239
+      5.4239,
+      5.4241
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "roboflow/supervision — We write your reusable computer vision tools. 💜",
     "url": "https://github.com/roboflow/supervision"
   },
   "ghrepo:rohitg00/ai-engineering-from-scratch": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.6163,
+    "last_seen": "2026-10-30",
+    "mag": 5.6173,
     "mag_history": [
       5.5992,
       5.6032,
       5.6101,
       5.6138,
-      5.6163
+      5.6163,
+      5.6173
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "rohitg00/ai-engineering-from-scratch — Learn AI Engineering! Learn it. Build it. Ship it for others.",
     "url": "https://github.com/rohitg00/ai-engineering-from-scratch"
   },
   "ghrepo:ruvnet/ruflo": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.6455,
+    "last_seen": "2026-10-30",
+    "mag": 5.6465,
     "mag_history": [
       5.6381,
       5.6398,
       5.6431,
       5.6444,
-      5.6455
+      5.6455,
+      5.6465
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "ruvnet/ruflo — 🌊 The original agent harness. Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems. Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated",
     "url": "https://github.com/ruvnet/ruflo"
   },
   "ghrepo:scikit-learn/scikit-learn": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.5635,
+    "last_seen": "2026-10-30",
+    "mag": 5.5631,
     "mag_history": [
       5.5628,
       5.5629,
       5.5633,
       5.5635,
-      5.5635
+      5.5635,
+      5.5631
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "scikit-learn/scikit-learn — scikit-learn: machine learning in Python",
     "url": "https://github.com/scikit-learn/scikit-learn"
   },
   "ghrepo:stefan-jansen/machine-learning-for-trading": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 4.991,
+    "last_seen": "2026-10-30",
+    "mag": 4.9912,
     "mag_history": [
-      4.991
+      4.991,
+      4.9912
     ],
     "score": 3,
-    "streak": 1,
+    "streak": 2,
     "title": "stefan-jansen/machine-learning-for-trading — Code for Machine Learning for Trading, 3rd edition — from data sourcing to live execution.",
     "url": "https://github.com/stefan-jansen/machine-learning-for-trading"
   },
-  "ghrepo:streamlit/streamlit": {
-    "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 5.3701,
+  "ghrepo:steven2358/awesome-generative-ai": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 4.7282,
     "mag_history": [
-      5.3699,
-      5.3699,
-      5.3701
+      4.7282
     ],
     "score": 3,
-    "streak": 3,
-    "title": "streamlit/streamlit — Streamlit — A faster way to build and share data apps.",
-    "url": "https://github.com/streamlit/streamlit"
+    "streak": 1,
+    "title": "steven2358/awesome-generative-ai — A curated list of modern Generative Artificial Intelligence projects and services",
+    "url": "https://github.com/steven2358/awesome-generative-ai"
   },
   "ghrepo:tensorflow/tensorflow": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 6.1063,
+    "last_seen": "2026-10-30",
+    "mag": 6.1061,
     "mag_history": [
       6.1061,
       6.1061,
       6.1063,
       6.1062,
-      6.1063
+      6.1063,
+      6.1061
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "tensorflow/tensorflow — An Open Source Machine Learning Framework for Everyone",
     "url": "https://github.com/tensorflow/tensorflow"
   },
   "ghrepo:tesseract-ocr/tesseract": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.6273,
+    "last_seen": "2026-10-30",
+    "mag": 5.6274,
     "mag_history": [
       5.6268,
       5.6269,
       5.6271,
       5.6272,
-      5.6273
+      5.6273,
+      5.6274
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "tesseract-ocr/tesseract — Tesseract Open Source OCR Engine (main repository)",
     "url": "https://github.com/tesseract-ocr/tesseract"
   },
   "ghrepo:thedotmack/claude-mem": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.7782,
+    "last_seen": "2026-10-30",
+    "mag": 5.7844,
     "mag_history": [
       5.7698,
       5.7712,
       5.7743,
       5.7758,
-      5.7782
+      5.7782,
+      5.7844
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "thedotmack/claude-mem — Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
     "url": "https://github.com/thedotmack/claude-mem"
   },
   "ghrepo:ultralytics/ultralytics": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.5252,
+    "last_seen": "2026-10-30",
+    "mag": 5.5253,
     "mag_history": [
       5.5239,
       5.5241,
       5.5247,
       5.525,
-      5.5252
+      5.5252,
+      5.5253
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "ultralytics/ultralytics — Ultralytics YOLO27, YOLO26, YOLO11, YOLOv8 — object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking",
     "url": "https://github.com/ultralytics/ultralytics"
   },
   "ghrepo:unclecode/crawl4ai": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 5.6841,
+    "last_seen": "2026-10-30",
+    "mag": 5.6845,
     "mag_history": [
       5.6833,
       5.6837,
-      5.6841
+      5.6841,
+      5.6845
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "unclecode/crawl4ai — Open-source web crawler and scraper for LLMs and AI agents: any website into clean, LLM-ready Markdown. Run it yourself, or use Crawl4AI Cloud with one key. Join our Discord https://discord.gg/VuxzM8mtf",
     "url": "https://github.com/unclecode/crawl4ai"
   },
   "ghrepo:usestrix/strix": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.5972,
+    "last_seen": "2026-10-30",
+    "mag": 5.5984,
     "mag_history": [
       5.5893,
       5.5908,
       5.5942,
       5.5957,
-      5.5972
+      5.5972,
+      5.5984
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "usestrix/strix — Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.",
     "url": "https://github.com/usestrix/strix"
   },
   "ghrepo:vectorize-io/hindsight": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.4676,
+    "last_seen": "2026-10-30",
+    "mag": 5.4714,
     "mag_history": [
       5.4422,
       5.4447,
       5.4517,
       5.4585,
-      5.4676
+      5.4676,
+      5.4714
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "vectorize-io/hindsight — Hindsight: Agent Memory That Learns",
     "url": "https://github.com/vectorize-io/hindsight"
   },
   "ghrepo:verl-project/verl-omni": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 3.6239,
+    "last_seen": "2026-10-30",
+    "mag": 3.6271,
     "mag_history": [
       3.6054,
       3.608,
       3.6171,
       3.621,
-      3.6239
+      3.6239,
+      3.6271
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "verl-project/verl-omni — Multimodal RL training framework for diffusion & omni models",
     "url": "https://github.com/verl-project/verl-omni"
   },
-  "ghrepo:virgiliojr94/book-to-skill": {
-    "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 5.2525,
-    "mag_history": [
-      5.2525
-    ],
-    "score": 3,
-    "streak": 1,
-    "title": "virgiliojr94/book-to-skill — Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.",
-    "url": "https://github.com/virgiliojr94/book-to-skill"
-  },
   "ghrepo:vllm-project/vllm": {
     "first_seen": "2026-10-25",
-    "last_seen": "2026-10-29",
-    "mag": 5.7353,
+    "last_seen": "2026-10-30",
+    "mag": 5.7356,
     "mag_history": [
       5.7332,
       5.7345,
       5.7349,
-      5.7353
+      5.7353,
+      5.7356
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "vllm-project/vllm — A high-throughput and memory-efficient inference and serving engine for LLMs",
     "url": "https://github.com/vllm-project/vllm"
   },
   "hfdataset:CohereLabs/10-2026-qwen-investigation-traces": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 3.0497,
+    "last_seen": "2026-10-30",
+    "mag": 3.1341,
     "mag_history": [
       2.8776,
       2.9839,
-      3.0497
+      3.0497,
+      3.1341
     ],
     "score": 2,
-    "streak": 3,
+    "streak": 4,
     "title": "CohereLabs/10-2026-qwen-investigation-traces (HF Dataset)",
     "url": "https://huggingface.co/datasets/CohereLabs/10-2026-qwen-investigation-traces"
   },
-  "hfdataset:CohereLabsCommunity/CulturalRiddles": {
-    "first_seen": "2026-10-23",
-    "last_seen": "2026-10-29",
-    "mag": 2.5822,
-    "mag_history": [
-      2.1948,
-      2.2532,
-      2.3325,
-      2.4476,
-      2.5276,
-      2.5822
-    ],
-    "score": 1,
-    "streak": 3,
-    "title": "CohereLabsCommunity/CulturalRiddles (HF Dataset)",
-    "url": "https://huggingface.co/datasets/CohereLabsCommunity/CulturalRiddles"
-  },
   "hfdataset:ILSVRC/imagenet-1k": {
     "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 4.8899,
+    "last_seen": "2026-10-30",
+    "mag": 4.8932,
     "mag_history": [
       4.8834,
-      4.8899
+      4.8899,
+      4.8932
     ],
     "score": 3,
-    "streak": 2,
+    "streak": 3,
     "title": "ILSVRC/imagenet-1k (HF Dataset)",
     "url": "https://huggingface.co/datasets/ILSVRC/imagenet-1k"
   },
-  "hfdataset:LocalLLaMA/typed-decisions": {
-    "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 3.8978,
-    "mag_history": [
-      3.8537,
-      3.8566,
-      3.8734,
-      3.8952,
-      3.8978
-    ],
-    "score": 4,
-    "streak": 3,
-    "title": "LocalLLaMA/typed-decisions (HF Dataset)",
-    "url": "https://huggingface.co/datasets/LocalLLaMA/typed-decisions"
-  },
   "hfdataset:Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 3.8789,
+    "last_seen": "2026-10-30",
+    "mag": 3.8871,
     "mag_history": [
-      3.8789
+      3.8789,
+      3.8871
     ],
     "score": 3,
-    "streak": 1,
+    "streak": 2,
     "title": "Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset (HF Dataset)",
     "url": "https://huggingface.co/datasets/Manusagents/GPT-5.5-Gemini-3.1-Pro-Grok-4-Claude-Fable-5-Mythos-5-Qwen-3.7-Max-and-more-Distillation-Dataset"
   },
   "hfdataset:MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 4.2198,
+    "last_seen": "2026-10-30",
+    "mag": 4.2446,
     "mag_history": [
       4.1781,
       4.1834,
       4.2062,
       4.2096,
-      4.2198
+      4.2198,
+      4.2446
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x (HF Dataset)",
     "url": "https://huggingface.co/datasets/MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x"
   },
-  "hfdataset:Qwen/BlenderWorld": {
-    "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 2.9639,
-    "mag_history": [
-      2.7923,
-      2.8177,
-      2.9328,
-      2.9537,
-      2.9639
-    ],
-    "score": 3,
-    "streak": 3,
-    "title": "Qwen/BlenderWorld (HF Dataset)",
-    "url": "https://huggingface.co/datasets/Qwen/BlenderWorld"
-  },
-  "hfdataset:Rapidata/text-to-3d-with-llm-code": {
-    "first_seen": "2026-10-25",
-    "last_seen": "2026-10-29",
-    "mag": 2.68,
-    "mag_history": [
-      2.2532,
-      2.5463,
-      2.6489,
-      2.68
-    ],
-    "score": 1,
-    "streak": 3,
-    "title": "Rapidata/text-to-3d-with-llm-code (HF Dataset)",
-    "url": "https://huggingface.co/datasets/Rapidata/text-to-3d-with-llm-code"
-  },
   "hfdataset:Vyber07/cyber-security": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 4.3069,
+    "last_seen": "2026-10-30",
+    "mag": 4.346,
     "mag_history": [
       4.0179,
       4.0615,
       4.1993,
       4.2543,
-      4.3069
+      4.3069,
+      4.346
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "Vyber07/cyber-security (HF Dataset)",
     "url": "https://huggingface.co/datasets/Vyber07/cyber-security"
   },
   "hfdataset:XiaomiMiMo/MiMo-V2.6-RL-oss": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 4.8534,
+    "last_seen": "2026-10-30",
+    "mag": 4.8588,
     "mag_history": [
       4.8368,
       4.8389,
       4.8459,
       4.85,
-      4.8534
+      4.8534,
+      4.8588
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "XiaomiMiMo/MiMo-V2.6-RL-oss (HF Dataset)",
     "url": "https://huggingface.co/datasets/XiaomiMiMo/MiMo-V2.6-RL-oss"
   },
+  "hfdataset:Zhanli-Li/DataWorld-Bench": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 2.1312,
+    "mag_history": [
+      2.1312
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Zhanli-Li/DataWorld-Bench (HF Dataset)",
+    "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Bench"
+  },
+  "hfdataset:Zhanli-Li/DataWorld-Train-2k-part1": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 2.1948,
+    "mag_history": [
+      2.1948
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "Zhanli-Li/DataWorld-Train-2k-part1 (HF Dataset)",
+    "url": "https://huggingface.co/datasets/Zhanli-Li/DataWorld-Train-2k-part1"
+  },
   "hfdataset:bones-studio/seed": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 4.1164,
+    "last_seen": "2026-10-30",
+    "mag": 4.1451,
     "mag_history": [
       4.0925,
       4.1085,
-      4.1164
+      4.1164,
+      4.1451
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "bones-studio/seed (HF Dataset)",
     "url": "https://huggingface.co/datasets/bones-studio/seed"
   },
+  "hfdataset:codepawl/simready-glb": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 2.0233,
+    "mag_history": [
+      2.0233
+    ],
+    "score": 1,
+    "streak": 1,
+    "title": "codepawl/simready-glb (HF Dataset)",
+    "url": "https://huggingface.co/datasets/codepawl/simready-glb"
+  },
   "hfdataset:datasocial/tiktok-5.6B-videos": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 4.2796,
+    "last_seen": "2026-10-30",
+    "mag": 4.2994,
     "mag_history": [
       4.2215,
       4.2315,
       4.2576,
       4.2702,
-      4.2796
+      4.2796,
+      4.2994
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "datasocial/tiktok-5.6B-videos (HF Dataset)",
     "url": "https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos"
   },
   "hfdataset:hongzhuyi/VDEBench": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "mag": 2.866,
     "mag_history": [
       2.4685,
       2.4685,
       2.7792,
       2.8543,
+      2.866,
       2.866
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "hongzhuyi/VDEBench (HF Dataset)",
     "url": "https://huggingface.co/datasets/hongzhuyi/VDEBench"
   },
+  "hfdataset:nvidia/Granary-v2": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 2.4038,
+    "mag_history": [
+      2.4038
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "nvidia/Granary-v2 (HF Dataset)",
+    "url": "https://huggingface.co/datasets/nvidia/Granary-v2"
+  },
   "hfdataset:nvidia/Nemotron-Personas-Vietnam": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 3.8157,
+    "last_seen": "2026-10-30",
+    "mag": 3.8364,
     "mag_history": [
       3.7691,
       3.785,
       3.8036,
       3.8157,
-      3.8157
+      3.8157,
+      3.8364
     ],
     "score": 4,
-    "streak": 3,
+    "streak": 4,
     "title": "nvidia/Nemotron-Personas-Vietnam (HF Dataset)",
     "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Vietnam"
   },
   "hfdataset:nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 2.3571,
+    "last_seen": "2026-10-30",
+    "mag": 2.426,
     "mag_history": [
-      2.3571
+      2.3571,
+      2.426
     ],
     "score": 2,
-    "streak": 1,
+    "streak": 2,
     "title": "nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D (HF Dataset)",
     "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D"
   },
   "hfdataset:nvidia/simready-assets": {
     "first_seen": "2026-10-23",
-    "last_seen": "2026-10-29",
-    "mag": 4.7717,
+    "last_seen": "2026-10-30",
+    "mag": 4.841,
     "mag_history": [
       2.7384,
       2.9937,
       3.4837,
       4.5064,
       4.6624,
-      4.7717
+      4.7717,
+      4.841
     ],
     "score": 4,
-    "streak": 3,
+    "streak": 4,
     "title": "nvidia/simready-assets (HF Dataset)",
     "url": "https://huggingface.co/datasets/nvidia/simready-assets"
   },
   "hfdataset:nvidia/simready-central-library": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 3.0407,
+    "last_seen": "2026-10-30",
+    "mag": 3.1499,
     "mag_history": [
       2.5276,
       2.9328,
-      3.0407
+      3.0407,
+      3.1499
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "nvidia/simready-central-library (HF Dataset)",
     "url": "https://huggingface.co/datasets/nvidia/simready-central-library"
   },
   "hfdataset:scenario-labs/3d-collection": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 4.0356,
+    "last_seen": "2026-10-30",
+    "mag": 4.053,
     "mag_history": [
       3.3854,
       3.743,
       3.9737,
       4.0156,
-      4.0356
+      4.0356,
+      4.053
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "scenario-labs/3d-collection (HF Dataset)",
     "url": "https://huggingface.co/datasets/scenario-labs/3d-collection"
   },
   "hfdataset:secemp9/arxiv-complete": {
     "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 4.6368,
+    "last_seen": "2026-10-30",
+    "mag": 4.6534,
     "mag_history": [
       4.6151,
-      4.6368
+      4.6368,
+      4.6534
     ],
     "score": 3,
-    "streak": 2,
+    "streak": 3,
     "title": "secemp9/arxiv-complete (HF Dataset)",
     "url": "https://huggingface.co/datasets/secemp9/arxiv-complete"
   },
   "hfdataset:venvoo/china-a-share-l2-level2-limit-order-book-tick-data": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 4.3989,
+    "last_seen": "2026-10-30",
+    "mag": 4.4118,
     "mag_history": [
       4.2623,
       4.2903,
       4.346,
       4.3804,
-      4.3989
+      4.3989,
+      4.4118
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "venvoo/china-a-share-l2-level2-limit-order-book-tick-data (HF Dataset)",
     "url": "https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data"
   },
-  "hfmodel:HuggingFaceBio/Carbon-X": {
-    "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 3.9163,
-    "mag_history": [
-      3.7691,
-      3.848,
-      3.9163
-    ],
-    "score": 2,
-    "streak": 3,
-    "title": "HuggingFaceBio/Carbon-X (HF Model)",
-    "url": "https://huggingface.co/HuggingFaceBio/Carbon-X"
-  },
   "hfmodel:ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF": {
     "first_seen": "2026-10-25",
-    "last_seen": "2026-10-29",
-    "mag": 4.2979,
+    "last_seen": "2026-10-30",
+    "mag": 4.3488,
     "mag_history": [
       3.8952,
       4.1563,
       4.2414,
-      4.2979
+      4.2979,
+      4.3488
     ],
     "score": 2,
-    "streak": 3,
+    "streak": 4,
     "title": "ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF (HF Model)",
     "url": "https://huggingface.co/ISTA-DASLab/DeepSeek-V4.1-Flash-1017-GSQ-RCO-GGUF"
   },
   "hfmodel:Lightricks/LTX-2.5": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 6.4343,
+    "last_seen": "2026-10-30",
+    "mag": 6.4422,
     "mag_history": [
       6.3825,
       6.3931,
       6.4137,
       6.4241,
-      6.4343
+      6.4343,
+      6.4422
     ],
     "score": 2,
-    "streak": 3,
+    "streak": 4,
     "title": "Lightricks/LTX-2.5 (HF Model)",
     "url": "https://huggingface.co/Lightricks/LTX-2.5"
   },
   "hfmodel:LiquidAI/LFM3-1.7B": {
     "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 4.2827,
+    "last_seen": "2026-10-30",
+    "mag": 4.4002,
     "mag_history": [
       4.0657,
-      4.2827
+      4.2827,
+      4.4002
     ],
     "score": 2,
-    "streak": 2,
+    "streak": 3,
     "title": "LiquidAI/LFM3-1.7B (HF Model)",
     "url": "https://huggingface.co/LiquidAI/LFM3-1.7B"
   },
+  "hfmodel:LiquidAI/LFM3-Omni-2B": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 3.7819,
+    "mag_history": [
+      3.7819
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "LiquidAI/LFM3-Omni-2B (HF Model)",
+    "url": "https://huggingface.co/LiquidAI/LFM3-Omni-2B"
+  },
   "hfmodel:MiniMaxAI/MiniMax-M3.1-Flash": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 4.3246,
+    "last_seen": "2026-10-30",
+    "mag": 4.3502,
     "mag_history": [
       3.9592,
       4.072,
       4.1975,
       4.2687,
-      4.3246
+      4.3246,
+      4.3502
     ],
     "score": 2,
-    "streak": 3,
+    "streak": 4,
     "title": "MiniMaxAI/MiniMax-M3.1-Flash (HF Model)",
     "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
   },
   "hfmodel:Nanbeige/Nanbeige4.3-33B": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 4.6433,
+    "last_seen": "2026-10-30",
+    "mag": 4.6731,
     "mag_history": [
       4.5263,
       4.5917,
-      4.6433
+      4.6433,
+      4.6731
     ],
     "score": 2,
-    "streak": 3,
+    "streak": 4,
     "title": "Nanbeige/Nanbeige4.3-33B (HF Model)",
     "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B"
   },
-  "hfmodel:OpenMOSS-Team/MOSS-Image-SFT": {
-    "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 4.6982,
-    "mag_history": [
-      4.5593,
-      4.6026,
-      4.6543,
-      4.6801,
-      4.6982
-    ],
-    "score": 2,
-    "streak": 3,
-    "title": "OpenMOSS-Team/MOSS-Image-SFT (HF Model)",
-    "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT"
-  },
   "hfmodel:Qwen/Qwen3.8-27B": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 6.8842,
+    "last_seen": "2026-10-30",
+    "mag": 6.8886,
     "mag_history": [
       6.8708,
       6.8732,
       6.8784,
       6.8816,
-      6.8842
+      6.8842,
+      6.8886
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "Qwen/Qwen3.8-27B (HF Model)",
     "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
   },
   "hfmodel:RecursiveSI/flint": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 4.982,
+    "last_seen": "2026-10-30",
+    "mag": 4.9939,
     "mag_history": [
       4.6237,
       4.6957,
       4.8017,
       4.9278,
-      4.982
+      4.982,
+      4.9939
     ],
     "score": 2,
-    "streak": 3,
+    "streak": 4,
     "title": "RecursiveSI/flint (HF Model)",
     "url": "https://huggingface.co/RecursiveSI/flint"
   },
   "hfmodel:XHToken/Spark-X2.6-4B": {
     "first_seen": "2026-10-23",
-    "last_seen": "2026-10-29",
-    "mag": 4.7593,
+    "last_seen": "2026-10-30",
+    "mag": 4.7748,
     "mag_history": [
       4.1852,
       4.2463,
       4.3246,
       4.6406,
       4.715,
-      4.7593
+      4.7593,
+      4.7748
     ],
     "score": 2,
-    "streak": 3,
+    "streak": 4,
     "title": "XHToken/Spark-X2.6-4B (HF Model)",
     "url": "https://huggingface.co/XHToken/Spark-X2.6-4B"
   },
   "hfmodel:abenzerps/Qwen-Image-2.1-Uncensored-Quantized": {
     "first_seen": "2026-10-12",
-    "last_seen": "2026-10-29",
-    "mag": 6.0028,
+    "last_seen": "2026-10-30",
+    "mag": 6.0101,
     "mag_history": [
-      5.9349,
       5.9465,
       5.9532,
       5.9634,
       5.9848,
       5.9946,
-      6.0028
+      6.0028,
+      6.0101
     ],
     "score": 2,
-    "streak": 3,
+    "streak": 4,
     "title": "abenzerps/Qwen-Image-2.1-Uncensored-Quantized (HF Model)",
     "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized"
   },
   "hfmodel:baidu/Unlimited-OCR-2": {
     "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 4.1413,
+    "last_seen": "2026-10-30",
+    "mag": 4.2527,
     "mag_history": [
       4.0179,
-      4.1413
+      4.1413,
+      4.2527
     ],
     "score": 2,
-    "streak": 2,
+    "streak": 3,
     "title": "baidu/Unlimited-OCR-2 (HF Model)",
     "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
   },
   "hfmodel:black-forest-labs/flux-3-image-klein-comfy": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.3279,
+    "last_seen": "2026-10-30",
+    "mag": 5.3531,
     "mag_history": [
       5.0999,
       5.1503,
       5.2531,
       5.2961,
-      5.3279
+      5.3279,
+      5.3531
     ],
     "score": 2,
-    "streak": 3,
+    "streak": 4,
     "title": "black-forest-labs/flux-3-image-klein-comfy (HF Model)",
     "url": "https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy"
   },
   "hfmodel:ccore/Qwen3.5-4B-3D-Coder": {
     "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 3.9137,
+    "last_seen": "2026-10-30",
+    "mag": 4.0042,
     "mag_history": [
       3.7691,
-      3.9137
+      3.9137,
+      4.0042
     ],
     "score": 2,
-    "streak": 2,
+    "streak": 3,
     "title": "ccore/Qwen3.5-4B-3D-Coder (HF Model)",
     "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder"
   },
   "hfmodel:deepseek-ai/DeepSeek-V4.1-Flash-1017": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.7556,
+    "last_seen": "2026-10-30",
+    "mag": 5.8007,
     "mag_history": [
       5.5297,
       5.5817,
       5.6758,
       5.7122,
-      5.7556
+      5.7556,
+      5.8007
     ],
     "score": 3,
-    "streak": 3,
+    "streak": 4,
     "title": "deepseek-ai/DeepSeek-V4.1-Flash-1017 (HF Model)",
     "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
   },
+  "hfmodel:facebook/sam3": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 6.0276,
+    "mag_history": [
+      6.0276
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "facebook/sam3 (HF Model)",
+    "url": "https://huggingface.co/facebook/sam3"
+  },
   "hfmodel:google/embeddinggemma-2": {
     "first_seen": "2026-10-24",
-    "last_seen": "2026-10-29",
-    "mag": 5.6061,
+    "last_seen": "2026-10-30",
+    "mag": 5.6103,
     "mag_history": [
       5.5771,
       5.5843,
       5.5955,
       5.6021,
-      5.6061
+      5.6061,
+      5.6103
     ],
     "score": 2,
-    "streak": 3,
+    "streak": 4,
     "title": "google/embeddinggemma-2 (HF Model)",
     "url": "https://huggingface.co/google/embeddinggemma-2"
   },
   "hfmodel:mistralai/Mistral-Large-4-1T-A52B": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 4.9265,
+    "last_seen": "2026-10-30",
+    "mag": 5.0282,
     "mag_history": [
-      4.9265
+      4.9265,
+      5.0282
     ],
     "score": 2,
-    "streak": 1,
+    "streak": 2,
     "title": "mistralai/Mistral-Large-4-1T-A52B (HF Model)",
     "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
   },
   "hfmodel:nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 3.8423,
+    "last_seen": "2026-10-30",
+    "mag": 3.9393,
     "mag_history": [
-      3.8423
+      3.8423,
+      3.9393
     ],
     "score": 3,
-    "streak": 1,
+    "streak": 2,
     "title": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB (HF Model)",
     "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB"
   },
   "hfmodel:nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
-    "mag": 4.128,
+    "last_seen": "2026-10-30",
+    "mag": 4.3099,
     "mag_history": [
-      4.128
+      4.128,
+      4.3099
     ],
     "score": 3,
-    "streak": 1,
+    "streak": 2,
     "title": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B (HF Model)",
     "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
   },
+  "hfmodel:openbmb/MiniCPM-OCR-1.0": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "mag": 4.1164,
+    "mag_history": [
+      4.1164
+    ],
+    "score": 2,
+    "streak": 1,
+    "title": "openbmb/MiniCPM-OCR-1.0 (HF Model)",
+    "url": "https://huggingface.co/openbmb/MiniCPM-OCR-1.0"
+  },
   "hfmodel:orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-29",
-    "mag": 4.072,
+    "last_seen": "2026-10-30",
+    "mag": 4.1318,
     "mag_history": [
       3.8925,
       3.9926,
-      4.072
+      4.072,
+      4.1318
     ],
     "score": 2,
-    "streak": 3,
+    "streak": 4,
     "title": "orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF (HF Model)",
     "url": "https://huggingface.co/orcarouter/DeepSeek-V4.1-Flash-1017-abliterated-GGUF"
-  },
-  "hfmodel:tencent/Hy-SimulMT-30B-A3B-FP8": {
-    "first_seen": "2026-10-28",
-    "last_seen": "2026-10-29",
-    "mag": 4.2888,
-    "mag_history": [
-      3.9493,
-      4.2888
-    ],
-    "score": 2,
-    "streak": 2,
-    "title": "tencent/Hy-SimulMT-30B-A3B-FP8 (HF Model)",
-    "url": "https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-FP8"
   }
 }
