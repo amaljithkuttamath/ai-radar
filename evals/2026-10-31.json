@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-31",
+  "mode": "deterministic",
+  "grader_model": "",
+  "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
+  "digest_commit_time_utc": "2026-10-31T15:58:13Z",
+  "age_hours_at_eval": 0.0,
+  "tier0": {
+    "module_hash": "b9d5d0f52167",
+    "metrics": {
+      "age_h": 0.0,
+      "links_total": 29,
+      "links_broken": 0,
+      "links_unverified": 2,
+      "main_items": 14,
+      "main_score_mean": 3.33,
+      "sections_present": 7,
+      "expected_sections": 3,
+      "tracked_items": 60,
+      "reobservation_rate": 1.0,
+      "traction_observations": 60,
+      "degraded_synthesis": false,
+      "forecast_accuracy": 0.125,
+      "claims_open": 1
+    },
+    "checks": [
+      {
+        "key": "structure",
+        "ok": true,
+        "detail": "title and 7 section(s); 3/7 of the prompt's sections present"
+      },
+      {
+        "key": "main_list_nonempty",
+        "ok": true,
+        "detail": "14 main-list item(s)"
+      },
+      {
+        "key": "links_resolve",
+        "ok": true,
+        "detail": "no dead links; 2/29 declined to answer"
+      },
+      {
+        "key": "synthesis_present",
+        "ok": true,
+        "detail": "digest carries model synthesis"
+      },
+      {
+        "key": "traction_observed",
+        "ok": true,
+        "detail": "re-observed 100% of 60 tracked items"
+      }
+    ],
+    "failed": []
+  },
+  "revs": {
+    "prompt_rev": "ca1958e",
+    "config_rev": "ca1958e",
+    "files": {
+      "distill/digest.md": "ca1958e",
+      "distill/brief_spec.md": "3ed73c5",
+      "config/profile.yaml": "48361eb",
+      "config/sources.yaml": "48361eb",
+      "config/routines.yaml": "ca1958e",
+      "config/broken_sources.yaml": "ca1958e"
+    }
+  },
+  "trusted": {
+    "reobservation_rate": 1.0,
+    "forecast_accuracy": 0.125
+  },
+  "broken_urls": [
+    {
+      "url": "https://openai.com/index/updated-model-spec",
+      "status": 403
+    },
+    {
+      "url": "https://openai.com/index/helping-websites-express-ai-training-preferences",
+      "status": 403
+    }
+  ],
+  "missed_stories": [],
+  "degraded_reason": "--tier0-only: model call skipped by request"
+}
