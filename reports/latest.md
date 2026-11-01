@@ -1,77 +1,65 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-10-30](2026-10-30-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-10-31](2026-10-31-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-10-31
+# AI Radar — 2026-11-01
 
-The strongest signals today are major framework updates (Hugging Face Transformers, Microsoft Qlib) and a new simulation-ready asset dataset from NVIDIA, alongside a wave of new benchmarks and diffusion-model tools. Research momentum continues around unified vision-language perception, autoregressive video generation, and distribution-matching distillation, with several papers showing sustained traction over the past week.
+Two major open-source frameworks anchor this window: Hugging Face Transformers (168k stars observed) remains the central model-definition library across text, vision, and audio, while Microsoft's ML-For-Beginners (92k stars) reappears as a comprehensive 12-week curriculum. NVIDIA's SimReady assets dataset (1.1M downloads observed) and a new wave of agentic models — notably Sage-A1.5's capability-composition architecture and Qwen/DeepSeek multimodal releases — signal continued investment in long-horizon agents and simulation-ready data. Coverage is limited to the 8 scored items in this 48-hour window.
 
 ## What changed
 
-**New to radar**  
-- [TheDesignFounder/DreamLayer-Eval](https://github.com/TheDesignFounder/DreamLayer-Eval) — open-source benchmarking for image and video diffusion models (score 4)  
-- [CopilotKit/CopilotKit](https://github.com/CopilotKit/CopilotKit) — frontend stack for agents and generative UI (score 3)  
-- [fla-org/flash-linear-attention](https://github.com/fla-org/flash-linear-attention) — efficient implementations for emerging model architectures (score 3)  
-- [Tencent-Hunyuan/Prism](https://github.com/Tencent-Hunyuan/Prism) — dynamic sparse attention for joint video-audio generation at 2K (score 3)  
-- [modelscope/ms-cookbook](https://github.com/modelscope/ms-cookbook) — ModelScope cookbook for model selection, inference, fine-tuning, evaluation, RAG, agents, and AIGC (score 3)
+**New to radar (18)**  
+- [microsoft/ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners) — 12-week ML curriculum  
+- [Tencent/WeKnora](https://github.com/Tencent/WeKnora) — Open-source LLM knowledge platform for RAG and agents  
+- [getzep/graphiti](https://github.com/getzep/graphiti) — Real-time knowledge graphs for AI agents  
+- [ComposioHQ/composio](https://github.com/ComposioHQ/composio) — 1000+ toolkits and sandboxed workbench for agents  
+- [EvolvingLMMs-Lab/lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval) — Multimodal evaluation toolkit  
+… and 13 more.
 
-**Climbing**  
-- [Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633) — one-step/few-step text-to-image distillation with internal velocity branches (score 3, traction rising)
+**Climbing (1)**  
+- [codepawl/simready-glb](https://huggingface.co/datasets/codepawl/simready-glb) — Dataset traction rising (mag_delta +0.55)
 
-**Cooled**  
-- [Glance: The Generator Is Its Own Reranker](https://arxiv.org/abs/2610.40454) (score 1)  
-- [Your LR Schedule May Not Be Principled](https://arxiv.org/abs/2610.40362) (score 1)  
-- [Training Foundation Models with a Single Algorithm](https://arxiv.org/abs/2610.40564) (score 0)  
-- [Read, Allocate, Route: Role-Coupled Tokenization for Pixel-Space Generative Transformers](https://arxiv.org/abs/2610.40647) (score 0)
+**Cooled (6)**  
+- [Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633) — mag_delta –2.25  
+- [WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) — mag_delta –1.66  
+- [DONIC: Generalist Dexterous Bimanual Tracking Control from Human Demonstrations](https://arxiv.org/abs/2610.29997) — mag_delta –1.05  
+- [Making MLLM Latents Matter: Factor-Aware Predictive Learning for Cinematic Video Generation](https://arxiv.org/abs/2610.30926) — mag_delta –0.98  
+- [Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation](https://arxiv.org/abs/2610.29989) — mag_delta –0.62  
+… and 1 more.
 
 ## Main list
 
-### Benchmark
-**[secemp9/arxiv-complete](https://huggingface.co/datasets/secemp9/arxiv-complete) · 3/5**  
-A large-scale arXiv dataset (100M–1B tokens, Parquet) tagged for text generation and retrieval tasks. Useful for training or evaluating scientific-language models and retrieval systems. Observed 783 likes and 166k downloads on HF.
+### Machine
+**[huggingface/transformers](https://github.com/huggingface/transformers)** — The core model-definition framework for text, vision, audio, and multimodal models, used for both inference and training. 168k GitHub stars observed. · 4/5
 
-### Modeling
-**[microsoft/qlib](https://github.com/microsoft/qlib) · 4/5**  
-AI-oriented quantitative investment platform supporting supervised learning, market dynamics modeling, and RL, now integrated with RD-Agent for automated R&D. 49.9k GitHub stars; targeted at quant researchers and ML engineers building financial models.
+**[microsoft/ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners)** — 12-week, 26-lesson classic ML curriculum with 52 quizzes. 92k stars observed; new to radar this window. · 4/5
 
-**[Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation](https://arxiv.org/abs/2610.29989) · 3/5**  
-Introduces Future Chunk Prediction (FCP) to improve scene-evolution modeling in autoregressive video diffusion. Code and project page available. 178 GitHub stars, 160 HF upvotes; relevant for video-generation researchers.
+### Qwen & DeepSeek multimodal models
+**[Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B)** — Image-text-to-text model (Apache 2.0), 18.9k HF likes, 7.9M downloads observed. Published Aug 2026. · 3/5
 
-### Distillation
-**[Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633) · 3/5**  
-One-step/few-step text-to-image distillation using internal velocity branches to estimate score differences without a separate fake scorer. Code and project page linked. 69 GitHub stars, 243 HF upvotes; traction climbing (mag delta +2.17). For diffusion-model engineers seeking faster sampling.
-
-### Qwen/DeepSeek models
-**[Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) · 3/5**  
-Multimodal (image-text-to-text) model under Apache-2.0, 18.8k HF likes and 7.6M downloads. Suitable for conversational and vision-language applications.
-
-**[deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) · 3/5**  
-Multimodal model under MIT license, 4.1k HF likes and 156k downloads. Part of a streak of rising traction (7 consecutive runs). For engineers evaluating latest open multimodal checkpoints.
+**[deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** — Image-text-to-text model (MIT), 4.2k HF likes, 170k downloads observed. Published Oct 2026; tracked 8 consecutive days with rising traction. · 3/5
 
 ### Other
-**[huggingface/transformers](https://github.com/huggingface/transformers) · 4/5**  
-The core model-definition framework for text, vision, audio, and multimodal models. 168k GitHub stars; essential for any engineer building or deploying transformer-based models.
+**[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)** — CC-BY-4.0 simulation-ready 3D assets dataset; 1.1M downloads, 1.1k likes observed. Published Oct 29. · 4/5
 
-**[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) · 4/5**  
-CC-BY-4.0 3D assets for simulation and Omniverse workflows. 1,070 likes and 934k downloads on HF; valuable for robotics, digital-twin, and synthetic-data pipelines.
+**[Sage-A1.5: From Long-Horizon Execution to Scientific Exploration with Capability Composition](https://arxiv.org/abs/2610.28578)** — 35B MoE agentic model with adaptive capability composition for long-horizon problem solving; agentic orchestration, verification, and self-correction. GitHub: [InternScience/Agents-A1](https://github.com/InternScience/Agents-A1), Project: [Sage-A1.5](https://alpha-innovator.github.io/Sage-A1.5/). 607 stars, 72 HF upvotes; tracked 11 runs, traction rising. · 3/5
 
-**[WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) · 3/5**  
-Unifies object-level and pixel-level perception (detection, referring localization, counting, OCR, segmentation, matting) via structured next-token prediction. Code and project page linked. 484 GitHub stars, 260 HF upvotes; 8-run streak with strong traction growth. For vision-language model developers.
+**[Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation](https://arxiv.org/abs/2610.29989)** — Introduces Future Chunk Prediction (FCP) auxiliary task to model scene evolution in autoregressive video diffusion. GitHub: [TencentARC/Looking-Ahead](https://github.com/TencentARC/Looking-Ahead), Project: [looking-ahead](https://hellorpg.github.io/looking-ahead/). 186 stars, 84 HF upvotes; tracked 10 runs, though traction cooled this window (mag_delta –0.62). · 3/5
+
+**[secemp9/arxiv-complete](https://huggingface.co/datasets/secemp9/arxiv-complete)** — 100M–1B record arXiv dataset (Parquet) for text generation/retrieval; 164k downloads, 784 likes observed. Published Sep 2026. · 3/5
 
 ## Watch-list / Still developing
 
-- [Elucidating the Design Space of LM Data Attribution](https://arxiv.org/abs/2610.40655) · 2/5 — controlled benchmark (CATT) for fact-tracing attribution.  
-- [Luggage re-identification: A study of strategies towards a real-world application](https://arxiv.org/abs/2610.40643) · 2/5 — real-world ReID with occlusions and clutter.  
-- [Every Token Needs Its Own Teacher: Multi-teacher Adaptive On-policy Self-distillation](https://arxiv.org/abs/2610.40574) · 2/5 — token-level teacher adaptation for LLM post-training.  
-- [Framework-Conditional Open Materials Generation](https://arxiv.org/abs/2610.40443) · 2/5 — generative materials design conditioned on structural frameworks.  
-- [Uncertainty-aware Feedback Loop Diagnosis](https://arxiv.org/abs/2610.40421) · 2/5 — RL + conformal prediction for wafer defect classification.  
-- [Things That Go Beep in the Night: Agentic AI Joins the Search for Extraterrestrial Signals](https://blogs.nvidia.com/blog/ai-joins-the-search-for-extraterrestrial-signals/) · 1/5 — NVIDIA blog on agentic AI in SETI.  
-- [Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/) · 1/5 — NVIDIA blog on Omniverse + AI agents.  
-- [An updated Model Spec for more capable and beneficial AI](https://openai.com/index/updated-model-spec) · 1/5 — OpenAI’s updated model specification.  
-- [Making it easier for websites to express AI training preferences](https://openai.com/index/helping-websites-express-ai-training-preferences) · 1/5 — OpenAI honoring robots.txt for training preferences.
+- [Multimodal Embodied Agents: A Unified Capability-centric Perspective](https://arxiv.org/abs/2610.30108) — 10-day streak, 103.6% mag increase  
+- [SolarRenderer: Few-Step Generative Reference Rendering](https://arxiv.org/abs/2610.28630) — 11-day streak, 84.7% mag increase  
+- [Learning the 4D World through Point Trajectory Forecasting](https://arxiv.org/abs/2610.28594) — 11-day streak, 57.6% mag increase  
+- [DONIC: Generalist Dexterous Bimanual Tracking Control from Human Demonstrations](https://arxiv.org/abs/2610.29997) — 10-day streak, 30.7% mag increase (also cooled this window)  
+- [WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) — 9-day streak, 30.2% mag increase (also cooled this window)  
+- [S-Agent 2.0: Spatial Reasoning with a General Coding Agent](https://arxiv.org/abs/2610.28354) — 11-day streak, 24.7% mag increase (also cooled this window)  
+- [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) — 8-day streak, 0.8% mag increase  
 
 ## Action items
 
-- **Try:** [Intrinsic Distribution Matching](https://github.com/inclusionAI/IDM) — clone the repo and test one-step/few-step diffusion sampling for your image-generation pipeline.  
-- **Read:** [Elucidating the Design Space of LM Data Attribution](https://arxiv.org/abs/2610.40655) — understand the new CATT benchmark for diagnosing attribution methods.  
-- **Track:** [WeVisOne-VL](https://github.com/Tencent/WeVisOne-VL) — monitor the unified perception model for upcoming releases and integration examples.
+1. **Try**: [Sage-A1.5](https://arxiv.org/abs/2610.28578) agentic orchestration codebase ([InternScience/Agents-A1](https://github.com/InternScience/Agents-A1)) for long-horizon task decomposition — the capability-composition approach is actively climbing.  
+2. **Read**: [Looking Ahead](https://arxiv.org/abs/2610.29989) FCP auxiliary task for autoregressive video — relevant if building video generation pipelines, though traction cooled this window.  
+3. **Track**: [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) dataset for simulation-ready 3D assets — 1.1M downloads suggest strong adoption for embodied AI / sim-to-real work.
