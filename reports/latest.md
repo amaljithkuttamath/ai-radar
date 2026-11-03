@@ -1,76 +1,80 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-01](2026-11-01-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-02](2026-11-02-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-02
+# AI Radar — 2026-11-03
 
-Microsoft’s **graphrag** (36.5k stars) and Hugging Face **transformers** (168k stars) anchor today’s snapshot: a modular graph-RAG system and the core model-definition framework. NVIDIA’s **simready-assets** dataset (1.2M downloads) adds large-scale 3D simulation data. Together they signal maturation in retrieval infrastructure, foundational libraries, and simulation-ready assets.
+Two new recursive agent frameworks — CUA-Master and CoworkOS — lead a batch of 315 first-time appearances, while the core Hugging Face Transformers library and Google's Langextract show sustained high traction. Coverage spans agent orchestration, structured extraction, simulation-ready assets, and new multimodal models.
 
 ## What changed
 
 **New to radar**  
-- [microsoft/graphrag](https://github.com/microsoft/graphrag) — modular graph-based RAG system  
-- [google/langextract](https://github.com/google/langextract) — structured extraction with precise source grounding  
-- [pathwaycom/serviette](https://github.com/pathwaycom/serviette) — no-code RAG server supporting 8 vector databases  
-- [github/awesome-copilot](https://github.com/github/awesome-copilot) — community Copilot instructions, agents, and skills  
-- [VectifyAI/PageIndex](https://github.com/VectifyAI/PageIndex) — vectorless, reasoning-based document index  
+- [CUA-Master: Scaling Computer-use Agents through Open-World Recursive Improvements](https://arxiv.org/abs/2611.03126) · 4/5  
+- [CoworkOS:Scaling Agent Coworkers for Real-world Automation](https://arxiv.org/abs/2611.03178) · 4/5  
+- [OpenRLHF/OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) · 3/5  
+- [apache/airflow](https://github.com/apache/airflow) · 3/5  
+- [virgiliojr94/book-to-skill](https://github.com/virgiliojr94/book-to-skill) · 3/5  
 
 **Climbing**  
-- [S-Agent 2.0: Spatial Reasoning with a General Coding Agent](https://arxiv.org/abs/2610.28354) — score +1, traction rising  
-- [codepawl/simready-glb (HF Dataset)](https://huggingface.co/datasets/codepawl/simready-glb) — score +1, downloads climbing  
-- [Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633) — magnitude up 0.75 over prior run  
+- [ccore/ThreeJS-3D-Scenes (HF Dataset)](https://huggingface.co/datasets/ccore/ThreeJS-3D-Scenes) · 2/5  
 
 **Cooled**  
-- [microsoft/ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners) — score –1, traction flat  
+- [Making MLLM Latents Matter: Factor-Aware Predictive Learning for Cinematic Video Generation](https://arxiv.org/abs/2610.30926) · 2/5  
+- [DONIC: Generalist Dexterous Bimanual Tracking Control from Human Demonstrations](https://arxiv.org/abs/2610.29997) · 2/5  
+- [S-Agent 2.0: Spatial Reasoning with a General Coding Agent](https://arxiv.org/abs/2610.28354) · 2/5  
 
 ## Main list
 
-### Retrieval
-**[microsoft/graphrag](https://github.com/microsoft/graphrag) · 4/5**  
-Modular graph-based RAG with community-driven extensions. 36.5k stars observed. Suits teams building knowledge-intensive QA over structured and unstructured corpora. [Repo](https://github.com/microsoft/graphrag)
+### Agents
+**[CUA-Master: Scaling Computer-use Agents through Open-World Recursive Improvements](https://arxiv.org/abs/2611.03126)** · 4/5  
+A nested double-loop framework where an outer flywheel ingests open-world interaction data and an inner loop refines the agent policy recursively. GitHub repo and project page linked. Useful for teams building computer-use agents that must expand capabilities without self-play diminishing returns.
 
-**[secemp9/arxiv-complete](https://huggingface.co/datasets/secemp9/arxiv-complete) · 3/5**  
-Full arXiv corpus (100M–1B tokens, Parquet) tagged for text-generation and retrieval tasks. 162k downloads, 790 likes observed. Useful for benchmarking retrieval at scale. [Dataset](https://huggingface.co/datasets/secemp9/arxiv-complete)
+**[CoworkOS:Scaling Agent Coworkers for Real-world Automation](https://arxiv.org/abs/2611.03178)** · 4/5  
+A three-layer harness separating task strategy (model decisions) from execution management (runtime state/feedback). Targets long-horizon collaborative work with delegation and acceptance loops. GitHub repo and project page linked. Relevant for engineering orgs deploying agent teams on multi-step productivity tasks.
+
+### Frameworks & Libraries
+**[huggingface/transformers](https://github.com/huggingface/transformers)** · 4/5  
+The central model-definition framework for text, vision, audio, and multimodal models. Observed at 168k GitHub stars. Essential dependency for any model development or fine-tuning pipeline.
+
+**[google/langextract](https://github.com/google/langextract)** · 4/5  
+Python library for extracting structured information from unstructured text with precise source grounding and interactive visualization. 39k GitHub stars. Useful for RAG pipelines, document processing, and any workflow needing verifiable citations.
+
+### Data & Simulation
+**[nvidia/simready-assets (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-assets)** · 4/5  
+CC-BY-4.0 licensed 3D assets for simulation and digital-twin workloads. 1.2M downloads and 1.3k likes observed. Targets robotics, autonomous vehicle, and physical-AI teams needing ready-to-simulate environments.
+
+**[secemp9/arxiv-complete (HF Dataset)](https://huggingface.co/datasets/secemp9/arxiv-complete)** · 3/5  
+Full arXiv corpus in Parquet (100M–1B rows). 162k downloads, 790 likes. Supports large-scale retrieval, literature mining, and training-domain analysis.
 
 ### Models
-**[Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) · 3/5**  
-27B multimodal (image-text-to-text) model under Apache-2.0. 7.9M downloads, 19k likes observed. Strong candidate for vision-language fine-tuning or distillation. [Model card](https://huggingface.co/Qwen/Qwen3.8-27B)
+**[Qwen/Qwen3.8-27B (HF Model)](https://huggingface.co/Qwen/Qwen3.8-27B)** · 3/5  
+Apache-2.0 multimodal model (image-text-to-text). 8M downloads, 19k likes. Drop-in for vision-language tasks requiring permissive licensing.
 
-**[deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) · 3/5**  
-Multimodal Flash variant (MIT license). 177k downloads, 4.7k likes observed. Lightweight option for image-text generation pipelines. [Model card](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)
+**[deepseek-ai/DeepSeek-V4.1-Flash-1017 (HF Model)](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** · 3/5  
+MIT-licensed image-text-to-text model. 187k downloads, 4.8k likes. Suitable for fast multimodal inference with open weights.
 
-### Core infrastructure
-**[huggingface/transformers](https://github.com/huggingface/transformers) · 4/5**  
-Model-definition framework covering text, vision, audio, and multimodal. 168k stars observed. Default dependency for most open-weight model work. [Repo](https://github.com/huggingface/transformers)
+### Carryovers with sustained traction
+**[Sage-A1.5: From Long-Horizon Execution to Scientific Exploration with Capability Composition](https://arxiv.org/abs/2610.28578)** · 3/5  
+35B MoE agentic model with adaptive capability composition, agentic orchestration, and verification. Tracked 13 runs, +3.4 traction delta. GitHub repo and project page linked. For research on long-horizon planning and scientific reasoning agents.
 
-**[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) · 4/5**  
-SimReady 3D asset dataset (CC-BY-4.0). 1.2M downloads, 1.25k likes observed. Targets physical AI, robotics, and digital-twin workflows. [Dataset](https://huggingface.co/datasets/nvidia/simready-assets)
+**[WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329)** · 3/5  
+Unified VLM handling detection, referring localization, counting, OCR, segmentation, and matting via structured next-token prediction. Tracked 11 runs, +1.7 traction delta. GitHub repo and project page linked. For applications needing single-model fine-grained visual perception.
 
-### Agentic & vision
-**[Sage-A1.5](https://arxiv.org/abs/2610.28578) · 3/5**  
-35B MoE agentic model with adaptive capability composition, verification, and orchestration. 608 stars, 72 upvotes observed; tracked 12 runs with strong traction rise (Δ3.4). Repo: [InternScience/Agents-A1](https://github.com/InternScience/Agents-A1) · Project: [alpha-innovator.github.io/Sage-A1.5](https://alpha-innovator.github.io/Sage-A1.5/)
+## Watch-list / Still developing
 
-**[WeVisOne-VL](https://arxiv.org/abs/2610.31329) · 3/5**  
-Unified VLM for object-to-pixel perception (detection, segmentation, OCR, matting). 524 stars, 48 upvotes observed; tracked 10 runs with rising traction (Δ1.7). Repo: [Tencent/WeVisOne-VL](https://github.com/Tencent/WeVisOne-VL) · Project: [tencent.github.io/WeVisOne-VL](https://tencent.github.io/WeVisOne-VL)
-
-### Benchmarks
-**[LifeVal](https://openai.com/index/lifeval) · 2/5**  
-OpenAI benchmark measuring AI assistance on everyday tasks (childcare, finance, government paperwork). No public artifact yet; track for evaluation methodology. [Blog](https://openai.com/index/lifeval)
-
-## Story arcs
-
-- [Multimodal Embodied Agents: A Unified Capability-centric Perspective from Computer-Use to Robot-Use](https://arxiv.org/abs/2610.30108) — seen 11 runs, traction +104.2% since first seen on 2026-10-22.
-- [SolarRenderer: Few-Step Generative Reference Rendering](https://arxiv.org/abs/2610.28630) — seen 12 runs, traction +84.7% since first seen on 2026-10-21.
-- [Sage-A1.5: From Long-Horizon Execution to Scientific Exploration with Capability Composition](https://arxiv.org/abs/2610.28578) — seen 12 runs, traction +82.4% since first seen on 2026-10-21.
-- [Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation](https://arxiv.org/abs/2610.29989) — seen 11 runs, traction +61.5% since first seen on 2026-10-22.
-- [Learning the 4D World through Point Trajectory Forecasting](https://arxiv.org/abs/2610.28594) — seen 12 runs, traction +58.4% since first seen on 2026-10-21.
-- [DONIC: Generalist Dexterous Bimanual Tracking Control from Human Demonstrations](https://arxiv.org/abs/2610.29997) — seen 11 runs, traction +30.9% since first seen on 2026-10-22.
-- [WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) — seen 10 runs, traction +30.8% since first seen on 2026-10-23.
-- [S-Agent 2.0: Spatial Reasoning with a General Coding Agent](https://arxiv.org/abs/2610.28354) — seen 12 runs, traction +25.8% since first seen on 2026-10-21.
-- [Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633) — seen 4 runs, traction +12.2% since first seen on 2026-10-30.
-- [deepseek-ai/DeepSeek-V4.1-Flash-1017 (HF Model)](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) — seen 9 runs, traction +7.4% since first seen on 2026-10-24.
+- [IdeaTaste: Do LLMs Share the Research Taste of Human Researchers?](https://arxiv.org/abs/2611.03424) · 2/5 — Benchmark scoring LLM research proposals against 2026 publications; 90k+ proposals evaluated. GitHub and project page linked.
+- [LifeVal](https://openai.com/index/lifeval) · 2/5 — OpenAI benchmark measuring AI assistance on everyday tasks (childcare, finance, government paperwork).
+- [WebHarbor: Docking Real Websites for Evolving GUI Agent Environments](https://arxiv.org/abs/2611.03634) · 2/5 — 153 dockerized, deterministic website environments for GUI agent training/eval.
+- [DistDebug-Bench: Can LLM Agents Diagnose Bugs in Distributed Systems?](https://arxiv.org/abs/2611.03523) · 2/5 — 120 real-world bugs from 11 distributed systems across 5 languages and 10 failure patterns.
+- [Multimodal Embodied Agents: A Unified Capability-centric Perspective](https://arxiv.org/abs/2610.30108) · — 12-day streak, +98% traction; survey framing computer-use to robot-use capabilities.
+- [SolarRenderer: Few-Step Generative Reference Rendering](https://arxiv.org/abs/2610.28630) · — 13-day streak, +84% traction; generative rendering for simulation and vision tasks.
+- [Learning the 4D World through Point Trajectory Forecasting](https://arxiv.org/abs/2610.28594) · — 13-day streak, +56% traction; 4D scene understanding via point trajectories.
+- [Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633) · — 5-day streak, +11% traction; distribution matching for generative modeling.
 
 ## Action items
-1. **Try** [microsoft/graphrag](https://github.com/microsoft/graphrag) — drop-in graph-RAG for knowledge-heavy QA; modular enough to swap retrievers and LLMs.  
-2. **Read** [Sage-A1.5](https://arxiv.org/abs/2610.28578) + [repo](https://github.com/InternScience/Agents-A1) — MoE agentic orchestration with capability composition; 12-day traction rise suggests active development.  
-3. **Track** [Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) and [DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) — high-download multimodal bases for vision-language fine-tuning or distillation.
+
+**Read** — [CUA-Master](https://arxiv.org/abs/2611.03126) and [CoworkOS](https://arxiv.org/abs/2611.03178) together; they represent complementary recursive-improvement and long-horizon orchestration approaches for computer-use agents.
+
+**Try** — [google/langextract](https://github.com/google/langextract) for adding grounded structured extraction to any LLM pipeline; the visualization tooling makes citation verification immediate.
+
+**Track** — [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) downloads and downstream benchmarks; adoption in physical-AI and robotics sim will signal ecosystem maturity for sim-to-real transfer.
