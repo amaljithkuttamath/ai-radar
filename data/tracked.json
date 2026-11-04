@@ -2,7 +2,7 @@
 "arxiv:2610.28354": {
 "category": "research",
 "first_seen": "2026-10-21",
-"flat_runs": 1,
+"flat_runs": 2,
 "id": "arxiv:2610.28354",
 "keywords": [
 "VLM",
@@ -13,7 +13,7 @@
 "coding agent",
 "perception toolkit"
 ],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {
 "github": "https://github.com/Ropedia/S-Agent-2.0",
 "project": "https://ropedia.github.io/S-Agent-2.0"
@@ -31,6 +31,7 @@
 6.5811,
 5.5695,
 5.6169,
+5.5922,
 5.5922
 ],
 "misses": 0,
@@ -41,7 +42,7 @@
 "hf_upvotes": 39
 },
 "source": "HF Daily Papers",
-"streak": 13,
+"streak": 14,
 "summary": "Spatial reasoning asks a model to work out where objects are in 3D space, how they relate to one another, and how they move. Agentic VLMs have recently brought large improvements on such tasks by letting the model actively gather evidence with 3D perception tools instead of answering in a single pass. Even so, on many questions the tools return the right evidence and the model still does not arriv",
 "title": "S-Agent 2.0: Spatial Reasoning with a General Coding Agent",
 "url": "https://arxiv.org/abs/2610.28354"
@@ -49,7 +50,7 @@
 "arxiv:2610.28578": {
 "category": "research",
 "first_seen": "2026-10-21",
-"flat_runs": 1,
+"flat_runs": 2,
 "id": "arxiv:2610.28578",
 "keywords": [
 "Mixture-of-Experts",
@@ -58,7 +59,7 @@
 "agentic verification",
 "open scientific discovery"
 ],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {
 "github": "https://github.com/InternScience/Agents-A1",
 "project": "https://alpha-innovator.github.io/Sage-A1.5/"
@@ -76,6 +77,7 @@
 7.5218,
 7.4955,
 7.4964,
+7.4955,
 7.4955
 ],
 "misses": 0,
@@ -86,7 +88,7 @@
 "hf_upvotes": 72
 },
 "source": "HF Daily Papers",
-"streak": 13,
+"streak": 14,
 "summary": "In this report, we introduce Sage-A1.5, a 35B Mixture-of-Experts agentic model that builds on A1 to advance long-horizon problem solving through adaptive capability composition. Compared with A1, Sage-A1.5 learns not only to solve individual tasks, but also to organize work and revise its approach during execution. Sage-A1.5 highlights three improvements: agentic orchestration, verification, and o",
 "title": "Sage-A1.5: From Long-Horizon Execution to Scientific Exploration with Capability Composition",
 "url": "https://arxiv.org/abs/2610.28578"
@@ -94,7 +96,7 @@
 "arxiv:2610.28594": {
 "category": "research",
 "first_seen": "2026-10-21",
-"flat_runs": 1,
+"flat_runs": 2,
 "id": "arxiv:2610.28594",
 "keywords": [
 "world model",
@@ -106,7 +108,7 @@
 "video generation",
 "robot control"
 ],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {
 "github": "https://github.com/rootyJeon/VPM",
 "project": "https://rootyjeon.github.io/video-point-model/"
@@ -124,6 +126,7 @@
 5.9464,
 5.8923,
 5.9217,
+5.8263,
 5.8263
 ],
 "misses": 0,
@@ -134,7 +137,7 @@
 "hf_upvotes": 49
 },
 "source": "HF Daily Papers",
-"streak": 13,
+"streak": 14,
 "summary": "Reliable multi-view forecasting requires videos from different cameras to describe the same evolving 3D scene. To this end, we introduce Video-Point Model (VPM), a world model that conditions on multi-view video histories and a language instruction to jointly forecast future videos from arbitrary viewpoints and the 3D trajectories of persistent scene points. We extend a pretrained world model with",
 "title": "Learning the 4D World through Point Trajectory Forecasting",
 "url": "https://arxiv.org/abs/2610.28594"
@@ -142,7 +145,7 @@
 "arxiv:2610.28630": {
 "category": "research",
 "first_seen": "2026-10-21",
-"flat_runs": 3,
+"flat_runs": 0,
 "id": "arxiv:2610.28630",
 "keywords": [
 "SolarRenderer",
@@ -154,7 +157,7 @@
 "streaming",
 "frame-aligned corpus"
 ],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {
 "github": "https://github.com/Enderfga/SolarRenderer",
 "project": "https://enderfga.cn/SolarRenderer"
@@ -172,17 +175,18 @@
 6.9222,
 6.9049,
 6.9049,
-6.8929
+6.8929,
+6.9026
 ],
 "misses": 0,
 "peak_mag": 6.9222,
 "signals": {
-"gh_stars": 358,
+"gh_stars": 365,
 "hf_comments": 0,
 "hf_upvotes": 51
 },
 "source": "HF Daily Papers",
-"streak": 13,
+"streak": 14,
 "summary": "Game engines and coding agents can specify the layout, motion, and camera of a scene, yet turning such coarse structure into realistic video requires a renderer that follows the structure and completes the appearance it leaves open. Existing renderers are tied to the representation of one engine, need tens of denoising steps or a costly distillation of their own, and learn from conditions that are",
 "title": "SolarRenderer: Few-Step Generative Reference Rendering",
 "url": "https://arxiv.org/abs/2610.28630"
@@ -190,7 +194,7 @@
 "arxiv:2610.29989": {
 "category": "research",
 "first_seen": "2026-10-22",
-"flat_runs": 3,
+"flat_runs": 0,
 "id": "arxiv:2610.29989",
 "keywords": [
 "autoregressive video diffusion",
@@ -200,7 +204,7 @@
 "visual evolution",
 "world models"
 ],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {
 "github": "https://github.com/TencentARC/Looking-Ahead",
 "project": "https://hellorpg.github.io/looking-ahead/"
@@ -217,17 +221,18 @@
 7.6751,
 7.0582,
 6.908,
-6.5229
+6.5229,
+6.5518
 ],
 "misses": 0,
 "peak_mag": 7.6897,
 "signals": {
-"gh_stars": 200,
+"gh_stars": 212,
 "hf_comments": 0,
 "hf_upvotes": 47
 },
 "source": "HF Daily Papers",
-"streak": 12,
+"streak": 13,
 "summary": "Autoregressive video diffusion models generate videos chunk by chunk, yet producing plausible continuations does not guarantee that they capture how scenes evolve. Under teacher forcing, strong temporal redundancy may allow local visual continuity to serve as a shortcut for current-chunk denoising, reducing the pressure to model visual evolution. We introduce Future Chunk Prediction (FCP), an auxi",
 "title": "Looking Ahead: Modeling Future Evolution in Autoregressive Video Generation",
 "url": "https://arxiv.org/abs/2610.29989"
@@ -235,7 +240,7 @@
 "arxiv:2610.29997": {
 "category": "research",
 "first_seen": "2026-10-22",
-"flat_runs": 1,
+"flat_runs": 2,
 "id": "arxiv:2610.29997",
 "keywords": [
 "proximal policy optimization",
@@ -245,7 +250,7 @@
 "bimanual manipulation",
 "generalist tracker"
 ],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {
 "github": "https://github.com/Ropedia/DONIC",
 "project": "https://ropedia.github.io/DONIC/"
@@ -262,6 +267,7 @@
 7.0974,
 6.0467,
 6.0557,
+5.568,
 5.568
 ],
 "misses": 0,
@@ -272,7 +278,7 @@
 "hf_upvotes": 34
 },
 "source": "HF Daily Papers",
-"streak": 12,
+"streak": 13,
 "summary": "Despite recent progress in dexterous reference tracking, existing models focus primarily on single-hand manipulation and a limited range of interactions, leaving the bimanual dexterous behaviors common in real life unaddressed. The scarcity of contact-rich bimanual manipulation data and the increased complexity of coordinating contacts make developing a generalist bimanual tracker particularly cha",
 "title": "DONIC: Generalist Dexterous Bimanual Tracking Control from Human Demonstrations",
 "url": "https://arxiv.org/abs/2610.29997"
@@ -280,7 +286,7 @@
 "arxiv:2610.30108": {
 "category": "research",
 "first_seen": "2026-10-22",
-"flat_runs": 1,
+"flat_runs": 0,
 "id": "arxiv:2610.30108",
 "keywords": [
 "multimodal embodied agents",
@@ -292,7 +298,7 @@
 "Verify",
 "partial observability"
 ],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {
 "github": "https://github.com/showlab/Awesome-Multimodal-Embodied-Agent",
 "project": "https://showlab.github.io/Awesome-Multimodal-Embodied-Agent/"
@@ -309,17 +315,18 @@
 5.9465,
 5.8861,
 5.9022,
-5.7324
+5.7324,
+5.7582
 ],
 "misses": 0,
 "peak_mag": 5.9465,
 "signals": {
-"gh_stars": 263,
+"gh_stars": 277,
 "hf_comments": 0,
 "hf_upvotes": 18
 },
 "source": "HF Daily Papers",
-"streak": 12,
+"streak": 13,
 "summary": "Multimodal agents (MMAs) sustain interaction through reasoning, memory, tools, and feedback, most visibly as computer-use agents, while robotic systems (RSs) couple sensing and actuation under physical dynamics. We define multimodal embodied agents (MMEAs) as goal-directed systems that couple multimodal task reasoning with physical action and revise decisions from the resulting feedback. This rais",
 "title": "Multimodal Embodied Agents: A Unified Capability-centric Perspective from Computer-Use to Robot-Use",
 "url": "https://arxiv.org/abs/2610.30108"
@@ -327,7 +334,7 @@
 "arxiv:2610.30926": {
 "category": "research",
 "first_seen": "2026-10-23",
-"flat_runs": 3,
+"flat_runs": 0,
 "id": "arxiv:2610.30926",
 "keywords": [
 "Video Diffusion Transformer",
@@ -339,7 +346,7 @@
 "sparse-to-video",
 "factor-aware editing"
 ],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {
 "github": "https://github.com/Songlin1998/ShotVerse2.0",
 "project": "https://shotverse.github.io/fapl/"
@@ -355,17 +362,18 @@
 5.8856,
 4.9048,
 4.9048,
-4.3742
+4.3742,
+5.2215
 ],
 "misses": 0,
 "peak_mag": 6.296,
 "signals": {
 "gh_stars": 6,
 "hf_comments": 0,
-"hf_upvotes": 29
+"hf_upvotes": 69
 },
 "source": "HF Daily Papers",
-"streak": 11,
+"streak": 12,
 "summary": "Cinematic video generation requires both temporal inference from limited inputs (i.e., sparse rather than frame-by-frame guidance) and factor-aware control of character, scene, action, and camera. Multimodal large language models (MLLMs) offer useful priors for both capabilities, but their representations are not automatically actionable for video generation: a Video Diffusion Transformer (DiT) ma",
 "title": "Making MLLM Latents Matter: Factor-Aware Predictive Learning for Cinematic Video Generation",
 "url": "https://arxiv.org/abs/2610.30926"
@@ -385,7 +393,7 @@
 "curriculum SFT",
 "mixed-task RL"
 ],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {
 "github": "https://github.com/Tencent/WeVisOne-VL",
 "project": "https://tencent.github.io/WeVisOne-VL"
@@ -401,17 +409,18 @@
 8.6566,
 6.9951,
 7.0235,
-7.0535
+7.0535,
+7.2117
 ],
 "misses": 0,
 "peak_mag": 8.6566,
 "signals": {
-"gh_stars": 660,
+"gh_stars": 906,
 "hf_comments": 0,
 "hf_upvotes": 44
 },
 "source": "HF Daily Papers",
-"streak": 11,
+"streak": 12,
 "summary": "Existing vision-language models (VLMs) remain unreliable for fine-grained visual perception. In this report, we present WeVisOne-VL (WeChat Vision All-in-One), a powerful VLM that unifies object-level and pixel-level perception through structured next-token prediction. It supports multiple visual tasks including object detection, referring localization, counting, OCR, segmentation, and matting, en",
 "title": "WeVisOne-VL: Unified Visual Perception from Objects to Pixels",
 "url": "https://arxiv.org/abs/2610.31329"
@@ -419,7 +428,7 @@
 "arxiv:2610.39633": {
 "category": "research",
 "first_seen": "2026-10-30",
-"flat_runs": 1,
+"flat_runs": 0,
 "id": "arxiv:2610.39633",
 "keywords": [
 "Distribution Matching Distillation",
@@ -431,7 +440,7 @@
 "internal velocity branches",
 "non-Gaussian residual"
 ],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {
 "github": "https://github.com/inclusionAI/IDM",
 "project": "https://www.inclusion-ai.org/IDM/?lang=zh"
@@ -441,17 +450,18 @@
 7.6214,
 5.3705,
 6.1193,
-6.0641
+6.0641,
+6.1076
 ],
 "misses": 0,
 "peak_mag": 7.6214,
 "signals": {
-"gh_stars": 235,
+"gh_stars": 239,
 "hf_comments": 0,
-"hf_upvotes": 27
+"hf_upvotes": 28
 },
 "source": "arXiv cs.AI",
-"streak": 5,
+"streak": 6,
 "summary": "One-step and few-step text-to-image generation must accurately render the details specified in the prompt despite limited opportunities for refinement. Distribution matching distillation (DMD) uses score differences to bring the generated distribution closer to a reference distribution. Following prior work, we estimate this difference with internal velocity branches, avoiding a separate fake-scor",
 "title": "Intrinsic Distribution Matching",
 "url": "https://arxiv.org/abs/2610.39633"
@@ -462,7 +472,7 @@
 "flat_runs": 0,
 "id": "ghrepo:Developer-Y/cs-video-courses",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.6678,
@@ -474,16 +484,17 @@
 5.6718,
 5.672,
 5.6723,
-5.6725
+5.6725,
+5.6726
 ],
 "misses": 0,
-"peak_mag": 5.6725,
+"peak_mag": 5.6726,
 "signals": {
-"gh_forks": 11619,
-"gh_stars": 84542
+"gh_forks": 11614,
+"gh_stars": 84555
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "List of Computer Science courses with video lectures.",
 "title": "Developer-Y/cs-video-courses \u2014 List of Computer Science courses with video lectures.",
 "url": "https://github.com/Developer-Y/cs-video-courses"
@@ -494,7 +505,7 @@
 "flat_runs": 0,
 "id": "ghrepo:DietrichGebert/ponytail",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 6.0501,
@@ -502,16 +513,17 @@
 6.0541,
 6.0558,
 6.0581,
-6.0602
+6.0602,
+6.0624
 ],
 "misses": 0,
-"peak_mag": 6.0602,
+"peak_mag": 6.0624,
 "signals": {
-"gh_forks": 10139,
-"gh_stars": 183569
+"gh_forks": 10171,
+"gh_stars": 184380
 },
 "source": "GitHub Search",
-"streak": 6,
+"streak": 7,
 "summary": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
 "title": "DietrichGebert/ponytail \u2014 Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
 "url": "https://github.com/DietrichGebert/ponytail"
@@ -522,7 +534,7 @@
 "flat_runs": 0,
 "id": "ghrepo:Graphify-Labs/graphify",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.9027,
@@ -534,16 +546,17 @@
 5.9242,
 5.9261,
 5.9285,
-5.9307
+5.9307,
+5.9329
 ],
 "misses": 0,
-"peak_mag": 5.9307,
+"peak_mag": 5.9329,
 "signals": {
-"gh_forks": 13549,
-"gh_stars": 141691
+"gh_forks": 13608,
+"gh_stars": 142307
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.",
 "title": "Graphify-Labs/graphify \u2014 Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.",
 "url": "https://github.com/Graphify-Labs/graphify"
@@ -554,7 +567,7 @@
 "flat_runs": 0,
 "id": "ghrepo:JuliusBrussee/caveman",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.8249,
@@ -566,16 +579,17 @@
 5.8327,
 5.8335,
 5.8346,
-5.8356
+5.8356,
+5.837
 ],
 "misses": 0,
-"peak_mag": 5.8356,
+"peak_mag": 5.837,
 "signals": {
-"gh_forks": 6808,
-"gh_stars": 117144
+"gh_forks": 6813,
+"gh_stars": 117468
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "\ud83e\udea8 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman.",
 "title": "JuliusBrussee/caveman \u2014 \ud83e\udea8 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman.",
 "url": "https://github.com/JuliusBrussee/caveman"
@@ -586,7 +600,7 @@
 "flat_runs": 0,
 "id": "ghrepo:Mintplex-Labs/anything-llm",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5599,
@@ -598,16 +612,17 @@
 5.5621,
 5.5623,
 5.5626,
-5.5629
+5.5629,
+5.5632
 ],
 "misses": 0,
-"peak_mag": 5.5629,
+"peak_mag": 5.5632,
 "signals": {
-"gh_forks": 7662,
-"gh_stars": 67899
+"gh_forks": 7661,
+"gh_stars": 67939
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience",
 "title": "Mintplex-Labs/anything-llm \u2014 Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience",
 "url": "https://github.com/Mintplex-Labs/anything-llm"
@@ -618,7 +633,7 @@
 "flat_runs": 0,
 "id": "ghrepo:NousResearch/hermes-agent",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 6.2276,
@@ -630,16 +645,17 @@
 6.2325,
 6.2331,
 6.2339,
-6.2346
+6.2346,
+6.2352
 ],
 "misses": 0,
-"peak_mag": 6.2346,
+"peak_mag": 6.2352,
 "signals": {
-"gh_forks": 57340,
-"gh_stars": 260183
+"gh_forks": 57417,
+"gh_stars": 260501
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "The agent that grows with you",
 "title": "NousResearch/hermes-agent \u2014 The agent that grows with you",
 "url": "https://github.com/NousResearch/hermes-agent"
@@ -647,10 +663,10 @@
 "ghrepo:Significant-Gravitas/AutoGPT": {
 "category": "releases",
 "first_seen": "2026-10-24",
-"flat_runs": 1,
+"flat_runs": 2,
 "id": "ghrepo:Significant-Gravitas/AutoGPT",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 6.0714,
@@ -662,16 +678,17 @@
 6.0717,
 6.0717,
 6.0718,
+6.0718,
 6.0718
 ],
 "misses": 0,
 "peak_mag": 6.0718,
 "signals": {
-"gh_forks": 45902,
-"gh_stars": 187886
+"gh_forks": 45904,
+"gh_stars": 187901
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
 "title": "Significant-Gravitas/AutoGPT \u2014 AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
 "url": "https://github.com/Significant-Gravitas/AutoGPT"
@@ -682,7 +699,7 @@
 "flat_runs": 0,
 "id": "ghrepo:TauricResearch/TradingAgents",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.8355,
@@ -692,16 +709,17 @@
 5.8432,
 5.8451,
 5.8473,
-5.8487
+5.8487,
+5.8501
 ],
 "misses": 0,
-"peak_mag": 5.8487,
+"peak_mag": 5.8501,
 "signals": {
-"gh_forks": 23001,
-"gh_stars": 120252
+"gh_forks": 23054,
+"gh_stars": 120602
 },
 "source": "GitHub Search",
-"streak": 8,
+"streak": 9,
 "summary": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
 "title": "TauricResearch/TradingAgents \u2014 TradingAgents: Multi-Agents LLM Financial Trading Framework",
 "url": "https://github.com/TauricResearch/TradingAgents"
@@ -712,7 +730,7 @@
 "flat_runs": 0,
 "id": "ghrepo:affaan-m/ECC",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 6.2897,
@@ -722,16 +740,17 @@
 6.2953,
 6.2966,
 6.2983,
-6.2997
+6.2997,
+6.3009
 ],
 "misses": 0,
-"peak_mag": 6.2997,
+"peak_mag": 6.3009,
 "signals": {
-"gh_forks": 43828,
-"gh_stars": 296355
+"gh_forks": 43916,
+"gh_stars": 297086
 },
 "source": "GitHub Search",
-"streak": 8,
+"streak": 9,
 "summary": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
 "title": "affaan-m/ECC \u2014 The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
 "url": "https://github.com/affaan-m/ECC"
@@ -742,7 +761,7 @@
 "flat_runs": 0,
 "id": "ghrepo:browser-use/browser-use",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.8434,
@@ -754,16 +773,17 @@
 5.8462,
 5.8466,
 5.847,
-5.8474
+5.8474,
+5.8477
 ],
 "misses": 0,
-"peak_mag": 5.8474,
+"peak_mag": 5.8477,
 "signals": {
-"gh_forks": 13376,
-"gh_stars": 119940
+"gh_forks": 13382,
+"gh_stars": 120024
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API.",
 "title": "browser-use/browser-use \u2014 Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API.",
 "url": "https://github.com/browser-use/browser-use"
@@ -774,7 +794,7 @@
 "flat_runs": 0,
 "id": "ghrepo:crewAIInc/crewAI",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5014,
@@ -786,16 +806,17 @@
 5.5039,
 5.5042,
 5.5046,
-5.5048
+5.5048,
+5.5052
 ],
 "misses": 0,
-"peak_mag": 5.5048,
+"peak_mag": 5.5052,
 "signals": {
-"gh_forks": 9022,
-"gh_stars": 60456
+"gh_forks": 9040,
+"gh_stars": 60499
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks.",
 "title": "crewAIInc/crewAI \u2014 Framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks.",
 "url": "https://github.com/crewAIInc/crewAI"
@@ -806,7 +827,7 @@
 "flat_runs": 0,
 "id": "ghrepo:f/prompts.chat",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 6.0342,
@@ -818,16 +839,17 @@
 6.0374,
 6.0377,
 6.038,
-6.0383
+6.0383,
+6.0385
 ],
 "misses": 0,
-"peak_mag": 6.0383,
+"peak_mag": 6.0385,
 "signals": {
-"gh_forks": 22424,
-"gh_stars": 175709
+"gh_forks": 22425,
+"gh_stars": 175796
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source \u2014 self-host for your organization with complete privacy.",
 "title": "f/prompts.chat \u2014 f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source \u2014 self-host for your organization with complete privacy.",
 "url": "https://github.com/f/prompts.chat"
@@ -838,7 +860,7 @@
 "flat_runs": 0,
 "id": "ghrepo:firecrawl/firecrawl",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 6.0897,
@@ -850,16 +872,17 @@
 6.0963,
 6.097,
 6.0979,
-6.0987
+6.0987,
+6.0995
 ],
 "misses": 0,
-"peak_mag": 6.0987,
+"peak_mag": 6.0995,
 "signals": {
-"gh_forks": 10473,
-"gh_stars": 198259
+"gh_forks": 10477,
+"gh_stars": 198575
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. \ud83d\udd25",
 "title": "firecrawl/firecrawl \u2014 Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. \ud83d\udd25",
 "url": "https://github.com/firecrawl/firecrawl"
@@ -870,7 +893,7 @@
 "flat_runs": 0,
 "id": "ghrepo:harry0703/MoneyPrinterTurbo",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.9051,
@@ -882,16 +905,17 @@
 5.9132,
 5.9143,
 5.9156,
-5.9183
+5.9183,
+5.9204
 ],
 "misses": 0,
-"peak_mag": 5.9183,
+"peak_mag": 5.9204,
 "signals": {
-"gh_forks": 22059,
-"gh_stars": 138207
+"gh_forks": 22151,
+"gh_stars": 138789
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "\u5229\u7528 AI \u5927\u6a21\u578b\u548c\u81ea\u52a8\u5316\u5de5\u4f5c\u6d41\uff0c\u6839\u636e\u4e3b\u9898\u6216\u5173\u952e\u8bcd\u4e00\u952e\u751f\u6210\u9ad8\u6e05\u77ed\u89c6\u9891\u3002Generate HD short videos from a topic or keyword with an automated AI workflow.",
 "title": "harry0703/MoneyPrinterTurbo \u2014 \u5229\u7528 AI \u5927\u6a21\u578b\u548c\u81ea\u52a8\u5316\u5de5\u4f5c\u6d41\uff0c\u6839\u636e\u4e3b\u9898\u6216\u5173\u952e\u8bcd\u4e00\u952e\u751f\u6210\u9ad8\u6e05\u77ed\u89c6\u9891\u3002Generate HD short videos from a topic or keyword with an automated AI workflow.",
 "url": "https://github.com/harry0703/MoneyPrinterTurbo"
@@ -902,7 +926,7 @@
 "flat_runs": 0,
 "id": "ghrepo:headroomlabs-ai/headroom",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.6302,
@@ -914,16 +938,17 @@
 5.6351,
 5.6356,
 5.6364,
-5.6368
+5.6368,
+5.6376
 ],
 "misses": 0,
-"peak_mag": 5.6368,
+"peak_mag": 5.6376,
 "signals": {
-"gh_forks": 6152,
-"gh_stars": 78721
+"gh_forks": 6160,
+"gh_stars": 78836
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Compress tool outputs, logs, files, and RAG chunks before they reach the LLM. 20% fewer tokens for coding agents, 60-95% fewer tokens for JSON, same answers. Library, proxy, MCP server.",
 "title": "headroomlabs-ai/headroom \u2014 Compress tool outputs, logs, files, and RAG chunks before they reach the LLM. 20% fewer tokens for coding agents, 60-95% fewer tokens for JSON, same answers. Library, proxy, MCP server.",
 "url": "https://github.com/headroomlabs-ai/headroom"
@@ -934,7 +959,7 @@
 "flat_runs": 0,
 "id": "ghrepo:hiyouga/LlamaFactory",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.6178,
@@ -942,16 +967,17 @@
 5.618,
 5.6181,
 5.6183,
-5.6184
+5.6184,
+5.6185
 ],
 "misses": 0,
-"peak_mag": 5.6184,
+"peak_mag": 5.6185,
 "signals": {
-"gh_forks": 9343,
-"gh_stars": 75869
+"gh_forks": 9340,
+"gh_stars": 75888
 },
 "source": "GitHub Search",
-"streak": 6,
+"streak": 7,
 "summary": "Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)",
 "title": "hiyouga/LlamaFactory \u2014 Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)",
 "url": "https://github.com/hiyouga/LlamaFactory"
@@ -962,7 +988,7 @@
 "flat_runs": 0,
 "id": "ghrepo:huggingface/transformers",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 6.016,
@@ -974,16 +1000,17 @@
 6.017,
 6.0171,
 6.0172,
-6.0173
+6.0173,
+6.0175
 ],
 "misses": 0,
-"peak_mag": 6.0173,
+"peak_mag": 6.0175,
 "signals": {
-"gh_forks": 35102,
-"gh_stars": 168494
+"gh_forks": 35111,
+"gh_stars": 168537
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "\ud83e\udd17 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training.",
 "title": "huggingface/transformers \u2014 \ud83e\udd17 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training.",
 "url": "https://github.com/huggingface/transformers"
@@ -994,7 +1021,7 @@
 "flat_runs": 0,
 "id": "ghrepo:infiniflow/ragflow",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.719,
@@ -1006,16 +1033,17 @@
 5.7215,
 5.7218,
 5.7221,
-5.7225
+5.7225,
+5.7228
 ],
 "misses": 0,
-"peak_mag": 5.7225,
+"peak_mag": 5.7228,
 "signals": {
-"gh_forks": 11220,
-"gh_stars": 93437
+"gh_forks": 11221,
+"gh_stars": 93494
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "RAGFlow is a leading open-source Retrieval-Augmented Generation (RAG) engine that fuses cutting-edge RAG with Agent capabilities to create a superior context layer for LLMs",
 "title": "infiniflow/ragflow \u2014 RAGFlow is a leading open-source Retrieval-Augmented Generation (RAG) engine that fuses cutting-edge RAG with Agent capabilities to create a superior context layer for LLMs",
 "url": "https://github.com/infiniflow/ragflow"
@@ -1023,10 +1051,10 @@
 "ghrepo:keras-team/keras": {
 "category": "releases",
 "first_seen": "2026-10-24",
-"flat_runs": 3,
+"flat_runs": 0,
 "id": "ghrepo:keras-team/keras",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5363,
@@ -1038,16 +1066,17 @@
 5.5365,
 5.5365,
 5.5365,
-5.5365
+5.5365,
+5.5366
 ],
 "misses": 0,
-"peak_mag": 5.5365,
+"peak_mag": 5.5366,
 "signals": {
-"gh_forks": 19824,
-"gh_stars": 64413
+"gh_forks": 19819,
+"gh_stars": 64418
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Deep Learning for humans",
 "title": "keras-team/keras \u2014 Deep Learning for humans",
 "url": "https://github.com/keras-team/keras"
@@ -1058,7 +1087,7 @@
 "flat_runs": 0,
 "id": "ghrepo:labmlai/annotated_deep_learning_paper_implementations",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5607,
@@ -1069,16 +1098,17 @@
 5.5608,
 5.5609,
 5.5611,
-5.5612
+5.5612,
+5.5613
 ],
 "misses": 0,
-"peak_mag": 5.5612,
+"peak_mag": 5.5613,
 "signals": {
-"gh_forks": 6793,
-"gh_stars": 67665
+"gh_forks": 6780,
+"gh_stars": 67679
 },
 "source": "GitHub Search",
-"streak": 9,
+"streak": 10,
 "summary": "\ud83e\uddd1\u200d\ud83c\udfeb 60+ Implementations/tutorials of deep learning papers with side-by-side notes \ud83d\udcdd; including transformers (original, xl, switch, feedback, vit, ...), optimizers (adam, adabelief, sophia, ...), gans(cyclegan, stylegan2, ...), \ud83c\udfae reinforcement learning (ppo, dqn), capsnet, distillation, ... \ud83e\udde0",
 "title": "labmlai/annotated_deep_learning_paper_implementations \u2014 \ud83e\uddd1\u200d\ud83c\udfeb 60+ Implementations/tutorials of deep learning papers with side-by-side notes \ud83d\udcdd; including transformers (original, xl, switch, feedback, vit, ...), optimizers (adam, adabelief, sophia, ...), gans(cyclegan, stylegan2, ...), \ud83c\udfae reinforcement learning (ppo, dqn), capsnet, distillation, ... \ud83e\udde0",
 "url": "https://github.com/labmlai/annotated_deep_learning_paper_implementations"
@@ -1089,7 +1119,7 @@
 "flat_runs": 0,
 "id": "ghrepo:langchain-ai/langchain",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.9537,
@@ -1101,16 +1131,17 @@
 5.9551,
 5.9553,
 5.9555,
-5.9557
+5.9557,
+5.9559
 ],
 "misses": 0,
-"peak_mag": 5.9557,
+"peak_mag": 5.9559,
 "signals": {
-"gh_forks": 25053,
-"gh_stars": 148949
+"gh_forks": 25058,
+"gh_stars": 149017
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "The agent engineering platform.",
 "title": "langchain-ai/langchain \u2014 The agent engineering platform.",
 "url": "https://github.com/langchain-ai/langchain"
@@ -1121,7 +1152,7 @@
 "flat_runs": 0,
 "id": "ghrepo:langflow-ai/langflow",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.9787,
@@ -1133,16 +1164,17 @@
 5.9794,
 5.9795,
 5.9797,
-5.9798
+5.9798,
+5.9799
 ],
 "misses": 0,
-"peak_mag": 5.9798,
+"peak_mag": 5.9799,
 "signals": {
-"gh_forks": 10321,
-"gh_stars": 156295
+"gh_forks": 10325,
+"gh_stars": 156329
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
 "title": "langflow-ai/langflow \u2014 Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
 "url": "https://github.com/langflow-ai/langflow"
@@ -1153,7 +1185,7 @@
 "flat_runs": 0,
 "id": "ghrepo:langgenius/dify",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.9896,
@@ -1165,16 +1197,17 @@
 5.9917,
 5.992,
 5.9923,
-5.9925
+5.9925,
+5.9927
 ],
 "misses": 0,
-"peak_mag": 5.9925,
+"peak_mag": 5.9927,
 "signals": {
-"gh_forks": 25363,
-"gh_stars": 160331
+"gh_forks": 25367,
+"gh_stars": 160404
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
 "title": "langgenius/dify \u2014 Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
 "url": "https://github.com/langgenius/dify"
@@ -1185,7 +1218,7 @@
 "flat_runs": 0,
 "id": "ghrepo:mem0ai/mem0",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5615,
@@ -1197,16 +1230,17 @@
 5.5648,
 5.5653,
 5.5658,
-5.5661
+5.5661,
+5.5666
 ],
 "misses": 0,
-"peak_mag": 5.5661,
+"peak_mag": 5.5666,
 "signals": {
-"gh_forks": 8115,
-"gh_stars": 68342
+"gh_forks": 8119,
+"gh_stars": 68403
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "The Memory Layer for AI Agents - Drop-in memory infrastructure for AI agents and apps. Context that persists. Built for production.",
 "title": "mem0ai/mem0 \u2014 The Memory Layer for AI Agents - Drop-in memory infrastructure for AI agents and apps. Context that persists. Built for production.",
 "url": "https://github.com/mem0ai/mem0"
@@ -1217,7 +1251,7 @@
 "flat_runs": 0,
 "id": "ghrepo:microsoft/AI-For-Beginners",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5793,
@@ -1229,16 +1263,17 @@
 5.581,
 5.5812,
 5.5816,
-5.5819
+5.5819,
+5.5821
 ],
 "misses": 0,
-"peak_mag": 5.5819,
+"peak_mag": 5.5821,
 "signals": {
-"gh_forks": 13734,
-"gh_stars": 70534
+"gh_forks": 13738,
+"gh_stars": 70564
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "12 Weeks, 24 Lessons, AI for All!",
 "title": "microsoft/AI-For-Beginners \u2014 12 Weeks, 24 Lessons, AI for All!",
 "url": "https://github.com/microsoft/AI-For-Beginners"
@@ -1249,21 +1284,22 @@
 "flat_runs": 0,
 "id": "ghrepo:microsoft/ML-For-Beginners",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.7144,
 5.7145,
-5.7146
+5.7146,
+5.7148
 ],
 "misses": 0,
-"peak_mag": 5.7146,
+"peak_mag": 5.7148,
 "signals": {
-"gh_forks": 22841,
-"gh_stars": 91969
+"gh_forks": 22845,
+"gh_stars": 91997
 },
 "source": "GitHub Search",
-"streak": 3,
+"streak": 4,
 "summary": "12 weeks, 26 lessons, 52 quizzes, classic Machine Learning for all",
 "title": "microsoft/ML-For-Beginners \u2014 12 weeks, 26 lessons, 52 quizzes, classic Machine Learning for all",
 "url": "https://github.com/microsoft/ML-For-Beginners"
@@ -1271,10 +1307,10 @@
 "ghrepo:microsoft/autogen": {
 "category": "releases",
 "first_seen": "2026-10-28",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "ghrepo:microsoft/autogen",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5143,
@@ -1283,16 +1319,17 @@
 5.5146,
 5.5147,
 5.5149,
+5.515,
 5.515
 ],
 "misses": 0,
 "peak_mag": 5.515,
 "signals": {
-"gh_forks": 9363,
-"gh_stars": 61692
+"gh_forks": 9365,
+"gh_stars": 61701
 },
 "source": "GitHub Search",
-"streak": 7,
+"streak": 8,
 "summary": "A programming framework for agentic AI",
 "title": "microsoft/autogen \u2014 A programming framework for agentic AI",
 "url": "https://github.com/microsoft/autogen"
@@ -1303,7 +1340,7 @@
 "flat_runs": 0,
 "id": "ghrepo:morluto/rea",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 6.4443,
@@ -1313,16 +1350,17 @@
 6.4675,
 6.4715,
 6.4769,
-6.4814
+6.4814,
+6.4859
 ],
 "misses": 0,
-"peak_mag": 6.4814,
+"peak_mag": 6.4859,
 "signals": {
-"gh_forks": 106145,
-"gh_stars": 426264
+"gh_forks": 106953,
+"gh_stars": 430153
 },
 "source": "GitHub Search",
-"streak": 8,
+"streak": 9,
 "summary": "Reverse engineer anything with agents, from app behavior down to native binaries.",
 "title": "morluto/rea \u2014 Reverse engineer anything with agents, from app behavior down to native binaries.",
 "url": "https://github.com/morluto/rea"
@@ -1330,10 +1368,10 @@
 "ghrepo:netdata/netdata": {
 "category": "releases",
 "first_seen": "2026-10-24",
-"flat_runs": 1,
+"flat_runs": 0,
 "id": "ghrepo:netdata/netdata",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.6518,
@@ -1345,16 +1383,17 @@
 5.6525,
 5.6526,
 5.6527,
-5.6527
+5.6527,
+5.6528
 ],
 "misses": 0,
-"peak_mag": 5.6527,
+"peak_mag": 5.6528,
 "signals": {
-"gh_forks": 6721,
-"gh_stars": 81264
+"gh_forks": 6714,
+"gh_stars": 81268
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "The fastest path to AI-powered full stack observability, even for lean teams.",
 "title": "netdata/netdata \u2014 The fastest path to AI-powered full stack observability, even for lean teams.",
 "url": "https://github.com/netdata/netdata"
@@ -1365,7 +1404,7 @@
 "flat_runs": 0,
 "id": "ghrepo:ollama/ollama",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 6.0627,
@@ -1377,16 +1416,17 @@
 6.0653,
 6.0656,
 6.066,
-6.0662
+6.0662,
+6.0665
 ],
 "misses": 0,
-"peak_mag": 6.0662,
+"peak_mag": 6.0665,
 "signals": {
-"gh_forks": 18896,
-"gh_stars": 185797
+"gh_forks": 18883,
+"gh_stars": 185914
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
 "title": "ollama/ollama \u2014 Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
 "url": "https://github.com/ollama/ollama"
@@ -1397,7 +1437,7 @@
 "flat_runs": 0,
 "id": "ghrepo:open-webui/open-webui",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.9807,
@@ -1409,16 +1449,17 @@
 5.9832,
 5.9835,
 5.9838,
-5.9841
+5.9841,
+5.9845
 ],
 "misses": 0,
-"peak_mag": 5.9841,
+"peak_mag": 5.9845,
 "signals": {
-"gh_forks": 22938,
-"gh_stars": 157662
+"gh_forks": 22945,
+"gh_stars": 157771
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
 "title": "open-webui/open-webui \u2014 User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
 "url": "https://github.com/open-webui/open-webui"
@@ -1429,7 +1470,7 @@
 "flat_runs": 0,
 "id": "ghrepo:openbq-org/OpenBB",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.61,
@@ -1441,16 +1482,17 @@
 5.6123,
 5.6126,
 5.6128,
-5.613
+5.613,
+5.6132
 ],
 "misses": 0,
-"peak_mag": 5.613,
+"peak_mag": 5.6132,
 "signals": {
-"gh_forks": 7844,
-"gh_stars": 75057
+"gh_forks": 7840,
+"gh_stars": 75087
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Open Data Platform for analysts, quants and AI agents.",
 "title": "openbq-org/OpenBB \u2014 Open Data Platform for analysts, quants and AI agents.",
 "url": "https://github.com/openbq-org/OpenBB"
@@ -1461,7 +1503,7 @@
 "flat_runs": 0,
 "id": "ghrepo:paperclipai/paperclip",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.7974,
@@ -1469,16 +1511,17 @@
 5.8008,
 5.8032,
 5.8055,
-5.8076
+5.8076,
+5.8089
 ],
 "misses": 0,
-"peak_mag": 5.8076,
+"peak_mag": 5.8089,
 "signals": {
-"gh_forks": 18336,
-"gh_stars": 110767
+"gh_forks": 18390,
+"gh_stars": 111059
 },
 "source": "GitHub Search",
-"streak": 6,
+"streak": 7,
 "summary": "The open-source app everyone uses to manage agents at work",
 "title": "paperclipai/paperclip \u2014 The open-source app everyone uses to manage agents at work",
 "url": "https://github.com/paperclipai/paperclip"
@@ -1486,23 +1529,24 @@
 "ghrepo:pathwaycom/serviette": {
 "category": "releases",
 "first_seen": "2026-11-02",
-"flat_runs": 1,
+"flat_runs": 2,
 "id": "ghrepo:pathwaycom/serviette",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.4904,
+5.4903,
 5.4903
 ],
 "misses": 0,
 "peak_mag": 5.4904,
 "signals": {
-"gh_forks": 1550,
-"gh_stars": 58724
+"gh_forks": 1542,
+"gh_stars": 58728
 },
 "source": "GitHub Search",
-"streak": 2,
+"streak": 3,
 "summary": "A no-code RAG server that keeps answers in sync with your documents. Works with 8 vector databases. Built on Pathway.",
 "title": "pathwaycom/serviette \u2014 A no-code RAG server that keeps answers in sync with your documents. Works with 8 vector databases. Built on Pathway.",
 "url": "https://github.com/pathwaycom/serviette"
@@ -1513,7 +1557,7 @@
 "flat_runs": 0,
 "id": "ghrepo:pytorch/pytorch",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.781,
@@ -1525,16 +1569,17 @@
 5.781,
 5.7812,
 5.7813,
-5.7814
+5.7814,
+5.7815
 ],
 "misses": 0,
 "peak_mag": 5.7817,
 "signals": {
-"gh_forks": 31336,
-"gh_stars": 105104
+"gh_forks": 31296,
+"gh_stars": 105125
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
 "title": "pytorch/pytorch \u2014 Tensors and Dynamic neural networks in Python with strong GPU acceleration",
 "url": "https://github.com/pytorch/pytorch"
@@ -1545,23 +1590,24 @@
 "flat_runs": 0,
 "id": "ghrepo:rasbt/LLMs-from-scratch",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.7929,
 5.7931,
 5.7933,
 5.7936,
-5.7938
+5.7938,
+5.7941
 ],
 "misses": 0,
-"peak_mag": 5.7938,
+"peak_mag": 5.7941,
 "signals": {
-"gh_forks": 16646,
-"gh_stars": 107758
+"gh_forks": 16657,
+"gh_stars": 107814
 },
 "source": "GitHub Search",
-"streak": 5,
+"streak": 6,
 "summary": "Implement a ChatGPT-like LLM in PyTorch from scratch, step by step",
 "title": "rasbt/LLMs-from-scratch \u2014 Implement a ChatGPT-like LLM in PyTorch from scratch, step by step",
 "url": "https://github.com/rasbt/LLMs-from-scratch"
@@ -1572,7 +1618,7 @@
 "flat_runs": 0,
 "id": "ghrepo:rohitg00/ai-engineering-from-scratch",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5981,
@@ -1584,16 +1630,17 @@
 5.6193,
 5.6206,
 5.6218,
-5.6229
+5.6229,
+5.6247
 ],
 "misses": 0,
-"peak_mag": 5.6229,
+"peak_mag": 5.6247,
 "signals": {
-"gh_forks": 13574,
-"gh_stars": 76554
+"gh_forks": 13601,
+"gh_stars": 76839
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Learn AI Engineering! Learn it. Build it. Ship it for others.",
 "title": "rohitg00/ai-engineering-from-scratch \u2014 Learn AI Engineering! Learn it. Build it. Ship it for others.",
 "url": "https://github.com/rohitg00/ai-engineering-from-scratch"
@@ -1604,7 +1651,7 @@
 "flat_runs": 0,
 "id": "ghrepo:ruvnet/ruflo",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.6375,
@@ -1616,16 +1663,17 @@
 5.6473,
 5.648,
 5.6488,
-5.6497
+5.6497,
+5.6502
 ],
 "misses": 0,
-"peak_mag": 5.6497,
+"peak_mag": 5.6502,
 "signals": {
-"gh_forks": 9487,
-"gh_stars": 80771
+"gh_forks": 9494,
+"gh_stars": 80857
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "\ud83c\udf0a The original agent harness. Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems. Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated",
 "title": "ruvnet/ruflo \u2014 \ud83c\udf0a The original agent harness. Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems. Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated",
 "url": "https://github.com/ruvnet/ruflo"
@@ -1636,7 +1684,7 @@
 "flat_runs": 0,
 "id": "ghrepo:scikit-learn/scikit-learn",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5628,
@@ -1648,16 +1696,17 @@
 5.5633,
 5.5633,
 5.5634,
-5.5636
+5.5636,
+5.5637
 ],
 "misses": 0,
-"peak_mag": 5.5636,
+"peak_mag": 5.5637,
 "signals": {
-"gh_forks": 27639,
-"gh_stars": 67992
+"gh_forks": 27629,
+"gh_stars": 68007
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "scikit-learn: machine learning in Python",
 "title": "scikit-learn/scikit-learn \u2014 scikit-learn: machine learning in Python",
 "url": "https://github.com/scikit-learn/scikit-learn"
@@ -1665,10 +1714,10 @@
 "ghrepo:tensorflow/tensorflow": {
 "category": "releases",
 "first_seen": "2026-10-24",
-"flat_runs": 2,
+"flat_runs": 0,
 "id": "ghrepo:tensorflow/tensorflow",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 6.106,
@@ -1680,16 +1729,17 @@
 6.1061,
 6.1062,
 6.1062,
-6.1062
+6.1062,
+6.1063
 ],
 "misses": 0,
 "peak_mag": 6.1063,
 "signals": {
-"gh_forks": 78241,
-"gh_stars": 201282
+"gh_forks": 78201,
+"gh_stars": 201303
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "An Open Source Machine Learning Framework for Everyone",
 "title": "tensorflow/tensorflow \u2014 An Open Source Machine Learning Framework for Everyone",
 "url": "https://github.com/tensorflow/tensorflow"
@@ -1700,7 +1750,7 @@
 "flat_runs": 0,
 "id": "ghrepo:tesseract-ocr/tesseract",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.6267,
@@ -1712,16 +1762,17 @@
 5.6276,
 5.6276,
 5.6277,
-5.6278
+5.6278,
+5.628
 ],
 "misses": 0,
-"peak_mag": 5.6278,
+"peak_mag": 5.628,
 "signals": {
-"gh_forks": 10901,
-"gh_stars": 77317
+"gh_forks": 10892,
+"gh_stars": 77341
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Tesseract Open Source OCR Engine (main repository)",
 "title": "tesseract-ocr/tesseract \u2014 Tesseract Open Source OCR Engine (main repository)",
 "url": "https://github.com/tesseract-ocr/tesseract"
@@ -1732,7 +1783,7 @@
 "flat_runs": 0,
 "id": "ghrepo:thedotmack/claude-mem",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.7694,
@@ -1744,16 +1795,17 @@
 5.7917,
 5.7987,
 5.8068,
-5.8114
+5.8114,
+5.816
 ],
 "misses": 0,
-"peak_mag": 5.8114,
+"peak_mag": 5.816,
 "signals": {
-"gh_forks": 9725,
-"gh_stars": 111622
+"gh_forks": 9789,
+"gh_stars": 112641
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Persistent Context Across Sessions for Every Agent \u2013  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
 "title": "thedotmack/claude-mem \u2014 Persistent Context Across Sessions for Every Agent \u2013  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
 "url": "https://github.com/thedotmack/claude-mem"
@@ -1764,7 +1816,7 @@
 "flat_runs": 0,
 "id": "ghrepo:ultralytics/ultralytics",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5238,
@@ -1776,16 +1828,17 @@
 5.5255,
 5.5256,
 5.5258,
-5.5261
+5.5261,
+5.5264
 ],
 "misses": 0,
-"peak_mag": 5.5261,
+"peak_mag": 5.5264,
 "signals": {
-"gh_forks": 11970,
-"gh_stars": 63087
+"gh_forks": 11966,
+"gh_stars": 63123
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Ultralytics YOLO27, YOLO26, YOLO11, YOLOv8 \u2014 object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking",
 "title": "ultralytics/ultralytics \u2014 Ultralytics YOLO27, YOLO26, YOLO11, YOLOv8 \u2014 object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking",
 "url": "https://github.com/ultralytics/ultralytics"
@@ -1796,7 +1849,7 @@
 "flat_runs": 0,
 "id": "ghrepo:unclecode/crawl4ai",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.6833,
@@ -1806,16 +1859,17 @@
 5.6848,
 5.6851,
 5.6856,
-5.6859
+5.6859,
+5.6862
 ],
 "misses": 0,
-"peak_mag": 5.6859,
+"peak_mag": 5.6862,
 "signals": {
-"gh_forks": 9051,
-"gh_stars": 86836
+"gh_forks": 9050,
+"gh_stars": 86895
 },
 "source": "GitHub Search",
-"streak": 8,
+"streak": 9,
 "summary": "Open-source web crawler and scraper for LLMs and AI agents: any website into clean, LLM-ready Markdown. Run it yourself, or use Crawl4AI Cloud with one key. Join our Discord https://discord.gg/VuxzM8mtf",
 "title": "unclecode/crawl4ai \u2014 Open-source web crawler and scraper for LLMs and AI agents: any website into clean, LLM-ready Markdown. Run it yourself, or use Crawl4AI Cloud with one key. Join our Discord https://discord.gg/VuxzM8mtf",
 "url": "https://github.com/unclecode/crawl4ai"
@@ -1826,7 +1880,7 @@
 "flat_runs": 0,
 "id": "ghrepo:usestrix/strix",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5886,
@@ -1838,16 +1892,17 @@
 5.5994,
 5.6004,
 5.6017,
-5.6028
+5.6028,
+5.6042
 ],
 "misses": 0,
-"peak_mag": 5.6028,
+"peak_mag": 5.6042,
 "signals": {
-"gh_forks": 8288,
-"gh_stars": 73543
+"gh_forks": 8305,
+"gh_stars": 73739
 },
 "source": "GitHub Search",
-"streak": 10,
+"streak": 11,
 "summary": "Open-source AI penetration testing tool to find and fix your app\u2019s vulnerabilities.",
 "title": "usestrix/strix \u2014 Open-source AI penetration testing tool to find and fix your app\u2019s vulnerabilities.",
 "url": "https://github.com/usestrix/strix"
@@ -1858,7 +1913,7 @@
 "flat_runs": 0,
 "id": "ghrepo:vectorize-io/hindsight",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.4676,
@@ -1866,16 +1921,17 @@
 5.4744,
 5.4803,
 5.4847,
-5.488
+5.488,
+5.4909
 ],
 "misses": 0,
-"peak_mag": 5.488,
+"peak_mag": 5.4909,
 "signals": {
-"gh_forks": 7198,
-"gh_stars": 58456
+"gh_forks": 7250,
+"gh_stars": 58797
 },
 "source": "GitHub Search",
-"streak": 6,
+"streak": 7,
 "summary": "Hindsight: Agent Memory That Learns",
 "title": "vectorize-io/hindsight \u2014 Hindsight: Agent Memory That Learns",
 "url": "https://github.com/vectorize-io/hindsight"
@@ -1886,7 +1942,7 @@
 "flat_runs": 0,
 "id": "ghrepo:vllm-project/vllm",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.7332,
@@ -1897,16 +1953,17 @@
 5.7359,
 5.7363,
 5.7369,
-5.7373
+5.7373,
+5.7377
 ],
 "misses": 0,
-"peak_mag": 5.7373,
+"peak_mag": 5.7377,
 "signals": {
-"gh_forks": 24358,
-"gh_stars": 96230
+"gh_forks": 24401,
+"gh_stars": 96311
 },
 "source": "GitHub Search",
-"streak": 9,
+"streak": 10,
 "summary": "A high-throughput and memory-efficient inference and serving engine for LLMs",
 "title": "vllm-project/vllm \u2014 A high-throughput and memory-efficient inference and serving engine for LLMs",
 "url": "https://github.com/vllm-project/vllm"
@@ -1917,7 +1974,7 @@
 "flat_runs": 0,
 "id": "hfmodel:Qwen/Qwen3.8-27B",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 6.8703,
@@ -1929,17 +1986,18 @@
 6.8906,
 6.8927,
 6.8966,
-6.8987
+6.8987,
+6.9016
 ],
 "misses": 0,
-"peak_mag": 6.8987,
+"peak_mag": 6.9016,
 "signals": {
-"hf_downloads": 8014877,
-"hf_likes": 19059,
+"hf_downloads": 8032442,
+"hf_likes": 19137,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 10,
+"streak": 11,
 "summary": "image-text-to-text \u00b7 tags: transformers, safetensors, qwen3_5, image-text-to-text, conversational, license:apache-2.0",
 "title": "Qwen/Qwen3.8-27B (HF Model)",
 "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
@@ -1950,7 +2008,7 @@
 "flat_runs": 0,
 "id": "hfmodel:deepseek-ai/DeepSeek-V4.1-Flash-1017",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5056,
@@ -1962,17 +2020,18 @@
 5.8183,
 5.8397,
 5.9151,
-5.9377
+5.9377,
+5.9962
 ],
 "misses": 0,
-"peak_mag": 5.9377,
+"peak_mag": 5.9962,
 "signals": {
-"hf_downloads": 187260,
-"hf_likes": 4828,
+"hf_downloads": 221621,
+"hf_likes": 5249,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 10,
+"streak": 11,
 "summary": "image-text-to-text \u00b7 tags: transformers, safetensors, deepseek_v41, text-generation, image-text-to-text, license:mit",
 "title": "deepseek-ai/DeepSeek-V4.1-Flash-1017 (HF Model)",
 "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
@@ -1983,7 +2042,7 @@
 "flat_runs": 0,
 "id": "hfmodel:google/embeddinggemma-2",
 "keywords": [],
-"last_seen": "2026-11-03",
+"last_seen": "2026-11-04",
 "links": {},
 "mag_history": [
 5.5752,
@@ -1995,17 +2054,18 @@
 5.613,
 5.6179,
 5.6229,
-5.6274
+5.6274,
+5.6344
 ],
 "misses": 0,
-"peak_mag": 5.6274,
+"peak_mag": 5.6344,
 "signals": {
-"hf_downloads": 431301,
-"hf_likes": 3099,
+"hf_downloads": 454115,
+"hf_likes": 3130,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 10,
+"streak": 11,
 "summary": "feature-extraction \u00b7 tags: transformers, safetensors, embedding_gemma2, feature-extraction, embedding, sentence-transformers",
 "title": "google/embeddinggemma-2 (HF Model)",
 "url": "https://huggingface.co/google/embeddinggemma-2"
