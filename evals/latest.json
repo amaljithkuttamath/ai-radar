@@ -1,43 +1,43 @@
 {
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-03T18:13:31Z",
+  "digest_commit_time_utc": "2026-11-04T18:25:11Z",
   "age_hours_at_eval": 0.01,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.01,
-      "links_total": 25,
+      "links_total": 45,
       "links_broken": 0,
-      "links_unverified": 1,
-      "main_items": 15,
-      "main_score_mean": 3.5,
-      "sections_present": 7,
+      "links_unverified": 2,
+      "main_items": 3,
+      "main_score_mean": null,
+      "sections_present": 4,
       "expected_sections": 3,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
       "traction_observations": 60,
       "degraded_synthesis": false,
       "forecast_accuracy": 0.0,
-      "claims_open": 3
+      "claims_open": 2
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 7 section(s); 3/7 of the prompt's sections present"
+        "detail": "title and 4 section(s); 3/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "15 main-list item(s)"
+        "detail": "3 main-list item(s)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 1/25 declined to answer"
+        "detail": "no dead links; 2/45 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -70,7 +70,11 @@
   },
   "broken_urls": [
     {
-      "url": "https://openai.com/index/lifeval",
+      "url": "https://openai.com/index/openai-to-acquire-pierre",
+      "status": 403
+    },
+    {
+      "url": "https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer",
       "status": 403
     }
   ],
