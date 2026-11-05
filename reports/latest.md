@@ -1,56 +1,62 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-03](2026-11-03-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-04](2026-11-04-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-04
+# AI Radar — 2026-11-05
 
-Four high-signal papers published November 3 tackle inference cost from different angles: model/policy routing (Route Anything), local reasoning compression (Think Less, Locally), video diffusion as latent action learner (DreamX), and factorized MLLM embeddings for retrieval. Simultaneously, ToolSpace introduces a tool-centric framework for long-horizon agents. Major framework repositories (Transformers, AI-For-Beginners) and NVIDIA’s simready-assets dataset show sustained community traction.
+The GAIA general-agent benchmark appeared on the radar with strong community traction, while two new vision-language-action papers — NEO-VLA (encoder-free) and TurnWise (turn-level GRPO for streaming video) — claim structural advances for embodied agents. FrontierPhysics introduces an end-to-end physics-research benchmark built by practicing physicists. Established frameworks (Transformers, ML-For-Beginners) and NVIDIA’s SimReady assets continue to show high observed adoption.
 
 ## What changed
 
 ### New to radar
-- [Route Anything: A Study of Model and Policy Routing for General-Purpose AI Systems](https://arxiv.org/abs/2611.05275) — heterogeneous model orchestration for AGI
-- [Think Less, Locally: Local Preference Learning for Reasoning Compression](https://arxiv.org/abs/2611.04814) — detects overthinking states to cut chain-of-thought length
-- [DreamX: Video Diffusion Model is a Universal Latent Action Learner](https://arxiv.org/abs/2611.05377) — repurposes video diffusion for cross-embodiment action representation
-- [Factorized MLLM Embeddings for Composed Image Retrieval](https://arxiv.org/abs/2611.05193) — decouples query comprehension from retrieval embedding
-- [HKUDS/LightRAG — Simple and Fast Retrieval-Augmented Generation](https://github.com/HKUDS/LightRAG) — EMNLP 2025 RAG framework
+- [gaia-benchmark/GAIA (HF Dataset)](https://huggingface.co/datasets/gaia-benchmark/GAIA) — General agent benchmark with multimodal tasks, 940 likes, 12k downloads observed
+- [From Pixels to Actions - Towards Native Vision-Language-Action Policies](https://arxiv.org/abs/2611.06918) — NEO-VLA encoder-free VLA framework, 55 HF upvotes
+- [microsoft/qlib](https://github.com/microsoft/qlib) — AI-oriented quant platform with RD-Agent automation
+- [Turns Matter: Advancing Streaming Video RL via Turn-Level Credit](https://arxiv.org/abs/2611.06728) — TurnWise turn-level GRPO, GitHub repo linked, 60 HF upvotes
+- [fla-org/flash-linear-attention](https://github.com/fla-org/flash-linear-attention) — Efficient kernels for linear attention variants
 
 ### Climbing
-- [microsoft/AI-For-Beginners — 12 Weeks, 24 Lessons, AI for All!](https://github.com/microsoft/AI-For-Beginners) — score +1 (now 4/5)
-- [Making MLLM Latents Matter: Factor-Aware Predictive Learning for Cinematic Video Generation](https://arxiv.org/abs/2610.30926) — score +1 (now 3/5)
-- [GigaSpeech 3: Scaling Multi-Dialect Arabic Speech Recognition with Weakly Labeled Data](https://arxiv.org/abs/2611.02476) — score +1 (now 2/5)
-- [PentesterFlow/OffsecCyber (HF Dataset)](https://huggingface.co/datasets/PentesterFlow/OffsecCyber) — score +1 (now 2/5)
-- [HuggingFaceBio/FineDNA (HF Dataset)](https://huggingface.co/datasets/HuggingFaceBio/FineDNA) — score +1 (now 2/5)
+- [PyRUA-DataFarm: LLM Agent as a Cost-Efficient Teleoperator for Real-Ready Robot Data](https://arxiv.org/abs/2611.05320) — Score +2, magnitude +3.14
+- [microsoft/ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners) — 12-week ML curriculum, 92k stars observed, score +1
+- [nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B (HF Model)](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) — Magnitude +0.52
+- [moonshotai/Kimi-K3.1-Pro (HF Model)](https://huggingface.co/moonshotai/Kimi-K3.1-Pro) — Magnitude +0.67
+
+### Cooled
+- [Making MLLM Latents Matter: Factor-Aware Predictive Learning for Cinematic Video Generation](https://arxiv.org/abs/2610.30926) — Score −1, magnitude −0.88
 
 ## Main list
 
-### Cost
-- [Route Anything: A Study of Model and Policy Routing for General-Purpose AI Systems](https://arxiv.org/abs/2611.05275) · 4/5 — Studies dynamic selection across specialized models/tools/policies; includes [GitHub](https://github.com/InfRec-Cardinal/route-anything) and [project page](https://mikeeeeeeeeeeeeee.github.io/RouteAnything). For engineers building heterogeneous AI systems.
-- [DreamX: Video Diffusion Model is a Universal Latent Action Learner](https://arxiv.org/abs/2611.05377) · 4/5 — Extracts compact latent actions from pretrained video diffusion, enabling transfer across embodiments. [Project page](https://cvlab-kaist.github.io/DreamX/). For robotics and video-generation teams.
-- [Factorized MLLM Embeddings for Composed Image Retrieval](https://arxiv.org/abs/2611.05193) · 4/5 — FactEmbed separates compositional understanding from retrieval; [GitHub](https://github.com/cvlab-kaist/FactEmbed) and [project](https://cvlab-kaist.github.io/FactEmbed/). For multimodal search and retrieval pipelines.
-- [ToolSpace: Scaling Tool-Centric Environment Synthesis for Long-Horizon Agents](https://arxiv.org/abs/2611.05036) · 3/5 — Mines execution traces to synthesize tool-centric environments; [GitHub](https://github.com/dongguanting/ToolSpace) and [project](https://toolspace-agent.github.io/). For agent developers needing grounded tool composition.
-- [secemp9/arxiv-complete (HF Dataset)](https://huggingface.co/datasets/secemp9/arxiv-complete) · 3/5 — Full arXiv corpus (100M–1B tokens, Parquet) for retrieval and generation tasks. 162K downloads observed. For LLM pretraining and RAG dataset construction.
+### Benchmark
+- [gaia-benchmark/GAIA (HF Dataset)](https://huggingface.co/datasets/gaia-benchmark/GAIA) — Multimodal general-agent benchmark (audio, document, image) with 940 likes and 12k downloads observed. Useful for evaluating tool-use and reasoning across modalities. · 4/5
+- [FrontierPhysics: Evaluating Agents for End-to-End Physics Research](https://arxiv.org/abs/2611.06910) — 56 tasks across nine physics domains designed by 42 physicists; agents must review literature, plan, experiment, and produce structured output. Project page with evaluation harness. · 3/5
+- [What Does Multi-Turn Reinforcement Learning Really Improve in LLM Agents?](https://arxiv.org/abs/2611.06483) — Controlled study of sampling breadth vs. interaction depth (Pass@(K,T)); finds RL gains concentrate in error recovery and long-horizon resilience, not single-step quality. GitHub repo and project site linked. · 2/5
+- [LongBanana: An Expert-Verified Benchmark for Long-Context Multi-Reference Image Synthesis](https://arxiv.org/abs/2611.06856) — 90 tasks, ~32 reference images each, 4,670 atomic evaluation items for agent-driven image generation. Expert-designed and verified. · 2/5
+- [Reasoning over Non-Parametric Memory in Multilingual LLMs](https://arxiv.org/abs/2611.06715) — Rel-Bloom diagnostic: 450 MCQs from 30 Wikidata relations across 5 Bloom levels and 3 veracity conditions, isolating evidence-conditioned relational reasoning. · 2/5
 
-### Qwen
-- [Qwen/Qwen3.8-27B (HF Model)](https://huggingface.co/Qwen/Qwen3.8-27B) · 3/5 — Multimodal image-text-to-text model (Apache-2.0); 8M downloads, 19K likes observed. For teams evaluating open multimodal models.
+### Machine
+- [huggingface/transformers](https://github.com/huggingface/transformers) — Core model-definition framework for text, vision, audio, and multimodal models; 168.6k stars observed. The default integration point for most HF-hosted models. · 4/5
+- [microsoft/ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners) — 12-week, 26-lesson classic ML curriculum with quizzes; 92k stars observed. Practical for onboarding engineers new to ML foundations. · 4/5
+
+### Qwen / DeepSeek
+- [Qwen/Qwen3.8-27B (HF Model)](https://huggingface.co/Qwen/Qwen3.8-27B) — Image-text-to-text model, Apache-2.0, 19.2k likes and 8M downloads observed. Drop-in for vision-language tasks. · 3/5
+- [deepseek-ai/DeepSeek-V4.1-Flash-1017 (HF Model)](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) — Image-text-to-text, MIT license, 5.3k likes and 243k downloads observed. Fast variant for multimodal inference. · 3/5
 
 ### Other
-- [huggingface/transformers — Transformers framework](https://github.com/huggingface/transformers) · 4/5 — Model-definition framework for text, vision, audio, multimodal; 168K stars observed. Core dependency for most LLM workflows.
-- [microsoft/AI-For-Beginners — 12 Weeks, 24 Lessons, AI for All!](https://github.com/microsoft/AI-For-Beginners) · 4/5 — Structured curriculum with notebooks; 70K stars observed. For onboarding and internal training.
-- [nvidia/simready-assets (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-assets) · 4/5 — Simulation-ready 3D assets (CC-BY-4.0); 1.27M downloads, 1.3K likes observed. For physical AI, digital twins, robotics sim.
-- [Think Less, Locally: Local Preference Learning for Reasoning Compression](https://arxiv.org/abs/2611.04814) · 4/5 — LoCo freezes reasoning at detected overthinking states; [GitHub](https://github.com/MuyaoYuan/LoCo) and [model](https://huggingface.co/MuyaoYuan/LoCo-7B). For reducing inference cost on reasoning models.
+- [nvidia/simready-assets (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-assets) — CC-BY-4.0 3D assets for simulation/robotics; 1.4k likes and 1.3M downloads observed. Directly usable in Omniverse, Isaac Sim, and other pipelines. · 4/5
+- [Turns Matter: Advancing Streaming Video RL via Turn-Level Credit](https://arxiv.org/abs/2611.06728) — TurnWise assigns per-turn advantage in GRPO for streaming video, avoiding trajectory-level credit mismatch. GitHub implementation linked. · 4/5
+- [From Pixels to Actions - Towards Native Vision-Language-Action Policies](https://arxiv.org/abs/2611.06918) — NEO-VLA removes the visual encoder; patch tokens feed directly into the policy, preserving geometry/depth signals. Project page with videos. · 4/5
+
+## Still developing
+- [WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) — Unified object- and pixel-level VLM (detection, segmentation, OCR, matting); 1,009 stars and 44 HF upvotes observed over 13 consecutive runs, traction delta +1.90. GitHub and project page linked.
 
 ## Watch-list / Still developing
-
-- [deepseek-ai/DeepSeek-V4.1-Flash-1017 (HF Model)](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) · 3/5 — Multimodal model (MIT); 221K downloads, 5.2K likes observed.
-- [CATF: A Manager-Worker Framework for Context-Aware Time-Series Forecasting](https://arxiv.org/abs/2611.05325) · 2/5 — Transformer manager routes to specialized workers; no repo linked yet.
-- [ΦasmaNet: Staged Spectral Token-Refinement for Gravitational-Wave SNR Prediction](https://arxiv.org/abs/2611.05309) · 2/5 — Compact architecture for structured tabular regression; no repo linked.
-- [Kierston & KierstonBench: Simulation of Allentown, PA for Crime Investigation](https://arxiv.org/abs/2611.04785) · 2/5 — City-scale simulation (125K residents) with [GitHub](https://github.com/Kiz8-Team/kierston-oss).
-- **Story arcs (rising traction ≥3 runs):** [Multimodal Embodied Agents](https://arxiv.org/abs/2610.30108) (streak 13), [SolarRenderer](https://arxiv.org/abs/2610.28630) (14), [Sage-A1.5](https://arxiv.org/abs/2610.28578) (14), [Learning the 4D World](https://arxiv.org/abs/2610.28594) (14), [Looking Ahead: Autoregressive Video Generation](https://arxiv.org/abs/2610.29989) (13), [WeVisOne-VL](https://arxiv.org/abs/2610.31329) (12), [S-Agent 2.0](https://arxiv.org/abs/2610.28354) (14), [DONIC](https://arxiv.org/abs/2610.29997) (13), [Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633) (6), [DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) (11).
-- Corporate blogs (score 1): [NVIDIA: Cities build AI services](https://blogs.nvidia.com/blog/cities-physical-agentic-ai-applications/), [Google: Agile Deliberation](https://research.google/blog/agile-deliberation-how-ai-helps-humans-define-the-gray-areas/), [DeepMind: Agentic cheminformatics](https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/), [OpenAI acquires Pierre](https://openai.com/index/openai-to-acquire-pierre), [OpenAI appoints Jill Hazelbaker](https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer), [AMD Q3 2026 results](https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results), [NVIDIA: AI in semiconductor fabs](https://blogs.nvidia.com/blog/ai-semiconductor-fabs/).
+- [EmoReward: Self-Evolving Reward Calibration for Emotional Video Generation RL](https://arxiv.org/abs/2611.06518) — GRPO with self-evolving reward for emotional video; GitHub and project page. · 2/5
+- [The Wizard of Open Weights: Chris Alexiuk Makes AI Easy With Open Models](https://blogs.nvidia.com/blog/nvidia-life-chris-alexiuk/) — NVIDIA engineer profile on open-model advocacy; practical tips for developers. · 2/5
+- [More Performance From Every Byte: How Full-Stack Codesign Solves AI's Memory Challenge](https://blogs.nvidia.com/blog/memory-full-stack-codesign/) — NVIDIA on HBM3e/HBM4 adoption and memory-system codesign for agentic workloads. · 1/5
+- [DevRev delivers autonomous self-service with GPT-6.1 Sol](https://openai.com/index/devrev-enterprise-self-service) — Enterprise deployment balancing reasoning, speed, cost. · 1/5
+- [Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips](https://deepmind.google/blog/gemini-omni-12-flash-fast-and-cost-effective-with-longer-clips/) — Updated Flash model with longer context. · 1/5
 
 ## Action items
-
-- **Read** [Route Anything](https://arxiv.org/abs/2611.05275) and its [GitHub](https://github.com/InfRec-Cardinal/route-anything) for a practical model/policy routing architecture you can adapt for heterogeneous model fleets.
-- **Try** [LoCo (Think Less, Locally)](https://github.com/MuyaoYuan/LoCo) on your reasoning models — it detects overthinking locally and cuts chain-of-thought length without full trajectory supervision.
-- **Track** [ToolSpace](https://github.com/dongguanting/ToolSpace) as it matures; its tool-centric environment synthesis addresses a core gap in long-horizon agent reliability.
+- **Read** the [NEO-VLA project page](https://www.lmms-lab.com/posts/neo_vla/) and [TurnWise repo](https://github.com/XD111ds/turn-wise-rl) side-by-side to compare encoder-free VLA vs. turn-level streaming RL for embodied agents.
+- **Try** the [GAIA dataset](https://huggingface.co/datasets/gaia-benchmark/GAIA) as a multi-modal eval for any agent framework you’re benchmarking; it covers tool use, web browsing, and file reasoning.
+- **Track** [FrontierPhysics](https://www.benchflow.ai/frontierphysics) — its 56 physicist-authored tasks are a rare end-to-end benchmark for research agents; watch for the evaluation harness release.
