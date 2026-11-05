@@ -1,43 +1,43 @@
 {
-  "date": "2026-11-04",
+  "date": "2026-11-05",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-04T18:25:11Z",
-  "age_hours_at_eval": 0.01,
+  "digest_commit_time_utc": "2026-11-05T18:27:18Z",
+  "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
-      "age_h": 0.01,
-      "links_total": 45,
+      "age_h": 0.0,
+      "links_total": 27,
       "links_broken": 0,
-      "links_unverified": 2,
-      "main_items": 3,
+      "links_unverified": 1,
+      "main_items": 4,
       "main_score_mean": null,
-      "sections_present": 4,
-      "expected_sections": 3,
+      "sections_present": 5,
+      "expected_sections": 4,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
-      "traction_observations": 60,
+      "traction_observations": 56,
       "degraded_synthesis": false,
       "forecast_accuracy": 0.0,
-      "claims_open": 2
+      "claims_open": 3
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 4 section(s); 3/7 of the prompt's sections present"
+        "detail": "title and 5 section(s); 4/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "3 main-list item(s)"
+        "detail": "4 main-list item(s)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 2/45 declined to answer"
+        "detail": "no dead links; 1/27 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -70,11 +70,7 @@
   },
   "broken_urls": [
     {
-      "url": "https://openai.com/index/openai-to-acquire-pierre",
-      "status": 403
-    },
-    {
-      "url": "https://openai.com/index/jill-hazelbaker-chief-corporate-affairs-officer",
+      "url": "https://openai.com/index/devrev-enterprise-self-service",
       "status": 403
     }
   ],
