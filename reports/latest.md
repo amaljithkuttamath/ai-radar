@@ -1,70 +1,77 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-05](2026-11-05-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-06](2026-11-06-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-06
+# AI Radar — 2026-11-07
 
-The strongest signals center on making models production-practical: NEO-VLA removes the visual encoder bottleneck for vision-language-action policies, Drex replaces autoregressive decoding with decision distributions to cut cost and latency, and Muir refines linear attention for constant-memory inference. Together they target the inference pipeline from perception to reasoning to memory. Coverage is limited to the past 48 hours and the scored candidate pool; many new GitHub repositories and datasets appeared but lack usable artifacts or traction evidence.
+The radar captures a split between maturing infrastructure — Hugging Face Transformers (168k stars) and Microsoft's ML curriculum (92k stars) — and a wave of new evaluation benchmarks targeting agents in wet-lab science, theorem proving, and molecular representation quality. NVIDIA's simready-assets dataset (1.4M downloads) and fresh Qwen/DeepSeek multimodal models round out the highest-signal items in a 48-hour window heavy on usable artifacts.
 
 ## What changed
 
-**New to radar (290 items):** [Shubhamsaboo/awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps) (100+ AI agents and RAG apps), [HKUDS/LightRAG](https://github.com/HKUDS/LightRAG) (fast RAG framework), [VFlash: Fast, Accurate Visual Planning via Flash Primitive Decoding](https://arxiv.org/abs/2611.08449), [Towards Foundation Decision Models: Drex](https://arxiv.org/abs/2611.07854), [JuliaLang/julia](https://github.com/JuliaLang/julia), [paperless-ngx/paperless-ngx](https://github.com/paperless-ngx/paperless-ngx), [apache/airflow](https://github.com/apache/airflow), [MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x](https://huggingface.co/datasets/MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x), [WeThinkIn/AIGC-Interview-Book](https://github.com/WeThinkIn/AIGC-Interview-Book), [bones-studio/seed](https://huggingface.co/datasets/bones-studio/seed).
+**New to radar** (14 items): [VectifyAI/PageIndex](https://github.com/VectifyAI/PageIndex) — vectorless reasoning RAG index · [EvolvingLMMs-Lab/lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval) — unified multimodal eval toolkit · [onyx-dot-app/onyx](https://github.com/onyx-dot-app/onyx) — open AI chat platform · [crmne/ruby_llm](https://github.com/crmne/ruby_llm) — Ruby AI framework · [AlonzoLeeeooo/awesome-image-inpainting-studies](https://github.com/AlonzoLeeeooo/awesome-image-inpainting-studies) — inpainting survey  
 
-**Climbing (2):** [nvidia/Granary-v2](https://huggingface.co/datasets/nvidia/Granary-v2) (score +1), [codepawl/abo-glb](https://huggingface.co/datasets/codepawl/abo-glb) (score +1).
-
-**Cooled (1):** [microsoft/AI-For-Beginners](https://github.com/microsoft/AI-For-Beginners) (score –1).
+**Cooled** (1 item): [NPCBench](https://arxiv.org/abs/2611.08369) — nasopharyngeal carcinoma care-pathway benchmark dropped in traction
 
 ## Main list
 
-### Cost & decision models
-**[Towards Foundation Decision Models: Drex](https://arxiv.org/abs/2611.07854) · 3/5** — Family of open decision models (8B–35B) that return a probability distribution over user-supplied options instead of autoregressive decoding, targeting inconsistent answers, parsing overhead, and latency in production. GitHub: [nace-ai/drex-decision-models](https://github.com/nace-ai/drex-decision-models). Use when you need structured, verifiable choices without chain-of-thought cost.
+### Throughput & infrastructure
 
-**[Terminal-style Mathematical Modeling Bench](https://arxiv.org/abs/2611.08237) · 2/5** — TB-MathModel makes 18 real contest modeling problems agentic and verifiable in a terminal environment, checking both solution credibility and physical feasibility. GitHub: [wxj630/terminal-bench-math-modeling](https://github.com/wxj630/terminal-bench-math-modeling). Use to evaluate end-to-end mathematical reasoning agents.
+**[huggingface/transformers](https://github.com/huggingface/transformers)** · 4/5  
+The de-facto model-definition framework for text, vision, audio, and multimodal models. Engineers building or deploying any transformer-based system will find the latest model additions, inference optimizations, and training utilities here. 168k GitHub stars observed.
 
-**[LeanContext: Disentangling Mathematical Resources in Lean Whole-Proof Generation](https://arxiv.org/abs/2611.08277) · 2/5** — Benchmark of 129,826 Lean problems separating Mathematical Context from Environment Context to measure retrieval advantage in theorem proving. Use for neural theorem-proving retrieval research.
+**[microsoft/ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners)** · 4/5  
+12-week, 26-lesson classic ML curriculum with quizzes. Useful for onboarding new team members or structured self-study. 92k GitHub stars observed.
 
-### Perception & action
-**[From Pixels to Actions - Towards Native Vision-Language-Action Policies](https://arxiv.org/abs/2611.06918) · 4/5** — NEO-VLA introduces an encoder-free VLA framework where images are tokenized by lightweight patch embeddings, letting action reasoning access evolving visual computation directly. Project: [lmms-lab.com/posts/neo_vla](https://www.lmms-lab.com/posts/neo_vla/). Use for manipulation tasks where local geometry and subtle state changes matter.
+**[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)** · 4/5  
+CC-BY-4.0 3D asset dataset for Omniverse/Isaac Sim workflows. Simulation and robotics teams can pull 1.4M+ downloaded assets directly into synthetic data pipelines.
 
-### Throughput & attention
-**[Muir: Linear Attention with Sensitivity-Allocated Gating and Matched-Filter Readout](https://arxiv.org/abs/2611.08376) · 2/5** — Shows erase gates in gated delta-rule models can be simplified because state updates are far less sensitive to erasure than to writes; yields a linear attention variant with constant-memory inference and reduced gating overhead. Use when optimizing long-context inference throughput.
+**[Muir: Linear Attention with Sensitivity-Allocated Gating and Matched-Filter Readout](https://arxiv.org/abs/2611.08376)** · 2/5  
+Linear attention variant (GDN-2 successor) that decouples erase/write gates and allocates sensitivity per channel. Claims constant-memory inference with better state-update fidelity. Relevant for long-context model builders. [GitHub](https://github.com/inclusionAI/IDM) linked from related IDM work.
 
-### Evaluation & embeddings
-**[On the limitations of molecular representations](https://arxiv.org/abs/2611.08420) · 2/5** — Systematic investigation finding no state-of-the-art molecular embedding captures graph structure, 3D shape, or ADMET similarity better than simple fingerprints across diverse cheminformatics tasks. Use to ground embedding choices in molecular ML pipelines.
+**[Vera Delivers the Best of Both Worlds: Highest Throughput and Fastest Agents](https://blogs.nvidia.com/blog/vera-cpu-highest-throughput-fastest-agents/)** · 1/5  
+NVIDIA blog positioning Vera CPU for agent workloads that alternate GPU reasoning and CPU execution. Hardware-aware teams tracking agent infrastructure costs should note the architecture claims.
 
-### Core frameworks & data
-**[huggingface/transformers](https://github.com/huggingface/transformers) · 4/5** — Model-definition framework for text, vision, audio, and multimodal models; 168.6k stars observed. The de facto standard for loading, training, and deploying transformer architectures.
+### Benchmarks & evaluation
 
-**[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) · 4/5** — CC-BY-4.0 dataset of simulation-ready 3D assets; 1.37M downloads, 1.44k likes observed. Use for Omniverse, robotics sim, and synthetic data generation.
+**[Measuring how AI agents handle everyday wet-lab science](https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science)** · 2/5  
+OpenAI introduces BioBasicsBench: 100 tasks testing agent interpretation of raw experimental data and wet-lab protocol execution. Agents-for-science developers have a new targeted eval.
 
-### Models
-**[Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) · 3/5** — Multimodal image-text-to-text model (Apache-2.0); 19.3k likes, 7.8M downloads observed. Use for vision-language tasks needing open weights.
+**[On the limitations of molecular representations](https://arxiv.org/abs/2611.08420)** · 2/5  
+Systematic study showing SOTA molecular embeddings fail to capture graph structure, 3D shape, and ADMET similarity better than baselines. Cheminformatics and drug-discovery teams should re-evaluate representation choices.
 
-**[deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) · 3/5** — Multimodal model (MIT license); 5.3k likes, 259k downloads observed. Use for fast image-text reasoning with open weights.
+**[SpecCTMC: Exact Speculative Simulation of Diffusion Language Model Continuous-Time Markov Chains](https://arxiv.org/abs/2611.08362)** · 2/5  
+Training-free speculative sampler for masked diffusion LMs that preserves exact output distribution while reducing sequential bottleneck. Diffusion LM inference engineers can test the parallel acceptance-rejection logic.
 
-## Watch-list / Still developing
+**[LeanContext: Disentangling Mathematical Resources from Local Formal Context in Lean Whole-Proof Generation](https://arxiv.org/abs/2611.08277)** · 2/5  
+129k-problem Lean benchmark separating mathematical context from environment context for whole-proof generation. Theorem-proving and formal-verification teams get a structured retrieval eval.
 
-**Carryovers with sustained traction (STORY ARCS):**
-- [WeVisOne-VL: Unified Visual Perception from Objects to Pixels](https://arxiv.org/abs/2610.31329) — streak 14, +36% traction; GitHub: [Tencent/WeVisOne-VL](https://github.com/Tencent/WeVisOne-VL)
-- [Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633) — streak 8, +13% traction; GitHub: [inclusionAI/IDM](https://github.com/inclusionAI/IDM)
-- [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) — streak 13, +9% traction
-- [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) — streak 13, +1% traction
-- [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) — streak 13, persistent agent memory across sessions
-- [morluto/rea](https://github.com/morluto/rea) — streak 11, reverse engineering with agents
-- [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) — streak 13, codebase-to-knowledge-graph skill
-- [rohitg00/ai-engineering-from-scratch](https://github.com/rohitg00/ai-engineering-from-scratch) — streak 13, learn-by-building curriculum
-- [vectorize-io/hindsight](https://github.com/vectorize-io/hindsight) — streak 9, agent memory that learns
+### Models & data
 
-**Other tracked items:**
-- [microsoft/ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners) — 12-week ML curriculum, 92k stars
-- [Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security) — small cybersecurity QA dataset
-- [The Wizard of Open Weights: Chris Alexiuk Makes AI Easy With Open Models](https://blogs.nvidia.com/blog/nvidia-life-chris-alexiuk/) — NVIDIA engineer advocacy for open models
-- [Vera Delivers the Best of Both Worlds: Highest Throughput and Fastest Agents](https://blogs.nvidia.com/blog/vera-cpu-highest-throughput-fastest-agents/) — NVIDIA Vera CPU for agent workloads
+**[Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B)** · 3/5  
+27B multimodal (image-text-to-text) model under Apache-2.0. 19k HF likes, 7.8M downloads observed. Teams needing open-weight vision-language models at this scale can evaluate directly.
+
+**[deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** · 3/5  
+Multimodal Flash variant (MIT license). 5.4k HF likes, 277k downloads. Track for cost-effective image-text reasoning.
+
+**[Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security)** · 3/5  
+Text-generation/qa dataset (Apache-2.0, <1k examples). Security-focused LLM fine-tuning or eval. 743 HF likes, 13k downloads.
+
+## Still developing
+
+**[Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633)** · 3/5 — 9 consecutive runs, traction rising (Δ+0.73). One-step/few-step text-to-image via distribution matching distillation. [GitHub](https://github.com/inclusionAI/IDM) · [Project](https://www.inclusion-ai.org/IDM/?lang=zh)
+
+**[Polarity Classification with Multitask Learning Syntax Augmentation](https://arxiv.org/abs/2611.08323)** · 2/5 — Syntax-aware sentiment analysis reformulated as sequence labeling for efficiency. NLP teams exploring lightweight SA pipelines.
+
+## Watch-list / Low signal
+
+**[Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents](https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/)** · 1/5 — NVIDIA blog on Omniverse + agent workflows  
+**[Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips](https://deepmind.google/blog/gemini-omni-12-flash-fast-and-cost-effective-with-longer-clips/)** · 1/5 — Google DeepMind release announcement  
+**[Partnering with Hacktron to find vulnerabilities in OpenAI's systems](https://openai.com/index/partnering-with-hacktron)** · 1/5 — OpenAI security partnership news
 
 ## Action items
 
-**Read:** [NEO-VLA project page](https://www.lmms-lab.com/posts/neo_vla/) — encoder-free VLA design and patch tokenization details for vision-language-action research.
+**Read** — [BioBasicsBench announcement](https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science): 100-task wet-lab agent benchmark; useful if you evaluate or build science agents.
 
-**Try:** [Drex decision models](https://github.com/nace-ai/drex-decision-models) — swap autoregressive decoding for option-distribution outputs in a production classifier or router to measure latency and consistency gains.
+**Try** — [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets): Pull CC-BY-4.0 3D assets into Isaac Sim or Omniverse for synthetic data generation; 1.4M downloads suggest pipeline compatibility.
 
-**Track:** [Muir linear attention](https://arxiv.org/abs/2611.08376) — watch for reference implementation release; the simplified erase-gate design could integrate into existing linear attention kernels for long-context serving.
+**Track** — [Muir linear attention paper](https://arxiv.org/abs/2611.08376): Sensitivity-allocated gating could improve long-context throughput; watch for code release and ablation on standard benchmarks.
