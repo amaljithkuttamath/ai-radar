@@ -1,21 +1,21 @@
 {
-  "date": "2026-11-06",
+  "date": "2026-11-07",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-06T17:48:53Z",
+  "digest_commit_time_utc": "2026-11-07T16:43:52Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 39,
+      "links_total": 25,
       "links_broken": 0,
-      "links_unverified": 0,
-      "main_items": 6,
-      "main_score_mean": null,
+      "links_unverified": 2,
+      "main_items": 15,
+      "main_score_mean": 2.67,
       "sections_present": 5,
-      "expected_sections": 3,
+      "expected_sections": 4,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
       "traction_observations": 57,
@@ -27,17 +27,17 @@
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 5 section(s); 3/7 of the prompt's sections present"
+        "detail": "title and 5 section(s); 4/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "6 main-list item(s)"
+        "detail": "15 main-list item(s)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "every link answered 2xx"
+        "detail": "no dead links; 2/25 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -68,7 +68,16 @@
     "reobservation_rate": 1.0,
     "forecast_accuracy": 0.0
   },
-  "broken_urls": [],
+  "broken_urls": [
+    {
+      "url": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science",
+      "status": 403
+    },
+    {
+      "url": "https://openai.com/index/partnering-with-hacktron",
+      "status": 403
+    }
+  ],
   "missed_stories": [],
   "degraded_reason": "--tier0-only: model call skipped by request"
 }
