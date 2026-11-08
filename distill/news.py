@@ -51,6 +51,7 @@ FRONTIER_LABS = (
     "nvidia",
     "amd",
     "apple",
+    "amazon",
     "xai",
     "cohere",
 )

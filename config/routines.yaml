@@ -7,6 +7,7 @@ collectors:
   - github_trending  # reads sources.yaml: releases.github_topics (hot repos -> releases)
   - hf_trending      # HF trending models + datasets (-> releases)
   - hackernews       # HN front page, AI stories only (-> releases, carries hn_points)
+  - lab_pages        # labs with no RSS (Anthropic, ...): reads sources.yaml releases.pages
 
 distill:
   window: 48h        # 24h daily / 48h default / 7d weekly

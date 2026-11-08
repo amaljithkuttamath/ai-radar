@@ -47,9 +47,15 @@ Each story is ranked by **importance × freshness × relevance**. Importance cou
 you can check (a frontier lab's own announcement, a usable artifact, a concrete result, and
 traction gained recently rather than all-time totals). Freshness fades a story day by day,
 so new developments lead and older ones move to "Still unfolding". Relevance follows the
-interests in the profile. Sources: arXiv, Hugging Face, GitHub trending, Hacker News, lab
-blogs from OpenAI, Google DeepMind, Microsoft, Apple, NVIDIA and others, plus selected press
-and expert writers. Details in [distill/news.py](distill/news.py).
+interests in the profile. Details in [distill/news.py](distill/news.py).
+
+**Sources (40+):** arXiv (machine learning, language, AI, robotics, vision), Hugging Face
+papers and trending, GitHub trending, Hacker News; the labs themselves (OpenAI, Anthropic,
+Google DeepMind, Google AI, Meta AI, Mistral, Microsoft Research, Apple, Amazon, NVIDIA,
+AMD, Hugging Face, AWS, Berkeley AI Research, MIT); press (TechCrunch, MIT Technology
+Review, IEEE Spectrum); expert writers (Simon Willison, Import AI, Latent Space,
+Interconnects, One Useful Thing, Ahead of AI, Lil'Log, Eugene Yan); and policy and safety
+(AI Alignment Forum, CSET). The full list is in [config/sources.yaml](config/sources.yaml).
 
 <details>
 <summary><strong>Pipeline status</strong></summary>

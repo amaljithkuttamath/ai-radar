@@ -52,6 +52,7 @@ def test_momentum_counts_gain_not_lifetime_totals():
         ({"id": "blog:x", "source": "OpenAI Blog"}, True),
         ({"id": "blog:x", "source": "Google DeepMind"}, True),
         ({"id": "blog:x", "source": "Microsoft Research"}, True),
+        ({"id": "blog:https://www.anthropic.com/news/x", "source": "Anthropic News"}, True),  # lab_pages
         ({"id": "blog:x", "source": "TechCrunch AI"}, False),  # press, not first-hand
         ({"id": "blog:x", "source": "Simon Willison"}, False),
         ({"id": "arxiv:1", "source": "arXiv", "authors": ["OpenAI"]}, False),  # a paper, not a release

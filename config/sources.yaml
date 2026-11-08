@@ -2,7 +2,7 @@
 # Each collector reads the categories/sources it knows how to fetch.
 
 research:
-  arxiv_categories: [cs.LG, cs.CL, cs.AI, cs.RO]   # cs.RO added 2026-11-08: robotics coverage tripled in a month
+  arxiv_categories: [cs.LG, cs.CL, cs.AI, cs.RO, cs.CV]   # cs.RO, cs.CV added 2026-11-08 (robotics tripled in a month; vision is the largest topic)
   hf_daily_papers: true                     # huggingface.co/papers — primary traction feed
   # NOTE: papers_with_code removed — in practice it duplicated the HF Daily Papers feed.
 
@@ -12,6 +12,7 @@ hardware:
     - { name: "NVIDIA Blog",        url: "https://blogs.nvidia.com/feed/" }
     - { name: "AMD Investor News",  url: "https://ir.amd.com/rss/news-releases.xml" }   # product ramps, ecosystem
     - { name: "Google Research",    url: "https://research.google/blog/rss/" }          # incl. TPU / infra posts
+    - { name: "NVIDIA Technical Blog", url: "https://developer.nvidia.com/blog/feed" }  # confirmed live 2026-11-08
   # Google Cloud's /blog/products/.../rss endpoints return JS-rendered HTML, not a feed — omitted.
   # Analysts (e.g. SemiAnalysis) and supply chain (TSMC, HBM makers) are consulted by hand
   # during the market-exposure step — they are not collected, so they are not config here.
@@ -34,6 +35,35 @@ releases:
     - { name: "Simon Willison",      url: "https://simonwillison.net/atom/everything/" }
     - { name: "Import AI",           url: "https://importai.substack.com/feed" }
     - { name: "Latent Space",        url: "https://www.latent.space/feed" }
+    # Second batch, confirmed live 2026-11-08 (newest entry within the last few months).
+    # Labs and research groups:
+    - { name: "Google AI Blog",      url: "https://blog.google/technology/ai/rss/" }
+    - { name: "Amazon Science",      url: "https://www.amazon.science/index.rss" }
+    - { name: "Berkeley AI Research", url: "https://bair.berkeley.edu/blog/feed.xml" }
+    - { name: "MIT News AI",         url: "https://news.mit.edu/rss/topic/artificial-intelligence2" }
+    # Press:
+    - { name: "MIT Technology Review AI", url: "https://www.technologyreview.com/topic/artificial-intelligence/feed" }
+    - { name: "IEEE Spectrum AI",    url: "https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss" }
+    # Expert writers:
+    - { name: "Interconnects",       url: "https://www.interconnects.ai/feed" }
+    - { name: "One Useful Thing",    url: "https://www.oneusefulthing.org/feed" }
+    - { name: "Ahead of AI",         url: "https://magazine.sebastianraschka.com/feed" }
+    - { name: "Lil'Log",             url: "https://lilianweng.github.io/index.xml" }
+    - { name: "Eugene Yan",          url: "https://eugeneyan.com/rss/" }
+    # Policy and safety:
+    - { name: "AI Alignment Forum",  url: "https://www.alignmentforum.org/feed.xml" }
+    - { name: "CSET Georgetown",     url: "https://cset.georgetown.edu/feed/" }
+    # Candidates not added: Reddit (blocked to automated fetches), The Verge, Wired, Ars
+    # Technica, The Register, The Decoder, Lobsters (refused automated fetches), PyTorch and
+    # vLLM blogs, Epoch AI (feed URL errored), VentureBeat AI, SemiAnalysis, Chip Huyen
+    # (no posts in months). Re-check before adding.
+  # Labs that publish no RSS: read their news pages (collectors/lab_pages.py). link_pattern
+  # matches article hrefs; exclude lists index/category slugs; max keeps the back catalogue
+  # out on a first run. Article URL shapes confirmed against the live pages 2026-11-08.
+  pages:
+    - { name: "Anthropic News", url: "https://www.anthropic.com/news", link_pattern: "/news/[a-z0-9-]+/?$", exclude: [announcements, features], max: 5 }
+    - { name: "Meta AI Blog",   url: "https://ai.meta.com/blog/", link_pattern: "/blog/[a-z0-9-]+/?$", max: 5 }
+    - { name: "Mistral AI News", url: "https://mistral.ai/news", link_pattern: "/news/[a-z0-9-]+/?$", exclude: [rss], max: 5 }
   # GitHub trending topics (collectors/github_trending.py): hot AI repos pushed in-window,
   # ranked by stars. A leading indicator of releases that matter before they hit arXiv.
   github_topics: [llm, large-language-models, agents, rag, diffusion-models, machine-learning]
