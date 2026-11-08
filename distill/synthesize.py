@@ -183,6 +183,17 @@ def _build_provenance(i: dict) -> str:
     return " · ".join(parts) if parts else ""
 
 
+def _shown_before() -> dict:
+    """URL -> date of the first published digest that linked it. Empty when there is no
+    archive (previews in a fresh root, tests)."""
+    try:
+        from distill import frontpage
+
+        return frontpage.first_seen(frontpage.load_digests(ROOT / "reports"))
+    except (OSError, ValueError):
+        return {}
+
+
 def load_scored() -> list[dict]:
     # Enforce the window on read too: synthesize can be run independently of score.py, so
     # don't trust data/scored/ to contain only in-window items.
@@ -201,7 +212,7 @@ def load_scored() -> list[dict]:
     # Order like a news page: importance x freshness x relevance (distill/news.py). The
     # integer score still gates routing; it just no longer decides the order on its own,
     # which is what kept evergreen repositories at the top edition after edition.
-    news.annotate(items, _load_state(), datetime.now(timezone.utc).date())
+    news.annotate(items, _load_state(), datetime.now(timezone.utc).date(), _shown_before())
     items.sort(key=news.news_key, reverse=True)
     return items
 
@@ -250,7 +261,7 @@ def build_prompt(
     # whole ranked pool first avoids leaving holes after near-duplicate removal.
     eligible = [i for i in fresh if (i.get("score") or 0) >= 1]
     if any("news_rank" not in i for i in items):
-        news.annotate(items, _load_state(), datetime.now(timezone.utc).date())
+        news.annotate(items, _load_state(), datetime.now(timezone.utc).date(), _shown_before())
     eligible.sort(key=news.news_key, reverse=True)
     eligible = diversify(eligible)
     reserved = []
@@ -540,7 +551,13 @@ def call_template(system: str, user: str) -> str:
     ]
 
     # Main list — respect THRESHOLD and MAX_ITEMS
-    main = [i for i in items if (i.get("score") or 0) >= THRESHOLD]
+    # Same routing rule the model gets: a frontier lab's own announcement qualifies at
+    # score 1, so the no-model fallback does not bury a launch the model path would lead with.
+    main = [
+        i
+        for i in items
+        if (i.get("score") or 0) >= THRESHOLD or (i.get("lab_release") and (i.get("score") or 0) >= 1)
+    ]
     if main:
         lines.append(
             f"**Main list** ({len(main)} scored ≥{THRESHOLD}, showing top {min(len(main), MAX_ITEMS)})"
@@ -577,7 +594,8 @@ def call_template(system: str, user: str) -> str:
         lines.append("")
 
     # Watch list — items exactly one point below threshold
-    watch = [i for i in items if (i.get("score") or 0) == max(1, THRESHOLD - 1)]
+    main_ids = {id(i) for i in main}
+    watch = [i for i in items if (i.get("score") or 0) == max(1, THRESHOLD - 1) and id(i) not in main_ids]
     if watch:
         lines.append(f"**Watch-list** ({len(watch)} items)")
         for i in watch[:8]:

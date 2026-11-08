@@ -107,3 +107,42 @@ def test_prompt_order_and_fields_follow_news_rank(monkeypatch):
     assert user.index('"arxiv:new"') < user.index('"ghrepo:old/repo"')
     assert '"seen_before": true' in user and '"days_on_radar": 38' in user
     assert "lab_release=true" in user  # the routing rule reaches the model
+
+
+def test_template_fallback_routes_lab_releases_like_the_model_does():
+    import json
+
+    rows = [
+        {
+            "id": "blog:lab",
+            "title": "Lab ships model",
+            "url": "https://lab.example/a",
+            "source": "OpenAI Blog",
+            "category": "releases",
+            "score": 1,
+            "lab_release": True,
+        },
+        {
+            "id": "blog:press",
+            "title": "Press piece",
+            "url": "https://press.example/b",
+            "source": "TechCrunch AI",
+            "category": "releases",
+            "score": 1,
+            "lab_release": False,
+        },
+    ]
+    report = synthesize.call_template("", "CANDIDATES_JSON\n" + json.dumps(rows))
+    main, watch = report.split("**Watch-list**")
+    assert "Lab ships model" in main
+    assert "Press piece" in watch and "Lab ships model" not in watch
+
+
+def test_an_item_shown_in_an_earlier_digest_is_not_new_even_if_state_forgot_it():
+    item = _item("ghrepo:a/b", 3, url="https://github.com/a/b")
+    news.annotate([item], {}, TODAY, shown={"https://github.com/a/b": date(2026, 10, 1)})
+    assert not item["new_to_radar"] and item["seen_before"]
+    assert item["first_seen"] == "2026-10-01"
+    fresh = _item("ghrepo:c/d", 3, url="https://github.com/c/d")
+    news.annotate([fresh], {}, TODAY, shown={"https://github.com/a/b": date(2026, 10, 1)})
+    assert fresh["new_to_radar"]

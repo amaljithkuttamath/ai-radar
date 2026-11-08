@@ -94,13 +94,27 @@ def is_lab_release(item: dict) -> bool:
     return any(re.search(rf"\b{re.escape(lab)}\b", source) for lab in FRONTIER_LABS)
 
 
-def annotate(items: list[dict], state: dict[str, dict] | None, today: date) -> list[dict]:
+def annotate(
+    items: list[dict],
+    state: dict[str, dict] | None,
+    today: date,
+    shown: dict[str, date] | None = None,
+) -> list[dict]:
     """Add first_seen, days_on_radar, new_to_radar, seen_before, momentum and news_rank to
-    each item in place, using the previous run's snapshot (data/state.json). Returns items."""
+    each item in place. Returns items.
+
+    `state` is the previous run's snapshot (data/state.json). It only holds the last run's
+    items, so an item that skipped a day would look new again. `shown` closes that gap: URL
+    -> the first published digest that linked it (distill/frontpage.first_seen). The
+    earliest of the two wins, because "new" means new to the reader."""
     state = state or {}
+    shown = shown or {}
     for item in items:
         prev = state.get(item.get("id")) or {}
-        first_seen = item.get("first_seen") or prev.get("first_seen")
+        dates = [d for d in (item.get("first_seen"), prev.get("first_seen")) if _parse_day(d)]
+        if item.get("url") in shown:
+            dates.append(shown[item["url"]].isoformat())
+        first_seen = min(dates, key=lambda d: _parse_day(d)) if dates else None
         age = age_days(first_seen, today)
         gained = momentum(item, prev.get("mag_history"))
         importance = float(item.get("score") or 0) + gained
@@ -109,7 +123,7 @@ def annotate(items: list[dict], state: dict[str, dict] | None, today: date) -> l
         relevance = FOCUS_MULTIPLIER if item.get("focus_match") else 1.0
         item["first_seen"] = first_seen or today.isoformat()
         item["days_on_radar"] = age + 1
-        item["new_to_radar"] = not prev and not item.get("carryover")
+        item["new_to_radar"] = not prev and not item.get("carryover") and item.get("url") not in shown
         item["seen_before"] = age >= SEEN_BEFORE_DAYS
         item["momentum"] = round(gained, 3)
         item["lab_release"] = is_lab_release(item)
