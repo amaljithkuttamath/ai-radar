@@ -2,7 +2,7 @@
 # Each collector reads the categories/sources it knows how to fetch.
 
 research:
-  arxiv_categories: [cs.LG, cs.CL, cs.AI]   # add cs.CV / cs.NE per focus
+  arxiv_categories: [cs.LG, cs.CL, cs.AI, cs.RO]   # cs.RO added 2026-11-08: robotics coverage tripled in a month
   hf_daily_papers: true                     # huggingface.co/papers — primary traction feed
   # NOTE: papers_with_code removed — in practice it duplicated the HF Daily Papers feed.
 
@@ -21,6 +21,19 @@ releases:
   rss:
     - { name: "OpenAI Blog",         url: "https://openai.com/blog/rss.xml" }
     - { name: "Google DeepMind",     url: "https://deepmind.google/blog/rss.xml" }
+    # Added 2026-11-08 to widen first-hand lab coverage; each URL fetched and confirmed
+    # to be a live RSS/Atom feed on that date.
+    - { name: "Microsoft Research",  url: "https://www.microsoft.com/en-us/research/feed/" }
+    - { name: "Apple Machine Learning Research", url: "https://machinelearning.apple.com/rss.xml" }
+    - { name: "Hugging Face Blog",   url: "https://huggingface.co/blog/feed.xml" }
+    - { name: "AWS Machine Learning Blog", url: "https://aws.amazon.com/blogs/machine-learning/feed/" }
+    # Press and expert writers: not first-hand releases, but they tell the ranking when
+    # several outlets are covering the same development, and give context. Confirmed live
+    # 2026-11-08. (The Verge and Ars Technica could not be checked from the build sandbox.)
+    - { name: "TechCrunch AI",       url: "https://techcrunch.com/category/artificial-intelligence/feed/" }
+    - { name: "Simon Willison",      url: "https://simonwillison.net/atom/everything/" }
+    - { name: "Import AI",           url: "https://importai.substack.com/feed" }
+    - { name: "Latent Space",        url: "https://www.latent.space/feed" }
   # GitHub trending topics (collectors/github_trending.py): hot AI repos pushed in-window,
   # ranked by stars. A leading indicator of releases that matter before they hit arXiv.
   github_topics: [llm, large-language-models, agents, rag, diffusion-models, machine-learning]

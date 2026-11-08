@@ -118,7 +118,8 @@ def distill(settings) -> Path:
     state = ROOT / "data" / "state.json"
     metadata = ROOT / "data" / "publication.json"
     ledger = ROOT / "data" / "tracked.json"
-    tracked = [*reports.glob("*.md"), state, metadata, ledger]
+    readme = ROOT / "README.md"  # carries the generated frontpage block (distill/frontpage.py)
+    tracked = [*reports.glob("*.md"), state, metadata, ledger, readme]
     before = {path: path.read_text(encoding="utf-8") if path.exists() else None for path in tracked}
     try:
         from distill import track
