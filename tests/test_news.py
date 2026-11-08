@@ -146,3 +146,18 @@ def test_an_item_shown_in_an_earlier_digest_is_not_new_even_if_state_forgot_it()
     fresh = _item("ghrepo:c/d", 3, url="https://github.com/c/d")
     news.annotate([fresh], {}, TODAY, shown={"https://github.com/a/b": date(2026, 10, 1)})
     assert fresh["new_to_radar"]
+
+
+def test_an_old_project_that_starts_trending_is_not_news():
+    """The example run: novu, FastGPT and CopilotKit were 'new to radar' and took the top
+    of the page, though each repository is years old. Age counts from when the project was
+    created, not from when the radar happened to notice it."""
+    old_repo = _item("ghrepo:novuhq/novu", 3, created="2021-09-27T00:00:00Z")
+    new_repo = _item("ghrepo:someone/fresh-agent", 3, created="2026-11-05T00:00:00Z")
+    lab_post = _item("blog:https://lab.example/a", 1, source="Anthropic News")
+    news.annotate([old_repo, new_repo, lab_post], {}, TODAY)
+    assert old_repo["new_to_radar"]  # it is new to the radar...
+    assert old_repo["days_on_radar"] == 1  # ...and the radar clock is unchanged
+    assert old_repo["project_age_days"] > 1000
+    # ...but it is not news, so it sinks under both a fresh project and a lab post.
+    assert min(new_repo["news_rank"], lab_post["news_rank"]) > 10 * old_repo["news_rank"]

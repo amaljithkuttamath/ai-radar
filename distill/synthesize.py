@@ -301,6 +301,7 @@ def build_prompt(
             "focus_match": i.get("focus_match", False),
             "summary": (i.get("raw_summary") or "")[:summary_chars],
             "published": i.get("published"),
+            "project_age_days": i.get("project_age_days"),
             "fetched": i.get("fetched"),
             # Promote traction to explicit named fields so the spec can REQUIRE citing them
             # (buried inside `signals` the model flattens them into "growing interest").

@@ -11,9 +11,13 @@ news aggregators rank:
 
   importance  the integer score, plus momentum (traction gained over the recent history,
               not lifetime totals), plus a boost for a frontier lab's own announcement.
-  freshness   decays with days since the radar first saw the item, using the Hacker News
+  freshness   decays with the item's age, using the Hacker News
               "gravity" shape: ((0 + 2) / (age + 2)) ** 1.8. Day 0 = 1.0, day 1 ~ 0.48,
               day 3 ~ 0.19, day 7 ~ 0.07. Old items sink without being deleted.
+              Age is the older of two clocks: days since the radar first saw the item,
+              and days since the thing itself was created (a repository or model). A
+              four-year-old repository that starts trending is new to the radar but
+              not news, and must not lead the page.
   relevance   a modest multiplier for profile focus matches.
 
 It never changes `score`, so routing (main list vs watch-list), the grader, and every
@@ -115,16 +119,18 @@ def annotate(
         if item.get("url") in shown:
             dates.append(shown[item["url"]].isoformat())
         first_seen = min(dates, key=lambda d: _parse_day(d)) if dates else None
-        age = age_days(first_seen, today)
+        radar_age = age_days(first_seen, today)
+        age = max(radar_age, age_days(item.get("created"), today))
         gained = momentum(item, prev.get("mag_history"))
         importance = float(item.get("score") or 0) + gained
         if is_lab_release(item):
             importance += LAB_RELEASE_BOOST
         relevance = FOCUS_MULTIPLIER if item.get("focus_match") else 1.0
         item["first_seen"] = first_seen or today.isoformat()
-        item["days_on_radar"] = age + 1
+        item["days_on_radar"] = radar_age + 1
         item["new_to_radar"] = not prev and not item.get("carryover") and item.get("url") not in shown
-        item["seen_before"] = age >= SEEN_BEFORE_DAYS
+        item["seen_before"] = radar_age >= SEEN_BEFORE_DAYS
+        item["project_age_days"] = age_days(item.get("created"), today) if item.get("created") else None
         item["momentum"] = round(gained, 3)
         item["lab_release"] = is_lab_release(item)
         item["news_rank"] = round(importance * freshness(age) * relevance, 4)

@@ -107,6 +107,7 @@ def make_item(
     source: str,
     authors=None,
     published=None,
+    created=None,
     raw_summary="",
     signals=None,
     links=None,
@@ -120,6 +121,9 @@ def make_item(
         "source": source,
         "authors": [a for a in (authors or []) if a],
         "published": published,
+        # When the thing itself first existed (a repository or model, not its latest
+        # push). Ranking uses it so an old project that starts trending is not "news".
+        "created": created,
         "fetched": now_iso(),
         "raw_summary": (raw_summary or "").strip(),
         "links": {k: v for k, v in (links or {}).items() if valid_url(v)},
