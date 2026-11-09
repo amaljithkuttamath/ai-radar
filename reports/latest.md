@@ -1,60 +1,67 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-07](2026-11-07-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-08](2026-11-08-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-08
+# AI Radar — 2026-11-09
 
-Hugging Face Transformers and Microsoft’s ML curriculum remain the most widely adopted artifacts, while NVIDIA’s simready-assets dataset has surged to 1.4 M downloads. The Intrinsic Distribution Matching paper continues a 10‑day traction streak with a 13 % magnitude rise, signaling sustained interest in one‑step diffusion distillation.
+Major framework repositories and frontier-lab model releases dominate the last 48 hours. Hugging Face Transformers, NVIDIA Megatron-LM, and the new Qwen3.8-27B multimodal model show continued investment in training infrastructure, while NVIDIA’s SimReady asset dataset and a cyber-security QA corpus expand ready-to-use data resources. Coverage is limited to 11 scored candidates; several high-profile GitHub projects appeared in the new-to-radar list but fall below the inclusion threshold.
 
 ## What changed
 
 **New to radar**  
-- [novuhq/novu — The open-source communication infrastructure for agents and products](https://github.com/novuhq/novu) · 3/5  
-- [CopilotKit/CopilotKit — The Frontend Stack for Agents & Generative UI](https://github.com/CopilotKit/CopilotKit) · 3/5  
-- [getzep/graphiti — Build Real-Time Knowledge Graphs for AI Agents](https://github.com/getzep/graphiti) · 3/5  
-- [simstudioai/sim — Collaborative workspace to build, deploy, and monitor AI agents](https://github.com/simstudioai/sim) · 3/5  
-- [labring/FastGPT — Knowledge-based platform with RAG retrieval and visual workflow orchestration](https://github.com/labring/FastGPT) · 3/5  
+- [infiniflow/ragflow](https://github.com/infiniflow/ragflow) — Agent-native RAG engine evolved into context infrastructure · 3/5  
+- [github/awesome-copilot](https://github.com/github/awesome-copilot) — Community instructions, agents, and configs for GitHub Copilot · 3/5  
+- [HKUDS/LightRAG](https://github.com/HKUDS/LightRAG) — EMNLP 2025 simple/fast RAG framework · 3/5  
+- [agentscope-ai/agentscope](https://github.com/agentscope-ai/agentscope) — Build and run observable, trustworthy agents · 3/5  
+- [camel-ai/camel](https://github.com/camel-ai/camel) — Multi-agent framework exploring scaling laws · 3/5  
 
 **Climbing**  
-- [xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic (HF Model)](https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic) · 2/5 (magnitude +0.53)
+- [tencent/TailorRig](https://huggingface.co/datasets/tencent/TailorRig) — Dataset traction rising · 2/5  
+- [codepawl/scanned-objects-glb](https://huggingface.co/datasets/codepawl/scanned-objects-glb) — 3D object dataset gaining attention · 2/5  
+
+**Cooled**  
+- [microsoft/ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners) — Introductory ML curriculum · 3/5  
+- [google/langextract](https://github.com/google/langextract) — Structured extraction library with grounding · 3/5  
+- [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) — Flash model variant · 2/5  
 
 ## Main list
 
-### Machine
-**[huggingface/transformers — Transformers: the model-definition framework for state-of-the-art ML](https://github.com/huggingface/transformers) · 4/5**  
-The central library for loading, training, and serving text, vision, audio, and multimodal models. 168 k GitHub stars observed. Essential for any engineer building on pretrained models.
+### Training
+**[huggingface/transformers](https://github.com/huggingface/transformers)** · 4/5  
+The central model-definition framework for text, vision, audio, and multimodal models. Used by virtually every engineer fine-tuning or deploying transformer architectures. 168.7k GitHub stars observed.
 
-**[microsoft/ML-For-Beginners — 12 weeks, 26 lessons, 52 quizzes, classic Machine Learning for all](https://github.com/microsoft/ML-For-Beginners) · 4/5**  
-Structured curriculum with runnable notebooks. 92 k stars observed. Useful for onboarding new team members or self‑study.
+**[NVIDIA/Megatron-LM](https://github.com/NVIDIA/Megatron-LM)** · 4/5  
+Ongoing research codebase for training transformer models at massive scale. Relevant for teams building custom pre-training pipelines or studying tensor/sequence parallelism techniques. 18.4k GitHub stars observed.
 
 ### Dataset
-**[nvidia/simready-assets (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-assets) · 4/5**  
-CC‑BY‑4.0 3D assets tagged “simready” for simulation and synthetic data pipelines. 1.43 M downloads and 1.5 k likes observed. Ready for Omniverse, Isaac Sim, or custom renderers.
+**[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)** · 4/5  
+CC-BY-4.0 licensed 3D assets built for simulation-ready workflows. 1.45M downloads and 1.5k likes observed — useful for synthetic data generation, robotics sim, and Omniverse pipelines.
 
-**[Vyber07/cyber-security (HF Dataset)](https://huggingface.co/datasets/Vyber07/cyber-security) · 3/5**  
-English text‑generation and QA data for cybersecurity tasks (Apache‑2.0, <1 K examples). 13 k downloads, 778 likes observed. Niche but clean for domain‑specific fine‑tuning.
+**[Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security)** · 3/5  
+Apache-2.0 QA/text-generation dataset focused on cybersecurity topics (English, <1K examples). 13.4k downloads and 816 likes observed — suitable for domain-adaptive fine-tuning or eval benchmarks.
 
-### Qwen / DeepSeek models
-**[Qwen/Qwen3.8-27B (HF Model)](https://huggingface.co/Qwen/Qwen3.8-27B) · 3/5**  
-Apache‑2.0 image‑text‑to‑text model (Qwen3.5 family). 7.67 M downloads, 19.4 k likes observed. Strong candidate for vision‑language tasks needing permissive licensing.
+### Models
+**[Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B)** · 3/5  
+Apache-2.0 multimodal model (image-text-to-text) with 27B parameters. 7.5M downloads and 19.5k likes observed — candidates for vision-language tasks requiring permissive licensing.
 
-**[deepseek-ai/DeepSeek-V4.1-Flash-1017 (HF Model)](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) · 3/5**  
-MIT‑licensed image‑text‑to‑text model. 296 k downloads, 5.4 k likes observed. Smaller footprint than Qwen‑27B; suitable for latency‑sensitive multimodal inference.
+**[nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)** · 3/5  
+Automatic speech recognition model from NVIDIA NeMo toolkit. 70k downloads and 3.1k likes observed — relevant for ASR pipelines needing strong-group provenance.
 
-### Other
-**[Intrinsic Distribution Matching (arXiv:2610.39633)](https://arxiv.org/abs/2610.39633) · 3/5**  
-One‑step/few‑step text‑to‑image distillation using internal velocity branches instead of a separate fake scorer. Repo: [inclusionAI/IDM](https://github.com/inclusionAI/IDM), project page: [inclusion-ai.org/IDM](https://www.inclusion-ai.org/IDM/?lang=zh). 242 GitHub stars, 30 HF upvotes observed. Tracked 10 consecutive runs with +0.73 traction delta — strongest climbing signal in this window. Focus match: distillation.
+### Research (carryover, climbing)
+**[Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633)** · 3/5  
+One-step/few-step text-to-image distillation using internal velocity branches to avoid separate fake scorers. GitHub repo linked ([inclusionAI/IDM](https://github.com/inclusionAI/IDM)), project page available. Tracked 11 consecutive runs with 13.3% magnitude growth — engineers exploring fast diffusion sampling should read the paper and try the reference implementation.
 
 ## Watch-list / Still developing
 
-- [morluto/rea — Reverse engineer anything with agents](https://github.com/morluto/rea) (streak 13, +0.9 % mag)  
-- [vectorize-io/hindsight — Agent Memory That Learns](https://github.com/vectorize-io/hindsight) (streak 11, +0.6 %)  
-- [TauricResearch/TradingAgents — Multi-Agent LLM Financial Trading Framework](https://github.com/TauricResearch/TradingAgents) (streak 13, +0.3 %)  
-- [vllm-project/vllm — High-throughput LLM inference engine](https://github.com/vllm-project/vllm) (streak 14, +0.1 %)  
-- [nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B (HF Model)](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) (streak 4, +0.2 %)
+- [Korea’s AI Ecosystem Advances and Secures Agentic AI With NVIDIA](https://blogs.nvidia.com/blog/korea-secure-agentic-ai/) · 1/5 — NVIDIA blog on Hyundai/AIM Intelligence adopting NemoClaw and OpenShell for secure agents  
+- [From Chips to Skills, NVIDIA and Korea Expand Sovereign AI Collaboration](https://blogs.nvidia.com/blog/korea-sovereign-ai-collaboration/) · 1/5 — MSIT/NVIDIA collaboration spanning semiconductors, NVLink Fusion, talent, and agent security  
+- [Exploring the world's languages with Language Explorer](https://research.google/blog/exploring-the-worlds-languages-with-language-explorer/) · 1/5 — Google Research NLP tool for language data exploration  
+- [Kuken Industries searches 70 years of drawings in minutes](https://openai.com/index/kuken) · 1/5 — OpenAI API case study: engineering drawing search reduced from ~1 hour to 4.5 minutes  
+- [ChatGPT Enterprise now available in AWS Marketplace](https://openai.com/index/chatgpt-enterprise-aws-marketplace) · 1/5 — Procurement simplification via existing AWS billing  
+- [AMD EPYC Expands Its Leadership at the Foundation of AI](https://ir.amd.com/news-events/press-releases/detail/1304/amd-epyc-expands-its-leadership-at-the-foundation-of-ai) · 1/5 — AMD press release on EPYC CPU momentum in AI infrastructure  
 
 ## Action items
 
-**Read** — [Intrinsic Distribution Matching paper](https://arxiv.org/abs/2610.39633) and its [IDM repo](https://github.com/inclusionAI/IDM) for a verified one‑step diffusion distillation recipe.  
-**Try** — Pull [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) into a synthetic data pipeline; the CC‑BY‑4.0 license and 1.4 M downloads indicate production readiness.  
-**Track** — [Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) and [DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) for permissively licensed vision‑language models; both show rising download velocity.
+**Read** — [Intrinsic Distribution Matching paper](https://arxiv.org/abs/2610.39633) and [IDM repo](https://github.com/inclusionAI/IDM) for a practical one-step diffusion distillation method that avoids auxiliary networks.  
+**Try** — [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) dataset for synthetic 3D scene generation; CC-BY-4.0 license permits commercial use.  
+**Track** — [Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) adoption in vision-language benchmarks; the 27B Apache-2.0 model fills a gap between smaller open VLMs and closed frontiers.
