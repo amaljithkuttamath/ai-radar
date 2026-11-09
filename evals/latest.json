@@ -1,33 +1,33 @@
 {
-  "date": "2026-11-08",
+  "date": "2026-11-09",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-08T16:54:32Z",
+  "digest_commit_time_utc": "2026-11-09T21:16:24Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 20,
+      "links_total": 24,
       "links_broken": 0,
-      "links_unverified": 0,
+      "links_unverified": 2,
       "main_items": 11,
       "main_score_mean": 3.43,
-      "sections_present": 6,
+      "sections_present": 7,
       "expected_sections": 3,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
-      "traction_observations": 24,
+      "traction_observations": 55,
       "degraded_synthesis": false,
       "forecast_accuracy": 0.0,
-      "claims_open": 0
+      "claims_open": 2
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 6 section(s); 3/7 of the prompt's sections present"
+        "detail": "title and 7 section(s); 3/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
@@ -37,7 +37,7 @@
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "every link answered 2xx"
+        "detail": "no dead links; 2/24 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -68,7 +68,16 @@
     "reobservation_rate": 1.0,
     "forecast_accuracy": 0.0
   },
-  "broken_urls": [],
+  "broken_urls": [
+    {
+      "url": "https://openai.com/index/kuken",
+      "status": 403
+    },
+    {
+      "url": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
+      "status": 403
+    }
+  ],
   "missed_stories": [],
   "degraded_reason": "--tier0-only: model call skipped by request"
 }
