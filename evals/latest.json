@@ -1,43 +1,43 @@
 {
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-09T21:16:24Z",
+  "digest_commit_time_utc": "2026-11-10T18:25:51Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 24,
+      "links_total": 34,
       "links_broken": 0,
-      "links_unverified": 2,
-      "main_items": 11,
-      "main_score_mean": 3.43,
-      "sections_present": 7,
+      "links_unverified": 0,
+      "main_items": 10,
+      "main_score_mean": 3.3,
+      "sections_present": 6,
       "expected_sections": 3,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
-      "traction_observations": 55,
+      "traction_observations": 59,
       "degraded_synthesis": false,
       "forecast_accuracy": 0.0,
-      "claims_open": 2
+      "claims_open": 0
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 7 section(s); 3/7 of the prompt's sections present"
+        "detail": "title and 6 section(s); 3/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "11 main-list item(s)"
+        "detail": "10 main-list item(s)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 2/24 declined to answer"
+        "detail": "every link answered 2xx"
       },
       {
         "key": "synthesis_present",
@@ -68,16 +68,7 @@
     "reobservation_rate": 1.0,
     "forecast_accuracy": 0.0
   },
-  "broken_urls": [
-    {
-      "url": "https://openai.com/index/kuken",
-      "status": 403
-    },
-    {
-      "url": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
-      "status": 403
-    }
-  ],
+  "broken_urls": [],
   "missed_stories": [],
   "degraded_reason": "--tier0-only: model call skipped by request"
 }
