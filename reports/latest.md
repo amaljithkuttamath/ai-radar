@@ -1,67 +1,79 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-08](2026-11-08-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-09](2026-11-09-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-09
+# AI Radar — 2026-11-10
 
-Major framework repositories and frontier-lab model releases dominate the last 48 hours. Hugging Face Transformers, NVIDIA Megatron-LM, and the new Qwen3.8-27B multimodal model show continued investment in training infrastructure, while NVIDIA’s SimReady asset dataset and a cyber-security QA corpus expand ready-to-use data resources. Coverage is limited to 11 scored candidates; several high-profile GitHub projects appeared in the new-to-radar list but fall below the inclusion threshold.
+The strongest signal this window is **Sage-Taiyi**, a metacognitive architecture that ranks first on all eight metrics of the new Taiyi-Bench scientific ideation benchmark (47 HF upvotes, repo linked). **google/langextract** climbed to score 4 with 39K GitHub stars, becoming the top-structured-extraction library with precise source grounding. NVIDIA’s **simready-assets** dataset recorded 1.46M downloads, indicating heavy adoption for simulation-ready 3D assets.
 
 ## What changed
 
-**New to radar**  
-- [infiniflow/ragflow](https://github.com/infiniflow/ragflow) — Agent-native RAG engine evolved into context infrastructure · 3/5  
-- [github/awesome-copilot](https://github.com/github/awesome-copilot) — Community instructions, agents, and configs for GitHub Copilot · 3/5  
-- [HKUDS/LightRAG](https://github.com/HKUDS/LightRAG) — EMNLP 2025 simple/fast RAG framework · 3/5  
-- [agentscope-ai/agentscope](https://github.com/agentscope-ai/agentscope) — Build and run observable, trustworthy agents · 3/5  
-- [camel-ai/camel](https://github.com/camel-ai/camel) — Multi-agent framework exploring scaling laws · 3/5  
+**New to radar**
+- [Sage-Taiyi: A Metacognitive Architecture for Scientific Discovery](https://arxiv.org/abs/2611.12762) · 4/5
+- [Reframe: Observation-Aligned Multi-Teacher On-Policy Distillation for Agentic Visual Reasoning](https://arxiv.org/abs/2611.12886) · 3/5
+- [InfraRSI: Harnessing Recursive Self-Improvement for Training Infrastructure](https://arxiv.org/abs/2611.11558) · 3/5
+- [pathwaycom/serviette — A no-code RAG server that keeps answers in sync with your documents](https://github.com/pathwaycom/serviette) · 3/5
+- [fla-org/flash-linear-attention — Efficient implementations for emerging model architectures](https://github.com/fla-org/flash-linear-attention) · 3/5
 
-**Climbing**  
-- [tencent/TailorRig](https://huggingface.co/datasets/tencent/TailorRig) — Dataset traction rising · 2/5  
-- [codepawl/scanned-objects-glb](https://huggingface.co/datasets/codepawl/scanned-objects-glb) — 3D object dataset gaining attention · 2/5  
+**Climbing**
+- [google/langextract — Python library for structured extraction with source grounding](https://github.com/google/langextract) · 4/5 (+1)
+- [NousResearch/arete-data-pairs (HF Dataset)](https://huggingface.co/datasets/NousResearch/arete-data-pairs) · 2/5 (+1)
+- [NousResearch/Propaganda_Eval (HF Dataset)](https://huggingface.co/datasets/NousResearch/Propaganda_Eval) · 2/5 (+1)
 
-**Cooled**  
-- [microsoft/ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners) — Introductory ML curriculum · 3/5  
-- [google/langextract](https://github.com/google/langextract) — Structured extraction library with grounding · 3/5  
-- [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) — Flash model variant · 2/5  
+**Cooled** — none
 
 ## Main list
 
-### Training
-**[huggingface/transformers](https://github.com/huggingface/transformers)** · 4/5  
-The central model-definition framework for text, vision, audio, and multimodal models. Used by virtually every engineer fine-tuning or deploying transformer architectures. 168.7k GitHub stars observed.
+### Sage-Taiyi: A Metacognitive Architecture for Scientific Discovery · 4/5
+[arXiv:2611.12762](https://arxiv.org/abs/2611.12762) · [GitHub](https://github.com/Alpha-Innovator/Sage-Taiyi) · [Project](https://alpha-innovator.github.io/Sage-Taiyi/)  
+A metacognition-inspired system that monitors its own evidence, assumptions, and open questions to adapt research targets and select reasoning methods. Tops the new Taiyi-Bench (265 tasks from 50 papers across ten disciplines) on all eight historical-rediscovery and ideation metrics. For engineers building AI co-scientists or autonomous research loops.
 
-**[NVIDIA/Megatron-LM](https://github.com/NVIDIA/Megatron-LM)** · 4/5  
-Ongoing research codebase for training transformer models at massive scale. Relevant for teams building custom pre-training pipelines or studying tensor/sequence parallelism techniques. 18.4k GitHub stars observed.
+### google/langextract — Structured extraction with precise grounding · 4/5
+[GitHub](https://github.com/google/langextract)  
+Python library that extracts structured information from unstructured text using LLMs while preserving exact source spans and providing interactive visualization. 39K stars observed; climbing fast. Drop-in for RAG pipelines, document parsing, and any workflow needing verifiable citations.
 
-### Dataset
-**[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)** · 4/5  
-CC-BY-4.0 licensed 3D assets built for simulation-ready workflows. 1.45M downloads and 1.5k likes observed — useful for synthetic data generation, robotics sim, and Omniverse pipelines.
+### huggingface/transformers — Core model-definition framework · 4/5
+[GitHub](https://github.com/huggingface/transformers)  
+168K stars; the de facto standard for loading, training, and deploying text, vision, audio, and multimodal models. Ongoing releases add new architectures and hardware backends. Essential dependency for virtually every LLM/VM workflow.
 
-**[Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security)** · 3/5  
-Apache-2.0 QA/text-generation dataset focused on cybersecurity topics (English, <1K examples). 13.4k downloads and 816 likes observed — suitable for domain-adaptive fine-tuning or eval benchmarks.
+### nvidia/simready-assets (HF Dataset) · 4/5
+[Hugging Face](https://huggingface.co/datasets/nvidia/simready-assets)  
+CC-BY-4.0 dataset of simulation-ready 3D assets (1.46M downloads, 1.5K likes observed). Targets Omniverse, Isaac Sim, and robotics digital-twin workflows. Use when you need physically accurate, licensed assets for sim-to-real transfer.
 
-### Models
-**[Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B)** · 3/5  
-Apache-2.0 multimodal model (image-text-to-text) with 27B parameters. 7.5M downloads and 19.5k likes observed — candidates for vision-language tasks requiring permissive licensing.
+### Reframe: Observation-Aligned Multi-Teacher On-Policy Distillation for Agentic Visual Reasoning · 3/5
+[arXiv:2611.12886](https://arxiv.org/abs/2611.12886) · [GitHub](https://github.com/EliYuan30/Reframe)  
+Introduces Ground-Drop-GRPO to train spatial/temporal specialists with evidence-aware rewards, then aligns observation states (not just output distributions) via multi-teacher on-policy distillation. For teams building visual agents that must reliably use tools and ground actions in returned observations.
 
-**[nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)** · 3/5  
-Automatic speech recognition model from NVIDIA NeMo toolkit. 70k downloads and 3.1k likes observed — relevant for ASR pipelines needing strong-group provenance.
+### InfraRSI: Harnessing Recursive Self-Improvement for Training Infrastructure · 3/5
+[arXiv:2611.11558](https://arxiv.org/abs/2611.11558) · [GitHub](https://github.com/TokenRhythm/InfraRSI) · [Project](https://infrarsi.github.io/)  
+Agentic harness that converts open-ended commands into verified distributed-training optimizations (kernel selection, communication schedules, launch configs) via a five-stage contract-locked workflow. Targets OOM, compiler conflicts, and silent numerical drift. For platform teams automating cluster-level tuning.
 
-### Research (carryover, climbing)
-**[Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633)** · 3/5  
-One-step/few-step text-to-image distillation using internal velocity branches to avoid separate fake scorers. GitHub repo linked ([inclusionAI/IDM](https://github.com/inclusionAI/IDM)), project page available. Tracked 11 consecutive runs with 13.3% magnitude growth — engineers exploring fast diffusion sampling should read the paper and try the reference implementation.
+### Intrinsic Distribution Matching (carryover, 12-run streak) · 3/5
+[arXiv:2610.39633](https://arxiv.org/abs/2610.39633) · [GitHub](https://github.com/inclusionAI/IDM) · [Project](https://www.inclusion-ai.org/IDM/?lang=zh)  
+One-step/few-step text-to-image distillation using internal velocity branches to match the reference distribution without a separate fake scorer. 242 stars, 30 HF upvotes observed. Rising traction (≈13% magnitude growth over streak). For fast, high-fidelity image generation pipelines.
+
+### Qwen/Qwen3.8-27B (HF Model) · 3/5
+[Hugging Face](https://huggingface.co/Qwen/Qwen3.8-27B)  
+Apache-2.0 image-text-to-text model (19.5K likes, 7.4M downloads observed). Conversational, multimodal, safetensors format. Plug into transformers for vision-language tasks requiring a strong open-weight backbone.
+
+### nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B (HF Model, carryover, 6-run streak) · 3/5
+[Hugging Face](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)  
+Automatic-speech-recognition model (3.1K likes, 72K downloads observed). NeMo-based, PyTorch, safetensors. For high-accuracy ASR in production pipelines; steady adoption signal over six collection runs.
+
+### How Many Exposures Does a World Model Need? · 2/5
+[arXiv:2611.12324](https://arxiv.org/abs/2611.12324) · [GitHub](https://github.com/third-intelligence/WARC)  
+Introduces MechEval on ARC-AGI-3: 69 recurring mechanics across 20 games, measuring how many exposures a world model needs to predict unseen mechanics at test time. For researchers benchmarking sample-efficient world-model learning.
 
 ## Watch-list / Still developing
 
-- [Korea’s AI Ecosystem Advances and Secures Agentic AI With NVIDIA](https://blogs.nvidia.com/blog/korea-secure-agentic-ai/) · 1/5 — NVIDIA blog on Hyundai/AIM Intelligence adopting NemoClaw and OpenShell for secure agents  
-- [From Chips to Skills, NVIDIA and Korea Expand Sovereign AI Collaboration](https://blogs.nvidia.com/blog/korea-sovereign-ai-collaboration/) · 1/5 — MSIT/NVIDIA collaboration spanning semiconductors, NVLink Fusion, talent, and agent security  
-- [Exploring the world's languages with Language Explorer](https://research.google/blog/exploring-the-worlds-languages-with-language-explorer/) · 1/5 — Google Research NLP tool for language data exploration  
-- [Kuken Industries searches 70 years of drawings in minutes](https://openai.com/index/kuken) · 1/5 — OpenAI API case study: engineering drawing search reduced from ~1 hour to 4.5 minutes  
-- [ChatGPT Enterprise now available in AWS Marketplace](https://openai.com/index/chatgpt-enterprise-aws-marketplace) · 1/5 — Procurement simplification via existing AWS billing  
-- [AMD EPYC Expands Its Leadership at the Foundation of AI](https://ir.amd.com/news-events/press-releases/detail/1304/amd-epyc-expands-its-leadership-at-the-foundation-of-ai) · 1/5 — AMD press release on EPYC CPU momentum in AI infrastructure  
+- [Vendi Anomaly Scores for Efficient and Accurate Anomaly Detection](https://arxiv.org/abs/2611.12871) · 2/5 — diversity-based anomaly score, repo not yet linked
+- [A Lattice-Based HMM Approach to Aruz Scansion of Ottoman Poetry](https://arxiv.org/abs/2611.12691) · 2/5 — niche NLP benchmark with artifact
+- [BDBBQ: Bengali Social Bias Benchmark](https://arxiv.org/abs/2611.12407) · 2/5 — 61K QA instances, bilingual, culturally grounded
+- [Vyber07/cyber-security (HF Dataset)](https://huggingface.co/datasets/Vyber07/cyber-security) · 3/5 — 15K downloads, text-gen/QA, Apache-2.0
+- STORY ARCS carryovers with sustained traction: [morluto/rea](https://github.com/morluto/rea) (15 runs), [vectorize-io/hindsight](https://github.com/vectorize-io/hindsight) (13 runs), [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) (13 runs), [HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor) (6 runs), [TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents) (15 runs), [paperclipai/paperclip](https://github.com/paperclipai/paperclip) (13 runs), [affaan-m/ECC](https://github.com/affaan-m/ECC) (15 runs), [unclecode/crawl4ai](https://github.com/unclecode/crawl4ai) (15 runs)
 
 ## Action items
 
-**Read** — [Intrinsic Distribution Matching paper](https://arxiv.org/abs/2610.39633) and [IDM repo](https://github.com/inclusionAI/IDM) for a practical one-step diffusion distillation method that avoids auxiliary networks.  
-**Try** — [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) dataset for synthetic 3D scene generation; CC-BY-4.0 license permits commercial use.  
-**Track** — [Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) adoption in vision-language benchmarks; the 27B Apache-2.0 model fills a gap between smaller open VLMs and closed frontiers.
+1. **Try** [google/langextract](https://github.com/google/langextract) in a RAG or document-processing pipeline — it returns grounded spans and an interactive HTML viewer out of the box.
+2. **Read** [Sage-Taiyi](https://arxiv.org/abs/2611.12762) and the [Taiyi-Bench](https://alpha-innovator.github.io/Sage-Taiyi/) specification if you’re designing autonomous research agents or scientific-reasoning evals.
+3. **Track** [InfraRSI](https://github.com/TokenRhythm/InfraRSI) — its contract-locked, five-stage workflow could generalize to any cluster-level optimization loop (kernel fusion, comm scheduling, memory planning).
