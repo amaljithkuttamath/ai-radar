@@ -48,8 +48,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from collectors.common import ROOT, PROJECT_ROOT, parse_window, timestamp, validate_item  # noqa: E402
-from distill.rank import rank_key  # noqa: E402
-from distill.delta import compute_delta, save_state, story_arcs  # noqa: E402
+from distill import news  # noqa: E402
+from distill.delta import _load_state, compute_delta, save_state, story_arcs  # noqa: E402
 from distill.focus import active_terms as _focus_active_terms, _term_hit, _blob as _focus_blob  # noqa: E402
 from distill.cluster import cluster_items  # noqa: E402
 from distill.diversity import diversify  # noqa: E402
@@ -183,6 +183,17 @@ def _build_provenance(i: dict) -> str:
     return " · ".join(parts) if parts else ""
 
 
+def _shown_before() -> dict:
+    """URL -> date of the first published digest that linked it. Empty when there is no
+    archive (previews in a fresh root, tests)."""
+    try:
+        from distill import frontpage
+
+        return frontpage.first_seen(frontpage.load_digests(ROOT / "reports"))
+    except (OSError, ValueError):
+        return {}
+
+
 def load_scored() -> list[dict]:
     # Enforce the window on read too: synthesize can be run independently of score.py, so
     # don't trust data/scored/ to contain only in-window items.
@@ -198,11 +209,11 @@ def load_scored() -> list[dict]:
                 continue
             if cutoff <= fetched <= datetime.now(timezone.utc) + timedelta(minutes=5):
                 items.append(it)
-    # rank_key (score + signal magnitude) is primary; focus_match only breaks exact ties,
-    # staying a re-rank boost rather than overriding traction.
-    items.sort(
-        key=lambda x: (x.get("score") or 0, bool(x.get("focus_match")), rank_key(x), x["id"]), reverse=True
-    )
+    # Order like a news page: importance x freshness x relevance (distill/news.py). The
+    # integer score still gates routing; it just no longer decides the order on its own,
+    # which is what kept evergreen repositories at the top edition after edition.
+    news.annotate(items, _load_state(), datetime.now(timezone.utc).date(), _shown_before())
+    items.sort(key=news.news_key, reverse=True)
     return items
 
 
@@ -249,9 +260,9 @@ def build_prompt(
     # Reserve category coverage, then backfill every unused slot. Diversifying the
     # whole ranked pool first avoids leaving holes after near-duplicate removal.
     eligible = [i for i in fresh if (i.get("score") or 0) >= 1]
-    eligible.sort(
-        key=lambda i: (i.get("score") or 0, bool(i.get("focus_match")), rank_key(i), i["id"]), reverse=True
-    )
+    if any("news_rank" not in i for i in items):
+        news.annotate(items, _load_state(), datetime.now(timezone.utc).date(), _shown_before())
+    eligible.sort(key=news.news_key, reverse=True)
     eligible = diversify(eligible)
     reserved = []
     for category, slots in (("hardware", HARDWARE_SLOTS), ("releases", RELEASE_SLOTS)):
@@ -263,9 +274,9 @@ def build_prompt(
 
     # Carryover slice, widened when today's collection was quiet (see CARRYOVER_SLOTS).
     slots = CARRYOVER_SLOTS if len(chosen) >= QUIET_FLOOR else max(CARRYOVER_SLOTS, QUIET_FLOOR - len(chosen))
-    carried.sort(key=rank_key, reverse=True)
+    carried.sort(key=news.news_key, reverse=True)
     chosen += carried[:slots]
-    chosen.sort(key=rank_key, reverse=True)  # model sees a single ranked list
+    chosen.sort(key=news.news_key, reverse=True)  # model sees a single ranked list
     # Diversity pass: collapse near-duplicate titles (e.g. Foo-1.0-9B / -35B / -GGUF)
     # and cap items-per-source so one lab's release sweep can't dominate the digest.
     # Applied AFTER category quotas + ranking so higher-signal exemplars survive.
@@ -290,6 +301,7 @@ def build_prompt(
             "focus_match": i.get("focus_match", False),
             "summary": (i.get("raw_summary") or "")[:summary_chars],
             "published": i.get("published"),
+            "project_age_days": i.get("project_age_days"),
             "fetched": i.get("fetched"),
             # Promote traction to explicit named fields so the spec can REQUIRE citing them
             # (buried inside `signals` the model flattens them into "growing interest").
@@ -300,6 +312,15 @@ def build_prompt(
             "hf_likes": sig.get("hf_likes") or 0,
             "hf_downloads": sig.get("hf_downloads") or 0,
         }
+        # Reader-facing news signals (distill/news.py). first_seen / days_on_radar tell the
+        # model what is genuinely new; news_rank is the order it should keep.
+        row["news_rank"] = i.get("news_rank", 0.0)
+        row["first_seen"] = i.get("first_seen", "")
+        row["days_on_radar"] = i.get("days_on_radar", 1)
+        row["new_to_radar"] = bool(i.get("new_to_radar"))
+        row["seen_before"] = bool(i.get("seen_before"))
+        row["momentum"] = i.get("momentum", 0.0)
+        row["lab_release"] = bool(i.get("lab_release"))
         if links:
             row["links"] = links
         if prov:
@@ -380,7 +401,13 @@ def build_prompt(
         "`runs_tracked` runs since `first_seen`, and their traction figures were re-observed "
         "just now. Put them under 'Still developing' with their current numbers, unless "
         "traction_delta is strongly positive — a carryover that is still climbing hard has "
-        "earned a main-list slot. Never describe a carryover as new.\n\n"
+        "earned a main-list slot. Never describe a carryover as new.\n"
+        "Candidates are already in news order (news_rank: importance x freshness x "
+        "relevance). Keep that order. Lead the main list with new_to_radar items. Items with "
+        "seen_before=true have been on the radar for days_on_radar days: put them under "
+        "'Still developing' unless their momentum is clearly positive, or unless fewer than "
+        "three newer items qualify for the main list. A candidate with lab_release=true is a "
+        "frontier lab's own announcement: it qualifies for the main list at score 1.\n\n"
         f"CANDIDATES_JSON\n{json.dumps(compact, indent=2)}"
     )
     return system, user, len(compact)
@@ -525,7 +552,13 @@ def call_template(system: str, user: str) -> str:
     ]
 
     # Main list — respect THRESHOLD and MAX_ITEMS
-    main = [i for i in items if (i.get("score") or 0) >= THRESHOLD]
+    # Same routing rule the model gets: a frontier lab's own announcement qualifies at
+    # score 1, so the no-model fallback does not bury a launch the model path would lead with.
+    main = [
+        i
+        for i in items
+        if (i.get("score") or 0) >= THRESHOLD or (i.get("lab_release") and (i.get("score") or 0) >= 1)
+    ]
     if main:
         lines.append(
             f"**Main list** ({len(main)} scored ≥{THRESHOLD}, showing top {min(len(main), MAX_ITEMS)})"
@@ -562,7 +595,8 @@ def call_template(system: str, user: str) -> str:
         lines.append("")
 
     # Watch list — items exactly one point below threshold
-    watch = [i for i in items if (i.get("score") or 0) == max(1, THRESHOLD - 1)]
+    main_ids = {id(i) for i in main}
+    watch = [i for i in items if (i.get("score") or 0) == max(1, THRESHOLD - 1) and id(i) not in main_ids]
     if watch:
         lines.append(f"**Watch-list** ({len(watch)} items)")
         for i in watch[:8]:

@@ -38,7 +38,11 @@ filtered for duplicate titles and source diversity. Prioritize relevant research
 useful releases, and hardware evidence. Fewer good items beat padding.
 
 Scores at or above INCLUDE_THRESHOLD qualify for the main list, capped at
-MAX_ITEMS. Lower positive scores may appear in a short watch-list. Items with
+MAX_ITEMS. A candidate with `lab_release=true` (a frontier lab's own announcement)
+also qualifies at score 1. Lower positive scores may appear in a short watch-list.
+Keep the candidates' news order (`news_rank`): new developments lead, and items the
+radar has shown for days belong under Still developing unless they are still
+climbing. Items with
 uncertain recency belong in the watch-list unless their current development is
 explicitly supported. Never repeat the same explanation in two sections.
 
@@ -49,9 +53,11 @@ explicitly supported. Never repeat the same explanation in two sections.
 2. **What changed:** omit on first_run=true. Otherwise use at most five linked
    one-line items per nonempty group: New to radar, Climbing, Cooled. Only MOVERS
    can support these labels. Omit empty groups.
-3. **Main list:** at most MAX_ITEMS short entries. Each starts with a linked title,
-   explains the contribution and who could use it, and shows its actual score
-   lightly, e.g. `· 3/5`. Include secondary artifact links. Theme headings are
+3. **Main list:** at most MAX_ITEMS short entries. Each starts with a linked title
+   and shows its actual score lightly, e.g. `· 3/5`. The first sentence says in
+   plain words who did what, as a news headline would ("OpenAI released a
+   benchmark for lab agents"), not a restatement of the title. Then say who should
+   care, starting with "Matters if" (e.g. "Matters if you serve diffusion models."). Include secondary artifact links. Theme headings are
    optional and only useful when they clarify several related entries.
 4. **Watch-list / Still developing:** omit empty sections. One linked line per
    item. Use current observations and STORY ARCS for carryovers.

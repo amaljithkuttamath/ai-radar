@@ -9,7 +9,7 @@ case "$kind" in
   collect) paths=(data/seen.json) ;;
   distill)
     shopt -s nullglob
-    paths=(reports/*.md data/state.json data/tracked.json data/publication.json)
+    paths=(reports/*.md data/state.json data/tracked.json data/publication.json README.md)
     ;;
   *) echo "Unknown publication kind: $kind" >&2; exit 2 ;;
 esac

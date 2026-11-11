@@ -9,7 +9,7 @@ from pathlib import Path
 import yaml
 
 BACKENDS = ("dryrun", "template", "auto", "openai", "github", "anthropic", "ollama")
-COLLECTORS = ("hf_papers", "arxiv", "lab_blogs", "github_trending", "hf_trending")
+COLLECTORS = ("hf_papers", "arxiv", "lab_blogs", "github_trending", "hf_trending", "hackernews", "lab_pages")
 
 
 def mapping(path: Path) -> dict:

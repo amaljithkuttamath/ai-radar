@@ -2,7 +2,10 @@
 the best leading indicator of "a release that matters." Stdlib only.
 
 GitHub has no official trending API, so we use the public Search API as a deterministic
-proxy: repos under AI topics, pushed within the window, ranked by stars. We carry
+proxy: repos under AI topics, created in the last NEW_REPO_DAYS and pushed within the window,
+ranked by stars. Without the creation bound the search returns the most-starred repos of all
+time (transformers, tensorflow, ML-For-Beginners) every single day, which is a hall of fame,
+not news. We carry
 signals.gh_stars so score.py's gh_stars>=50 heuristic fires immediately (no enrich pass
 needed) and the digest can print real traction.
 
@@ -17,7 +20,7 @@ import os
 import sys
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -29,6 +32,9 @@ API = "https://api.github.com/search/repositories"
 WINDOW = os.environ.get("WINDOW", "48h")
 MIN_STARS = int(os.environ.get("GH_TRENDING_MIN_STARS", "50"))  # noise floor
 PER_TOPIC = int(os.environ.get("GH_TRENDING_PER_TOPIC", "15"))
+# A repository counts as news while it is young. Older projects reach the radar through
+# their releases and the press, not by being popular.
+NEW_REPO_DAYS = int(os.environ.get("GH_TRENDING_NEW_REPO_DAYS", "30"))
 CONFIG = CONFIG_DIR / "sources.yaml"
 GH_TOKEN = os.environ.get("GITHUB_TOKEN")
 
@@ -46,10 +52,14 @@ def load_topics() -> list[str]:
     return topics
 
 
-def fetch_topic(topic: str, since_date: str) -> list[dict]:
+def search_query(topic: str, since_date: str, created_after: str) -> str:
+    return f"topic:{topic} created:>{created_after} pushed:>{since_date} stars:>={MIN_STARS}"
+
+
+def fetch_topic(topic: str, since_date: str, created_after: str) -> list[dict]:
     q = urllib.parse.urlencode(
         {
-            "q": f"topic:{topic} pushed:>{since_date} stars:>={MIN_STARS}",
+            "q": search_query(topic, since_date, created_after),
             "sort": "stars",
             "order": "desc",
             "per_page": PER_TOPIC,
@@ -78,18 +88,21 @@ def to_item(repo: dict) -> dict | None:
         source="GitHub Search",
         authors=[(repo.get("owner") or {}).get("login")] if repo.get("owner") else [],
         published=repo.get("pushed_at"),
+        created=repo.get("created_at"),
         raw_summary=desc,
         signals={"gh_stars": repo.get("stargazers_count", 0), "gh_forks": repo.get("forks_count", 0)},
     )
 
 
 def main() -> dict:
-    since = datetime.now(timezone.utc) - parse_window(WINDOW)
+    now = datetime.now(timezone.utc)
+    since = now - parse_window(WINDOW)
+    created_after = (now - timedelta(days=NEW_REPO_DAYS)).strftime("%Y-%m-%d")
     batch = SourceBatch("github_trending")
     items = {}
 
     def fetch_items(topic):
-        for repo in fetch_topic(topic, since.strftime("%Y-%m-%d")):
+        for repo in fetch_topic(topic, since.strftime("%Y-%m-%d"), created_after):
             item = to_item(repo)
             if item:
                 yield item

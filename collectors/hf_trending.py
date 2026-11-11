@@ -63,6 +63,7 @@ def to_item(entry: dict, kind: str) -> dict | None:
         source=f"HF Trending {noun}s",
         authors=[hf_id.split("/")[0]] if "/" in hf_id else [],
         published=entry.get("lastModified") or entry.get("createdAt"),
+        created=entry.get("createdAt"),
         raw_summary=(entry.get("pipeline_tag") or "")
         + ((" · tags: " + ", ".join((entry.get("tags") or [])[:6])) if entry.get("tags") else ""),
         signals={

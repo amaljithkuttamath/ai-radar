@@ -20,10 +20,10 @@ def _isolate_persistent_state(tmp_path, monkeypatch):
     # Restore the environment after every test so those values cannot leak.
     monkeypatch.setattr(os, "environ", os.environ.copy())
     from collectors import common
-    from distill import delta, score, synthesize, reindex
+    from distill import delta, frontpage, score, synthesize, reindex
     from radar import pipeline
 
-    for module in (common, delta, score, synthesize, reindex, pipeline):
+    for module in (common, delta, frontpage, score, synthesize, reindex, pipeline):
         monkeypatch.setattr(module, "ROOT", tmp_path)
     monkeypatch.setattr(common, "RAW", tmp_path / "data/raw")
     monkeypatch.setattr(common, "SEEN_PATH", tmp_path / "data/seen.json")

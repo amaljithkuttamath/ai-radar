@@ -132,6 +132,11 @@ def main() -> None:
     write_index(files)
     write_latest(files)
     print(f"[reindex] indexed {len(files)} reports; wrote README.md, latest.md, and nav.")
+    # Reader frontpage (Yesterday block in the root README, week.md, month.md). Derived from
+    # the same digests, so it can never disagree with the index written just above.
+    from distill import frontpage
+
+    frontpage.main(REPORTS)
 
 
 if __name__ == "__main__":

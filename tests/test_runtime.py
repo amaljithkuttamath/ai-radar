@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from collectors import arxiv, hf_papers, hf_trending, github_trending, lab_blogs
+from collectors import arxiv, hf_papers, hf_trending, github_trending, hackernews, lab_blogs, lab_pages
 from distill import cluster
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -77,6 +77,8 @@ def test_live_distillation_refuses_missing_corpus(tmp_path):
         (hf_trending, "fetch"),
         (github_trending, "fetch_topic"),
         (lab_blogs, "parse_feed"),
+        (hackernews, "fetch"),
+        (lab_pages, "fetch_page"),
     ],
 )
 def test_total_source_failure_cannot_report_success(module, fetcher, monkeypatch):
