@@ -29,7 +29,6 @@ import argparse
 import json
 import os
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 from grader import (archive, artifacts, attempts, deterministic, forecast, freshness,

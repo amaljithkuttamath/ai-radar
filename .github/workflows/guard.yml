@@ -105,7 +105,7 @@ jobs:
       - name: Install locked development environment
         run: uv sync --locked
       - name: Lint
-        run: uv run --no-sync ruff check radar collectors distill tests scripts/check_whitelist.py
+        run: uv run --no-sync ruff check .
       - name: Check formatting
         run: uv run --no-sync ruff format --check radar collectors distill tests scripts/check_whitelist.py
       - name: Run offline suite

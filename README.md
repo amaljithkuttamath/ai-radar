@@ -162,7 +162,9 @@ Email is an explicit delivery step, separate from publication:
   validate freshness and manifest completeness before synthesis.
 - Real runs commit reports, movers state, the tracking ledger, and `data/publication.json`. Previews are
   uploaded as artifacts. Heartbeats follow successful real publication only.
-- Manual workflow dispatch can explicitly enable email after publication.
+- Every scheduled publication emails the digest when the `RADAR_EMAIL_TO` and
+  `RADAR_SMTP_*` secrets are set. Manual dispatch sends only when `deliver_email` is on.
+  A skipped or failed send is a warning annotation on the run, never a failed publication.
 - `guard.yml` checks the existing scheduled-agent write scopes and runs lint,
   formatting, tests, and the offline demo on Python 3.10 and 3.13.
 - `eval-deterministic.yml` evaluates published digests; `health.yml` records pipeline health.
@@ -182,7 +184,7 @@ failures remain separate from pipeline health reporting.
 ```bash
 uv sync --locked
 uv run pytest -q
-uv run ruff check radar collectors distill tests scripts/check_whitelist.py
+uv run ruff check .
 uv run ruff format --check radar collectors distill tests scripts/check_whitelist.py
 ```
 

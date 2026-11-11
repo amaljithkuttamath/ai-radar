@@ -30,7 +30,7 @@ on:
         default: lexical
         options: [lexical, embed]
       deliver_email:
-        description: "Send after publication (requires SMTP secrets)"
+        description: "Email this manual run's digest (scheduled runs always email)"
         type: choice
         default: "off"
         options: ["off", "on"]
@@ -120,8 +120,14 @@ jobs:
       - name: Commit validated publication
         if: env.RADAR_MODEL_BACKEND != 'dryrun' && env.RADAR_MODEL_BACKEND != 'template'
         run: bash scripts/publish.sh distill
-      - name: Deliver explicitly requested email
-        if: inputs.deliver_email == 'on' && env.RADAR_MODEL_BACKEND != 'dryrun' && env.RADAR_MODEL_BACKEND != 'template'
+      # Scheduled (workflow_run) publications always attempt delivery; `inputs` is empty on
+      # that event, so gating on the input alone silently skipped every daily email. Manual
+      # runs stay opt-in so a re-run does not send the same digest twice. Unconfigured SMTP
+      # secrets or a failed send surface as a warning annotation, never a failed publication.
+      - name: Deliver digest email
+        if: >-
+          (github.event_name == 'workflow_run' || inputs.deliver_email == 'on') &&
+          env.RADAR_MODEL_BACKEND != 'dryrun' && env.RADAR_MODEL_BACKEND != 'template'
         env:
           RADAR_EMAIL_TO: ${{ secrets.RADAR_EMAIL_TO }}
           RADAR_EMAIL_FROM: ${{ secrets.RADAR_EMAIL_FROM }}
