@@ -9,25 +9,13 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Sat 7 Nov
+### New in the last two days · Thu 12 Nov
 
-> The radar captures a split between maturing infrastructure — Hugging Face Transformers (168k stars) and Microsoft's ML curriculum (92k stars) — and a wave of new evaluation benchmarks targeting agents in wet-lab science, theorem proving, and molecular representation quality. NVIDIA's simready-assets dataset (1.4M downloads) and fresh Qwen/DeepSeek multimodal models round out the highest-signal items in a 48-hour window heavy on usable artifacts.
+> The strongest signals center on making agents more reliable: WikiTrace shows evidence-linked memory cuts degradation in LLM agents, Tree-Ising repairs models via bit-level weight edits without gradients, and MMDM introduces a benchmark for massive multitask decision-making. Meanwhile, a Google SWE team deployed 48 agents to discover an unmapped Maya pyramid in 72 hours, and NVIDIA refactors Kubernetes for agent-scale idle time.
 
-- **[Muir: Linear Attention with Sensitivity-Allocated Gating and Matched-Filter Readout](https://arxiv.org/abs/2611.08376)** Linear attention variant (GDN-2 successor) that decouples erase/write gates and allocates sensitivity per channel.
-- **[Vera Delivers the Best of Both Worlds: Highest Throughput and Fastest Agents](https://blogs.nvidia.com/blog/vera-cpu-highest-throughput-fastest-agents/)** NVIDIA blog positioning Vera CPU for agent workloads that alternate GPU reasoning and CPU execution.
-- **[Measuring how AI agents handle everyday wet-lab science](https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science)** OpenAI introduces BioBasicsBench: 100 tasks testing agent interpretation of raw experimental data and wet-lab protocol execution.
-- **[On the limitations of molecular representations](https://arxiv.org/abs/2611.08420)** Systematic study showing SOTA molecular embeddings fail to capture graph structure, 3D shape, and ADMET similarity better than baselines.
-- **[SpecCTMC: Exact Speculative Simulation of Diffusion Language Model Continuous-Time Markov Chains](https://arxiv.org/abs/2611.08362)** Training-free speculative sampler for masked diffusion LMs that preserves exact output distribution while reducing sequential bottleneck.
-- **[LeanContext: Disentangling Mathematical Resources from Local Formal Context in Lean Whole-Proof Generation](https://arxiv.org/abs/2611.08277)** 129k-problem Lean benchmark separating mathematical context from environment context for whole-proof generation.
+_A quiet day: nothing new cleared the bar. Still unfolding is below._
 
-### Still unfolding
-
-- **[huggingface/transformers](https://github.com/huggingface/transformers)** · day 15
-- **[Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B)** · day 15
-- **[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)** · day 12
-- **[deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** · day 12
-
-[Read the full briefing](reports/2026-11-07-digest.md) · [Every edition](reports/README.md)
+[Read the full briefing](reports/2026-11-12-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 

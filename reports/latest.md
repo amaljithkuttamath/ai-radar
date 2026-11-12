@@ -1,79 +1,85 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-09](2026-11-09-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-10](2026-11-10-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-10
+# AI Radar — 2026-11-12
 
-The strongest signal this window is **Sage-Taiyi**, a metacognitive architecture that ranks first on all eight metrics of the new Taiyi-Bench scientific ideation benchmark (47 HF upvotes, repo linked). **google/langextract** climbed to score 4 with 39K GitHub stars, becoming the top-structured-extraction library with precise source grounding. NVIDIA’s **simready-assets** dataset recorded 1.46M downloads, indicating heavy adoption for simulation-ready 3D assets.
+The strongest signals center on making agents more reliable: WikiTrace shows evidence-linked memory cuts degradation in LLM agents, Tree-Ising repairs models via bit-level weight edits without gradients, and MMDM introduces a benchmark for massive multitask decision-making. Meanwhile, a Google SWE team deployed 48 agents to discover an unmapped Maya pyramid in 72 hours, and NVIDIA refactors Kubernetes for agent-scale idle time.
 
 ## What changed
 
-**New to radar**
-- [Sage-Taiyi: A Metacognitive Architecture for Scientific Discovery](https://arxiv.org/abs/2611.12762) · 4/5
-- [Reframe: Observation-Aligned Multi-Teacher On-Policy Distillation for Agentic Visual Reasoning](https://arxiv.org/abs/2611.12886) · 3/5
-- [InfraRSI: Harnessing Recursive Self-Improvement for Training Infrastructure](https://arxiv.org/abs/2611.11558) · 3/5
-- [pathwaycom/serviette — A no-code RAG server that keeps answers in sync with your documents](https://github.com/pathwaycom/serviette) · 3/5
-- [fla-org/flash-linear-attention — Efficient implementations for emerging model architectures](https://github.com/fla-org/flash-linear-attention) · 3/5
+**New to radar:** [Don't Just Trust Your Memory: Evidence-Linked Memory Reduces Memory-Induced Degradation in LLM Agents](https://arxiv.org/abs/2611.14320) · [Tree-Ising: Repairing Language Models with Bit-Level Ising Edits](https://arxiv.org/abs/2611.14210) · [microsoft/TokenEconomizer](https://github.com/microsoft/TokenEconomizer) · [MMDM: Measuring Massive Multitask Decision Making](https://arxiv.org/abs/2611.14309) · [Few-Step Streaming Video Generation via Condition Shifting](https://arxiv.org/abs/2611.14033)
 
-**Climbing**
-- [google/langextract — Python library for structured extraction with source grounding](https://github.com/google/langextract) · 4/5 (+1)
-- [NousResearch/arete-data-pairs (HF Dataset)](https://huggingface.co/datasets/NousResearch/arete-data-pairs) · 2/5 (+1)
-- [NousResearch/Propaganda_Eval (HF Dataset)](https://huggingface.co/datasets/NousResearch/Propaganda_Eval) · 2/5 (+1)
+**Climbing:** [MiniMaxAI/MiniMax-H3-Image](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image)
 
-**Cooled** — none
+**Cooled:** [SWAM: Scaling World Action Models with Cross-Modal Alignment](https://arxiv.org/abs/2611.12870) · [nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)
 
 ## Main list
 
-### Sage-Taiyi: A Metacognitive Architecture for Scientific Discovery · 4/5
-[arXiv:2611.12762](https://arxiv.org/abs/2611.12762) · [GitHub](https://github.com/Alpha-Innovator/Sage-Taiyi) · [Project](https://alpha-innovator.github.io/Sage-Taiyi/)  
-A metacognition-inspired system that monitors its own evidence, assumptions, and open questions to adapt research targets and select reasoning methods. Tops the new Taiyi-Bench (265 tasks from 50 papers across ten disciplines) on all eight historical-rediscovery and ideation metrics. For engineers building AI co-scientists or autonomous research loops.
+### Agents
 
-### google/langextract — Structured extraction with precise grounding · 4/5
-[GitHub](https://github.com/google/langextract)  
-Python library that extracts structured information from unstructured text using LLMs while preserving exact source spans and providing interactive visualization. 39K stars observed; climbing fast. Drop-in for RAG pipelines, document parsing, and any workflow needing verifiable citations.
+[Don't Just Trust Your Memory: Evidence-Linked Memory Reduces Memory-Induced Degradation in LLM Agents](https://arxiv.org/abs/2611.14320) · 4/5  
+Researchers introduced WikiTrace, a method that links agent memory lessons to their source trajectories so agents can verify lessons before applying them, reducing memory-induced failures. Matters if you build agents that learn from experience. [GitHub](https://github.com/yukyeongleee/wikitrace) · [Project](https://yukyeongleee.github.io/wikitrace/)
 
-### huggingface/transformers — Core model-definition framework · 4/5
-[GitHub](https://github.com/huggingface/transformers)  
-168K stars; the de facto standard for loading, training, and deploying text, vision, audio, and multimodal models. Ongoing releases add new architectures and hardware backends. Essential dependency for virtually every LLM/VM workflow.
+[Lazare, veni foras: Reprogramming Dormant Neurons to Backdoor AI Agents](https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/) · 1/5  
+Microsoft Research details a backdoor technique that repurposes dormant neurons to trigger malicious behavior in agents with tool access. Matters if you secure agent deployments against supply-chain or weight-space attacks.
 
-### nvidia/simready-assets (HF Dataset) · 4/5
-[Hugging Face](https://huggingface.co/datasets/nvidia/simready-assets)  
-CC-BY-4.0 dataset of simulation-ready 3D assets (1.46M downloads, 1.5K likes observed). Targets Omniverse, Isaac Sim, and robotics digital-twin workflows. Use when you need physically accurate, licensed assets for sim-to-real transfer.
+[Cogent and OpenAI build cyber defense factories for enterprises](https://openai.com/index/cogent-security) · 1/5  
+OpenAI partners with Cogent to combine models with enterprise context for automated vulnerability remediation via agents. Matters if you run enterprise security automation.
 
-### Reframe: Observation-Aligned Multi-Teacher On-Policy Distillation for Agentic Visual Reasoning · 3/5
-[arXiv:2611.12886](https://arxiv.org/abs/2611.12886) · [GitHub](https://github.com/EliYuan30/Reframe)  
-Introduces Ground-Drop-GRPO to train spatial/temporal specialists with evidence-aware rewards, then aligns observation states (not just output distributions) via multi-teacher on-policy distillation. For teams building visual agents that must reliably use tools and ground actions in returned observations.
+[Agent Substrate: Advancing Kubernetes for Agents at Scale](https://developer.nvidia.com/blog/agent-substrate-advancing-kubernetes-for-agents-at-scale/) · 1/5  
+NVIDIA proposes Kubernetes extensions to handle agent idle time, tool waits, and model response latency at scale. Matters if you orchestrate agent fleets on Kubernetes.
 
-### InfraRSI: Harnessing Recursive Self-Improvement for Training Infrastructure · 3/5
-[arXiv:2611.11558](https://arxiv.org/abs/2611.11558) · [GitHub](https://github.com/TokenRhythm/InfraRSI) · [Project](https://infrarsi.github.io/)  
-Agentic harness that converts open-ended commands into verified distributed-training optimizations (kernel selection, communication schedules, launch configs) via a five-stage contract-locked workflow. Targets OOM, compiler conflicts, and silent numerical drift. For platform teams automating cluster-level tuning.
+[Google SWE points 48 AI agents at NASA Lidar, finds unmapped Maya pyramid in 72h](https://pietromiotti.com/latest/maya-site/?maya) · 2/5  
+A Google software engineer deployed 48 agents to process NASA lidar data, discovering a previously unmapped Maya pyramid in three days. Matters if you explore multi-agent scientific discovery workflows. [Discussion](https://news.ycombinator.com/item?id=50452455)
 
-### Intrinsic Distribution Matching (carryover, 12-run streak) · 3/5
-[arXiv:2610.39633](https://arxiv.org/abs/2610.39633) · [GitHub](https://github.com/inclusionAI/IDM) · [Project](https://www.inclusion-ai.org/IDM/?lang=zh)  
-One-step/few-step text-to-image distillation using internal velocity branches to match the reference distribution without a separate fake scorer. 242 stars, 30 HF upvotes observed. Rising traction (≈13% magnitude growth over streak). For fast, high-fidelity image generation pipelines.
+[Q3.5 Timelines Update: Looks Like the Intelligence Explosion Will Happen in 2027 After All](https://www.alignmentforum.org/posts/f9PajMLmBYzmWzyDv/q3-5-timelines-update-looks-like-the-intelligence-explosion) · 2/5  
+An updated timeline model incorporating METR's 17x progress speedup estimate suggests recursive AI improvement could arrive in 2027. Matters if you plan long-term compute or research strategy.
 
-### Qwen/Qwen3.8-27B (HF Model) · 3/5
-[Hugging Face](https://huggingface.co/Qwen/Qwen3.8-27B)  
-Apache-2.0 image-text-to-text model (19.5K likes, 7.4M downloads observed). Conversational, multimodal, safetensors format. Plug into transformers for vision-language tasks requiring a strong open-weight backbone.
+### Evaluation
 
-### nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B (HF Model, carryover, 6-run streak) · 3/5
-[Hugging Face](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)  
-Automatic-speech-recognition model (3.1K likes, 72K downloads observed). NeMo-based, PyTorch, safetensors. For high-accuracy ASR in production pipelines; steady adoption signal over six collection runs.
+[Tree-Ising: Repairing Language Models with Bit-Level Ising Edits](https://arxiv.org/abs/2611.14210) · 4/5  
+A new method casts model repair as sparse discrete optimization over BF16 weights, weakening reasoning loops and strengthening correct directions without gradients, using forward-pass statistics. Matters if you debug or patch model behavior post-training. [GitHub](https://github.com/TheQuantumGOAT/Tree-Ising)
 
-### How Many Exposures Does a World Model Need? · 2/5
-[arXiv:2611.12324](https://arxiv.org/abs/2611.12324) · [GitHub](https://github.com/third-intelligence/WARC)  
-Introduces MechEval on ARC-AGI-3: 69 recurring mechanics across 20 games, measuring how many exposures a world model needs to predict unseen mechanics at test time. For researchers benchmarking sample-efficient world-model learning.
+[MMDM: Measuring Massive Multitask Decision Making](https://arxiv.org/abs/2611.14309) · 3/5  
+A new benchmark evaluates System-1 decision models on long-context, large-option-space tasks with complex logical dependencies, addressing gaps in existing benchmarks. Matters if you evaluate or serve decision-making models. [GitHub](https://github.com/mmdm-benchmark/mmdm) · [Project](https://mmdm-benchmark.github.io/)
 
-## Watch-list / Still developing
+[Mitra-v2: Scaling synthetic pretraining for tabular foundation models](https://www.amazon.science/blog/mitra-v2-scaling-synthetic-pretraining-for-tabular-foundation-models) · 1/5  
+Amazon Science shows expanding synthetic pretraining data lets a single tabular foundation model adapt to new tables without retraining, leading TabArena. Matters if you work with tabular data and foundation models.
 
-- [Vendi Anomaly Scores for Efficient and Accurate Anomaly Detection](https://arxiv.org/abs/2611.12871) · 2/5 — diversity-based anomaly score, repo not yet linked
-- [A Lattice-Based HMM Approach to Aruz Scansion of Ottoman Poetry](https://arxiv.org/abs/2611.12691) · 2/5 — niche NLP benchmark with artifact
-- [BDBBQ: Bengali Social Bias Benchmark](https://arxiv.org/abs/2611.12407) · 2/5 — 61K QA instances, bilingual, culturally grounded
-- [Vyber07/cyber-security (HF Dataset)](https://huggingface.co/datasets/Vyber07/cyber-security) · 3/5 — 15K downloads, text-gen/QA, Apache-2.0
-- STORY ARCS carryovers with sustained traction: [morluto/rea](https://github.com/morluto/rea) (15 runs), [vectorize-io/hindsight](https://github.com/vectorize-io/hindsight) (13 runs), [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) (13 runs), [HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor) (6 runs), [TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents) (15 runs), [paperclipai/paperclip](https://github.com/paperclipai/paperclip) (13 runs), [affaan-m/ECC](https://github.com/affaan-m/ECC) (15 runs), [unclecode/crawl4ai](https://github.com/unclecode/crawl4ai) (15 runs)
+### Other
+
+[Few-Step Streaming Video Generation via Condition Shifting](https://arxiv.org/abs/2611.14033) · 3/5  
+Extends APEX to streaming video by using condition shifting to estimate velocity fields within the generator, removing the need for a separate fake-score network. Matters if you optimize video diffusion inference. [Project](https://www.vidu.com/vidu-stream/avatar)
+
+## Still developing
+
+[pathwaycom/serviette](https://github.com/pathwaycom/serviette) · 3/5 — No-code RAG server syncing answers with documents across 8 vector databases (58.7k stars, 3 runs)
+
+[infiniflow/ragflow](https://github.com/infiniflow/ragflow) · 3/5 — Agent-native RAG engine evolved into context infrastructure (94k stars, 4 runs)
+
+[Angais/pixel-art-atlas-1.4m](https://huggingface.co/datasets/Angais/pixel-art-atlas-1.4m) · 3/5 — 1.4M pixel art images, CC0, 41.6k downloads (4 runs)
+
+[NousResearch/arete-data-pairs](https://huggingface.co/datasets/NousResearch/arete-data-pairs) · 2/5 — Preference pairs for text generation and QA, 1.3k downloads (6 runs)
+
+### Story arcs (rising traction ≥3 runs)
+
+[Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633) — 13-day streak, +13.3% traction
+
+[vectorize-io/hindsight](https://github.com/vectorize-io/hindsight) — 14-day streak, agent memory that learns
+
+[DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) — 14-day streak, token-saving coding agent proxy
+
+[paperclipai/paperclip](https://github.com/paperclipai/paperclip) — 14-day streak, agent management app
+
+[rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) — 13-day streak, from-scratch LLM implementation
 
 ## Action items
 
-1. **Try** [google/langextract](https://github.com/google/langextract) in a RAG or document-processing pipeline — it returns grounded spans and an interactive HTML viewer out of the box.
-2. **Read** [Sage-Taiyi](https://arxiv.org/abs/2611.12762) and the [Taiyi-Bench](https://alpha-innovator.github.io/Sage-Taiyi/) specification if you’re designing autonomous research agents or scientific-reasoning evals.
-3. **Track** [InfraRSI](https://github.com/TokenRhythm/InfraRSI) — its contract-locked, five-stage workflow could generalize to any cluster-level optimization loop (kernel fusion, comm scheduling, memory planning).
+- **Read:** [WikiTrace paper](https://arxiv.org/abs/2611.14320) and [GitHub](https://github.com/yukyeongleee/wikitrace) for evidence-linked agent memory.
+- **Try:** [Tree-Ising](https://github.com/TheQuantumGOAT/Tree-Ising) for gradient-free model repair on your own checkpoints.
+- **Track:** [MMDM benchmark](https://github.com/mmdm-benchmark/mmdm) as a new standard for decision-model evaluation.
+
+---
+
+Collection was incomplete: lab_blogs.
