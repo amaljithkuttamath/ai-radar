@@ -244,3 +244,30 @@ def test_describe_never_leaks_the_key(monkeypatch):
     out = llm.describe()
     assert "supersecret" not in out
     assert "openrouter.ai" in out
+
+
+def _reply(monkeypatch, payload):
+    import io
+    import json as _json
+
+    monkeypatch.setenv("RADAR_LLM_BASE_URL", "https://x.test/v1")
+    monkeypatch.setenv("RADAR_LLM_API_KEY", "k")
+    monkeypatch.setattr(
+        llm.urllib.request, "urlopen", lambda *a, **kw: io.BytesIO(_json.dumps(payload).encode())
+    )
+
+
+@pytest.mark.parametrize("content", [None, "", "  \n", ["not", "text"]])
+def test_a_200_with_no_text_is_an_empty_response_not_a_none(monkeypatch, content):
+    """2026-11-11: a gateway answered 200 with `content: null`, `chat` returned None, and
+    the digest run died on a TypeError two frames later instead of degrading."""
+    _reply(monkeypatch, {"choices": [{"message": {"content": content}, "finish_reason": "stop"}]})
+    with pytest.raises(llm.EmptyResponse, match="returned no text"):
+        llm.chat("sys", "user", "meta-llama/llama-3.3-70b-instruct")
+
+
+def test_no_text_at_the_token_ceiling_is_truncation(monkeypatch):
+    _reply(monkeypatch, {"choices": [{"message": {"content": None}, "finish_reason": "length"}]})
+    with pytest.raises(llm.Truncated) as caught:
+        llm.chat("sys", "user", "meta-llama/llama-3.3-70b-instruct")
+    assert caught.value.partial == ""

@@ -320,6 +320,15 @@ class Truncated(LLMError):
         self.partial = partial
 
 
+class EmptyResponse(LLMError):
+    """The provider answered 200 with no text at all.
+
+    Gateways do this when the upstream errored mid-request or a reasoning model emitted
+    only reasoning: `content` arrives as null. It is distinct from `LLMError` because it
+    is usually transient, so a caller may reasonably try once more before giving up.
+    """
+
+
 def chat(system: str, user: str, model: str, *, max_tokens: int = MAX_TOKENS) -> str:
     """One OpenAI-compatible chat completion.
 
@@ -359,6 +368,18 @@ def chat(system: str, user: str, model: str, *, max_tokens: int = MAX_TOKENS) ->
         content = choice["message"]["content"]
     except (KeyError, IndexError, TypeError) as ex:
         raise LLMError(f"unexpected response shape from {base_url()}: {str(data)[:200]}") from ex
+
+    # A 200 whose `content` is null (or not text) used to be returned as-is, and the first
+    # caller to treat it as a string crashed: the 2026-11-11 digest was lost to a
+    # TypeError instead of degrading. Normalise it here so every caller sees one shape.
+    finish = choice.get("finish_reason") if isinstance(choice, dict) else None
+    if not isinstance(content, str) or not content.strip():
+        if finish == "length":
+            raise Truncated(
+                f"{model} hit the {max_tokens}-token ceiling before producing any text.", partial="")
+        detail = str((choice.get("error") if isinstance(choice, dict) else None) or data.get("error") or "")
+        raise EmptyResponse(
+            f"{model} returned no text (finish_reason={finish!r})" + (f": {detail[:200]}" if detail else ""))
 
     # `finish_reason: length` means the model hit the token ceiling mid-sentence. This
     # used to be discarded, and the cost was three published newsletters that were
