@@ -52,15 +52,15 @@ Interconnects, One Useful Thing, Ahead of AI, Lil'Log, Eugene Yan); and policy a
 
 | signal | status | detail |
 |---|---|---|
-| [Daily digest](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟡 warn | last digest committed 27h ago |
+| [Daily digest](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟢 ok | last digest committed 3h ago |
 | [Model synthesis](https://github.com/amaljithkuttamath/ai-radar/blob/main/reports/latest.md) | 🟢 ok | latest digest carries model synthesis |
-| [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🟡 warn | grader last committed 27h ago · tier 0 only, no model judgement |
+| [Eval loop](https://github.com/amaljithkuttamath/ai-radar/blob/main/evals/latest.json) | 🟡 warn | grader last committed 3h ago · tier 0 only, no model judgement |
 | [Self-healing loop](https://github.com/amaljithkuttamath/ai-radar/issues?q=is%3Aissue+is%3Aopen+label%3Awatchdog) | 🟢 ok | no unanswered alarms |
-| [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/43075975951) | 🟢 ok | last run success |
-| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/43076104878) | 🟡 warn | 1 consecutive failures |
-| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/43105357578) | 🟢 ok | last run success |
+| [Collect corpus](https://github.com/amaljithkuttamath/ai-radar/actions/runs/43282069389) | 🟢 ok | last run success |
+| [Distill digest](https://github.com/amaljithkuttamath/ai-radar/actions/runs/43282175137) | 🟢 ok | last run success |
+| [Watchdog](https://github.com/amaljithkuttamath/ai-radar/actions/runs/43312737480) | 🟢 ok | last run success |
 
-Generated 2026-11-11 22:19 UTC by `scripts/health.py`.
+Generated 2026-11-12 21:56 UTC by `scripts/health.py`.
 
 <!-- health:end -->
 
