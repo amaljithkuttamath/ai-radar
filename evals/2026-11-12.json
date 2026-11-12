@@ -3,19 +3,19 @@
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-12T01:42:39Z",
+  "digest_commit_time_utc": "2026-11-12T18:42:45Z",
   "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.0,
-      "links_total": 30,
+      "links_total": 17,
       "links_broken": 0,
-      "links_unverified": 2,
-      "main_items": 3,
-      "main_score_mean": null,
+      "links_unverified": 1,
+      "main_items": 10,
+      "main_score_mean": 1.8,
       "sections_present": 4,
-      "expected_sections": 4,
+      "expected_sections": 3,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
       "traction_observations": 55,
@@ -27,17 +27,17 @@
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 4 section(s); 4/7 of the prompt's sections present"
+        "detail": "title and 4 section(s); 3/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "3 main-list item(s)"
+        "detail": "10 main-list item(s)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 2/30 declined to answer"
+        "detail": "no dead links; 1/17 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -70,12 +70,8 @@
   },
   "broken_urls": [
     {
-      "url": "https://openai.com/index/cogent-security",
+      "url": "https://openai.com/index/jiostar-vijay-seshadri",
       "status": 403
-    },
-    {
-      "url": "https://news.ycombinator.com/item?id=50452455",
-      "status": 405
     }
   ],
   "missed_stories": [],
