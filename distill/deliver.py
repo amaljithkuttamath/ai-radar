@@ -15,7 +15,9 @@ Optional:
   RADAR_REPORT_PATH     default = newest reports/*.md
 
 If RADAR_EMAIL_TO or SMTP creds are missing, this prints a notice and exits 0 (never fails the
-pipeline just because delivery isn't set up).
+pipeline just because delivery isn't set up). Inside GitHub Actions every "not sent" outcome
+is also raised as a warning annotation naming the missing variables, so a silent stop is
+visible on the run page instead of buried in a green log.
 
 Run: python -m distill.deliver
 """
@@ -147,17 +149,27 @@ def github_report_url(report: Path) -> str | None:
     return f"https://github.com/{repo}/blob/{branch}/reports/{report.name}"
 
 
+def _not_sent(reason: str) -> None:
+    """Report an undelivered digest. Exit status stays 0 (the digest is already published),
+    so in Actions the reason is raised as a warning annotation to keep it from going unseen."""
+    print(f"[deliver] {reason}", file=sys.stderr)
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        flat = " ".join(reason.split()).replace("%", "%25")
+        print(f"::warning title=Digest email not sent::{flat}")
+
+
 def main() -> None:
     to = [r.strip() for r in os.environ.get("RADAR_EMAIL_TO", "").split(",") if r.strip()]
     needed = ("RADAR_SMTP_HOST", "RADAR_SMTP_USER", "RADAR_SMTP_PASS")
-    if not to or any(not os.environ.get(k) for k in needed):
-        print("[deliver] email not configured (need RADAR_EMAIL_TO + SMTP_* ); skipping.")
+    missing = ([] if to else ["RADAR_EMAIL_TO"]) + [k for k in needed if not os.environ.get(k)]
+    if missing:
+        _not_sent(f"email not configured; missing {', '.join(missing)}. Skipping.")
         return
     report = latest_report()
     if not report or not report.exists():
-        print("[deliver] no report found to send; skipping.", file=sys.stderr)
+        _not_sent("no report found to send; skipping.")
         return
-    md = report.read_text()
+    md = report.read_text(encoding="utf-8")
     # Strip the reindex nav header (`<!-- radar:nav -->` block) so it doesn't show up as raw
     # markdown at the top of the email. Reuse reindex's stripper to keep the markers in sync.
     try:
@@ -178,7 +190,7 @@ def main() -> None:
         print(f"[deliver] sent '{subject}' to {len(to)} recipient(s).")
     except Exception as ex:
         # Delivery failure must not fail the pipeline (the digest is already committed).
-        print(f"[deliver] send failed: {ex}", file=sys.stderr)
+        _not_sent(f"send failed: {type(ex).__name__}: {ex}")
 
 
 if __name__ == "__main__":

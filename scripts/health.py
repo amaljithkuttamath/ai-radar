@@ -469,7 +469,7 @@ def render_markdown(health: dict) -> str:
     # when there is no digest, `loop` when the Issues API refuses — and a KeyError in
     # the renderer would take out the whole report over a blind spot in one row.
     icon = {OK: "🟢", WARN: "🟡", DOWN: "🔴", UNKNOWN: "⚪"}
-    rows = [f"| signal | status | detail |", "|---|---|---|"]
+    rows = ["| signal | status | detail |", "|---|---|---|"]
     for s in health["signals"]:
         rows.append(f"| [{s['label']}]({s['url']}) | {icon[s['status']]} {s['status']} "
                     f"| {s['detail']} |")
@@ -491,7 +491,7 @@ def update_readme(health: dict) -> bool:
     text = README_PATH.read_text()
     start, end = text.find(README_START), text.find(README_END)
     if start == -1 or end == -1 or end < start:
-        print(f"[health] README markers not found; skipping README update", file=sys.stderr)
+        print("[health] README markers not found; skipping README update", file=sys.stderr)
         return False
     block = f"{README_START}\n\n{render_markdown(health)}\n{README_END}"
     README_PATH.write_text(text[:start] + block + text[end + len(README_END):])

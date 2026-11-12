@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
 import pytest
@@ -190,3 +191,63 @@ def test_blocking_applies_to_already_collected_corpus(tmp_path, monkeypatch):
     ledger.write_text("blocked_domains: [blocked.example]\n")
     monkeypatch.setattr(blocklist, "LEDGER", ledger)
     assert list(common.iter_raw()) == []
+
+
+def _smtp_env(monkeypatch):
+    for key, value in {
+        "RADAR_EMAIL_TO": "reader@example.com",
+        "RADAR_SMTP_HOST": "smtp.example.com",
+        "RADAR_SMTP_USER": "radar",
+        "RADAR_SMTP_PASS": "secret",
+    }.items():
+        monkeypatch.setenv(key, value)
+
+
+def test_unconfigured_delivery_warns_in_actions_and_names_missing(monkeypatch, capsys):
+    _smtp_env(monkeypatch)
+    monkeypatch.delenv("RADAR_SMTP_PASS")
+    monkeypatch.delenv("RADAR_EMAIL_TO")
+    monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    monkeypatch.setattr(deliver, "send", lambda *a: pytest.fail("must not send"))
+    deliver.main()
+    out = capsys.readouterr().out
+    assert out.startswith("::warning title=Digest email not sent::")
+    assert "RADAR_EMAIL_TO, RADAR_SMTP_PASS" in out
+    assert "secret" not in out
+
+
+def test_delivery_sends_latest_report_and_reports_failure(tmp_path, monkeypatch, capsys):
+    _smtp_env(monkeypatch)
+    monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    monkeypatch.delenv("RADAR_REPORT_PATH", raising=False)
+    monkeypatch.delenv("GITHUB_REPOSITORY", raising=False)
+    monkeypatch.setattr(deliver, "REPORTS", tmp_path)
+    (tmp_path / "latest.md").write_text("# AI Radar — 2026-11-10\n\nBody — text\n", encoding="utf-8")
+    sent = []
+    monkeypatch.setattr(deliver, "send", lambda *a: sent.append(a))
+    deliver.main()
+    assert sent == [
+        ("AI Radar — 2026-11-10", "# AI Radar — 2026-11-10\n\nBody — text\n", ["reader@example.com"])
+    ]
+    assert "::warning" not in capsys.readouterr().out
+
+    def boom(*_):
+        raise OSError("connection\nrefused")
+
+    monkeypatch.setattr(deliver, "send", boom)
+    deliver.main()  # must not raise: the digest is already published
+    out = capsys.readouterr().out
+    assert "::warning title=Digest email not sent::send failed: OSError: connection refused" in out
+
+
+def test_scheduled_distill_runs_deliver_email():
+    import yaml
+
+    workflow = yaml.safe_load(
+        (Path(__file__).parents[1] / ".github/workflows/distill.yml").read_text(encoding="utf-8")
+    )
+    steps = workflow["jobs"]["distill"]["steps"]
+    step = next(s for s in steps if "distill.deliver" in str(s.get("run", "")))
+    assert "github.event_name == 'workflow_run'" in step["if"]
+    assert "inputs.deliver_email == 'on'" in step["if"]
+    assert steps.index(step) > next(i for i, s in enumerate(steps) if "publish.sh" in str(s.get("run", "")))

@@ -122,8 +122,9 @@ backend, publication time, report path, SHA-256, corpus count, and collection he
 
 Explicit preview backends cannot write publication files or advance state. Reindexing
 ignores dryrun headers and filenames whose report date does not match. Optional
-email is separate and runs after successful Git publication when explicitly
-requested by a manual CI run.
+email is separate and runs after successful Git publication: on every scheduled
+run, and on a manual CI run when explicitly requested. An unsent email raises a
+warning annotation and never fails or rolls back the publication.
 
 ## State ownership
 

@@ -14,7 +14,6 @@ truncated evals that failed schema validation. A single JSON object enforces tha
 from __future__ import annotations
 
 import json
-import os
 import re
 import sys
 import urllib.error
