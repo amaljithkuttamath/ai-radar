@@ -815,7 +815,13 @@ def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: 
         _LAST_REQUEST = (system, user, n_cand)
         _log_prompt_stats(system, user, len(items), n_cand, n)
         try:
-            raw = caller(system, user)
+            try:
+                raw = caller(system, user)
+            except llm.EmptyResponse as ex:
+                # Usually a transient upstream fault; one more try is cheaper than a
+                # degraded edition. A second empty answer falls to the handler below.
+                print(f"[distill] {ex}; retrying once", file=sys.stderr)
+                raw = caller(system, user)
         except llm.Truncated as ex:
             # The budget ran out. Whatever arrived may still contain a complete digest
             # ahead of the cut, so it is worth looking before discarding — but it is never
@@ -829,6 +835,14 @@ def synthesize_with_fallback(items: list[dict], system: str, user: str, n_cand: 
                     file=sys.stderr,
                 )
                 return degraded_banner(BACKEND, f"response truncated — {why}") + call_template(system, user)
+        except llm.LLMError as ex:
+            # No usable answer (empty twice, malformed, or no model). The corpus is still
+            # good, so publish the honest template edition rather than lose the day.
+            print(
+                f"[distill] {BACKEND} backend gave no usable answer ({ex}); degrading to the template digest",
+                file=sys.stderr,
+            )
+            return degraded_banner(BACKEND, str(ex)) + call_template(system, user)
         except urllib.error.HTTPError as ex:
             if ex.code == 413:
                 continue

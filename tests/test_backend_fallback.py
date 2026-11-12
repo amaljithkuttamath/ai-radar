@@ -318,3 +318,33 @@ def test_explicit_path_always_writes(tmp_path, monkeypatch):
 
     track.save_ledger({"item:1": {}}, path=target)
     assert target.exists()
+
+
+def test_an_empty_answer_is_retried_once_then_used(anthropic_backend, monkeypatch):
+    calls = []
+
+    def flaky(system, user):
+        calls.append(1)
+        if len(calls) == 1:
+            raise llm.EmptyResponse("m returned no text")
+        return _REAL_DIGEST
+
+    for fn in ("call_anthropic", "call_openai_compat"):
+        monkeypatch.setattr(synthesize, fn, flaky)
+    out = synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
+    assert len(calls) == 2
+    assert "Degraded run" not in out
+
+
+def test_a_persistently_empty_answer_degrades_instead_of_crashing(anthropic_backend, monkeypatch):
+    """The 2026-11-11 edition was lost outright to this; the corpus was fine."""
+
+    def empty(system, user):
+        raise llm.EmptyResponse("m returned no text (finish_reason='stop')")
+
+    for fn in ("call_anthropic", "call_openai_compat"):
+        monkeypatch.setattr(synthesize, fn, empty)
+    out = synthesize.synthesize_with_fallback([], "sys", _prompt_with(_CAND), 1)
+    assert "Degraded run" in out
+    assert "returned no text" in out
+    assert "A Paper" in out
