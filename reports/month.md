@@ -23,19 +23,19 @@ How often each topic came up per daily edition, this month against the month bef
 |---|---:|---:|---|
 | Open-weight models | 1.8 | 0.5 | Up 3.3x |
 | Diffusion models | 1.2 | 3.2 | Down 60% |
-| Safety and security | 1.2 | 0.5 | Up 2.3x |
+| Long context and memory | 1.6 | 4.1 | Down 59% |
 | Robotics | 2.8 | 1.2 | Up 2.2x |
-| Long context and memory | 2.0 | 4.1 | Down 49% |
-| Retrieval and RAG | 2.5 | 1.6 | Up 1.6x |
-| Agents | 12.2 | 15.6 | Steady |
-| Benchmarks and evaluation | 9.8 | 12.3 | Steady |
+| Safety and security | 1.1 | 0.5 | Up 2.1x |
+| Retrieval and RAG | 2.8 | 1.6 | Up 1.7x |
+| Agents | 11.4 | 15.6 | Steady |
+| Benchmarks and evaluation | 9.7 | 12.3 | Steady |
 
 ```mermaid
 xychart-beta
     title "Mentions per edition, last 30 days"
-    x-axis ["Agents", "Benchmarks and evaluation", "Robotics", "Retrieval and RAG", "Long context and memory", "Open-weight models", "Diffusion models", "Safety and security"]
+    x-axis ["Agents", "Benchmarks and evaluation", "Robotics", "Retrieval and RAG", "Open-weight models", "Long context and memory", "Diffusion models", "Safety and security"]
     y-axis "Mentions"
-    bar [12.2, 9.8, 2.8, 2.5, 2.0, 1.8, 1.2, 1.2]
+    bar [11.4, 9.7, 2.8, 2.8, 1.8, 1.6, 1.2, 1.1]
 ```
 
 [All 24 editions this month, and every one before](README.md)

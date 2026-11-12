@@ -11,7 +11,7 @@ what matters, with every link checked against its source.
 
 ### New in the last two days · Thu 12 Nov
 
-> The strongest signals center on making agents more reliable: WikiTrace shows evidence-linked memory cuts degradation in LLM agents, Tree-Ising repairs models via bit-level weight edits without gradients, and MMDM introduces a benchmark for massive multitask decision-making. Meanwhile, a Google SWE team deployed 48 agents to discover an unmapped Maya pyramid in 72 hours, and NVIDIA refactors Kubernetes for agent-scale idle time.
+> Google released the Gemini Decisions API for fast, calibrated multimodal decisions, while Microsoft Research disclosed "Lazarus," a backdoor technique that reprograms dormant neurons to hijack AI agents with tool access. Anthropic filed its S-1 and launched an IPO roadshow, drawing 649-point Hacker News discussion. Coverage spans agent security, production lessons at 500M-user scale, and practical tools for on-device LLMs and RAG.
 
 _A quiet day: nothing new cleared the bar. Still unfolding is below._
 

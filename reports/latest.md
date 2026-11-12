@@ -4,81 +4,67 @@
 
 # AI Radar — 2026-11-12
 
-The strongest signals center on making agents more reliable: WikiTrace shows evidence-linked memory cuts degradation in LLM agents, Tree-Ising repairs models via bit-level weight edits without gradients, and MMDM introduces a benchmark for massive multitask decision-making. Meanwhile, a Google SWE team deployed 48 agents to discover an unmapped Maya pyramid in 72 hours, and NVIDIA refactors Kubernetes for agent-scale idle time.
+Google released the Gemini Decisions API for fast, calibrated multimodal decisions, while Microsoft Research disclosed "Lazarus," a backdoor technique that reprograms dormant neurons to hijack AI agents with tool access. Anthropic filed its S-1 and launched an IPO roadshow, drawing 649-point Hacker News discussion. Coverage spans agent security, production lessons at 500M-user scale, and practical tools for on-device LLMs and RAG.
 
 ## What changed
 
-**New to radar:** [Don't Just Trust Your Memory: Evidence-Linked Memory Reduces Memory-Induced Degradation in LLM Agents](https://arxiv.org/abs/2611.14320) · [Tree-Ising: Repairing Language Models with Bit-Level Ising Edits](https://arxiv.org/abs/2611.14210) · [microsoft/TokenEconomizer](https://github.com/microsoft/TokenEconomizer) · [MMDM: Measuring Massive Multitask Decision Making](https://arxiv.org/abs/2611.14309) · [Few-Step Streaming Video Generation via Condition Shifting](https://arxiv.org/abs/2611.14033)
+**New to radar:** Gemini Decisions API (Google), `smolmaxxing` (on-device LLM tooling), Anthropic IPO discussion (HN), `8hjkkwikl8/ai-portfolio` (three runnable AI projects), `Zyphra/ZONOS3-Mini` (TTS model), `aws-emulator` (local AWS service emulator), MiniMax-H3-Image (16MP image model), `inferssd` (stream MoE experts from SSD), `mafdet` (local LLMs that think while you type), `agentes-chat` (self-hosted Slack alternative with agents).
 
-**Climbing:** [MiniMaxAI/MiniMax-H3-Image](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image)
+**Climbing:** `codepawl/abo-glb` dataset rose to score 3 (+1); `DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED` traction up 54%.
 
-**Cooled:** [SWAM: Scaling World Action Models with Cross-Modal Alignment](https://arxiv.org/abs/2611.12870) · [nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)
+**Cooled:** "TorchCurves: Differentiable Parametric Curves" traction fell 1.1; "Is Your Robot's Memory Just a Clock?" dropped to score 0 (−1.79 magnitude).
 
 ## Main list
 
-### Agents
+### Gemini Decisions API: Fast, calibrated multimodal decisions · 2/5
+[Gemini Decisions API: Fast, calibrated multimodal decisions](https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/) — Google launched a new API powered by Gemini Decision for low-latency, calibrated multimodal decisions. Matters if you need structured, explainable model outputs for routing, classification, or policy enforcement without full generation. Lab release.
 
-[Don't Just Trust Your Memory: Evidence-Linked Memory Reduces Memory-Induced Degradation in LLM Agents](https://arxiv.org/abs/2611.14320) · 4/5  
-Researchers introduced WikiTrace, a method that links agent memory lessons to their source trajectories so agents can verify lessons before applying them, reducing memory-induced failures. Matters if you build agents that learn from experience. [GitHub](https://github.com/yukyeongleee/wikitrace) · [Project](https://yukyeongleee.github.io/wikitrace/)
+### Lazare, veni foras: Reprogramming Dormant Neurons to Backdoor AI Agents · 1/5
+[Lazare, veni foras: Reprogramming Dormant Neurons to Backdoor AI Agents](https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/) — Microsoft researchers demonstrated a backdoor that activates malicious behavior in otherwise normal agents when a hidden trigger appears, critical for agents with tool/terminal access. Matters if you deploy agents that execute code or call APIs. Lab release.
 
-[Lazare, veni foras: Reprogramming Dormant Neurons to Backdoor AI Agents](https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/) · 1/5  
-Microsoft Research details a backdoor technique that repurposes dormant neurons to trigger malicious behavior in agents with tool access. Matters if you secure agent deployments against supply-chain or weight-space attacks.
+### JioStar’s chief architect on AI discovery at 500M-user scale · 1/5
+[JioStar’s chief architect on AI discovery at 500M-user scale](https://openai.com/index/jiostar-vijay-seshadri) — Vijay Seshadri shares lessons on evals, guardrails, and taking AI into production at massive scale. Matters if you design evaluation pipelines or production guardrails for high-traffic systems. Lab release.
 
-[Cogent and OpenAI build cyber defense factories for enterprises](https://openai.com/index/cogent-security) · 1/5  
-OpenAI partners with Cogent to combine models with enterprise context for automated vulnerability remediation via agents. Matters if you run enterprise security automation.
+### Medical Image Segmentation: Foundation Model Adaptation versus Task-Specific Training · 2/5
+[Medical Image Segmentation: Foundation Model Adaptation versus Task-Specific Training](https://arxiv.org/abs/2611.14519) — Study adapts DINOv2 with strategies from bias-only tuning to full fine-tuning, finding task-specific training often matches or beats adapted foundations at new clinical sites. Matters if you evaluate foundation models for domain-specific vision tasks.
 
-[Agent Substrate: Advancing Kubernetes for Agents at Scale](https://developer.nvidia.com/blog/agent-substrate-advancing-kubernetes-for-agents-at-scale/) · 1/5  
-NVIDIA proposes Kubernetes extensions to handle agent idle time, tool waits, and model response latency at scale. Matters if you orchestrate agent fleets on Kubernetes.
+### RS-JEPA: Remote Sensing Joint-Embedding Predictive Architecture with Scan-Path Views · 2/5
+[RS-JEPA: Remote Sensing Joint-Embedding Predictive Architecture with Scan-Path Views for Cross-Sensor Image Retrieval](https://arxiv.org/abs/2611.14496) — Compact Vision Mamba encoder shared across SAR/optical sensors achieves cross-sensor retrieval with 118–173M fewer parameters than transformer baselines. Matters if you build retrieval across heterogeneous sensor modalities.
 
-[Google SWE points 48 AI agents at NASA Lidar, finds unmapped Maya pyramid in 72h](https://pietromiotti.com/latest/maya-site/?maya) · 2/5  
-A Google software engineer deployed 48 agents to process NASA lidar data, discovering a previously unmapped Maya pyramid in three days. Matters if you explore multi-agent scientific discovery workflows. [Discussion](https://news.ycombinator.com/item?id=50452455)
+### Anthropic IPO · 2/5
+[Anthropic IPO](https://ipo.anthropic.com/us/) — Hacker News thread (649 points, 662 comments) discusses Anthropic's S-1 filing and roadshow launch. Matters if you track AI lab financing, talent markets, or competitive dynamics.
 
-[Q3.5 Timelines Update: Looks Like the Intelligence Explosion Will Happen in 2027 After All](https://www.alignmentforum.org/posts/f9PajMLmBYzmWzyDv/q3-5-timelines-update-looks-like-the-intelligence-explosion) · 2/5  
-An updated timeline model incorporating METR's 17x progress speedup estimate suggests recursive AI improvement could arrive in 2027. Matters if you plan long-term compute or research strategy.
+### I'm making LLMs work on small and old devices · 2/5
+[I'm making LLMs work on small and old devices](https://github.com/hyperionaidev/smolmaxxing/) — Practical tooling and techniques for running LLMs on constrained hardware (127 HN points). Matters if you deploy models on edge devices, mobile, or legacy infrastructure.
 
-### Evaluation
+### Toward Foundation Detection Models via Example-Based Grounding in EM-DETR · 2/5
+[Toward Foundation Detection Models via Example-Based Grounding in EM-DETR](https://arxiv.org/abs/2611.14518) — Integrates diverse medical lesion datasets into a multi-domain foundation detector using example-based grounding, addressing annotation scarcity. Matters if you build detection systems with limited labeled data.
 
-[Tree-Ising: Repairing Language Models with Bit-Level Ising Edits](https://arxiv.org/abs/2611.14210) · 4/5  
-A new method casts model repair as sparse discrete optimization over BF16 weights, weakening reasoning loops and strengthening correct directions without gradients, using forward-pass statistics. Matters if you debug or patch model behavior post-training. [GitHub](https://github.com/TheQuantumGOAT/Tree-Ising)
+### Continual-ARC: Measuring Skill Acquisition over a Working Lifetime · 2/5
+[Continual-ARC: Measuring Skill Acquisition over a Working Lifetime](https://arxiv.org/abs/2611.14505) — Lifelong benchmark from three ARC-AGI editions with recurring tasks after dormant gaps, enabling comparison of memory-based and weight-based continual learners. Matters if you evaluate or build agents that must retain skills over time.
 
-[MMDM: Measuring Massive Multitask Decision Making](https://arxiv.org/abs/2611.14309) · 3/5  
-A new benchmark evaluates System-1 decision models on long-context, large-option-space tasks with complex logical dependencies, addressing gaps in existing benchmarks. Matters if you evaluate or serve decision-making models. [GitHub](https://github.com/mmdm-benchmark/mmdm) · [Project](https://mmdm-benchmark.github.io/)
+### 8hjkkwikl8/ai-portfolio — 三个可运行的 AI 工程项目：可追踪 RAG、提示词评测与受守护的 NL2SQL 分析 · 2/5
+[8hjkkwikl8/ai-portfolio](https://github.com/8hjkkwikl8/ai-portfolio) — Three runnable projects: traceable RAG, prompt evaluation, and guarded NL2SQL analysis (78 GitHub stars observed). Matters if you need reference implementations for production RAG, prompt testing, or text-to-SQL with safeguards.
 
-[Mitra-v2: Scaling synthetic pretraining for tabular foundation models](https://www.amazon.science/blog/mitra-v2-scaling-synthetic-pretraining-for-tabular-foundation-models) · 1/5  
-Amazon Science shows expanding synthetic pretraining data lets a single tabular foundation model adapt to new tables without retraining, leading TabArena. Matters if you work with tabular data and foundation models.
+## Watch-list / Still developing
 
-### Other
+- [pathwaycom/serviette](https://github.com/pathwaycom/serviette) — No-code RAG server syncing answers with documents across 8 vector DBs (58.7k stars, 3 runs tracked)
+- [Angais/pixel-art-atlas-1.4m](https://huggingface.co/datasets/Angais/pixel-art-atlas-1.4m) — 1.4M pixel-art images, CC0 (423 likes, 48k downloads, 4 runs)
+- [NousResearch/arete-data-pairs](https://huggingface.co/datasets/NousResearch/arete-data-pairs) — Preference pairs for text generation/QA (65 likes, 1.3k downloads, 6 runs)
+- [Comfy-Org/MiniMax-H3-Image](https://huggingface.co/Comfy-Org/MiniMax-H3-Image) — MiniMax-H3-Image diffusion model for ComfyUI (285 likes, 836k downloads)
+- [When Does the Real Wiring Win?](https://arxiv.org/abs/2611.14508) — Tests connectome structure-function claims against unmeasured physiology
+- [Zyphra/ZONOS3-Mini](https://huggingface.co/Zyphra/ZONOS3-Mini) — TTS model (221 likes, 8.5k downloads)
+- [aws-emulator](https://simonwillison.net/2026/Nov/11/aws-emulator/) — Official Rust-based local AWS service emulator (29.7k commits in 3 weeks)
 
-[Few-Step Streaming Video Generation via Condition Shifting](https://arxiv.org/abs/2611.14033) · 3/5  
-Extends APEX to streaming video by using condition shifting to estimate velocity fields within the generator, removing the need for a separate fake-score network. Matters if you optimize video diffusion inference. [Project](https://www.vidu.com/vidu-stream/avatar)
-
-## Still developing
-
-[pathwaycom/serviette](https://github.com/pathwaycom/serviette) · 3/5 — No-code RAG server syncing answers with documents across 8 vector databases (58.7k stars, 3 runs)
-
-[infiniflow/ragflow](https://github.com/infiniflow/ragflow) · 3/5 — Agent-native RAG engine evolved into context infrastructure (94k stars, 4 runs)
-
-[Angais/pixel-art-atlas-1.4m](https://huggingface.co/datasets/Angais/pixel-art-atlas-1.4m) · 3/5 — 1.4M pixel art images, CC0, 41.6k downloads (4 runs)
-
-[NousResearch/arete-data-pairs](https://huggingface.co/datasets/NousResearch/arete-data-pairs) · 2/5 — Preference pairs for text generation and QA, 1.3k downloads (6 runs)
-
-### Story arcs (rising traction ≥3 runs)
-
-[Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633) — 13-day streak, +13.3% traction
-
-[vectorize-io/hindsight](https://github.com/vectorize-io/hindsight) — 14-day streak, agent memory that learns
-
-[DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) — 14-day streak, token-saving coding agent proxy
-
-[paperclipai/paperclip](https://github.com/paperclipai/paperclip) — 14-day streak, agent management app
-
-[rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) — 13-day streak, from-scratch LLM implementation
+**Story arcs (rising traction ≥3 runs):** Intrinsic Distribution Matching (13 days), vectorize-io/hindsight (14 days), NVIDIA Nemotron-3.5-Transcribe (7 days), HKUDS/DeepTutor (7 days), DietrichGebert/ponytail (14 days), paperclipai/paperclip (14 days), DeepSeek-V4.1-Flash-1017 (4 days), rasbt/LLMs-from-scratch (13 days), Graphify-Labs/graphify (4 days), JuliusBrussee/caveman (4 days).
 
 ## Action items
 
-- **Read:** [WikiTrace paper](https://arxiv.org/abs/2611.14320) and [GitHub](https://github.com/yukyeongleee/wikitrace) for evidence-linked agent memory.
-- **Try:** [Tree-Ising](https://github.com/TheQuantumGOAT/Tree-Ising) for gradient-free model repair on your own checkpoints.
-- **Track:** [MMDM benchmark](https://github.com/mmdm-benchmark/mmdm) as a new standard for decision-model evaluation.
+**Read** [JioStar’s chief architect on AI discovery at 500M-user scale](https://openai.com/index/jiostar-vijay-seshadri) — Concrete lessons on eval design, guardrails, and production rollout at massive scale.
+
+**Try** [smolmaxxing](https://github.com/hyperionaidev/smolmaxxing/) — Toolkit and patterns for running LLMs on constrained/older hardware; useful for edge or cost-sensitive deployment.
+
+**Track** [pathwaycom/serviette](https://github.com/pathwaycom/serviette) — No-code RAG server with live document sync across 8 vector databases; rising fast (58.7k stars) and carries over 3 runs.
 
 ---
 

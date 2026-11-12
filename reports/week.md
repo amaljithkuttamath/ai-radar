@@ -20,14 +20,14 @@ How often each topic came up per daily edition, this week against the week befor
 
 | Topic | This week | Before | Trend |
 |---|---:|---:|---|
-| Safety and security | 4.2 | 0.0 | Up 10x+ |
+| Safety and security | 3.7 | 0.0 | Up 10x+ |
 | Computer-use agents | 0.0 | 1.1 | Down 92% |
-| Long context and memory | 4.0 | 0.7 | Up 5.0x |
-| Inference cost and speed | 4.3 | 0.9 | Up 4.6x |
-| Robotics | 1.5 | 3.4 | Down 55% |
-| Multimodal and vision | 8.8 | 15.9 | Down 44% |
-| AI for science | 3.7 | 2.1 | Up 1.7x |
-| Retrieval and RAG | 2.5 | 4.0 | Down 37% |
+| Inference cost and speed | 4.2 | 0.9 | Up 4.5x |
+| Long context and memory | 2.3 | 0.7 | Up 3.0x |
+| Robotics | 1.7 | 3.4 | Down 50% |
+| Multimodal and vision | 10.2 | 15.9 | Down 36% |
+| Diffusion models | 1.3 | 2.0 | Steady |
+| AI for science | 3.2 | 2.1 | Steady |
 
 ### Every edition this week
 
