@@ -9,13 +9,19 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Thu 12 Nov
+### New in the last two days · Fri 13 Nov
 
-> Google released the Gemini Decisions API for fast, calibrated multimodal decisions, while Microsoft Research disclosed "Lazarus," a backdoor technique that reprograms dormant neurons to hijack AI agents with tool access. Anthropic filed its S-1 and launched an IPO roadshow, drawing 649-point Hacker News discussion. Coverage spans agent security, production lessons at 500M-user scale, and practical tools for on-device LLMs and RAG.
+> The strongest signal today is PhysLoop, a PKU-led framework that uses LLMs’ physics knowledge to generate self-correcting training data for video models, paired with NVIDIA’s practical guide to serving frontier models (GLM-5.3) across two DGX Stations via vLLM. Together they highlight a convergence: research pushing physical plausibility in generation, and engineering solving the multi-node serving that such models demand.
 
 _A quiet day: nothing new cleared the bar. Still unfolding is below._
 
-[Read the full briefing](reports/2026-11-12-digest.md) · [Every edition](reports/README.md)
+### Still unfolding
+
+- **[langchain-ai/langgraph](https://github.com/langchain-ai/langgraph)** · day 145
+- **[rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch)** · day 125
+- **[Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633)** · day 15
+
+[Read the full briefing](reports/2026-11-13-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 

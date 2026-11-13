@@ -1,70 +1,93 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-10](2026-11-10-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-12](2026-11-12-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-12
+# AI Radar — 2026-11-13
 
-Google released the Gemini Decisions API for fast, calibrated multimodal decisions, while Microsoft Research disclosed "Lazarus," a backdoor technique that reprograms dormant neurons to hijack AI agents with tool access. Anthropic filed its S-1 and launched an IPO roadshow, drawing 649-point Hacker News discussion. Coverage spans agent security, production lessons at 500M-user scale, and practical tools for on-device LLMs and RAG.
+The strongest signal today is PhysLoop, a PKU-led framework that uses LLMs’ physics knowledge to generate self-correcting training data for video models, paired with NVIDIA’s practical guide to serving frontier models (GLM-5.3) across two DGX Stations via vLLM. Together they highlight a convergence: research pushing physical plausibility in generation, and engineering solving the multi-node serving that such models demand.
 
 ## What changed
 
-**New to radar:** Gemini Decisions API (Google), `smolmaxxing` (on-device LLM tooling), Anthropic IPO discussion (HN), `8hjkkwikl8/ai-portfolio` (three runnable AI projects), `Zyphra/ZONOS3-Mini` (TTS model), `aws-emulator` (local AWS service emulator), MiniMax-H3-Image (16MP image model), `inferssd` (stream MoE experts from SSD), `mafdet` (local LLMs that think while you type), `agentes-chat` (self-hosted Slack alternative with agents).
+**New to radar** (top 5 of 417)
+- [PhysLoop: Harnessing LLMs' Physics Awareness for Self-Improving Video Generation Models](https://arxiv.org/abs/2611.16748) · 4/5
+- [Interactive-Active-AI/NextTransformer](https://github.com/Interactive-Active-AI/NextTransformer) · 4/5
+- [TTB: Test-time Baking for Efficient Rendering of Decoder-only View Synthesis Models](https://arxiv.org/abs/2611.17331) · 3/5
+- [hyperionaidev/smolmaxxing](https://github.com/hyperionaidev/smolmaxxing) · 3/5
+- [mdiri-ai/SoduWork](https://github.com/mdiri-ai/SoduWork) · 3/5
 
-**Climbing:** `codepawl/abo-glb` dataset rose to score 3 (+1); `DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED` traction up 54%.
-
-**Cooled:** "TorchCurves: Differentiable Parametric Curves" traction fell 1.1; "Is Your Robot's Memory Just a Clock?" dropped to score 0 (−1.79 magnitude).
+**Climbing** (2 items)
+- [8hjkkwikl8/ai-portfolio](https://github.com/8hjkkwikl8/ai-portfolio) · 3/5 (score +1, traction +0.12)
+- [nvidia/PhysicalAI-Human-1M-100K (HF Dataset)](https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K) · 3/5 (score +1, traction +0.07)
 
 ## Main list
 
-### Gemini Decisions API: Fast, calibrated multimodal decisions · 2/5
-[Gemini Decisions API: Fast, calibrated multimodal decisions](https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/) — Google launched a new API powered by Gemini Decision for low-latency, calibrated multimodal decisions. Matters if you need structured, explainable model outputs for routing, classification, or policy enforcement without full generation. Lab release.
+### PhysLoop: Harnessing LLMs' Physics Awareness for Self-Improving Video Generation Models · 4/5
+PKU’s DAGroup released PhysLoop, a harness that prompts an LLM to judge physical plausibility in generated video, produce correction pairs, and steer the video model toward causally consistent dynamics. The repo and project site include evaluation scripts and a benchmark for physical consistency.  
+**Matters if** you train or evaluate video generation models and need automated physical grounding.  
+[GitHub](https://github.com/DAGroup-PKU/PhysLoop) · [Project](https://chenyx24.github.io/PhysLoop-site/)
 
-### Lazare, veni foras: Reprogramming Dormant Neurons to Backdoor AI Agents · 1/5
-[Lazare, veni foras: Reprogramming Dormant Neurons to Backdoor AI Agents](https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/) — Microsoft researchers demonstrated a backdoor that activates malicious behavior in otherwise normal agents when a hidden trigger appears, critical for agents with tool/terminal access. Matters if you deploy agents that execute code or call APIs. Lab release.
+### When One GPU Isn’t Enough: Serving GLM-5.3 Across Two NVIDIA DGX Stations with vLLM · 2/5
+NVIDIA’s technical blog documents tensor-parallel and pipeline-parallel deployment of the 5.3B-parameter GLM model across two DGX Stations, detailing vLLM configuration, NVLink tuning, and observed throughput.  
+**Matters if** you serve models that exceed single-node GPU memory and need a reproducible multi-node vLLM recipe.  
+[Blog](https://developer.nvidia.com/blog/when-one-gpu-isnt-enough-serving-glm-5-3-across-two-nvidia-dgx-stations-with-vllm/)
 
-### JioStar’s chief architect on AI discovery at 500M-user scale · 1/5
-[JioStar’s chief architect on AI discovery at 500M-user scale](https://openai.com/index/jiostar-vijay-seshadri) — Vijay Seshadri shares lessons on evals, guardrails, and taking AI into production at massive scale. Matters if you design evaluation pipelines or production guardrails for high-traffic systems. Lab release.
+### TTB: Test-time Baking for Efficient Rendering of Decoder-only View Synthesis Models · 3/5
+NVlabs introduces Test-Time Baking, which distills cross-view attention into a lightweight MLP at inference time, preserving the quality of decoder-only view synthesis while cutting decode latency. Code and demo site are linked.  
+**Matters if** you deploy neural view-synthesis or 3D reconstruction pipelines and need faster novel-view rendering.  
+[GitHub](https://github.com/NVlabs/DVSM) · [Project](https://test-time-baking.github.io/)
 
-### Medical Image Segmentation: Foundation Model Adaptation versus Task-Specific Training · 2/5
-[Medical Image Segmentation: Foundation Model Adaptation versus Task-Specific Training](https://arxiv.org/abs/2611.14519) — Study adapts DINOv2 with strategies from bias-only tuning to full fine-tuning, finding task-specific training often matches or beats adapted foundations at new clinical sites. Matters if you evaluate foundation models for domain-specific vision tasks.
+### Microsoft Research Focus – Edition #98 · 1/5
+Podcast episode covering AI-powered universal translation, a 31-year math breakthrough, and advances in coding-agent efficiency from Microsoft Research.  
+**Matters if** you track Microsoft’s research priorities and want a concise audio briefing on their latest agent and translation work.  
+[Podcast](https://www.microsoft.com/en-us/research/podcast/microsoft-research-focus-edition-98/)
 
-### RS-JEPA: Remote Sensing Joint-Embedding Predictive Architecture with Scan-Path Views · 2/5
-[RS-JEPA: Remote Sensing Joint-Embedding Predictive Architecture with Scan-Path Views for Cross-Sensor Image Retrieval](https://arxiv.org/abs/2611.14496) — Compact Vision Mamba encoder shared across SAR/optical sensors achieves cross-sensor retrieval with 118–173M fewer parameters than transformer baselines. Matters if you build retrieval across heterogeneous sensor modalities.
+### Introducing ChatGPT Wallet · 1/5
+OpenAI launched a secure payment mechanism letting agents in ChatGPT Work, Codex, and dots complete purchases with user approval and existing card protections.  
+**Matters if** you build agent workflows that need to transact on behalf of users and want a sandboxed, approved payment path.  
+[Announcement](https://openai.com/index/introducing-chatgpt-wallet)
 
-### Anthropic IPO · 2/5
-[Anthropic IPO](https://ipo.anthropic.com/us/) — Hacker News thread (649 points, 662 comments) discusses Anthropic's S-1 filing and roadshow launch. Matters if you track AI lab financing, talent markets, or competitive dynamics.
+### How Amplitude ships product improvements in 1–2 days with OpenAI · 1/5
+Case study describing Amplitude’s “Wave” agent, built on OpenAI models, which identifies product opportunities, writes code via coding agents, and measures impact.  
+**Matters if** you operate a product-analytics loop and want a reference architecture for autonomous feature iteration.  
+[Case study](https://openai.com/business/customer-stories/amplitude)
 
-### I'm making LLMs work on small and old devices · 2/5
-[I'm making LLMs work on small and old devices](https://github.com/hyperionaidev/smolmaxxing/) — Practical tooling and techniques for running LLMs on constrained hardware (127 HN points). Matters if you deploy models on edge devices, mobile, or legacy infrastructure.
+### Brave Search API now accepts agentic payments via the x402 protocol · 2/5
+Brave added x402 (HTTP 402 Payment Required) support to its Search API, enabling agents to pay per query without pre-funded accounts; HN discussion at 231 points.  
+**Matters if** you integrate web search into agent toolchains and need a pay-per-use model that works without API keys.  
+[Announcement](https://brave.com/blog/search-api-agentic-payments/) · [HN discussion](https://news.ycombinator.com/item?id=50477649)
 
-### Toward Foundation Detection Models via Example-Based Grounding in EM-DETR · 2/5
-[Toward Foundation Detection Models via Example-Based Grounding in EM-DETR](https://arxiv.org/abs/2611.14518) — Integrates diverse medical lesion datasets into a multi-domain foundation detector using example-based grounding, addressing annotation scarcity. Matters if you build detection systems with limited labeled data.
+### Quantifying structural stability of transparent models for general insurance pricing · 2/5
+Paper introduces functional transparency and a structural-stability metric for generalized additive models, addressing rapid distributional shift in short-duration insurance contracts.  
+**Matters if** you maintain regulated ML models that require auditability and stability guarantees across frequent retraining.  
+[arXiv](https://arxiv.org/abs/2611.17308)
 
-### Continual-ARC: Measuring Skill Acquisition over a Working Lifetime · 2/5
-[Continual-ARC: Measuring Skill Acquisition over a Working Lifetime](https://arxiv.org/abs/2611.14505) — Lifelong benchmark from three ARC-AGI editions with recurring tasks after dormant gaps, enabling comparison of memory-based and weight-based continual learners. Matters if you evaluate or build agents that must retain skills over time.
+### FLEX-LBP: Learning Local Binary Patterns with Exact Binary Inference for Texture Classification · 2/5
+Method learns LBP radius, angles, and thresholds via backprop with a straight-through estimator, yielding a 90-parameter hard-binary descriptor that matches hand-tuned baselines at unchanged inference cost.  
+**Matters if** you deploy texture-classification on edge devices and want learned, interpretable features without added compute.  
+[arXiv](https://arxiv.org/abs/2611.17302)
 
-### 8hjkkwikl8/ai-portfolio — 三个可运行的 AI 工程项目：可追踪 RAG、提示词评测与受守护的 NL2SQL 分析 · 2/5
-[8hjkkwikl8/ai-portfolio](https://github.com/8hjkkwikl8/ai-portfolio) — Three runnable projects: traceable RAG, prompt evaluation, and guarded NL2SQL analysis (78 GitHub stars observed). Matters if you need reference implementations for production RAG, prompt testing, or text-to-SQL with safeguards.
+### MALNISI-Infused Graph Construction and Weighted Contrastive Loss based GAT for Unsupervised Representation Learning in HSI · 2/5
+Proposes a spectral-spatial similarity index (MALNISI) to build weighted adjacency for hyperspectral-image graphs, plus a weighted contrastive loss for unsupervised GAT training.  
+**Matters if** you work with hyperspectral or multi-spectral remote-sensing data and need unsupervised representation learning.  
+[arXiv](https://arxiv.org/abs/2611.17199)
 
-## Watch-list / Still developing
+## Still developing
 
-- [pathwaycom/serviette](https://github.com/pathwaycom/serviette) — No-code RAG server syncing answers with documents across 8 vector DBs (58.7k stars, 3 runs tracked)
-- [Angais/pixel-art-atlas-1.4m](https://huggingface.co/datasets/Angais/pixel-art-atlas-1.4m) — 1.4M pixel-art images, CC0 (423 likes, 48k downloads, 4 runs)
-- [NousResearch/arete-data-pairs](https://huggingface.co/datasets/NousResearch/arete-data-pairs) — Preference pairs for text generation/QA (65 likes, 1.3k downloads, 6 runs)
-- [Comfy-Org/MiniMax-H3-Image](https://huggingface.co/Comfy-Org/MiniMax-H3-Image) — MiniMax-H3-Image diffusion model for ComfyUI (285 likes, 836k downloads)
-- [When Does the Real Wiring Win?](https://arxiv.org/abs/2611.14508) — Tests connectome structure-function claims against unmeasured physiology
-- [Zyphra/ZONOS3-Mini](https://huggingface.co/Zyphra/ZONOS3-Mini) — TTS model (221 likes, 8.5k downloads)
-- [aws-emulator](https://simonwillison.net/2026/Nov/11/aws-emulator/) — Official Rust-based local AWS service emulator (29.7k commits in 3 weeks)
-
-**Story arcs (rising traction ≥3 runs):** Intrinsic Distribution Matching (13 days), vectorize-io/hindsight (14 days), NVIDIA Nemotron-3.5-Transcribe (7 days), HKUDS/DeepTutor (7 days), DietrichGebert/ponytail (14 days), paperclipai/paperclip (14 days), DeepSeek-V4.1-Flash-1017 (4 days), rasbt/LLMs-from-scratch (13 days), Graphify-Labs/graphify (4 days), JuliusBrussee/caveman (4 days).
+- [pathwaycom/serviette](https://github.com/pathwaycom/serviette) · 3/5 — no-code RAG server syncing answers with documents across 8 vector DBs; 58.7k stars observed, tracked 3 runs.
+- [8hjkkwikl8/ai-portfolio](https://github.com/8hjkkwikl8/ai-portfolio) · 3/5 — three runnable projects: traceable RAG, prompt eval, guarded NL2SQL; 100 stars, climbing (score +1).
+- [Angais/pixel-art-atlas-1.4m](https://huggingface.co/datasets/Angais/pixel-art-atlas-1.4m) · 3/5 — 1.4M CC0 pixel-art images, 455 likes, 53k downloads, rising traction over 5 days.
+- [Zyphra/ZONOS3-Mini](https://huggingface.co/Zyphra/ZONOS3-Mini) · 2/5 — TTS model, 268 likes, 13k downloads, observed 2 days.
+- [Comfy-Org/MiniMax-H3-Image](https://huggingface.co/Comfy-Org/MiniMax-H3-Image) · 2/5 — diffusion model for ComfyUI, 332 likes, 1.26M downloads.
+- [NousResearch/arete-data-pairs](https://huggingface.co/datasets/NousResearch/arete-data-pairs) · 2/5 — 67 likes, 1.4k downloads, tracked 7 days.
+- [Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633) · streak 14 days, magnitude +13.3% — persistent theoretical work on distribution alignment.
+- [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) · streak 14 days — educational PyTorch LLM implementation, steady community growth.
+- [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) · streak 6 days — agent framework, consistent traction.
 
 ## Action items
 
-**Read** [JioStar’s chief architect on AI discovery at 500M-user scale](https://openai.com/index/jiostar-vijay-seshadri) — Concrete lessons on eval design, guardrails, and production rollout at massive scale.
-
-**Try** [smolmaxxing](https://github.com/hyperionaidev/smolmaxxing/) — Toolkit and patterns for running LLMs on constrained/older hardware; useful for edge or cost-sensitive deployment.
-
-**Track** [pathwaycom/serviette](https://github.com/pathwaycom/serviette) — No-code RAG server with live document sync across 8 vector databases; rising fast (58.7k stars) and carries over 3 runs.
+1. **Try** the [PhysLoop harness](https://github.com/DAGroup-PKU/PhysLoop) on a small video-generation checkpoint: run the physics-judgment pipeline to generate correction pairs and measure consistency improvement on the provided benchmark.
+2. **Read** the [NVIDIA multi-DGX vLLM guide](https://developer.nvidia.com/blog/when-one-gpu-isnt-enough-serving-glm-5-3-across-two-nvidia-dgx-stations-with-vllm/) end-to-end; replicate the tensor-parallel config on your own multi-node cluster to validate throughput before scaling larger models.
+3. **Track** the [TTB repository](https://github.com/NVlabs/DVSM) for upcoming release of the baked-MLP weights and integration scripts — if you serve view-synthesis models, the inference-speedup claims warrant a direct A/B test.
 
 ---
 
