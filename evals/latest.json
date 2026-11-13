@@ -1,24 +1,24 @@
 {
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-12T18:42:45Z",
-  "age_hours_at_eval": 0.0,
+  "digest_commit_time_utc": "2026-11-13T18:21:43Z",
+  "age_hours_at_eval": 0.01,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
-      "age_h": 0.0,
-      "links_total": 17,
+      "age_h": 0.01,
+      "links_total": 28,
       "links_broken": 0,
-      "links_unverified": 1,
+      "links_unverified": 3,
       "main_items": 10,
-      "main_score_mean": 1.8,
+      "main_score_mean": 2.0,
       "sections_present": 4,
-      "expected_sections": 3,
+      "expected_sections": 4,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
-      "traction_observations": 55,
+      "traction_observations": 56,
       "degraded_synthesis": false,
       "forecast_accuracy": 0.0,
       "claims_open": 0
@@ -27,7 +27,7 @@
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 4 section(s); 3/7 of the prompt's sections present"
+        "detail": "title and 4 section(s); 4/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
@@ -37,7 +37,7 @@
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 1/17 declined to answer"
+        "detail": "no dead links; 3/28 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -70,8 +70,16 @@
   },
   "broken_urls": [
     {
-      "url": "https://openai.com/index/jiostar-vijay-seshadri",
+      "url": "https://openai.com/index/introducing-chatgpt-wallet",
       "status": 403
+    },
+    {
+      "url": "https://openai.com/business/customer-stories/amplitude",
+      "status": 403
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50477649",
+      "status": 405
     }
   ],
   "missed_stories": [],

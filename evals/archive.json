@@ -22,7 +22,7 @@
         }
       },
       "after": {
-        "n": 1,
+        "n": 2,
         "n_judged": 0,
         "rubric": null,
         "trusted": {
@@ -30,8 +30,8 @@
           "forecast_accuracy": 0.0
         }
       },
-      "verdict": "inconclusive",
-      "why": "fewer than 2 evals on one side"
+      "verdict": "neutral",
+      "why": "no trusted metric moved beyond noise"
     },
     {
       "at": "2026-10-24",
