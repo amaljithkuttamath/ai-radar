@@ -1,24 +1,24 @@
 {
-  "date": "2026-11-13",
+  "date": "2026-11-14",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-13T18:21:43Z",
+  "digest_commit_time_utc": "2026-11-14T16:52:41Z",
   "age_hours_at_eval": 0.01,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.01,
-      "links_total": 28,
+      "links_total": 50,
       "links_broken": 0,
-      "links_unverified": 3,
-      "main_items": 10,
-      "main_score_mean": 2.0,
+      "links_unverified": 4,
+      "main_items": 11,
+      "main_score_mean": 1.56,
       "sections_present": 4,
       "expected_sections": 4,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
-      "traction_observations": 56,
+      "traction_observations": 58,
       "degraded_synthesis": false,
       "forecast_accuracy": 0.0,
       "claims_open": 0
@@ -32,12 +32,12 @@
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "10 main-list item(s)"
+        "detail": "11 main-list item(s)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 3/28 declined to answer"
+        "detail": "no dead links; 4/50 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -70,16 +70,20 @@
   },
   "broken_urls": [
     {
+      "url": "https://openai.com/business/customer-stories/shield",
+      "status": 403
+    },
+    {
+      "url": "https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus",
+      "status": 405
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50493251",
+      "status": 405
+    },
+    {
       "url": "https://openai.com/index/introducing-chatgpt-wallet",
       "status": 403
-    },
-    {
-      "url": "https://openai.com/business/customer-stories/amplitude",
-      "status": 403
-    },
-    {
-      "url": "https://news.ycombinator.com/item?id=50477649",
-      "status": 405
     }
   ],
   "missed_stories": [],
