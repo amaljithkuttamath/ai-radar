@@ -9,19 +9,25 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Fri 13 Nov
+### New in the last two days · Sat 14 Nov
 
-> The strongest signal today is PhysLoop, a PKU-led framework that uses LLMs’ physics knowledge to generate self-correcting training data for video models, paired with NVIDIA’s practical guide to serving frontier models (GLM-5.3) across two DGX Stations via vLLM. Together they highlight a convergence: research pushing physical plausibility in generation, and engineering solving the multi-node serving that such models demand.
+> Frontier labs shipped a wave of agent and infrastructure updates: OpenAI added a wallet for agent purchases and published a customer story on legacy-portal handoffs, Google Research highlighted Antigravity's teamwork feature, and NVIDIA released cuPhoton for black-hole interferometry and new FP64 cuBLAS kernels. Meanwhile, a Hacker News thread alleging Nvidia engineered GPU scarcity via startup funding drew 911 points, and several lightweight local-first agent tools appeared on GitHub.
 
-_A quiet day: nothing new cleared the bar. Still unfolding is below._
+- **[Shield helps technicians hand off legacy portal work with OpenAI](https://openai.com/business/customer-stories/shield)** OpenAI published a customer story showing Shield using its models to let IT technicians offload routine work in legacy portals to Forge agents.
+- **[Advancing science & engineering with Antigravity's /teamwork](https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/)** Google Research highlighted Antigravity's teamwork feature for collaborative science and engineering workflows.
+- **[Run GPU-Powered Black Hole Interferometry with NVIDIA cuPhoton](https://developer.nvidia.com/blog/run-gpu-powered-black-hole-interferometry-with-nvidia-cuphoton/)** NVIDIA introduced cuPhoton, a GPU-accelerated library for very-long-baseline interferometry imaging, demonstrating M87* reconstruction.
+- **[Faster Scientific Simulations with New FP64 Algorithms in NVIDIA cuBLAS](https://developer.nvidia.com/blog/faster-scientific-simulations-with-new-fp64-algorithms-in-nvidia-cublas/)** NVIDIA added high-precision FP64 kernels to cuBLAS, targeting molecular chemistry and materials-science workloads that spend most time in dense GEMM.
+- **[Nvidia allegedly engineered scarcity by funding AI startups to buy its GPUs](https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus)** A TechPowerUp report, amplified to 911 Hacker News points, claims Nvidia funded startups to purchase GPUs, creating artificial scarcity.
+- **[orderesworks42213/crypto-rpocket-accumulation-scanner](https://github.com/orderesworks42213/crypto-rpocket-accumulation-scanner)** A Python scanner that detects coins in quiet accumulation, back-tested on 961 samples with Telegram alerts.
 
 ### Still unfolding
 
-- **[langchain-ai/langgraph](https://github.com/langchain-ai/langgraph)** · day 145
-- **[rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch)** · day 125
-- **[Intrinsic Distribution Matching](https://arxiv.org/abs/2610.39633)** · day 15
+- **[Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B)** · day 22
+- **[deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** · day 19
+- **[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)** · day 19
+- **[Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify)** · day 9
 
-[Read the full briefing](reports/2026-11-13-digest.md) · [Every edition](reports/README.md)
+[Read the full briefing](reports/2026-11-14-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 
