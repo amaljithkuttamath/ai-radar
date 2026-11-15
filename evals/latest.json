@@ -1,43 +1,43 @@
 {
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-14T16:52:41Z",
-  "age_hours_at_eval": 0.01,
+  "digest_commit_time_utc": "2026-11-15T17:33:03Z",
+  "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
-      "age_h": 0.01,
-      "links_total": 50,
+      "age_h": 0.0,
+      "links_total": 30,
       "links_broken": 0,
-      "links_unverified": 4,
-      "main_items": 11,
-      "main_score_mean": 1.56,
-      "sections_present": 4,
+      "links_unverified": 0,
+      "main_items": 15,
+      "main_score_mean": 2.0,
+      "sections_present": 6,
       "expected_sections": 4,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
-      "traction_observations": 58,
+      "traction_observations": 59,
       "degraded_synthesis": false,
-      "forecast_accuracy": 0.0,
+      "forecast_accuracy": 0.111,
       "claims_open": 0
     },
     "checks": [
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 4 section(s); 4/7 of the prompt's sections present"
+        "detail": "title and 6 section(s); 4/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "11 main-list item(s)"
+        "detail": "15 main-list item(s)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 4/50 declined to answer"
+        "detail": "every link answered 2xx"
       },
       {
         "key": "synthesis_present",
@@ -66,26 +66,9 @@
   },
   "trusted": {
     "reobservation_rate": 1.0,
-    "forecast_accuracy": 0.0
+    "forecast_accuracy": 0.111
   },
-  "broken_urls": [
-    {
-      "url": "https://openai.com/business/customer-stories/shield",
-      "status": 403
-    },
-    {
-      "url": "https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus",
-      "status": 405
-    },
-    {
-      "url": "https://news.ycombinator.com/item?id=50493251",
-      "status": 405
-    },
-    {
-      "url": "https://openai.com/index/introducing-chatgpt-wallet",
-      "status": 403
-    }
-  ],
+  "broken_urls": [],
   "missed_stories": [],
   "degraded_reason": "--tier0-only: model call skipped by request"
 }
