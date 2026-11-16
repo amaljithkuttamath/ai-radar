@@ -9,25 +9,25 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Sun 15 Nov
+### New in the last two days · Mon 16 Nov
 
-> Multiple forks of the **AI Manus 2.0** general-purpose agent system appeared on GitHub today, while Nvidia published new CUDA libraries for scientific computing and Google released a multimodal knowledge-agent dataset. Anthropic and Mistral continue their IPO roadshow communications, carried over from earlier this week.
+> NVIDIA’s Vera Rubin platform debuted on MLPerf, sweeping training benchmarks and posting over 10× throughput-per-watt gains for agentic inference. Frontier labs simultaneously shipped agent tooling: OpenAI added computer-use agents for healthcare, Microsoft released TokenEconomizer to cut coding-agent token waste, and NVIDIA expanded CUDA-X libraries for agent-driven scientific workloads.
 
-- **[alicebrown323/pro-tools-desktop](https://github.com/alicebrown323/pro-tools-desktop)** Alice Brown released a Pro Tools 2026 desktop setup with multitrack editing, MIDI sequencing, VST hosting, and a portable mode for Windows 11.
-- **[Topkiflare74/ai--manus2.0](https://github.com/Topkiflare74/ai--manus2.0)** Topkiflare74 published AI Manus 2.0, a general-purpose AI agent system that runs tools and operations in a sandbox environment.
-- **[Run GPU-Powered Black Hole Interferometry with NVIDIA cuPhoton](https://developer.nvidia.com/blog/run-gpu-powered-black-hole-interferometry-with-nvidia-cuphoton/)** Nvidia introduced cuPhoton for GPU-accelerated black hole interferometry, targeting imaging of microarcsecond-scale structures.
-- **[Faster Scientific Simulations with New FP64 Algorithms in NVIDIA cuBLAS](https://developer.nvidia.com/blog/faster-scientific-simulations-with-new-fp64-algorithms-in-nvidia-cublas/)** Nvidia added new FP64 algorithms to cuBLAS for dense linear algebra, accelerating molecular chemistry and materials science workloads.
-- **[google/multimodal-knowledge-agent](https://huggingface.co/datasets/google/multimodal-knowledge-agent)** Google released a multimodal knowledge-agent dataset covering image-text-to-text, visual QA, and document QA tasks under Apache-2.0.
-- **[higurashi-ai/Haru-4B](https://huggingface.co/higurashi-ai/Haru-4B)** Higurashi-ai released Haru-4B, a full-duplex speech-to-speech audio-to-audio model (safetensors).
+- **[NVIDIA Sweeps MLPerf Training and Endpoints as Vera Rubin Debuts With Leading Performance](https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/)** NVIDIA’s Vera Rubin platform swept every MLPerf Training v6.1 benchmark and, in its first MLPerf Endpoints submission, delivered >10× generational throughput-per-watt gains for ag…
+- **[NVIDIA CUDA-X Libraries Give Agents the Tools to Accelerate Scientific Discovery](https://blogs.nvidia.com/blog/cuda-x-libraries-agents-accelerate-scientific-discovery/)** New CUDA-X libraries (cuPhoton, cuPotential, cuSpa) let AI agents accelerate data-intensive research in astrophysics, materials science, and single-cell biology.
+- **[TokenEconomizer: Learning from Experience to Make AI Coding Agents More Efficient](https://www.microsoft.com/en-us/research/blog/tokeneconomizer-learning-from-experience-to-make-ai-coding-agents-more-efficient/)** Microsoft Research open-sourced a plugin that reuses past coding-session context to cut token spend while preserving task success.
+- **[More ways to move care forward with ChatGPT for Healthcare](https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare)** OpenAI launched computer-use agents, improved clinical answers, and healthcare plugins that operate across EHR and scheduling software.
+- **[Advancing computer-use agents for healthcare teams](https://openai.com/index/advancing-computer-use-for-healthcare-teams)** Companion release detailing the computer-use agent architecture for healthcare: screen observation, action execution, and safety guardrails.
+- **[NVIDIA Vera Rubin NVL72 Achieves up to 2× Blackwell Ultra Performance in MLPerf Training v6.1](https://developer.nvidia.com/blog/nvidia-vera-rubin-nvl72-achieves-up-to-2x-blackwell-ultra-performance-in-mlperf-training-v6-1/)** Technical deep-dive on the NVL72 rack-scale system: 2× Blackwell Ultra training speed, enabling faster model-agent co-iteration.
 
 ### Still unfolding
 
-- **[deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** · day 20
-- **[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)** · day 20
-- **[Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security)** · day 10
-- **[nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)** · day 8
+- **[Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security)** · day 11
+- **[nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)** · day 9
+- **[Zyphra/ZONOS3-Mini](https://huggingface.co/Zyphra/ZONOS3-Mini)** · day 5
+- **[google/multimodal-knowledge-agent](https://huggingface.co/datasets/google/multimodal-knowledge-agent)** · day 3
 
-[Read the full briefing](reports/2026-11-15-digest.md) · [Every edition](reports/README.md)
+[Read the full briefing](reports/2026-11-16-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 
