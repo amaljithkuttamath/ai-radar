@@ -1,0 +1,83 @@
+{
+  "date": "2026-11-16",
+  "mode": "deterministic",
+  "grader_model": "",
+  "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
+  "digest_commit_time_utc": "2026-11-16T20:48:21Z",
+  "age_hours_at_eval": 0.01,
+  "tier0": {
+    "module_hash": "b9d5d0f52167",
+    "metrics": {
+      "age_h": 0.01,
+      "links_total": 26,
+      "links_broken": 0,
+      "links_unverified": 2,
+      "main_items": 10,
+      "main_score_mean": 1.3,
+      "sections_present": 6,
+      "expected_sections": 4,
+      "tracked_items": 60,
+      "reobservation_rate": 1.0,
+      "traction_observations": 58,
+      "degraded_synthesis": false,
+      "forecast_accuracy": 0.111,
+      "claims_open": 1
+    },
+    "checks": [
+      {
+        "key": "structure",
+        "ok": true,
+        "detail": "title and 6 section(s); 4/7 of the prompt's sections present"
+      },
+      {
+        "key": "main_list_nonempty",
+        "ok": true,
+        "detail": "10 main-list item(s)"
+      },
+      {
+        "key": "links_resolve",
+        "ok": true,
+        "detail": "no dead links; 2/26 declined to answer"
+      },
+      {
+        "key": "synthesis_present",
+        "ok": true,
+        "detail": "digest carries model synthesis"
+      },
+      {
+        "key": "traction_observed",
+        "ok": true,
+        "detail": "re-observed 100% of 60 tracked items"
+      }
+    ],
+    "failed": []
+  },
+  "revs": {
+    "prompt_rev": "6efe309",
+    "config_rev": "ca1958e",
+    "files": {
+      "distill/digest.md": "6efe309",
+      "distill/brief_spec.md": "3ed73c5",
+      "config/profile.yaml": "48361eb",
+      "config/sources.yaml": "2121db5",
+      "config/routines.yaml": "2121db5",
+      "config/broken_sources.yaml": "ca1958e"
+    }
+  },
+  "trusted": {
+    "reobservation_rate": 1.0,
+    "forecast_accuracy": 0.111
+  },
+  "broken_urls": [
+    {
+      "url": "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare",
+      "status": 403
+    },
+    {
+      "url": "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
+      "status": 403
+    }
+  ],
+  "missed_stories": [],
+  "degraded_reason": "--tier0-only: model call skipped by request"
+}
