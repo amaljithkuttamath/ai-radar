@@ -1,83 +1,70 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-15](2026-11-15-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-16](2026-11-16-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-16
+# AI Radar — 2026-11-17
 
-NVIDIA’s Vera Rubin platform debuted on MLPerf, sweeping training benchmarks and posting over 10× throughput-per-watt gains for agentic inference. Frontier labs simultaneously shipped agent tooling: OpenAI added computer-use agents for healthcare, Microsoft released TokenEconomizer to cut coding-agent token waste, and NVIDIA expanded CUDA-X libraries for agent-driven scientific workloads.
+Three frontier-scale releases dominate today: ScaleVLA connects a 552B DeepSeek backbone to a robot action head, InclusionMed publishes a reproduced Atlas of five healthcare benchmarks, and Sage S2.1 Flash ships a 320B MoE model with scientific encoders and verifiable tool environments. Together they signal a shift from demo-scale VLAs and medical evals toward reproducible, frontier-backed systems.
 
 ## What changed
 
-**New to radar**  
-- [leostera/git-twig](https://github.com/leostera/git-twig) — Native copy-on-write Git worktrees with verified materialization and reproducible benchmarks (128 ★ observed)  
-- [YellowLaborerMarket/Gemini-Config-Checker-](https://github.com/YellowLaborerMarket/Gemini-Config-Checker-) — Chain region scanner for proxy configs that unlock Google AI Studio/Gemini (474 ★ observed)  
-- [varops/actp](https://github.com/varops/actp) — Agent Communication Transport Protocol (ACP over HTTP)  
-- [erkamyaman/unslopovich](https://github.com/erkamyaman/unslopovich) — Agent skill that detects and fixes AI-looking UI/UX in mobile, web, and desktop apps  
-- [modem-dev/boxery](https://github.com/modem-dev/boxery) — Local, remote, and cloud VM sandboxes for coding agents  
-
-**Climbing**  
-- [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) — Score rose to 3 (+1) over 8-day streak  
-- [arc4g/arc-art](https://huggingface.co/datasets/arc4g/arc-art) — Dataset score rose to 2 (+1)  
+**New to radar** (top 5 of 468): [openai/gsm8k (HF Dataset)](https://huggingface.co/datasets/openai/gsm8k) · 5/5 • [ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters](https://arxiv.org/abs/2611.21607) · 4/5 • [InclusionMed: Benchmarking AI for Inclusive Healthcare](https://arxiv.org/abs/2611.21218) · 4/5 • [Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) · 4/5 • [K2-Horizon: A Frontier Fleet of Open Source Language Models](https://arxiv.org/abs/2611.21003) · 4/5  
+**Climbing**: [nvidia/USDCraft-10K (HF Dataset)](https://huggingface.co/datasets/nvidia/USDCraft-10K) · 3/5 (+1) • [google/multimodal-knowledge-agent (HF Dataset)](https://huggingface.co/datasets/google/multimodal-knowledge-agent) · 3/5 (+1)  
+**Cooled**: [leostera/git-twig — lightweight git-worktrees for agents](https://github.com/leostera/git-twig) · 3/5 (−1)
 
 ## Main list
 
-### [NVIDIA Sweeps MLPerf Training and Endpoints as Vera Rubin Debuts With Leading Performance](https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/) · 2/5  
-NVIDIA’s Vera Rubin platform swept every MLPerf Training v6.1 benchmark and, in its first MLPerf Endpoints submission, delivered >10× generational throughput-per-watt gains for agentic AI workloads.  
-Matters if you track hardware roadmaps for agent serving or plan capacity for multi-turn inference. Lab announcement.
+### Agents
+**[ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters](https://arxiv.org/abs/2611.21607) · 4/5**  
+Galaxy General Robotics connects a 552B DeepSeek-V4.1-Flash backbone to a trainable action DiT and systematically compares VLM backbones from 2B to 552B under shared training. Matters if you build robot policies and want evidence that frontier-scale representations transfer to physical action. [Project page](https://galaxygeneralrobotics.github.io/scalevla/)
 
-### [NVIDIA CUDA-X Libraries Give Agents the Tools to Accelerate Scientific Discovery](https://blogs.nvidia.com/blog/cuda-x-libraries-agents-accelerate-scientific-discovery/) · 2/5  
-New CUDA-X libraries (cuPhoton, cuPotential, cuSpa) let AI agents accelerate data-intensive research in astrophysics, materials science, and single-cell biology.  
-Matters if you build agent workflows that call into scientific computing kernels. Lab announcement.
+**[BLIP-Live: Balancing Timeliness & Firing Precision in Proactive Streaming Video Agents](https://arxiv.org/abs/2611.21553) · 2/5**  
+Researchers introduce BLIP-Live, a unified dataset, metrics, harness, and training framework for proactive streaming video agents that must decide when to respond vs. stay silent. Matters if you work on real-time video understanding or agent proactivity.  
 
-### [TokenEconomizer: Learning from Experience to Make AI Coding Agents More Efficient](https://www.microsoft.com/en-us/research/blog/tokeneconomizer-learning-from-experience-to-make-ai-coding-agents-more-efficient/) · 1/5  
-Microsoft Research open-sourced a plugin that reuses past coding-session context to cut token spend while preserving task success.  
-Matters if you operate coding agents at scale and want a drop-in cost reducer. Lab announcement.
+### Benchmark
+**[InclusionMed: Benchmarking AI for Inclusive Healthcare](https://arxiv.org/abs/2611.21218) · 4/5**  
+The InclusionMed Atlas organizes benchmarks across three healthcare roles and three AI capabilities; the first release reproduces four public benchmarks and adds a private diagnostic-reasoning set (InclusionMed-DxFiles). Matters if you evaluate medical models and need transparent, audited coverage across roles and tasks. [GitHub](https://github.com/panuvi/inclusionmed) • [Project](https://inclusionmed.ai/)
 
-### [More ways to move care forward with ChatGPT for Healthcare](https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare) · 1/5  
-OpenAI launched computer-use agents, improved clinical answers, and healthcare plugins that operate across EHR and scheduling software.  
-Matters if you integrate LLMs into clinical workflows or need regulated-compliance tooling. Lab announcement.
+**[Rotation-Invariant Machine Learning for Highly Symmetric Molecular Configurations](https://arxiv.org/abs/2611.21308) · 3/5**  
+A new lightweight benchmark exposes degeneracies in both invariant and equivariant architectures on n-fold symmetric atomic environments, guiding a proposed fix. Matters if you develop molecular ML potentials and need to handle high-symmetry configurations reliably.  
 
-### [Advancing computer-use agents for healthcare teams](https://openai.com/index/advancing-computer-use-for-healthcare-teams) · 1/5  
-Companion release detailing the computer-use agent architecture for healthcare: screen observation, action execution, and safety guardrails.  
-Matters if you study agent-computer interfaces or need a reference implementation pattern. Lab announcement.
+**[When Do Histology Foundation Models Need Geometric Test-Time Augmentation?](https://arxiv.org/abs/2611.21565) · 2/5**  
+Benchmarking 9 histology FMs and 6 general-purpose models shows D₄ test-time augmentation loses value as foundation models gain inherent rotational invariance. Matters if you deploy computational pathology pipelines and want to avoid wasted inference compute.  
 
-### [NVIDIA Vera Rubin NVL72 Achieves up to 2× Blackwell Ultra Performance in MLPerf Training v6.1](https://developer.nvidia.com/blog/nvidia-vera-rubin-nvl72-achieves-up-to-2x-blackwell-ultra-performance-in-mlperf-training-v6-1/) · 1/5  
-Technical deep-dive on the NVL72 rack-scale system: 2× Blackwell Ultra training speed, enabling faster model-agent co-iteration.  
-Matters if you provision training clusters for agent foundation models. Lab announcement.
+**[Benchmarking memory and nonlinear processing capacity of quantum recurrent neural networks for time series prediction](https://arxiv.org/abs/2611.21552) · 2/5**  
+A rigorous task-driven benchmark quantifies memory and nonlinear capacity of variational QRNNs, enabling intuitive comparison to classical RNNs. Matters if you explore quantum ML for sequential data and need standardized capacity metrics.  
 
-### [NVIDIA Vera Rubin NVL72 Leads Agentic Inference Performance on MLPerf Endpoints v1.0](https://developer.nvidia.com/blog/nvidia-vera-rubin-nvl72-leads-agentic-inference-performance-on-mlperf-endpoints-v1-0/) · 1/5  
-First MLPerf Endpoints results show Vera Rubin NVL72 leading on agentic inference — multi-turn reasoning, tool use, and long-context handling.  
-Matters if you benchmark or procure inference infrastructure for agent workloads. Lab announcement.
+**[GHySSeg: Real-Time Geometric Ground and Road Segmentation for Hybrid Solid-State LiDAR](https://arxiv.org/abs/2611.21507) · 2/5**  
+Classical geometric methods fail on ring-free, frontal-field hybrid LiDAR; GHySSeg provides a real-time geometric alternative that is certifiable and computationally light. Matters if you work on automotive perception with next-gen LiDAR sensors.  
 
-### [AI Companies Develop Decision Models to Avoid Hallucinations](https://spectrum.ieee.org/typesafe-ai-hallucination-decision-models) · 2/5  
-IEEE Spectrum reports TypeSafe AI’s “Jev” model uses a decision-model architecture to constrain outputs and reduce hallucinations; claims verified on structured tasks.  
-Matters if you evaluate hallucination-mitigation approaches beyond retrieval or prompting.
+**[AuXSpec: Learning to Autoformalize Program Specifications via Executable Postconditions](https://arxiv.org/abs/2611.21421) · 2/5**  
+AuXSpec uses executable postconditions as scalable feedback to train Lean specification generators, avoiding expensive proof or correspondence steps. Matters if you build autoformalization tooling and need cheaper specification-quality signals.  
 
-### [AMD-Powered Lux Supercomputer Opens to Scientific Users at Oak Ridge, Becoming First AI Factory for DOE’s Genesis Mission](https://ir.amd.com/news-events/press-releases/detail/1307/amd-powered-lux-supercomputer-opens-to-scientific-users-at-oak-ridge-becoming-first-ai-factory-for-does-genesis-mission) · 1/5  
-AMD Instinct GPUs power the Lux system at ORNL, now open for DOE’s Genesis Mission workloads including AI-driven materials discovery.  
-Matters if you track non-NVIDIA HPC AI infrastructure availability. Lab announcement.
+**[Seeing Isn't Resolving: Visual and Linguistic Disambiguation with Conversational Grounding](https://arxiv.org/abs/2611.21183) · 2/5**  
+The JAG-D dataset introduces human-robot conversational multimodal interactions covering visual and linguistic ambiguity; VLMs are evaluated on recognition and resolution. Matters if you build grounded dialogue systems that must handle real-world referential uncertainty.  
 
-### [AMD Completes Acquisition of World Labs](https://ir.amd.com/news-events/press-releases/detail/1306/amd-completes-acquisition-of-world-labs) · 1/5  
-AMD finalized its purchase of World Labs (Fei-Fei Li’s spatial intelligence startup), adding 3D world-model talent to its AI stack.  
-Matters if you follow spatial AI or AMD’s product strategy beyond compute. Lab announcement.
+### Other
+**[Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) · 4/5**  
+InternLM releases a 320B MoE model with dedicated encoders for molecular graphs, biological sequences, and spectra, plus verifiable tool-use, search, and coding environments. Matters if you need a large scientific agent with multimodal perception and reproducible environment benchmarks. [GitHub](https://github.com/InternLM/Sage-S2.1-Flash) • [Project](https://internlm.github.io/Sage-S2.1-Flash/)
 
-## Still developing
+## Watch-list / Still developing
 
-- [scenario-labs/3d-collection](https://huggingface.co/datasets/scenario-labs/3d-collection) — 3D asset dataset (412 likes, 54.1k downloads observed), 2 runs tracked, traction flat  
-- [higurashi-ai/Haru-4B](https://huggingface.co/higurashi-ai/Haru-4B) — Full-duplex speech-to-speech model (407 likes, 3.4k downloads), 2 days on radar  
-- [Zyphra/ZONOS3-Mini](https://huggingface.co/Zyphra/ZONOS3-Mini) — TTS model (451 likes, 70k downloads), 5 days on radar, rising  
-- [google/multimodal-knowledge-agent](https://huggingface.co/datasets/google/multimodal-knowledge-agent) — Multimodal QA dataset (45 likes, 4.2k downloads), 3 days on radar  
-- Anthropic S-1 filing and roadshow (5 days), Mistral Voxtral 3 & Timestral (5 days), Meta Muse Spark & Genesis Mission posts (5 days) — all lab announcements holding steady  
-
-**Story arcs** (rising traction ≥3 runs):  
-- [vercel-labs/ui](https://github.com/vercel-labs/ui) — Agent UI behavior library, 4-day streak, +5.1% traction  
-- [Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security) — Security dataset, 5-day streak  
-- [ccch1mneyyy/dsh-Go](https://github.com/ccch1mneyyy/dsh-Go) — DeepSeek mobile harness, 5-day streak  
-- [nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B) — ASR model, 11-day streak  
-- [HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor) — Lifelong tutoring agent, 11-day streak  
+- [DominoBench: Evaluating Multi-Step Physical Reasoning from Still Images](https://arxiv.org/abs/2611.20385) · 2/5 — new benchmark, 4 HF upvotes
+- [GPT‑6.2 Astra and Sol (HN discussion)](https://news.ycombinator.com/item?id=50535230) · 2/5 — 571 points, 321 comments
+- [How the Claude Code team thinks about verification](https://news.ycombinator.com/item?id=50529612) · 2/5 — 197 points, 158 comments
+- [sensenova/SenseNova-Loop-9B (HF Model)](https://huggingface.co/sensenova/SenseNova-Loop-9B) · 2/5 — 130 likes
+- [sybil-solutions/inference-optimisation-skill](https://github.com/sybil-solutions/inference-optimisation-skill) · 3/5 — 808 ★, agent skill for hill-climbing local LLM serving speed
+- [TypeSafe AI Jev model — decision models to avoid hallucinations](https://spectrum.ieee.org/typesafe-ai-hallucination-decision-models) · 2/5 — 2 days on radar
+- [leostera/git-twig — lightweight git-worktrees for agents](https://github.com/leostera/git-twig) · 3/5 — 244 ★, cooled this run
+- [scenario-labs/3d-collection (HF Dataset)](https://huggingface.co/datasets/scenario-labs/3d-collection) · 3/5 — carryover, 3 runs tracked, 415 likes, 55k downloads
+- [n4ze3m/tiny-voca (HF Model)](https://huggingface.co/n4ze3m/tiny-voca) · 3/5 — 224 likes, 3k downloads, ONNX/GGUF TTS
 
 ## Action items
 
-**Read** — [NVIDIA Vera Rubin NVL72 Leads Agentic Inference Performance on MLPerf Endpoints v1.0](https://developer.nvidia.com/blog/nvidia-vera-rubin-nvl72-leads-agentic-inference-performance-on-mlperf-endpoints-v1-0/) for the first standardized agentic inference benchmark numbers.  
-**Try** — [TokenEconomizer](https://www.microsoft.com/en-us/research/blog/tokeneconomizer-learning-from-experience-to-make-ai-coding-agents-more-efficient/) plugin if you run GitHub Copilot, Cursor, or similar coding agents; measures token savings on your own tasks.  
-**Track** — [leostera/git-twig](https://github.com/leostera/git-twig) for native Git worktree ergonomics; 128 stars in hours suggests rapid adoption for agent-friendly repo workflows.
+**Read** the [ScaleVLA project page](https://galaxygeneralrobotics.github.io/scalevla/) for the 552B VLA architecture details and scaling curves — rare public evidence on frontier-backbone transfer to robot action.  
+**Try** the [sybil-solutions/inference-optimisation-skill](https://github.com/sybil-solutions/inference-optimisation-skill) agent skill to auto-tune local LLM serving (speculative decoding, KV, TTFT) on your hardware; 808 stars suggest active maintenance.  
+**Track** the [InclusionMed Atlas](https://inclusionmed.ai/) as it expands beyond the initial five benchmarks — its structured audit/reproduction process sets a new bar for medical AI evaluation transparency.
+
+---
+
+Collection was incomplete: lab_blogs.

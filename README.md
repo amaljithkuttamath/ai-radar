@@ -9,25 +9,18 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Mon 16 Nov
+### New in the last two days · Tue 17 Nov
 
-> NVIDIA’s Vera Rubin platform debuted on MLPerf, sweeping training benchmarks and posting over 10× throughput-per-watt gains for agentic inference. Frontier labs simultaneously shipped agent tooling: OpenAI added computer-use agents for healthcare, Microsoft released TokenEconomizer to cut coding-agent token waste, and NVIDIA expanded CUDA-X libraries for agent-driven scientific workloads.
+> Three frontier-scale releases dominate today: ScaleVLA connects a 552B DeepSeek backbone to a robot action head, InclusionMed publishes a reproduced Atlas of five healthcare benchmarks, and Sage S2.1 Flash ships a 320B MoE model with scientific encoders and verifiable tool environments. Together they signal a shift from demo-scale VLAs and medical evals toward reproducible, frontier-backed systems.
 
-- **[NVIDIA Sweeps MLPerf Training and Endpoints as Vera Rubin Debuts With Leading Performance](https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/)** NVIDIA’s Vera Rubin platform swept every MLPerf Training v6.1 benchmark and, in its first MLPerf Endpoints submission, delivered >10× generational throughput-per-watt gains for ag…
-- **[NVIDIA CUDA-X Libraries Give Agents the Tools to Accelerate Scientific Discovery](https://blogs.nvidia.com/blog/cuda-x-libraries-agents-accelerate-scientific-discovery/)** New CUDA-X libraries (cuPhoton, cuPotential, cuSpa) let AI agents accelerate data-intensive research in astrophysics, materials science, and single-cell biology.
-- **[TokenEconomizer: Learning from Experience to Make AI Coding Agents More Efficient](https://www.microsoft.com/en-us/research/blog/tokeneconomizer-learning-from-experience-to-make-ai-coding-agents-more-efficient/)** Microsoft Research open-sourced a plugin that reuses past coding-session context to cut token spend while preserving task success.
-- **[More ways to move care forward with ChatGPT for Healthcare](https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare)** OpenAI launched computer-use agents, improved clinical answers, and healthcare plugins that operate across EHR and scheduling software.
-- **[Advancing computer-use agents for healthcare teams](https://openai.com/index/advancing-computer-use-for-healthcare-teams)** Companion release detailing the computer-use agent architecture for healthcare: screen observation, action execution, and safety guardrails.
-- **[NVIDIA Vera Rubin NVL72 Achieves up to 2× Blackwell Ultra Performance in MLPerf Training v6.1](https://developer.nvidia.com/blog/nvidia-vera-rubin-nvl72-achieves-up-to-2x-blackwell-ultra-performance-in-mlperf-training-v6-1/)** Technical deep-dive on the NVL72 rack-scale system: 2× Blackwell Ultra training speed, enabling faster model-agent co-iteration.
+- **[ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters](https://arxiv.org/abs/2611.21607)** Galaxy General Robotics connects a 552B DeepSeek-V4.1-Flash backbone to a trainable action DiT and systematically compares VLM backbones from 2B to 552B under shared training.
+- **[BLIP-Live: Balancing Timeliness & Firing Precision in Proactive Streaming Video Agents](https://arxiv.org/abs/2611.21553)** Researchers introduce BLIP-Live, a unified dataset, metrics, harness, and training framework for proactive streaming video agents that must decide when to respond vs.
+- **[InclusionMed: Benchmarking AI for Inclusive Healthcare](https://arxiv.org/abs/2611.21218)** The InclusionMed Atlas organizes benchmarks across three healthcare roles and three AI capabilities; the first release reproduces four public benchmarks and adds a private diagnos…
+- **[Rotation-Invariant Machine Learning for Highly Symmetric Molecular Configurations](https://arxiv.org/abs/2611.21308)** A new lightweight benchmark exposes degeneracies in both invariant and equivariant architectures on n-fold symmetric atomic environments, guiding a proposed fix.
+- **[When Do Histology Foundation Models Need Geometric Test-Time Augmentation?](https://arxiv.org/abs/2611.21565)** Benchmarking 9 histology FMs and 6 general-purpose models shows D₄ test-time augmentation loses value as foundation models gain inherent rotational invariance.
+- **[Benchmarking memory and nonlinear processing capacity of quantum recurrent neural networks for time series prediction](https://arxiv.org/abs/2611.21552)** A rigorous task-driven benchmark quantifies memory and nonlinear capacity of variational QRNNs, enabling intuitive comparison to classical RNNs.
 
-### Still unfolding
-
-- **[Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security)** · day 11
-- **[nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)** · day 9
-- **[Zyphra/ZONOS3-Mini](https://huggingface.co/Zyphra/ZONOS3-Mini)** · day 5
-- **[google/multimodal-knowledge-agent](https://huggingface.co/datasets/google/multimodal-knowledge-agent)** · day 3
-
-[Read the full briefing](reports/2026-11-16-digest.md) · [Every edition](reports/README.md)
+[Read the full briefing](reports/2026-11-17-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 
