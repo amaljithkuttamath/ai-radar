@@ -9,18 +9,18 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Tue 17 Nov
+### New in the last two days · Wed 18 Nov
 
-> Three frontier-scale releases dominate today: ScaleVLA connects a 552B DeepSeek backbone to a robot action head, InclusionMed publishes a reproduced Atlas of five healthcare benchmarks, and Sage S2.1 Flash ships a 320B MoE model with scientific encoders and verifiable tool environments. Together they signal a shift from demo-scale VLAs and medical evals toward reproducible, frontier-backed systems.
+> The strongest signal is a demonstrable shift away from Transformer-centric design: researchers showed LLMs can write neural weights directly without gradient descent, while a separate system claims 385× inference efficiency gains using energy-based reasoning. Frontier labs shipped new models (OpenAI GPT‑6.2 Astra/Sol, SenseNova‑Loop‑9B, Tencent Hy4‑flash) and hardware (NVIDIA RTX Spark desktops), and multiple teams released agent frameworks for coding, robotics, and multi‑humanoid collaboration.
 
-- **[ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters](https://arxiv.org/abs/2611.21607)** Galaxy General Robotics connects a 552B DeepSeek-V4.1-Flash backbone to a trainable action DiT and systematically compares VLM backbones from 2B to 552B under shared training.
-- **[BLIP-Live: Balancing Timeliness & Firing Precision in Proactive Streaming Video Agents](https://arxiv.org/abs/2611.21553)** Researchers introduce BLIP-Live, a unified dataset, metrics, harness, and training framework for proactive streaming video agents that must decide when to respond vs.
-- **[InclusionMed: Benchmarking AI for Inclusive Healthcare](https://arxiv.org/abs/2611.21218)** The InclusionMed Atlas organizes benchmarks across three healthcare roles and three AI capabilities; the first release reproduces four public benchmarks and adds a private diagnos…
-- **[Rotation-Invariant Machine Learning for Highly Symmetric Molecular Configurations](https://arxiv.org/abs/2611.21308)** A new lightweight benchmark exposes degeneracies in both invariant and equivariant architectures on n-fold symmetric atomic environments, guiding a proposed fix.
-- **[When Do Histology Foundation Models Need Geometric Test-Time Augmentation?](https://arxiv.org/abs/2611.21565)** Benchmarking 9 histology FMs and 6 general-purpose models shows D₄ test-time augmentation loses value as foundation models gain inherent rotational invariance.
-- **[Benchmarking memory and nonlinear processing capacity of quantum recurrent neural networks for time series prediction](https://arxiv.org/abs/2611.21552)** A rigorous task-driven benchmark quantifies memory and nonlinear capacity of variational QRNNs, enabling intuitive comparison to classical RNNs.
+- **[Weight-Space Programming Doesn't Need Transformers](https://arxiv.org/abs/2611.22055)** Researchers tasked three frontier LLMs with writing neural-network weights by hand, without gradient-based training; given minimal guidance and a sandbox, the models designed plai…
+- **[Heave-Ho: Decentralized Long-Horizon Multi-Humanoid Collaboration](https://arxiv.org/abs/2611.22275)** A decentralized framework adapts a humanoid foundation model for physically coupled multi-robot loco-manipulation, enabling coordinated control from local observations and long-ho…
+- **[GPT‑6.2 Astra and GPT‑6.2 Sol](https://simonwillison.net/2026/Nov/17/gpt62-astra-and-sol/)** OpenAI released two new API models: Astra for hardest projects (80% of prior price) and Sol for everyday work; LLM CLI tool added same-day support.
+- **[StringQFT: A Multiuse Textbook Resource for AI-Assisted Theoretical Physics](https://arxiv.org/abs/2611.23225)** An 18-volume, 3,795-page textbook collection with an open-book benchmark (1,073 items, 499 auto-checkable) and RAG infrastructure for AI-assisted physics research.
+- **[TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks](https://arxiv.org/abs/2611.22115)** The Xing 4 series extends TeleChat through architecture and training infrastructure advances on Ascend chips, covering sparse activation, attention design, and speculative decodin…
+- **[Build Training-Ready Physical AI Datasets with Two Prompts in NVIDIA Cosmos](https://developer.nvidia.com/blog/build-training-ready-physical-ai-datasets-with-two-prompts-in-nvidia-cosmos/)** NVIDIA demonstrates generating diverse, simulation-ready robotics datasets from two text prompts using Cosmos world models, targeting rare defects and challenging scenarios.
 
-[Read the full briefing](reports/2026-11-17-digest.md) · [Every edition](reports/README.md)
+[Read the full briefing](reports/2026-11-18-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 

@@ -1,69 +1,99 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-16](2026-11-16-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-17](2026-11-17-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-17
+# AI Radar — 2026-11-18
 
-Three frontier-scale releases dominate today: ScaleVLA connects a 552B DeepSeek backbone to a robot action head, InclusionMed publishes a reproduced Atlas of five healthcare benchmarks, and Sage S2.1 Flash ships a 320B MoE model with scientific encoders and verifiable tool environments. Together they signal a shift from demo-scale VLAs and medical evals toward reproducible, frontier-backed systems.
+The strongest signal is a demonstrable shift away from Transformer-centric design: researchers showed LLMs can write neural weights directly without gradient descent, while a separate system claims 385× inference efficiency gains using energy-based reasoning. Frontier labs shipped new models (OpenAI GPT‑6.2 Astra/Sol, SenseNova‑Loop‑9B, Tencent Hy4‑flash) and hardware (NVIDIA RTX Spark desktops), and multiple teams released agent frameworks for coding, robotics, and multi‑humanoid collaboration.
 
 ## What changed
 
-**New to radar** (top 5 of 468): [openai/gsm8k (HF Dataset)](https://huggingface.co/datasets/openai/gsm8k) · 5/5 • [ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters](https://arxiv.org/abs/2611.21607) · 4/5 • [InclusionMed: Benchmarking AI for Inclusive Healthcare](https://arxiv.org/abs/2611.21218) · 4/5 • [Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) · 4/5 • [K2-Horizon: A Frontier Fleet of Open Source Language Models](https://arxiv.org/abs/2611.21003) · 4/5  
-**Climbing**: [nvidia/USDCraft-10K (HF Dataset)](https://huggingface.co/datasets/nvidia/USDCraft-10K) · 3/5 (+1) • [google/multimodal-knowledge-agent (HF Dataset)](https://huggingface.co/datasets/google/multimodal-knowledge-agent) · 3/5 (+1)  
-**Cooled**: [leostera/git-twig — lightweight git-worktrees for agents](https://github.com/leostera/git-twig) · 3/5 (−1)
+**New to radar** (477 items):  
+- [Weight-Space Programming Doesn't Need Transformers](https://arxiv.org/abs/2611.22055) · 4/5  
+- [Energy-Based Reasoners: 385x more efficient inference](https://energy-based-reasoners.github.io/) · 3/5  
+- [FastFrames: Video Generation at Interactive Latency](https://arxiv.org/abs/2611.23226) · 3/5  
+- [Heave-Ho: Decentralized Long-Horizon Multi-Humanoid Collaboration](https://arxiv.org/abs/2611.22275) · 3/5  
+- [TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks](https://arxiv.org/abs/2611.22115) · 3/5  
+
+**Climbing** (2 items):  
+- [From Repositories to Training Environments: Scaling Long-Horizon Coding Agents with Environment Evolution Loop](https://arxiv.org/abs/2611.21152) · 2/5 (score +1, traction rising)  
+- [sensenova/SenseNova-Loop-9B](https://huggingface.co/sensenova/SenseNova-Loop-9B) · 2/5 (traction rising)  
+
+**Cooled** (2 items):  
+- [openai/gsm8k](https://huggingface.co/datasets/openai/gsm8k) · 4/5 (score −1)  
+- [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) · 2/5 (score −1)
 
 ## Main list
 
 ### Agents
-**[ScaleVLA: Scaling Vision-Language-Action Models to 552 Billion Parameters](https://arxiv.org/abs/2611.21607) · 4/5**  
-Galaxy General Robotics connects a 552B DeepSeek-V4.1-Flash backbone to a trainable action DiT and systematically compares VLM backbones from 2B to 552B under shared training. Matters if you build robot policies and want evidence that frontier-scale representations transfer to physical action. [Project page](https://galaxygeneralrobotics.github.io/scalevla/)
 
-**[BLIP-Live: Balancing Timeliness & Firing Precision in Proactive Streaming Video Agents](https://arxiv.org/abs/2611.21553) · 2/5**  
-Researchers introduce BLIP-Live, a unified dataset, metrics, harness, and training framework for proactive streaming video agents that must decide when to respond vs. stay silent. Matters if you work on real-time video understanding or agent proactivity.  
+**[Weight-Space Programming Doesn't Need Transformers](https://arxiv.org/abs/2611.22055) · 4/5**  
+Researchers tasked three frontier LLMs with writing neural-network weights by hand, without gradient-based training; given minimal guidance and a sandbox, the models designed plain-text architectures that compiled and ran.  
+Matters if you explore post-Transformer architectures or want a codebase for weight-space programming experiments.  
+[GitHub](https://github.com/effl-lab/Weight-Space-Programming) · [Project](https://wsp-no-transformer.github.io/)
 
-### Benchmark
-**[InclusionMed: Benchmarking AI for Inclusive Healthcare](https://arxiv.org/abs/2611.21218) · 4/5**  
-The InclusionMed Atlas organizes benchmarks across three healthcare roles and three AI capabilities; the first release reproduces four public benchmarks and adds a private diagnostic-reasoning set (InclusionMed-DxFiles). Matters if you evaluate medical models and need transparent, audited coverage across roles and tasks. [GitHub](https://github.com/panuvi/inclusionmed) • [Project](https://inclusionmed.ai/)
+**[Heave-Ho: Decentralized Long-Horizon Multi-Humanoid Collaboration](https://arxiv.org/abs/2611.22275) · 3/5**  
+A decentralized framework adapts a humanoid foundation model for physically coupled multi-robot loco-manipulation, enabling coordinated control from local observations and long-horizon planning via a hierarchical policy.  
+Matters if you build multi-agent robotic systems needing real-world coordination.  
+[GitHub](https://github.com/heaveho-humanoid/Heave-Ho) · [Project](https://heaveho-humanoid.github.io/)
 
-**[Rotation-Invariant Machine Learning for Highly Symmetric Molecular Configurations](https://arxiv.org/abs/2611.21308) · 3/5**  
-A new lightweight benchmark exposes degeneracies in both invariant and equivariant architectures on n-fold symmetric atomic environments, guiding a proposed fix. Matters if you develop molecular ML potentials and need to handle high-symmetry configurations reliably.  
+**[GPT‑6.2 Astra and GPT‑6.2 Sol](https://simonwillison.net/2026/Nov/17/gpt62-astra-and-sol/) · 2/5**  
+OpenAI released two new API models: Astra for hardest projects (80% of prior price) and Sol for everyday work; LLM CLI tool added same-day support.  
+Matters if you integrate frontier models into products and need updated pricing/capability data.  
 
-**[When Do Histology Foundation Models Need Geometric Test-Time Augmentation?](https://arxiv.org/abs/2611.21565) · 2/5**  
-Benchmarking 9 histology FMs and 6 general-purpose models shows D₄ test-time augmentation loses value as foundation models gain inherent rotational invariance. Matters if you deploy computational pathology pipelines and want to avoid wasted inference compute.  
+**[StringQFT: A Multiuse Textbook Resource for AI-Assisted Theoretical Physics](https://arxiv.org/abs/2611.23225) · 2/5**  
+An 18-volume, 3,795-page textbook collection with an open-book benchmark (1,073 items, 499 auto-checkable) and RAG infrastructure for AI-assisted physics research.  
+Matters if you build domain-specific agents or benchmarks for scientific reasoning.  
 
-**[Benchmarking memory and nonlinear processing capacity of quantum recurrent neural networks for time series prediction](https://arxiv.org/abs/2611.21552) · 2/5**  
-A rigorous task-driven benchmark quantifies memory and nonlinear capacity of variational QRNNs, enabling intuitive comparison to classical RNNs. Matters if you explore quantum ML for sequential data and need standardized capacity metrics.  
+### Evaluation
 
-**[GHySSeg: Real-Time Geometric Ground and Road Segmentation for Hybrid Solid-State LiDAR](https://arxiv.org/abs/2611.21507) · 2/5**  
-Classical geometric methods fail on ring-free, frontal-field hybrid LiDAR; GHySSeg provides a real-time geometric alternative that is certifiable and computationally light. Matters if you work on automotive perception with next-gen LiDAR sensors.  
+**[TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks](https://arxiv.org/abs/2611.22115) · 3/5**  
+The Xing 4 series extends TeleChat through architecture and training infrastructure advances on Ascend chips, covering sparse activation, attention design, and speculative decoding for agentic post-training.  
+Matters if you evaluate or deploy LLMs on non-NVIDIA hardware stacks.  
+[Project](https://github.com/XingChen-AGI)
 
-**[AuXSpec: Learning to Autoformalize Program Specifications via Executable Postconditions](https://arxiv.org/abs/2611.21421) · 2/5**  
-AuXSpec uses executable postconditions as scalable feedback to train Lean specification generators, avoiding expensive proof or correspondence steps. Matters if you build autoformalization tooling and need cheaper specification-quality signals.  
+### Build
 
-**[Seeing Isn't Resolving: Visual and Linguistic Disambiguation with Conversational Grounding](https://arxiv.org/abs/2611.21183) · 2/5**  
-The JAG-D dataset introduces human-robot conversational multimodal interactions covering visual and linguistic ambiguity; VLMs are evaluated on recognition and resolution. Matters if you build grounded dialogue systems that must handle real-world referential uncertainty.  
+**[Build Training-Ready Physical AI Datasets with Two Prompts in NVIDIA Cosmos](https://developer.nvidia.com/blog/build-training-ready-physical-ai-datasets-with-two-prompts-in-nvidia-cosmos/) · 2/5**  
+NVIDIA demonstrates generating diverse, simulation-ready robotics datasets from two text prompts using Cosmos world models, targeting rare defects and challenging scenarios.  
+Matters if you need synthetic physical-AI training data at scale.  
 
 ### Other
-**[Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) · 4/5**  
-InternLM releases a 320B MoE model with dedicated encoders for molecular graphs, biological sequences, and spectra, plus verifiable tool-use, search, and coding environments. Matters if you need a large scientific agent with multimodal perception and reproducible environment benchmarks. [GitHub](https://github.com/InternLM/Sage-S2.1-Flash) • [Project](https://internlm.github.io/Sage-S2.1-Flash/)
 
-## Watch-list / Still developing
+**[Energy-Based Reasoners: 385x more efficient inference](https://energy-based-reasoners.github.io/) · 3/5**  
+A project claims 385× inference efficiency gains over standard autoregressive models using energy-based reasoning; discussion on Hacker News (264 points).  
+Matters if you serve LLMs at scale and can validate the efficiency claims against your workloads.  
+[Discussion](https://news.ycombinator.com/item?id=50543989)
 
-- [DominoBench: Evaluating Multi-Step Physical Reasoning from Still Images](https://arxiv.org/abs/2611.20385) · 2/5 — new benchmark, 4 HF upvotes
-- [GPT‑6.2 Astra and Sol (HN discussion)](https://news.ycombinator.com/item?id=50535230) · 2/5 — 571 points, 321 comments
-- [How the Claude Code team thinks about verification](https://news.ycombinator.com/item?id=50529612) · 2/5 — 197 points, 158 comments
-- [sensenova/SenseNova-Loop-9B (HF Model)](https://huggingface.co/sensenova/SenseNova-Loop-9B) · 2/5 — 130 likes
-- [sybil-solutions/inference-optimisation-skill](https://github.com/sybil-solutions/inference-optimisation-skill) · 3/5 — 808 ★, agent skill for hill-climbing local LLM serving speed
-- [TypeSafe AI Jev model — decision models to avoid hallucinations](https://spectrum.ieee.org/typesafe-ai-hallucination-decision-models) · 2/5 — 2 days on radar
-- [leostera/git-twig — lightweight git-worktrees for agents](https://github.com/leostera/git-twig) · 3/5 — 244 ★, cooled this run
-- [scenario-labs/3d-collection (HF Dataset)](https://huggingface.co/datasets/scenario-labs/3d-collection) · 3/5 — carryover, 3 runs tracked, 415 likes, 55k downloads
-- [n4ze3m/tiny-voca (HF Model)](https://huggingface.co/n4ze3m/tiny-voca) · 3/5 — 224 likes, 3k downloads, ONNX/GGUF TTS
+**[FastFrames: Video Generation at Interactive Latency](https://arxiv.org/abs/2611.23226) · 3/5**  
+Apple researchers profile autoregressive video diffusion bottlenecks (VAE decode, KV cache) and introduce FastFrames, achieving interactive latency without quality loss.  
+Matters if you deploy video generation and need latency reductions.  
+[GitHub](https://github.com/apple-aiml-research/ml-fastframes) · [Project](https://apple-aiml-research.github.io/ml-fastframes/)
+
+**[TCP4D: A Unified Tool-Center-Point Tracking and Generation Model for Robot Manipulation](https://arxiv.org/abs/2611.23143) · 3/5**  
+A shared 4D scene representation tracks observed tool-center-point motion and generates future TCP trajectories from monocular video, recovering metric SE(3) poses and gripper states.  
+Matters if you build vision-based robot manipulation pipelines.  
+[GitHub](https://github.com/Livioni/TCP4D) · [Project](https://livioni.github.io/TCP4D/)
+
+**[Ambient LLMs: Data-Efficient Supervised Fine-tuning via Temperature Matching](https://arxiv.org/abs/2611.23229) · 2/5**  
+Ambient SFT uses a frozen pre-trained model as a noisy teacher to augment small fine-tuning sets, preventing overfitting and catastrophic forgetting of distribution tails.  
+Matters if you fine-tune on limited data and need stronger regularization.  
+
+## Still developing
+
+- **[Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) · 3/5** — 320B MoE model for scientific reasoning; 2 runs tracked, traction delta +1.88. [GitHub](https://github.com/InternLM/Sage-S2.1-Flash)
+- **[MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x](https://huggingface.co/datasets/MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x) · 3/5** — Reasoning dataset (506 likes, 6.6k downloads); 3 runs tracked, minimal traction change.
+- **[leostera/git-twig](https://github.com/leostera/git-twig) · 3/5** — Lightweight git worktrees for agents (261 stars); 3 runs tracked, momentum +0.35.
+- **[From Repositories to Training Environments…](https://arxiv.org/abs/2611.21152) · 2/5** — RepoFactory pipeline for coding-agent environments; climbing (score +1).
+- **[sensenova/SenseNova-Loop-9B](https://huggingface.co/sensenova/SenseNova-Loop-9B) · 2/5** — Multimodal 9B model; climbing (traction rising).
 
 ## Action items
 
-**Read** the [ScaleVLA project page](https://galaxygeneralrobotics.github.io/scalevla/) for the 552B VLA architecture details and scaling curves — rare public evidence on frontier-backbone transfer to robot action.  
-**Try** the [sybil-solutions/inference-optimisation-skill](https://github.com/sybil-solutions/inference-optimisation-skill) agent skill to auto-tune local LLM serving (speculative decoding, KV, TTFT) on your hardware; 808 stars suggest active maintenance.  
-**Track** the [InclusionMed Atlas](https://inclusionmed.ai/) as it expands beyond the initial five benchmarks — its structured audit/reproduction process sets a new bar for medical AI evaluation transparency.
+**Read** the [Weight-Space Programming paper](https://arxiv.org/abs/2611.22055) and its [GitHub repo](https://github.com/effl-lab/Weight-Space-Programming) to assess whether weight-space programming could simplify your model-customization workflow.
+
+**Try** [FastFrames](https://github.com/apple-aiml-research/ml-fastframes) if you serve video diffusion models — the KV-cache and VAE optimizations are portable to other autoregressive video pipelines.
+
+**Track** the [Energy-Based Reasoners](https://energy-based-reasoners.github.io/) repository for independent benchmarks; a verified 385× efficiency gain would reshape inference serving economics.
 
 ---
 
