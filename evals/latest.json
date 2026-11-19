@@ -1,26 +1,26 @@
 {
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-18T19:14:44Z",
-  "age_hours_at_eval": 0.0,
+  "digest_commit_time_utc": "2026-11-19T19:19:06Z",
+  "age_hours_at_eval": 0.01,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
-      "age_h": 0.0,
-      "links_total": 28,
+      "age_h": 0.01,
+      "links_total": 27,
       "links_broken": 0,
       "links_unverified": 1,
-      "main_items": 14,
-      "main_score_mean": 2.7,
+      "main_items": 10,
+      "main_score_mean": 1.9,
       "sections_present": 4,
       "expected_sections": 4,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
       "traction_observations": 58,
       "degraded_synthesis": false,
-      "forecast_accuracy": 0.111,
+      "forecast_accuracy": 0.125,
       "claims_open": 0
     },
     "checks": [
@@ -32,12 +32,12 @@
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "14 main-list item(s)"
+        "detail": "10 main-list item(s)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 1/28 declined to answer"
+        "detail": "no dead links; 1/27 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -66,12 +66,12 @@
   },
   "trusted": {
     "reobservation_rate": 1.0,
-    "forecast_accuracy": 0.111
+    "forecast_accuracy": 0.125
   },
   "broken_urls": [
     {
-      "url": "https://news.ycombinator.com/item?id=50543989",
-      "status": 405
+      "url": "https://openai.com/index/research-acceleration-jagged-frontier",
+      "status": 403
     }
   ],
   "missed_stories": [],
