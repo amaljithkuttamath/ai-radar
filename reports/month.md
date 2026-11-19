@@ -4,7 +4,7 @@ What changed in AI, in plain words.
 
 [Yesterday](../README.md) · [This week](week.md) · **This month**
 
-## The last 30 days · Tue 20 Oct to Wed 18 Nov
+## The last 30 days · Wed 21 Oct to Thu 19 Nov
 
 ### Stories with staying power
 
@@ -17,25 +17,25 @@ What changed in AI, in plain words.
 
 ### Where attention moved
 
-How often each topic came up per daily edition, this month against the month before (27 editions against 23). Counted from the digests' wording, so read it as direction, not exact size.
+How often each topic came up per daily edition, this month against the month before (28 editions against 22). Counted from the digests' wording, so read it as direction, not exact size.
 
 | Topic | Last 30 days | Before | Trend |
 |---|---:|---:|---|
-| Long context and memory | 1.4 | 4.7 | Down 69% |
-| Diffusion models | 1.0 | 3.2 | Down 66% |
-| Safety and security | 1.3 | 0.5 | Up 2.2x |
-| Open-weight models | 1.5 | 0.7 | Up 2.2x |
-| Robotics | 2.7 | 1.6 | Up 1.7x |
-| Benchmarks and evaluation | 8.2 | 13.5 | Down 39% |
-| Multimodal and vision | 13.1 | 19.2 | Steady |
-| Retrieval and RAG | 2.5 | 1.8 | Steady |
+| Long context and memory | 1.4 | 4.9 | Down 71% |
+| Diffusion models | 1.0 | 3.2 | Down 67% |
+| Safety and security | 1.4 | 0.5 | Up 2.3x |
+| Open-weight models | 1.5 | 0.7 | Up 2.0x |
+| Benchmarks and evaluation | 8.2 | 13.7 | Down 40% |
+| Robotics | 2.7 | 1.6 | Up 1.6x |
+| Multimodal and vision | 12.8 | 19.5 | Down 34% |
+| Retrieval and RAG | 2.6 | 1.9 | Steady |
 
 ```mermaid
 xychart-beta
     title "Mentions per edition, last 30 days"
     x-axis ["Multimodal and vision", "Benchmarks and evaluation", "Robotics", "Retrieval and RAG", "Open-weight models", "Long context and memory", "Safety and security", "Diffusion models"]
     y-axis "Mentions"
-    bar [13.1, 8.2, 2.7, 2.5, 1.5, 1.4, 1.3, 1.0]
+    bar [12.8, 8.2, 2.7, 2.6, 1.5, 1.4, 1.4, 1.0]
 ```
 
-[All 27 editions this month, and every one before](README.md)
+[All 28 editions this month, and every one before](README.md)

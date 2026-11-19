@@ -1,99 +1,71 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-17](2026-11-17-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-18](2026-11-18-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-18
+# AI Radar — 2026-11-19
 
-The strongest signal is a demonstrable shift away from Transformer-centric design: researchers showed LLMs can write neural weights directly without gradient descent, while a separate system claims 385× inference efficiency gains using energy-based reasoning. Frontier labs shipped new models (OpenAI GPT‑6.2 Astra/Sol, SenseNova‑Loop‑9B, Tencent Hy4‑flash) and hardware (NVIDIA RTX Spark desktops), and multiple teams released agent frameworks for coding, robotics, and multi‑humanoid collaboration.
+Frontier labs shipped a wave of agent-facing tooling: OpenAI published a measurement of coding-agent acceleration, NVIDIA released a Rust parser for fragmented tool calls, and Google added tool retrieval to the Gemini API. At the same time, two high-signal research artifacts arrived — Game2Player, a co-development loop that scales verifiable gameplay for visual agents, and Jeveration, which extends single-pass “System One” decision models to image generation. A cluster of new benchmarks and safety probes rounds out the day.
 
 ## What changed
 
-**New to radar** (477 items):  
-- [Weight-Space Programming Doesn't Need Transformers](https://arxiv.org/abs/2611.22055) · 4/5  
-- [Energy-Based Reasoners: 385x more efficient inference](https://energy-based-reasoners.github.io/) · 3/5  
-- [FastFrames: Video Generation at Interactive Latency](https://arxiv.org/abs/2611.23226) · 3/5  
-- [Heave-Ho: Decentralized Long-Horizon Multi-Humanoid Collaboration](https://arxiv.org/abs/2611.22275) · 3/5  
-- [TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks](https://arxiv.org/abs/2611.22115) · 3/5  
+**New to radar** (498 items)
+- [Game2Player: Scaling Gameplay Experience for Visual Agents through Environment-Player Co-Development](https://arxiv.org/abs/2611.24154) · 3/5
+- [Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738) · 3/5
+- [8hjkkwikl8/ai-portfolio — 三个可运行的 AI 工程项目：可追踪 RAG、提示词评测与受保护的 NL2SQL 分析](https://github.com/8hjkkwikl8/ai-portfolio) · 3/5
+- [JosssphZhou/poki — Poki uses your iPhone like you do. An open-source agent app that runs on your iPhone, reads the screen, and taps, types and swipes in real apps with your own model account.](https://github.com/JosssphZhou/poki) · 3/5
+- [hyperionaidev/smolmaxxing — maxxing the ability to run different LLMs on the smallest devices possible](https://github.com/hyperionaidev/smolmaxxing) · 3/5
 
-**Climbing** (2 items):  
-- [From Repositories to Training Environments: Scaling Long-Horizon Coding Agents with Environment Evolution Loop](https://arxiv.org/abs/2611.21152) · 2/5 (score +1, traction rising)  
-- [sensenova/SenseNova-Loop-9B](https://huggingface.co/sensenova/SenseNova-Loop-9B) · 2/5 (traction rising)  
-
-**Cooled** (2 items):  
-- [openai/gsm8k](https://huggingface.co/datasets/openai/gsm8k) · 4/5 (score −1)  
-- [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) · 2/5 (score −1)
+**Climbing** (2 items)
+- [Domush/antigravity-plugin-context-mode — Reduce context size by 90%+ *and* make your agent smarter](https://github.com/Domush/antigravity-plugin-context-mode) · 3/5 (score +1, magnitude +0.11)
+- [higurashi-ai/Haru-4B (HF Model)](https://huggingface.co/higurashi-ai/Haru-4B) · 2/5 (magnitude +1.15)
 
 ## Main list
 
-### Agents
+### [Game2Player: Scaling Gameplay Experience for Visual Agents through Environment-Player Co-Development](https://arxiv.org/abs/2611.24154) · 3/5
+A Builder agent adapts web games, exposes internal state, and a Player agent learns from the resulting verifiable trajectories — producing a scalable dataset of perception, planning, and control tasks. Matters if you build or evaluate visual agents that need diverse, grounded interaction data. [GitHub](https://github.com/game2player/Game2Player) · [Project page](https://game2player.github.io/)
 
-**[Weight-Space Programming Doesn't Need Transformers](https://arxiv.org/abs/2611.22055) · 4/5**  
-Researchers tasked three frontier LLMs with writing neural-network weights by hand, without gradient-based training; given minimal guidance and a sandbox, the models designed plain-text architectures that compiled and ran.  
-Matters if you explore post-Transformer architectures or want a codebase for weight-space programming experiments.  
-[GitHub](https://github.com/effl-lab/Weight-Space-Programming) · [Project](https://wsp-no-transformer.github.io/)
+### [Research acceleration: The jagged frontier](https://openai.com/index/research-acceleration-jagged-frontier) · 1/5
+OpenAI measures how coding agents accelerate AI research, mapping where performance is strong and where it remains uneven — a signal for recursive self-improvement trajectories. Matters if you track agent capabilities for automated R&D. (Lab release)
 
-**[Heave-Ho: Decentralized Long-Horizon Multi-Humanoid Collaboration](https://arxiv.org/abs/2611.22275) · 3/5**  
-A decentralized framework adapts a humanoid foundation model for physically coupled multi-robot loco-manipulation, enabling coordinated control from local observations and long-horizon planning via a hierarchical policy.  
-Matters if you build multi-agent robotic systems needing real-world coordination.  
-[GitHub](https://github.com/heaveho-humanoid/Heave-Ho) · [Project](https://heaveho-humanoid.github.io/)
+### [Build Tool-Calling Parsers in Rust with AI Agents](https://developer.nvidia.com/blog/build-tool-calling-parsers-in-rust-with-ai-agents/) · 1/5
+NVIDIA demonstrates a frontend parser that handles fragmented, truncated, or markup-leaking tool calls — turning messy model output into structured invocations. Matters if you serve agents that emit tool calls in streaming or partial chunks. (Lab release)
 
-**[GPT‑6.2 Astra and GPT‑6.2 Sol](https://simonwillison.net/2026/Nov/17/gpt62-astra-and-sol/) · 2/5**  
-OpenAI released two new API models: Astra for hardest projects (80% of prior price) and Sol for everyday work; LLM CLI tool added same-day support.  
-Matters if you integrate frontier models into products and need updated pricing/capability data.  
+### [Introducing Tool Retrieval in the Gemini API](https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/) · 1/5
+Google adds a tool-retrieval endpoint so models can fetch and invoke tools dynamically rather than stuffing all definitions into context. Matters if you build Gemini-backed agents with large or evolving toolsets. (Lab release)
 
-**[StringQFT: A Multiuse Textbook Resource for AI-Assisted Theoretical Physics](https://arxiv.org/abs/2611.23225) · 2/5**  
-An 18-volume, 3,795-page textbook collection with an open-book benchmark (1,073 items, 499 auto-checkable) and RAG infrastructure for AI-assisted physics research.  
-Matters if you build domain-specific agents or benchmarks for scientific reasoning.  
+### [Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738) · 3/5
+The Jev decision model is repurposed for single-pass image generation by conditioning parallel predictions on a shared random state, achieving global consistency without iterative decoding. Matters if you explore fast, non-autoregressive generation architectures. [GitHub](https://github.com/Carol-lyh/Jeveration) · [Project page](https://carol-lyh.github.io/Jeveration/)
 
-### Evaluation
+### [Why a Computer Scientist Thinks Superintelligence Won't Happen](https://spectrum.ieee.org/ai-superintelligence-debate) · 2/5
+IEEE Spectrum profiles a researcher arguing that current scaling paths miss qualitative gaps — useful framing for benchmark design and capability forecasting. Matters if you evaluate long-horizon claims against measurable short-term metrics.
 
-**[TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks](https://arxiv.org/abs/2611.22115) · 3/5**  
-The Xing 4 series extends TeleChat through architecture and training infrastructure advances on Ascend chips, covering sparse activation, attention design, and speculative decoding for agentic post-training.  
-Matters if you evaluate or deploy LLMs on non-NVIDIA hardware stacks.  
-[Project](https://github.com/XingChen-AGI)
+### [Meet Shepherd, the Meta-Agent Keeping Rogue AI In Check](https://spectrum.ieee.org/ai-agent-manager) · 2/5
+A supervisory agent monitors subordinate agents for undesirable actions (e.g., mass deletions, unauthorized purchases) and intervenes — an early pattern for runtime guardrails. Matters if you deploy autonomous agents and need an oversight layer.
 
-### Build
+### [Jailbreak Detection on Large Language Models via Contrastive Prototype Structures](https://arxiv.org/abs/2611.24936) · 2/5
+JDPI constructs harmful/benign prototypes from binary safety labels and classifies by relative distance, using fewer labeled examples than a downstream classifier. Matters if you need lightweight, low-label safety filters for LLM deployments.
 
-**[Build Training-Ready Physical AI Datasets with Two Prompts in NVIDIA Cosmos](https://developer.nvidia.com/blog/build-training-ready-physical-ai-datasets-with-two-prompts-in-nvidia-cosmos/) · 2/5**  
-NVIDIA demonstrates generating diverse, simulation-ready robotics datasets from two text prompts using Cosmos world models, targeting rare defects and challenging scenarios.  
-Matters if you need synthetic physical-AI training data at scale.  
+### [NereidVLA: Learning to Understand and Navigate the Underwater World](https://arxiv.org/abs/2611.24864) · 2/5
+A vision-language-action model pre-trained on 2M marine examples (Sea2Know) then fine-tuned on simulated underwater vehicle trajectories for language-conditioned 3D navigation. Matters if you work on domain-specific VLA transfer with limited robot data.
 
-### Other
-
-**[Energy-Based Reasoners: 385x more efficient inference](https://energy-based-reasoners.github.io/) · 3/5**  
-A project claims 385× inference efficiency gains over standard autoregressive models using energy-based reasoning; discussion on Hacker News (264 points).  
-Matters if you serve LLMs at scale and can validate the efficiency claims against your workloads.  
-[Discussion](https://news.ycombinator.com/item?id=50543989)
-
-**[FastFrames: Video Generation at Interactive Latency](https://arxiv.org/abs/2611.23226) · 3/5**  
-Apple researchers profile autoregressive video diffusion bottlenecks (VAE decode, KV cache) and introduce FastFrames, achieving interactive latency without quality loss.  
-Matters if you deploy video generation and need latency reductions.  
-[GitHub](https://github.com/apple-aiml-research/ml-fastframes) · [Project](https://apple-aiml-research.github.io/ml-fastframes/)
-
-**[TCP4D: A Unified Tool-Center-Point Tracking and Generation Model for Robot Manipulation](https://arxiv.org/abs/2611.23143) · 3/5**  
-A shared 4D scene representation tracks observed tool-center-point motion and generates future TCP trajectories from monocular video, recovering metric SE(3) poses and gripper states.  
-Matters if you build vision-based robot manipulation pipelines.  
-[GitHub](https://github.com/Livioni/TCP4D) · [Project](https://livioni.github.io/TCP4D/)
-
-**[Ambient LLMs: Data-Efficient Supervised Fine-tuning via Temperature Matching](https://arxiv.org/abs/2611.23229) · 2/5**  
-Ambient SFT uses a frozen pre-trained model as a noisy teacher to augment small fine-tuning sets, preventing overfitting and catastrophic forgetting of distribution tails.  
-Matters if you fine-tune on limited data and need stronger regularization.  
+### [What Survival Benchmarks Don't Tell You: Impact of Model Selection and Dataset Regimes](https://arxiv.org/abs/2611.24837) · 2/5
+Large-scale benchmark of 10 classical, tree-based, and deep survival methods across 49 datasets, varying the model-selection criterion (C-index, IBS, MAE-PO) — exposes how regime choice changes winners. Matters if you evaluate or deploy survival models and care about metric-aligned selection.
 
 ## Still developing
 
-- **[Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) · 3/5** — 320B MoE model for scientific reasoning; 2 runs tracked, traction delta +1.88. [GitHub](https://github.com/InternLM/Sage-S2.1-Flash)
-- **[MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x](https://huggingface.co/datasets/MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x) · 3/5** — Reasoning dataset (506 likes, 6.6k downloads); 3 runs tracked, minimal traction change.
-- **[leostera/git-twig](https://github.com/leostera/git-twig) · 3/5** — Lightweight git worktrees for agents (261 stars); 3 runs tracked, momentum +0.35.
-- **[From Repositories to Training Environments…](https://arxiv.org/abs/2611.21152) · 2/5** — RepoFactory pipeline for coding-agent environments; climbing (score +1).
-- **[sensenova/SenseNova-Loop-9B](https://huggingface.co/sensenova/SenseNova-Loop-9B) · 2/5** — Multimodal 9B model; climbing (traction rising).
+- [TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks](https://arxiv.org/abs/2611.22115) · 3/5 — 2 runs tracked, traction +0.065; Xing 4 series advances sparse activation and agentic post-training on Ascend. [Project](https://github.com/XingChen-AGI)
+- [llm-gemini 0.38](https://simonwillison.net/2026/Nov/18/llm-gemini/) · 1/5 — wraps Gemini 4 Neon; notes pricing complexity across the Gemini 4 lineup.
+- [GPT‑6.2 Astra and GPT‑6.2 Sol](https://simonwillison.net/2026/Nov/17/gpt62-astra-and-sol/) · 2/5 — 2 days on radar; OpenAI’s new frontier (Astra) and efficient (Sol) models with API identifiers and pricing notes.
+- [leostera/git-twig — lightweight git-worktrees for agents](https://github.com/leostera/git-twig) · 3/5 — 4 days, 265★; isolates agent work in ephemeral worktrees to avoid repo corruption.
+- [yzsind/mydb — MySQL-compatible HTAP database with native AI retrieval](https://github.com/yzsind/mydb) · 2/5 — 2 days, 67★; targets mixed transactional/analytical workloads for agent backends.
+- [sensenova/SenseNova-Loop-9B (HF Model)](https://huggingface.co/sensenova/SenseNova-Loop-9B) · 2/5 — 3 days, 369 likes, 1.4k downloads; multimodal 9B model trending upward.
+- [NVIDIA RTX Spark Compact Desktops Out Now](https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/) · 1/5 — 2 days; ASUS/Dell/MSI systems with up to 128GB unified memory for local fine-tuning. (Lab release)
 
 ## Action items
 
-**Read** the [Weight-Space Programming paper](https://arxiv.org/abs/2611.22055) and its [GitHub repo](https://github.com/effl-lab/Weight-Space-Programming) to assess whether weight-space programming could simplify your model-customization workflow.
-
-**Try** [FastFrames](https://github.com/apple-aiml-research/ml-fastframes) if you serve video diffusion models — the KV-cache and VAE optimizations are portable to other autoregressive video pipelines.
-
-**Track** the [Energy-Based Reasoners](https://energy-based-reasoners.github.io/) repository for independent benchmarks; a verified 385× efficiency gain would reshape inference serving economics.
+- **Read** the [Game2Player paper](https://arxiv.org/abs/2611.24154) and its [GitHub repo](https://github.com/game2player/Game2Player) if you need a reproducible pipeline for generating diverse, verifiable agent-environment interaction data.
+- **Try** the [NVIDIA tool-call parser pattern](https://developer.nvidia.com/blog/build-tool-calling-parsers-in-rust-with-ai-agents/) when your streaming agent output arrives fragmented — the Rust reference handles partial arguments and markup leakage.
+- **Track** the [Jeveration repo](https://github.com/Carol-lyh/Jeveration) for single-pass image generation from a frozen VLM; the parallel-prediction-with-shared-state trick may generalize to other structured generation tasks.
 
 ---
 

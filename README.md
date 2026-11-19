@@ -9,18 +9,23 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Wed 18 Nov
+### New in the last two days · Thu 19 Nov
 
-> The strongest signal is a demonstrable shift away from Transformer-centric design: researchers showed LLMs can write neural weights directly without gradient descent, while a separate system claims 385× inference efficiency gains using energy-based reasoning. Frontier labs shipped new models (OpenAI GPT‑6.2 Astra/Sol, SenseNova‑Loop‑9B, Tencent Hy4‑flash) and hardware (NVIDIA RTX Spark desktops), and multiple teams released agent frameworks for coding, robotics, and multi‑humanoid collaboration.
+> Frontier labs shipped a wave of agent-facing tooling: OpenAI published a measurement of coding-agent acceleration, NVIDIA released a Rust parser for fragmented tool calls, and Google added tool retrieval to the Gemini API. At the same time, two high-signal research artifacts arrived — Game2Player, a co-development loop that scales verifiable gameplay for visual agents, and Jeveration, which extends single-pass “System One” decision models to image generation. A cluster of new benchmarks and safety probes rounds out the day.
 
-- **[Weight-Space Programming Doesn't Need Transformers](https://arxiv.org/abs/2611.22055)** Researchers tasked three frontier LLMs with writing neural-network weights by hand, without gradient-based training; given minimal guidance and a sandbox, the models designed plai…
-- **[Heave-Ho: Decentralized Long-Horizon Multi-Humanoid Collaboration](https://arxiv.org/abs/2611.22275)** A decentralized framework adapts a humanoid foundation model for physically coupled multi-robot loco-manipulation, enabling coordinated control from local observations and long-ho…
-- **[GPT‑6.2 Astra and GPT‑6.2 Sol](https://simonwillison.net/2026/Nov/17/gpt62-astra-and-sol/)** OpenAI released two new API models: Astra for hardest projects (80% of prior price) and Sol for everyday work; LLM CLI tool added same-day support.
-- **[StringQFT: A Multiuse Textbook Resource for AI-Assisted Theoretical Physics](https://arxiv.org/abs/2611.23225)** An 18-volume, 3,795-page textbook collection with an open-book benchmark (1,073 items, 499 auto-checkable) and RAG infrastructure for AI-assisted physics research.
-- **[TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks](https://arxiv.org/abs/2611.22115)** The Xing 4 series extends TeleChat through architecture and training infrastructure advances on Ascend chips, covering sparse activation, attention design, and speculative decodin…
-- **[Build Training-Ready Physical AI Datasets with Two Prompts in NVIDIA Cosmos](https://developer.nvidia.com/blog/build-training-ready-physical-ai-datasets-with-two-prompts-in-nvidia-cosmos/)** NVIDIA demonstrates generating diverse, simulation-ready robotics datasets from two text prompts using Cosmos world models, targeting rare defects and challenging scenarios.
+- **[Game2Player: Scaling Gameplay Experience for Visual Agents through Environment-Player Co-Development](https://arxiv.org/abs/2611.24154)** A Builder agent adapts web games, exposes internal state, and a Player agent learns from the resulting verifiable trajectories — producing a scalable dataset of perception, planni…
+- **[Research acceleration: The jagged frontier](https://openai.com/index/research-acceleration-jagged-frontier)** OpenAI measures how coding agents accelerate AI research, mapping where performance is strong and where it remains uneven — a signal for recursive self-improvement trajectories.
+- **[Build Tool-Calling Parsers in Rust with AI Agents](https://developer.nvidia.com/blog/build-tool-calling-parsers-in-rust-with-ai-agents/)** NVIDIA demonstrates a frontend parser that handles fragmented, truncated, or markup-leaking tool calls — turning messy model output into structured invocations.
+- **[Introducing Tool Retrieval in the Gemini API](https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/)** Google adds a tool-retrieval endpoint so models can fetch and invoke tools dynamically rather than stuffing all definitions into context.
+- **[Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738)** The Jev decision model is repurposed for single-pass image generation by conditioning parallel predictions on a shared random state, achieving global consistency without iterative…
+- **[Why a Computer Scientist Thinks Superintelligence Won't Happen](https://spectrum.ieee.org/ai-superintelligence-debate)** IEEE Spectrum profiles a researcher arguing that current scaling paths miss qualitative gaps — useful framing for benchmark design and capability forecasting.
 
-[Read the full briefing](reports/2026-11-18-digest.md) · [Every edition](reports/README.md)
+### Still unfolding
+
+- **[leostera/git-twig — lightweight git-worktrees for agents](https://github.com/leostera/git-twig)** · day 3
+- **[sensenova/SenseNova-Loop-9B (HF Model)](https://huggingface.co/sensenova/SenseNova-Loop-9B)** · day 3
+
+[Read the full briefing](reports/2026-11-19-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 
