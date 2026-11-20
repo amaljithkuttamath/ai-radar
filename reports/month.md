@@ -4,7 +4,7 @@ What changed in AI, in plain words.
 
 [Yesterday](../README.md) · [This week](week.md) · **This month**
 
-## The last 30 days · Wed 21 Oct to Thu 19 Nov
+## The last 30 days · Thu 22 Oct to Fri 20 Nov
 
 ### Stories with staying power
 
@@ -21,21 +21,21 @@ How often each topic came up per daily edition, this month against the month bef
 
 | Topic | Last 30 days | Before | Trend |
 |---|---:|---:|---|
-| Long context and memory | 1.4 | 4.9 | Down 71% |
-| Diffusion models | 1.0 | 3.2 | Down 67% |
-| Safety and security | 1.4 | 0.5 | Up 2.3x |
+| Long context and memory | 1.2 | 4.9 | Down 74% |
+| Safety and security | 1.4 | 0.5 | Up 2.8x |
+| Diffusion models | 1.0 | 3.0 | Down 63% |
 | Open-weight models | 1.5 | 0.7 | Up 2.0x |
-| Benchmarks and evaluation | 8.2 | 13.7 | Down 40% |
-| Robotics | 2.7 | 1.6 | Up 1.6x |
-| Multimodal and vision | 12.8 | 19.5 | Down 34% |
-| Retrieval and RAG | 2.6 | 1.9 | Steady |
+| Benchmarks and evaluation | 7.8 | 14.4 | Down 45% |
+| Robotics | 3.0 | 1.7 | Up 1.8x |
+| AI for science | 2.9 | 1.8 | Up 1.5x |
+| Multimodal and vision | 13.1 | 18.9 | Steady |
 
 ```mermaid
 xychart-beta
     title "Mentions per edition, last 30 days"
-    x-axis ["Multimodal and vision", "Benchmarks and evaluation", "Robotics", "Retrieval and RAG", "Open-weight models", "Long context and memory", "Safety and security", "Diffusion models"]
+    x-axis ["Multimodal and vision", "Benchmarks and evaluation", "Robotics", "AI for science", "Open-weight models", "Safety and security", "Long context and memory", "Diffusion models"]
     y-axis "Mentions"
-    bar [12.8, 8.2, 2.7, 2.6, 1.5, 1.4, 1.4, 1.0]
+    bar [13.1, 7.8, 3.0, 2.9, 1.5, 1.4, 1.2, 1.0]
 ```
 
 [All 28 editions this month, and every one before](README.md)

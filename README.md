@@ -9,23 +9,22 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Thu 19 Nov
+### New in the last two days · Fri 20 Nov
 
-> Frontier labs shipped a wave of agent-facing tooling: OpenAI published a measurement of coding-agent acceleration, NVIDIA released a Rust parser for fragmented tool calls, and Google added tool retrieval to the Gemini API. At the same time, two high-signal research artifacts arrived — Game2Player, a co-development loop that scales verifiable gameplay for visual agents, and Jeveration, which extends single-pass “System One” decision models to image generation. A cluster of new benchmarks and safety probes rounds out the day.
+> A wave of new diagnostic benchmarks for embodied AI leads today’s observations: Mind2Act World introduces a three-axis test for robotic manipulation, while ZeroVLN, WeMM-Video, EgoCaptioner, and TuringSpace each target a different gap in navigation, omni-modal video, egocentric captioning, and spatial reasoning. Simultaneously, a Hacker News discussion surfaced a paper claiming language models can rewrite their own weights, and a private/local AI desktop project gathered rapid GitHub traction.
 
-- **[Game2Player: Scaling Gameplay Experience for Visual Agents through Environment-Player Co-Development](https://arxiv.org/abs/2611.24154)** A Builder agent adapts web games, exposes internal state, and a Player agent learns from the resulting verifiable trajectories — producing a scalable dataset of perception, planni…
-- **[Research acceleration: The jagged frontier](https://openai.com/index/research-acceleration-jagged-frontier)** OpenAI measures how coding agents accelerate AI research, mapping where performance is strong and where it remains uneven — a signal for recursive self-improvement trajectories.
-- **[Build Tool-Calling Parsers in Rust with AI Agents](https://developer.nvidia.com/blog/build-tool-calling-parsers-in-rust-with-ai-agents/)** NVIDIA demonstrates a frontend parser that handles fragmented, truncated, or markup-leaking tool calls — turning messy model output into structured invocations.
-- **[Introducing Tool Retrieval in the Gemini API](https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/)** Google adds a tool-retrieval endpoint so models can fetch and invoke tools dynamically rather than stuffing all definitions into context.
-- **[Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738)** The Jev decision model is repurposed for single-pass image generation by conditioning parallel predictions on a shared random state, achieving global consistency without iterative…
-- **[Why a Computer Scientist Thinks Superintelligence Won't Happen](https://spectrum.ieee.org/ai-superintelligence-debate)** IEEE Spectrum profiles a researcher arguing that current scaling paths miss qualitative gaps — useful framing for benchmark design and capability forecasting.
+- **[Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation](https://arxiv.org/abs/2611.26444)** Mind2Act World introduces a benchmark that separates history-based reasoning, precise physical execution, and their composition through environmental feedback across robotic manip…
+- **[ZeroVLN: Learning to Navigate without Supervised Fine-Tuning of the VLM Brain](https://arxiv.org/abs/2611.26414)** ZeroVLN presents a slow-fast navigation framework that keeps the vision-language model frozen and uses a semantic tool-calling interface for movement decisions, avoiding navigatio…
+- **[WeMM-Video: Pushing the Frontiers of Open-Source Omni-Modal Video Understanding](https://arxiv.org/abs/2611.26409)** Tencent releases WeMM-Video, a family of bilingual (Chinese-English) omni-modal models (2B–35B) unifying text, image, audio, and video with hybrid thinking (fast instruct and slow…
+- **[EgoCaptioner: Towards Comprehensive and Fine-Grained Egocentric Video Captioning](https://arxiv.org/abs/2611.26380)** EgoCaptioner pairs a video-level overview with timed, adaptive narration steps and key-moment timestamps, plus a coarse-to-fine annotation pipeline to train MLLMs for detailed ego…
+- **[Language Models Can Rewrite Their Own Weights](https://arxiv.org/abs/2611.21885)** A paper claiming that language models can directly modify their own parameters during inference surfaced on Hacker News (189 points, 84 comments), proposing a form of self-referen…
+- **[han938/open-webui-private-ai-desk](https://github.com/han938/open-webui-private-ai-desk)** A local-first desktop wrapper around Open WebUI that lets users chat with private models offline, observed with 93 GitHub stars in its first day.
 
 ### Still unfolding
 
-- **[leostera/git-twig — lightweight git-worktrees for agents](https://github.com/leostera/git-twig)** · day 3
-- **[sensenova/SenseNova-Loop-9B (HF Model)](https://huggingface.co/sensenova/SenseNova-Loop-9B)** · day 3
+- **[sensenova/SenseNova-Loop-9B](https://huggingface.co/sensenova/SenseNova-Loop-9B)** · day 4
 
-[Read the full briefing](reports/2026-11-19-digest.md) · [Every edition](reports/README.md)
+[Read the full briefing](reports/2026-11-20-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 
