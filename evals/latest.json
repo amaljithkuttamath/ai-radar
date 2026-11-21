@@ -1,21 +1,21 @@
 {
-  "date": "2026-11-20",
+  "date": "2026-11-21",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-20T18:58:12Z",
+  "digest_commit_time_utc": "2026-11-21T17:53:02Z",
   "age_hours_at_eval": 0.01,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
       "age_h": 0.01,
-      "links_total": 45,
+      "links_total": 43,
       "links_broken": 0,
-      "links_unverified": 1,
+      "links_unverified": 0,
       "main_items": 10,
-      "main_score_mean": 2.9,
+      "main_score_mean": 2.3,
       "sections_present": 4,
-      "expected_sections": 3,
+      "expected_sections": 4,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
       "traction_observations": 56,
@@ -27,7 +27,7 @@
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 4 section(s); 3/7 of the prompt's sections present"
+        "detail": "title and 4 section(s); 4/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
@@ -37,7 +37,7 @@
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 1/45 declined to answer"
+        "detail": "every link answered 2xx"
       },
       {
         "key": "synthesis_present",
@@ -68,12 +68,7 @@
     "reobservation_rate": 1.0,
     "forecast_accuracy": 0.125
   },
-  "broken_urls": [
-    {
-      "url": "https://news.ycombinator.com/item?id=50577265",
-      "status": 405
-    }
-  ],
+  "broken_urls": [],
   "missed_stories": [],
   "degraded_reason": "--tier0-only: model call skipped by request"
 }
