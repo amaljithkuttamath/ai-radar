@@ -9,22 +9,25 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Fri 20 Nov
+### New in the last two days · Sat 21 Nov
 
-> A wave of new diagnostic benchmarks for embodied AI leads today’s observations: Mind2Act World introduces a three-axis test for robotic manipulation, while ZeroVLN, WeMM-Video, EgoCaptioner, and TuringSpace each target a different gap in navigation, omni-modal video, egocentric captioning, and spatial reasoning. Simultaneously, a Hacker News discussion surfaced a paper claiming language models can rewrite their own weights, and a private/local AI desktop project gathered rapid GitHub traction.
+> Anthropic’s IPO close and a broad AI sell-off dominated attention (444 HN points), while OpenAI published a layered defense against adversarial distillation. On the research side, the Jeveration paper shows System-One-style models can generate images in a single forward pass, and its traction has risen sharply over three consecutive radar runs.
 
-- **[Mind2Act World: A Diagnostic Benchmark for Embodied Mind, Physical Action, and Mind-Action Composition in Robotic Manipulation](https://arxiv.org/abs/2611.26444)** Mind2Act World introduces a benchmark that separates history-based reasoning, precise physical execution, and their composition through environmental feedback across robotic manip…
-- **[ZeroVLN: Learning to Navigate without Supervised Fine-Tuning of the VLM Brain](https://arxiv.org/abs/2611.26414)** ZeroVLN presents a slow-fast navigation framework that keeps the vision-language model frozen and uses a semantic tool-calling interface for movement decisions, avoiding navigatio…
-- **[WeMM-Video: Pushing the Frontiers of Open-Source Omni-Modal Video Understanding](https://arxiv.org/abs/2611.26409)** Tencent releases WeMM-Video, a family of bilingual (Chinese-English) omni-modal models (2B–35B) unifying text, image, audio, and video with hybrid thinking (fast instruct and slow…
-- **[EgoCaptioner: Towards Comprehensive and Fine-Grained Egocentric Video Captioning](https://arxiv.org/abs/2611.26380)** EgoCaptioner pairs a video-level overview with timed, adaptive narration steps and key-moment timestamps, plus a coarse-to-fine annotation pipeline to train MLLMs for detailed ego…
-- **[Language Models Can Rewrite Their Own Weights](https://arxiv.org/abs/2611.21885)** A paper claiming that language models can directly modify their own parameters during inference surfaced on Hacker News (189 points, 84 comments), proposing a form of self-referen…
-- **[han938/open-webui-private-ai-desk](https://github.com/han938/open-webui-private-ai-desk)** A local-first desktop wrapper around Open WebUI that lets users chat with private models offline, observed with 93 GitHub stars in its first day.
+- **[han938/open-webui-private-ai-desk](https://github.com/han938/open-webui-private-ai-desk)** A local-first Open WebUI fork for chatting with private models.
+- **[unsloth/Inkling-2-Mini-GGUF](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF)** GGUF quant of the Inkling-2-Mini MoE multimodal model (image-text-to-text).
+- **[AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control](https://arxiv.org/abs/2611.26613)** Action-level critique framework for frontier agents (e.g., GPT-6 Astra) controlling robots via low-level numerical actions across 12 manipulation benchmarks.
+- **[Text-Aware, Vision-Blind: How Multimodal Image Editing Systems Handle Unsafe Inputs](https://arxiv.org/abs/2611.26569)** Introduces EditSafetyBench (5,940 image-instruction pairs, 11 risk categories, 3 edit intents) exposing single-modality safety gaps in instruction-guided editing.
+- **[The Geometry of Lies: Knowledge and Persona Directions for Detecting Deception in LLMs](https://arxiv.org/abs/2611.26545)** Label-free persona directions from honest/deceptive role-play outperform single-dataset linear probes on Liars’ Bench at 70B scale, except on Qwen.
+- **[AURA: AUdio-dRiven streaming Avatar](https://arxiv.org/abs/2611.26540)** Chunk-by-chunk video generation with rolling KV cache (1.3B and larger), requiring only current audio chunk — no multi-second look-ahead.
 
 ### Still unfolding
 
-- **[sensenova/SenseNova-Loop-9B](https://huggingface.co/sensenova/SenseNova-Loop-9B)** · day 4
+- **[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)** · day 26
+- **[deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** · day 26
+- **[Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security)** · day 16
+- **[ccch1mneyyy/dsh-Go](https://github.com/ccch1mneyyy/dsh-Go)** · day 8
 
-[Read the full briefing](reports/2026-11-20-digest.md) · [Every edition](reports/README.md)
+[Read the full briefing](reports/2026-11-21-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 
