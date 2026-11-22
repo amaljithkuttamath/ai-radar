@@ -1,0 +1,83 @@
+{
+  "date": "2026-11-22",
+  "mode": "deterministic",
+  "grader_model": "",
+  "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
+  "digest_commit_time_utc": "2026-11-22T18:14:41Z",
+  "age_hours_at_eval": 0.0,
+  "tier0": {
+    "module_hash": "b9d5d0f52167",
+    "metrics": {
+      "age_h": 0.0,
+      "links_total": 41,
+      "links_broken": 0,
+      "links_unverified": 2,
+      "main_items": 0,
+      "main_score_mean": null,
+      "sections_present": 8,
+      "expected_sections": 4,
+      "tracked_items": 60,
+      "reobservation_rate": 1.0,
+      "traction_observations": 57,
+      "degraded_synthesis": false,
+      "forecast_accuracy": 0.125,
+      "claims_open": 11
+    },
+    "checks": [
+      {
+        "key": "structure",
+        "ok": true,
+        "detail": "title and 8 section(s); 4/7 of the prompt's sections present"
+      },
+      {
+        "key": "main_list_nonempty",
+        "ok": null,
+        "detail": "main list has content (16 link(s), 3267 chars) in a shape this checker does not recognise — not read as empty"
+      },
+      {
+        "key": "links_resolve",
+        "ok": true,
+        "detail": "no dead links; 2/41 declined to answer"
+      },
+      {
+        "key": "synthesis_present",
+        "ok": true,
+        "detail": "digest carries model synthesis"
+      },
+      {
+        "key": "traction_observed",
+        "ok": true,
+        "detail": "re-observed 100% of 60 tracked items"
+      }
+    ],
+    "failed": []
+  },
+  "revs": {
+    "prompt_rev": "6efe309",
+    "config_rev": "ca1958e",
+    "files": {
+      "distill/digest.md": "6efe309",
+      "distill/brief_spec.md": "3ed73c5",
+      "config/profile.yaml": "48361eb",
+      "config/sources.yaml": "2121db5",
+      "config/routines.yaml": "2121db5",
+      "config/broken_sources.yaml": "ca1958e"
+    }
+  },
+  "trusted": {
+    "reobservation_rate": 1.0,
+    "forecast_accuracy": 0.125
+  },
+  "broken_urls": [
+    {
+      "url": "https://news.ycombinator.com/item?id=50599762",
+      "status": 405
+    },
+    {
+      "url": "https://news.ycombinator.com/item?id=50597612",
+      "status": 405
+    }
+  ],
+  "missed_stories": [],
+  "degraded_reason": "--tier0-only: model call skipped by request"
+}
