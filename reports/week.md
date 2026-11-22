@@ -4,7 +4,7 @@ What changed in AI, in plain words.
 
 [Yesterday](../README.md) · **This week** · [This month](month.md)
 
-## The week · Sun 15 Nov to Sat 21 Nov
+## The week · Mon 16 Nov to Sun 22 Nov
 
 ### The stories that mattered
 
@@ -21,20 +21,20 @@ How often each topic came up per daily edition, this week against the week befor
 | Topic | This week | Before | Trend |
 |---|---:|---:|---|
 | Robotics | 4.7 | 0.5 | Up 8.0x |
-| Reasoning | 3.4 | 0.7 | Up 4.6x |
-| Open-weight models | 0.3 | 1.2 | Down 70% |
-| Retrieval and RAG | 1.3 | 3.0 | Down 55% |
-| Benchmarks and evaluation | 7.3 | 4.0 | Up 1.8x |
-| AI for science | 3.9 | 2.2 | Up 1.7x |
-| Inference cost and speed | 4.9 | 2.8 | Up 1.7x |
-| Diffusion models | 0.6 | 1.0 | Down 39% |
+| Open-weight models | 0.1 | 1.3 | Down 83% |
+| Reasoning | 4.0 | 0.7 | Up 5.3x |
+| Retrieval and RAG | 1.3 | 2.7 | Down 50% |
+| Inference cost and speed | 5.0 | 2.5 | Up 2.0x |
+| Benchmarks and evaluation | 7.9 | 4.2 | Up 1.9x |
+| Agents | 16.3 | 12.0 | Steady |
+| Safety and security | 2.4 | 3.0 | Steady |
 
 ### Every edition this week
 
+- [Sun 22 Nov](2026-11-22-digest.md)
 - [Sat 21 Nov](2026-11-21-digest.md)
 - [Fri 20 Nov](2026-11-20-digest.md)
 - [Thu 19 Nov](2026-11-19-digest.md)
 - [Wed 18 Nov](2026-11-18-digest.md)
 - [Tue 17 Nov](2026-11-17-digest.md)
 - [Mon 16 Nov](2026-11-16-digest.md)
-- [Sun 15 Nov](2026-11-15-digest.md)

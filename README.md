@@ -9,25 +9,20 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Sat 21 Nov
+### New in the last two days · Sun 22 Nov
 
-> Anthropic’s IPO close and a broad AI sell-off dominated attention (444 HN points), while OpenAI published a layered defense against adversarial distillation. On the research side, the Jeveration paper shows System-One-style models can generate images in a single forward pass, and its traction has risen sharply over three consecutive radar runs.
+> Anthropic's IPO closure dominated developer discussion (557 HN points) while OpenAI published a framework for perplexity-based capability evaluation. Concurrently, two single-forward-pass generation papers — Jeveration and Sage S2.1 Flash — showed strongly rising traction across six and four radar runs respectively, and a wave of new desktop agents (Claude Windows, Roamies, Blender MCP) entered the radar alongside MoE model variants (Inkling family).
 
-- **[han938/open-webui-private-ai-desk](https://github.com/han938/open-webui-private-ai-desk)** A local-first Open WebUI fork for chatting with private models.
-- **[unsloth/Inkling-2-Mini-GGUF](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF)** GGUF quant of the Inkling-2-Mini MoE multimodal model (image-text-to-text).
-- **[AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control](https://arxiv.org/abs/2611.26613)** Action-level critique framework for frontier agents (e.g., GPT-6 Astra) controlling robots via low-level numerical actions across 12 manipulation benchmarks.
-- **[Text-Aware, Vision-Blind: How Multimodal Image Editing Systems Handle Unsafe Inputs](https://arxiv.org/abs/2611.26569)** Introduces EditSafetyBench (5,940 image-instruction pairs, 11 risk categories, 3 edit intents) exposing single-modality safety gaps in instruction-guided editing.
-- **[The Geometry of Lies: Knowledge and Persona Directions for Detecting Deception in LLMs](https://arxiv.org/abs/2611.26545)** Label-free persona directions from honest/deceptive role-play outperform single-dataset linear probes on Liars’ Bench at 70B scale, except on Qwen.
-- **[AURA: AUdio-dRiven streaming Avatar](https://arxiv.org/abs/2611.26540)** Chunk-by-chunk video generation with rolling KV cache (1.3B and larger), requiring only current audio chunk — no multi-second look-ahead.
+_A quiet day: nothing new cleared the bar. Still unfolding is below._
 
 ### Still unfolding
 
-- **[nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets)** · day 26
-- **[deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** · day 26
-- **[Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security)** · day 16
-- **[ccch1mneyyy/dsh-Go](https://github.com/ccch1mneyyy/dsh-Go)** · day 8
+- **[Voxtral 3](https://mistral.ai/news/voxtral-3/)** · day 9
+- **[Introducing Timestral](https://mistral.ai/news/timestral/)** · day 9
+- **[Introducing Muse Spark Meta Model API](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/)** · day 9
+- **[Meta AI Models Powering Genesis Mission](https://ai.meta.com/blog/genesis-mission-lawrence-berkeley-national-laboratory-segment-anything-dino/)** · day 9
 
-[Read the full briefing](reports/2026-11-21-digest.md) · [Every edition](reports/README.md)
+[Read the full briefing](reports/2026-11-22-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 

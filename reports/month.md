@@ -4,7 +4,7 @@ What changed in AI, in plain words.
 
 [Yesterday](../README.md) · [This week](week.md) · **This month**
 
-## The last 30 days · Fri 23 Oct to Sat 21 Nov
+## The last 30 days · Sat 24 Oct to Sun 22 Nov
 
 ### Stories with staying power
 
@@ -17,25 +17,25 @@ What changed in AI, in plain words.
 
 ### Where attention moved
 
-How often each topic came up per daily edition, this month against the month before (28 editions against 22). Counted from the digests' wording, so read it as direction, not exact size.
+How often each topic came up per daily edition, this month against the month before (28 editions against 23). Counted from the digests' wording, so read it as direction, not exact size.
 
 | Topic | Last 30 days | Before | Trend |
 |---|---:|---:|---|
-| Long context and memory | 1.2 | 4.8 | Down 73% |
-| Safety and security | 1.6 | 0.5 | Up 2.8x |
-| Diffusion models | 1.1 | 2.5 | Down 56% |
-| Benchmarks and evaluation | 7.3 | 14.3 | Down 49% |
-| Open-weight models | 1.5 | 0.7 | Up 1.9x |
+| Long context and memory | 1.0 | 4.9 | Down 78% |
+| Safety and security | 1.6 | 0.5 | Up 3.0x |
+| Diffusion models | 1.1 | 2.5 | Down 55% |
+| Benchmarks and evaluation | 6.8 | 14.6 | Down 53% |
 | Robotics | 3.0 | 1.6 | Up 1.8x |
-| AI for science | 2.8 | 1.6 | Up 1.7x |
+| Open-weight models | 1.4 | 0.7 | Up 1.8x |
+| AI for science | 2.7 | 1.8 | Steady |
 | Reasoning | 2.3 | 3.4 | Steady |
 
 ```mermaid
 xychart-beta
     title "Mentions per edition, last 30 days"
-    x-axis ["Benchmarks and evaluation", "Robotics", "AI for science", "Reasoning", "Safety and security", "Open-weight models", "Long context and memory", "Diffusion models"]
+    x-axis ["Benchmarks and evaluation", "Robotics", "AI for science", "Reasoning", "Safety and security", "Open-weight models", "Diffusion models", "Long context and memory"]
     y-axis "Mentions"
-    bar [7.3, 3.0, 2.8, 2.3, 1.6, 1.5, 1.2, 1.1]
+    bar [6.8, 3.0, 2.7, 2.3, 1.6, 1.4, 1.1, 1.0]
 ```
 
 [All 28 editions this month, and every one before](README.md)

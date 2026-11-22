@@ -1,71 +1,91 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-20](2026-11-20-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-21](2026-11-21-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-21
+# AI Radar — 2026-11-22
 
-Anthropic’s IPO close and a broad AI sell-off dominated attention (444 HN points), while OpenAI published a layered defense against adversarial distillation. On the research side, the Jeveration paper shows System-One-style models can generate images in a single forward pass, and its traction has risen sharply over three consecutive radar runs.
+Anthropic's IPO closure dominated developer discussion (557 HN points) while OpenAI published a framework for perplexity-based capability evaluation. Concurrently, two single-forward-pass generation papers — Jeveration and Sage S2.1 Flash — showed strongly rising traction across six and four radar runs respectively, and a wave of new desktop agents (Claude Windows, Roamies, Blender MCP) entered the radar alongside MoE model variants (Inkling family).
 
 ## What changed
 
-**New to radar** (39 items): [chase1225/anythingllm-verona-document-chat](https://github.com/chase1225/anythingllm-verona-document-chat) (document-grounded chat for AnythingLLM), [Domush/antigravity-plugin-context-mode](https://github.com/Domush/antigravity-plugin-context-mode) (90%+ context reduction for Google Antigravity), [SAOS-3624/dsh-see-now](https://github.com/SAOS-3624/dsh-see-now) (variable-rate frame selection for screen watching), [RunanywhereAI/trnrt](https://github.com/RunanywhereAI/trnrt) (NKI megakernels on AWS Trainium, 1M-token context), [Banan1cee/whale_girl](https://github.com/Banan1cee/whale_girl) (WeChat bot with DeepSeek/Qwen), [0xCoach/TaoSheng](https://github.com/0xCoach/TaoSheng) (24/7 on-phone audio capture → rewrite → recognize → AI organizer), [Nasdaq erases all 2026 gains as AI sell-off dampens Anthropic’s second day](https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off), [LLMs can read and write executables byte by byte from a hex dump](https://sgiannopoulos.github.io/blog/machine-code-programming/), [unsloth/Inkling-2-Mini-GGUF](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF), [RadixArk/DaisyRose-27B](https://huggingface.co/RadixArk/DaisyRose-27B).
+**New to radar**  
+- [christinesoft17/claude-desktop-app-win](https://github.com/christinesoft17/claude-desktop-app-win) · 3/5 — Unofficial Windows build of Anthropic's desktop assistant.  
+- [bookwjitchieni1986/blender-ai-mcp-addon](https://github.com/bookwjitchieni1986/blender-ai-mcp-addon) · 3/5 — MCP server and visual chat addon for Blender with multi-agent support.  
+- [dodo-labs-ai/mem-forge](https://github.com/dodo-labs-ai/mem-forge) · 3/5 — Memory layer for agents citing team knowledge.  
+- [KenKaiii/Roamies](https://github.com/KenKaiii/Roamies) · 3/5 — Desktop AI creatures that remember tasks and point at screen elements.  
+- [ILSVRC/imagenet-1k (HF Dataset)](https://huggingface.co/datasets/ILSVRC/imagenet-1k) · 3/5 — Classic benchmark dataset resurfaced on Hugging Face.
 
-**Climbing** (4): [yzsind/mydb](https://github.com/yzsind/mydb) (MySQL-compatible HTAP database, score +1), [nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) (score +1), [KORMo-VL/EVIDENT](https://huggingface.co/datasets/KORMo-VL/EVIDENT) (dataset, score +1), [KORMo-VL/Ko-MultimodalMind2Web](https://huggingface.co/datasets/KORMo-VL/Ko-MultimodalMind2Web) (dataset, score +1).
+**Climbing**  
+- [nvidia/PhysicalAI-Human-1M-100K (HF Dataset)](https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K) · 4/5 — Large-scale human motion dataset for physical AI.  
+- [codepawl/cmu-mocap-glb (HF Dataset)](https://huggingface.co/datasets/codepawl/cmu-mocap-glb) · 2/5 — CMU motion capture in GLB format.  
+- [JaimeMaLangue/JML-fon-speech-v1 (HF Dataset)](https://huggingface.co/datasets/JaimeMaLangue/JML-fon-speech-v1) · 2/5 — Fon language speech dataset.  
+- [KORMo-VL/Ko-Online-Mind2Web (HF Dataset)](https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web) · 2/5 — Korean web agent benchmark.  
+- [AJ-Gonzalez/qwen4-max-reasoning-250x (HF Dataset)](https://huggingface.co/datasets/AJ-Gonzalez/qwen4-max-reasoning-250x) · 2/5 — Reasoning traces from Qwen4-Max.
 
-**Cooled** (10): [higurashi-ai/Haru-4B](https://huggingface.co/higurashi-ai/Haru-4B) (magnitude −1.22), [Depth Pro 2 arXiv](https://arxiv.org/abs/2611.26603) (score −1, magnitude −3.3), [One Prior, Two Dynamics](https://arxiv.org/abs/2611.26617) (score −1), [PlayCraft](https://arxiv.org/abs/2611.26624) (score −1), [Probing the “Conscious” Mind](https://arxiv.org/abs/2611.26590) (score −1), [AutoMaster](https://arxiv.org/abs/2611.26510) (score −1), [Direct3D-V3](https://arxiv.org/abs/2611.26511) (score −1), [RL Post-Training in Diffusion Transformers](https://arxiv.org/abs/2611.26627) (score −1), [Coda-DaVinci](https://arxiv.org/abs/2611.26595) (score −2), [Posterior Matching Distillation](https://arxiv.org/abs/2611.26629) (score −2).
+**Cooled**  
+- [nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB (HF Model)](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) · 2/5 — Small Nemotron variant lost traction.
 
 ## Main list
 
-### [han938/open-webui-private-ai-desk](https://github.com/han938/open-webui-private-ai-desk) · 3/5
-A local-first Open WebUI fork for chatting with private models. Matters if you need a drop-in, self-hosted chat UI with no external dependencies. Observed at 153 GitHub stars.
+[Perplexity and Intelligence](https://openai.com/index/perplexity-and-intelligence) · 1/5  
+OpenAI published a blog proposing perplexity as a shared metric for tracking emerging model capabilities. Matters if you need a common yardstick for eval across labs. Lab release.
 
-### [Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738) · 3/5
-The Jev architecture, previously decision-only, is extended to single-pass image generation via a frozen VLM backbone. Matters if you track efficient generation paradigms or want to repurpose vision-language models for synthesis. Carryover observed on 3 consecutive runs with traction delta +2.64. [GitHub](https://github.com/Carol-lyh/Jeveration) · [Project](https://carol-lyh.github.io/Jeveration/)
+[Show HN: I built a game where you are an LLM's subagent](https://github.com/gulivan/worker755) · 2/5  
+A browser game casting the player as a subagent executing tasks for an LLM supervisor, currently 148 HN points. Matters if you explore human-in-the-loop agent UX patterns. [Discussion](https://news.ycombinator.com/item?id=50599762)
 
-### [unsloth/Inkling-2-Mini-GGUF](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) · 2/5
-GGUF quant of the Inkling-2-Mini MoE multimodal model (image-text-to-text). Matters if you deploy small multimodal models locally and need fast CPU/GPU inference. 502 HF likes, 238k downloads observed.
+[87% of the Anthropic power will come from gas and 11% from coal in 2028](https://betterdatacenterproject.com/2026/11/16/how-ai-is-powered-a-breakdown-of-byop-and-grid-power/) · 2/5  
+Analysis of Anthropic's projected energy mix sparked 557-point HN debate on data-center power sourcing. Matters if you track infrastructure constraints for frontier model deployment. [Discussion](https://news.ycombinator.com/item?id=50597612)
 
-### [AgentRoboCritic: Understanding the Capability of Frontier Agents on Direct Robot Control](https://arxiv.org/abs/2611.26613) · 2/5
-Action-level critique framework for frontier agents (e.g., GPT-6 Astra) controlling robots via low-level numerical actions across 12 manipulation benchmarks. Matters if you evaluate or build embodied agents and need finer-grained failure analysis than episode success rates.
+[christinesoft17/claude-desktop-app-win](https://github.com/christinesoft17/claude-desktop-app-win) · 3/5  
+Community-built Windows port of Anthropic's Claude desktop app reached 329 stars in one day. Matters if you need a native Windows wrapper for Claude's document analysis and automation features.
 
-### [Text-Aware, Vision-Blind: How Multimodal Image Editing Systems Handle Unsafe Inputs](https://arxiv.org/abs/2611.26569) · 2/5
-Introduces EditSafetyBench (5,940 image-instruction pairs, 11 risk categories, 3 edit intents) exposing single-modality safety gaps in instruction-guided editing. Matters if you ship image-editing pipelines and need a joint vision-text safety benchmark.
+[AtomicChat/Inkling-2-Mini-Uncensored-GGUF (HF Model)](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) · 2/5  
+Uncensored LoRA fine-tune of the Inkling-2-Mini MoE model, 129k downloads observed. Matters if you run local vision-language MoE models via llama.cpp.
 
-### [The Geometry of Lies: Knowledge and Persona Directions for Detecting Deception in LLMs](https://arxiv.org/abs/2611.26545) · 2/5
-Label-free persona directions from honest/deceptive role-play outperform single-dataset linear probes on Liars’ Bench at 70B scale, except on Qwen. Matters if you build deception detectors or need transferable lie detection across lie types.
+[Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738) · 3/5  
+Paper shows frozen vision-language models can be repurposed for single-pass image generation; 122 GitHub stars, 149 HF upvotes, traction rising 2.8× over 4 runs. Matters if you research efficient generative backbones. [Code](https://github.com/Carol-lyh/Jeveration) · [Project](https://carol-lyh.github.io/Jeveration/)
 
-### [AURA: AUdio-dRiven streaming Avatar](https://arxiv.org/abs/2611.26540) · 2/5
-Chunk-by-chunk video generation with rolling KV cache (1.3B and larger), requiring only current audio chunk — no multi-second look-ahead. Matters if you need low-latency talking-head streaming for voice assistants or avatars.
+[Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) · 3/5  
+320B MoE model with dedicated scientific encoders (molecular graphs, spectra); 36 stars, 98 HF upvotes, traction rising 2.0× over 6 runs. Matters if you build scientific reasoning agents. [Code](https://github.com/InternLM/Sage-S2.1-Flash) · [Project](https://internlm.github.io/Sage-S2.1-Flash/)
 
-### [Depth Pro 2: Sharp and Temporally Consistent Metric Monocular Depth](https://arxiv.org/abs/2611.26603) · 2/5
-Single scalable network predicts metrically accurate, boundary-sharp, temporally consistent depth for images and video at native resolution. Matters if you need monocular depth for AR/VR, robotics, or video effects without the sharpness-consistency trade-off.
+[unsloth/Inkling-2-Mini-GGUF (HF Model)](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) · 2/5  
+Unsloth-quantized GGUF of the Inkling-2-Mini MoE (image-text-to-text), 805k downloads, 817 likes. Matters if you serve MoE vision-language models locally. Matches focus: mixture-of-experts.
 
-### [Plan4D: Generative Plannable 4D Worlds](https://arxiv.org/abs/2611.26516) · 2/5
-Generates future RGB video plus dense 4D geometry (depth, cameras, point clouds, scene flow) from context and text-specified actions. Matters if you build world models for planning that require explicit geometric consistency over time.
+[han938/open-webui-private-ai-desk](https://github.com/han938/open-webui-private-ai-desk) · 3/5  
+Local-only Open WebUI distribution for private model chat, 151 stars in 3 days. Matters if you deploy air-gapped LLM interfaces for teams.
 
-### [chase1225/anythingllm-verona-document-chat](https://github.com/chase1225/anythingllm-verona-document-chat) · 3/5
-Document-grounded chat workspace integration for AnythingLLM (Verona). Matters if you embed RAG chat into AnythingLLM workspaces. 151 GitHub stars observed.
+[How Google Duplex evolved to also call businesses for you in Gemini](https://research.google/blog/how-google-duplex-evolved-to-also-call-businesses-for-you-in-gemini/) · 1/5  
+Google Research details Duplex's integration into Gemini for automated business calling. Matters if you study production voice-agent pipelines. Lab release.
 
-## Still developing
+## Watch-list / Still developing
 
-- [HuggingFaceFW/fineweb-edu](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu) — 1.4M likes, 453k downloads; 3-run carryover, traction flat.
-- [TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips](https://arxiv.org/abs/2611.22115) — 167 HF upvotes; 4-run carryover, modest climb (+0.11).
-- [Digitaluz/uzbek-language-corpus](https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus) — 76 likes, 1.8k downloads; 3-run carryover.
-- [sensenova/SenseNova-Loop-9B](https://huggingface.co/sensenova/SenseNova-Loop-9B) — 440 likes, 1.7k downloads; 5-run carryover.
-- [Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security) — 10-run streak, +5.4% magnitude.
-- [ccch1mneyyy/dsh-Go](https://github.com/ccch1mneyyy/dsh-Go) — 10-run streak, +4.1% magnitude.
-- [wangzan101/Mika](https://github.com/wangzan101/Mika) — 10-run streak, on-device Android agent.
-- [nvidia/simready-assets](https://huggingface.co/datasets/nvidia/simready-assets) — 10-run streak.
-- [deepseek-ai/DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) — 13-run streak.
-- [Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) — 5-run streak, +44% magnitude.
+- [TheAgenticDataCompany/open-yap-1k (HF Dataset)](https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k) · 3/5 — Audio TTS/ASR dataset, 8.3k downloads, 270 likes, 3 runs tracked.  
+- [HuggingFaceFW/fineweb-edu (HF Dataset)](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu) · 3/5 — 1B+ token educational web corpus, 460k downloads, 1.4k likes, 4 runs tracked.  
+- [Anthropic announces closing of initial public offering](https://www.anthropic.com/news/ipo-close) · 1/5 — IPO closure announcement, 3 runs tracked. Lab release.  
+- [Anthropic prices initial public offering](https://www.anthropic.com/news/anthropic-prices-initial-public-offering) · 1/5 — Pricing details, 4 runs tracked. Lab release.  
+- [Voxtral 3](https://mistral.ai/news/voxtral-3/) · 1/5 — Mistral audio model, 11 runs tracked. Lab release.  
+- [Introducing Timestral](https://mistral.ai/news/timestral/) · 1/5 — Mistral time-series model, 11 runs tracked. Lab release.  
+- [Introducing Muse Spark Meta Model API](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/) · 1/5 — Meta model API, 11 runs tracked. Lab release.  
+- [Meta AI Models Powering Genesis Mission](https://ai.meta.com/blog/genesis-mission-lawrence-berkeley-national-laboratory-segment-anything-dino/) · 1/5 — Scientific deployment case study, 11 runs tracked. Lab release.
+
+## Story arcs
+
+- [Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738) — seen 4 runs, traction +59.7% since first seen on 2026-11-19.
+- [Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) — seen 6 runs, traction +44.5% since first seen on 2026-11-17.
+- [Vyber07/cyber-security (HF Dataset)](https://huggingface.co/datasets/Vyber07/cyber-security) — seen 11 runs, traction +5.9% since first seen on 2026-11-12.
+- [ccch1mneyyy/dsh-Go — dsh-go — DeepSeek Harness 装进口袋：手机本机运行，也能遥控你的电脑。](https://github.com/ccch1mneyyy/dsh-Go) — seen 11 runs, traction +4.3% since first seen on 2026-11-12.
+- [nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB (HF Model)](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) — seen 5 runs, traction +4.1% since first seen on 2026-11-18.
+- [venvoo/china-a-share-l2-level2-limit-order-book-tick-data (HF Dataset)](https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data) — seen 11 runs, traction +2.6% since first seen on 2026-11-12.
+- [TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks](https://arxiv.org/abs/2611.22115) — seen 5 runs, traction +2.3% since first seen on 2026-11-18.
+- [mdiri-ai/SoduWork — The AI-native engine for teams and their agents. Multi-harness, multi-agent, self-hosted.](https://github.com/mdiri-ai/SoduWork) — seen 3 runs, traction +1.8% since first seen on 2026-11-20.
+- [wangzan101/Mika — An on-device AI agent for Android that operates apps and the web to get things done for you.](https://github.com/wangzan101/Mika) — seen 11 runs, traction +1.7% since first seen on 2026-11-12.
+- [nvidia/simready-assets (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-assets) — seen 11 runs, traction +1.6% since first seen on 2026-11-12.
 
 ## Action items
 
-**Read** — [AgentRoboCritic](https://arxiv.org/abs/2611.26613) for a concrete action-level critique framework you can adapt to your own embodied-agent evals.
-
-**Try** — [unsloth/Inkling-2-Mini-GGUF](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) locally via llama.cpp or Ollama; it’s a ready-to-run multimodal MoE with observed high download volume.
-
-**Track** — [Jeveration](https://arxiv.org/abs/2611.24738) repo and demo; three-run traction surge suggests the single-pass generation direction is gaining research momentum.
+**Read** — [Perplexity and Intelligence](https://openai.com/index/perplexity-and-intelligence): OpenAI's proposed eval metric may shape how labs report capability progress.  
+**Try** — [unsloth/Inkling-2-Mini-GGUF](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF): Quantized MoE vision-language model ready for local inference via llama.cpp.  
+**Track** — [Jeveration](https://github.com/Carol-lyh/Jeveration) and [Sage S2.1 Flash](https://github.com/InternLM/Sage-S2.1-Flash): Both papers show rising traction and offer single-forward-pass generation — a potential efficiency lever for diffusion/vision pipelines.
 
 ---
 
