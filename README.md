@@ -9,20 +9,25 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Sun 22 Nov
+### New in the last two days · Mon 23 Nov
 
-> Anthropic's IPO closure dominated developer discussion (557 HN points) while OpenAI published a framework for perplexity-based capability evaluation. Concurrently, two single-forward-pass generation papers — Jeveration and Sage S2.1 Flash — showed strongly rising traction across six and four radar runs respectively, and a wave of new desktop agents (Claude Windows, Roamies, Blender MCP) entered the radar alongside MoE model variants (Inkling family).
+> NVIDIA shipped a GPU-accelerated DuckDB extension (Sirius Core) while OpenAI and DeepMind published agent case studies — one automating half of customer support in 30 days, another finding faster quantum algorithms. Ladybird delivered its first alpha browser build, and the Jensen Huang CEO reversal drove the day's largest community discussion.
 
-_A quiet day: nothing new cleared the bar. Still unfolding is below._
+- **[Get Started with GPU-Accelerated DuckDB Analytics Using the Sirius Core Extension](https://developer.nvidia.com/blog/get-started-with-gpu-accelerated-duckdb-analytics-using-the-sirius-core-extension/)** NVIDIA released the Sirius Core extension to run DuckDB analytical queries on GPUs.
+- **[Accelerating Direct Sparse Solvers for Computational Engineering with NVIDIA cuDSS 1.0](https://developer.nvidia.com/blog/accelerating-direct-sparse-solvers-for-computational-engineering-with-nvidia-cudss-1-0/)** NVIDIA launched cuDSS 1.0, a direct sparse solver library for structural mechanics, CFD, and circuit simulation on GPUs.
+- **[Merry Making: Play, Build and Create With NVIDIA Technologies This Holiday Season](https://blogs.nvidia.com/blog/nvidia-technologies-holidays-2026/)** NVIDIA published a holiday-roundup of hobby projects using its SDKs and hardware.
+- **[Richpanel helps companies automate 50% of support in 30 days](https://openai.com/business/customer-stories/richpanel-ai-customer-support)** OpenAI detailed how Richpanel uses GPT-6 Astra, Sol, and Luna to equip AI support agents with tools, procedures, and conversation handling.
+- **[Finding faster quantum algorithms with agents and formal verification](https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/)** DeepMind applied agent teams with formal verification to improve quantum algorithms for fusion and chemistry.
+- **[Supercharging transformer residual connections](https://research.google/blog/supercharging-transformer-residual-connections/)** Google Research published a theory-focused post on modified residual connections.
 
 ### Still unfolding
 
-- **[Voxtral 3](https://mistral.ai/news/voxtral-3/)** · day 9
-- **[Introducing Timestral](https://mistral.ai/news/timestral/)** · day 9
-- **[Introducing Muse Spark Meta Model API](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/)** · day 9
-- **[Meta AI Models Powering Genesis Mission](https://ai.meta.com/blog/genesis-mission-lawrence-berkeley-national-laboratory-segment-anything-dino/)** · day 9
+- **[Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072)** · day 7
+- **[TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips](https://arxiv.org/abs/2611.22115)** · day 6
+- **[Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738)** · day 5
+- **[HuggingFaceFW/fineweb-edu](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu)** · day 4
 
-[Read the full briefing](reports/2026-11-22-digest.md) · [Every edition](reports/README.md)
+[Read the full briefing](reports/2026-11-23-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 

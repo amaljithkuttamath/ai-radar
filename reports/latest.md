@@ -1,91 +1,94 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-21](2026-11-21-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-22](2026-11-22-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-22
+# AI Radar — 2026-11-23
 
-Anthropic's IPO closure dominated developer discussion (557 HN points) while OpenAI published a framework for perplexity-based capability evaluation. Concurrently, two single-forward-pass generation papers — Jeveration and Sage S2.1 Flash — showed strongly rising traction across six and four radar runs respectively, and a wave of new desktop agents (Claude Windows, Roamies, Blender MCP) entered the radar alongside MoE model variants (Inkling family).
+NVIDIA shipped a GPU-accelerated DuckDB extension (Sirius Core) while OpenAI and DeepMind published agent case studies — one automating half of customer support in 30 days, another finding faster quantum algorithms. Ladybird delivered its first alpha browser build, and the Jensen Huang CEO reversal drove the day's largest community discussion.
 
 ## What changed
 
-**New to radar**  
-- [christinesoft17/claude-desktop-app-win](https://github.com/christinesoft17/claude-desktop-app-win) · 3/5 — Unofficial Windows build of Anthropic's desktop assistant.  
-- [bookwjitchieni1986/blender-ai-mcp-addon](https://github.com/bookwjitchieni1986/blender-ai-mcp-addon) · 3/5 — MCP server and visual chat addon for Blender with multi-agent support.  
-- [dodo-labs-ai/mem-forge](https://github.com/dodo-labs-ai/mem-forge) · 3/5 — Memory layer for agents citing team knowledge.  
-- [KenKaiii/Roamies](https://github.com/KenKaiii/Roamies) · 3/5 — Desktop AI creatures that remember tasks and point at screen elements.  
-- [ILSVRC/imagenet-1k (HF Dataset)](https://huggingface.co/datasets/ILSVRC/imagenet-1k) · 3/5 — Classic benchmark dataset resurfaced on Hugging Face.
+**New to radar**
+- [w01fb0ss/PiBot](https://github.com/w01fb0ss/PiBot) — Open-source, local-first AI agent team for desktop with multi-agent chats, computer use, browser, MCP, routines and approvals (score 3)
+- [pierridotite/mobile-agent-testers](https://github.com/pierridotite/mobile-agent-testers) — 20 AI testers on 20 phones in parallel on GitHub free runners: Claude Code agents on iOS Simulators and Android emulators (score 3)
+- [molly554/whiteboard-ai-tutor](https://github.com/molly554/whiteboard-ai-tutor) — Open-source whiteboard AI tutor with animated lessons; compares Claude, Gemini & DeepSeek across 288 runs and 64 blind-reviewed boards (score 3)
+- [varops/actp](https://github.com/varops/actp) — Agent Communication Transport Protocol (ACP over HTTP) (score 3)
+- [erkamyaman/unslop-anything](https://github.com/erkamyaman/unslop-anything) — Agent skill that finds and fixes AI-looking UI/UX in mobile apps, web apps, and websites (score 3)
 
-**Climbing**  
-- [nvidia/PhysicalAI-Human-1M-100K (HF Dataset)](https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K) · 4/5 — Large-scale human motion dataset for physical AI.  
-- [codepawl/cmu-mocap-glb (HF Dataset)](https://huggingface.co/datasets/codepawl/cmu-mocap-glb) · 2/5 — CMU motion capture in GLB format.  
-- [JaimeMaLangue/JML-fon-speech-v1 (HF Dataset)](https://huggingface.co/datasets/JaimeMaLangue/JML-fon-speech-v1) · 2/5 — Fon language speech dataset.  
-- [KORMo-VL/Ko-Online-Mind2Web (HF Dataset)](https://huggingface.co/datasets/KORMo-VL/Ko-Online-Mind2Web) · 2/5 — Korean web agent benchmark.  
-- [AJ-Gonzalez/qwen4-max-reasoning-250x (HF Dataset)](https://huggingface.co/datasets/AJ-Gonzalez/qwen4-max-reasoning-250x) · 2/5 — Reasoning traces from Qwen4-Max.
+**Climbing**
+- [Digitaluz/uzbek-language-corpus](https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus) — HF dataset, score rose to 3 (+1)
+- [HubLabs/HubEgo-100K](https://huggingface.co/datasets/HubLabs/HubEgo-100K) — HF dataset, score rose to 3 (+1)
+- [apple/DepthPro2](https://huggingface.co/apple/DepthPro2) — HF model, magnitude delta +1.05 (score 2)
+- [nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) — HF model, magnitude delta +0.52 (score 2)
 
-**Cooled**  
-- [nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB (HF Model)](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) · 2/5 — Small Nemotron variant lost traction.
+**Cooled**
+- [senickimoro-art/pinokio-olvara-ai-workspace](https://github.com/senickimoro-art/pinokio-olvara-ai-workspace) — Modular desktop workspace for local AI models, score dropped to 2 (−1)
+- [pgmergulhao75-dot/openbb-calvona-market-research](https://github.com/pgmergulhao75-dot/openbb-calvona-market-research) — OpenBB Calvona market research workflows, score dropped to 2 (−1)
+- [kenzz-devv/open-webui-talora-ai-workspace](https://github.com/kenzz-devv/open-webui-talora-ai-workspace) — Streamlined AI workflow workspace, score dropped to 2 (−1)
+- [hasan6969macho-bit/vectorbt-avoria-analysis](https://github.com/hasan6969macho-bit/vectorbt-avoria-analysis) — Vectorbt research for Avoria analysis, score dropped to 2 (−1)
 
 ## Main list
 
-[Perplexity and Intelligence](https://openai.com/index/perplexity-and-intelligence) · 1/5  
-OpenAI published a blog proposing perplexity as a shared metric for tracking emerging model capabilities. Matters if you need a common yardstick for eval across labs. Lab release.
+### Nvidia & hardware
 
-[Show HN: I built a game where you are an LLM's subagent](https://github.com/gulivan/worker755) · 2/5  
-A browser game casting the player as a subagent executing tasks for an LLM supervisor, currently 148 HN points. Matters if you explore human-in-the-loop agent UX patterns. [Discussion](https://news.ycombinator.com/item?id=50599762)
+**[Get Started with GPU-Accelerated DuckDB Analytics Using the Sirius Core Extension](https://developer.nvidia.com/blog/get-started-with-gpu-accelerated-duckdb-analytics-using-the-sirius-core-extension/) · 2/5**  
+NVIDIA released the Sirius Core extension to run DuckDB analytical queries on GPUs. Matters if you run analytical workloads on DuckDB and want to cut query latency without leaving SQL.
 
-[87% of the Anthropic power will come from gas and 11% from coal in 2028](https://betterdatacenterproject.com/2026/11/16/how-ai-is-powered-a-breakdown-of-byop-and-grid-power/) · 2/5  
-Analysis of Anthropic's projected energy mix sparked 557-point HN debate on data-center power sourcing. Matters if you track infrastructure constraints for frontier model deployment. [Discussion](https://news.ycombinator.com/item?id=50597612)
+**[Accelerating Direct Sparse Solvers for Computational Engineering with NVIDIA cuDSS 1.0](https://developer.nvidia.com/blog/accelerating-direct-sparse-solvers-for-computational-engineering-with-nvidia-cudss-1-0/) · 1/5**  
+NVIDIA launched cuDSS 1.0, a direct sparse solver library for structural mechanics, CFD, and circuit simulation on GPUs. Matters if you solve large sparse linear systems in engineering pipelines.
 
-[christinesoft17/claude-desktop-app-win](https://github.com/christinesoft17/claude-desktop-app-win) · 3/5  
-Community-built Windows port of Anthropic's Claude desktop app reached 329 stars in one day. Matters if you need a native Windows wrapper for Claude's document analysis and automation features.
+**[Merry Making: Play, Build and Create With NVIDIA Technologies This Holiday Season](https://blogs.nvidia.com/blog/nvidia-technologies-holidays-2026/) · 1/5**  
+NVIDIA published a holiday-roundup of hobby projects using its SDKs and hardware. Matters if you want starter ideas for Jetson, Isaac, or Omniverse side projects.
 
-[AtomicChat/Inkling-2-Mini-Uncensored-GGUF (HF Model)](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) · 2/5  
-Uncensored LoRA fine-tune of the Inkling-2-Mini MoE model, 129k downloads observed. Matters if you run local vision-language MoE models via llama.cpp.
+### Frontier lab announcements
 
-[Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738) · 3/5  
-Paper shows frozen vision-language models can be repurposed for single-pass image generation; 122 GitHub stars, 149 HF upvotes, traction rising 2.8× over 4 runs. Matters if you research efficient generative backbones. [Code](https://github.com/Carol-lyh/Jeveration) · [Project](https://carol-lyh.github.io/Jeveration/)
+**[Richpanel helps companies automate 50% of support in 30 days](https://openai.com/business/customer-stories/richpanel-ai-customer-support) · 1/5**  
+OpenAI detailed how Richpanel uses GPT-6 Astra, Sol, and Luna to equip AI support agents with tools, procedures, and conversation handling. Matters if you design LLM-backed support automation and need a reference architecture.
 
-[Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) · 3/5  
-320B MoE model with dedicated scientific encoders (molecular graphs, spectra); 36 stars, 98 HF upvotes, traction rising 2.0× over 6 runs. Matters if you build scientific reasoning agents. [Code](https://github.com/InternLM/Sage-S2.1-Flash) · [Project](https://internlm.github.io/Sage-S2.1-Flash/)
+**[Finding faster quantum algorithms with agents and formal verification](https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/) · 1/5**  
+DeepMind applied agent teams with formal verification to improve quantum algorithms for fusion and chemistry. Matters if you explore agent-driven scientific discovery or hybrid AI/verification workflows.
 
-[unsloth/Inkling-2-Mini-GGUF (HF Model)](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) · 2/5  
-Unsloth-quantized GGUF of the Inkling-2-Mini MoE (image-text-to-text), 805k downloads, 817 likes. Matters if you serve MoE vision-language models locally. Matches focus: mixture-of-experts.
+**[Supercharging transformer residual connections](https://research.google/blog/supercharging-transformer-residual-connections/) · 1/5**  
+Google Research published a theory-focused post on modified residual connections. Matters if you train large models and track architectural variants that claim better gradient flow.
 
-[han938/open-webui-private-ai-desk](https://github.com/han938/open-webui-private-ai-desk) · 3/5  
-Local-only Open WebUI distribution for private model chat, 151 stars in 3 days. Matters if you deploy air-gapped LLM interfaces for teams.
+**[OpenAI and Cisco introduce Shirudo](https://openai.com/index/introducing-shirudo) · 1/5**  
+OpenAI and Cisco open-sourced Shirudo, a Linux runtime that protects running systems during patch rollouts. Matters if you manage live-patching infrastructure and want a reference implementation.
 
-[How Google Duplex evolved to also call businesses for you in Gemini](https://research.google/blog/how-google-duplex-evolved-to-also-call-businesses-for-you-in-gemini/) · 1/5  
-Google Research details Duplex's integration into Gemini for automated business calling. Matters if you study production voice-agent pipelines. Lab release.
+**[A more tailored Google Search that's uniquely yours](https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/) · 1/5**  
+Google announced personal-intelligence features tying Search to Wallet, Drive, Gmail, Photos, and Calendar. Matters if you build products that integrate with Google's personal-data ecosystem.
 
-## Watch-list / Still developing
+### Community highlights
 
-- [TheAgenticDataCompany/open-yap-1k (HF Dataset)](https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k) · 3/5 — Audio TTS/ASR dataset, 8.3k downloads, 270 likes, 3 runs tracked.  
-- [HuggingFaceFW/fineweb-edu (HF Dataset)](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu) · 3/5 — 1B+ token educational web corpus, 460k downloads, 1.4k likes, 4 runs tracked.  
-- [Anthropic announces closing of initial public offering](https://www.anthropic.com/news/ipo-close) · 1/5 — IPO closure announcement, 3 runs tracked. Lab release.  
-- [Anthropic prices initial public offering](https://www.anthropic.com/news/anthropic-prices-initial-public-offering) · 1/5 — Pricing details, 4 runs tracked. Lab release.  
-- [Voxtral 3](https://mistral.ai/news/voxtral-3/) · 1/5 — Mistral audio model, 11 runs tracked. Lab release.  
-- [Introducing Timestral](https://mistral.ai/news/timestral/) · 1/5 — Mistral time-series model, 11 runs tracked. Lab release.  
-- [Introducing Muse Spark Meta Model API](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/) · 1/5 — Meta model API, 11 runs tracked. Lab release.  
-- [Meta AI Models Powering Genesis Mission](https://ai.meta.com/blog/genesis-mission-lawrence-berkeley-national-laboratory-segment-anything-dino/) · 1/5 — Scientific deployment case study, 11 runs tracked. Lab release.
+**[Ladybird's first alpha release](https://simonwillison.net/2026/Nov/23/ladybird/) · 2/5**  
+Ladybird shipped its first alpha: a from-scratch browser with own HTML/CSS/JS/WASM engines, using only HarfBuzz, Skia, ffmpeg, SQLite externally. Matters if you follow browser-engine diversity or need a minimal embedding target.
 
-## Story arcs
+**[Nvidia Reinstates Jensen Huang as CEO](https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html) · 2/5**  
+CNBC reported Huang's return; Hacker News thread hit 1,745 points, 2,854 comments. Matters if you track NVIDIA governance signals that affect roadmap continuity for CUDA, hardware, and developer programs.
 
-- [Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738) — seen 4 runs, traction +59.7% since first seen on 2026-11-19.
-- [Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) — seen 6 runs, traction +44.5% since first seen on 2026-11-17.
-- [Vyber07/cyber-security (HF Dataset)](https://huggingface.co/datasets/Vyber07/cyber-security) — seen 11 runs, traction +5.9% since first seen on 2026-11-12.
-- [ccch1mneyyy/dsh-Go — dsh-go — DeepSeek Harness 装进口袋：手机本机运行，也能遥控你的电脑。](https://github.com/ccch1mneyyy/dsh-Go) — seen 11 runs, traction +4.3% since first seen on 2026-11-12.
-- [nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB (HF Model)](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) — seen 5 runs, traction +4.1% since first seen on 2026-11-18.
-- [venvoo/china-a-share-l2-level2-limit-order-book-tick-data (HF Dataset)](https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data) — seen 11 runs, traction +2.6% since first seen on 2026-11-12.
-- [TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks](https://arxiv.org/abs/2611.22115) — seen 5 runs, traction +2.3% since first seen on 2026-11-18.
-- [mdiri-ai/SoduWork — The AI-native engine for teams and their agents. Multi-harness, multi-agent, self-hosted.](https://github.com/mdiri-ai/SoduWork) — seen 3 runs, traction +1.8% since first seen on 2026-11-20.
-- [wangzan101/Mika — An on-device AI agent for Android that operates apps and the web to get things done for you.](https://github.com/wangzan101/Mika) — seen 11 runs, traction +1.7% since first seen on 2026-11-12.
-- [nvidia/simready-assets (HF Dataset)](https://huggingface.co/datasets/nvidia/simready-assets) — seen 11 runs, traction +1.6% since first seen on 2026-11-12.
+## Still developing
+
+- [Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738) — Single-pass image generation from frozen VLM; 5-day streak, +61.8% traction (score 3, carryover)
+- [Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) — 320B MoE for scientific reasoning and interaction; 7-day streak, +45.4% traction (score 3, carryover)
+- [HuggingFaceFW/fineweb-edu](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu) — 1B–10B token educational web corpus; 5-day carryover (score 3)
+- [Digitaluz/uzbek-language-corpus](https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus) — Monolingual Uzbek LM dataset; climbing, score 3 (score 3)
+- [TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips](https://arxiv.org/abs/2611.22115) — Xing 4 series on Ascend with sparse activation; 6-day streak (score 3, carryover)
+- [bookwjitchieni1986/blender-ai-mcp-addon](https://github.com/bookwjitchieni1986/blender-ai-mcp-addon) — Blender MCP server with multi-agent workflows; 2,765★, 4 days on radar (score 3)
+- [unsloth/Inkling-2-Mini-GGUF](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) — MoE vision-language GGUF, 1.29M downloads, 1,098 likes (score 2)
+- [AtomicChat/Inkling-2-Mini-Uncensored-GGUF](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) — Uncensored LoRA variant, 329k downloads, 638 likes (score 2)
+
+## Watch-list
+
+- [GLM-5.4: Toward generalized coding with our first loop transformer](https://z.ai/blog/glm-5.4) — Z.ai loop-transformer coding model; 984 HN points (score 2)
+- [nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) — Nemotron model climbing traction (score 2)
+- [How Evals are Built, Where they Break, and What to Measure Instead](https://eugeneyan.com/writing/public-evals) — Eugene Yan's 12-benchmark postmortem on grader bugs and metric gaps (score 1)
 
 ## Action items
 
-**Read** — [Perplexity and Intelligence](https://openai.com/index/perplexity-and-intelligence): OpenAI's proposed eval metric may shape how labs report capability progress.  
-**Try** — [unsloth/Inkling-2-Mini-GGUF](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF): Quantized MoE vision-language model ready for local inference via llama.cpp.  
-**Track** — [Jeveration](https://github.com/Carol-lyh/Jeveration) and [Sage S2.1 Flash](https://github.com/InternLM/Sage-S2.1-Flash): Both papers show rising traction and offer single-forward-pass generation — a potential efficiency lever for diffusion/vision pipelines.
+**Read** — [Ladybird's first alpha release](https://simonwillison.net/2026/Nov/23/ladybird/) for a clean walkthrough of a ground-up browser engine; useful if you embed web views or study rendering pipelines.
+
+**Try** — [Get Started with GPU-Accelerated DuckDB Analytics Using the Sirius Core Extension](https://developer.nvidia.com/blog/get-started-with-gpu-accelerated-duckdb-analytics-using-the-sirius-core-extension/) — install the extension and benchmark your analytical queries on GPU vs CPU.
+
+**Track** — [Jeveration](https://arxiv.org/abs/2611.24738) (GitHub: [Carol-lyh/Jeveration](https://github.com/Carol-lyh/Jeveration)) — single-forward-pass image generation from a frozen VLM; 5-day traction rise suggests the paradigm is gaining replication interest.
 
 ---
 
