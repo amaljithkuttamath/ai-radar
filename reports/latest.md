@@ -1,94 +1,106 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-22](2026-11-22-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-23](2026-11-23-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-23
+# AI Radar — 2026-11-24
 
-NVIDIA shipped a GPU-accelerated DuckDB extension (Sirius Core) while OpenAI and DeepMind published agent case studies — one automating half of customer support in 30 days, another finding faster quantum algorithms. Ladybird delivered its first alpha browser build, and the Jensen Huang CEO reversal drove the day's largest community discussion.
+A wave of new robotics and embodied-AI benchmarks arrived together: Embo-Harness, WorldLeague, 3AGameFactory-Motion, and World Models as Native Latent Action Models all frame frontier multimodal models as closed-loop policies. Meanwhile WeMM-Ecom demonstrates a full-size MoE family tuned for e-commerce multimodal tasks, and NVIDIA published a local deployment guide for Cosmos 3. Coverage is broad but shallow — most items are preprints or announcements without independent replication.
 
 ## What changed
 
-**New to radar**
-- [w01fb0ss/PiBot](https://github.com/w01fb0ss/PiBot) — Open-source, local-first AI agent team for desktop with multi-agent chats, computer use, browser, MCP, routines and approvals (score 3)
-- [pierridotite/mobile-agent-testers](https://github.com/pierridotite/mobile-agent-testers) — 20 AI testers on 20 phones in parallel on GitHub free runners: Claude Code agents on iOS Simulators and Android emulators (score 3)
-- [molly554/whiteboard-ai-tutor](https://github.com/molly554/whiteboard-ai-tutor) — Open-source whiteboard AI tutor with animated lessons; compares Claude, Gemini & DeepSeek across 288 runs and 64 blind-reviewed boards (score 3)
-- [varops/actp](https://github.com/varops/actp) — Agent Communication Transport Protocol (ACP over HTTP) (score 3)
-- [erkamyaman/unslop-anything](https://github.com/erkamyaman/unslop-anything) — Agent skill that finds and fixes AI-looking UI/UX in mobile apps, web apps, and websites (score 3)
+**New to radar** (top 5 of 471):  
+- [Embo-Harness: Towards Understanding Frontier-Model-as-Policy Harness](https://arxiv.org/abs/2611.31201) · 4/5  
+- [WorldLeague: Benchmarking Physical Agency](https://arxiv.org/abs/2611.30989) · 4/5  
+- [WeMM-Ecom: Advancing Multimodal Content Understanding for WeChat E-Commerce](https://arxiv.org/abs/2611.30662) · 4/5  
+- [3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets](https://arxiv.org/abs/2611.30013) · 4/5  
+- [World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898) · 3/5  
 
-**Climbing**
-- [Digitaluz/uzbek-language-corpus](https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus) — HF dataset, score rose to 3 (+1)
-- [HubLabs/HubEgo-100K](https://huggingface.co/datasets/HubLabs/HubEgo-100K) — HF dataset, score rose to 3 (+1)
-- [apple/DepthPro2](https://huggingface.co/apple/DepthPro2) — HF model, magnitude delta +1.05 (score 2)
-- [nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) — HF model, magnitude delta +0.52 (score 2)
-
-**Cooled**
-- [senickimoro-art/pinokio-olvara-ai-workspace](https://github.com/senickimoro-art/pinokio-olvara-ai-workspace) — Modular desktop workspace for local AI models, score dropped to 2 (−1)
-- [pgmergulhao75-dot/openbb-calvona-market-research](https://github.com/pgmergulhao75-dot/openbb-calvona-market-research) — OpenBB Calvona market research workflows, score dropped to 2 (−1)
-- [kenzz-devv/open-webui-talora-ai-workspace](https://github.com/kenzz-devv/open-webui-talora-ai-workspace) — Streamlined AI workflow workspace, score dropped to 2 (−1)
-- [hasan6969macho-bit/vectorbt-avoria-analysis](https://github.com/hasan6969macho-bit/vectorbt-avoria-analysis) — Vectorbt research for Avoria analysis, score dropped to 2 (−1)
+*No climbing or cooled items this run.*
 
 ## Main list
 
-### Nvidia & hardware
+### Benchmark
 
-**[Get Started with GPU-Accelerated DuckDB Analytics Using the Sirius Core Extension](https://developer.nvidia.com/blog/get-started-with-gpu-accelerated-duckdb-analytics-using-the-sirius-core-extension/) · 2/5**  
-NVIDIA released the Sirius Core extension to run DuckDB analytical queries on GPUs. Matters if you run analytical workloads on DuckDB and want to cut query latency without leaving SQL.
+**[Embo-Harness: Towards Understanding Frontier-Model-as-Policy Harness](https://arxiv.org/abs/2611.31201) · 4/5**  
+Researchers from DravenALG released a framework that systematically evaluates how frontier multimodal models perform as robot policies, dissecting prompting, planning, action execution, and tool use across six empirical findings. Matters if you build or evaluate robot agents that use VLMs as controllers. [GitHub](https://github.com/DravenALG/Embo-Harness) · [Project](https://dravenalg.github.io/projects/Embo-Harness/)
 
-**[Accelerating Direct Sparse Solvers for Computational Engineering with NVIDIA cuDSS 1.0](https://developer.nvidia.com/blog/accelerating-direct-sparse-solvers-for-computational-engineering-with-nvidia-cudss-1-0/) · 1/5**  
-NVIDIA launched cuDSS 1.0, a direct sparse solver library for structural mechanics, CFD, and circuit simulation on GPUs. Matters if you solve large sparse linear systems in engineering pipelines.
+**[WorldLeague: Benchmarking Physical Agency](https://arxiv.org/abs/2611.30989) · 4/5**  
+A new benchmark with 60 simulated robot tasks measures autonomous progress toward physical goals, covering perception, memory, planning, and action in a unified WorldSim environment. Matters if you need a standardized suite to compare embodied agents across diverse motor skills. [GitHub](https://github.com/xyangzhou/WorldLeague) · [Project](https://xyangzhou.github.io/WorldLeague/)
 
-**[Merry Making: Play, Build and Create With NVIDIA Technologies This Holiday Season](https://blogs.nvidia.com/blog/nvidia-technologies-holidays-2026/) · 1/5**  
-NVIDIA published a holiday-roundup of hobby projects using its SDKs and hardware. Matters if you want starter ideas for Jetson, Isaac, or Omniverse side projects.
+**[WeMM-Ecom: Advancing Multimodal Content Understanding for WeChat E-Commerce](https://arxiv.org/abs/2611.30662) · 4/5**  
+Tencent introduced a five-model family (0.8B dense to 35B MoE) trained with continued pre-training on e-commerce data and hybrid-thinking post-training, claiming SOTA general performance at each scale. Matters if you deploy multimodal LLMs for product understanding or need open MoE checkpoints. [GitHub](https://github.com/Tencent/WeMM-Ecom) · [HF Collection](https://huggingface.co/collections/tencent/wemm-ecom)
 
-### Frontier lab announcements
+**[3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets](https://arxiv.org/abs/2611.30013) · 4/5**  
+OpenDCAI released DivDynBench evaluating rigging and motion generation across six morphology categories with multi-phase constraints, comparing specialized motion, video-to-motion, and LLM-driven paradigms. Matters if you generate animation for arbitrary 3D assets and need rigorous evaluation beyond humanoid skeletons. [GitHub](https://github.com/OpenDCAI/GameFactory-3A)
 
-**[Richpanel helps companies automate 50% of support in 30 days](https://openai.com/business/customer-stories/richpanel-ai-customer-support) · 1/5**  
-OpenAI detailed how Richpanel uses GPT-6 Astra, Sol, and Luna to equip AI support agents with tools, procedures, and conversation handling. Matters if you design LLM-backed support automation and need a reference architecture.
+**[World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898) · 3/5**  
+PAW Team showed that pretrained video world models can serve as latent action models by extracting inverse/forward dynamics from their internal representations, avoiding separate LAM training. Matters if you work with heterogeneous robot video data lacking a shared action space. [Project](https://pawteam-eai.github.io/native-lam/)
 
-**[Finding faster quantum algorithms with agents and formal verification](https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/) · 1/5**  
-DeepMind applied agent teams with formal verification to improve quantum algorithms for fusion and chemistry. Matters if you explore agent-driven scientific discovery or hybrid AI/verification workflows.
+**[Why Does Voice AI Still Struggle With Kenyans' Speech?](https://spectrum.ieee.org/swahili-speech-recognition) · 2/5**  
+IEEE Spectrum reports that Swahili ASR works on read speech but fails on code-switched Sheng dialects, highlighting a persistent gap between benchmark and real-world performance. Matters if you deploy speech systems in multilingual African contexts.
 
-**[Supercharging transformer residual connections](https://research.google/blog/supercharging-transformer-residual-connections/) · 1/5**  
-Google Research published a theory-focused post on modified residual connections. Matters if you train large models and track architectural variants that claim better gradient flow.
+### Nvidia
 
-**[OpenAI and Cisco introduce Shirudo](https://openai.com/index/introducing-shirudo) · 1/5**  
-OpenAI and Cisco open-sourced Shirudo, a Linux runtime that protects running systems during patch rollouts. Matters if you manage live-patching infrastructure and want a reference implementation.
+**[How to Run NVIDIA Cosmos 3 on Local AI Devices Using Hugging Face Diffusers](https://developer.nvidia.com/blog/how-to-run-nvidia-cosmos-3-on-local-ai-devices-using-hugging-face-diffusers/) · 2/5**  
+NVIDIA published a step-by-step guide for running Cosmos 3 Nano locally via Hugging Face Diffusers, addressing memory constraints on consumer GPUs. Matters if you prototype world-model video generation on limited hardware.
 
-**[A more tailored Google Search that's uniquely yours](https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/) · 1/5**  
-Google announced personal-intelligence features tying Search to Wallet, Drive, Gmail, Photos, and Calendar. Matters if you build products that integrate with Google's personal-data ecosystem.
+### Agents
 
-### Community highlights
+**[How iFood scales coding agents across 15,000 repositories](https://openai.com/business/customer-stories/ifood) · 1/5**  
+OpenAI's case study describes iFood's deployment of coding agents across a massive monorepo, detailing tooling and governance patterns. Matters if you operate coding agents at enterprise scale and want a reference architecture.
 
-**[Ladybird's first alpha release](https://simonwillison.net/2026/Nov/23/ladybird/) · 2/5**  
-Ladybird shipped its first alpha: a from-scratch browser with own HTML/CSS/JS/WASM engines, using only HarfBuzz, Skia, ffmpeg, SQLite externally. Matters if you follow browser-engine diversity or need a minimal embedding target.
+**[LLM agents work for their parent companies, not for you](https://michaelharley.net/posts/2026/11/01/llm-agents-work-for-their-parent-companies-not-for-you/) · 2/5**  
+A widely discussed essay (784 HN points) argues that commercial agent APIs align with vendor interests, not user autonomy, and surveys the implications for privacy and control. Matters if you evaluate agent frameworks for user-aligned applications.
 
-**[Nvidia Reinstates Jensen Huang as CEO](https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html) · 2/5**  
-CNBC reported Huang's return; Hacker News thread hit 1,745 points, 2,854 comments. Matters if you track NVIDIA governance signals that affect roadmap continuity for CUDA, hardware, and developer programs.
+### Other
 
-## Still developing
-
-- [Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738) — Single-pass image generation from frozen VLM; 5-day streak, +61.8% traction (score 3, carryover)
-- [Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) — 320B MoE for scientific reasoning and interaction; 7-day streak, +45.4% traction (score 3, carryover)
-- [HuggingFaceFW/fineweb-edu](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu) — 1B–10B token educational web corpus; 5-day carryover (score 3)
-- [Digitaluz/uzbek-language-corpus](https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus) — Monolingual Uzbek LM dataset; climbing, score 3 (score 3)
-- [TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips](https://arxiv.org/abs/2611.22115) — Xing 4 series on Ascend with sparse activation; 6-day streak (score 3, carryover)
-- [bookwjitchieni1986/blender-ai-mcp-addon](https://github.com/bookwjitchieni1986/blender-ai-mcp-addon) — Blender MCP server with multi-agent workflows; 2,765★, 4 days on radar (score 3)
-- [unsloth/Inkling-2-Mini-GGUF](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) — MoE vision-language GGUF, 1.29M downloads, 1,098 likes (score 2)
-- [AtomicChat/Inkling-2-Mini-Uncensored-GGUF](https://huggingface.co/AtomicChat/Inkling-2-Mini-Uncensored-GGUF) — Uncensored LoRA variant, 329k downloads, 638 likes (score 2)
+**[ViDiHand2: Unifying Video Diffusion Priors and Hand Geometry for 3D Hand Motion Reconstruction in the Wild](https://arxiv.org/abs/2611.30597) · 3/5**  
+ViDiHand2 reformulates video-diffusion-based hand depth estimation as geometric constraint solving, adding fine-grained lifting and ray fitting to recover metric 3D motion from egocentric video. Matters if you train manipulation policies from human demonstration videos. [Project](https://vidihand2.github.io/)
 
 ## Watch-list
 
-- [GLM-5.4: Toward generalized coding with our first loop transformer](https://z.ai/blog/glm-5.4) — Z.ai loop-transformer coding model; 984 HN points (score 2)
-- [nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) — Nemotron model climbing traction (score 2)
-- [How Evals are Built, Where they Break, and What to Measure Instead](https://eugeneyan.com/writing/public-evals) — Eugene Yan's 12-benchmark postmortem on grader bugs and metric gaps (score 1)
+- [Language Models Steer on Injected Uncertainty Tokens, but Fail to Self-Monitor In Situ](https://arxiv.org/abs/2611.31228) · 2/5  
+- [Self-Supervised Dataset Distillation via Mutual Information Maximization](https://arxiv.org/abs/2611.31225) · 2/5 · [GitHub](https://github.com/mhmoslemi/MIPA)  
+- [WorldLatent: A Unified 4D Latent Space for World Perception and Generation](https://arxiv.org/abs/2611.31209) · 2/5 · [Project](https://worldlatent.github.io/)  
+- [ToolSmith: An Automatic Tool-Generation Framework for Multimodal Search Agents](https://arxiv.org/abs/2611.31198) · 2/5 · [GitHub](https://github.com/uclanlp/OpenVLHarness) · [Project](https://threesr.github.io/toolsmith/)  
+- [UMAMI: A Multimodal Benchmark Dataset for Evidence-Grounded Dietary Decisions](https://arxiv.org/abs/2611.31068) · 2/5  
+- [Searching for distant planets with Astra](https://openai.com/index/searching-for-distant-planets-with-astra) · 1/5 (lab release)  
+- [What's New for Game Developers: AI Animation and RTX Tools](https://developer.nvidia.com/blog/whats-new-for-game-developers-ai-animation-and-rtx-tools/) · 1/5 (lab release)  
+- [How Gemini is changing the game for Golden State's organization and fans.](https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/) · 1/5 (lab release)  
+- [Anthropic breaks below $83 IPO price](https://www.bloomberg.com/news/articles/2026-11-24/anthropic-breaks-below-83-ipo-price-in-premarket-trading) · 2/5 · [HN Discussion](https://news.ycombinator.com/item?id=50627836)  
+- [MORSE: Optimizing Streaming Memory Design via Open-World Auto-Research](https://arxiv.org/abs/2611.30011) · 2/5 · [Project](https://zhangce01.github.io/morse/)  
+- [inclusionAI/Ling-3.2-air (HF Model)](https://huggingface.co/inclusionAI/Ling-3.2-air) · 2/5  
+- [Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill (HF Dataset)](https://huggingface.co/datasets/Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill) · 2/5  
+
+## Still developing
+
+- [w01fb0ss/PiBot](https://github.com/w01fb0ss/PiBot) · 3/5 — local-first multi-agent desktop team (556 ★, 2 runs tracked)  
+- [varops/actp](https://github.com/varops/actp) · 3/5 — Agent Communication Transport Protocol over HTTP (90 ★, 2 runs tracked)  
+- [unsloth/Inkling-2-Mini-GGUF](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) · 2/5 — MoE vision-language model (1.9M downloads, 4 runs tracked)  
+- [Digitaluz/uzbek-language-corpus](https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus) · 3/5 — Uzbek monolingual corpus (2.7K downloads, 6 runs tracked)  
+- [Anthropic announces closing of initial public offering](https://www.anthropic.com/news/ipo-close) · 1/5 (lab release, 5 runs tracked)  
+- [Anthropic prices initial public offering](https://www.anthropic.com/news/anthropic-prices-initial-public-offering) · 1/5 (lab release, 6 runs tracked)  
+- [Voxtral 3](https://mistral.ai/news/voxtral-3/) · 1/5 (lab release, 13 runs tracked)  
+- [Introducing Timestral](https://mistral.ai/news/timestral/) · 1/5 (lab release, 13 runs tracked)  
+- [FEATURED](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/) · 1/5 (lab release, 13 runs tracked)  
+- [How Meta's AI Models Are Powering the First Wave of Genesis Mission Projects](https://ai.meta.com/blog/genesis-mission-lawrence-berkeley-national-laboratory-segment-anything-dino/) · 1/5 (lab release, 13 runs tracked)  
+- [Finding faster quantum algorithms with agents and formal verification](https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/) · 1/5 (lab release, 2 runs tracked)  
+- [Supercharging transformer residual connections](https://research.google/blog/supercharging-transformer-residual-connections/) · 1/5 (lab release, 2 runs tracked)  
+- [Merry Making: Play, Build and Create With NVIDIA Technologies This Holiday Season](https://blogs.nvidia.com/blog/nvidia-technologies-holidays-2026/) · 1/5 (lab release, 2 runs tracked)  
+- [A more tailored Google Search that's uniquely yours](https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/) · 1/5 (lab release, 2 runs tracked)  
+
+**Story arcs** (rising traction ≥3 runs):  
+- [Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738) — 6 runs, +63.6% traction  
+- [Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) — 8 runs, +45.7%  
+- [nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) — 7 runs, +16.0%  
+- [Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security) — 13 runs, +8.3%  
+- [ccch1mneyyy/dsh-Go](https://github.com/ccch1mneyyy/dsh-Go) — 13 runs, +4.7%  
 
 ## Action items
 
-**Read** — [Ladybird's first alpha release](https://simonwillison.net/2026/Nov/23/ladybird/) for a clean walkthrough of a ground-up browser engine; useful if you embed web views or study rendering pipelines.
-
-**Try** — [Get Started with GPU-Accelerated DuckDB Analytics Using the Sirius Core Extension](https://developer.nvidia.com/blog/get-started-with-gpu-accelerated-duckdb-analytics-using-the-sirius-core-extension/) — install the extension and benchmark your analytical queries on GPU vs CPU.
-
-**Track** — [Jeveration](https://arxiv.org/abs/2611.24738) (GitHub: [Carol-lyh/Jeveration](https://github.com/Carol-lyh/Jeveration)) — single-forward-pass image generation from a frozen VLM; 5-day traction rise suggests the paradigm is gaining replication interest.
+**Read** the [Embo-Harness paper](https://arxiv.org/abs/2611.31201) and [WorldLeague benchmark](https://arxiv.org/abs/2611.30989) together — they define complementary axes for evaluating VLM-driven robots.  
+**Try** the [NVIDIA Cosmos 3 local guide](https://developer.nvidia.com/blog/how-to-run-nvidia-cosmos-3-on-local-ai-devices-using-hugging-face-diffusers/) if you have a consumer GPU and want to experiment with world-model video generation.  
+**Track** the [WeMM-Ecom HF collection](https://huggingface.co/collections/tencent/wemm-ecom) for released checkpoints; the 3B-active MoE could be a practical multimodal backbone for e-commerce tasks.
 
 ---
 

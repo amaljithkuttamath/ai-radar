@@ -9,25 +9,25 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Mon 23 Nov
+### New in the last two days · Tue 24 Nov
 
-> NVIDIA shipped a GPU-accelerated DuckDB extension (Sirius Core) while OpenAI and DeepMind published agent case studies — one automating half of customer support in 30 days, another finding faster quantum algorithms. Ladybird delivered its first alpha browser build, and the Jensen Huang CEO reversal drove the day's largest community discussion.
+> A wave of new robotics and embodied-AI benchmarks arrived together: Embo-Harness, WorldLeague, 3AGameFactory-Motion, and World Models as Native Latent Action Models all frame frontier multimodal models as closed-loop policies. Meanwhile WeMM-Ecom demonstrates a full-size MoE family tuned for e-commerce multimodal tasks, and NVIDIA published a local deployment guide for Cosmos 3. Coverage is broad but shallow — most items are preprints or announcements without independent replication.
 
-- **[Get Started with GPU-Accelerated DuckDB Analytics Using the Sirius Core Extension](https://developer.nvidia.com/blog/get-started-with-gpu-accelerated-duckdb-analytics-using-the-sirius-core-extension/)** NVIDIA released the Sirius Core extension to run DuckDB analytical queries on GPUs.
-- **[Accelerating Direct Sparse Solvers for Computational Engineering with NVIDIA cuDSS 1.0](https://developer.nvidia.com/blog/accelerating-direct-sparse-solvers-for-computational-engineering-with-nvidia-cudss-1-0/)** NVIDIA launched cuDSS 1.0, a direct sparse solver library for structural mechanics, CFD, and circuit simulation on GPUs.
-- **[Merry Making: Play, Build and Create With NVIDIA Technologies This Holiday Season](https://blogs.nvidia.com/blog/nvidia-technologies-holidays-2026/)** NVIDIA published a holiday-roundup of hobby projects using its SDKs and hardware.
-- **[Richpanel helps companies automate 50% of support in 30 days](https://openai.com/business/customer-stories/richpanel-ai-customer-support)** OpenAI detailed how Richpanel uses GPT-6 Astra, Sol, and Luna to equip AI support agents with tools, procedures, and conversation handling.
-- **[Finding faster quantum algorithms with agents and formal verification](https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/)** DeepMind applied agent teams with formal verification to improve quantum algorithms for fusion and chemistry.
-- **[Supercharging transformer residual connections](https://research.google/blog/supercharging-transformer-residual-connections/)** Google Research published a theory-focused post on modified residual connections.
+- **[Embo-Harness: Towards Understanding Frontier-Model-as-Policy Harness](https://arxiv.org/abs/2611.31201)** Researchers from DravenALG released a framework that systematically evaluates how frontier multimodal models perform as robot policies, dissecting prompting, planning, action exec…
+- **[WorldLeague: Benchmarking Physical Agency](https://arxiv.org/abs/2611.30989)** A new benchmark with 60 simulated robot tasks measures autonomous progress toward physical goals, covering perception, memory, planning, and action in a unified WorldSim environme…
+- **[WeMM-Ecom: Advancing Multimodal Content Understanding for WeChat E-Commerce](https://arxiv.org/abs/2611.30662)** Tencent introduced a five-model family (0.8B dense to 35B MoE) trained with continued pre-training on e-commerce data and hybrid-thinking post-training, claiming SOTA general perf…
+- **[3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets](https://arxiv.org/abs/2611.30013)** OpenDCAI released DivDynBench evaluating rigging and motion generation across six morphology categories with multi-phase constraints, comparing specialized motion, video-to-motion…
+- **[World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898)** PAW Team showed that pretrained video world models can serve as latent action models by extracting inverse/forward dynamics from their internal representations, avoiding separate…
+- **[Why Does Voice AI Still Struggle With Kenyans' Speech?](https://spectrum.ieee.org/swahili-speech-recognition)** IEEE Spectrum reports that Swahili ASR works on read speech but fails on code-switched Sheng dialects, highlighting a persistent gap between benchmark and real-world performance.
 
 ### Still unfolding
 
-- **[Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072)** · day 7
-- **[TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips](https://arxiv.org/abs/2611.22115)** · day 6
-- **[Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738)** · day 5
-- **[HuggingFaceFW/fineweb-edu](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu)** · day 4
+- **[Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security)** · day 19
+- **[Voxtral 3](https://mistral.ai/news/voxtral-3/)** · day 11
+- **[Introducing Timestral](https://mistral.ai/news/timestral/)** · day 11
+- **[FEATURED](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/)** · day 11
 
-[Read the full briefing](reports/2026-11-23-digest.md) · [Every edition](reports/README.md)
+[Read the full briefing](reports/2026-11-24-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 
