@@ -1,106 +1,89 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-23](2026-11-23-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-24](2026-11-24-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-24
+# AI Radar — 2026-11-25
 
-A wave of new robotics and embodied-AI benchmarks arrived together: Embo-Harness, WorldLeague, 3AGameFactory-Motion, and World Models as Native Latent Action Models all frame frontier multimodal models as closed-loop policies. Meanwhile WeMM-Ecom demonstrates a full-size MoE family tuned for e-commerce multimodal tasks, and NVIDIA published a local deployment guide for Cosmos 3. Coverage is broad but shallow — most items are preprints or announcements without independent replication.
+A wave of new benchmarks and agent-evaluation frameworks dominates today's radar, headlined by a reinforcement-learning method that teaches agents to act on verified beliefs rather than guess, and a mirror-based stress test that breaks current robot policies. Simultaneously, NVIDIA published a low-level kernel guide for NVFP4 attention on Blackwell, and OpenAI announced GPT-6's protein-design capabilities — though the latter two arrive as lab blogs without open artifacts.
 
 ## What changed
 
-**New to radar** (top 5 of 471):  
-- [Embo-Harness: Towards Understanding Frontier-Model-as-Policy Harness](https://arxiv.org/abs/2611.31201) · 4/5  
-- [WorldLeague: Benchmarking Physical Agency](https://arxiv.org/abs/2611.30989) · 4/5  
-- [WeMM-Ecom: Advancing Multimodal Content Understanding for WeChat E-Commerce](https://arxiv.org/abs/2611.30662) · 4/5  
-- [3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets](https://arxiv.org/abs/2611.30013) · 4/5  
-- [World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898) · 3/5  
+**New to radar** (495 items):  
+- [Lazy Agents Answer Against Their Own Beliefs: Reinforcement Learning with Verifiable Beliefs Teaches Them to Act on What They Believe](https://arxiv.org/abs/2611.32884) · 4/5  
+- [Embodied AI Fails the Mirror Test: How a Simple Mirror Breaks Robot Policies](https://arxiv.org/abs/2611.33010) · 3/5  
+- [ICLWorld: Benchmarking In-Context Learning of Agents from Digital to Physical Worlds](https://arxiv.org/abs/2611.32649) · 3/5  
+- [PartAgent: Agentic 3D Part Segmentation via Expert Integration and Closed-Loop Refinement](https://arxiv.org/abs/2611.32554) · 3/5  
+- [ThinkMorph-SSL: Scaling Interleaved Multimodal Reasoning with Pretext Tasks](https://arxiv.org/abs/2611.32183) · 3/5  
 
-*No climbing or cooled items this run.*
+**Climbing** (6 items):  
+- [3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets](https://arxiv.org/abs/2611.30013) · 4/5 (traction Δ +3.66)  
+- [WorldLeague: Benchmarking Physical Agency](https://arxiv.org/abs/2611.30989) · 4/5 (traction Δ +2.13)  
+- [WeMM-Ecom: Advancing Multimodal Content Understanding for WeChat E-Commerce](https://arxiv.org/abs/2611.30662) · 4/5 (traction Δ +2.18)  
+- [Motion Mamba 2.0: Autoregressive Diffusion Mamba for Long-Horizon Humanoid Control](https://arxiv.org/abs/2611.29897) · 3/5 (traction Δ +1.90)  
+- [ccore/ThreeJS-3D-Scenes-v2 (HF Dataset)](https://huggingface.co/datasets/ccore/ThreeJS-3D-Scenes-v2) · 3/5 (score Δ +1)  
+
+**Cooled** (2 items):  
+- [ViDiHand2: Unifying Video Diffusion Priors and Hand Geometry for 3D Hand Motion Reconstruction in the Wild](https://arxiv.org/abs/2611.30597) · 2/5 (score Δ –1)  
+- [World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898) · 2/5 (score Δ –1)  
 
 ## Main list
 
-### Benchmark
+### Benchmark & evaluation
 
-**[Embo-Harness: Towards Understanding Frontier-Model-as-Policy Harness](https://arxiv.org/abs/2611.31201) · 4/5**  
-Researchers from DravenALG released a framework that systematically evaluates how frontier multimodal models perform as robot policies, dissecting prompting, planning, action execution, and tool use across six empirical findings. Matters if you build or evaluate robot agents that use VLMs as controllers. [GitHub](https://github.com/DravenALG/Embo-Harness) · [Project](https://dravenalg.github.io/projects/Embo-Harness/)
+**[Lazy Agents Answer Against Their Own Beliefs: Reinforcement Learning with Verifiable Beliefs Teaches Them to Act on What They Believe](https://arxiv.org/abs/2611.32884) · 4/5**  
+Researchers from DECLARE Lab introduce Reinforcement Learning with Verifiable Beliefs (RLVB), a training scheme that uses the simulator's exact posterior at each step to reward evidence-backed commitments rather than lucky final answers. The method reduces premature commitment on long-horizon tasks. **Matters if you** build agents that must gather evidence before acting; the [RLVB repo](https://github.com/declare-lab/RLVB) and [interactive demo](https://declare-lab.github.io/RLVB/?case=tabletop_cups&m=rlvb_grpo&s=0) are open.
+
+**[Embodied AI Fails the Mirror Test: How a Simple Mirror Breaks Robot Policies](https://arxiv.org/abs/2611.33010) · 3/5**  
+A new benchmark, RoboDojo-Mirror, adds single/dual mirrors and mirrored tabletops to existing manipulation tasks. Five policies — spanning VLA, world-action, and agentic models — all degrade significantly when reflections appear, revealing a brittleness in visual perception. **Matters if you** deploy vision-based manipulation; the [benchmark code](https://github.com/iPPLab/robodojo-mirror) and [project page](https://ipplab.github.io/robodojo-mirror) are available.
+
+**[PartAgent: Agentic 3D Part Segmentation via Expert Integration and Closed-Loop Refinement](https://arxiv.org/abs/2611.32554) · 3/5**  
+A training-free agentic framework that fuses 3D geometric experts (for region proposals) with 2D semantic experts (for part labels) and iteratively refines segmentations through a closed loop. **Matters if you** need zero-shot 3D part segmentation; [code](https://github.com/yangcaoai/PartAgent_Agent_for_3D_Part_Seg) and [project page](https://yangcaoai.github.io/PartAgent_ProjectPage/) are released.
 
 **[WorldLeague: Benchmarking Physical Agency](https://arxiv.org/abs/2611.30989) · 4/5**  
-A new benchmark with 60 simulated robot tasks measures autonomous progress toward physical goals, covering perception, memory, planning, and action in a unified WorldSim environment. Matters if you need a standardized suite to compare embodied agents across diverse motor skills. [GitHub](https://github.com/xyangzhou/WorldLeague) · [Project](https://xyangzhou.github.io/WorldLeague/)
-
-**[WeMM-Ecom: Advancing Multimodal Content Understanding for WeChat E-Commerce](https://arxiv.org/abs/2611.30662) · 4/5**  
-Tencent introduced a five-model family (0.8B dense to 35B MoE) trained with continued pre-training on e-commerce data and hybrid-thinking post-training, claiming SOTA general performance at each scale. Matters if you deploy multimodal LLMs for product understanding or need open MoE checkpoints. [GitHub](https://github.com/Tencent/WeMM-Ecom) · [HF Collection](https://huggingface.co/collections/tencent/wemm-ecom)
+A benchmark suite testing AI systems across Blender operation, complex video-game instruction following, and real robot-arm manipulation, measuring the breadth of autonomously achievable physical goals. **Matters if you** evaluate embodied agents across simulation and reality; [GitHub](https://github.com/xyangzhou/WorldLeague) and [site](https://xyangzhou.github.io/WorldLeague/) track 19★ and 137 HF upvotes (observed).
 
 **[3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets](https://arxiv.org/abs/2611.30013) · 4/5**  
-OpenDCAI released DivDynBench evaluating rigging and motion generation across six morphology categories with multi-phase constraints, comparing specialized motion, video-to-motion, and LLM-driven paradigms. Matters if you generate animation for arbitrary 3D assets and need rigorous evaluation beyond humanoid skeletons. [GitHub](https://github.com/OpenDCAI/GameFactory-3A)
+Introduces DivDynBench, evaluating rigging and motion generation across six morphology categories with multi-phase, timed instructions. The agentic pipeline handles arbitrary 3D assets. **Matters if you** generate animation for varied characters; [repo](https://github.com/OpenDCAI/GameFactory-3A) shows 1,398★ (observed).
 
-**[World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898) · 3/5**  
-PAW Team showed that pretrained video world models can serve as latent action models by extracting inverse/forward dynamics from their internal representations, avoiding separate LAM training. Matters if you work with heterogeneous robot video data lacking a shared action space. [Project](https://pawteam-eai.github.io/native-lam/)
+### Reasoning & multimodal
 
-**[Why Does Voice AI Still Struggle With Kenyans' Speech?](https://spectrum.ieee.org/swahili-speech-recognition) · 2/5**  
-IEEE Spectrum reports that Swahili ASR works on read speech but fails on code-switched Sheng dialects, highlighting a persistent gap between benchmark and real-world performance. Matters if you deploy speech systems in multilingual African contexts.
+**[ThinkMorph-SSL: Scaling Interleaved Multimodal Reasoning with Pretext Tasks](https://arxiv.org/abs/2611.32183) · 3/5**  
+A two-stage recipe: first, models learn to produce interleaved image-text reasoning traces by solving visual pretext tasks (colorization, denoising) without instruction tuning; second, they transfer to downstream reasoning. **Matters if you** want multimodal chain-of-thought without expensive human annotations; [code](https://github.com/ThinkMorph/ThinkMorph-SSL) and [site](https://thinkmorph.github.io/ssl/) are open.
 
-### Nvidia
+**[Motion Mamba 2.0: Autoregressive Diffusion Mamba for Long-Horizon Humanoid Control](https://arxiv.org/abs/2611.29897) · 3/5**  
+Replaces bounded attention with a Mamba backbone in an autoregressive diffusion framework, enabling long-horizon, real-time controllable motion generation for humanoids. **Matters if you** need streaming motion synthesis with low latency; [repo](https://github.com/AIGeeksGroup/MotionMamba2.0) and [demo](https://aigeeksgroup.github.io/MotionMamba2.0/) show 34★ and 194 HF upvotes (observed).
 
-**[How to Run NVIDIA Cosmos 3 on Local AI Devices Using Hugging Face Diffusers](https://developer.nvidia.com/blog/how-to-run-nvidia-cosmos-3-on-local-ai-devices-using-hugging-face-diffusers/) · 2/5**  
-NVIDIA published a step-by-step guide for running Cosmos 3 Nano locally via Hugging Face Diffusers, addressing memory constraints on consumer GPUs. Matters if you prototype world-model video generation on limited hardware.
+### Data & efficiency
 
-### Agents
+**[Physicl Scenes: An Artist-created 3D Dataset for Learning Perception and Action](https://arxiv.org/abs/2611.33137) · 2/5**  
+6,499 high-quality 3D scenes with PBR materials, object/part semantics, and diverse environments. Training SOTA methods on this data improves inverse rendering, 3D reconstruction, scene understanding, and mobile manipulation. **Matters if you** need rich 3D training data; dataset release is referenced in the paper.
 
-**[How iFood scales coding agents across 15,000 repositories](https://openai.com/business/customer-stories/ifood) · 1/5**  
-OpenAI's case study describes iFood's deployment of coding agents across a massive monorepo, detailing tooling and governance patterns. Matters if you operate coding agents at enterprise scale and want a reference architecture.
+**[Towards Realistic Evaluation of Uncertainty Quantification for LLM-Based Recommender Systems](https://arxiv.org/abs/2611.33036) · 2/5**  
+Proposes a framework for comparing instance-level UQ methods on LLM rankers, which lack standard classification heads and exhibit label/prompt sensitivity. **Matters if you** serve LLM-based recommenders and need reliable confidence estimates; artifact linked in paper.
 
-**[LLM agents work for their parent companies, not for you](https://michaelharley.net/posts/2026/11/01/llm-agents-work-for-their-parent-companies-not-for-you/) · 2/5**  
-A widely discussed essay (784 HN points) argues that commercial agent APIs align with vendor interests, not user autonomy, and surveys the implications for privacy and control. Matters if you evaluate agent frameworks for user-aligned applications.
+**[Train What You Run: Probabilistic Convolutions for Learning Token Compaction in State Space Models](https://arxiv.org/abs/2611.33009) · 2/5**  
+Introduces ProbConv, a differentiable operator that computes exact expected convolutions under stochastic token-keep decisions, enabling end-to-end learning of visual token compaction for Mamba/SSM blocks. **Matters if you** optimize inference cost for vision SSMs; implementation referenced in paper.
 
-### Other
+## Watch-list / Still developing
 
-**[ViDiHand2: Unifying Video Diffusion Priors and Hand Geometry for 3D Hand Motion Reconstruction in the Wild](https://arxiv.org/abs/2611.30597) · 3/5**  
-ViDiHand2 reformulates video-diffusion-based hand depth estimation as geometric constraint solving, adding fine-grained lifting and ray fitting to recover metric 3D motion from egocentric video. Matters if you train manipulation policies from human demonstration videos. [Project](https://vidihand2.github.io/)
-
-## Watch-list
-
-- [Language Models Steer on Injected Uncertainty Tokens, but Fail to Self-Monitor In Situ](https://arxiv.org/abs/2611.31228) · 2/5  
-- [Self-Supervised Dataset Distillation via Mutual Information Maximization](https://arxiv.org/abs/2611.31225) · 2/5 · [GitHub](https://github.com/mhmoslemi/MIPA)  
-- [WorldLatent: A Unified 4D Latent Space for World Perception and Generation](https://arxiv.org/abs/2611.31209) · 2/5 · [Project](https://worldlatent.github.io/)  
-- [ToolSmith: An Automatic Tool-Generation Framework for Multimodal Search Agents](https://arxiv.org/abs/2611.31198) · 2/5 · [GitHub](https://github.com/uclanlp/OpenVLHarness) · [Project](https://threesr.github.io/toolsmith/)  
-- [UMAMI: A Multimodal Benchmark Dataset for Evidence-Grounded Dietary Decisions](https://arxiv.org/abs/2611.31068) · 2/5  
-- [Searching for distant planets with Astra](https://openai.com/index/searching-for-distant-planets-with-astra) · 1/5 (lab release)  
-- [What's New for Game Developers: AI Animation and RTX Tools](https://developer.nvidia.com/blog/whats-new-for-game-developers-ai-animation-and-rtx-tools/) · 1/5 (lab release)  
-- [How Gemini is changing the game for Golden State's organization and fans.](https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/) · 1/5 (lab release)  
-- [Anthropic breaks below $83 IPO price](https://www.bloomberg.com/news/articles/2026-11-24/anthropic-breaks-below-83-ipo-price-in-premarket-trading) · 2/5 · [HN Discussion](https://news.ycombinator.com/item?id=50627836)  
-- [MORSE: Optimizing Streaming Memory Design via Open-World Auto-Research](https://arxiv.org/abs/2611.30011) · 2/5 · [Project](https://zhangce01.github.io/morse/)  
-- [inclusionAI/Ling-3.2-air (HF Model)](https://huggingface.co/inclusionAI/Ling-3.2-air) · 2/5  
-- [Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill (HF Dataset)](https://huggingface.co/datasets/Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill) · 2/5  
-
-## Still developing
-
-- [w01fb0ss/PiBot](https://github.com/w01fb0ss/PiBot) · 3/5 — local-first multi-agent desktop team (556 ★, 2 runs tracked)  
-- [varops/actp](https://github.com/varops/actp) · 3/5 — Agent Communication Transport Protocol over HTTP (90 ★, 2 runs tracked)  
-- [unsloth/Inkling-2-Mini-GGUF](https://huggingface.co/unsloth/Inkling-2-Mini-GGUF) · 2/5 — MoE vision-language model (1.9M downloads, 4 runs tracked)  
-- [Digitaluz/uzbek-language-corpus](https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus) · 3/5 — Uzbek monolingual corpus (2.7K downloads, 6 runs tracked)  
-- [Anthropic announces closing of initial public offering](https://www.anthropic.com/news/ipo-close) · 1/5 (lab release, 5 runs tracked)  
-- [Anthropic prices initial public offering](https://www.anthropic.com/news/anthropic-prices-initial-public-offering) · 1/5 (lab release, 6 runs tracked)  
-- [Voxtral 3](https://mistral.ai/news/voxtral-3/) · 1/5 (lab release, 13 runs tracked)  
-- [Introducing Timestral](https://mistral.ai/news/timestral/) · 1/5 (lab release, 13 runs tracked)  
-- [FEATURED](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/) · 1/5 (lab release, 13 runs tracked)  
-- [How Meta's AI Models Are Powering the First Wave of Genesis Mission Projects](https://ai.meta.com/blog/genesis-mission-lawrence-berkeley-national-laboratory-segment-anything-dino/) · 1/5 (lab release, 13 runs tracked)  
-- [Finding faster quantum algorithms with agents and formal verification](https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/) · 1/5 (lab release, 2 runs tracked)  
-- [Supercharging transformer residual connections](https://research.google/blog/supercharging-transformer-residual-connections/) · 1/5 (lab release, 2 runs tracked)  
-- [Merry Making: Play, Build and Create With NVIDIA Technologies This Holiday Season](https://blogs.nvidia.com/blog/nvidia-technologies-holidays-2026/) · 1/5 (lab release, 2 runs tracked)  
-- [A more tailored Google Search that's uniquely yours](https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/) · 1/5 (lab release, 2 runs tracked)  
-
-**Story arcs** (rising traction ≥3 runs):  
-- [Jeveration: System One Models Now Generate](https://arxiv.org/abs/2611.24738) — 6 runs, +63.6% traction  
-- [Sage S2.1 Flash Technical Report](https://arxiv.org/abs/2611.21072) — 8 runs, +45.7%  
-- [nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) — 7 runs, +16.0%  
-- [Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security) — 13 runs, +8.3%  
-- [ccch1mneyyy/dsh-Go](https://github.com/ccch1mneyyy/dsh-Go) — 13 runs, +4.7%  
+- [SpecEngineeringBench: Evaluating Coding Agents as Autonomous Specification Engineers](https://arxiv.org/abs/2611.32973) · 2/5 — new benchmark for spec-to-test generation; [repo](https://github.com/TokenWave-AI/SpecEngineeringBench), [site](https://tokenwave-ai.github.io/SpecEngineeringBench-Page/)
+- [Beyond Fixed-Context Likelihood: Zero-Shot AI-Generated Text Detection via Context Perturbation Discrepancy](https://arxiv.org/abs/2611.32778) · 2/5 — zero-shot detector using KL-based discrepancy
+- [How to Optimize NVFP4 Attention on NVIDIA RTX Blackwell Through Register Recycling](https://developer.nvidia.com/blog/how-to-optimize-nvfp4-attention-on-nvidia-rtx-blackwell-through-register-recycling/) · 1/5 — NVIDIA kernel-level guide (lab blog)
+- [GPT-6 models demonstrate intrinsic protein-design capabilities](https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities) · 1/5 — OpenAI announcement (lab blog)
+- [Lukcla3889/postman-agent](https://github.com/Lukcla3889/postman-agent) · 3/5 — local API debugging agent for Windows; 143★ (observed)
+- [w01fb0ss/PiBot](https://github.com/w01fb0ss/PiBot) · 3/5 — local-first multi-agent desktop team; 589★ (observed, 3 runs)
+- [Digitaluz/uzbek-language-corpus](https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus) · 3/5 — Uzbek monolingual corpus; 182 likes, 3,046 downloads (observed, 7 runs, streak 3)
+- [prism-ml/Ternary-Bonsai-2.5-27B-GGUF](https://huggingface.co/prism-ml/Ternary-Bonsai-2.5-27B-GGUF) · 2/5 — 2-bit ternary LLaMA GGUF; 304 likes, 59,366 downloads (observed)
+- [inclusionAI/Ling-3.2-air](https://huggingface.co/inclusionAI/Ling-3.2-air) · 2/5 — MoE VL model, FP8; 231 likes, 1,467 downloads (observed)
+- [Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill](https://huggingface.co/datasets/Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill) · 2/5 — competitive coding distillation dataset; 87 likes, 280 downloads (observed)
 
 ## Action items
 
-**Read** the [Embo-Harness paper](https://arxiv.org/abs/2611.31201) and [WorldLeague benchmark](https://arxiv.org/abs/2611.30989) together — they define complementary axes for evaluating VLM-driven robots.  
-**Try** the [NVIDIA Cosmos 3 local guide](https://developer.nvidia.com/blog/how-to-run-nvidia-cosmos-3-on-local-ai-devices-using-hugging-face-diffusers/) if you have a consumer GPU and want to experiment with world-model video generation.  
-**Track** the [WeMM-Ecom HF collection](https://huggingface.co/collections/tencent/wemm-ecom) for released checkpoints; the 3B-active MoE could be a practical multimodal backbone for e-commerce tasks.
+**Read** the [RLVB paper](https://arxiv.org/abs/2611.32884) and try the [interactive demo](https://declare-lab.github.io/RLVB/?case=tabletop_cups&m=rlvb_grpo&s=0) if you build long-horizon agents that must decide when they have enough evidence.
+
+**Try** [RoboDojo-Mirror](https://github.com/iPPLab/robodojo-mirror) to stress-test your vision-language-action policies against reflection-induced distribution shift.
+
+**Track** [WorldLeague](https://github.com/xyangzhou/WorldLeague) and [3AGameFactory-Motion](https://github.com/OpenDCAI/GameFactory-3A) — both are climbing fast and aim to become standard physical-agency benchmarks across sim and real.
 
 ---
 

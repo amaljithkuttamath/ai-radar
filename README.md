@@ -9,25 +9,22 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Tue 24 Nov
+### New in the last two days · Wed 25 Nov
 
-> A wave of new robotics and embodied-AI benchmarks arrived together: Embo-Harness, WorldLeague, 3AGameFactory-Motion, and World Models as Native Latent Action Models all frame frontier multimodal models as closed-loop policies. Meanwhile WeMM-Ecom demonstrates a full-size MoE family tuned for e-commerce multimodal tasks, and NVIDIA published a local deployment guide for Cosmos 3. Coverage is broad but shallow — most items are preprints or announcements without independent replication.
+> A wave of new benchmarks and agent-evaluation frameworks dominates today's radar, headlined by a reinforcement-learning method that teaches agents to act on verified beliefs rather than guess, and a mirror-based stress test that breaks current robot policies. Simultaneously, NVIDIA published a low-level kernel guide for NVFP4 attention on Blackwell, and OpenAI announced GPT-6's protein-design capabilities — though the latter two arrive as lab blogs without open artifacts.
 
-- **[Embo-Harness: Towards Understanding Frontier-Model-as-Policy Harness](https://arxiv.org/abs/2611.31201)** Researchers from DravenALG released a framework that systematically evaluates how frontier multimodal models perform as robot policies, dissecting prompting, planning, action exec…
-- **[WorldLeague: Benchmarking Physical Agency](https://arxiv.org/abs/2611.30989)** A new benchmark with 60 simulated robot tasks measures autonomous progress toward physical goals, covering perception, memory, planning, and action in a unified WorldSim environme…
-- **[WeMM-Ecom: Advancing Multimodal Content Understanding for WeChat E-Commerce](https://arxiv.org/abs/2611.30662)** Tencent introduced a five-model family (0.8B dense to 35B MoE) trained with continued pre-training on e-commerce data and hybrid-thinking post-training, claiming SOTA general perf…
-- **[3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets](https://arxiv.org/abs/2611.30013)** OpenDCAI released DivDynBench evaluating rigging and motion generation across six morphology categories with multi-phase constraints, comparing specialized motion, video-to-motion…
-- **[World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898)** PAW Team showed that pretrained video world models can serve as latent action models by extracting inverse/forward dynamics from their internal representations, avoiding separate…
-- **[Why Does Voice AI Still Struggle With Kenyans' Speech?](https://spectrum.ieee.org/swahili-speech-recognition)** IEEE Spectrum reports that Swahili ASR works on read speech but fails on code-switched Sheng dialects, highlighting a persistent gap between benchmark and real-world performance.
+- **[Lazy Agents Answer Against Their Own Beliefs: Reinforcement Learning with Verifiable Beliefs Teaches Them to Act on What They Believe](https://arxiv.org/abs/2611.32884)** Researchers from DECLARE Lab introduce Reinforcement Learning with Verifiable Beliefs (RLVB), a training scheme that uses the simulator's exact posterior at each step to reward ev…
+- **[Embodied AI Fails the Mirror Test: How a Simple Mirror Breaks Robot Policies](https://arxiv.org/abs/2611.33010)** A new benchmark, RoboDojo-Mirror, adds single/dual mirrors and mirrored tabletops to existing manipulation tasks.
+- **[PartAgent: Agentic 3D Part Segmentation via Expert Integration and Closed-Loop Refinement](https://arxiv.org/abs/2611.32554)** A training-free agentic framework that fuses 3D geometric experts (for region proposals) with 2D semantic experts (for part labels) and iteratively refines segmentations through a…
+- **[WorldLeague: Benchmarking Physical Agency](https://arxiv.org/abs/2611.30989)** A benchmark suite testing AI systems across Blender operation, complex video-game instruction following, and real robot-arm manipulation, measuring the breadth of autonomously ach…
+- **[3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets](https://arxiv.org/abs/2611.30013)** Introduces DivDynBench, evaluating rigging and motion generation across six morphology categories with multi-phase, timed instructions.
+- **[ThinkMorph-SSL: Scaling Interleaved Multimodal Reasoning with Pretext Tasks](https://arxiv.org/abs/2611.32183)** A two-stage recipe: first, models learn to produce interleaved image-text reasoning traces by solving visual pretext tasks (colorization, denoising) without instruction tuning; se…
 
 ### Still unfolding
 
-- **[Vyber07/cyber-security](https://huggingface.co/datasets/Vyber07/cyber-security)** · day 19
-- **[Voxtral 3](https://mistral.ai/news/voxtral-3/)** · day 11
-- **[Introducing Timestral](https://mistral.ai/news/timestral/)** · day 11
-- **[FEATURED](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/)** · day 11
+- **[Digitaluz/uzbek-language-corpus](https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus)** · day 6
 
-[Read the full briefing](reports/2026-11-24-digest.md) · [Every edition](reports/README.md)
+[Read the full briefing](reports/2026-11-25-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 

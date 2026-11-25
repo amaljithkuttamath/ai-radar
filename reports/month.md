@@ -4,7 +4,7 @@ What changed in AI, in plain words.
 
 [Yesterday](../README.md) · [This week](week.md) · **This month**
 
-## The last 30 days · Mon 26 Oct to Tue 24 Nov
+## The last 30 days · Tue 27 Oct to Wed 25 Nov
 
 ### Stories with staying power
 
@@ -17,25 +17,25 @@ What changed in AI, in plain words.
 
 ### Where attention moved
 
-How often each topic came up per daily edition, this month against the month before (28 editions against 23). Counted from the digests' wording, so read it as direction, not exact size.
+How often each topic came up per daily edition, this month against the month before (29 editions against 22). Counted from the digests' wording, so read it as direction, not exact size.
 
 | Topic | Last 30 days | Before | Trend |
 |---|---:|---:|---|
-| Long context and memory | 1.1 | 4.8 | Down 76% |
-| Safety and security | 1.7 | 0.5 | Up 3.1x |
-| Benchmarks and evaluation | 6.9 | 14.4 | Down 52% |
-| Diffusion models | 1.1 | 2.3 | Down 47% |
-| Robotics | 3.1 | 1.7 | Up 1.8x |
-| AI for science | 2.8 | 1.5 | Up 1.8x |
-| Open-weight models | 1.3 | 0.8 | Steady |
-| Multimodal and vision | 12.9 | 18.3 | Steady |
+| Long context and memory | 1.0 | 5.0 | Down 78% |
+| Safety and security | 1.7 | 0.5 | Up 2.9x |
+| AI for science | 2.8 | 1.3 | Up 2.0x |
+| Benchmarks and evaluation | 7.2 | 14.7 | Down 51% |
+| Diffusion models | 1.2 | 2.3 | Down 45% |
+| Robotics | 3.3 | 1.8 | Up 1.8x |
+| Open-weight models | 1.2 | 0.8 | Steady |
+| Multimodal and vision | 12.8 | 18.6 | Steady |
 
 ```mermaid
 xychart-beta
     title "Mentions per edition, last 30 days"
-    x-axis ["Multimodal and vision", "Benchmarks and evaluation", "Robotics", "AI for science", "Safety and security", "Open-weight models", "Long context and memory", "Diffusion models"]
+    x-axis ["Multimodal and vision", "Benchmarks and evaluation", "Robotics", "AI for science", "Safety and security", "Diffusion models", "Open-weight models", "Long context and memory"]
     y-axis "Mentions"
-    bar [12.9, 6.9, 3.1, 2.8, 1.7, 1.3, 1.1, 1.1]
+    bar [12.8, 7.2, 3.3, 2.8, 1.7, 1.2, 1.2, 1.0]
 ```
 
-[All 28 editions this month, and every one before](README.md)
+[All 29 editions this month, and every one before](README.md)
