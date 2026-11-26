@@ -9,22 +9,18 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Wed 25 Nov
+### New in the last two days · Thu 26 Nov
 
-> A wave of new benchmarks and agent-evaluation frameworks dominates today's radar, headlined by a reinforcement-learning method that teaches agents to act on verified beliefs rather than guess, and a mirror-based stress test that breaks current robot policies. Simultaneously, NVIDIA published a low-level kernel guide for NVFP4 attention on Blackwell, and OpenAI announced GPT-6's protein-design capabilities — though the latter two arrive as lab blogs without open artifacts.
+> A new attention architecture (Mixture-of-Loops Transformer) claims expressivity gains by reusing KV memory across loops, while Real2SimLab and Sage-Med release unified benchmarks for real-to-sim transfer and medical multimodal scaling. Several video-generation and agent-evaluation platforms also appeared with runnable code.
 
-- **[Lazy Agents Answer Against Their Own Beliefs: Reinforcement Learning with Verifiable Beliefs Teaches Them to Act on What They Believe](https://arxiv.org/abs/2611.32884)** Researchers from DECLARE Lab introduce Reinforcement Learning with Verifiable Beliefs (RLVB), a training scheme that uses the simulator's exact posterior at each step to reward ev…
-- **[Embodied AI Fails the Mirror Test: How a Simple Mirror Breaks Robot Policies](https://arxiv.org/abs/2611.33010)** A new benchmark, RoboDojo-Mirror, adds single/dual mirrors and mirrored tabletops to existing manipulation tasks.
-- **[PartAgent: Agentic 3D Part Segmentation via Expert Integration and Closed-Loop Refinement](https://arxiv.org/abs/2611.32554)** A training-free agentic framework that fuses 3D geometric experts (for region proposals) with 2D semantic experts (for part labels) and iteratively refines segmentations through a…
-- **[WorldLeague: Benchmarking Physical Agency](https://arxiv.org/abs/2611.30989)** A benchmark suite testing AI systems across Blender operation, complex video-game instruction following, and real robot-arm manipulation, measuring the breadth of autonomously ach…
-- **[3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets](https://arxiv.org/abs/2611.30013)** Introduces DivDynBench, evaluating rigging and motion generation across six morphology categories with multi-phase, timed instructions.
-- **[ThinkMorph-SSL: Scaling Interleaved Multimodal Reasoning with Pretext Tasks](https://arxiv.org/abs/2611.32183)** A two-stage recipe: first, models learn to produce interleaved image-text reasoning traces by solving visual pretext tasks (colorization, denoising) without instruction tuning; se…
+- **[Mixture-of-Loops Transformer](https://arxiv.org/abs/2611.34923)** HUST researchers introduced MoLT, a looped Transformer that passes keys and values as memory across loops via Mixture-of-Loops Attention, offering two modes: residual-stream reuse…
+- **[Real2SimLab: A Unified Platform for Real-to-Simulation Transfer](https://arxiv.org/abs/2611.34849)** Real2SimHub released a single evaluation harness that runs any real-to-sim method across multiple benchmarks, replacing N×M custom integrations with a shared interface.
+- **[Sage-Med: Scaling Medical Multimodal Intelligence](https://arxiv.org/abs/2611.34575)** The Sage-Med team published a 35B-parameter medical MLLM (3B activated) showing that scaling model size mainly helps text, not multimodal perception, and released a preview checkp…
+- **[Improving and Expanding Video Editing Capabilities Without Videos](https://arxiv.org/abs/2611.34941)** HorizonWind2004 proposed Image-to-Video Transfer (I2VT), which post-trains a video editor on single images using an image editor as teacher — no paired video data required.
+- **[Agentic LongLive: Asynchronous Agentic Memory for Long Video Generation](https://arxiv.org/abs/2611.34907)** NVIDIA researchers built a separate memory agent that reads only revealed prompts (never generated frames) to keep long streaming video consistent without offline planning.
+- **[EgoUseBench: Benchmarking Computer-Use Agents under Evolving First-Person Contexts](https://arxiv.org/abs/2611.34466)** Yurun Chen et al.
 
-### Still unfolding
-
-- **[Digitaluz/uzbek-language-corpus](https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus)** · day 6
-
-[Read the full briefing](reports/2026-11-25-digest.md) · [Every edition](reports/README.md)
+[Read the full briefing](reports/2026-11-26-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 

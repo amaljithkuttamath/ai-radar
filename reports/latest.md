@@ -1,89 +1,80 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-24](2026-11-24-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-25](2026-11-25-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-25
+# AI Radar — 2026-11-26
 
-A wave of new benchmarks and agent-evaluation frameworks dominates today's radar, headlined by a reinforcement-learning method that teaches agents to act on verified beliefs rather than guess, and a mirror-based stress test that breaks current robot policies. Simultaneously, NVIDIA published a low-level kernel guide for NVFP4 attention on Blackwell, and OpenAI announced GPT-6's protein-design capabilities — though the latter two arrive as lab blogs without open artifacts.
+A new attention architecture (Mixture-of-Loops Transformer) claims expressivity gains by reusing KV memory across loops, while Real2SimLab and Sage-Med release unified benchmarks for real-to-sim transfer and medical multimodal scaling. Several video-generation and agent-evaluation platforms also appeared with runnable code.
 
 ## What changed
 
-**New to radar** (495 items):  
-- [Lazy Agents Answer Against Their Own Beliefs: Reinforcement Learning with Verifiable Beliefs Teaches Them to Act on What They Believe](https://arxiv.org/abs/2611.32884) · 4/5  
-- [Embodied AI Fails the Mirror Test: How a Simple Mirror Breaks Robot Policies](https://arxiv.org/abs/2611.33010) · 3/5  
-- [ICLWorld: Benchmarking In-Context Learning of Agents from Digital to Physical Worlds](https://arxiv.org/abs/2611.32649) · 3/5  
-- [PartAgent: Agentic 3D Part Segmentation via Expert Integration and Closed-Loop Refinement](https://arxiv.org/abs/2611.32554) · 3/5  
-- [ThinkMorph-SSL: Scaling Interleaved Multimodal Reasoning with Pretext Tasks](https://arxiv.org/abs/2611.32183) · 3/5  
+**New to radar** (454 items):  
+- [Mixture-of-Loops Transformer](https://arxiv.org/abs/2611.34923) — looped attention with KV reuse  
+- [Real2SimLab: A Unified Platform for Real-to-Simulation Transfer](https://arxiv.org/abs/2611.34849) — benchmark suite for video-to-simulation  
+- [Sage-Med: Scaling Medical Multimodal Intelligence](https://arxiv.org/abs/2611.34575) — 35B medical MLLM with 3B activated params  
+- [Improving and Expanding Video Editing Capabilities Without Videos](https://arxiv.org/abs/2611.34941) — image-to-video transfer for editing  
+- [Agentic LongLive: Asynchronous Agentic Memory for Long Video Generation](https://arxiv.org/abs/2611.34907) — separate memory agent for streaming video  
 
-**Climbing** (6 items):  
-- [3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets](https://arxiv.org/abs/2611.30013) · 4/5 (traction Δ +3.66)  
-- [WorldLeague: Benchmarking Physical Agency](https://arxiv.org/abs/2611.30989) · 4/5 (traction Δ +2.13)  
-- [WeMM-Ecom: Advancing Multimodal Content Understanding for WeChat E-Commerce](https://arxiv.org/abs/2611.30662) · 4/5 (traction Δ +2.18)  
-- [Motion Mamba 2.0: Autoregressive Diffusion Mamba for Long-Horizon Humanoid Control](https://arxiv.org/abs/2611.29897) · 3/5 (traction Δ +1.90)  
-- [ccore/ThreeJS-3D-Scenes-v2 (HF Dataset)](https://huggingface.co/datasets/ccore/ThreeJS-3D-Scenes-v2) · 3/5 (score Δ +1)  
-
-**Cooled** (2 items):  
-- [ViDiHand2: Unifying Video Diffusion Priors and Hand Geometry for 3D Hand Motion Reconstruction in the Wild](https://arxiv.org/abs/2611.30597) · 2/5 (score Δ –1)  
-- [World Models as Native Latent Action Models](https://arxiv.org/abs/2611.30898) · 2/5 (score Δ –1)  
+**Climbing** (4 items):  
+- [Embodied AI Fails the Mirror Test](https://arxiv.org/abs/2611.33010) — mirror breaks robot policies (mag +139%)  
+- [opensetlabs/openset-llm](https://github.com/opensetlabs/openset-llm) — CPU-only LLM server (mag +50%)  
+- [JaimeMaLangue/JML-fon-speech-v1](https://huggingface.co/datasets/JaimeMaLangue/JML-fon-speech-v1) — Fon speech dataset (score +1)  
+- [alphaXiv/AgentAlphaXiv](https://huggingface.co/datasets/alphaXiv/AgentAlphaXiv) — agent benchmark dataset (score +1)  
 
 ## Main list
 
-### Benchmark & evaluation
+### [Mixture-of-Loops Transformer](https://arxiv.org/abs/2611.34923) · 4/5
+HUST researchers introduced MoLT, a looped Transformer that passes keys and values as memory across loops via Mixture-of-Loops Attention, offering two modes: residual-stream reuse (MoLT-R) or embedding restart with KV memory (MoLT-KV).  
+**Matters if** you train deep models and want expressivity without proportional compute; [code](https://github.com/hustvl/MoLT) is available.
 
-**[Lazy Agents Answer Against Their Own Beliefs: Reinforcement Learning with Verifiable Beliefs Teaches Them to Act on What They Believe](https://arxiv.org/abs/2611.32884) · 4/5**  
-Researchers from DECLARE Lab introduce Reinforcement Learning with Verifiable Beliefs (RLVB), a training scheme that uses the simulator's exact posterior at each step to reward evidence-backed commitments rather than lucky final answers. The method reduces premature commitment on long-horizon tasks. **Matters if you** build agents that must gather evidence before acting; the [RLVB repo](https://github.com/declare-lab/RLVB) and [interactive demo](https://declare-lab.github.io/RLVB/?case=tabletop_cups&m=rlvb_grpo&s=0) are open.
+### [Real2SimLab: A Unified Platform for Real-to-Simulation Transfer](https://arxiv.org/abs/2611.34849) · 4/5
+Real2SimHub released a single evaluation harness that runs any real-to-sim method across multiple benchmarks, replacing N×M custom integrations with a shared interface.  
+**Matters if** you build or test sim-from-video pipelines; [platform](https://github.com/Real2SimHub/Real2SimLab) and [project page](https://real2simhub.github.io) are live.
 
-**[Embodied AI Fails the Mirror Test: How a Simple Mirror Breaks Robot Policies](https://arxiv.org/abs/2611.33010) · 3/5**  
-A new benchmark, RoboDojo-Mirror, adds single/dual mirrors and mirrored tabletops to existing manipulation tasks. Five policies — spanning VLA, world-action, and agentic models — all degrade significantly when reflections appear, revealing a brittleness in visual perception. **Matters if you** deploy vision-based manipulation; the [benchmark code](https://github.com/iPPLab/robodojo-mirror) and [project page](https://ipplab.github.io/robodojo-mirror) are available.
+### [Sage-Med: Scaling Medical Multimodal Intelligence](https://arxiv.org/abs/2611.34575) · 4/5
+The Sage-Med team published a 35B-parameter medical MLLM (3B activated) showing that scaling model size mainly helps text, not multimodal perception, and released a preview checkpoint.  
+**Matters if** you need a medical vision-language baseline; [repo](https://github.com/Sage-Med/Sage-Med-Preview) and [demo](https://sage-med-preview.github.io/) included.
 
-**[PartAgent: Agentic 3D Part Segmentation via Expert Integration and Closed-Loop Refinement](https://arxiv.org/abs/2611.32554) · 3/5**  
-A training-free agentic framework that fuses 3D geometric experts (for region proposals) with 2D semantic experts (for part labels) and iteratively refines segmentations through a closed loop. **Matters if you** need zero-shot 3D part segmentation; [code](https://github.com/yangcaoai/PartAgent_Agent_for_3D_Part_Seg) and [project page](https://yangcaoai.github.io/PartAgent_ProjectPage/) are released.
+### [Improving and Expanding Video Editing Capabilities Without Videos](https://arxiv.org/abs/2611.34941) · 4/5
+HorizonWind2004 proposed Image-to-Video Transfer (I2VT), which post-trains a video editor on single images using an image editor as teacher — no paired video data required.  
+**Matters if** you extend video editors to new tasks cheaply; [code](https://github.com/HorizonWind2004/i2v-transfer) and [project](https://i2v-transfer.github.io/) provided.
 
-**[WorldLeague: Benchmarking Physical Agency](https://arxiv.org/abs/2611.30989) · 4/5**  
-A benchmark suite testing AI systems across Blender operation, complex video-game instruction following, and real robot-arm manipulation, measuring the breadth of autonomously achievable physical goals. **Matters if you** evaluate embodied agents across simulation and reality; [GitHub](https://github.com/xyangzhou/WorldLeague) and [site](https://xyangzhou.github.io/WorldLeague/) track 19★ and 137 HF upvotes (observed).
+### [Agentic LongLive: Asynchronous Agentic Memory for Long Video Generation](https://arxiv.org/abs/2611.34907) · 3/5
+NVIDIA researchers built a separate memory agent that reads only revealed prompts (never generated frames) to keep long streaming video consistent without offline planning.  
+**Matters if** you serve real-time video generation; [LongLive repo](https://github.com/NVlabs/LongLive) and [project page](https://nvlabs.github.io/LongLive/Agentic-LongLive/) linked.
 
-**[3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets](https://arxiv.org/abs/2611.30013) · 4/5**  
-Introduces DivDynBench, evaluating rigging and motion generation across six morphology categories with multi-phase, timed instructions. The agentic pipeline handles arbitrary 3D assets. **Matters if you** generate animation for varied characters; [repo](https://github.com/OpenDCAI/GameFactory-3A) shows 1,398★ (observed).
+### [EgoUseBench: Benchmarking Computer-Use Agents under Evolving First-Person Contexts](https://arxiv.org/abs/2611.34466) · 3/5
+Yurun Chen et al. introduced a benchmark for agents that operate from egocentric wearable video, where tasks arise implicitly from the user's physical activity.  
+**Matters if** you build agents for AR glasses or embodied assistants; [benchmark](https://github.com/YurunChen/EgoUseBench) and [site](https://yurunchen.github.io/egousebench/) available.
 
-### Reasoning & multimodal
+### [DocSEAM: Bidirectional Cross-Page Encoding for Multi-Page Document Understanding](https://arxiv.org/abs/2611.34420) · 3/5
+Mossbee added a lightweight cross-page module between vision encoder and LLM, forming local triplets (prev, current, next) to inject adjacent-page context into visual tokens.  
+**Matters if** you process long documents page-by-page; [implementation](https://github.com/mossbee/DocSEAM) and [project](https://mossbee.github.io/projects/DocSEAM/) released.
 
-**[ThinkMorph-SSL: Scaling Interleaved Multimodal Reasoning with Pretext Tasks](https://arxiv.org/abs/2611.32183) · 3/5**  
-A two-stage recipe: first, models learn to produce interleaved image-text reasoning traces by solving visual pretext tasks (colorization, denoising) without instruction tuning; second, they transfer to downstream reasoning. **Matters if you** want multimodal chain-of-thought without expensive human annotations; [code](https://github.com/ThinkMorph/ThinkMorph-SSL) and [site](https://thinkmorph.github.io/ssl/) are open.
+### [Much shorter version of GRH Lean verification from Anthropic](https://github.com/lsernau/grh-lean) · 3/5
+A condensed Lean 4 formalization of the Gödel-Rosser-Hilbert inconsistency proof, derived from Anthropic's original, garnered 526 HN points and 336 comments.  
+**Matters if** you track formal verification of LLM reasoning; [repo](https://github.com/lsernau/grh-lean) and [HN discussion](https://news.ycombinator.com/item?id=50648050).
 
-**[Motion Mamba 2.0: Autoregressive Diffusion Mamba for Long-Horizon Humanoid Control](https://arxiv.org/abs/2611.29897) · 3/5**  
-Replaces bounded attention with a Mamba backbone in an autoregressive diffusion framework, enabling long-horizon, real-time controllable motion generation for humanoids. **Matters if you** need streaming motion synthesis with low latency; [repo](https://github.com/AIGeeksGroup/MotionMamba2.0) and [demo](https://aigeeksgroup.github.io/MotionMamba2.0/) show 34★ and 194 HF upvotes (observed).
+### [One Ocean, Many Tasks: A Data-Grounded Simulation Suite and Benchmark for Marine Robotics](https://arxiv.org/abs/2611.34925) · 2/5
+OneOcean harmonizes bathymetry, data-driven currents, tides, and pollution fields into a unified spatiotemporal product with a task ladder from navigation to cleanup.  
+**Matters if** you simulate marine robots in realistic ocean conditions; paper includes environment and benchmark design.
 
-### Data & efficiency
-
-**[Physicl Scenes: An Artist-created 3D Dataset for Learning Perception and Action](https://arxiv.org/abs/2611.33137) · 2/5**  
-6,499 high-quality 3D scenes with PBR materials, object/part semantics, and diverse environments. Training SOTA methods on this data improves inverse rendering, 3D reconstruction, scene understanding, and mobile manipulation. **Matters if you** need rich 3D training data; dataset release is referenced in the paper.
-
-**[Towards Realistic Evaluation of Uncertainty Quantification for LLM-Based Recommender Systems](https://arxiv.org/abs/2611.33036) · 2/5**  
-Proposes a framework for comparing instance-level UQ methods on LLM rankers, which lack standard classification heads and exhibit label/prompt sensitivity. **Matters if you** serve LLM-based recommenders and need reliable confidence estimates; artifact linked in paper.
-
-**[Train What You Run: Probabilistic Convolutions for Learning Token Compaction in State Space Models](https://arxiv.org/abs/2611.33009) · 2/5**  
-Introduces ProbConv, a differentiable operator that computes exact expected convolutions under stochastic token-keep decisions, enabling end-to-end learning of visual token compaction for Mamba/SSM blocks. **Matters if you** optimize inference cost for vision SSMs; implementation referenced in paper.
+### [Enhancing Maritime Domain Awareness using Latent Space Representations](https://arxiv.org/abs/2611.34899) · 2/5
+Researchers applied TerraMind's compressed SAR embeddings to vessel detection and anomaly tasks, operating directly on latent representations to avoid data-gravity bottlenecks.  
+**Matters if** you process satellite radar at scale; method uses linear/non-linear probes on frozen embeddings.
 
 ## Watch-list / Still developing
 
-- [SpecEngineeringBench: Evaluating Coding Agents as Autonomous Specification Engineers](https://arxiv.org/abs/2611.32973) · 2/5 — new benchmark for spec-to-test generation; [repo](https://github.com/TokenWave-AI/SpecEngineeringBench), [site](https://tokenwave-ai.github.io/SpecEngineeringBench-Page/)
-- [Beyond Fixed-Context Likelihood: Zero-Shot AI-Generated Text Detection via Context Perturbation Discrepancy](https://arxiv.org/abs/2611.32778) · 2/5 — zero-shot detector using KL-based discrepancy
-- [How to Optimize NVFP4 Attention on NVIDIA RTX Blackwell Through Register Recycling](https://developer.nvidia.com/blog/how-to-optimize-nvfp4-attention-on-nvidia-rtx-blackwell-through-register-recycling/) · 1/5 — NVIDIA kernel-level guide (lab blog)
-- [GPT-6 models demonstrate intrinsic protein-design capabilities](https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities) · 1/5 — OpenAI announcement (lab blog)
-- [Lukcla3889/postman-agent](https://github.com/Lukcla3889/postman-agent) · 3/5 — local API debugging agent for Windows; 143★ (observed)
-- [w01fb0ss/PiBot](https://github.com/w01fb0ss/PiBot) · 3/5 — local-first multi-agent desktop team; 589★ (observed, 3 runs)
-- [Digitaluz/uzbek-language-corpus](https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus) · 3/5 — Uzbek monolingual corpus; 182 likes, 3,046 downloads (observed, 7 runs, streak 3)
-- [prism-ml/Ternary-Bonsai-2.5-27B-GGUF](https://huggingface.co/prism-ml/Ternary-Bonsai-2.5-27B-GGUF) · 2/5 — 2-bit ternary LLaMA GGUF; 304 likes, 59,366 downloads (observed)
-- [inclusionAI/Ling-3.2-air](https://huggingface.co/inclusionAI/Ling-3.2-air) · 2/5 — MoE VL model, FP8; 231 likes, 1,467 downloads (observed)
-- [Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill](https://huggingface.co/datasets/Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill) · 2/5 — competitive coding distillation dataset; 87 likes, 280 downloads (observed)
+- [prism-ml/Ternary-Bonsai-2.5-27B-GGUF](https://huggingface.co/prism-ml/Ternary-Bonsai-2.5-27B-GGUF) — 2-bit ternary 27B model (488 likes, 59k downloads observed)
+- [orcarouter/Inkling-2-Mini-abliterated-GGUF](https://huggingface.co/orcarouter/Inkling-2-Mini-abliterated-GGUF) — MoE 2-mini variant (263 likes, 12k downloads observed)
+- [datapointai/multilingual-tts-ad-human-preferences-270k](https://huggingface.co/datasets/datapointai/multilingual-tts-ad-human-preferences-270k) — 270k human preference pairs for TTS reward modeling
+- [Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill](https://huggingface.co/datasets/Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill) — competitive coding distillation dataset (3 days on radar, momentum +42%)
 
 ## Action items
 
-**Read** the [RLVB paper](https://arxiv.org/abs/2611.32884) and try the [interactive demo](https://declare-lab.github.io/RLVB/?case=tabletop_cups&m=rlvb_grpo&s=0) if you build long-horizon agents that must decide when they have enough evidence.
-
-**Try** [RoboDojo-Mirror](https://github.com/iPPLab/robodojo-mirror) to stress-test your vision-language-action policies against reflection-induced distribution shift.
-
-**Track** [WorldLeague](https://github.com/xyangzhou/WorldLeague) and [3AGameFactory-Motion](https://github.com/OpenDCAI/GameFactory-3A) — both are climbing fast and aim to become standard physical-agency benchmarks across sim and real.
+- **Read** the [Mixture-of-Loops Transformer paper](https://arxiv.org/abs/2611.34923) and [MoLT repo](https://github.com/hustvl/MoLT) if you explore depth-efficient attention alternatives.
+- **Try** [Real2SimLab](https://github.com/Real2SimHub/Real2SimLab) to evaluate your own video-to-simulation pipeline against a standardized suite.
+- **Track** [Sage-Med-Preview](https://github.com/Sage-Med/Sage-Med-Preview) for medical multimodal checkpoints; the 3B-activated variant may fit constrained serving budgets.
 
 ---
 
