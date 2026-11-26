@@ -1,26 +1,26 @@
 {
-  "date": "2026-11-25",
+  "date": "2026-11-26",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-25T20:22:06Z",
-  "age_hours_at_eval": 0.01,
+  "digest_commit_time_utc": "2026-11-26T19:58:29Z",
+  "age_hours_at_eval": 0.0,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
-      "age_h": 0.01,
-      "links_total": 40,
+      "age_h": 0.0,
+      "links_total": 32,
       "links_broken": 0,
-      "links_unverified": 0,
-      "main_items": 13,
-      "main_score_mean": 3.0,
+      "links_unverified": 1,
+      "main_items": 10,
+      "main_score_mean": 3.2,
       "sections_present": 4,
       "expected_sections": 3,
       "tracked_items": 60,
-      "reobservation_rate": 0.983,
-      "traction_observations": 53,
+      "reobservation_rate": 1.0,
+      "traction_observations": 51,
       "degraded_synthesis": false,
-      "forecast_accuracy": 0.222,
+      "forecast_accuracy": 0.333,
       "claims_open": 0
     },
     "checks": [
@@ -32,12 +32,12 @@
       {
         "key": "main_list_nonempty",
         "ok": true,
-        "detail": "13 main-list item(s)"
+        "detail": "10 main-list item(s)"
       },
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "every link answered 2xx"
+        "detail": "no dead links; 1/32 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -47,7 +47,7 @@
       {
         "key": "traction_observed",
         "ok": true,
-        "detail": "re-observed 98% of 60 tracked items"
+        "detail": "re-observed 100% of 60 tracked items"
       }
     ],
     "failed": []
@@ -65,10 +65,15 @@
     }
   },
   "trusted": {
-    "reobservation_rate": 0.983,
-    "forecast_accuracy": 0.222
+    "reobservation_rate": 1.0,
+    "forecast_accuracy": 0.333
   },
-  "broken_urls": [],
+  "broken_urls": [
+    {
+      "url": "https://news.ycombinator.com/item?id=50648050",
+      "status": 405
+    }
+  ],
   "missed_stories": [],
   "degraded_reason": "--tier0-only: model call skipped by request"
 }
