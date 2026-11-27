@@ -1,24 +1,24 @@
 {
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "mode": "deterministic",
   "grader_model": "",
   "digest_url": "https://raw.githubusercontent.com/amaljithkuttamath/ai-radar/main/reports/latest.md",
-  "digest_commit_time_utc": "2026-11-26T19:58:29Z",
-  "age_hours_at_eval": 0.0,
+  "digest_commit_time_utc": "2026-11-27T19:47:56Z",
+  "age_hours_at_eval": 0.01,
   "tier0": {
     "module_hash": "b9d5d0f52167",
     "metrics": {
-      "age_h": 0.0,
-      "links_total": 32,
+      "age_h": 0.01,
+      "links_total": 39,
       "links_broken": 0,
       "links_unverified": 1,
       "main_items": 10,
-      "main_score_mean": 3.2,
+      "main_score_mean": 2.5,
       "sections_present": 4,
-      "expected_sections": 3,
+      "expected_sections": 4,
       "tracked_items": 60,
       "reobservation_rate": 1.0,
-      "traction_observations": 51,
+      "traction_observations": 55,
       "degraded_synthesis": false,
       "forecast_accuracy": 0.333,
       "claims_open": 0
@@ -27,7 +27,7 @@
       {
         "key": "structure",
         "ok": true,
-        "detail": "title and 4 section(s); 3/7 of the prompt's sections present"
+        "detail": "title and 4 section(s); 4/7 of the prompt's sections present"
       },
       {
         "key": "main_list_nonempty",
@@ -37,7 +37,7 @@
       {
         "key": "links_resolve",
         "ok": true,
-        "detail": "no dead links; 1/32 declined to answer"
+        "detail": "no dead links; 1/39 declined to answer"
       },
       {
         "key": "synthesis_present",
@@ -70,8 +70,8 @@
   },
   "broken_urls": [
     {
-      "url": "https://news.ycombinator.com/item?id=50648050",
-      "status": 405
+      "url": "https://generativehistory.substack.com/p/gpt-62-astra-solves-a-historical",
+      "status": 403
     }
   ],
   "missed_stories": [],
