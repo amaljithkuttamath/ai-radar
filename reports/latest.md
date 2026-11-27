@@ -1,80 +1,101 @@
 <!-- radar:nav -->
-`radar`  ·  [← 2026-11-25](2026-11-25-digest.md)  ·  [index](README.md)  ·  _newest_ →
+`radar`  ·  [← 2026-11-26](2026-11-26-digest.md)  ·  [index](README.md)  ·  _newest_ →
 <!-- /radar:nav -->
 
-# AI Radar — 2026-11-26
+# AI Radar — 2026-11-27
 
-A new attention architecture (Mixture-of-Loops Transformer) claims expressivity gains by reusing KV memory across loops, while Real2SimLab and Sage-Med release unified benchmarks for real-to-sim transfer and medical multimodal scaling. Several video-generation and agent-evaluation platforms also appeared with runnable code.
+The strongest signal today is the **Mixture-of-Loops Transformer (MoLT)** paper with open code, which has accumulated 97 GitHub stars and 74 HF upvotes in two days while proposing a new attention-memory mechanism for looped architectures. Also notable: a Vulkan-accelerated **waifu2x Windows upscaler** hit 171 stars on its first day. Coverage is broad but shallow — most items are early repos or preprints without independent verification.
 
 ## What changed
 
-**New to radar** (454 items):  
-- [Mixture-of-Loops Transformer](https://arxiv.org/abs/2611.34923) — looped attention with KV reuse  
-- [Real2SimLab: A Unified Platform for Real-to-Simulation Transfer](https://arxiv.org/abs/2611.34849) — benchmark suite for video-to-simulation  
-- [Sage-Med: Scaling Medical Multimodal Intelligence](https://arxiv.org/abs/2611.34575) — 35B medical MLLM with 3B activated params  
-- [Improving and Expanding Video Editing Capabilities Without Videos](https://arxiv.org/abs/2611.34941) — image-to-video transfer for editing  
-- [Agentic LongLive: Asynchronous Agentic Memory for Long Video Generation](https://arxiv.org/abs/2611.34907) — separate memory agent for streaming video  
+**New to radar** (5 of 31)
+- [Interactive-Active-AI/NextTransformer](https://github.com/Interactive-Active-AI/NextTransformer) — open-source framework for next-gen Transformers with compute-matched benchmarking
+- [Red2076-arch/waifu2x-image-upscaler-windows](https://github.com/Red2076-arch/waifu2x-image-upscaler-windows) — free AI image upscaler/denoiser for Windows on Vulkan + ncnn
+- [dayuwang401/VidRouteBench](https://github.com/dayuwang401/VidRouteBench) — budgeted text-to-video routing benchmark across 16 model×config arms, no GPU needed
+- [logitcai/tinybrain](https://github.com/logitcai/tinybrain) — Chinese-first small LM from scratch: 60B-token dataset, tokenizer, mHC+Engram+MoE, PyTorch
+- [I don't expect superposition in transformer MLP neurons](https://www.alignmentforum.org/posts/o9dPGxEbpQrnasgDB/i-don-t-expect-superposition-in-transformer-mlp-neurons) — argues superposition lives in residual stream, not MLP neurons
 
-**Climbing** (4 items):  
-- [Embodied AI Fails the Mirror Test](https://arxiv.org/abs/2611.33010) — mirror breaks robot policies (mag +139%)  
-- [opensetlabs/openset-llm](https://github.com/opensetlabs/openset-llm) — CPU-only LLM server (mag +50%)  
-- [JaimeMaLangue/JML-fon-speech-v1](https://huggingface.co/datasets/JaimeMaLangue/JML-fon-speech-v1) — Fon speech dataset (score +1)  
-- [alphaXiv/AgentAlphaXiv](https://huggingface.co/datasets/alphaXiv/AgentAlphaXiv) — agent benchmark dataset (score +1)  
+**Climbing** (3)
+- [Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill](https://huggingface.co/datasets/Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill) — dataset traction rising (score +1, mag +0.14)
+- [AMD-specific fork of llama.cpp](https://devnull.land/amd-specific-llama-cpp) — benchmark-focused fork gaining attention (score +1, mag +0.34)
+- [VibeVideoAgent: Closing the Perceptual Loop for Code-Driven Video Generation](https://arxiv.org/abs/2611.34237) — magnitude surged +1.34 on perceptual-loop closure for code-driven video
+
+**Cooled** (2)
+- [Real2SimLab: A Unified Platform for Real-to-Simulation Transfer](https://arxiv.org/abs/2611.34849) — score dropped −1
+- [Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) — score dropped −1
+
+---
 
 ## Main list
 
-### [Mixture-of-Loops Transformer](https://arxiv.org/abs/2611.34923) · 4/5
-HUST researchers introduced MoLT, a looped Transformer that passes keys and values as memory across loops via Mixture-of-Loops Attention, offering two modes: residual-stream reuse (MoLT-R) or embedding restart with KV memory (MoLT-KV).  
-**Matters if** you train deep models and want expressivity without proportional compute; [code](https://github.com/hustvl/MoLT) is available.
+### [Red2076-arch/waifu2x-image-upscaler-windows](https://github.com/Red2076-arch/waifu2x-image-upscaler-windows) · 3/5
+A free Windows image upscaler and photo denoiser using Vulkan GPU acceleration and ncnn neural networks, released today with 171 stars.  
+Matters if you need a local, dependency-light upscaler for Windows deployment or want a reference for Vulkan+ncnn inference pipelines.
 
-### [Real2SimLab: A Unified Platform for Real-to-Simulation Transfer](https://arxiv.org/abs/2611.34849) · 4/5
-Real2SimHub released a single evaluation harness that runs any real-to-sim method across multiple benchmarks, replacing N×M custom integrations with a shared interface.  
-**Matters if** you build or test sim-from-video pipelines; [platform](https://github.com/Real2SimHub/Real2SimLab) and [project page](https://real2simhub.github.io) are live.
+### [I don't expect superposition in transformer MLP neurons](https://www.alignmentforum.org/posts/o9dPGxEbpQrnasgDB/i-don-t-expect-superposition-in-transformer-mlp-neurons) · 2/5
+An Alignment Forum post arguing that superposition-type compression occurs in the residual stream, not in MLP neurons, with a proposed experimental test.  
+Matters if you interpret model internals or design sparsity/pruning methods — the claim redirects where to look for feature compression.
 
-### [Sage-Med: Scaling Medical Multimodal Intelligence](https://arxiv.org/abs/2611.34575) · 4/5
-The Sage-Med team published a 35B-parameter medical MLLM (3B activated) showing that scaling model size mainly helps text, not multimodal perception, and released a preview checkpoint.  
-**Matters if** you need a medical vision-language baseline; [repo](https://github.com/Sage-Med/Sage-Med-Preview) and [demo](https://sage-med-preview.github.io/) included.
+### [I'm Scared of AI](https://thesoapbox.email/archive/3) · 2/5
+A personal essay on AI anxiety that hit 175 points and 182 comments on Hacker News, reflecting practitioner sentiment.  
+Matters if you track community mood or need a snapshot of current engineer concerns for team discussions.
 
-### [Improving and Expanding Video Editing Capabilities Without Videos](https://arxiv.org/abs/2611.34941) · 4/5
-HorizonWind2004 proposed Image-to-Video Transfer (I2VT), which post-trains a video editor on single images using an image editor as teacher — no paired video data required.  
-**Matters if** you extend video editors to new tasks cheaply; [code](https://github.com/HorizonWind2004/i2v-transfer) and [project](https://i2v-transfer.github.io/) provided.
+### [GPT 6.2 Astra Solves a Historical Mystery](https://generativehistory.substack.com/p/gpt-62-astra-solves-a-historical) · 2/5
+A Substack post claiming GPT-6.2 resolved a historical question, drawing 154 HN points and 63 comments.  
+Matters if you evaluate long-context reasoning claims — treat as an anecdotal benchmark, not a verified result.
 
-### [Agentic LongLive: Asynchronous Agentic Memory for Long Video Generation](https://arxiv.org/abs/2611.34907) · 3/5
-NVIDIA researchers built a separate memory agent that reads only revealed prompts (never generated frames) to keep long streaming video consistent without offline planning.  
-**Matters if** you serve real-time video generation; [LongLive repo](https://github.com/NVlabs/LongLive) and [project page](https://nvlabs.github.io/LongLive/Agentic-LongLive/) linked.
+### [ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF) · 2/5
+A quantized (GSQ, RCO) GGUF model from ISTA-DASLab with 224 likes and 24.9k downloads observed.  
+Matters if you deploy quantized models on edge — a data point for GSQ+RCO mixed-precision recipes.
 
-### [EgoUseBench: Benchmarking Computer-Use Agents under Evolving First-Person Contexts](https://arxiv.org/abs/2611.34466) · 3/5
-Yurun Chen et al. introduced a benchmark for agents that operate from egocentric wearable video, where tasks arise implicitly from the user's physical activity.  
-**Matters if** you build agents for AR glasses or embodied assistants; [benchmark](https://github.com/YurunChen/EgoUseBench) and [site](https://yurunchen.github.io/egousebench/) available.
+### [yurun-chen/EgoUseBench](https://huggingface.co/datasets/yurun-chen/EgoUseBench) · 2/5
+A new Hugging Face dataset (41 likes, 78 downloads) tagged as a computer-use benchmark with arXiv:2611.34466.  
+Matters if you build agent evaluations — an early benchmark for ego-centric tool use, but too new for established baselines.
 
-### [DocSEAM: Bidirectional Cross-Page Encoding for Multi-Page Document Understanding](https://arxiv.org/abs/2611.34420) · 3/5
-Mossbee added a lightweight cross-page module between vision encoder and LLM, forming local triplets (prev, current, next) to inject adjacent-page context into visual tokens.  
-**Matters if** you process long documents page-by-page; [implementation](https://github.com/mossbee/DocSEAM) and [project](https://mossbee.github.io/projects/DocSEAM/) released.
+### [Mixture-of-Loops Transformer](https://arxiv.org/abs/2611.34923) · 3/5
+A preprint introducing MoLT with Mixture-of-Loops Attention (MoLA), using KV as memory across loops; code at github.com/hustvl/MoLT (97 stars, 74 HF upvotes).  
+Matters if you research efficient long-context or recurrent architectures — a concrete looped-Transformer variant with open implementation.
 
-### [Much shorter version of GRH Lean verification from Anthropic](https://github.com/lsernau/grh-lean) · 3/5
-A condensed Lean 4 formalization of the Gödel-Rosser-Hilbert inconsistency proof, derived from Anthropic's original, garnered 526 HN points and 336 comments.  
-**Matters if** you track formal verification of LLM reasoning; [repo](https://github.com/lsernau/grh-lean) and [HN discussion](https://news.ycombinator.com/item?id=50648050).
+### [Sage-Med: Scaling Medical Multimodal Intelligence](https://arxiv.org/abs/2611.34575) · 3/5
+Systematic evaluation showing medical MLLMs underperform general MLLMs; scaling helps text more than perception. Code at github.com/Sage-Med/Sage-Med-Preview (27 stars, 81 HF upvotes).  
+Matters if you train or evaluate medical multimodal models — evidence that current scaling recipes don't transfer perception gains.
 
-### [One Ocean, Many Tasks: A Data-Grounded Simulation Suite and Benchmark for Marine Robotics](https://arxiv.org/abs/2611.34925) · 2/5
-OneOcean harmonizes bathymetry, data-driven currents, tides, and pollution fields into a unified spatiotemporal product with a task ladder from navigation to cleanup.  
-**Matters if** you simulate marine robots in realistic ocean conditions; paper includes environment and benchmark design.
+### [Improving and Expanding Video Editing Capabilities Without Videos](https://arxiv.org/abs/2611.34941) · 3/5
+Introduces Image-to-Video Transfer (I2VT) to upgrade video editors using only image-edit data; code at github.com/HorizonWind2004/i2v-transfer (45 stars, 46 HF upvotes).  
+Matters if you build video editing pipelines — a data-efficient transfer method with open code to test.
 
-### [Enhancing Maritime Domain Awareness using Latent Space Representations](https://arxiv.org/abs/2611.34899) · 2/5
-Researchers applied TerraMind's compressed SAR embeddings to vessel detection and anomaly tasks, operating directly on latent representations to avoid data-gravity bottlenecks.  
-**Matters if** you process satellite radar at scale; method uses linear/non-linear probes on frozen embeddings.
+### [VibeVideoAgent: Closing the Perceptual Loop for Code-Driven Video Generation](https://arxiv.org/abs/2611.34237) · 3/5
+A coding agent that writes rendering programs and uses perceptual feedback to fix visual errors; code at github.com/Kling-Keye/VibeVideoAgent (12 stars, 57 HF upvotes).  
+Matters if you generate video from code — an agentic loop that catches rendering bugs (overlapping labels, camera drift) automatically.
 
-## Watch-list / Still developing
+---
 
-- [prism-ml/Ternary-Bonsai-2.5-27B-GGUF](https://huggingface.co/prism-ml/Ternary-Bonsai-2.5-27B-GGUF) — 2-bit ternary 27B model (488 likes, 59k downloads observed)
-- [orcarouter/Inkling-2-Mini-abliterated-GGUF](https://huggingface.co/orcarouter/Inkling-2-Mini-abliterated-GGUF) — MoE 2-mini variant (263 likes, 12k downloads observed)
-- [datapointai/multilingual-tts-ad-human-preferences-270k](https://huggingface.co/datasets/datapointai/multilingual-tts-ad-human-preferences-270k) — 270k human preference pairs for TTS reward modeling
-- [Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill](https://huggingface.co/datasets/Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill) — competitive coding distillation dataset (3 days on radar, momentum +42%)
+## Still developing
+
+- [w01fb0ss/PiBot](https://github.com/w01fb0ss/PiBot) — local-first multi-agent desktop team (674 stars, 5 days on radar, traction +0.15)
+- [Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill](https://huggingface.co/datasets/Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill) — competitive coding dataset (129 likes, 485 downloads, 4 days, traction +0.55)
+- [prism-ml/Ternary-Bonsai-2.5-27B-GGUF](https://huggingface.co/prism-ml/Ternary-Bonsai-2.5-27B-GGUF) — 2-bit ternary quantized model (601 likes, 382k downloads, 3 days, traction +0.48)
+- [llama.cpp AMD benchmark dashboard](https://huggingface.co/blog/ggml-org/llamacpp-amd-bench) — official AMD Ryzen/Radeon benchmarks for llama.cpp
+- [sqlite3_rsync](https://simonwillison.net/2026/Nov/26/sqlite3-rsync/) — SQLite remote-copy tool (experimental since 2024, now understood)
+- [Anthropic IPO closing](https://www.anthropic.com/news/ipo-close) — 1.127B shares at $83 (lab announcement)
+- [Anthropic prices IPO](https://www.anthropic.com/news/anthropic-prices-initial-public-offering) — pricing announcement
+- [Mistral Voxtral 3](https://mistral.ai/news/voxtral-3/) — research release
+- [Mistral Timestral](https://mistral.ai/news/timestral/) — research release
+- [Meta Muse Spark model API](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/) — featured release
+- [Meta Genesis mission with Segment Anything/DINO](https://ai.meta.com/blog/genesis-mission-lawrence-berkeley-national-laboratory-segment-anything-dino/) — science application
+
+**Story arcs** (rising traction ≥3 consecutive days):  
+[3AGameFactory-Motion](https://arxiv.org/abs/2611.30013) (streak 4, +91%), [Jeveration](https://arxiv.org/abs/2611.24738) (streak 9, +61%), [WeMM-Ecom](https://arxiv.org/abs/2611.30662) (streak 4, +57%), [PartAgent](https://arxiv.org/abs/2611.32554) (streak 3, +53%), [Embo-Harness](https://arxiv.org/abs/2611.31201) (streak 4, +52%), [Sage S2.1 Flash](https://arxiv.org/abs/2611.21072) (streak 11, +46%), [ThinkMorph-SSL](https://arxiv.org/abs/2611.32183) (streak 3, +44%), [Embodied AI Mirror Test](https://arxiv.org/abs/2611.33010) (streak 3, +43%), [Motion Mamba 2.0](https://arxiv.org/abs/2611.29897) (streak 4, +42%), [WorldLeague](https://arxiv.org/abs/2611.30989) (streak 4, +41%).
+
+---
 
 ## Action items
 
-- **Read** the [Mixture-of-Loops Transformer paper](https://arxiv.org/abs/2611.34923) and [MoLT repo](https://github.com/hustvl/MoLT) if you explore depth-efficient attention alternatives.
-- **Try** [Real2SimLab](https://github.com/Real2SimHub/Real2SimLab) to evaluate your own video-to-simulation pipeline against a standardized suite.
-- **Track** [Sage-Med-Preview](https://github.com/Sage-Med/Sage-Med-Preview) for medical multimodal checkpoints; the 3B-activated variant may fit constrained serving budgets.
+**Read** — [Mixture-of-Loops Transformer](https://arxiv.org/abs/2611.34923) + [github.com/hustvl/MoLT](https://github.com/hustvl/MoLT) for a fresh looped-attention mechanism with open code and early traction.
+
+**Try** — [waifu2x-image-upscaler-windows](https://github.com/Red2076-arch/waifu2x-image-upscaler-windows) if you need a standalone Windows upscaler; Vulkan+ncnn makes it a clean reference for GPU-accelerated inference without CUDA.
+
+**Track** — [VibeVideoAgent](https://github.com/Kling-Keye/VibeVideoAgent) — the perceptual-loop-closing agent for code-driven video; watch whether the feedback-loop architecture generalizes to other generative coding tasks.
 
 ---
 

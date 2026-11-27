@@ -9,18 +9,25 @@ what matters, with every link checked against its source.
 
 **Yesterday** · [This week](reports/week.md) · [This month](reports/month.md)
 
-### New in the last two days · Thu 26 Nov
+### New in the last two days · Fri 27 Nov
 
-> A new attention architecture (Mixture-of-Loops Transformer) claims expressivity gains by reusing KV memory across loops, while Real2SimLab and Sage-Med release unified benchmarks for real-to-sim transfer and medical multimodal scaling. Several video-generation and agent-evaluation platforms also appeared with runnable code.
+> The strongest signal today is the **Mixture-of-Loops Transformer (MoLT)** paper with open code, which has accumulated 97 GitHub stars and 74 HF upvotes in two days while proposing a new attention-memory mechanism for looped architectures. Also notable: a Vulkan-accelerated **waifu2x Windows upscaler** hit 171 stars on its first day. Coverage is broad but shallow — most items are early repos or preprints without independent verification.
 
-- **[Mixture-of-Loops Transformer](https://arxiv.org/abs/2611.34923)** HUST researchers introduced MoLT, a looped Transformer that passes keys and values as memory across loops via Mixture-of-Loops Attention, offering two modes: residual-stream reuse…
-- **[Real2SimLab: A Unified Platform for Real-to-Simulation Transfer](https://arxiv.org/abs/2611.34849)** Real2SimHub released a single evaluation harness that runs any real-to-sim method across multiple benchmarks, replacing N×M custom integrations with a shared interface.
-- **[Sage-Med: Scaling Medical Multimodal Intelligence](https://arxiv.org/abs/2611.34575)** The Sage-Med team published a 35B-parameter medical MLLM (3B activated) showing that scaling model size mainly helps text, not multimodal perception, and released a preview checkp…
-- **[Improving and Expanding Video Editing Capabilities Without Videos](https://arxiv.org/abs/2611.34941)** HorizonWind2004 proposed Image-to-Video Transfer (I2VT), which post-trains a video editor on single images using an image editor as teacher — no paired video data required.
-- **[Agentic LongLive: Asynchronous Agentic Memory for Long Video Generation](https://arxiv.org/abs/2611.34907)** NVIDIA researchers built a separate memory agent that reads only revealed prompts (never generated frames) to keep long streaming video consistent without offline planning.
-- **[EgoUseBench: Benchmarking Computer-Use Agents under Evolving First-Person Contexts](https://arxiv.org/abs/2611.34466)** Yurun Chen et al.
+- **[Red2076-arch/waifu2x-image-upscaler-windows](https://github.com/Red2076-arch/waifu2x-image-upscaler-windows)** A free Windows image upscaler and photo denoiser using Vulkan GPU acceleration and ncnn neural networks, released today with 171 stars.
+- **[I don't expect superposition in transformer MLP neurons](https://www.alignmentforum.org/posts/o9dPGxEbpQrnasgDB/i-don-t-expect-superposition-in-transformer-mlp-neurons)** An Alignment Forum post arguing that superposition-type compression occurs in the residual stream, not in MLP neurons, with a proposed experimental test.
+- **[I'm Scared of AI](https://thesoapbox.email/archive/3)** A personal essay on AI anxiety that hit 175 points and 182 comments on Hacker News, reflecting practitioner sentiment.
+- **[GPT 6.2 Astra Solves a Historical Mystery](https://generativehistory.substack.com/p/gpt-62-astra-solves-a-historical)** A Substack post claiming GPT-6.2 resolved a historical question, drawing 154 HN points and 63 comments.
+- **[ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Inkling-2-Mini-GSQ-RCO-GGUF)** A quantized (GSQ, RCO) GGUF model from ISTA-DASLab with 224 likes and 24.9k downloads observed.
+- **[yurun-chen/EgoUseBench](https://huggingface.co/datasets/yurun-chen/EgoUseBench)** A new Hugging Face dataset (41 likes, 78 downloads) tagged as a computer-use benchmark with arXiv:2611.34466.
 
-[Read the full briefing](reports/2026-11-26-digest.md) · [Every edition](reports/README.md)
+### Still unfolding
+
+- **[Mistral Voxtral 3](https://mistral.ai/news/voxtral-3/)** · day 14
+- **[Mistral Timestral](https://mistral.ai/news/timestral/)** · day 14
+- **[Meta Muse Spark model API](https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/)** · day 14
+- **[Meta Genesis mission with Segment Anything/DINO](https://ai.meta.com/blog/genesis-mission-lawrence-berkeley-national-laboratory-segment-anything-dino/)** · day 14
+
+[Read the full briefing](reports/2026-11-27-digest.md) · [Every edition](reports/README.md)
 
 <!-- frontpage:end -->
 

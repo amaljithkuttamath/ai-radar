@@ -2,10 +2,10 @@
 "arxiv:2611.21072": {
 "category": "research",
 "first_seen": "2026-11-17",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2611.21072",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/InternLM/Sage-S2.1-Flash",
 "project": "https://internlm.github.io/Sage-S2.1-Flash/"
@@ -20,17 +20,18 @@
 6.4402,
 6.4535,
 6.4535,
-6.4632
+6.4632,
+6.4535
 ],
 "misses": 0,
 "peak_mag": 6.4632,
 "signals": {
 "gh_stars": 37,
 "hf_comments": 0,
-"hf_upvotes": 103
+"hf_upvotes": 102
 },
 "source": "arXiv cs.AI",
-"streak": 10,
+"streak": 11,
 "summary": "We introduce Sage S1.5 Flash, a 320-billion-parameter general-purpose mixture-of-experts model designed to reason over scientific evidence and act in interactive environments. Sage Sci-Perception uses dedicated encoders for molecular graphs and biological sequences and represents spectra as ordered patches of measurements. Modality-specific projectors map these representations into the input space",
 "title": "Sage S2.1 Flash Technical Report",
 "url": "https://arxiv.org/abs/2611.21072"
@@ -38,10 +39,10 @@
 "arxiv:2611.22115": {
 "category": "research",
 "first_seen": "2026-11-18",
-"flat_runs": 2,
+"flat_runs": 3,
 "id": "arxiv:2611.22115",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "project": "https://github.com/XingChen-AGI"
 },
@@ -54,6 +55,7 @@
 5.124,
 5.1299,
 5.1299,
+5.1299,
 5.1299
 ],
 "misses": 0,
@@ -63,7 +65,7 @@
 "hf_upvotes": 168
 },
 "source": "HF Daily Papers",
-"streak": 9,
+"streak": 10,
 "summary": "We present Xing 4, a series of large language models that extends the TeleChat lineage through coordinated advances in model architecture and training infrastructure on Ascend. This report describes the design principles and systems engineering behind the series, spanning architecture selection, large-scale pretraining, and reasoning and agentic post-training. We study how sparse activation, atten",
 "title": "TeleChat to Xing4: Advancing Frontier Agentic Models on Domestic Chips and Frameworks",
 "url": "https://arxiv.org/abs/2611.22115"
@@ -71,7 +73,7 @@
 "arxiv:2611.24738": {
 "category": "research",
 "first_seen": "2026-11-19",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2611.24738",
 "keywords": [
 "System One models",
@@ -83,7 +85,7 @@
 "holistic image generation",
 "image-to-image generation"
 ],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/Carol-lyh/Jeveration",
 "project": "https://carol-lyh.github.io/Jeveration/"
@@ -96,17 +98,18 @@
 7.5125,
 7.5998,
 7.6241,
-7.6478
+7.6478,
+7.4729
 ],
 "misses": 0,
 "peak_mag": 7.6478,
 "signals": {
-"gh_stars": 175,
+"gh_stars": 188,
 "hf_comments": 0,
-"hf_upvotes": 157
+"hf_upvotes": 127
 },
 "source": "arXiv cs.CV",
-"streak": 8,
+"streak": 9,
 "summary": "System One models such as Jev return decisions through fast, parallel prediction. In this paper, we introduce Jeveration, showing that the same decision paradigm can also generate high-quality images in a single forward pass. Jeveration builds on a frozen vision-language model, repurposing its visual-semantic knowledge for holistic image generation. The key challenge is to maintain global consiste",
 "title": "Jeveration: System One Models Now Generate",
 "url": "https://arxiv.org/abs/2611.24738"
@@ -117,7 +120,7 @@
 "flat_runs": 0,
 "id": "arxiv:2611.29897",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/AIGeeksGroup/MotionMamba2.0",
 "project": "https://aigeeksgroup.github.io/MotionMamba2.0/"
@@ -125,17 +128,18 @@
 "mag_history": [
 5.1475,
 7.0507,
-7.2471
+7.2471,
+7.3214
 ],
 "misses": 0,
-"peak_mag": 7.2471,
+"peak_mag": 7.3214,
 "signals": {
-"gh_stars": 39,
+"gh_stars": 43,
 "hf_comments": 0,
-"hf_upvotes": 221
+"hf_upvotes": 227
 },
 "source": "arXiv cs.RO",
-"streak": 3,
+"streak": 4,
 "summary": "Long-horizon, real-time controllable motion generation is essential for interactive animation and humanoid robotics, where an agent must respond to changing instructions and spatial goals while moving. Existing autoregressive diffusion methods generate motion incrementally, but bounded attention caches limit access to distant history, while repeated denoising introduces substantial inference overh",
 "title": "Motion Mamba 2.0: Autoregressive Diffusion Mamba for Long-Horizon Humanoid Control",
 "url": "https://arxiv.org/abs/2611.29897"
@@ -143,7 +147,7 @@
 "arxiv:2611.30013": {
 "category": "research",
 "first_seen": "2026-11-24",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2611.30013",
 "keywords": [
 "3D motion generation",
@@ -155,24 +159,25 @@
 "kinematic solving",
 "large language models"
 ],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/OpenDCAI/GameFactory-3A"
 },
 "mag_history": [
 4.0604,
 7.7161,
-7.7716
+7.7716,
+7.7602
 ],
 "misses": 0,
 "peak_mag": 7.7716,
 "signals": {
-"gh_stars": 1417,
+"gh_stars": 1430,
 "hf_comments": 0,
-"hf_upvotes": 62
+"hf_upvotes": 61
 },
 "source": "HF Daily Papers",
-"streak": 3,
+"streak": 4,
 "summary": "Animating arbitrary 3D assets from instructions requires both structural inference and motion control, yet existing motion benchmarks mostly cover conventional human or animal skeletons with simple instructions. We introduce DivDynBench, which evaluates rigging and motion generation across six morphology categories, with instructions requiring multi-phase part coordination and explicit timing, ang",
 "title": "3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets",
 "url": "https://arxiv.org/abs/2611.30013"
@@ -192,7 +197,7 @@
 "multimodal data mixture",
 "multimodal large language models"
 ],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/Tencent/WeMM-Ecom",
 "project": "https://huggingface.co/collections/tencent/wemm-ecom"
@@ -200,17 +205,18 @@
 "mag_history": [
 3.9703,
 6.1454,
-6.1918
+6.1918,
+6.2214
 ],
 "misses": 0,
-"peak_mag": 6.1918,
+"peak_mag": 6.2214,
 "signals": {
-"gh_stars": 70,
+"gh_stars": 77,
 "hf_comments": 0,
-"hf_upvotes": 57
+"hf_upvotes": 56
 },
 "source": "arXiv cs.AI",
-"streak": 3,
+"streak": 4,
 "summary": "We present WeMM-Ecom, a family of multimodal large language models that deliver frontier e-commerce capabilities while achieving state-of-the-art general-purpose performance at their respective scales. The family spans five sizes, from a 0.8B dense model to a 35B mixture-of-experts model with 3B active parameters. Our training pipeline begins with two-stage continued pre-training that progressivel",
 "title": "WeMM-Ecom: Advancing Multimodal Content Understanding for WeChat E-Commerce",
 "url": "https://arxiv.org/abs/2611.30662"
@@ -218,7 +224,7 @@
 "arxiv:2611.30989": {
 "category": "research",
 "first_seen": "2026-11-24",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2611.30989",
 "keywords": [
 "agentic AI",
@@ -228,7 +234,7 @@
 "vision-language-action models",
 "world-action models"
 ],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/xyangzhou/WorldLeague",
 "project": "https://xyangzhou.github.io/WorldLeague/"
@@ -236,17 +242,18 @@
 "mag_history": [
 4.2905,
 6.4251,
-6.48
+6.48,
+6.0451
 ],
 "misses": 0,
 "peak_mag": 6.48,
 "signals": {
-"gh_stars": 21,
+"gh_stars": 22,
 "hf_comments": 0,
-"hf_upvotes": 138
+"hf_upvotes": 87
 },
 "source": "arXiv cs.RO",
-"streak": 3,
+"streak": 4,
 "summary": "AI systems can now operate Blender, follow instructions in complex video games, and manipulate objects with robot arms. What range of physical goals can today's AI systems achieve autonomously? Answering this question requires testing systems on tasks that demand different combinations of perception, memory, planning, and action. We introduce \\textbf{WorldLeague}, a benchmark that compares AI syst",
 "title": "WorldLeague: Benchmarking Physical Agency",
 "url": "https://arxiv.org/abs/2611.30989"
@@ -266,7 +273,7 @@
 "low-level joint generation",
 "multi-action sequences"
 ],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/DravenALG/Embo-Harness",
 "project": "https://dravenalg.github.io/projects/Embo-Harness/"
@@ -274,17 +281,18 @@
 "mag_history": [
 4.5109,
 6.7614,
-6.8042
+6.8042,
+6.8382
 ],
 "misses": 0,
-"peak_mag": 6.8042,
+"peak_mag": 6.8382,
 "signals": {
-"gh_stars": 70,
+"gh_stars": 75,
 "hf_comments": 0,
 "hf_upvotes": 106
 },
 "source": "arXiv cs.RO",
-"streak": 3,
+"streak": 4,
 "summary": "Frontier multimodal models exhibit extraordinary generalization in generating robot actions from observations and instructions, enabling a new paradigm in which they serve directly as policies within closed-loop robotic harnesses. However, the design principles of such harnesses, and the capabilities underlying their strong performance, remain unclear. We present Embo-Harness, a framework for syst",
 "title": "Embo-Harness: Towards Understanding Frontier-Model-as-Policy Harness",
 "url": "https://arxiv.org/abs/2611.31201"
@@ -304,24 +312,25 @@
 "intermediate images",
 "multimodal reasoning"
 ],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/ThinkMorph/ThinkMorph-SSL",
 "project": "https://thinkmorph.github.io/ssl/"
 },
 "mag_history": [
 3.091,
-4.4106
+4.4106,
+4.4451
 ],
 "misses": 0,
-"peak_mag": 4.4106,
+"peak_mag": 4.4451,
 "signals": {
-"gh_stars": 13,
+"gh_stars": 14,
 "hf_comments": 0,
 "hf_upvotes": 21
 },
 "source": "arXiv cs.CL",
-"streak": 2,
+"streak": 3,
 "summary": "People reason with pictures as well as words. Interleaved multimodal reasoning gives models a similar way to solve problems by creating intermediate images and using them to guide further reasoning. Training models with this ability usually relies on task-specific demonstrations, which are difficult to collect. We introduce ThinkMorph-SSL, a two-stage training recipe that uses images themselves as",
 "title": "ThinkMorph-SSL: Scaling Interleaved Multimodal Reasoning with Pretext Tasks",
 "url": "https://arxiv.org/abs/2611.32183"
@@ -341,24 +350,25 @@
 "multiview semantic evidence",
 "observation-driven closed-loop partition refinement"
 ],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/yangcaoai/PartAgent_Agent_for_3D_Part_Seg",
 "project": "https://yangcaoai.github.io/PartAgent_ProjectPage/"
 },
 "mag_history": [
 3.5264,
-5.3886
+5.3886,
+5.4027
 ],
 "misses": 0,
-"peak_mag": 5.3886,
+"peak_mag": 5.4027,
 "signals": {
-"gh_stars": 34,
+"gh_stars": 35,
 "hf_comments": 0,
 "hf_upvotes": 36
 },
 "source": "arXiv cs.CV",
-"streak": 2,
+"streak": 3,
 "summary": "Segmenting a 3D object into semantically meaningful parts requires joint reasoning about geometric structure and semantic context. Pretrained 3D experts provide spatially grounded region proposals, while 2D experts provide semantic cues for identifying object parts. The challenge is to integrate these complementary capabilities into a framework that can both produce meaningful part segmentations a",
 "title": "PartAgent: Agentic 3D Part Segmentation via Expert Integration and Closed-Loop Refinement",
 "url": "https://arxiv.org/abs/2611.32554"
@@ -366,7 +376,7 @@
 "arxiv:2611.32884": {
 "category": "research",
 "first_seen": "2026-11-25",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2611.32884",
 "keywords": [
 "GPU-hours",
@@ -378,24 +388,25 @@
 "belief line",
 "critic"
 ],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/declare-lab/RLVB",
 "project": "https://declare-lab.github.io/RLVB/?case=tabletop_cups&m=rlvb_grpo&s=0"
 },
 "mag_history": [
 4.4773,
-6.2612
+6.2612,
+5.8558
 ],
 "misses": 0,
 "peak_mag": 6.2612,
 "signals": {
 "gh_stars": 27,
 "hf_comments": 0,
-"hf_upvotes": 98
+"hf_upvotes": 65
 },
 "source": "arXiv cs.AI",
-"streak": 2,
+"streak": 3,
 "summary": "AI agents working on long tasks often commit to an answer before they have enough evidence, a behavior called laziness. In our evaluations, they frequently commit even while their stated belief still names several possible answers. An outcome reward at the end of the episode scores only the final answer, so it cannot teach the agent when to commit, because a lucky guess receives the same reward as",
 "title": "Lazy Agents Answer Against Their Own Beliefs: Reinforcement Learning with Verifiable Beliefs Teaches Them to Act on What They Believe",
 "url": "https://arxiv.org/abs/2611.32884"
@@ -413,24 +424,25 @@
 "policy checkpoints",
 "\u03c0_{0.5}"
 ],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/iPPLab/robodojo-mirror",
 "project": "https://ipplab.github.io/robodojo-mirror"
 },
 "mag_history": [
 3.3322,
-4.7253
+4.7253,
+4.7543
 ],
 "misses": 0,
-"peak_mag": 4.7253,
+"peak_mag": 4.7543,
 "signals": {
 "gh_stars": 10,
 "hf_comments": 0,
-"hf_upvotes": 33
+"hf_upvotes": 34
 },
 "source": "arXiv cs.AI",
-"streak": 2,
+"streak": 3,
 "summary": "Can a simple mirror expose the limitations of today's robotic manipulation policies? Inspired by the mirror self-recognition test in animal cognition, we investigate whether robot policies can reliably manipulate physical objects in scenes containing their reflections. We introduce RoboDojo-Mirror, a benchmark built on RoboDojo that preserves task objectives, success criteria, and policy checkpoin",
 "title": "Embodied AI Fails the Mirror Test: How a Simple Mirror Breaks Robot Policies",
 "url": "https://arxiv.org/abs/2611.33010"
@@ -441,21 +453,23 @@
 "flat_runs": 0,
 "id": "arxiv:2611.34237",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/Kling-Keye/VibeVideoAgent"
 },
 "mag_history": [
-4.0073
+4.0073,
+5.3429
 ],
 "misses": 0,
-"peak_mag": 4.0073,
+"peak_mag": 5.3429,
 "signals": {
-"hf_comments": 4,
-"hf_upvotes": 54
+"gh_stars": 12,
+"hf_comments": 0,
+"hf_upvotes": 57
 },
 "source": "arXiv cs.CV",
-"streak": 1,
+"streak": 2,
 "summary": "Code-driven video generation asks a coding agent to write and run rendering programs. This gives exact control over typography, data visualizations, synchronized audio, and multi-shot scenes, and it leaves an editable project behind. A program that exits cleanly can still render overlapping labels, a camera aimed away from its subject, broken object interactions, or narration that drifts out of sy",
 "title": "VibeVideoAgent: Closing the Perceptual Loop for Code-Driven Video Generation",
 "url": "https://arxiv.org/abs/2611.34237"
@@ -466,22 +480,24 @@
 "flat_runs": 0,
 "id": "arxiv:2611.34575",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/Sage-Med/Sage-Med-Preview",
 "project": "https://sage-med-preview.github.io/"
 },
 "mag_history": [
-4.4427
+4.4427,
+6.0728
 ],
 "misses": 0,
-"peak_mag": 4.4427,
+"peak_mag": 6.0728,
 "signals": {
-"hf_comments": 1,
-"hf_upvotes": 84
+"gh_stars": 27,
+"hf_comments": 0,
+"hf_upvotes": 81
 },
 "source": "arXiv cs.AI",
-"streak": 1,
+"streak": 2,
 "summary": "Establishing effective scaling laws for medical multimodal large language models (MLLMs) remains a persistent and fundamental challenge. Our systematic evaluation shows that existing medical MLLMs tend to underperform frontier general-purpose MLLMs across a range of medical tasks, while scaling model size primarily improves text capabilities rather than multimodal perception, and enabling reasonin",
 "title": "Sage-Med: Scaling Medical Multimodal Intelligence",
 "url": "https://arxiv.org/abs/2611.34575"
@@ -489,25 +505,27 @@
 "arxiv:2611.34849": {
 "category": "research",
 "first_seen": "2026-11-26",
-"flat_runs": 0,
+"flat_runs": 1,
 "id": "arxiv:2611.34849",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/Real2SimHub/Real2SimLab",
 "project": "https://real2simhub.github.io"
 },
 "mag_history": [
-4.625
+4.625,
+4.6109
 ],
 "misses": 0,
 "peak_mag": 4.625,
 "signals": {
-"hf_comments": 2,
-"hf_upvotes": 101
+"gh_stars": 34,
+"hf_comments": 0,
+"hf_upvotes": 16
 },
 "source": "arXiv cs.RO",
-"streak": 1,
+"streak": 2,
 "summary": "Real-to-simulation transfer, which builds simulations from real-world observations, has long been studied in research and industry. Recently, coding agents have become capable of generating simulation programs from video recordings, and several benchmarks have been proposed to evaluate them. However, each individual benchmark defines its own inputs, deliverables, and scoring pipeline. This leads t",
 "title": "Real2SimLab: A Unified Platform for Real-to-Simulation Transfer",
 "url": "https://arxiv.org/abs/2611.34849"
@@ -527,22 +545,24 @@
 "MoLT-R",
 "OLMo3"
 ],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/hustvl/MoLT",
 "project": "https://github.com/hustvl/MoLT"
 },
 "mag_history": [
-4.0604
+4.0604,
+6.61
 ],
 "misses": 0,
-"peak_mag": 4.0604,
+"peak_mag": 6.61,
 "signals": {
-"hf_comments": 1,
-"hf_upvotes": 57
+"gh_stars": 97,
+"hf_comments": 0,
+"hf_upvotes": 74
 },
 "source": "arXiv cs.LG",
-"streak": 1,
+"streak": 2,
 "summary": "Looped Transformers boost expressivity by reusing shared layers across loops, yet at the cost of efficiency. Pushing their expressivity-efficiency frontier requires rethinking the core mechanism connecting adjacent loops: What should be passed as a Transformer loops? We introduce Mixture-of-Loops Transformer (MoLT), whose Mixture-of-Loops Attention (MoLA) uses keys and values (KV) as memory for se",
 "title": "Mixture-of-Loops Transformer",
 "url": "https://arxiv.org/abs/2611.34923"
@@ -562,22 +582,24 @@
 "expression changes",
 "image editor"
 ],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {
 "github": "https://github.com/HorizonWind2004/i2v-transfer",
 "project": "https://i2v-transfer.github.io/"
 },
 "mag_history": [
-3.7612
+3.7612,
+5.7645
 ],
 "misses": 0,
-"peak_mag": 3.7612,
+"peak_mag": 5.7645,
 "signals": {
-"hf_comments": 2,
-"hf_upvotes": 42
+"gh_stars": 45,
+"hf_comments": 0,
+"hf_upvotes": 46
 },
 "source": "arXiv cs.CV",
-"streak": 1,
+"streak": 2,
 "summary": "Image editing models can follow a wide range of instructions, but video editing models still lag behind, limited in part by the difficulty of collecting paired source and edited videos. Is it possible to transfer advanced image editing capabilities to video editors without new paired videos? We introduce Image-to-Video Transfer (I2VT), which improves pretrained video editors and expands them to ne",
 "title": "Improving and Expanding Video Editing Capabilities Without Videos",
 "url": "https://arxiv.org/abs/2611.34941"
@@ -588,22 +610,23 @@
 "flat_runs": 0,
 "id": "ghrepo:Banan1cee/whale_girl",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.4298,
 3.4453,
 3.4593,
-3.4735
+3.4735,
+3.4854
 ],
 "misses": 0,
-"peak_mag": 3.4735,
+"peak_mag": 3.4854,
 "signals": {
-"gh_forks": 62,
-"gh_stars": 1039
+"gh_forks": 65,
+"gh_stars": 1064
 },
 "source": "GitHub Search",
-"streak": 4,
+"streak": 5,
 "summary": "\u9cb8\u9cb8 \u00b7 \u8ba9 DeepSeek \u7528\u4f60\u7684\u5fae\u4fe1\u8d26\u53f7\u966a\u804a\uff08Windows \u684c\u9762\u7aef + WPF \u542f\u52a8\u5668\uff09\u3002WeChat chat bot powered by DeepSeek/Qwen.",
 "title": "Banan1cee/whale_girl \u2014 \u9cb8\u9cb8 \u00b7 \u8ba9 DeepSeek \u7528\u4f60\u7684\u5fae\u4fe1\u8d26\u53f7\u966a\u804a\uff08Windows \u684c\u9762\u7aef + WPF \u542f\u52a8\u5668\uff09\u3002WeChat chat bot powered by DeepSeek/Qwen.",
 "url": "https://github.com/Banan1cee/whale_girl"
@@ -614,21 +637,22 @@
 "flat_runs": 0,
 "id": "ghrepo:Dodaios/ste80-humanizer",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.5114,
 3.5163,
-3.5255
+3.5255,
+3.5315
 ],
 "misses": 0,
-"peak_mag": 3.5255,
+"peak_mag": 3.5315,
 "signals": {
 "gh_forks": 82,
-"gh_stars": 1153
+"gh_stars": 1167
 },
 "source": "GitHub Search",
-"streak": 3,
+"streak": 4,
 "summary": "STE80 Humanizer: agent skill that removes AI tells and rewrites text 80% of the way to ASD-STE100 (Simplified Technical English), the method Andrej Karpathy shared.",
 "title": "Dodaios/ste80-humanizer \u2014 STE80 Humanizer: agent skill that removes AI tells and rewrites text 80% of the way to ASD-STE100 (Simplified Technical English), the method Andrej Karpathy shared.",
 "url": "https://github.com/Dodaios/ste80-humanizer"
@@ -639,22 +663,23 @@
 "flat_runs": 0,
 "id": "ghrepo:DominikScholz/open-bot-avatar",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.3373,
 3.3773,
 3.4006,
-3.4122
+3.4122,
+3.4181
 ],
 "misses": 0,
-"peak_mag": 3.4122,
+"peak_mag": 3.4181,
 "signals": {
-"gh_forks": 84,
-"gh_stars": 919
+"gh_forks": 85,
+"gh_stars": 930
 },
 "source": "GitHub Search",
-"streak": 4,
+"streak": 5,
 "summary": "A JSON spec and renderer for interactive agent avatars",
 "title": "DominikScholz/open-bot-avatar \u2014 A JSON spec and renderer for interactive agent avatars",
 "url": "https://github.com/DominikScholz/open-bot-avatar"
@@ -665,22 +690,23 @@
 "flat_runs": 0,
 "id": "ghrepo:JosssphZhou/poki",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.7722,
 3.7782,
 3.8179,
-3.8345
+3.8345,
+3.8477
 ],
 "misses": 0,
-"peak_mag": 3.8345,
+"peak_mag": 3.8477,
 "signals": {
-"gh_forks": 299,
-"gh_stars": 2140
+"gh_forks": 303,
+"gh_stars": 2197
 },
 "source": "GitHub Search",
-"streak": 4,
+"streak": 5,
 "summary": "Poki uses your iPhone like you do. An open-source agent app that runs on your iPhone, reads the screen, and taps, types and swipes in real apps with your own model account.",
 "title": "JosssphZhou/poki \u2014 Poki uses your iPhone like you do. An open-source agent app that runs on your iPhone, reads the screen, and taps, types and swipes in real apps with your own model account.",
 "url": "https://github.com/JosssphZhou/poki"
@@ -691,22 +717,23 @@
 "flat_runs": 0,
 "id": "ghrepo:RunanywhereAI/trnrt",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.7079,
 3.7082,
 3.7079,
-3.7082
+3.7082,
+3.7085
 ],
 "misses": 0,
-"peak_mag": 3.7082,
+"peak_mag": 3.7085,
 "signals": {
 "gh_forks": 29,
-"gh_stars": 1662
+"gh_stars": 1663
 },
 "source": "GitHub Search",
-"streak": 4,
+"streak": 5,
 "summary": "The open LLM inference engine for AWS Trainium: NKI megakernels, 1M-token context, OpenAI-compatible API. By RunAnywhere.",
 "title": "RunanywhereAI/trnrt \u2014 The open LLM inference engine for AWS Trainium: NKI megakernels, 1M-token context, OpenAI-compatible API. By RunAnywhere.",
 "url": "https://github.com/RunanywhereAI/trnrt"
@@ -717,7 +744,7 @@
 "flat_runs": 0,
 "id": "ghrepo:Sandflow-ai/sand3d",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.8524,
@@ -725,16 +752,17 @@
 3.8587,
 3.8657,
 3.8725,
-3.8792
+3.8792,
+3.8851
 ],
 "misses": 0,
-"peak_mag": 3.8792,
+"peak_mag": 3.8851,
 "signals": {
-"gh_forks": 256,
-"gh_stars": 2340
+"gh_forks": 260,
+"gh_stars": 2368
 },
 "source": "GitHub Search",
-"streak": 6,
+"streak": 7,
 "summary": "3D modeling in Python, built for LLMs.",
 "title": "Sandflow-ai/sand3d \u2014 3D modeling in Python, built for LLMs.",
 "url": "https://github.com/Sandflow-ai/sand3d"
@@ -745,23 +773,24 @@
 "flat_runs": 0,
 "id": "ghrepo:agentes-chat/agentes-chat",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.7847,
 3.7979,
 3.8049,
 3.8118,
-3.8174
+3.8174,
+3.8205
 ],
 "misses": 0,
-"peak_mag": 3.8174,
+"peak_mag": 3.8205,
 "signals": {
-"gh_forks": 418,
-"gh_stars": 2068
+"gh_forks": 427,
+"gh_stars": 2081
 },
 "source": "GitHub Search",
-"streak": 5,
+"streak": 6,
 "summary": "Open-source, self-hosted Slack alternative where your team and AI agents work together in channels and DMs. Agents run on Claude, ChatGPT/Codex, Gemini or Grok, with MCP tools, their own computer and browser, routines, memory and approvals. Web, desktop and phone apps. Docker Compose + Postgres. AGPL-3.0.",
 "title": "agentes-chat/agentes-chat \u2014 Open-source, self-hosted Slack alternative where your team and AI agents work together in channels and DMs. Agents run on Claude, ChatGPT/Codex, Gemini or Grok, with MCP tools, their own computer and browser, routines, memory and approvals. Web, desktop and phone apps. Docker Compose + Postgres. AGPL-3.0.",
 "url": "https://github.com/agentes-chat/agentes-chat"
@@ -772,58 +801,23 @@
 "flat_runs": 0,
 "id": "ghrepo:alesha-pro/llm.asm",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
-3.6024
+3.6024,
+3.8101
 ],
 "misses": 0,
-"peak_mag": 3.6024,
+"peak_mag": 3.8101,
 "signals": {
-"gh_forks": 193,
-"gh_stars": 1345
+"gh_forks": 314,
+"gh_stars": 2038
 },
 "source": "GitHub Search",
-"streak": 1,
+"streak": 2,
 "summary": "Qwen3-0.6B inference (12 KB), bare-metal bootable OS (22 KB), and from-scratch Mini-GPT trainer with live Braille TUI (32 KB) in 100% pure x86-64 NASM assembly. Zero C, zero libc, zero dependencies.",
 "title": "alesha-pro/llm.asm \u2014 Qwen3-0.6B inference (12 KB), bare-metal bootable OS (22 KB), and from-scratch Mini-GPT trainer with live Braille TUI (32 KB) in 100% pure x86-64 NASM assembly. Zero C, zero libc, zero dependencies.",
 "url": "https://github.com/alesha-pro/llm.asm"
-},
-"ghrepo:ccch1mneyyy/dsh-Go": {
-"category": "releases",
-"first_seen": "2026-11-12",
-"flat_runs": 0,
-"id": "ghrepo:ccch1mneyyy/dsh-Go",
-"keywords": [],
-"last_seen": "2026-11-26",
-"links": {},
-"mag_history": [
-4.9932,
-5.0125,
-5.0355,
-5.0579,
-5.0817,
-5.1036,
-5.1222,
-5.1368,
-5.1465,
-5.1566,
-5.1666,
-5.1759,
-5.1856,
-5.1964
-],
-"misses": 0,
-"peak_mag": 5.1964,
-"signals": {
-"gh_forks": 1572,
-"gh_stars": 32626
-},
-"source": "GitHub Search",
-"streak": 15,
-"summary": "dsh-go \u2014 DeepSeek Harness \u88c5\u8fdb\u53e3\u888b\uff1a\u624b\u673a\u672c\u673a\u8fd0\u884c\uff0c\u4e5f\u80fd\u9065\u63a7\u4f60\u7684\u7535\u8111\u3002",
-"title": "ccch1mneyyy/dsh-Go \u2014 dsh-go \u2014 DeepSeek Harness \u88c5\u8fdb\u53e3\u888b\uff1a\u624b\u673a\u672c\u673a\u8fd0\u884c\uff0c\u4e5f\u80fd\u9065\u63a7\u4f60\u7684\u7535\u8111\u3002",
-"url": "https://github.com/ccch1mneyyy/dsh-Go"
 },
 "ghrepo:hyperionaidev/smolmaxxing": {
 "category": "releases",
@@ -831,22 +825,23 @@
 "flat_runs": 0,
 "id": "ghrepo:hyperionaidev/smolmaxxing",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.5123,
 3.5128,
 3.5145,
-3.5203
+3.5203,
+3.5259
 ],
 "misses": 0,
-"peak_mag": 3.5203,
+"peak_mag": 3.5259,
 "signals": {
-"gh_forks": 72,
-"gh_stars": 1141
+"gh_forks": 76,
+"gh_stars": 1154
 },
 "source": "GitHub Search",
-"streak": 4,
+"streak": 5,
 "summary": "maxxing the ability to run different LLMs on the smallest devices possible",
 "title": "hyperionaidev/smolmaxxing \u2014 maxxing the ability to run different LLMs on the smallest devices possible",
 "url": "https://github.com/hyperionaidev/smolmaxxing"
@@ -857,21 +852,22 @@
 "flat_runs": 0,
 "id": "ghrepo:jackwener/DSH-Android",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.4759,
 3.49,
-3.4965
+3.4965,
+3.5024
 ],
 "misses": 0,
-"peak_mag": 3.4965,
+"peak_mag": 3.5024,
 "signals": {
-"gh_forks": 127,
-"gh_stars": 1088
+"gh_forks": 131,
+"gh_stars": 1101
 },
 "source": "GitHub Search",
-"streak": 3,
+"streak": 4,
 "summary": "\u514d ROOT \u514d Termux\uff0c\u4e00\u4e2a APK \u5728\u5b89\u5353\u624b\u673a\u4e0a\u8dd1 DeepSeek Harness\u3002\u5f15\u64ce\u5185\u5d4c App \u8fdb\u7a0b \u00b7 \u8bfb\u5c4f\u64cd\u4f5c App \u00b7 \u6539\u7cfb\u7edf\u8bbe\u7f6e \u00b7 \u5b9a\u65f6/\u6761\u4ef6\u81ea\u52a8\u5316 \u00b7 \u53ef\u9009 Shizuku",
 "title": "jackwener/DSH-Android \u2014 \u514d ROOT \u514d Termux\uff0c\u4e00\u4e2a APK \u5728\u5b89\u5353\u624b\u673a\u4e0a\u8dd1 DeepSeek Harness\u3002\u5f15\u64ce\u5185\u5d4c App \u8fdb\u7a0b \u00b7 \u8bfb\u5c4f\u64cd\u4f5c App \u00b7 \u6539\u7cfb\u7edf\u8bbe\u7f6e \u00b7 \u5b9a\u65f6/\u6761\u4ef6\u81ea\u52a8\u5316 \u00b7 \u53ef\u9009 Shizuku",
 "url": "https://github.com/jackwener/DSH-Android"
@@ -882,19 +878,20 @@
 "flat_runs": 0,
 "id": "ghrepo:mankidev/antialgorithm",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
-3.4006
+3.4006,
+3.4111
 ],
 "misses": 0,
-"peak_mag": 3.4006,
+"peak_mag": 3.4111,
 "signals": {
-"gh_forks": 59,
-"gh_stars": 898
+"gh_forks": 60,
+"gh_stars": 917
 },
 "source": "GitHub Search",
-"streak": 1,
+"streak": 2,
 "summary": "Agent skill that steers the model away from its first, most average pick in creative work: names, ideas, logo, posters, UI.",
 "title": "mankidev/antialgorithm \u2014 Agent skill that steers the model away from its first, most average pick in creative work: names, ideas, logo, posters, UI.",
 "url": "https://github.com/mankidev/antialgorithm"
@@ -905,7 +902,7 @@
 "flat_runs": 0,
 "id": "ghrepo:mdiri-ai/SoduWork",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 4.3365,
@@ -914,16 +911,17 @@
 4.4304,
 4.4678,
 4.5004,
-4.5067
+4.5067,
+4.5373
 ],
 "misses": 0,
-"peak_mag": 4.5067,
+"peak_mag": 4.5373,
 "signals": {
-"gh_forks": 793,
-"gh_stars": 8212
+"gh_forks": 860,
+"gh_stars": 8729
 },
 "source": "GitHub Search",
-"streak": 7,
+"streak": 8,
 "summary": "The AI-native engine for teams and their agents. Multi-harness, multi-agent, self-hosted.",
 "title": "mdiri-ai/SoduWork \u2014 The AI-native engine for teams and their agents. Multi-harness, multi-agent, self-hosted.",
 "url": "https://github.com/mdiri-ai/SoduWork"
@@ -931,10 +929,10 @@
 "ghrepo:modelflare-ai/AnyModelBot": {
 "category": "releases",
 "first_seen": "2026-11-21",
-"flat_runs": 1,
+"flat_runs": 0,
 "id": "ghrepo:modelflare-ai/AnyModelBot",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 4.2545,
@@ -942,16 +940,17 @@
 4.2573,
 4.2591,
 4.2595,
-4.2589
+4.2589,
+4.2593
 ],
 "misses": 0,
 "peak_mag": 4.2595,
 "signals": {
-"gh_forks": 121,
-"gh_stars": 5002
+"gh_forks": 124,
+"gh_stars": 5006
 },
 "source": "GitHub Search",
-"streak": 6,
+"streak": 7,
 "summary": "\ud83e\udd16 Open-source, local-first alternative to Grok Bot, OpenAI dots and Claude Duet. Your own AI bots on any model: GPT, Claude, Gemini, Grok, DeepSeek, Kimi, GLM and 70+ more through one Modelflare key. Reach them in the app, WeChat or Feishu; they remember you, work in the background, run commands and use your computer. Pay per use.",
 "title": "modelflare-ai/AnyModelBot \u2014 \ud83e\udd16 Open-source, local-first alternative to Grok Bot, OpenAI dots and Claude Duet. Your own AI bots on any model: GPT, Claude, Gemini, Grok, DeepSeek, Kimi, GLM and 70+ more through one Modelflare key. Reach them in the app, WeChat or Feishu; they remember you, work in the background, run commands and use your computer. Pay per use.",
 "url": "https://github.com/modelflare-ai/AnyModelBot"
@@ -962,20 +961,21 @@
 "flat_runs": 0,
 "id": "ghrepo:opensetlabs/openset-llm",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.1867,
-3.6914
+3.6914,
+3.8366
 ],
 "misses": 0,
-"peak_mag": 3.6914,
+"peak_mag": 3.8366,
 "signals": {
-"gh_forks": 149,
-"gh_stars": 1607
+"gh_forks": 205,
+"gh_stars": 2149
 },
 "source": "GitHub Search",
-"streak": 2,
+"streak": 3,
 "summary": "Fast local LLM inference on plain CPUs. No GPU, 8 GB of RAM. OpenAI-compatible server.",
 "title": "opensetlabs/openset-llm \u2014 Fast local LLM inference on plain CPUs. No GPU, 8 GB of RAM. OpenAI-compatible server.",
 "url": "https://github.com/opensetlabs/openset-llm"
@@ -986,22 +986,23 @@
 "flat_runs": 0,
 "id": "ghrepo:pierridotite/mobile-agent-testers",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.6324,
 3.7453,
 3.8618,
-3.91
+3.91,
+3.9311
 ],
 "misses": 0,
-"peak_mag": 3.91,
+"peak_mag": 3.9311,
 "signals": {
-"gh_forks": 255,
-"gh_stars": 2489
+"gh_forks": 266,
+"gh_stars": 2596
 },
 "source": "GitHub Search",
-"streak": 4,
+"streak": 5,
 "summary": "20 AI testers on 20 different phones, in parallel, on GitHub's free runners: Claude Code agents on iOS Simulators and Android emulators that find broken flows, translation, layout and accessibility bugs",
 "title": "pierridotite/mobile-agent-testers \u2014 20 AI testers on 20 different phones, in parallel, on GitHub's free runners: Claude Code agents on iOS Simulators and Android emulators that find broken flows, translation, layout and accessibility bugs",
 "url": "https://github.com/pierridotite/mobile-agent-testers"
@@ -1012,21 +1013,22 @@
 "flat_runs": 0,
 "id": "ghrepo:sous-labs/songe",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.1719,
 3.3685,
-3.4034
+3.4034,
+3.4154
 ],
 "misses": 0,
-"peak_mag": 3.4034,
+"peak_mag": 3.4154,
 "signals": {
-"gh_forks": 74,
-"gh_stars": 903
+"gh_forks": 75,
+"gh_stars": 925
 },
 "source": "GitHub Search",
-"streak": 3,
+"streak": 4,
 "summary": "A training engine for your local model, using your idle compute",
 "title": "sous-labs/songe \u2014 A training engine for your local model, using your idle compute",
 "url": "https://github.com/sous-labs/songe"
@@ -1037,7 +1039,7 @@
 "flat_runs": 0,
 "id": "ghrepo:vercel-labs/ui",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 4.3714,
@@ -1046,52 +1048,63 @@
 4.4109,
 4.4385,
 4.4599,
-4.4697
+4.4697,
+4.4792
 ],
 "misses": 0,
-"peak_mag": 4.4697,
+"peak_mag": 4.4792,
 "signals": {
-"gh_forks": 270,
-"gh_stars": 7626
+"gh_forks": 279,
+"gh_stars": 7772
 },
 "source": "GitHub Search",
-"streak": 7,
+"streak": 8,
 "summary": "A library of behaviors for agents to build the next generation of user interfaces.",
 "title": "vercel-labs/ui \u2014 A library of behaviors for agents to build the next generation of user interfaces.",
 "url": "https://github.com/vercel-labs/ui"
 },
+"ghrepo:w01fb0ss/PiBot": {
+"category": "releases",
+"first_seen": "2026-11-27",
+"flat_runs": 0,
+"id": "ghrepo:w01fb0ss/PiBot",
+"keywords": [],
+"last_seen": "2026-11-27",
+"links": {},
+"mag_history": [
+3.2574
+],
+"misses": 0,
+"peak_mag": 3.2574,
+"signals": {
+"gh_forks": 98,
+"gh_stars": 674
+},
+"source": "GitHub Search",
+"streak": 1,
+"summary": "Open-source, local-first AI agent team for your desktop: multi-agent group chats, computer use, browser, MCP, routines and approvals. macOS, Windows, Linux + Android. Built on pi.",
+"title": "w01fb0ss/PiBot \u2014 Open-source, local-first AI agent team for your desktop: multi-agent group chats, computer use, browser, MCP, routines and approvals. macOS, Windows, Linux + Android. Built on pi.",
+"url": "https://github.com/w01fb0ss/PiBot"
+},
 "ghrepo:wangzan101/Mika": {
 "category": "releases",
-"first_seen": "2026-11-12",
+"first_seen": "2026-11-27",
 "flat_runs": 0,
 "id": "ghrepo:wangzan101/Mika",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
-4.5246,
-4.5294,
-4.5356,
-4.544,
-4.5502,
-4.557,
-4.5618,
-4.5685,
-4.575,
-4.5854,
-4.5929,
-4.5983,
-4.6046,
-4.6087
+4.6118
 ],
 "misses": 0,
-"peak_mag": 4.6087,
+"peak_mag": 4.6118,
 "signals": {
-"gh_forks": 2251,
-"gh_stars": 10069
+"gh_forks": 2257,
+"gh_stars": 10132
 },
 "source": "GitHub Search",
-"streak": 15,
+"streak": 1,
 "summary": "An on-device AI agent for Android that operates apps and the web to get things done for you.",
 "title": "wangzan101/Mika \u2014 An on-device AI agent for Android that operates apps and the web to get things done for you.",
 "url": "https://github.com/wangzan101/Mika"
@@ -1102,7 +1115,7 @@
 "flat_runs": 0,
 "id": "hfdataset:Angais/pixel-art-atlas-1.4m",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 4.5131,
@@ -1111,17 +1124,18 @@
 4.5986,
 4.617,
 4.6312,
-4.6534
+4.6534,
+4.6748
 ],
 "misses": 0,
-"peak_mag": 4.6534,
+"peak_mag": 4.6748,
 "signals": {
-"hf_downloads": 80347,
-"hf_likes": 770,
+"hf_downloads": 83152,
+"hf_likes": 794,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 7,
+"streak": 8,
 "summary": "\u00b7 tags: task_categories:text-to-image, language:en, license:cc0-1.0, size_categories:1M<n<10M, format:parquet, modality:image",
 "title": "Angais/pixel-art-atlas-1.4m (HF Dataset)",
 "url": "https://huggingface.co/datasets/Angais/pixel-art-atlas-1.4m"
@@ -1132,23 +1146,24 @@
 "flat_runs": 0,
 "id": "hfdataset:Digitaluz/uzbek-language-corpus",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.474,
 3.5394,
 3.6351,
-3.658
+3.658,
+3.7594
 ],
 "misses": 0,
-"peak_mag": 3.658,
+"peak_mag": 3.7594,
 "signals": {
-"hf_downloads": 3046,
-"hf_likes": 185,
+"hf_downloads": 3810,
+"hf_likes": 214,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 4,
+"streak": 5,
 "summary": "\u00b7 tags: task_categories:text-generation, task_categories:fill-mask, task_ids:language-modeling, task_ids:masked-language-modeling, multilinguality:monolingual, language:uz",
 "title": "Digitaluz/uzbek-language-corpus (HF Dataset)",
 "url": "https://huggingface.co/datasets/Digitaluz/uzbek-language-corpus"
@@ -1159,23 +1174,24 @@
 "flat_runs": 0,
 "id": "hfdataset:HubLabs/HubEgo-100K",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.4019,
 3.4641,
 3.5526,
-3.5613
+3.5613,
+3.6875
 ],
 "misses": 0,
-"peak_mag": 3.5613,
+"peak_mag": 3.6875,
 "signals": {
-"hf_downloads": 363357,
-"hf_likes": 161,
+"hf_downloads": 530079,
+"hf_likes": 193,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 4,
+"streak": 5,
 "summary": "\u00b7 tags: task_categories:robotics, task_categories:video-classification, task_categories:video-text-to-text, source_datasets:original, language:en, license:cc-by-4.0",
 "title": "HubLabs/HubEgo-100K (HF Dataset)",
 "url": "https://huggingface.co/datasets/HubLabs/HubEgo-100K"
@@ -1186,7 +1202,7 @@
 "flat_runs": 0,
 "id": "hfdataset:HuggingFaceFW/fineweb",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 5.7612,
@@ -1199,17 +1215,18 @@
 5.7753,
 5.7773,
 5.7804,
-5.7811
+5.7811,
+5.7843
 ],
 "misses": 0,
-"peak_mag": 5.7811,
+"peak_mag": 5.7843,
 "signals": {
-"hf_downloads": 378744,
-"hf_likes": 3860,
+"hf_downloads": 398204,
+"hf_likes": 3878,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 11,
+"streak": 12,
 "summary": "\u00b7 tags: task_categories:text-generation, language:en, license:odc-by, size_categories:10B<n<100B, modality:tabular, modality:text",
 "title": "HuggingFaceFW/fineweb (HF Dataset)",
 "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb"
@@ -1220,7 +1237,7 @@
 "flat_runs": 0,
 "id": "hfdataset:HuggingFaceFW/fineweb-edu",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 5.0814,
@@ -1230,17 +1247,18 @@
 5.1084,
 5.1132,
 5.1244,
-5.1258
+5.1258,
+5.1381
 ],
 "misses": 0,
-"peak_mag": 5.1258,
+"peak_mag": 5.1381,
 "signals": {
-"hf_downloads": 481159,
-"hf_likes": 1513,
+"hf_downloads": 493833,
+"hf_likes": 1540,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 8,
+"streak": 9,
 "summary": "\u00b7 tags: task_categories:text-generation, language:en, license:odc-by, size_categories:1B<n<10B, format:parquet, modality:tabular",
 "title": "HuggingFaceFW/fineweb-edu (HF Dataset)",
 "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu"
@@ -1251,35 +1269,36 @@
 "flat_runs": 0,
 "id": "hfdataset:ILSVRC/imagenet-1k",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 4.9763,
 4.9922,
 5.0005,
 5.0153,
-5.0164
+5.0164,
+5.026
 ],
 "misses": 0,
-"peak_mag": 5.0164,
+"peak_mag": 5.026,
 "signals": {
-"hf_downloads": 95281,
-"hf_likes": 1294,
+"hf_downloads": 97722,
+"hf_likes": 1312,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 5,
+"streak": 6,
 "summary": "\u00b7 tags: task_categories:image-classification, task_ids:multi-class-image-classification, annotations_creators:crowdsourced, language_creators:crowdsourced, multilinguality:monolingual, source_datasets:original",
 "title": "ILSVRC/imagenet-1k (HF Dataset)",
 "url": "https://huggingface.co/datasets/ILSVRC/imagenet-1k"
 },
-"hfdataset:JaimeMaLangue/JML-fon-speech-v1": {
+"hfdataset:Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill": {
 "category": "releases",
-"first_seen": "2026-11-26",
+"first_seen": "2026-11-27",
 "flat_runs": 0,
-"id": "hfdataset:JaimeMaLangue/JML-fon-speech-v1",
+"id": "hfdataset:Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.4073
@@ -1287,12 +1306,37 @@
 "misses": 0,
 "peak_mag": 3.4073,
 "signals": {
-"hf_downloads": 927,
+"hf_downloads": 485,
 "hf_likes": 129,
-"hf_trending": 12.5
+"hf_trending": 14.5
 },
 "source": "HF Trending Datasets",
 "streak": 1,
+"summary": "\u00b7 tags: task_categories:text-generation, source_datasets:nvidia/Nemotron-RL-coding-competitive_coding, language:en, license:cc-by-sa-4.0, license:apache-2.0, size_categories:1K<n<10K",
+"title": "Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill (HF Dataset)",
+"url": "https://huggingface.co/datasets/Jackrong/DeepSeek-V4.1-Flash-Nemotron-Competitive-Coding-Distill"
+},
+"hfdataset:JaimeMaLangue/JML-fon-speech-v1": {
+"category": "releases",
+"first_seen": "2026-11-26",
+"flat_runs": 0,
+"id": "hfdataset:JaimeMaLangue/JML-fon-speech-v1",
+"keywords": [],
+"last_seen": "2026-11-27",
+"links": {},
+"mag_history": [
+3.4073,
+3.4591
+],
+"misses": 0,
+"peak_mag": 3.4591,
+"signals": {
+"hf_downloads": 1123,
+"hf_likes": 139,
+"hf_trending": 0
+},
+"source": "HF Trending Datasets",
+"streak": 2,
 "summary": "\u00b7 tags: task_categories:automatic-speech-recognition, language:fon, license:cc-by-sa-4.0, size_categories:100K<n<1M, format:csv, modality:text",
 "title": "JaimeMaLangue/JML-fon-speech-v1 (HF Dataset)",
 "url": "https://huggingface.co/datasets/JaimeMaLangue/JML-fon-speech-v1"
@@ -1303,23 +1347,24 @@
 "flat_runs": 0,
 "id": "hfdataset:MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 4.4732,
 4.4883,
 4.5186,
-4.5328
+4.5328,
+4.5613
 ],
 "misses": 0,
-"peak_mag": 4.5328,
+"peak_mag": 4.5613,
 "signals": {
-"hf_downloads": 6432,
-"hf_likes": 648,
+"hf_downloads": 5728,
+"hf_likes": 675,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 4,
+"streak": 5,
 "summary": "\u00b7 tags: task_categories:text-generation, task_categories:question-answering, language:en, license:apache-2.0, size_categories:10K<n<100K, format:json",
 "title": "MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x (HF Dataset)",
 "url": "https://huggingface.co/datasets/MoreThought/Fable-5.1-Max-Reasoning-Filtered-10000x"
@@ -1330,7 +1375,7 @@
 "flat_runs": 0,
 "id": "hfdataset:TheAgenticDataCompany/open-yap-1k",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.8789,
@@ -1338,54 +1383,42 @@
 3.9833,
 4.0201,
 4.04,
-4.0844
+4.0844,
+4.1299
 ],
 "misses": 0,
-"peak_mag": 4.0844,
+"peak_mag": 4.1299,
 "signals": {
-"hf_downloads": 8701,
-"hf_likes": 341,
+"hf_downloads": 9842,
+"hf_likes": 364,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 6,
+"streak": 7,
 "summary": "\u00b7 tags: task_categories:audio-to-audio, task_categories:automatic-speech-recognition, task_categories:text-to-speech, annotations_creators:machine-generated, language_creators:crowdsourced, language:en",
 "title": "TheAgenticDataCompany/open-yap-1k (HF Dataset)",
 "url": "https://huggingface.co/datasets/TheAgenticDataCompany/open-yap-1k"
 },
 "hfdataset:Vyber07/cyber-security": {
 "category": "releases",
-"first_seen": "2026-11-12",
+"first_seen": "2026-11-27",
 "flat_runs": 0,
 "id": "hfdataset:Vyber07/cyber-security",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
-4.8396,
-4.8669,
-4.8899,
-4.9197,
-4.9381,
-4.9706,
-4.9944,
-5.0185,
-5.045,
-5.07,
-5.1399,
-5.1872,
-5.2866,
-5.3521
+5.3886
 ],
 "misses": 0,
-"peak_mag": 5.3521,
+"peak_mag": 5.3886,
 "signals": {
-"hf_downloads": 58547,
-"hf_likes": 2091,
-"hf_trending": 0
+"hf_downloads": 110926,
+"hf_likes": 2203,
+"hf_trending": 647
 },
 "source": "HF Trending Datasets",
-"streak": 15,
+"streak": 1,
 "summary": "\u00b7 tags: task_categories:text-generation, task_categories:question-answering, language:en, license:apache-2.0, size_categories:n<1K, format:json",
 "title": "Vyber07/cyber-security (HF Dataset)",
 "url": "https://huggingface.co/datasets/Vyber07/cyber-security"
@@ -1396,7 +1429,7 @@
 "flat_runs": 0,
 "id": "hfdataset:bones-studio/seed",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 4.3418,
@@ -1405,17 +1438,18 @@
 4.4131,
 4.4358,
 4.4505,
-4.4755
+4.4755,
+4.5053
 ],
 "misses": 0,
-"peak_mag": 4.4755,
+"peak_mag": 4.5053,
 "signals": {
-"hf_downloads": 18147,
-"hf_likes": 597,
+"hf_downloads": 19104,
+"hf_likes": 623,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 7,
+"streak": 8,
 "summary": "\u00b7 tags: task_categories:robotics, task_categories:text-to-video, task_categories:video-text-to-text, language:en, license:other, size_categories:100K<n<1M",
 "title": "bones-studio/seed (HF Dataset)",
 "url": "https://huggingface.co/datasets/bones-studio/seed"
@@ -1426,21 +1460,22 @@
 "flat_runs": 0,
 "id": "hfdataset:ccore/ThreeJS-3D-Scenes-v2",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.3854,
-3.4337
+3.4337,
+3.557
 ],
 "misses": 0,
-"peak_mag": 3.4337,
+"peak_mag": 3.557,
 "signals": {
-"hf_downloads": 2960,
-"hf_likes": 134,
+"hf_downloads": 4038,
+"hf_likes": 160,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 2,
+"streak": 3,
 "summary": "\u00b7 tags: task_categories:text-generation, language:en, license:mit, size_categories:1K<n<10K, format:parquet, modality:image",
 "title": "ccore/ThreeJS-3D-Scenes-v2 (HF Dataset)",
 "url": "https://huggingface.co/datasets/ccore/ThreeJS-3D-Scenes-v2"
@@ -1451,21 +1486,22 @@
 "flat_runs": 0,
 "id": "hfdataset:fka/prompts.chat",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 6.4489,
-6.4491
+6.4491,
+6.4505
 ],
 "misses": 0,
-"peak_mag": 6.4491,
+"peak_mag": 6.4505,
 "signals": {
-"hf_downloads": 21972,
-"hf_likes": 10026,
+"hf_downloads": 21903,
+"hf_likes": 10046,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 2,
+"streak": 3,
 "summary": "\u00b7 tags: task_categories:question-answering, task_categories:text-generation, license:cc0-1.0, size_categories:1K<n<10K, format:csv, modality:text",
 "title": "fka/prompts.chat (HF Dataset)",
 "url": "https://huggingface.co/datasets/fka/prompts.chat"
@@ -1476,23 +1512,24 @@
 "flat_runs": 0,
 "id": "hfdataset:google/physical-engineerings-last-exam",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.8364,
 3.9032,
 3.9903,
-4.0133
+4.0133,
+4.0803
 ],
 "misses": 0,
-"peak_mag": 4.0133,
+"peak_mag": 4.0803,
 "signals": {
-"hf_downloads": 512659,
-"hf_likes": 308,
+"hf_downloads": 597533,
+"hf_likes": 339,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 4,
+"streak": 5,
 "summary": "\u00b7 tags: benchmark:official, benchmark:eval-yaml, task_categories:text-generation, task_categories:question-answering, language:en, license:cc-by-4.0",
 "title": "google/physical-engineerings-last-exam (HF Dataset)",
 "url": "https://huggingface.co/datasets/google/physical-engineerings-last-exam"
@@ -1503,22 +1540,23 @@
 "flat_runs": 0,
 "id": "hfdataset:laion/laion-audio-xl",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.3854,
 3.5259,
-3.5349
+3.5349,
+3.5992
 ],
 "misses": 0,
-"peak_mag": 3.5349,
+"peak_mag": 3.5992,
 "signals": {
-"hf_downloads": 27124,
-"hf_likes": 155,
+"hf_downloads": 28104,
+"hf_likes": 170,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 3,
+"streak": 4,
 "summary": "\u00b7 tags: task_categories:audio-classification, task_categories:text-to-audio, task_categories:feature-extraction, license:other, size_categories:100M<n<1B, format:parquet",
 "title": "laion/laion-audio-xl (HF Dataset)",
 "url": "https://huggingface.co/datasets/laion/laion-audio-xl"
@@ -1529,23 +1567,24 @@
 "flat_runs": 0,
 "id": "hfdataset:nvidia/PhysicalAI-Human-1M-100K",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.5699,
 3.6272,
 3.6618,
-3.7261
+3.7261,
+3.7913
 ],
 "misses": 0,
-"peak_mag": 3.7261,
+"peak_mag": 3.7913,
 "signals": {
-"hf_downloads": 29741,
-"hf_likes": 204,
+"hf_downloads": 34103,
+"hf_likes": 224,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 4,
+"streak": 5,
 "summary": "\u00b7 tags: language:en, license:cc-by-4.0, size_categories:n<1K, modality:image, modality:tabular, modality:text",
 "title": "nvidia/PhysicalAI-Human-1M-100K (HF Dataset)",
 "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K"
@@ -1556,60 +1595,48 @@
 "flat_runs": 0,
 "id": "hfdataset:nvidia/USDCraft-10K",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 3.6032,
 3.6618,
 3.7088,
-3.7463
+3.7463,
+3.8067
 ],
 "misses": 0,
-"peak_mag": 3.7463,
+"peak_mag": 3.8067,
 "signals": {
-"hf_downloads": 116712,
-"hf_likes": 210,
+"hf_downloads": 121722,
+"hf_likes": 229,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 4,
+"streak": 5,
 "summary": "\u00b7 tags: task_categories:robotics, license:apache-2.0, size_categories:10K<n<100K, format:csv, modality:image, modality:tabular",
 "title": "nvidia/USDCraft-10K (HF Dataset)",
 "url": "https://huggingface.co/datasets/nvidia/USDCraft-10K"
 },
 "hfdataset:nvidia/simready-assets": {
 "category": "releases",
-"first_seen": "2026-11-12",
+"first_seen": "2026-11-27",
 "flat_runs": 0,
 "id": "hfdataset:nvidia/simready-assets",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
-5.1503,
-5.1552,
-5.1596,
-5.1701,
-5.1753,
-5.1834,
-5.1889,
-5.199,
-5.206,
-5.2179,
-5.2292,
-5.2402,
-5.25,
-5.2523
+5.2766
 ],
 "misses": 0,
-"peak_mag": 5.2523,
+"peak_mag": 5.2766,
 "signals": {
-"hf_downloads": 1515140,
-"hf_likes": 1813,
-"hf_trending": 0
+"hf_downloads": 1321334,
+"hf_likes": 1877,
+"hf_trending": 38
 },
 "source": "HF Trending Datasets",
-"streak": 15,
+"streak": 1,
 "summary": "\u00b7 tags: license:cc-by-4.0, region:us, simready",
 "title": "nvidia/simready-assets (HF Dataset)",
 "url": "https://huggingface.co/datasets/nvidia/simready-assets"
@@ -1620,7 +1647,7 @@
 "flat_runs": 0,
 "id": "hfdataset:openai/gsm8k",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 5.3393,
@@ -1632,57 +1659,21 @@
 5.3654,
 5.3706,
 5.3745,
-5.3752
+5.3752,
+5.3803
 ],
 "misses": 0,
-"peak_mag": 5.3752,
+"peak_mag": 5.3803,
 "signals": {
-"hf_downloads": 1316225,
-"hf_likes": 2161,
+"hf_downloads": 1384907,
+"hf_likes": 2177,
 "hf_trending": 0
 },
 "source": "HF Trending Datasets",
-"streak": 10,
+"streak": 11,
 "summary": "\u00b7 tags: benchmark:official, benchmark:eval-yaml, task_categories:text-generation, annotations_creators:crowdsourced, language_creators:crowdsourced, multilinguality:monolingual",
 "title": "openai/gsm8k (HF Dataset)",
 "url": "https://huggingface.co/datasets/openai/gsm8k"
-},
-"hfdataset:venvoo/china-a-share-l2-level2-limit-order-book-tick-data": {
-"category": "releases",
-"first_seen": "2026-11-12",
-"flat_runs": 0,
-"id": "hfdataset:venvoo/china-a-share-l2-level2-limit-order-book-tick-data",
-"keywords": [],
-"last_seen": "2026-11-26",
-"links": {},
-"mag_history": [
-4.5957,
-4.6016,
-4.6132,
-4.6312,
-4.6387,
-4.647,
-4.6561,
-4.6669,
-4.6784,
-4.6905,
-4.6974,
-4.7075,
-4.7175,
-4.7241
-],
-"misses": 0,
-"peak_mag": 4.7241,
-"signals": {
-"hf_downloads": 239200,
-"hf_likes": 852,
-"hf_trending": 0
-},
-"source": "HF Trending Datasets",
-"streak": 15,
-"summary": "\u00b7 tags: license:other, size_categories:n>1T, region:us, finance, trading, stock-market",
-"title": "venvoo/china-a-share-l2-level2-limit-order-book-tick-data (HF Dataset)",
-"url": "https://huggingface.co/datasets/venvoo/china-a-share-l2-level2-limit-order-book-tick-data"
 },
 "hfmodel:Qwen/Qwen3.8-27B": {
 "category": "releases",
@@ -1690,23 +1681,24 @@
 "flat_runs": 0,
 "id": "hfmodel:Qwen/Qwen3.8-27B",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 6.9887,
 6.9906,
 6.9928,
-6.9943
+6.9943,
+6.996
 ],
 "misses": 0,
-"peak_mag": 6.9943,
+"peak_mag": 6.996,
 "signals": {
-"hf_downloads": 6047011,
-"hf_likes": 21848,
+"hf_downloads": 5752506,
+"hf_likes": 21900,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 4,
+"streak": 5,
 "summary": "image-text-to-text \u00b7 tags: transformers, safetensors, qwen3_5, image-text-to-text, conversational, license:apache-2.0",
 "title": "Qwen/Qwen3.8-27B (HF Model)",
 "url": "https://huggingface.co/Qwen/Qwen3.8-27B"
@@ -1717,7 +1709,7 @@
 "flat_runs": 0,
 "id": "hfmodel:n4ze3m/tiny-voca",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 4.0986,
@@ -1725,17 +1717,18 @@
 4.2527,
 4.2639,
 4.2671,
-4.2734
+4.2734,
+4.278
 ],
 "misses": 0,
-"peak_mag": 4.2734,
+"peak_mag": 4.278,
 "signals": {
-"hf_downloads": 15278,
-"hf_likes": 447,
+"hf_downloads": 17641,
+"hf_likes": 450,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 6,
+"streak": 7,
 "summary": "text-to-speech \u00b7 tags: onnx, gguf, text-to-speech, en, dataset:n4ze3m/tiny-voca, license:apache-2.0",
 "title": "n4ze3m/tiny-voca (HF Model)",
 "url": "https://huggingface.co/n4ze3m/tiny-voca"
@@ -1746,7 +1739,7 @@
 "flat_runs": 0,
 "id": "hfmodel:nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
 4.4169,
@@ -1757,17 +1750,18 @@
 5.1117,
 5.1234,
 5.1399,
-5.1489
+5.1489,
+5.1583
 ],
 "misses": 0,
-"peak_mag": 5.1489,
+"peak_mag": 5.1583,
 "signals": {
-"hf_downloads": 196058,
-"hf_likes": 1564,
+"hf_downloads": 197861,
+"hf_likes": 1585,
 "hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 9,
+"streak": 10,
 "summary": "text-generation \u00b7 tags: transformers, gguf, nvidia, pytorch, nemotron-3.5, text-generation",
 "title": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB (HF Model)",
 "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB"
@@ -1778,20 +1772,21 @@
 "flat_runs": 0,
 "id": "hfmodel:nvidia/Nemotron-Labs-Image-30B-A3B",
 "keywords": [],
-"last_seen": "2026-11-26",
+"last_seen": "2026-11-27",
 "links": {},
 "mag_history": [
-3.8594
+3.8594,
+4.0223
 ],
 "misses": 0,
-"peak_mag": 3.8594,
+"peak_mag": 4.0223,
 "signals": {
-"hf_downloads": 218,
-"hf_likes": 247,
-"hf_trending": 207
+"hf_downloads": 1692,
+"hf_likes": 312,
+"hf_trending": 0
 },
 "source": "HF Trending Models",
-"streak": 1,
+"streak": 2,
 "summary": "text-to-image \u00b7 tags: transformers, safetensors, nemotron_h, text-generation, nvidia, nemotron",
 "title": "nvidia/Nemotron-Labs-Image-30B-A3B (HF Model)",
 "url": "https://huggingface.co/nvidia/Nemotron-Labs-Image-30B-A3B"
